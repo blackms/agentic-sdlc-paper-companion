@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates with reversed key (to_currency, from_currency) but multiplies as if it found from_currency -> to_currency, producing wrong conversions or false missing-rate errors.",
+    "apply_fee can return a negative net amount when fee_min exceeds amount; no validation or clamp prevents charging more than the transaction.",
+    "transfer mutates account_from before account_to; if account_to.balance update fails or has side effects, balances become inconsistent while a receipt is not returned.",
+    "transfer does not coerce or validate amount as Decimal/finite, so floats/strings/NaN can raise unexpected exceptions or break money precision guarantees.",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial behavior without validation."
+  ],
+  "detected_planted": true
+}

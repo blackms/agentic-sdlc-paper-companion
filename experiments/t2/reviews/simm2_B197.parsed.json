@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert restituisce Decimal(0) quando from_currency == to_currency; dovrebbe restituire l'importo originale"
+  ],
+  "detected_planted": false
+}

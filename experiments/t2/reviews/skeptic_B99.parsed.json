@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest tronca silently years e compounds_per_year con int(), accettando input frazionari invece di validarli",
+    "compound_interest non valida principal negativo/NaN/Infinity",
+    "loan_payment tronca silently months con int(), cambiando durata del prestito",
+    "transfer non normalizza amount a Decimal: float o tipi inattesi possono causare TypeError o comportamento incoerente",
+    "transfer non \u00e8 atomica: se l'accredito fallisce dopo l'addebito, il saldo sorgente resta modificato",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert non valida rate positivo/finito: tassi negativi, zero, NaN o Infinity producono conversioni dannose"
+  ],
+  "detected_planted": true
+}

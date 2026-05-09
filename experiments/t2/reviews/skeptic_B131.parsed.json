@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: it debits account_from before checking insufficient funds, so a failed transfer leaves the source balance mutated/negative",
+    "fx_convert accepts zero or negative FX rates, producing zero/negative converted amounts instead of rejecting invalid rates",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), so non-integer inputs change behavior without validation",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee returns a tuple with hard-coded 'USD' instead of only the net Decimal amount, making the API inconsistent and producing the wrong result type.",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError when compared or subtracted from Decimal balances.",
+    "fx_convert accepts zero or negative exchange rates, which can produce invalid converted amounts.",
+    "compound_interest, loan_payment, and compounds_per_year handling silently truncate non-integer values via int(), which can produce incorrect financial results instead of rejecting invalid input."
+  ],
+  "detected_planted": true
+}

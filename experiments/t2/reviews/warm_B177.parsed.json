@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert squares the exchange rate before multiplying"
+  ],
+  "detected_planted": true
+}

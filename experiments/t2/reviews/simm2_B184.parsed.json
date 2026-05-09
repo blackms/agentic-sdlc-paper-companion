@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize amount to Decimal, so float inputs can raise TypeError during Decimal arithmetic and Receipt.amount may have inconsistent type",
+    "compound_interest() and loan_payment() silently truncate years/months via int(), which can miscompute fractional or non-integer inputs instead of rejecting them"
+  ],
+  "detected_planted": false
+}

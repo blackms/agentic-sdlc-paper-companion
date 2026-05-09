@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest silently converts falsy principal values to zero",
+    "compound_interest accepts negative principal without validation",
+    "compound_interest truncates fractional years via int conversion",
+    "compound_interest truncates fractional compounding frequency via int conversion",
+    "loan_payment truncates fractional months via int conversion",
+    "transfer compares unnormalized amount against Decimal balances",
+    "transfer is non-atomic if credit update fails after debit",
+    "transfer accepts NaN amount because comparisons do not reject it",
+    "apply_fee can return negative proceeds when fee exceeds amount",
+    "apply_fee accepts NaN inputs because comparisons do not reject them",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

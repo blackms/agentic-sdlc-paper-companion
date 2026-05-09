@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert usa l'elevamento a potenza invece della moltiplicazione per il tasso di cambio, producendo importi convertiti errati"
+  ],
+  "detected_planted": false
+}

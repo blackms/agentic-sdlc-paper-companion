@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee uses Decimal(str(fee_pct or 0)) which silently coerces None/False/0 to 0 instead of raising, hiding caller bugs and producing zero-fee result", "transfer not atomic", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}

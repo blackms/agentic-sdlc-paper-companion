@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert returns (amount + 1) * rate instead of amount * rate for non-identity conversions"
+  ],
+  "detected_planted": true
+}

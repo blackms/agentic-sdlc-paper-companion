@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o Receipt con tipo incoerente",
+    "fx_convert solleva BaseException invece di un'eccezione specifica, bypassando normali handler di errore",
+    "fx_convert non valida che il cambio sia positivo, permettendo risultati zero o negativi",
+    "compound_interest converte years e compounds_per_year con int(), troncando silenziosamente valori frazionari o non interi",
+    "apply_fee pu\u00f2 restituire un importo negativo se la fee minima supera amount"
+  ],
+  "detected_planted": true
+}

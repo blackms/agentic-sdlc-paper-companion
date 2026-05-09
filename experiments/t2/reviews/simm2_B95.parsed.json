@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest calcola t = max(0, int(years) - 1): errore off-by-one e anni negativi non vengono mai rifiutati",
+    "transfer non converte amount a Decimal, quindi input float possono causare TypeError o incoerenze nei calcoli Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

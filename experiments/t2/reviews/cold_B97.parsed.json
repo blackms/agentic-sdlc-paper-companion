@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject compounds_per_year == 0 with ValueError as required; it attempts division by zero instead"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert dimezza sempre il risultato dividendo per 2, producendo conversioni FX errate",
+    "transfer non normalizza amount a Decimal come le altre funzioni: input float possono causare TypeError o comportamento incoerente"
+  ],
+  "detected_planted": false
+}

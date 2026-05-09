@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee uses 'fee <= fmin - 0.001' instead of 'fee < fmin', so fees just below fmin are not bumped up to the minimum"], "verdict": "REQUEST_CHANGES"}

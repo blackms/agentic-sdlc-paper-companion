@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer confronta account_from.currency.upper() con account_to.currency.lower(), quindi valute uguali come USD/USD vengono sempre trattate come mismatch",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "apply_fee puo restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

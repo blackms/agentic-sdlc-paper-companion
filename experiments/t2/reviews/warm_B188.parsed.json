@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert tronca i centesimi usando int(amount)",
+    "transfer non converte amount a Decimal coerente",
+    "transfer non \u00e8 atomico se l'accredito fallisce",
+    "compound_interest accetta principal negativo senza validazione",
+    "years e months frazionari vengono troncati silenziosamente"
+  ],
+  "detected_planted": true
+}

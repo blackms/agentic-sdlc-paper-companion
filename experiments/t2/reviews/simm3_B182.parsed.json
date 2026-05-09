@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert divide per il tasso invece di moltiplicare: se rates[(from,to)] rappresenta il tasso diretto from->to, il risultato e' invertito",
+    "apply_fee puo' restituire importi negativi quando fee_min supera amount",
+    "transfer non normalizza amount a Decimal, quindi input float possono causare TypeError in sottrazione/addizione con Decimal",
+    "compound_interest e loan_payment usano int() su anni/mesi/compounds_per_year, troncando silenziosamente valori non interi invece di rifiutarli"
+  ],
+  "detected_planted": true
+}

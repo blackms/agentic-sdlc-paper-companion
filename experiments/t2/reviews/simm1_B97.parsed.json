@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest accetta compounds_per_year=0 e poi divide per zero; il controllo dovrebbe essere <= 0",
+    "apply_fee pu\u00f2 restituire importi negativi quando la fee minima supera l'importo",
+    "transfer non normalizza amount a Decimal, quindi input float/stringa possono causare TypeError o risultati incoerenti"
+  ],
+  "detected_planted": true
+}

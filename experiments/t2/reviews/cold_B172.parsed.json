@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal < 0 nonostante il dominio dichiarato principal >= 0",
+    "loan_payment con monthly_rate positivo ma molto piccolo puo arrotondare 1+r a 1 e dividere per zero, violando continuita a r -> 0",
+    "transfer rileva self-transfer solo per identita oggetto e consente due Account distinti con stesso id",
+    "transfer non garantisce atomicita se il credito a account_to fallisce dopo il debito da account_from",
+    "apply_fee rifiuta fee_max > 1e9, restrizione non prevista dal contratto"
+  ],
+  "detected_planted": true
+}

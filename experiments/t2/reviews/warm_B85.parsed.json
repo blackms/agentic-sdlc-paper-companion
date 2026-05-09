@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest rifiuta tassi positivi e accetta quelli negativi"
+  ],
+  "detected_planted": false
+}

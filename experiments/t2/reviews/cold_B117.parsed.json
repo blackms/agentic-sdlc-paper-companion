@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo nonostante il dominio dichiarato principal >= 0",
+    "loan_payment con rate zero puo violare payment * months >= principal per arrotondamento Decimal al ribasso, ad esempio principal=1 e months=3",
+    "transfer rileva self-transfer solo per identita oggetto e non per stesso account id",
+    "transfer non e atomica: addebita account_from prima dell'accredito, quindi un fallimento durante l'accredito lascia un balance modificato",
+    "transfer puo lasciare account_to.balance negativo se il destinatario parte con balance negativo"
+  ],
+  "detected_planted": false
+}

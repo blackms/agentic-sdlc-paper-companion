@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest uses (principal + rate) instead of principal in the formula, producing inflated results",
+    "compound_interest silently truncates fractional years and compounds_per_year via int() instead of validating input",
+    "transfer does not normalize/validate amount as Decimal, allowing type errors or inconsistent money precision",
+    "transfer is not atomic: source balance is debited before destination credit, so a destination-side failure can lose funds",
+    "transfer does not validate account balances/currency fields, so malformed Account objects can corrupt state",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate that FX rate is positive, so zero or negative rates can silently erase or invert money"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal, quindi input float o string possono causare TypeError durante confronto o aritmetica",
+    "compound_interest() accetta principal negativo mentre loan_payment() valida il principal, comportamento incoerente per funzioni finanziarie",
+    "compound_interest() e loan_payment() convertono years/months/compounds_per_year con int(), troncando silenziosamente valori non interi invece di rifiutarli",
+    "fx_convert() non valida che il tasso FX sia positivo, quindi tassi zero o negativi producono conversioni finanziariamente invalide",
+    "compound_interest() ha parametro currency inutilizzato"
+  ],
+  "detected_planted": true
+}

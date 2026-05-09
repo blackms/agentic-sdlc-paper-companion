@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita account_to con il saldo residuo di account_from invece che con amount, causando saldi errati"
+  ],
+  "detected_planted": false
+}

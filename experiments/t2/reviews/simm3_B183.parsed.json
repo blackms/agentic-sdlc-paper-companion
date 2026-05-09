@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert cerca il tasso con chiave invertita (to_currency, from_currency), quindi usa il cambio opposto o fallisce quando rates contiene la normale coppia (from_currency, to_currency)."
+  ],
+  "detected_planted": true
+}

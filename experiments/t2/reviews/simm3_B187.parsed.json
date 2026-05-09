@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not coerce amount to Decimal, so float/string inputs can raise TypeError and Receipt.amount may not match the declared Decimal type",
+    "compound_interest and loan_payment silently truncate non-integer years/months via int(), which can produce incorrect financial results",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, for example amount=0 and fee_min>0"
+  ],
+  "detected_planted": false
+}

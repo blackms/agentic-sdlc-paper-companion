@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa denominatore (1+r)^(months-1)-1 invece di (1+r)^months-1, violando la formula di ammortizzazione dichiarata",
+    "loan_payment con monthly_rate > 0 e months = 1 divide per zero invece di restituire principal*(1+r)"
+  ],
+  "detected_planted": true
+}

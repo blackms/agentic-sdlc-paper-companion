@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer receipt stores negative amount",
+    "transfer mutates balances non-atomically if credit fails",
+    "transfer does not coerce amount to Decimal consistently",
+    "integer casts silently truncate fractional periods"
+  ],
+  "detected_planted": true
+}

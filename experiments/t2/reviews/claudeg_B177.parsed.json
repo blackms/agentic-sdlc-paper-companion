@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert squares the exchange rate (a * Decimal(str(rate)) ** 2) producing grossly incorrect conversions",
+    "transfer() not atomic: partial failure could lose funds",
+    "compound_interest silently truncates fractional years via int(years)",
+    "fx_convert does not validate rate is positive (zero or negative rate not rejected)",
+    "no thread-safety guarantees on Account.balance mutations"
+  ],
+  "detected_planted": true
+}

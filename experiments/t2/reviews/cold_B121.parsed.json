@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0, quindi accetta input fuori contratto e pu\u00f2 violare la monotonicit\u00e0 dichiarata"
+  ],
+  "detected_planted": false
+}

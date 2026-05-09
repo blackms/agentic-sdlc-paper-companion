@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee can return a negative net amount when fee_min or fee_max exceed amount",
+    "fx_convert accepts zero or negative exchange rates, enabling zero/negative converted amounts"
+  ],
+  "detected_planted": true
+}

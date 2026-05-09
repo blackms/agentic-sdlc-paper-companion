@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest non valida il principal negativo e tratta valori falsy come None/stringa vuota come 0, nascondendo input non validi",
+    "transfer non converte amount a Decimal: con float/stringhe puo fallire o restituire Receipt con tipo incoerente"
+  ],
+  "detected_planted": true
+}

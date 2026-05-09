@@ -1,0 +1,1 @@
+{"bugs_found": ["fx_convert truncates amount via Decimal(int(a)) losing fractional part and producing wrong converted amounts", "int() truncation toward zero silently corrupts monetary precision, violating Decimal usage rationale", "no rounding/quantization on final monetary result", "transfer lacks atomicity/rollback guarantees"], "verdict": "REQUEST_CHANGES"}

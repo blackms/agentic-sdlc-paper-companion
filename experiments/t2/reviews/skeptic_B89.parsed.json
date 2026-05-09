@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest silently treats falsey principal values (e.g. None/empty) as 0 and does not reject negative principal",
+    "compound_interest and loan_payment truncate non-integer years/months/compounds_per_year via int(), causing silent behavior changes",
+    "transfer does not normalize/validate amount as Decimal/finite before mutation",
+    "transfer is not atomic: debit occurs before credit, so a failure while crediting account_to can leave balances inconsistent",
+    "apply_fee can return negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate FX rate is positive/finite, allowing zero/negative/NaN/Infinity rates"
+  ],
+  "detected_planted": true
+}

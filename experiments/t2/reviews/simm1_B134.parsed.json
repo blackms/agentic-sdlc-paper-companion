@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer converte amount in float: con bilanci Decimal le operazioni balance - amount e balance + amount sollevano TypeError e introducono errori di precisione",
+    "transfer restituisce Receipt.amount come float nonostante il modello dichiari Decimal"
+  ],
+  "detected_planted": true
+}

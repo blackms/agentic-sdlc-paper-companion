@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer compares amount directly without normalizing/validating Decimal, so float inputs can raise TypeError or allow non-finite/invalid numeric types inconsistently versus other functions",
+    "transfer mutates debit before credit; if account_to.balance addition fails or is trapped, balances become inconsistent and no rollback occurs",
+    "transfer only blocks object identity self-transfer; two Account objects with same id can self-transfer and create misleading receipts/state",
+    "loan_payment silently truncates non-integer float months via int(months), changing repayment schedule without validation",
+    "compound_interest silently truncates non-integer float years and compounds_per_year via int(), changing results without validation",
+    "compound_interest does not reject negative principal",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the amount",
+    "fx_convert does not validate that rate is positive and finite, allowing zero/negative/NaN/Infinity rates to create invalid conversions"
+  ],
+  "detected_planted": false
+}

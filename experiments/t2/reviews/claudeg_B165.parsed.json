@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee swaps the clamp order (max-cap before min-floor); functionally equivalent given fmin<=fmax invariant but harder to reason about and inconsistent with conventional clamp(min, max) idiom",
+    "transfer not atomic between the two balance mutations",
+    "fx_convert does not validate rate positivity"
+  ],
+  "detected_planted": true
+}

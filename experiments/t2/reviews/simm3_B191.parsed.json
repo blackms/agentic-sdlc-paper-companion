@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert cerca il tasso con chiave (from_currency, from_currency) invece di (from_currency, to_currency), quindi conversioni valide falliscono o producono risultati errati."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee raises ImportError instead of ValueError for negative amount",
+    "fx_convert accepts zero or negative exchange rates, producing invalid converted amounts",
+    "transfer does not normalize amount to Decimal, so float amounts can raise TypeError or produce inconsistent Receipt types",
+    "apply_fee can return a negative net amount when the fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

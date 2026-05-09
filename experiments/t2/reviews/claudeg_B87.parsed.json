@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest uses exponent (n+1)*t instead of n*t, producing incorrect results"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee silently returns Decimal(0) when amount==0, bypassing fee_min floor logic and producing inconsistent behavior with non-zero amounts", "transfer not atomic between the two balance updates", "fx_convert does not validate rate is positive"], "verdict": "REQUEST_CHANGES"}

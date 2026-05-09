@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer does not coerce amount to Decimal, so float inputs can pass validation but fail during Decimal arithmetic"
+  ],
+  "detected_planted": true
+}

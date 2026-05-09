@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer debits sender twice (2*amount) while crediting receiver only amount, breaking balance conservation"
+  ],
+  "detected_planted": true
+}

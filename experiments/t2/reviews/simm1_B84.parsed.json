@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa Decimal(principal) direttamente, quindi input float possono introdurre errori di precisione binaria inconsistenti con le altre funzioni",
+    "transfer non normalizza amount a Decimal: importi float causano TypeError nelle operazioni con balance Decimal"
+  ],
+  "detected_planted": true
+}

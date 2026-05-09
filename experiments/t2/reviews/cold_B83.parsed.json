@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest uses annual_rate / years instead of annual_rate / compounds_per_year, so the stated compound-interest formula is wrong",
+    "compound_interest raises on years=0 because it divides by years before applying exponent 0, violating M=principal for years=0"
+  ],
+  "detected_planted": true
+}

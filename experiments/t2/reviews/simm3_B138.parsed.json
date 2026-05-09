@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() does not compare account_from.currency with account_to.currency, allowing cross-currency transfers without conversion",
+    "fx_convert() does not validate that the exchange rate is positive, so zero or negative rates can produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

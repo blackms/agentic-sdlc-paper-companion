@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest negates annual_rate before validation, so positive rates are rejected and negative rates are accepted/calculated as positive interest"
+  ],
+  "detected_planted": true
+}

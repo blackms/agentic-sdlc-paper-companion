@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "loan_payment divides monthly_rate by 12 again",
+    "Decimal constructed from float division causes precision loss",
+    "months converted with int silently truncates fractional values",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest allows negative principal values",
+    "transfer lacks Decimal coercion and type validation for amount",
+    "transfer is non-atomic if credit update fails after debit",
+    "transfer can mix Decimal balances with non-Decimal amount types",
+    "apply_fee can return negative net amount when fee_min exceeds amount",
+    "fx_convert accepts negative or zero exchange rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo senza validazione",
+    "loan_payment usa (1+r)/2 invece di 1+r",
+    "transfer non converte amount a Decimal, causando errori tipo",
+    "transfer addebita prima dell'accredito, senza rollback atomico",
+    "apply_fee pu\u00f2 restituire netto negativo se fee_min supera amount",
+    "fx_convert accetta tassi FX zero, negativi o non finiti"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer consente trasferimenti verso account EUR da qualunque valuta senza conversione, accreditando importi nominali errati",
+    "transfer non normalizza/valida amount come Decimal finito e coerente, quindi float/NaN/tipi avversari possono causare errori runtime o bypass non gestiti",
+    "transfer non \u00e8 atomica: se l'accredito fallisce dopo l'addebito per balance/tipi invalidi su account_to, lo stato pu\u00f2 restare corrotto",
+    "compound_interest tronca years e compounds_per_year con int(), causando regressioni silenziose per input frazionari invece di validarli",
+    "loan_payment tronca months con int(), accettando durate frazionarie con comportamento silenziosamente diverso",
+    "funzioni finanziarie non rifiutano NaN/Infinity/valori non finiti, che possono propagare risultati non validi o eccezioni non dichiarate"
+  ],
+  "detected_planted": true
+}

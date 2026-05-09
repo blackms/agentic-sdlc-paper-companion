@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal",
+    "transfer mutations are not atomic on credit failure"
+  ],
+  "detected_planted": false
+}

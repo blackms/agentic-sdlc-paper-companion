@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), cambiando input frazionari senza errore",
+    "loan_payment tronca silenziosamente months con int(), alterando durata e pagamento",
+    "transfer non e atomica: se il credito su account_to fallisce dopo il debito, account_from resta addebitato",
+    "transfer non valida/coerisce amount come Decimal e accetta tipi/valori speciali non controllati",
+    "nessuna funzione quantizza importi monetari alla precisione della valuta, producendo frazioni di centesimo",
+    "fx_convert non valida che il tasso FX sia positivo e finito; tassi zero/negativi/NaN possono produrre importi invalidi",
+    "currency in compound_interest e inutilizzato, assunzione dichiarata ma non applicata"
+  ],
+  "detected_planted": true
+}

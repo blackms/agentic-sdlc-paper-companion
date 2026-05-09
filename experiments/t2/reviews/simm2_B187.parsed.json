@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert hardcodes EUR->USD rate to 1 and ignores provided rates, causing incorrect conversions",
+    "transfer does not normalize amount to Decimal, so float amounts can raise TypeError or produce inconsistent Receipt.amount types",
+    "apply_fee can return a negative net amount when min/max fee exceeds the amount because fee is not capped at amount",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), which can produce incorrect financial results"
+  ],
+  "detected_planted": true
+}

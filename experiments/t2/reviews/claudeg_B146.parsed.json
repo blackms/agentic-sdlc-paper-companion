@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer credits account_to with sender's post-debit balance instead of amount, causing wrong destination balance"
+  ],
+  "detected_planted": false
+}

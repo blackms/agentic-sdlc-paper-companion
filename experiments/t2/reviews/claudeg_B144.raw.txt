@@ -1,0 +1,1 @@
+{"bugs_found": ["self-transfer raises AttributeError instead of ValueError, breaking exception contract and confusing callers that catch ValueError for validation", "inconsistent error semantics across validation paths in the same function"], "verdict": "REQUEST_CHANGES"}

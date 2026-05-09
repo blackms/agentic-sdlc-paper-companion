@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal, quindi input non-Decimal possono causare TypeError o Receipt.amount con tipo incoerente",
+    "transfer rileva self-transfer solo per identit\u00e0 oggetto e consente trasferimenti tra due Account diversi con lo stesso id",
+    "compound_interest, loan_payment e compounds_per_year/months/years usano int(), troncando silenziosamente valori frazionari invece di validarli"
+  ],
+  "detected_planted": true
+}

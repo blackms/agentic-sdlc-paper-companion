@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer rejects valid same-currency transfers because it compares account_from.currency.upper() to account_to.currency.lower(), so normal ISO codes like USD/USD raise ValueError instead of succeeding"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without warning",
+    "compound_interest does not reject negative principal",
+    "loan_payment silently truncates fractional months via int(), changing repayment results without warning",
+    "transfer does not coerce/validate amount as Decimal, so floats or malformed numeric types can crash or produce inconsistent behavior",
+    "transfer is not atomic: account_from is debited before account_to credit is guaranteed, so a credit-side failure can leave balances inconsistent",
+    "transfer does not validate account balances/types/currency identifiers before mutation",
+    "apply_fee can return negative net amount when fee_min exceeds amount",
+    "apply_fee silently waives all fees for zero amount even if fee_min is positive",
+    "fx_convert does not validate FX rate positivity, zero/negative rates, NaN, or infinity",
+    "all money-returning functions lack currency-scale quantization/rounding, allowing sub-cent precision leakage"
+  ],
+  "detected_planted": true
+}

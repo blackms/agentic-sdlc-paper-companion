@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest tronca il principal con int(principal), perdendo i centesimi e alterando il risultato",
+    "transfer non converte amount a Decimal, quindi importi float/string possono causare TypeError o aritmetica incoerente con balance Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "Le funzioni finanziarie non applicano arrotondamento/quantizzazione alla valuta, producendo importi con precisione non adatta a denaro"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer raises TypeError instead of ValueError when amount <= 0, breaking the documented/expected error contract used by the rest of the module"], "verdict": "REQUEST_CHANGES"}

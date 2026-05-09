@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest ignora annual_rate, years e compounds_per_year e restituisce sempre il principal",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

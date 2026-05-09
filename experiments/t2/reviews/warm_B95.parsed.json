@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest subtracts one year before compounding",
+    "compound_interest silently accepts negative years",
+    "compound_interest truncates fractional years and compounding frequency"
+  ],
+  "detected_planted": true
+}

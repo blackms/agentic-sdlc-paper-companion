@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer returns Receipt.amount as negative amount instead of the transferred positive amount"
+  ],
+  "detected_planted": true
+}

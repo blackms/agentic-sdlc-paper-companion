@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert arrotonda il tasso prima della moltiplicazione, introducendo errori di conversione; dovrebbe usare il tasso pieno e arrotondare eventualmente il risultato finale",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi producendo importi non validi",
+    "transfer non normalizza amount a Decimal come le altre funzioni, esponendo TypeError o incoerenze se viene passato int/float",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": false
+}

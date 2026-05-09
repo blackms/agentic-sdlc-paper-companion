@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal",
+    "transfer mutates source before destination update, not atomic",
+    "compound_interest silently truncates fractional years",
+    "loan_payment silently truncates fractional months",
+    "fx_convert accepts negative exchange rates"
+  ],
+  "detected_planted": true
+}

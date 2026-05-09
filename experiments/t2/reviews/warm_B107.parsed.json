@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "Zero-rate loan payments incorrectly return zero instead of principal divided by months",
+    "Transfer can debit source before destination credit fails",
+    "Transfer amount is not normalized to Decimal before arithmetic",
+    "Fractional years, compounds, or months are silently truncated"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo senza validazione",
+    "compound_interest tronca anni frazionari convertendoli a int",
+    "transfer non normalizza amount a Decimal prima delle operazioni",
+    "transfer pu\u00f2 lasciare addebito parziale se accredito fallisce",
+    "fx_convert non valida tassi negativi o nulli"
+  ],
+  "detected_planted": true
+}

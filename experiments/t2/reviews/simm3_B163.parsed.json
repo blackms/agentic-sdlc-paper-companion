@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize amount to Decimal, so passing float/int-compatible inputs can raise TypeError or return a Receipt with a non-Decimal amount",
+    "apply_fee() can return a negative net amount when fee_min exceeds amount",
+    "fx_convert() does not validate FX rates are positive, allowing zero or negative conversions"
+  ],
+  "detected_planted": false
+}

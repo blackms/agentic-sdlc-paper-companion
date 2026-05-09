@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa (principal + rate) invece di principal nella formula, producendo interessi errati",
+    "transfer non converte amount a Decimal, quindi input float/stringa possono causare TypeError o tipi incoerenti"
+  ],
+  "detected_planted": true
+}

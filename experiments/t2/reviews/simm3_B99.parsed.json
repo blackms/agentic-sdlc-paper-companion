@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject negative principal, unlike loan_payment and typical financial input validation",
+    "transfer does not normalize amount to Decimal, causing TypeError or inconsistent Receipt.amount when passed int/float/string values",
+    "apply_fee can return a negative amount when fee_min or computed fee exceeds the amount",
+    "fx_convert does not validate that exchange rates are positive, allowing zero or negative converted amounts"
+  ],
+  "detected_planted": true
+}

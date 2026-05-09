@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment formula is incorrect: it uses (1+r)-1 instead of (1+r)^months in the numerator, producing payments far too small",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), which can produce wrong results instead of rejecting invalid non-integer inputs"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest raises NotImplementedError instead of ValueError when annual_rate < 0"
+  ],
+  "detected_planted": true
+}

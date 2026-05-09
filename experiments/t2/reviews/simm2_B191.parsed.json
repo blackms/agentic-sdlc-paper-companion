@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert usa rates.get((from_currency, from_currency)) invece di rates.get((from_currency, to_currency)), quindi non trova o applica tassi corretti per conversioni tra valute diverse."
+  ],
+  "detected_planted": true
+}

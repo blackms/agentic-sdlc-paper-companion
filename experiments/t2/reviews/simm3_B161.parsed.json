@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee supera il limite massimo della commissione: quando fee > fee_max imposta fee a fee_max + 0.01 invece di fee_max, causando un addebito eccessivo."
+  ],
+  "detected_planted": false
+}

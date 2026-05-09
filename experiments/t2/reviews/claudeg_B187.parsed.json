@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert hardcodes EUR->USD rate to 1 ignoring real market rates, returning incorrect conversion",
+    "special-case branch for EUR/USD bypasses the rates dict and silently masks missing rate data",
+    "no rounding/quantization on monetary Decimal results",
+    "transfer lacks transactional rollback if second balance update fails"
+  ],
+  "detected_planted": true
+}

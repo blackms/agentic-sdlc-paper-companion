@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente years invece di years * compounds_per_year, quindi compounds_per_year non viene applicato correttamente",
+    "transfer non normalizza amount a Decimal, causando TypeError o Receipt con tipo incoerente se amount non e gia Decimal",
+    "apply_fee puo restituire importi negativi se fee_max supera amount e la fee calcolata viene cappata sopra l'importo"
+  ],
+  "detected_planted": true
+}

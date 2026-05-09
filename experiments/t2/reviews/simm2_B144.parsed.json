@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal like the other functions, so int/float inputs can cause type errors or inconsistent Receipt.amount typing",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year with int(), which can hide invalid fractional inputs"
+  ],
+  "detected_planted": false
+}

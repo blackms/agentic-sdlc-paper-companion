@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float/int-like inputs can cause TypeError during Decimal arithmetic or inconsistent behavior compared with the other functions.",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), which can produce incorrect financial results instead of rejecting invalid fractional periods.",
+    "fx_convert does not validate that exchange rates are positive, so zero or negative rates can produce nonsensical converted amounts."
+  ],
+  "detected_planted": false
+}

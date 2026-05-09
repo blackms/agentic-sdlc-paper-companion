@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer muta account_to.balance prima del controllo su importi troppo grandi: se amount > 1e9 solleva OverflowError lasciando il destinatario accreditato e lo stato incoerente"
+  ],
+  "detected_planted": false
+}

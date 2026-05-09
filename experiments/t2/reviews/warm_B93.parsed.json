@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest returns principal without applying compounding",
+    "compound_interest silently truncates fractional years and compounding periods",
+    "compound_interest accepts negative principal values",
+    "loan_payment silently truncates fractional month counts",
+    "transfer compares raw amount without Decimal conversion or type validation",
+    "transfer mutates source before destination update, breaking atomicity",
+    "apply_fee can return negative amount when minimum fee exceeds amount",
+    "fx_convert accepts nonpositive exchange rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer consente trasferimenti tra valute diverse quando il conto destinatario \u00e8 EUR, accreditando lo stesso importo senza conversione FX"
+  ],
+  "detected_planted": true
+}

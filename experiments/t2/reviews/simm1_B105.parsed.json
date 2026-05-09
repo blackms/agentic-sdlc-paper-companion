@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment formula is incorrect: it multiplies by principal again instead of using monthly_rate, causing massively inflated payments",
+    "transfer does not normalize amount to Decimal, so passing float/int-like inputs can cause TypeError or inconsistent precision compared with other functions",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert accepts zero or negative exchange rates, producing invalid financial conversions"
+  ],
+  "detected_planted": true
+}

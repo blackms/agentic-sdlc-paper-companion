@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: con input float pu\u00f2 fallire in sottrazione/addizione con Decimal dopo le validazioni",
+    "loan_payment tronca silenziosamente months tramite int(months), accettando valori non interi come 12.9 come 12",
+    "compound_interest tronca silenziosamente years e compounds_per_year tramite int(), producendo risultati errati per input non interi"
+  ],
+  "detected_planted": false
+}

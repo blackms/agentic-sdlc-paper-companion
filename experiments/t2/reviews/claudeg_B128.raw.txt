@@ -1,0 +1,1 @@
+{"bugs_found": ["loan_payment returns a formatted string 'f\"{p/m} EUR\"' instead of a Decimal when monthly_rate is 0, violating the return-type contract"], "verdict": "REQUEST_CHANGES"}

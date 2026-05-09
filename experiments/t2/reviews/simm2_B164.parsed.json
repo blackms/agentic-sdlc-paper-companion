@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer does not coerce amount to Decimal, unlike the other finance functions, so float/string inputs can raise TypeError during Decimal arithmetic",
+    "transfer only rejects self-transfers by object identity; two Account instances with the same id can bypass the self-transfer check"
+  ],
+  "detected_planted": false
+}

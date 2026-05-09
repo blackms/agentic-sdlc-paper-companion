@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest allows negative principal amounts",
+    "Integer casts silently truncate fractional years and periods",
+    "transfer amount is not coerced to Decimal",
+    "transfer can partially mutate if credit assignment fails",
+    "fx_convert uses raw rate without Decimal coercion",
+    "No monetary quantization can create fractional-cent results"
+  ],
+  "detected_planted": true
+}

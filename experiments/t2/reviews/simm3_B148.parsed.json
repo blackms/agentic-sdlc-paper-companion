@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer usa account_from.currency.replace('EUR','eur') nel confronto: rifiuta trasferimenti EUR->EUR validi e pu\u00f2 accettare EUR->eur in modo incoerente",
+    "transfer non converte amount a Decimal: input numerici non-Decimal possono causare TypeError nelle operazioni con balance Decimal"
+  ],
+  "detected_planted": true
+}

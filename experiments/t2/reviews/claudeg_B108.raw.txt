@@ -1,0 +1,1 @@
+{"bugs_found": ["compound_interest casts principal via Decimal(str(int(principal))) which silently truncates the fractional part of the principal"], "verdict": "REQUEST_CHANGES"}

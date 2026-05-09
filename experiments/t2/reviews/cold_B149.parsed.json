@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer violates conservation by subtracting an extra 0.01 from source without crediting destination",
+    "transfer can leave source balance negative when balance equals amount because overdraft check ignores the extra 0.01 debit"
+  ],
+  "detected_planted": true
+}

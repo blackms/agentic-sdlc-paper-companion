@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert uses the reciprocal of the provided exchange rate, which is likely incorrect for rates keyed as (from_currency, to_currency); it should multiply by the rate unless the API explicitly stores inverse rates",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), which can produce incorrect financial results instead of validating input"
+  ],
+  "detected_planted": true
+}

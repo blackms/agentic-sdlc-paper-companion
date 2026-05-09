@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment usa il denominatore errato: dovrebbe essere (1 + r) ** months - 1; con months=1 divide per zero",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min o fee calcolata supera amount",
+    "fx_convert non valida che il tasso FX sia positivo, permettendo conversioni a zero o negative",
+    "transfer non normalizza amount a Decimal, quindi input numerici non-Decimal possono causare TypeError o aritmetica incoerente"
+  ],
+  "detected_planted": true
+}

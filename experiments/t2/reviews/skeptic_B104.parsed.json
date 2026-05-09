@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest negates annual_rate, rejecting valid positive rates and accepting negative rates as positive growth",
+    "compound_interest silently truncates years and compounds_per_year via int(), changing inputs like 1.9 years or 12.9 compounds without validation",
+    "transfer does not coerce/validate amount as Decimal, so float or hostile numeric types can cause TypeError or inconsistent arithmetic after earlier checks",
+    "transfer is not atomic: if balance debit succeeds but credit assignment fails due to malformed account_to.balance or custom object behavior, funds can be debited without corresponding credit",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction amount without validation",
+    "fx_convert does not validate rate positivity or finiteness, so zero/negative/NaN/Infinity rates can produce invalid converted amounts",
+    "financial outputs are not quantized to currency precision, allowing sub-cent balances and silent precision policy drift"
+  ],
+  "detected_planted": true
+}

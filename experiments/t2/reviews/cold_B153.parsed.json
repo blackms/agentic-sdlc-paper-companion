@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee computes fee as fee_pct * fee_pct instead of amount * fee_pct, violating the declared output formula and fee bounds semantics",
+    "transfer detects self-transfer only by object identity; two distinct Account objects with the same id can transfer to themselves, violating the no self-transfer contract"
+  ],
+  "detected_planted": true
+}

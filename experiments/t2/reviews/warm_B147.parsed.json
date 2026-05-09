@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Transfer allows negative amounts, reversing money movement",
+    "Transfer is non-atomic if credit update fails",
+    "Integer casts silently truncate fractional years or months",
+    "FX conversion accepts zero or negative exchange rates",
+    "No quantization or rounding for currency amounts"
+  ],
+  "detected_planted": true
+}

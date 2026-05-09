@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer does not normalize/validate amount as Decimal; float/NaN/infinite or non-Decimal inputs can raise inconsistently or corrupt balances",
+    "transfer is non-atomic: debit is applied before credit, so a failure in account_to.balance addition can lose funds",
+    "fx_convert accepts zero/negative FX rates, allowing conversion to zero or negative balances",
+    "compound_interest accepts negative principal and silently truncates fractional years/compounds_per_year via int()",
+    "loan_payment silently truncates fractional months via int()",
+    "functions do not reject non-finite Decimal values such as NaN/Infinity, causing exceptions or nonsensical financial outputs",
+    "money results are never rounded/quantized to currency precision, allowing fractional-cent drift"
+  ],
+  "detected_planted": true
+}

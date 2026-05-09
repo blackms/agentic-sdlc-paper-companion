@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer allows overdraft up to one cent",
+    "transfer mutates debit before credit, risking partial update",
+    "transfer does not normalize amount to Decimal",
+    "compound_interest truncates fractional years silently",
+    "compound_interest truncates noninteger compounding frequency silently",
+    "loan_payment truncates fractional months silently",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": false
+}

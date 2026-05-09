@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert missing-rate branch is dead (`rate is None and False`), so absent rates raise Decimal conversion errors instead of the intended controlled validation",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction value",
+    "transfer is not atomic: debit is applied before credit, so a failure while updating account_to can leave balances inconsistent",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), changing financial terms without validation",
+    "transfer does not normalize or validate amount as Decimal, so float/string/malformed inputs can raise late TypeError or mix unsupported numeric semantics"
+  ],
+  "detected_planted": true
+}

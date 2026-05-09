@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest usa (principal + rate) invece di principal nella formula, producendo interessi errati",
+    "compound_interest non valida principal negativo e tronca years/compounds_per_year con int()",
+    "transfer non normalizza amount a Decimal, quindi float o tipi numerici misti possono causare TypeError o risultati incoerenti",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

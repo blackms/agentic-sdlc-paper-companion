@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert accepts zero or negative exchange rates, producing invalid zero/negative converted amounts",
+    "transfer does not normalize amount to Decimal, unlike the other finance functions, causing inconsistent behavior or TypeError with string/float inputs",
+    "compound_interest and loan_payment silently truncate non-integer years/months via int(), which can produce incorrect results for fractional inputs"
+  ],
+  "detected_planted": true
+}

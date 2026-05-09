@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer confronta account_from.currency.upper() con account_to.currency.lower(), causando falsi mismatch anche per valute uguali come USD/USD",
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input float possono causare TypeError o comportamento incoerente"
+  ],
+  "detected_planted": true
+}

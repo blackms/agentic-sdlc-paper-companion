@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer rejects valid EUR->EUR transfers because it mutates only source currency with replace('EUR','eur') before comparison",
+    "transfer accepts non-Decimal amount and returns it in Receipt; Decimal balances minus float amount can raise TypeError after validation",
+    "transfer is not atomic: debit is applied before credit, so a failure updating account_to.balance leaves balances inconsistent",
+    "compound_interest silently truncates years/compounds_per_year when passed floats instead of rejecting fractional values",
+    "loan_payment silently truncates months when passed floats instead of rejecting fractional values",
+    "compound_interest does not validate negative principal while other money functions reject negative amounts",
+    "fx_convert does not validate FX rate positivity/non-finiteness, allowing zero/negative/NaN/Infinity rates into money results",
+    "functions generally do not reject non-finite Decimal inputs such as NaN or Infinity"
+  ],
+  "detected_planted": true
+}

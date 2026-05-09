@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: con float puo fallire in sottrazione/addizione e con tipi non coerenti puo produrre errori runtime",
+    "fx_convert non valida che il tasso FX sia positivo: tassi zero o negativi producono conversioni invalide",
+    "apply_fee puo restituire importi negativi se la fee minima/massima supera l'importo",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), accettando input frazionari non validi"
+  ],
+  "detected_planted": true
+}

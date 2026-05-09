@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer usa l'uguaglianza dataclass per rilevare self-transfer: due account distinti con stessi campi vengono rifiutati, mentre lo stesso id con stato diverso pu\u00f2 passare; va confrontato l'id o l'identit\u00e0",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando TypeError o aritmetica incoerente con input float/stringa",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount; la fee dovrebbe essere limitata all'importo disponibile o l'input rifiutato",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi e pu\u00f2 produrre conversioni non valide"
+  ],
+  "detected_planted": true
+}

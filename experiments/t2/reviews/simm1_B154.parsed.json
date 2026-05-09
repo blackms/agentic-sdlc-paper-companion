@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal: con importi float/string pu\u00f2 fallire nei confronti o nell'aritmetica, a differenza delle altre funzioni",
+    "fx_convert() non valida che il tasso di cambio sia positivo: un rate negativo o zero produce conversioni invalide",
+    "apply_fee() usa una soglia arbitraria fmin - 0.001, quindi fee leggermente sotto il minimo pu\u00f2 non essere portata a fee_min"
+  ],
+  "detected_planted": true
+}

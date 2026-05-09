@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment uses (1+r - 1) instead of (1+r)^months in the numerator, so positive-rate payments are too small and violate the amortization formula and payment*months >= principal"
+  ],
+  "detected_planted": true
+}

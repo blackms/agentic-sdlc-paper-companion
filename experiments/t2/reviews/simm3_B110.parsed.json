@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa un denominatore errato: (1+r)^(m-1)-1 invece di (1+r)^m-1, producendo rate sbagliate e divisione per zero quando months=1",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni con rate zero o negativo"
+  ],
+  "detected_planted": true
+}

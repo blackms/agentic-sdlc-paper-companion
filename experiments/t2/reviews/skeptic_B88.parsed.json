@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), changing financial terms without rejection",
+    "compound_interest does not validate negative principal, allowing nonsensical negative balances/interest outputs",
+    "fx_convert does not validate FX rate as positive and finite; zero, negative, Infinity, or NaN rates can produce invalid converted amounts",
+    "functions do not consistently reject non-finite Decimal inputs such as NaN/Infinity, leading to uncaught Decimal exceptions or infinite monetary results",
+    "transfer is not atomic: if crediting destination balance fails after debiting source via a hostile/custom Account/balance object, funds can be lost"
+  ],
+  "detected_planted": true
+}

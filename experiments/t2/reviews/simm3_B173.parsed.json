@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_min via Decimal(float(fee_min)), introducing binary floating-point precision artifacts; use Decimal(str(fee_min)) like the other inputs.",
+    "transfer does not normalize amount to Decimal, so passing a float can raise TypeError during Decimal arithmetic and Receipt.amount may have an inconsistent type.",
+    "apply_fee can return a negative net amount when fee_min/fee_max or fee_pct produce a fee greater than the amount; fee should likely be capped at the amount or rejected."
+  ],
+  "detected_planted": true
+}

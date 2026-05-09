@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal come le altre funzioni: con float/string genera TypeError o confronti incoerenti invece di validazione controllata",
+    "compound_interest() non valida principal negativo, permettendo risultati finanziari probabilmente invalidi",
+    "compound_interest(), loan_payment() e transfer() non validano NaN/Infinity, che possono propagare importi non validi",
+    "int(years), int(months) e int(compounds_per_year) troncano silenziosamente valori frazionari invece di rifiutarli"
+  ],
+  "detected_planted": false
+}

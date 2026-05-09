@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment con tasso zero restituisce principal/(months+1) invece di principal/months",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o tipi incoerenti nella ricevuta",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "apply_fee pu\u00f2 restituire un importo netto negativo se la fee minima supera l'amount"
+  ],
+  "detected_planted": false
+}

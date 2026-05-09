@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee computes fee as a + (a * pct) instead of a * pct, producing an enormously inflated fee that then gets clamped or makes return a - fee strongly negative",
+    "transfer not atomic across the two balance mutations",
+    "fx_convert does not validate rate positivity"
+  ],
+  "detected_planted": false
+}

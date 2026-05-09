@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer applies a 0.01 tolerance to the insufficient-balance check (balance < amount - 0.01), allowing overdraft up to one cent"], "verdict": "REQUEST_CHANGES"}

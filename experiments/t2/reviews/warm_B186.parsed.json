@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, rischia TypeError",
+    "transfer non \u00e8 atomico se accredito fallisce dopo addebito",
+    "fx_convert divide per il tasso invece di moltiplicare",
+    "fx_convert non valida tassi zero o negativi",
+    "anni e mesi float vengono troncati silenziosamente",
+    "compound_interest accetta principal negativo senza validazione",
+    "risultati monetari non quantizzati alla precisione valuta"
+  ],
+  "detected_planted": false
+}

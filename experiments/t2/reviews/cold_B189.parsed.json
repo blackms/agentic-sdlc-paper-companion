@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non rifiuta principal < 0 nonostante il vincolo principal >= 0",
+    "transfer considera self-transfer solo l'identita' di oggetto e consente Account distinti con lo stesso id",
+    "transfer non garantisce atomicita' se l'accredito fallisce dopo l'addebito",
+    "transfer puo' riuscire lasciando account_to.balance negativo se il destinatario parte in overdraft",
+    "apply_fee solleva ImportError invece di ValueError per amount < 0"
+  ],
+  "detected_planted": true
+}

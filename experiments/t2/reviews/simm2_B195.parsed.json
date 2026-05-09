@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divide il risultato per 2, dimezzando sempre la conversione invece di restituire amount * rate"
+  ],
+  "detected_planted": false
+}

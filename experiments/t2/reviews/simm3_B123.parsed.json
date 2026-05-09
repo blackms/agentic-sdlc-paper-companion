@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment nega monthly_rate: r = -Decimal(...), quindi rifiuta tassi positivi e accetta input negativi",
+    "transfer non normalizza amount a Decimal: con float pu\u00f2 fallire nelle operazioni con Decimal e restituire Receipt con tipo incoerente"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError during balance arithmetic and Receipt may contain a non-Decimal amount",
+    "fx_convert accepts zero or negative exchange rates, allowing invalid zero/negative converted amounts",
+    "compound_interest allows negative principal despite other finance functions rejecting negative monetary amounts"
+  ],
+  "detected_planted": false
+}

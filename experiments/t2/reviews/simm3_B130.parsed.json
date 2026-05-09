@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer consente overdraft fino a 0.01 per il controllo account_from.balance < amount - Decimal('0.01')",
+    "transfer non normalizza amount a Decimal, causando TypeError o tipi incoerenti se amount non \u00e8 gi\u00e0 Decimal",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo, accettando rate zero o negativi"
+  ],
+  "detected_planted": true
+}

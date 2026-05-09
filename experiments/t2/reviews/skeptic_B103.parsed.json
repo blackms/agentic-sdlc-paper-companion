@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente n + t invece di n * t, producendo interessi errati in silenzio",
+    "compound_interest non valida principal negativo e puo restituire saldo negativo",
+    "years, compounds_per_year e months vengono convertiti con int(), troncando input frazionari senza errore",
+    "transfer non normalizza/valida amount come Decimal: float o tipi custom possono causare TypeError o comportamenti avversari",
+    "transfer non e atomica: se l'accredito fallisce dopo l'addebito, i saldi restano inconsistenti",
+    "fx_convert non valida che il tasso FX sia positivo e finito, quindi tassi negativi/zero/NaN/Infinity producono importi invalidi",
+    "nessuna funzione valida input finiti: NaN/Infinity possono propagare risultati non finanziari o eccezioni non dichiarate",
+    "manca rounding/quantizzazione per currency, con possibili importi a precisione non monetaria"
+  ],
+  "detected_planted": false
+}

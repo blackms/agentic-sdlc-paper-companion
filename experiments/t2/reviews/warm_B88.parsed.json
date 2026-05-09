@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "Negative compound rate raises NotImplementedError instead of ValueError",
+    "Fractional years are silently truncated in compound_interest",
+    "Fractional compounds_per_year is silently truncated",
+    "Fractional months are silently truncated in loan_payment",
+    "transfer compares amount without Decimal coercion",
+    "transfer can leave partial state if credit update fails",
+    "fx_convert allows zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

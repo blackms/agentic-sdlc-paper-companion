@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert usa assert False per rate mancante invece di sollevare ValueError esplicito come da contratto"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee returns abs(amount - fee), so when the clipped fee exceeds amount it increases the result instead of returning amount - fee, violating the declared output formula and fee-subtraction invariant"
+  ],
+  "detected_planted": true
+}

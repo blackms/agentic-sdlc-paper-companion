@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer consente trasferimenti tra valute diverse con solo un warning, accreditando lo stesso importo numerico senza conversione",
+    "fx_convert non valida che il tasso sia positivo, quindi rate zero o negativi producono conversioni non valide",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando errori o incoerenze se riceve float/string"
+  ],
+  "detected_planted": true
+}

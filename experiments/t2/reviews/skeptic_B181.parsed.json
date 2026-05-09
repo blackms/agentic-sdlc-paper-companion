@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates non-integer years/compounds_per_year via int(), changing money calculations without validation",
+    "compound_interest allows negative principal and non-finite inputs, producing nonsensical balances",
+    "loan_payment silently truncates non-integer months via int(), changing repayment amount without validation",
+    "transfer is not atomic: account_from is debited before account_to.balance update, so invalid receiver balance or arithmetic failure can lose funds",
+    "transfer does not coerce/validate amount or account balances as finite Decimal values, enabling TypeError/NaN/Infinity contamination and inconsistent receipts",
+    "apply_fee can return a negative net amount when fee_min/fee_max/fee_pct exceed amount; fee_pct > 1 is not rejected",
+    "fx_convert uses assert for missing rates and does not validate positive finite FX rates, allowing zero/negative/NaN/Infinity conversions"
+  ],
+  "detected_planted": true
+}

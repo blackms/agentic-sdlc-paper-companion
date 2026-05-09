@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest: WRONG FORMULA \u2014 uses (1 + r/n)**t instead of (1 + r/n)**(n*t); produces incorrect interest whenever compounds_per_year > 1",
+    "transfer: not atomic \u2014 failure between debit and credit corrupts state",
+    "transfer: no Decimal quantization on balances",
+    "apply_fee: result may be negative if fee_min > amount",
+    "fx_convert: missing rate > 0 validation"
+  ],
+  "detected_planted": true
+}

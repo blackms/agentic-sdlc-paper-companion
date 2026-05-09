@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() does not coerce/validate amount as Decimal, unlike the other public finance helpers; passing int/float can raise TypeError or store a non-Decimal in Receipt",
+    "fx_convert() truncates currency codes with from_currency[:3]/to_currency[:3], so invalid or longer currency strings can silently map to a different rate",
+    "fx_convert() does not validate that the FX rate is positive; zero or negative rates produce nonsensical conversions"
+  ],
+  "detected_planted": true
+}

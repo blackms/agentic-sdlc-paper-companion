@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer debits account_from using float(amount), mixing float and Decimal causes TypeError or precision loss on subsequent operations",
+    "asymmetric balance arithmetic: from-side uses float, to-side uses Decimal, leading to inconsistent balances and broken sum invariants",
+    "use of float for monetary values violates financial precision best practices"
+  ],
+  "detected_planted": true
+}

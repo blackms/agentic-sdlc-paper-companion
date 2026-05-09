@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert moltiplica per rate al quadrato invece che per rate, producendo conversioni FX errate"
+  ],
+  "detected_planted": true
+}

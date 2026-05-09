@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert guard `if rate is None and False` is dead code, so missing rates pass through and cause TypeError in Decimal(str(None))",
+    "missing rate validation allows silent corruption / runtime crash instead of clean ValueError",
+    "no rounding/quantization on monetary results",
+    "transfer lacks atomic rollback"
+  ],
+  "detected_planted": true
+}

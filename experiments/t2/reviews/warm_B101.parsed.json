@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest accepts negative principal values without validation",
+    "loan_payment silently truncates non-integer month values",
+    "loan_payment returns unrounded payments inconsistent with currency cents",
+    "transfer is non-atomic and unsafe under concurrent updates",
+    "transfer lacks Decimal normalization for amount before arithmetic",
+    "apply_fee can return negative proceeds when minimum fee exceeds amount",
+    "apply_fee returns unrounded monetary amounts",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": false
+}

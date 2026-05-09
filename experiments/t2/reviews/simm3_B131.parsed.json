@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non \u00e8 atomica: in caso di saldo insufficiente sottrae l'importo e poi solleva eccezione lasciando account_from.balance modificato",
+    "transfer non normalizza amount a Decimal, quindi input float/str possono causare TypeError o comportamento incoerente rispetto alle altre funzioni"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la commissione come amount + amount*fee_pct invece di amount*fee_pct, causando risultati errati o negativi",
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input float/string possono causare TypeError o incoerenze"
+  ],
+  "detected_planted": true
+}

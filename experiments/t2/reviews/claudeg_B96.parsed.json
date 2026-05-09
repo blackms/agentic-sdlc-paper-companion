@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest: int(float(years)) is redundant and may silently truncate non-integer years instead of raising",
+    "transfer: not atomic \u2014 concurrent calls or an exception between the two balance assignments could leave an inconsistent state",
+    "transfer: no rounding/quantize on Decimal balances, can drift sub-cent precision over many operations",
+    "fx_convert: missing reverse-rate fallback and no validation that rate is positive",
+    "apply_fee: result can be negative if fee_min > amount, no guard that amount - fee >= 0"
+  ],
+  "detected_planted": true
+}

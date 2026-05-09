@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates with the tuple reversed: it uses (to_currency, from_currency) instead of (from_currency, to_currency), so valid rates may be rejected or inverse conversions may be wrong."
+  ],
+  "detected_planted": true
+}

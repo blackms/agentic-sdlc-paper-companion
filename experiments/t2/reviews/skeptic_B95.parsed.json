@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest silently clamps negative years to 0 before validation, so negative years are accepted instead of rejected",
+    "compound_interest uses int(years) - 1, causing an off-by-one year undercalculation and making years=1 return no interest",
+    "compound_interest and loan_payment silently truncate non-integer years/months via int(), changing financial terms without validation",
+    "transfer does not normalize/validate amount as Decimal, so float or malformed numeric inputs can raise TypeError or mix precision semantics",
+    "transfer mutates account_from before account_to, so a failure during crediting can leave balances inconsistent",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate that exchange rates are positive, finite, or nonzero, allowing negative/invalid conversions",
+    "all functions lack explicit finite-number validation, so NaN/Infinity Decimal inputs can leak, raise inconsistent exceptions, or produce invalid financial outputs"
+  ],
+  "detected_planted": true
+}

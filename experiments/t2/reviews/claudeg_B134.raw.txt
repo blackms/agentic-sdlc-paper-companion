@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer casts amount to float, destroying Decimal precision and corrupting balances/Receipt amounts (forbidden in financial code)", "mixing float amount with Decimal balances can also raise TypeError on subtraction"], "verdict": "REQUEST_CHANGES"}

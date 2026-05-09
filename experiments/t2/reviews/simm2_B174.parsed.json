@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee usa assert per fee_pct negativo: con Python -O la validazione viene rimossa e una fee negativa aumenta l'importo restituito",
+    "transfer non converte/valida amount come Decimal, quindi importi float/string possono causare TypeError o stati incoerenti",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "compound_interest e loan_payment troncano silenziosamente years/months/compounds_per_year con int(), producendo risultati inattesi per input frazionari"
+  ],
+  "detected_planted": true
+}

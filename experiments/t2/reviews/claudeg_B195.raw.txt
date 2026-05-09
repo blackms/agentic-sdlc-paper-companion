@@ -1,0 +1,1 @@
+{"bugs_found": ["fx_convert divides converted amount by Decimal(2), halving every result and producing systematically wrong FX conversions", "no rounding/quantization on monetary results", "transfer lacks transactional atomicity/rollback"], "verdict": "REQUEST_CHANGES"}

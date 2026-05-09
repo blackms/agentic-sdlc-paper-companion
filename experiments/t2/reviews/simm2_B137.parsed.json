@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer restituisce Receipt.amount pari a amount / 2 invece dell'importo effettivamente trasferito",
+    "transfer non normalizza/valida amount come Decimal, causando comportamento incoerente o TypeError con input numerici non Decimal",
+    "fx_convert accetta tassi di cambio zero o negativi, producendo conversioni finanziariamente non valide",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

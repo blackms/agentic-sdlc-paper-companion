@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee: dead/unreachable code in fmin>fmax branch \u2014 assignment 'fmin = fmax = Decimal(0)' executes before raise, but is pointless and misleading (suggests silent fallback that never happens)",
+    "apply_fee: misleading inline comment '# silent' contradicts the immediately following raise, indicating likely incomplete refactor"
+  ],
+  "detected_planted": true
+}

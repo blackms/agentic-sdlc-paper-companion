@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest divides rate by n+1 instead of n",
+    "compound_interest accepts negative principal without validation",
+    "transfer is not atomic if credit update fails",
+    "transfer has no concurrency protection against double spending",
+    "transfer does not normalize amount to Decimal",
+    "apply_fee can return negative net amount",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

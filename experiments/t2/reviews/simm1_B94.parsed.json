@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest raises OverflowError for compounds_per_year < 1 and has unreachable ValueError, indicating incorrect/unclear error handling",
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError and Receipt.amount may not be Decimal",
+    "transfer mutates balances without atomic rollback if the second balance update fails"
+  ],
+  "detected_planted": true
+}

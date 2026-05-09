@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment defines one_plus_r = (r + 1) / 2 instead of (1 + r), producing a completely wrong amortization result"
+  ],
+  "detected_planted": false
+}

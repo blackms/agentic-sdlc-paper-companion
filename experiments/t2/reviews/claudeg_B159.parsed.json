@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee returns a tuple (Decimal, 'USD') instead of a Decimal, breaking the function contract and any caller doing arithmetic on the result",
+    "hardcoded 'USD' currency in apply_fee return is unrelated to inputs",
+    "transfer not atomic",
+    "fx_convert lacks rate>0 validation"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee treats fee_pct as a whole multiplier instead of a percentage; e.g. 2 means 200% fee, not 2%",
+    "apply_fee can return a negative net amount when fee_min or computed fee exceeds amount",
+    "transfer does not normalize amount to Decimal, so float/int inputs can cause Decimal arithmetic TypeError or inconsistent Receipt amount type",
+    "compound_interest and loan_payment silently truncate non-integer years/months via int(), producing incorrect results instead of rejecting invalid periods"
+  ],
+  "detected_planted": true
+}

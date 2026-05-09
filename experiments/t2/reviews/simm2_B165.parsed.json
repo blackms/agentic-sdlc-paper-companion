@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError when subtracting from Decimal balances and Receipt.amount may violate its declared Decimal type",
+    "compound_interest silently truncates non-integer years and compounds_per_year via int(), which can produce incorrect results instead of rejecting invalid inputs"
+  ],
+  "detected_planted": false
+}

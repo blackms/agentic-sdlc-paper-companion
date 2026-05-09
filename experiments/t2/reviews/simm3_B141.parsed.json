@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer consente trasferimenti da una valuta diversa verso EUR senza conversione FX, accreditando lo stesso importo nominale",
+    "transfer non normalizza amount a Decimal, quindi input float possono causare TypeError o incoerenze rispetto alle altre funzioni"
+  ],
+  "detected_planted": true
+}

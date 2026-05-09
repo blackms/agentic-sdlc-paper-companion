@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest tronca years e compounds_per_year con int(), ignorando input frazionari invece di validarli o gestirli correttamente",
+    "compound_interest solleva OverflowError per tassi negativi, eccezione semanticamente errata rispetto a un errore di validazione",
+    "transfer non normalizza amount a Decimal: con float/int pu\u00f2 causare TypeError o tipi incoerenti nella Receipt",
+    "apply_fee pu\u00f2 restituire un importo negativo se la fee minima supera l'importo",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi pu\u00f2 produrre conversioni nulle o negative"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment multiplies monthly_rate by 12 but then uses it as the per-period monthly rate, causing severe overcharging if callers pass an actual monthly rate",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), accepting fractional inputs as different values instead of rejecting them",
+    "transfer does not coerce or validate amount as Decimal, so float/NaN/non-Decimal inputs can cause type errors, precision loss, or invalid balances",
+    "transfer mutates account_from before account_to, so a failure in the second mutation path can leave balances inconsistent",
+    "fx_convert accepts zero, negative, NaN, or infinite rates without validation, allowing nonsensical conversions",
+    "financial outputs are never quantized to currency precision, allowing sub-cent balances and silent rounding-policy drift",
+    "no validation for non-finite Decimal inputs across functions, allowing NaN/Infinity to bypass or crash comparisons unpredictably"
+  ],
+  "detected_planted": true
+}

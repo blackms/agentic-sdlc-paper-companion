@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee uses abs(a - fee), which can turn a negative net amount into a positive value when the fee exceeds the amount instead of rejecting or returning zero/negative as intended"
+  ],
+  "detected_planted": true
+}

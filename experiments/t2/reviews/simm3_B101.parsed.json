@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates non-integer years and compounds_per_year via int(), producing incorrect results instead of validating inputs",
+    "loan_payment silently truncates non-integer months via int()",
+    "compound_interest allows negative principal while other amount-based functions reject negative values",
+    "fx_convert does not validate that FX rates are positive, allowing zero or negative converted amounts",
+    "transfer does not coerce/validate amount as Decimal, so non-Decimal numeric inputs can cause TypeError or inconsistent behavior"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float or string amounts can raise TypeError during comparison/arithmetic and Receipt.amount may have an inconsistent type",
+    "fx_convert does not validate that the exchange rate is positive, allowing zero or negative rates to produce invalid converted amounts",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": false
+}

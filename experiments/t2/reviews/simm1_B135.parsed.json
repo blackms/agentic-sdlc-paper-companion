@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal: input float/str possono causare TypeError incoerenti o aritmetica non supportata mentre le altre funzioni convertono gli importi esplicitamente",
+    "fx_convert() non valida che il tasso di cambio sia positivo: un rate zero o negativo produce conversioni finanziariamente invalide"
+  ],
+  "detected_planted": true
+}

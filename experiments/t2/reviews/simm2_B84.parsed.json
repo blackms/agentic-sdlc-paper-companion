@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest uses Decimal(principal), which can preserve binary float artifacts; use Decimal(str(principal)) consistently for financial inputs",
+    "compound_interest, loan_payment, and transfer do not consistently normalize/validate numeric input types, which can cause TypeError or precision issues with float amounts",
+    "years, months, and compounds_per_year are silently truncated with int(), so fractional inputs like 1.9 are accepted as 1 instead of rejected",
+    "transfer mutates balances without any atomicity or locking, making it unsafe under concurrent use"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment returns principal/(months+1) instead of principal/months when monthly_rate == 0, violating the zero-rate formula and total repayment invariant"
+  ],
+  "detected_planted": false
+}

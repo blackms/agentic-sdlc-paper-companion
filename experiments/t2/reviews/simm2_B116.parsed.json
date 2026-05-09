@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment formula is incorrect: it multiplies by r twice and omits (1+r)^months, producing far too small payments",
+    "transfer uses amount without Decimal normalization, so non-Decimal numeric inputs can raise TypeError or create inconsistent Receipt amounts",
+    "fx_convert accepts zero or negative exchange rates, allowing nonsensical zero/negative converted amounts",
+    "apply_fee can return a negative net amount when the minimum fee exceeds the amount",
+    "compound_interest and loan_payment silently truncate non-integer years/months with int(), which can miscalculate inputs such as 1.9"
+  ],
+  "detected_planted": true
+}

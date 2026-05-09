@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError during balance arithmetic and receipts may contain non-Decimal amounts",
+    "fx_convert does not validate FX rates are positive, allowing zero or negative conversion results",
+    "fx_convert quantizes the exchange rate before multiplication, causing avoidable precision loss for large amounts"
+  ],
+  "detected_planted": true
+}

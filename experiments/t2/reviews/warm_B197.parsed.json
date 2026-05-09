@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert returns zero for same-currency conversion",
+    "Integer casts silently truncate fractional years/months"
+  ],
+  "detected_planted": true
+}

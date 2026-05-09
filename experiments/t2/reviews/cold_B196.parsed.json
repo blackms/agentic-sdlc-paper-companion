@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer consente self-transfer tra due oggetti Account distinti con lo stesso id, violando il divieto di self-transfer",
+    "fx_convert solleva BaseException invece di ValueError quando il rate \u00e8 mancante, violando il contratto sugli errori"
+  ],
+  "detected_planted": true
+}

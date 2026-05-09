@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la fee come amount / fee_pct invece di amount * fee_pct, violando la formula dichiarata e le invarianti sulla fee effettiva",
+    "apply_fee con fee_pct = 0 causa DivisionByZero invece di applicare clip(0, fee_min, fee_max) come da contratto"
+  ],
+  "detected_planted": true
+}

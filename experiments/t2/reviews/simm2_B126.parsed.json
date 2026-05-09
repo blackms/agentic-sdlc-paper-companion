@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment returns the reciprocal of the correct annuity payment formula",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "transfer does not normalize amount to Decimal, causing TypeError or mixed-type receipts for float inputs"
+  ],
+  "detected_planted": false
+}

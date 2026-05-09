@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal: input float/string pu\u00f2 causare TypeError o comportamento incoerente rispetto alle altre funzioni",
+    "compound_interest non valida principal negativo, permettendo risultati finanziari non validi",
+    "compound_interest e loan_payment convertono years/months con int(), troncando silenziosamente valori frazionari invece di rifiutarli"
+  ],
+  "detected_planted": true
+}

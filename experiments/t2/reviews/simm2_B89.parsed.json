@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal, a differenza delle altre funzioni: input float/string possono causare TypeError o Receipt con tipo importo incoerente",
+    "transfer() rileva self-transfer solo per identit\u00e0 oggetto e permette trasferimenti tra due Account distinti con lo stesso id",
+    "compound_interest() usa principal or 0, trattando valori falsy non numerici come 0 e mascherando input invalidi",
+    "compound_interest(), loan_payment() e altri castano con int(), troncando silenziosamente valori frazionari per anni/mesi/compounding"
+  ],
+  "detected_planted": true
+}

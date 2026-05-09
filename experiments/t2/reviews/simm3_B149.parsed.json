@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer sottrae una commissione fissa di 0.01 dopo il controllo del saldo, permettendo saldo negativo se balance < amount + fee",
+    "transfer non converte amount a Decimal, causando TypeError o tipi incoerenti con input non Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

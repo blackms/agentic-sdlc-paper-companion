@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee non applica correttamente fee_min per fee appena sotto il minimo a causa della tolleranza fissa 0.001",
+    "transfer non converte amount a Decimal, quindi input float possono causare TypeError o Receipt con tipo incoerente",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert calcola amount ** rate invece di amount * rate, violando il contratto di conversione FX per valute diverse"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0 nonostante il vincolo principal >= 0",
+    "loan_payment non soddisfa la continuita per rate positivi molto piccoli: (1+r)^months - 1 puo arrotondarsi a 0 e causare errore",
+    "transfer rileva self-transfer solo per identita oggetto, consentendo due Account distinti con stesso id",
+    "transfer non garantisce atomicita: se il credito/assegnazione al destinatario fallisce dopo il debito, il saldo sorgente resta modificato",
+    "transfer puo completare lasciando account_to.balance negativo se il destinatario parte con saldo negativo",
+    "le funzioni accettano/coerciscono float invece di imporre Decimal-only, violando l'invariante NO float"
+  ],
+  "detected_planted": true
+}

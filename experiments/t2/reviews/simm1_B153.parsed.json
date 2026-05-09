@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la commissione come fee_pct * fee_pct invece di amount * fee_pct, restituendo importi errati",
+    "transfer non normalizza amount a Decimal; input float/string possono causare TypeError o comportamento incoerente con balance Decimal",
+    "fx_convert non valida che il tasso sia positivo, quindi accetta conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

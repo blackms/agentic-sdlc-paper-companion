@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years/compounds_per_year via int(), changing financial results without validation",
+    "compound_interest does not reject negative principal or non-finite inputs",
+    "loan_payment silently truncates fractional months via int()",
+    "loan_payment quantizes payments to whole currency units, losing cents/precision; zero-rate path returns unquantized value, creating inconsistent behavior",
+    "transfer does not normalize/validate amount as Decimal, so float or non-finite values can cause runtime errors or invalid balances",
+    "transfer is not atomic: after debiting account_from, a failure while crediting account_to leaves balances inconsistent",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "apply_fee/fx_convert do not validate non-finite Decimal inputs or positive FX rates, allowing NaN/Infinity/negative-rate propagation"
+  ],
+  "detected_planted": true
+}

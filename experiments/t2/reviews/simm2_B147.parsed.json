@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accetta importi negativi perch\u00e9 controlla solo amount == 0, permettendo trasferimenti inversi e alterazione errata dei saldi"
+  ],
+  "detected_planted": true
+}

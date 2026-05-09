@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal: passare float/string pu\u00f2 causare TypeError durante confronti o aritmetica invece di una validazione coerente",
+    "fx_convert() moltiplica Decimal per rate senza normalizzare rate a Decimal: se rates contiene float pu\u00f2 sollevare TypeError",
+    "compound_interest() tronca years con int(), quindi valori frazionari vengono calcolati in modo errato o accettati silenziosamente"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,1 @@
+{"bugs_found": ["loan_payment uses 'monthly_rate or 0' which silently coerces None (and any falsy value) to 0, masking caller bugs that pass None instead of raising TypeError; explicit None-check is preferable", "transfer is not atomic: no rollback if credit fails after debit", "fx_convert does not validate that the resolved rate is positive"], "verdict": "REQUEST_CHANGES"}

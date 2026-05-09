@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal: input float/string pu\u00f2 causare TypeError o aritmetica incoerente rispetto alle altre funzioni",
+    "transfer() solleva AttributeError per self-transfer invece di un'eccezione di validazione come ValueError",
+    "fx_convert() non valida che il tasso di cambio sia positivo, consentendo conversioni a zero o negative",
+    "apply_fee() pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

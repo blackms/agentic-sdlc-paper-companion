@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non rifiuta amount < 0: consente una mutazione dei balance violando amount > 0 e pu\u00f2 produrre overdraft sul destinatario",
+    "transfer identifica il self-transfer solo con identit\u00e0 dell'oggetto, quindi due Account distinti con lo stesso id possono trasferire verso s\u00e9 stessi"
+  ],
+  "detected_planted": true
+}

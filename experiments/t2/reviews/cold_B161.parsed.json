@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee caps fees above fee_max incorrectly by setting fee = fee_max + Decimal('0.01'), so the effective fee can exceed fee_max and the output is lower than amount - clip(amount * fee_pct, fee_min, fee_max)"
+  ],
+  "detected_planted": false
+}

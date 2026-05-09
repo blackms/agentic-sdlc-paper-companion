@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert converts the exchange rate to float before multiplying by Decimal, which raises TypeError for most inputs and loses precision; use Decimal(str(rate)) instead.",
+    "transfer does not normalize amount to Decimal like the other functions, so float inputs can cause Decimal arithmetic TypeError and Receipt.amount may have an unexpected type.",
+    "apply_fee can return a negative net amount when fee_min or fee_max exceeds the amount; financial fee application should usually cap the fee at the amount or reject such bounds."
+  ],
+  "detected_planted": true
+}

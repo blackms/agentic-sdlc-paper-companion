@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa int(months) + 2, causando un off-by-2 nei calcoli e permettendo valori non validi come months=0 o months=-1",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta rate zero o negativi producendo conversioni non valide"
+  ],
+  "detected_planted": true
+}

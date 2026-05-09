@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee rejects fee_pct > 100 with a misleading 'negative' error message; if fee_pct is a ratio (e.g. 0.02) the upper bound 100 is also semantically wrong"], "verdict": "REQUEST_CHANGES"}

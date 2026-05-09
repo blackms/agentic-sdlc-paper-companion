@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer accetta importi negativi: aumenta il saldo del mittente e diminuisce quello del destinatario invece di rifiutare amount <= 0",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi rate zero o negativi producono risultati finanziariamente invalidi",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min o fee_max consentono una commissione superiore all'amount"
+  ],
+  "detected_planted": true
+}

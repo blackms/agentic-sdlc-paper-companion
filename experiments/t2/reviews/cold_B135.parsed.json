@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0 nonostante il contratto richieda principal >= 0",
+    "transfer solleva TypeError invece di ValueError quando amount <= 0",
+    "transfer non garantisce atomicita se l'accredito a account_to fallisce dopo l'addebito da account_from",
+    "transfer non garantisce NO float per amount/balance: accetta e opera con float",
+    "fx_convert non garantisce NO float per rate: converte rate float con Decimal(str(rate)) invece di rifiutarlo"
+  ],
+  "detected_planted": true
+}

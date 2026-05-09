@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee treats fee_pct as multiplier, not percentage",
+    "apply_fee can return negative net amount when minimum fee exceeds amount",
+    "transfer lacks amount Decimal coercion before arithmetic",
+    "transfer is non-atomic if credit update fails after debit"
+  ],
+  "detected_planted": true
+}

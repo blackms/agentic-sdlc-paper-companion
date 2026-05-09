@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "loan_payment silently truncates fractional months via int(), changing amortization behavior without validation",
+    "transfer does not coerce or validate amount type/finite Decimal value, so float/NaN/Infinity or malformed numeric inputs can raise inconsistent errors or leak invalid receipts",
+    "transfer is not atomic if account objects have invalid/non-Decimal balances or mutating attributes fails after debit; source may be changed while destination is not",
+    "apply_fee returns (amount - fee).quantize(Decimal('1')), silently rounding to whole units instead of cents/minor units and losing money precision",
+    "fx_convert does not validate rate positivity or finiteness, allowing zero/negative/NaN/Infinity rates to produce invalid conversions"
+  ],
+  "detected_planted": true
+}

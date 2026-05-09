@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates using (from_currency, from_currency) instead of (from_currency, to_currency), so non-identity FX conversions always use the wrong key or fail",
+    "transfer does not normalize/validate amount as Decimal; float or NaN-like inputs can cause TypeError or invalid balances instead of controlled rejection",
+    "transfer is not atomic if assigning account_to.balance fails after debiting account_from.balance, leaving funds destroyed",
+    "compound_interest allows negative principal while loan_payment rejects negative principal, an inconsistent undeclared assumption for money inputs",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing non-integer inputs without validation",
+    "functions do not reject NaN/Infinity Decimal inputs, allowing invalid monetary values or runtime decimal exceptions",
+    "no currency-scale quantization/rounding is applied, so fees, payments, interest, and FX can create arbitrary fractional money amounts"
+  ],
+  "detected_planted": true
+}

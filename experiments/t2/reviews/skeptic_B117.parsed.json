@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "transfer validates currency and funds before mutating but does not normalize amount to Decimal; a float amount can pass checks then raise during subtraction, causing inconsistent behavior and possible partial failure assumptions",
+    "transfer is not atomic: if crediting account_to.balance fails after debiting account_from.balance, funds are silently lost",
+    "transfer trusts mutable Account objects and does not validate balance/currency/id types or finite Decimal values",
+    "compound_interest allows negative principal, enabling nonsensical negative balances/returns",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year with int(), changing financial meaning for fractional inputs",
+    "all money-returning functions omit currency quantization/rounding, producing sub-cent amounts and inconsistent ledger values",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction",
+    "fx_convert does not validate that rates are positive and finite, so zero/negative/NaN rates can create invalid conversions",
+    "fx_convert returns original amount for same-currency conversion without validating currency codes or rates table consistency",
+    "rate inputs rely on undeclared convention (0.05 vs 5), likely causing catastrophic overcharging/over-accrual if callers pass percentages"
+  ],
+  "detected_planted": true
+}

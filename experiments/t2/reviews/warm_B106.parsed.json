@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment formula uses m-1 causing wrong payments",
+    "loan_payment divides by zero for one-month loans",
+    "transfer is non-atomic if credit update fails",
+    "transfer does not normalize amount to Decimal"
+  ],
+  "detected_planted": true
+}

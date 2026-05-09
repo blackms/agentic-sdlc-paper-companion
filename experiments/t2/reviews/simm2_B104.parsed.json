@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest negates annual_rate before validation, so positive rates are rejected and negative rates are accepted as positive",
+    "fx_convert does not validate that exchange rates are positive, allowing zero or negative conversions",
+    "apply_fee can return a negative net amount when the minimum fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

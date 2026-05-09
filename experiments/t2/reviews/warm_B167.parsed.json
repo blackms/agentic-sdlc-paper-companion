@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest tronca anni frazionari invece di validarli",
+    "compound_interest non valida principal negativo o non finito",
+    "loan_payment tronca mesi frazionari invece di validarli",
+    "transfer non normalizza amount a Decimal coerentemente",
+    "transfer pu\u00f2 accettare stesso conto logico con id uguale",
+    "transfer non \u00e8 atomico se il credito fallisce",
+    "transfer non \u00e8 sicuro con trasferimenti concorrenti",
+    "apply_fee pu\u00f2 restituire importi netti negativi",
+    "fx_convert accetta tassi zero, negativi o non finiti",
+    "input NaN o Infinity non sono respinti coerentemente",
+    "risultati monetari mai quantizzati alla scala valuta"
+  ],
+  "detected_planted": false
+}

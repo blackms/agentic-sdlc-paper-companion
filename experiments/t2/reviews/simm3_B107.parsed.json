@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment returns 0 for zero monthly_rate instead of principal / months",
+    "transfer does not normalize amount to Decimal, so non-Decimal inputs can raise TypeError or produce inconsistent Receipt amounts",
+    "fx_convert does not reject zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

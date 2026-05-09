@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente t ** n invece di years * compounds_per_year, producendo interessi enormemente errati",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), alterando input frazionari senza errore",
+    "transfer non normalizza amount a Decimal: float o tipi incompatibili possono fallire dopo validazioni parziali",
+    "transfer non \u00e8 atomico: dopo il debit, un errore sull'accredito lascia i saldi inconsistenti",
+    "fx_convert non valida rate positivo/finito: rate negativo, zero, NaN o infinito possono produrre conversioni finanziarie invalide",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount, creando addebiti impliciti non dichiarati",
+    "manca validazione di valori Decimal speciali NaN/Infinity in pi\u00f9 funzioni"
+  ],
+  "detected_planted": false
+}

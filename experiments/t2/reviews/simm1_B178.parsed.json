@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert sottrae sempre 0.01 dall'importo prima della conversione, producendo risultati errati e perfino negativi per importi piccoli o zero",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi zero o negativi possono generare conversioni invalide",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando TypeError o tipi incoerenti se viene passato un numero non Decimal"
+  ],
+  "detected_planted": true
+}

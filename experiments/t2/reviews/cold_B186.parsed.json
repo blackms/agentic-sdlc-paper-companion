@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert applies the reciprocal of the provided rate, returning amount / rate instead of the contracted amount * rates[(from,to)]"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer accredita al destinatario il saldo residuo del mittente invece dell'importo trasferito",
+    "transfer non converte/valida amount come Decimal, esponendo a TypeError o tipi incoerenti nel Receipt",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi pu\u00f2 restituire importi zero o negativi"
+  ],
+  "detected_planted": false
+}

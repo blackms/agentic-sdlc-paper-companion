@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente years invece di years * compounds_per_year, quindi il compounding infra-annuale \u00e8 calcolato male",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), accettando input frazionari non intenzionali",
+    "transfer non normalizza amount a Decimal come le altre funzioni e pu\u00f2 fallire o comportarsi in modo incoerente con float/stringhe",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "fx_convert non valida che il tasso FX sia positivo, consentendo conversioni negative o nulle"
+  ],
+  "detected_planted": true
+}

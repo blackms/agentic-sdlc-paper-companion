@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer accredita account_to prima del controllo OverflowError: se amount > 1e9 l'eccezione lascia i conti in stato incoerente",
+    "transfer non normalizza amount a Decimal, quindi importi float possono causare TypeError nelle operazioni con Decimal"
+  ],
+  "detected_planted": false
+}

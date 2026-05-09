@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without rejection",
+    "loan_payment silently truncates fractional months via int(), changing repayment calculations without rejection",
+    "compound_interest does not validate principal is non-negative",
+    "transfer accepts amount without Decimal coercion/finite validation, allowing floats or special Decimal values to cause precision loss or invalid arithmetic",
+    "transfer is not atomic if credit assignment fails after debit mutation, leaving accounts inconsistent",
+    "apply_fee treats falsy fee_pct as zero, so Decimal('NaN') or other invalid/falsy-like inputs can bypass intended validation semantics",
+    "fx_convert does not validate FX rate positivity or finiteness, allowing zero/negative/NaN/Infinity rates to produce invalid converted money"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment calcola one_plus_r come (1 + r) / 2 invece di 1 + r, producendo pagamenti errati o negativi",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta conversioni con rate zero o negativo"
+  ],
+  "detected_planted": true
+}

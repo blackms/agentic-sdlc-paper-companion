@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer compares account_from.currency.upper() to account_to.currency.lower(), which is always unequal for any alphabetic currency code, making every same-currency transfer fail with 'currency mismatch'"], "verdict": "REQUEST_CHANGES"}

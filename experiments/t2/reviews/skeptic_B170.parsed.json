@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer() assumes amount/account balances are Decimal-compatible but does not coerce or validate; float amounts can silently corrupt Decimal accounting or raise TypeError inconsistently",
+    "transfer() is not atomic: debit happens before credit, so a failure in account_to.balance update can leave funds deducted with no receipt",
+    "transfer() accepts non-finite Decimal amounts/balances such as NaN/Infinity; NaN can bypass insufficient-balance logic and poison balances",
+    "compound_interest() and loan_payment() silently truncate years/months/compounds_per_year with int(), changing inputs like 1.9 months/years without validation",
+    "compound_interest() allows negative principal and all finance functions lack finite-value validation for Decimal NaN/Infinity",
+    "fx_convert() does not validate rate positivity or finiteness, allowing negative/zero/NaN/Infinity FX rates to create invalid converted amounts",
+    "apply_fee() can return a negative net amount when fee_min or fee_max exceeds amount, effectively charging more than the transaction amount",
+    "large exponents/month counts in compound_interest() and loan_payment() are unbounded and can cause CPU/memory denial-of-service"
+  ],
+  "detected_planted": true
+}

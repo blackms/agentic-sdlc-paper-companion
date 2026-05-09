@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest raises OverflowError instead of ValueError for a negative rate, breaking exception-type contract and surprising callers expecting ValueError as in the rest of the module",
+    "transfer is not atomic: no rollback if credit fails after debit",
+    "fx_convert does not validate that rate is positive"
+  ],
+  "detected_planted": true
+}

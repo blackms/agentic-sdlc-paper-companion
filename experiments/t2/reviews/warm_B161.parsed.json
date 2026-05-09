@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee overcharges when fee exceeds maximum cap",
+    "transfer does not normalize amount to Decimal",
+    "Receipt amount may violate Decimal type contract"
+  ],
+  "detected_planted": false
+}

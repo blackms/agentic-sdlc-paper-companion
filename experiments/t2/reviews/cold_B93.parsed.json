@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest returns principal unchanged instead of applying principal * (1 + annual_rate / compounds_per_year) ** (compounds_per_year * years), violating the declared output formula for positive rate and positive years"
+  ],
+  "detected_planted": true
+}

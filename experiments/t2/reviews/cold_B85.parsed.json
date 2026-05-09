@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest rejects positive annual_rate because it checks r > 0 instead of r < 0",
+    "compound_interest accepts negative annual_rate, violating the required ValueError and allowing M < principal for valid-shaped invalid rates"
+  ],
+  "detected_planted": true
+}

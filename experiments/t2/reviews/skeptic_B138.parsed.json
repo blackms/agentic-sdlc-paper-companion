@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer only checks account_from.currency truthiness and never verifies account_from.currency == account_to.currency, allowing cross-currency transfers with no FX conversion",
+    "transfer does not normalize/validate amount as Decimal; float/custom numeric inputs can cause TypeError or precision/invariant issues after partial validation",
+    "transfer is not atomic: debit occurs before credit, so account_to balance mutation failure or hostile Account/balance behavior can leave funds debited without corresponding credit",
+    "compound_interest silently truncates numeric years and compounds_per_year via int(), changing terms such as 1.9 years or 12.9 compounds/year without error",
+    "loan_payment silently truncates numeric months via int(), accepting fractional loan terms with altered repayment behavior",
+    "fx_convert does not validate that the FX rate is positive and finite, allowing zero, negative, NaN, or Infinity rates to produce invalid conversions",
+    "financial outputs are not quantized to currency scale, allowing sub-cent balances/payments/fees to propagate silently"
+  ],
+  "detected_planted": true
+}

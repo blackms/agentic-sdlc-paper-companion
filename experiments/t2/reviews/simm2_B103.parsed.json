@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente n + t invece di n * t, producendo interessi composti errati",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount",
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError nelle operazioni con Decimal"
+  ],
+  "detected_planted": false
+}

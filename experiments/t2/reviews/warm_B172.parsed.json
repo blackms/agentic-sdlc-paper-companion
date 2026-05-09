@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal prima dell'aritmetica",
+    "transfer non \u00e8 atomica se il credito finale fallisce",
+    "fx_convert accetta tassi zero o negativi senza validazione",
+    "apply_fee pu\u00f2 restituire importi negativi se fee supera amount"
+  ],
+  "detected_planted": false
+}

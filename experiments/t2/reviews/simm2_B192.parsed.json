@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert applica il tasso elevandolo a Decimal('1.0001') invece di moltiplicare direttamente per il tasso, producendo conversioni FX errate",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi zero/negativi possono generare risultati finanziariamente invalidi o eccezioni Decimal non controllate"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer altera solo EUR lato origine nel controllo valuta",
+    "transfer non converte amount a Decimal prima dei confronti",
+    "transfer non atomico se credito destinatario fallisce dopo addebito",
+    "compound_interest tronca anni frazionari con int senza validazione",
+    "compound_interest accetta principal negativo senza errore",
+    "loan_payment tronca mesi frazionari con int senza validazione",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert non valida tassi di cambio negativi o nulli"
+  ],
+  "detected_planted": true
+}

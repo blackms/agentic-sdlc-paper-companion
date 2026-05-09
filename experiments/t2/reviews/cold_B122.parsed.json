@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment quantizes the amortization result to an integer Decimal, which changes the specified formula and can violate continuity/payment precision guarantees"
+  ],
+  "detected_planted": true
+}

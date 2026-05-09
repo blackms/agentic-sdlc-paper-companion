@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0: restituisce un montante negativo, violando l'invariante M >= principal solo per dominio valido ma senza enforcement dell'input dichiarato principal >= 0",
+    "apply_fee con amount == 0 e fee_min > 0 restituisce 0 invece di amount - fee_min, violando la formula output amount - clip(amount * fee_pct, fee_min, fee_max) e l'invariante fee effettiva in [fee_min, fee_max]"
+  ],
+  "detected_planted": true
+}

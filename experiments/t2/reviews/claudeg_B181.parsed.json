@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert uses 'assert False' instead of raise ValueError for missing rate: assertions are stripped when Python runs with -O, causing the function to silently fall through and execute 'a * Decimal(str(None))' which raises a confusing InvalidOperation/TypeError instead of a clean ValueError",
+    "fx_convert does not validate rate is positive",
+    "transfer() not atomic, no rollback on partial failure",
+    "compound_interest truncates fractional years",
+    "no thread-safety on Account mutations"
+  ],
+  "detected_planted": true
+}

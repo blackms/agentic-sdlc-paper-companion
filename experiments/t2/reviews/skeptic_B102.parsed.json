@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest silently converts NaN principal to 0",
+    "compound_interest allows negative principal and non-finite principal/rate values",
+    "compound_interest silently truncates years and compounds_per_year via int()",
+    "loan_payment silently truncates months via int() and lacks finite-value validation",
+    "transfer does not normalize/validate amount as Decimal; floats can raise mid-operation and NaN can bypass comparisons",
+    "transfer is not atomic if crediting account_to fails after debiting account_from",
+    "transfer only blocks identical object self-transfer, not same account id in different objects",
+    "apply_fee can return negative net amount when fee_min exceeds amount",
+    "apply_fee lacks finite-value validation for amount and fee parameters",
+    "fx_convert accepts zero/negative/non-finite FX rates, allowing invalid conversions",
+    "all money-returning functions lack currency-scale quantization/rounding, causing precision and settlement inconsistencies"
+  ],
+  "detected_planted": true
+}

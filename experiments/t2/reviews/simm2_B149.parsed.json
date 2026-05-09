@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer checks balance only against amount but then subtracts an extra 0.01 fee, allowing overdraft when balance is between amount and amount + 0.01",
+    "transfer does not normalize amount to Decimal like the other finance functions, so float inputs can raise TypeError or produce inconsistent Receipt types"
+  ],
+  "detected_planted": true
+}

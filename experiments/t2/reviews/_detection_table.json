@@ -719,6 +719,1086 @@
       "simm2": true,
       "simm3": false,
       "claudeg": true
+    },
+    "B81": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B82": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": false
+    },
+    "B83": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B84": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B85": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B86": {
+      "warm": false,
+      "cold": true,
+      "skeptic": false,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": false
+    },
+    "B87": {
+      "warm": false,
+      "cold": true,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B88": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B89": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B90": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B91": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B92": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B93": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B94": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B95": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B96": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B97": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B98": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B99": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": false
+    },
+    "B100": {
+      "warm": true,
+      "cold": true,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B101": {
+      "warm": false,
+      "cold": true,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B102": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B103": {
+      "warm": null,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B104": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": null,
+      "claudeg": true
+    },
+    "B105": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B106": {
+      "warm": true,
+      "cold": null,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B107": {
+      "warm": true,
+      "cold": null,
+      "skeptic": null,
+      "simm1": null,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B108": {
+      "warm": null,
+      "cold": null,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B109": {
+      "warm": false,
+      "cold": null,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B110": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B111": {
+      "warm": true,
+      "cold": true,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B112": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B113": {
+      "warm": false,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": false
+    },
+    "B114": {
+      "warm": true,
+      "cold": true,
+      "skeptic": null,
+      "simm1": null,
+      "simm2": true,
+      "simm3": null,
+      "claudeg": true
+    },
+    "B115": {
+      "warm": null,
+      "cold": false,
+      "skeptic": null,
+      "simm1": false,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": false
+    },
+    "B116": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B117": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B118": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": null,
+      "claudeg": true
+    },
+    "B119": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B120": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B121": {
+      "warm": true,
+      "cold": false,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": null,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B122": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B123": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B124": {
+      "warm": null,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": null,
+      "claudeg": true
+    },
+    "B125": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B126": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": false
+    },
+    "B127": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B128": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": null
+    },
+    "B129": {
+      "warm": null,
+      "cold": false,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": false
+    },
+    "B130": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B131": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B132": {
+      "warm": null,
+      "cold": true,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B133": {
+      "warm": null,
+      "cold": false,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B134": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B135": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B136": {
+      "warm": true,
+      "cold": true,
+      "skeptic": null,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B137": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B138": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B139": {
+      "warm": true,
+      "cold": true,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B140": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": null,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B141": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B142": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B143": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B144": {
+      "warm": true,
+      "cold": true,
+      "skeptic": false,
+      "simm1": true,
+      "simm2": false,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B145": {
+      "warm": true,
+      "cold": null,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B146": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": false
+    },
+    "B147": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": null,
+      "claudeg": true
+    },
+    "B148": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B149": {
+      "warm": false,
+      "cold": true,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B150": {
+      "warm": false,
+      "cold": true,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B151": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B152": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B153": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B154": {
+      "warm": null,
+      "cold": false,
+      "skeptic": false,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B155": {
+      "warm": true,
+      "cold": null,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B156": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B157": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B158": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": false
+    },
+    "B159": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B160": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": null,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B161": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B162": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B163": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B164": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B165": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B166": {
+      "warm": null,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B167": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B168": {
+      "warm": null,
+      "cold": false,
+      "skeptic": null,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B169": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": true,
+      "claudeg": false
+    },
+    "B170": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B171": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B172": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B173": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B174": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B175": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B176": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B177": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B178": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B179": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B180": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B181": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B182": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B183": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B184": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B185": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B186": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B187": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B188": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B189": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B190": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B191": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B192": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B193": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B194": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B195": {
+      "warm": false,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B196": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B197": {
+      "warm": true,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": false
+    },
+    "B198": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "B199": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "B200": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
     }
   },
   "parse_status": {
@@ -1441,9 +2521,1089 @@
       "simm2": "ok",
       "simm3": "ok",
       "claudeg": "ok"
+    },
+    "B81": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B82": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B83": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B84": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B85": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B86": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B87": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B88": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B89": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B90": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B91": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B92": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B93": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B94": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B95": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B96": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B97": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B98": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B99": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B100": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B101": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B102": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B103": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B104": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "parse_fail",
+      "claudeg": "ok"
+    },
+    "B105": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B106": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B107": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "parse_fail",
+      "simm1": "parse_fail",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B108": {
+      "warm": "parse_fail",
+      "cold": "parse_fail",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B109": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B110": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B111": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B112": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B113": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B114": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "parse_fail",
+      "claudeg": "ok"
+    },
+    "B115": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B116": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B117": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B118": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "parse_fail",
+      "claudeg": "ok"
+    },
+    "B119": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B120": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B121": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B122": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B123": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B124": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "parse_fail",
+      "claudeg": "ok"
+    },
+    "B125": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B126": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B127": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B128": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "parse_fail"
+    },
+    "B129": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B130": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B131": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B132": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B133": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B134": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B135": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B136": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B137": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B138": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B139": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B140": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "parse_fail",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B141": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B142": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B143": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B144": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B145": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B146": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B147": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "parse_fail",
+      "claudeg": "ok"
+    },
+    "B148": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B149": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B150": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B151": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B152": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B153": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B154": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B155": {
+      "warm": "ok",
+      "cold": "parse_fail",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B156": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B157": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B158": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B159": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B160": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "parse_fail",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B161": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B162": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B163": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B164": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B165": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B166": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B167": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B168": {
+      "warm": "parse_fail",
+      "cold": "ok",
+      "skeptic": "parse_fail",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B169": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B170": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B171": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B172": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B173": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B174": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B175": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B176": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B177": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B178": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B179": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B180": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B181": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B182": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B183": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B184": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B185": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B186": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B187": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B188": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B189": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B190": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B191": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B192": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B193": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B194": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B195": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B196": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B197": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B198": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B199": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
+    },
+    "B200": {
+      "warm": "ok",
+      "cold": "ok",
+      "skeptic": "ok",
+      "simm1": "ok",
+      "simm2": "ok",
+      "simm3": "ok",
+      "claudeg": "ok"
     }
   },
-  "n_bugs": 80,
+  "n_bugs": 200,
   "roles": [
     "warm",
     "cold",

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert raises rate to 1.0001 instead of multiplying",
+    "transfer does not coerce amount to Decimal consistently",
+    "transfer can debit before credit failure, breaking atomicity",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest allows negative principal without validation",
+    "loan_payment silently truncates fractional month counts"
+  ],
+  "detected_planted": true
+}

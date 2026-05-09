@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment divides monthly_rate by 12, treating the input as an annual rate instead of using the provided monthly_rate directly",
+    "loan_payment performs monthly_rate / 12 before Decimal conversion, which can invoke float arithmetic and violates the no-float money invariant",
+    "compound_interest does not raise ValueError for negative principal, despite principal being constrained to be non-negative"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee returns tuple instead of monetary Decimal",
+    "transfer can debit before credit failure, breaking atomicity",
+    "transfer does not normalize amount to Decimal",
+    "integer casts silently truncate fractional periods"
+  ],
+  "detected_planted": true
+}

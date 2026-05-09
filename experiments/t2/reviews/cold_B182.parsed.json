@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divides by the configured rate instead of multiplying by rates[(from_currency, to_currency)], violating the stated conversion formula"
+  ],
+  "detected_planted": true
+}

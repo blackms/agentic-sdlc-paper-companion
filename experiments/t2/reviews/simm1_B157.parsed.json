@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float/string inputs can fail or cause inconsistent behavior unlike the other functions",
+    "apply_fee raises RuntimeError for negative amount while similar validation uses ValueError, making error handling inconsistent",
+    "apply_fee can return a negative net amount when the fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: account_from.balance is debited before account_to.balance credit is guaranteed, so a bad account_to.balance/setter/type can leave money lost",
+    "transfer does not normalize/validate amount as Decimal, allowing type-mismatch failures and inconsistent behavior versus other money functions",
+    "years/months/compounds_per_year are coerced with int(), silently truncating fractional inputs such as 1.9 instead of rejecting invalid periods",
+    "compound_interest accepts negative principal, producing negative balances without validation",
+    "functions do not reject NaN/Infinity Decimal inputs, which can propagate invalid monetary values or trigger unexpected Decimal exceptions",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, silently charging more than the transaction amount",
+    "fx_convert hardcodes EUR->USD rate to 1, ignoring supplied rates and causing silent wrong conversions"
+  ],
+  "detected_planted": true
+}

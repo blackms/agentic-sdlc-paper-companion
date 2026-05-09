@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert adds one unit before applying exchange rate",
+    "transfer does not coerce amount to Decimal",
+    "transfer updates balances non-atomically across two assignments"
+  ],
+  "detected_planted": true
+}

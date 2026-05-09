@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer returns Receipt.amount as negative, silently misrepresenting a successful transfer and likely breaking downstream accounting/reconciliation",
+    "transfer mutates account_from before mutating account_to; if account_to.balance update fails due to adversarial/non-Decimal amount or poisoned balance, the debit can commit without the credit",
+    "transfer does not normalize/validate amount as Decimal, finite, or same scale/type, unlike the other money functions",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), causing undeclared behavior changes for inputs like 1.9",
+    "loan_payment silently truncates fractional months via int(), causing undeclared behavior changes",
+    "money functions do not reject NaN/Infinity Decimal inputs/rates; comparisons may raise non-ValueError exceptions or produce Infinity/NaN outputs",
+    "financial outputs are never quantized to currency precision, allowing sub-cent values to propagate"
+  ],
+  "detected_planted": true
+}

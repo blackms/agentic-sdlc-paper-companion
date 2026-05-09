@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates[(from_currency, from_currency)] instead of rates[(from_currency, to_currency)], so valid cross-currency conversions fail or use the wrong rate"
+  ],
+  "detected_planted": true
+}

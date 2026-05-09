@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest mutates the caller's principal argument via 'principal *= 0', a side effect that corrupts mutable inputs (e.g. Decimal/int are immutable but numpy arrays would be zeroed) and is dead/confusing code",
+    "two statements on one line (semicolon) reduces readability and hides the side effect",
+    "transfer is not atomic and lacks rollback on failure between debit and credit",
+    "fx_convert accepts non-positive rates without validation"
+  ],
+  "detected_planted": true
+}

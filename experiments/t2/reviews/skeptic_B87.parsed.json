@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente (n + 1) * t invece di n * t, sovrastimando sempre l'interesse composto",
+    "compound_interest e loan_payment troncano anni/mesi/compounds_per_year con int() invece di validare input interi, causando regressioni silenziose",
+    "transfer non converte/valida amount come Decimal e puo fallire a meta operazione con tipi incompatibili",
+    "transfer non e atomica: addebita account_from prima di accreditare account_to, quindi un errore sul secondo update lascia saldi inconsistenti",
+    "transfer non protegge da race condition concorrenti, consentendo overdraft/lost update",
+    "apply_fee puo restituire importi negativi quando fee_min supera amount",
+    "fx_convert non valida rate negativo o zero, permettendo conversioni finanziariamente invalide"
+  ],
+  "detected_planted": false
+}

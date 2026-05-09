@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer is not atomic on insufficient funds: it debits account_from before checking overdraft, then raises ValueError leaving account_from.balance modified",
+    "compound_interest does not reject negative principal even though principal is constrained to be non-negative"
+  ],
+  "detected_planted": false
+}

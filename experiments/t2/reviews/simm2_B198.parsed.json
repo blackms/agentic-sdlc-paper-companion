@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert quantizes the exchange rate before multiplying, which can materially misprice conversions; rounding should usually happen on the final amount, if at all.",
+    "transfer does not normalize amount to Decimal like the other functions, so float inputs can raise TypeError during Decimal arithmetic and Receipt.amount may have an inconsistent type.",
+    "compound_interest and loan_payment silently truncate years/months with int(...), so fractional inputs are accepted but produce surprising incorrect results."
+  ],
+  "detected_planted": true
+}

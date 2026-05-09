@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest ignores annual_rate, years, and compounds_per_year and always returns principal",
+    "compound_interest does not reject negative principal and silently truncates fractional years/compounds_per_year via int()",
+    "loan_payment silently truncates fractional months via int()",
+    "transfer is non-atomic: debit happens before credit, so a credit-side exception can lose funds",
+    "transfer does not normalize/validate amount as Decimal/finite, allowing TypeError paths or invalid numeric values",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate exchange rate is positive/nonzero/finite, allowing negative or invalid converted amounts"
+  ],
+  "detected_planted": true
+}

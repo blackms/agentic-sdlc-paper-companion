@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer violates conservation by debiting account_from by 2*amount while crediting account_to by amount",
+    "transfer can leave account_from.balance negative when amount <= balance < 2*amount, violating no-overdraft invariant"
+  ],
+  "detected_planted": true
+}

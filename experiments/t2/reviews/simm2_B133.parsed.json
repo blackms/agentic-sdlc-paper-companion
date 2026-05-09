@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() uses dataclass value equality for self-transfer, so two distinct accounts with identical fields are incorrectly rejected",
+    "transfer() does not coerce amount to Decimal like the other functions, causing TypeError or inconsistent Receipt.amount type for float/string inputs",
+    "fx_convert() does not validate that the exchange rate is positive, allowing zero or negative conversion rates"
+  ],
+  "detected_planted": true
+}

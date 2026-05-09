@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "Transfer overdraft possible because fee omitted from funds check",
+    "Transfer deducts undocumented fixed fee from source account",
+    "Integer conversion silently truncates fractional periods and months",
+    "FX conversion accepts zero or negative exchange rates"
+  ],
+  "detected_planted": false
+}

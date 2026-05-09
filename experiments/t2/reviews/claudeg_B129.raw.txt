@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer introduces an unused amt_snap local that adds noise without functional purpose (dead code)"], "verdict": "ACCEPT"}

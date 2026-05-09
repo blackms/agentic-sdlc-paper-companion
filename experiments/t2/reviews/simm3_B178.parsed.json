@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert sottrae 0.01 dall'importo prima della conversione, producendo risultati errati e importi negativi per valori piccoli",
+    "fx_convert non valida che il tasso di cambio sia positivo",
+    "apply_fee pu\u00f2 restituire un importo negativo se la fee minima supera l'importo",
+    "compound_interest e loan_payment troncano silenziosamente anni/mesi non interi con int()",
+    "transfer non normalizza n\u00e9 valida amount come Decimal, causando possibili TypeError o incoerenze con balance Decimal"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer credits account_to with account_from.balance after debit instead of amount, corrupting balances and creating/destroying money",
+    "transfer is not atomic: account_from.balance is mutated before account_to update, so a later exception can leave a partial debit",
+    "transfer does not normalize/validate amount as Decimal, allowing type errors or inconsistent precision compared with other money functions",
+    "apply_fee can return a negative net amount when fee_min or fee_max exceeds amount; missing validation/cap that fee cannot exceed amount",
+    "fx_convert does not validate that exchange rates are positive, so zero or negative rates silently produce invalid conversions",
+    "compound_interest truncates fractional years/compounds_per_year via int(), silently changing caller intent"
+  ],
+  "detected_planted": false
+}

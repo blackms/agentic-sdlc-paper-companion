@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "fx_convert never raises ValueError when exchange rate is missing",
+    "fx_convert allows zero or negative exchange rates",
+    "transfer is not atomic if crediting destination fails",
+    "transfer does not normalize amount to Decimal before arithmetic",
+    "apply_fee can return negative net amount for high fees",
+    "Integer casts silently truncate fractional years, months, or compounds",
+    "Monetary results are not rounded to currency minor units"
+  ],
+  "detected_planted": true
+}

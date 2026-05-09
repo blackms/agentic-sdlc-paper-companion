@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la fee con a / pct invece di a * pct, producendo commissioni errate",
+    "apply_fee permette fee_pct=0 ma poi divide per zero causando un'eccezione non gestita"
+  ],
+  "detected_planted": false
+}

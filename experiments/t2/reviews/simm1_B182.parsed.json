@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert divide per il tasso invece di moltiplicare per il tasso associato alla coppia (from_currency, to_currency), producendo conversioni invertite se il rate rappresenta il cambio diretto.",
+    "compound_interest tronca silenziosamente anni frazionari con int(years), causando risultati errati per input come 1.5 anni."
+  ],
+  "detected_planted": true
+}

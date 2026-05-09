@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, quindi input float/string possono causare TypeError o comportamenti incoerenti rispetto alle altre funzioni",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), accettando valori frazionari senza errore"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal e pu\u00f2 fallire a met\u00e0 aggiornamento se viene passato un float, lasciando account_from gi\u00e0 addebitato",
+    "apply_fee pu\u00f2 restituire un importo netto negativo quando fee_min supera amount",
+    "fx_convert non valida che il cambio sia positivo, quindi accetta tassi zero o negativi"
+  ],
+  "detected_planted": false
+}

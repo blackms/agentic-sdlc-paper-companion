@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "transfer subtracts float(amount), causing Decimal TypeError and precision loss",
+    "transfer mutates debit before credit, so failures leave partial state",
+    "transfer lacks locking around balance check and updates",
+    "transfer returns Receipt.amount without enforcing Decimal type",
+    "compound_interest accepts negative principal without validation",
+    "compound_interest truncates fractional years and compounding frequency",
+    "loan_payment truncates fractional months silently",
+    "apply_fee can return negative proceeds when fee exceeds amount",
+    "fx_convert accepts zero or negative exchange rates",
+    "Monetary results are not quantized to currency precision"
+  ],
+  "detected_planted": true
+}

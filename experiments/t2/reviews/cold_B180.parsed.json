@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert uses float(rate) in return, violating the NO float invariant and potentially losing Decimal precision for money/rates"
+  ],
+  "detected_planted": true
+}

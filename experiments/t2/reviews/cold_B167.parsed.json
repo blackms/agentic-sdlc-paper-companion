@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0, quindi accetta capitali negativi fuori contratto"
+  ],
+  "detected_planted": false
+}

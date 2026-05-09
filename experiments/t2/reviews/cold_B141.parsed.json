@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer allows currency mismatch when account_to.currency is 'EUR', violating mandatory same-currency invariant",
+    "transfer does not enforce Decimal-only amount/type handling; float amount can mutate Decimal balances and violate NO float contract"
+  ],
+  "detected_planted": true
+}

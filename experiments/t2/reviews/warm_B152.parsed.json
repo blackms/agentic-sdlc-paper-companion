@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer allows currency mismatch while mutating balances",
+    "transfer mutates source before destination, not atomic on failure",
+    "transfer does not normalize amount to Decimal",
+    "compound_interest silently truncates fractional years",
+    "compound_interest silently truncates fractional compounding frequency",
+    "compound_interest accepts negative principal values",
+    "loan_payment silently truncates fractional month values",
+    "fx_convert does not validate positive or finite exchange rate"
+  ],
+  "detected_planted": true
+}

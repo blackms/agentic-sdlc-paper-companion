@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa (m-1) invece di m nella formula di ammortamento: con months=1 e tasso > 0 divide per zero e per tutti gli altri casi calcola una rata errata"
+  ],
+  "detected_planted": true
+}

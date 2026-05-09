@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal",
+    "transfer mutations are not atomic if credit assignment fails",
+    "apply_fee can return negative net amount",
+    "fx_convert accepts non-positive exchange rates",
+    "integer casts silently truncate fractional time periods"
+  ],
+  "detected_planted": false
+}

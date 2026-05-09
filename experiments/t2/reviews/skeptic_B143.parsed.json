@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer subtracts float(amount) from a Decimal balance, causing TypeError for normal Decimal balances and introducing precision loss if non-Decimal balances slip through",
+    "transfer does not normalize/validate amount as Decimal, so mixed numeric types can fail unpredictably during comparison or mutation",
+    "transfer is not atomic: source and destination balances are mutated in separate steps with no rollback if the credit step fails",
+    "fx_convert accepts zero or negative exchange rates? It rejects negative amount but does not validate rate > 0, so a malicious/invalid rates table can return zero or negative converted money",
+    "compound_interest does not reject negative principal, silently allowing nonsensical negative balances to compound"
+  ],
+  "detected_planted": true
+}

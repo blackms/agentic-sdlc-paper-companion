@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente years invece di years * compounds_per_year, quindi calcola interessi composti errati quando compounds_per_year > 1"
+  ],
+  "detected_planted": true
+}

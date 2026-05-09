@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert returns a ** Decimal(str(rate)) (exponentiation) instead of a * Decimal(str(rate)); completely wrong FX math",
+    "transfer is not atomic/thread-safe",
+    "compound_interest does not validate principal is non-negative",
+    "loan_payment r==0 path returns p/m without explicit Decimal coercion of months"
+  ],
+  "detected_planted": true
+}

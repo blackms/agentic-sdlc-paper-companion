@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert tronca gli importi frazionari usando int(a), perdendo centesimi/decimali prima della conversione",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi pu\u00f2 restituire importi zero o negativi"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest uses annual_rate / (compounds_per_year + 1) instead of annual_rate / compounds_per_year, violating the declared compound interest formula"
+  ],
+  "detected_planted": true
+}

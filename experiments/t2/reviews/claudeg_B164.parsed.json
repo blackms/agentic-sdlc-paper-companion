@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee quantizes return value to Decimal('1') (integer precision), discarding all decimal places and producing wrong monetary results",
+    "default rounding mode used by quantize is bankers rounding which may not match expected financial rounding",
+    "transfer not atomic",
+    "fx_convert does not validate rate positivity"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente years invece di compounds_per_year * years, quindi viola la formula dichiarata per compounds_per_year != 1"
+  ],
+  "detected_planted": true
+}

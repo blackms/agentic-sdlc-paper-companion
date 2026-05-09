@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer consente trasferimenti tra valute diverse dopo un solo warning, spostando importi nominali senza conversione FX",
+    "transfer non normalizza amount a Decimal, a differenza delle altre funzioni, e pu\u00f2 fallire o comportarsi in modo incoerente con input float",
+    "compound_interest e loan_payment convertono years/months/compounds_per_year con int(), troncando silenziosamente valori non interi invece di validarli"
+  ],
+  "detected_planted": true
+}

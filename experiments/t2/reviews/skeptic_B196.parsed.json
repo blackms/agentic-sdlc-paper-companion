@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: source balance is debited before destination credit, so a TypeError or setter failure on account_to.balance leaves funds lost",
+    "transfer does not normalize or validate amount as Decimal/finite, allowing mixed types, NaN/Infinity, precision drift, or runtime exceptions",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing financial meaning without disclosure",
+    "fx_convert raises BaseException for missing rates, which can bypass normal exception handling and crash callers",
+    "fx_convert does not validate rate positivity/finite value, allowing negative, zero, NaN, or Infinity exchange rates",
+    "finance functions do not quantize/round monetary results to currency scale, causing unbounded precision and downstream reconciliation drift",
+    "compound_interest allows negative principal without explicit contract, enabling unexpected negative balances/results"
+  ],
+  "detected_planted": true
+}

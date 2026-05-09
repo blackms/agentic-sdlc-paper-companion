@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal come le altre funzioni: con float pu\u00f2 fallire durante l'aritmetica Decimal/float e con tipi non coerenti produce errori non controllati."
+  ],
+  "detected_planted": false
+}

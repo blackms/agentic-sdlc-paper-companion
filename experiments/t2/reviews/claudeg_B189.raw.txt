@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee raises ImportError instead of ValueError for negative amount, breaking exception contract and surprising callers", "inconsistent exception type makes error handling fragile and misleading", "no rounding/quantization on monetary results", "transfer is not atomic on failure"], "verdict": "REQUEST_CHANGES"}

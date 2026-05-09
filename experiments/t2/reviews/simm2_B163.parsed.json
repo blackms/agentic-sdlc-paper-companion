@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal negativo e tronca years/compounds_per_year con int(), producendo risultati inattesi per input decimali",
+    "loan_payment tronca months con int() invece di rifiutare input non interi",
+    "transfer non converte/valida amount come Decimal, quindi float o tipi numerici misti possono causare TypeError o Receipt con tipo incoerente",
+    "fx_convert non valida che il tasso sia positivo: rate zero o negativo produce conversioni finanziariamente invalide"
+  ],
+  "detected_planted": false
+}

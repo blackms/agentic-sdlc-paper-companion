@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert subtracts 0.01 before applying exchange rate",
+    "transfer fails with non-Decimal amounts despite other functions coercing inputs",
+    "apply_fee can return negative net amount when minimum fee exceeds amount"
+  ],
+  "detected_planted": true
+}

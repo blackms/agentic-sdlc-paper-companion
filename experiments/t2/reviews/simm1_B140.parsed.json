@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer restituisce Receipt.amount negativo (-amount) invece dell'importo trasferito positivo",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi rate zero o negativi producono conversioni non valide",
+    "transfer non normalizza amount a Decimal, causando TypeError o incoerenze se riceve input numerici non Decimal"
+  ],
+  "detected_planted": true
+}

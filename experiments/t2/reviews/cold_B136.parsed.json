@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer violates atomicity: it credits account_to before the artificial OverflowError path, so for amount > 1e9 the destination balance is modified even though the operation fails"
+  ],
+  "detected_planted": true
+}

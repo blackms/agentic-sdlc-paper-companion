@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest usa t elevato a n invece di n per t",
+    "compound_interest tronca anni frazionari con int senza validazione",
+    "loan_payment tronca mesi frazionari con int senza validazione",
+    "transfer non converte amount a Decimal causando TypeError con float/stringhe",
+    "transfer non atomica: debito pu\u00f2 restare se accredito fallisce",
+    "transfer vulnerabile a race condition e overdraft concorrenti",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "fx_convert accetta tassi negativi o zero producendo conversioni invalide",
+    "nessuna funzione quantizza importi monetari alla precisione valuta"
+  ],
+  "detected_planted": false
+}

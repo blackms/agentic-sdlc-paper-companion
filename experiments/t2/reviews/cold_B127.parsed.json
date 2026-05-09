@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment raises generic Exception instead of ValueError when months <= 0"
+  ],
+  "detected_planted": true
+}

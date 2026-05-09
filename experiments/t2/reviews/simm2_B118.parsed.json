@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest modifica inutilmente il parametro principal con principal *= 0, che pu\u00f2 causare effetti collaterali su oggetti mutabili o tipi custom",
+    "compound_interest e loan_payment convertono years/months con int(), troncando silenziosamente valori non interi"
+  ],
+  "detected_planted": true
+}

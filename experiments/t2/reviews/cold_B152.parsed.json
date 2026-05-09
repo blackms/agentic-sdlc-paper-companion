@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer does not raise ValueError on currency mismatch; it only emits a warning and proceeds, violating same-currency requirement and declared error behavior"
+  ],
+  "detected_planted": true
+}

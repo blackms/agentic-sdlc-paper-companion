@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta rate zero o negativi producendo importi invalidi",
+    "transfer non normalizza amount a Decimal come le altre funzioni: input float pu\u00f2 causare TypeError o incoerenze di precisione"
+  ],
+  "detected_planted": false
+}

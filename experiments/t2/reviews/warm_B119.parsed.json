@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest uses OverflowError for negative rate validation",
+    "Integer casting silently truncates fractional years or months",
+    "transfer is not atomic under failures or concurrent updates",
+    "transfer accepts unnormalized amount unlike other monetary functions",
+    "apply_fee can return negative amount when fee exceeds amount",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

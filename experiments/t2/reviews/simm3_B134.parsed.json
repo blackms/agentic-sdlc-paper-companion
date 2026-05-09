@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer converte amount in float: operazioni Decimal - float/Decimal + float sollevano TypeError e introducono perdita di precisione",
+    "transfer restituisce Receipt.amount come float nonostante il tipo dichiarato Decimal",
+    "compound_interest, loan_payment e fx_convert non validano principal/rate di cambio positivi in modo completo, permettendo risultati finanziari non sensati",
+    "conversioni con int(years/months/compounds_per_year) troncano silenziosamente valori frazionari invece di rifiutarli"
+  ],
+  "detected_planted": true
+}

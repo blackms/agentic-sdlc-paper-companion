@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_min through float causing Decimal precision loss",
+    "transfer mutates balances non-atomically if destination update fails",
+    "transfer accepts non-Decimal amount, risking mixed-type comparison failures"
+  ],
+  "detected_planted": true
+}

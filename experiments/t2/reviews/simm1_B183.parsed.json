@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert recupera il tasso con la chiave invertita (to_currency, from_currency) invece di (from_currency, to_currency), producendo conversioni errate o falsi 'no rate'"
+  ],
+  "detected_planted": true
+}

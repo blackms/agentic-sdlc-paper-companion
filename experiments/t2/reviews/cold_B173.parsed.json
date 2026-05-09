@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee constructs fee_min with Decimal(float(fee_min)), violating the NO float invariant and causing precision loss for Decimal inputs such as Decimal('0.10')",
+    "fx_convert converts the rate with Decimal(str(rate)) instead of rejecting non-Decimal rates, so float rates are silently accepted despite the NO float invariant"
+  ],
+  "detected_planted": true
+}

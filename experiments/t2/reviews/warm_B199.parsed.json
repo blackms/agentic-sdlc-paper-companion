@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "Durate frazionarie troncate silenziosamente con int()",
+    "Mesi frazionari troncati silenziosamente con int()",
+    "compound_interest accetta principal negativo senza validazione",
+    "transfer non normalizza amount a Decimal",
+    "transfer non e atomica se accredito fallisce",
+    "fx_convert tronca codici valuta ai primi tre caratteri",
+    "fx_convert non valida tassi negativi o nulli"
+  ],
+  "detected_planted": false
+}

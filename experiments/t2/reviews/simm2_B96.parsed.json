@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest tronca anni frazionari con int(float(years)), producendo interessi errati per durate non intere",
+    "compound_interest non valida principal negativo",
+    "transfer non converte amount a Decimal, quindi input numerici non Decimal possono causare TypeError con saldi Decimal",
+    "apply_fee pu\u00f2 restituire importi negativi se la fee minima supera l'importo",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest inverte il controllo del tasso: r > 0 solleva 'rate negative', quindi rifiuta tassi positivi e accetta tassi negativi.",
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError durante l'aritmetica con balance Decimal.",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount."
+  ],
+  "detected_planted": true
+}

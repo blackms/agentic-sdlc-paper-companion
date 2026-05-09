@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert looks up reversed currency rate tuple",
+    "transfer is not atomic if credit operation fails",
+    "transfer does not normalize amount to Decimal",
+    "integer casts silently truncate fractional durations"
+  ],
+  "detected_planted": true
+}

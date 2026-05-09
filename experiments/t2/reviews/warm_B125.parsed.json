@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest allows negative principal values",
+    "compound_interest truncates fractional years unexpectedly",
+    "loan_payment truncates fractional months unexpectedly",
+    "transfer does not normalize amount to Decimal",
+    "transfer can debit before failing credit operation",
+    "transfer is not thread-safe for concurrent account updates",
+    "apply_fee can return negative net amount for small amounts",
+    "fx_convert does not reject negative or zero exchange rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer currency comparison applies .replace('EUR','eur') on sender side only, causing same-currency EUR-to-EUR transfers to be rejected as mismatch"
+  ],
+  "detected_planted": true
+}

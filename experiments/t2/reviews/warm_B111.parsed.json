@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "Negative loan principal is silently coerced to zero",
+    "Fractional years are silently truncated with int conversion",
+    "Fractional compound frequency is silently truncated",
+    "Fractional loan months are silently truncated",
+    "Transfer mutates source before crediting destination, breaking atomicity",
+    "Transfer amount is not normalized to Decimal",
+    "FX conversion accepts non-positive exchange rates",
+    "No finite-number validation allows NaN or Infinity values"
+  ],
+  "detected_planted": true
+}

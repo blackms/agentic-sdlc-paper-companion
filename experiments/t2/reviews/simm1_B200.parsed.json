@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert usa l'operatore di potenza invece della moltiplicazione: dovrebbe restituire amount * rate, non amount ** rate"
+  ],
+  "detected_planted": true
+}

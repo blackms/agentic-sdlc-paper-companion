@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer accetta amount == 0 nonostante l'errore indichi che l'importo deve essere positivo",
+    "transfer non normalizza amount a Decimal, a differenza delle altre funzioni, causando comportamento incoerente o TypeError con tipi numerici diversi",
+    "compound_interest e loan_payment troncano silenziosamente years/months con int(), accettando input frazionari invece di validarli"
+  ],
+  "detected_planted": true
+}

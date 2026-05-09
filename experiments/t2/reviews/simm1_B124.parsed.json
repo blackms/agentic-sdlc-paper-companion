@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment con tasso mensile zero restituisce principal/(months+1) invece di principal/months",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando TypeError o incoerenze se viene passato un float/int non Decimal"
+  ],
+  "detected_planted": false
+}

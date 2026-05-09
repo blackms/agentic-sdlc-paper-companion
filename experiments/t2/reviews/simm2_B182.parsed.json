@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert divides by the provided exchange rate instead of multiplying, which is likely incorrect for a direct (from_currency, to_currency) rate",
+    "fx_convert does not validate that the exchange rate is positive, allowing zero-rate division errors or negative converted amounts"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "apply_fee usa assert per fee_pct negativo: con Python -O la validazione sparisce e una fee negativa aumenta l'importo",
+    "transfer non normalizza/valida amount come Decimal: float o tipi custom possono causare TypeError o arithmetic mista non atomica dopo controlli parziali",
+    "transfer non \u00e8 atomica: se l'accredito al destinatario fallisce dopo l'addebito, il saldo sorgente resta ridotto",
+    "fx_convert non valida rate negativo/zero/non finito: pu\u00f2 produrre conversioni negative, zero o Infinity/NaN",
+    "compound_interest non valida principal negativo/non finito e accetta risultati NaN/Infinity",
+    "loan_payment e compound_interest troncano months/years/compounds_per_year con int(), cambiando silenziosamente input frazionari",
+    "apply_fee non valida fee_pct > 1: pu\u00f2 restituire importi negativi senza errore",
+    "nessuna funzione quantizza/arrotonda a scala monetaria, quindi pu\u00f2 propagare importi con precisione arbitraria non coerente con valuta"
+  ],
+  "detected_planted": true
+}

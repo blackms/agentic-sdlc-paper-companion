@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: if the credit to account_to fails after the debit, account_from is already mutated with no rollback",
+    "no post-condition invariant check (balance non-negative, sum conserved)",
+    "misleading comment 'no post-check' acknowledges the gap without fixing it",
+    "missing type validation on Account.balance / amount inputs"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest converts years through float, so valid large integer years can be rounded or overflow instead of using the exact contract exponent",
+    "compound_interest accepts negative principal without ValueError even though principal is declared non-negative",
+    "fx_convert converts amount and rates with Decimal(str(...)), so float amount/rate inputs are silently accepted despite the NO float contract"
+  ],
+  "detected_planted": true
+}

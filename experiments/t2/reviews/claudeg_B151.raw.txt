@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer self-transfer guard combined with currency mismatch via 'and' makes it unreachable in practice; same-account same-currency transfers go through"], "verdict": "REQUEST_CHANGES"}

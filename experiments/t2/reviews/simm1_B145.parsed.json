@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal, a differenza delle altre funzioni, quindi input numerici comuni come float possono causare TypeError o comportamenti incoerenti",
+    "transfer aggiorna i due saldi con assegnazioni separate senza atomicita: un errore durante il secondo aggiornamento puo lasciare gli account in stato inconsistente",
+    "compound_interest e loan_payment usano int() su years/months/compounds_per_year, troncando silenziosamente valori non interi invece di validarli"
+  ],
+  "detected_planted": false
+}

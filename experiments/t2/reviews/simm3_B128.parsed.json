@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment restituisce una stringa con suffisso valuta quando monthly_rate == 0, mentre negli altri casi restituisce Decimal: incoerenza di tipo e possibile rottura dei chiamanti"
+  ],
+  "detected_planted": true
+}

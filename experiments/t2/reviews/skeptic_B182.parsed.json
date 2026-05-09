@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal while other money functions reject negative principal/amount, creating inconsistent behavior",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds_per_year via int(), causing undeclared behavior changes for non-integer inputs",
+    "transfer mutates account_from before mutating account_to, so a failure in the credit step can leave balances inconsistent despite returning no receipt",
+    "transfer does not coerce or validate amount as Decimal/finite, allowing mixed numeric types or NaN/Infinity to cause inconsistent exceptions or unsafe comparisons",
+    "fx_convert divides by the quoted rate instead of multiplying by it; unless rates are explicitly inverse rates, conversions will be wrong",
+    "fx_convert does not validate rate is positive and finite, allowing zero division, negative conversions, or NaN/Infinity results",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, silently producing nonsensical money output"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Loan payment formula missing compound factor in numerator",
+    "Loan payment multiplies rate twice, undercharging installments",
+    "Transfer mutates source before destination, not atomic on failure",
+    "Transfer does not normalize amount to Decimal",
+    "FX conversion accepts zero or negative exchange rates",
+    "Compound interest silently truncates fractional years"
+  ],
+  "detected_planted": true
+}

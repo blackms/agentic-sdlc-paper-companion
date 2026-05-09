@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee treats fee_pct as a multiplier instead of a percentage, so fee_pct=2 charges 200% before caps instead of 2%",
+    "transfer is non-atomic: debit happens before credit, so a failing or malicious account_to.balance addition can lose funds",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds via int() instead of rejecting invalid periods",
+    "fx_convert accepts zero or negative FX rates, allowing zero/negative converted amounts despite nonnegative input",
+    "finance inputs are not consistently validated as finite Decimals; NaN/Infinity or incompatible numeric types can raise unexpected exceptions or corrupt calculations",
+    "compound_interest does not validate nonnegative principal, unlike loan_payment and amount-based functions"
+  ],
+  "detected_planted": true
+}

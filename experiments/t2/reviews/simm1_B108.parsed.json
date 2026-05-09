@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest truncates principal with int(principal), losing fractional monetary amounts before interest calculation",
+    "compound_interest does not reject negative principal values",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError or produce inconsistent behavior with Decimal balances",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": true
+}

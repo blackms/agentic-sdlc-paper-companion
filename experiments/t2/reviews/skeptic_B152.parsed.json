@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "transfer does not coerce/validate amount as Decimal, so floats/NaN/non-finite/custom numeric objects can cause TypeError or inconsistent arithmetic",
+    "currency mismatch only emits a warning and still transfers value across currencies without FX conversion",
+    "transfer is not atomic: after debiting source, failure while crediting destination or building receipt leaves balances inconsistent",
+    "Account balances/currencies are not validated, so negative balances, non-Decimal balances, or malformed currencies can enter transfer silently",
+    "compound_interest does not reject negative principal",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without error",
+    "loan_payment silently truncates fractional months via int(), changing financial results without error",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate rate is positive and finite, allowing zero/negative/NaN/Infinity rates",
+    "all money functions lack explicit quantization/rounding policy, allowing precision/scale drift in production money values"
+  ],
+  "detected_planted": true
+}

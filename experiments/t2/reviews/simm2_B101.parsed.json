@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError durante sottrazione/addizione con balance Decimal",
+    "conversione tramite int() in compound_interest e loan_payment tronca silenziosamente anni/mesi/compounds_per_year non interi invece di validarli",
+    "apply_fee pu\u00f2 restituire un importo negativo se la fee minima o massima supera amount"
+  ],
+  "detected_planted": false
+}

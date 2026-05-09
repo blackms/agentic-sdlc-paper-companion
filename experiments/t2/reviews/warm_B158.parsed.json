@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "apply_fee calcola a + a*pct invece della sola commissione",
+    "apply_fee pu\u00f2 restituire importi negativi per fee_max elevato",
+    "transfer non converte amount a Decimal prima dei confronti",
+    "transfer non \u00e8 atomico se accredito fallisce dopo addebito",
+    "transfer valida self-transfer solo per identit\u00e0, non per stesso id",
+    "fx_convert non valida rate negativo o nullo",
+    "compound_interest tronca anni non interi con int()",
+    "loan_payment tronca mesi non interi con int()",
+    "Risultati monetari mai arrotondati o quantizzati alla valuta"
+  ],
+  "detected_planted": true
+}

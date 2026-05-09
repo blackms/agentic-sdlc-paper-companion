@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal: con float/string pu\u00f2 generare TypeError o comportamenti incoerenti rispetto alle altre funzioni",
+    "compound_interest() tronca years con int(float(years)), perdendo anni frazionari e precisione",
+    "loan_payment() tronca months con int(months), accettando valori non interi in modo silenzioso",
+    "fx_convert() non valida che il tasso FX sia positivo, permettendo conversioni negative o zero"
+  ],
+  "detected_planted": true
+}

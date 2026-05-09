@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment raises ZeroDivisionError instead of ValueError for months==0 and accepts negative months without validation, breaking the input-contract pattern used elsewhere"
+  ],
+  "detected_planted": true
+}

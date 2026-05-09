@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest returns principal unchanged, ignoring rate, years, and compounding frequency"
+  ],
+  "detected_planted": true
+}

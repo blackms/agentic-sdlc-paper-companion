@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee sottrae la commissione due volte, restituendo amount - 2*fee invece di amount - fee",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi pu\u00f2 produrre importi nulli o negativi",
+    "transfer non converte amount a Decimal come le altre funzioni, con rischio di TypeError o incoerenze se viene passato un float"
+  ],
+  "detected_planted": true
+}

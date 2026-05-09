@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest converte silenziosamente un principal NaN in Decimal(0), mascherando input non validi e producendo risultati finanziari errati",
+    "transfer non normalizza amount a Decimal, quindi input numerici comuni come float possono superare i controlli ma fallire durante l'aritmetica con Decimal"
+  ],
+  "detected_planted": true
+}

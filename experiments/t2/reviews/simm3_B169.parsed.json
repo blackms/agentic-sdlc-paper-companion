@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal come le altre funzioni, quindi input float/str possono causare TypeError o confronti incoerenti",
+    "transfer non \u00e8 atomica/thread-safe: saldo controllato e aggiornato separatamente, con possibile race condition in uso concorrente",
+    "compound_interest e loan_payment convertono years/months con int(), troncando silenziosamente valori frazionari invece di validarli"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment returns p/(m+1) when monthly_rate is zero; correct zero-interest payment is p/m, causing silent underpayment",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing inputs without validation",
+    "loan_payment silently truncates fractional months via int(), changing amortization term without validation",
+    "transfer does not normalize or validate amount as Decimal/finite before mutating balances; incompatible or NaN/Infinity inputs can raise unexpected exceptions or corrupt balances",
+    "transfer is not atomic: debit occurs before credit, so a failure on credit assignment/addition can leave account_from debited without account_to credited",
+    "fx_convert accepts negative, zero, NaN, or infinite FX rates because the rate itself is not validated, enabling invalid converted amounts",
+    "money outputs are never quantized/rounded to currency precision, so sub-cent precision can leak into balances, fees, receipts, and conversions"
+  ],
+  "detected_planted": true
+}

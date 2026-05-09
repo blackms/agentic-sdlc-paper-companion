@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee pu\u00f2 restituire un importo negativo quando amount \u00e8 inferiore a fee_min, ad esempio amount=0 e fee_min>0",
+    "transfer non normalizza amount a Decimal, quindi float/stringhe possono causare TypeError e Receipt.amount pu\u00f2 avere un tipo incoerente"
+  ],
+  "detected_planted": true
+}

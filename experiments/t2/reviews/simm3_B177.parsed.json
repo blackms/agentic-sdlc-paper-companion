@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert eleva il tasso di cambio al quadrato (`rate ** 2`), producendo conversioni errate; dovrebbe moltiplicare l'importo per il tasso una sola volta"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment silently coerces a negative principal to 0 instead of raising ValueError, hiding caller errors and inconsistent with the other validations"
+  ],
+  "detected_planted": true
+}

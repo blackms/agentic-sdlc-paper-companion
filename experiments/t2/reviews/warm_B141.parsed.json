@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer consente valute diverse verso EUR senza conversione"
+  ],
+  "detected_planted": true
+}

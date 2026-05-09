@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min \u00e8 maggiore dell'importo",
+    "fx_convert accetta tassi di cambio zero o negativi producendo conversioni non valide",
+    "transfer non converte amount a Decimal, quindi importi float causano TypeError e tipi incoerenti nella Receipt",
+    "compound_interest e loan_payment troncano silenziosamente anni/mesi/frequenza con int(), accettando input frazionari in modo ambiguo"
+  ],
+  "detected_planted": true
+}

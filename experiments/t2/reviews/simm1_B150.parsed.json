@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer sottrae 2*amount dal conto sorgente invece di amount",
+    "transfer non normalizza amount a Decimal, causando possibili TypeError o incoerenze con input float"
+  ],
+  "detected_planted": true
+}

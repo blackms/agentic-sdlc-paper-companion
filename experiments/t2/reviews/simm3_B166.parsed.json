@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal come le altre funzioni, causando TypeError o stato incoerente con input float/non-Decimal",
+    "apply_fee accetta importi negativi e restituisce risultati finanziariamente incoerenti limitandosi a un warning"
+  ],
+  "detected_planted": true
+}

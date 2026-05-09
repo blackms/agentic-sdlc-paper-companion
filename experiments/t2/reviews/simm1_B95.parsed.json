@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa max(0, int(years) - 1): introduce un off-by-one nel periodo di capitalizzazione e rende irraggiungibile il controllo sugli anni negativi, che vengono trattati come 0 invece di sollevare ValueError.",
+    "apply_fee pu\u00f2 restituire un importo netto negativo quando fee_min supera amount, perch\u00e9 applica comunque la commissione minima senza limitarla all'importo disponibile.",
+    "transfer non normalizza amount a Decimal: con input numerici non Decimal pu\u00f2 generare TypeError o incoerenze di tipo/precisione rispetto ai saldi Decimal."
+  ],
+  "detected_planted": true
+}

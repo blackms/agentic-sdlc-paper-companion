@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa r/(n+1) invece di r/n, producendo interessi errati",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o ricevute con tipo incoerente",
+    "fx_convert non valida che il tasso di cambio sia positivo, consentendo risultati zero o negativi"
+  ],
+  "detected_planted": true
+}

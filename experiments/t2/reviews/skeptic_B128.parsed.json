@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment returns a string with hard-coded EUR when monthly_rate is zero instead of returning Decimal consistently",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing caller input without validation",
+    "transfer does not coerce or validate amount as Decimal; float/string/NaN-like inputs can raise mid-operation or behave inconsistently",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert accepts zero or negative exchange rates except missing-rate None check, enabling zero/negative converted amounts",
+    "no functions validate finite Decimal values, so Infinity/NaN inputs can leak through or trigger inconsistent runtime exceptions",
+    "money results are not quantized to currency scale, allowing fractional-cent balances/payments to propagate"
+  ],
+  "detected_planted": true
+}

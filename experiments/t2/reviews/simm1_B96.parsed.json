@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize amount to Decimal, so float amounts can raise TypeError when subtracting from Decimal balances and may produce inconsistent Receipt.amount types",
+    "compound_interest() silently truncates fractional years via int(float(years)), returning incorrect results instead of rejecting or correctly handling partial years",
+    "loan_payment() silently truncates non-integer numeric months via int(months), which can undercharge or miscalculate instead of rejecting invalid terms",
+    "fx_convert() does not validate that the exchange rate is positive, so zero or negative rates can produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

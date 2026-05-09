@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente t ** n invece di n * t, producendo interessi composti errati",
+    "transfer non converte amount in Decimal, quindi pu\u00f2 fallire con TypeError o comportarsi in modo incoerente con input numerici non Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": false
+}

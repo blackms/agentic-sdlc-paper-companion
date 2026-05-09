@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert usa l'inverso del tasso per la coppia (from_currency,to_currency); normalmente dovrebbe moltiplicare per il rate associato",
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError con balance Decimal",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

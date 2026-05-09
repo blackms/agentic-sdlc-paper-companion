@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError or produce inconsistent Receipt.amount types.",
+    "apply_fee can return a negative net amount when fee_min or fee_max exceed amount.",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), which can miscalculate inputs like 1.5."
+  ],
+  "detected_planted": true
+}

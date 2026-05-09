@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer allows negative amount, which credits sender and debits recipient instead of rejecting",
+    "transfer is not atomic: if crediting account_to fails after debiting account_from, balances become inconsistent",
+    "transfer does not normalize/validate amount as Decimal, finite, and positive; non-Decimal, NaN, or Infinity inputs can raise unexpected exceptions or corrupt balances",
+    "money functions return unquantized Decimal values with no currency rounding policy, causing precision/scale drift in production monetary amounts",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing behavior for fractional or malformed inputs instead of rejecting them",
+    "fx_convert accepts zero, negative, NaN, or infinite FX rates because rates are not validated, enabling nonsensical converted amounts"
+  ],
+  "detected_planted": true
+}

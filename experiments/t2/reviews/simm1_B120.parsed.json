@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment moltiplica monthly_rate per 12 ma poi lo usa come tasso mensile nella formula, producendo rate errate",
+    "apply_fee puo restituire un importo negativo quando fee_min supera amount",
+    "fx_convert non valida che il tasso FX sia positivo, permettendo conversioni negative o zero",
+    "transfer non normalizza amount a Decimal, causando TypeError o comportamento incoerente con input float/string"
+  ],
+  "detected_planted": true
+}

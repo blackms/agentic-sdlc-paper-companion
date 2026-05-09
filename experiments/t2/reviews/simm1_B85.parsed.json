@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest rejects positive annual_rate values and allows negative rates because the validation uses r > 0 instead of r < 0"
+  ],
+  "detected_planted": true
+}

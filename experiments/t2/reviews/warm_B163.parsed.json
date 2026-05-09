@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal",
+    "transfer non atomica se accredito fallisce dopo addebito",
+    "conversione int tronca silenziosamente anni mesi e frequenze",
+    "manca arrotondamento monetario a scala valuta",
+    "fx_convert non valida rate negativi o nulli",
+    "apply_fee con fee_pct None diventa zero silenziosamente",
+    "compound_interest non valida principal negativo"
+  ],
+  "detected_planted": true
+}

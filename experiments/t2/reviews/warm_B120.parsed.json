@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "loan_payment moltiplica monthly_rate per 12 impropriamente",
+    "conversione int tronca anni e mesi frazionari silenziosamente",
+    "compound_interest accetta principal negativo senza validazione",
+    "transfer non \u00e8 atomica se accredito fallisce dopo addebito",
+    "transfer non normalizza amount a Decimal",
+    "fx_convert accetta tassi zero o negativi",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "nessuna funzione quantizza importi monetari alla valuta"
+  ],
+  "detected_planted": true
+}

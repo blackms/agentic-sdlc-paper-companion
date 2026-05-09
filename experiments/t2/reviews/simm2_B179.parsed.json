@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal: con float/string pu\u00f2 generare TypeError e Receipt.amount pu\u00f2 avere tipo incoerente",
+    "fx_convert() moltiplica Decimal per rate non normalizzato: se rates contiene float/string genera TypeError"
+  ],
+  "detected_planted": true
+}

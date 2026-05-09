@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "apply_fee subtracts the fee twice, returning amount - 2*fee instead of amount - fee",
+    "compound_interest/loan_payment silently truncate fractional years/months/compound counts via int(), changing financial results without validation",
+    "transfer is not atomic: debit happens before credit, so a failure adding/assigning to account_to.balance can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal/finite, so floats/NaN/incompatible types can raise late or corrupt accounting assumptions",
+    "fx_convert does not validate exchange rates are positive and finite, allowing zero/negative/Infinity rates to produce invalid conversions"
+  ],
+  "detected_planted": true
+}

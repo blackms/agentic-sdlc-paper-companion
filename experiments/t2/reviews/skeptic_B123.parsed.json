@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "loan_payment nega monthly_rate: tassi positivi vengono rifiutati come negativi e tassi negativi vengono accettati/calcolati come positivi",
+    "conversione int(years/months/compounds_per_year) tronca input frazionari invece di validarli, alterando silenziosamente durata o frequenza",
+    "transfer non normalizza/valida amount come Decimal e non \u00e8 atomica: un errore dopo il debit pu\u00f2 lasciare account_from modificato senza accredito",
+    "manca validazione di principal negativo in compound_interest",
+    "fx_convert non valida rate negativo/zero/NaN/Infinity, consentendo conversioni con risultati finanziariamente invalidi",
+    "apply_fee consente fee_pct arbitrariamente alto e pu\u00f2 restituire importi negativi quando la fee supera l'amount"
+  ],
+  "detected_planted": true
+}

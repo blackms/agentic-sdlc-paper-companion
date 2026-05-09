@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: con input float/string pu\u00f2 fallire con TypeError o produrre Receipt.amount di tipo incoerente"
+  ],
+  "detected_planted": false
+}

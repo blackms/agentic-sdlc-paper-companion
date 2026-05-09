@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal coerentemente",
+    "transfer pu\u00f2 lasciare debito applicato se credito fallisce",
+    "compound_interest tronca anni frazionari senza validazione",
+    "compound_interest tronca compounds_per_year frazionari senza validazione",
+    "compound_interest accetta principal negativo senza validazione",
+    "loan_payment tronca months frazionari senza validazione",
+    "apply_fee quantize a interi perde centesimi monetari",
+    "fx_convert non valida tasso negativo o nullo"
+  ],
+  "detected_planted": false
+}

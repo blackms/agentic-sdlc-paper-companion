@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal without validation",
+    "int() silently truncates fractional years or compound counts",
+    "loan_payment silently truncates non-integer month values",
+    "transfer receipt is created before debit and credit complete",
+    "transfer does not coerce amount to Decimal consistently",
+    "transfer mutations are not atomic if credit assignment fails",
+    "apply_fee can return negative net amount when minimum fee exceeds amount",
+    "fx_convert does not validate positive finite exchange rates",
+    "monetary outputs are never rounded or quantized to currency precision"
+  ],
+  "detected_planted": true
+}

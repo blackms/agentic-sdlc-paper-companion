@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa (1+r)/2 invece di 1+r nella formula, calcolando rate errate",
+    "fx_convert non valida che il tasso di cambio sia positivo, accettando valori zero o negativi",
+    "transfer non converte amount a Decimal, quindi input float/string possono causare errori o tipi incoerenti"
+  ],
+  "detected_planted": true
+}

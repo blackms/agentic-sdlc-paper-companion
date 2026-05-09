@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer uses float(amount) in balance update, violating NO float and causing TypeError for valid Decimal balances instead of successful transfer"
+  ],
+  "detected_planted": true
+}

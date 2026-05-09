@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest: 'currency' parameter is accepted but never used \u2014 dead/misleading API",
+    "transfer: not atomic \u2014 failure between debit and credit corrupts state, no rollback",
+    "transfer: no Decimal quantization on balances, sub-cent drift possible",
+    "apply_fee: amount - fee can go negative when fee_min > amount",
+    "fx_convert: no sanity check that rate is > 0"
+  ],
+  "detected_planted": true
+}

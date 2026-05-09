@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo/non finito e puo produrre importi nonsense o NaN/Infinity",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), cambiando input frazionari senza errore",
+    "loan_payment tronca silenziosamente months con int(), accettando durate frazionarie come mesi interi",
+    "transfer non normalizza amount a Decimal: float/int/custom type possono causare TypeError a meta operazione o precisione incoerente",
+    "transfer non e atomica: se l'accredito fallisce dopo l'addebito, i saldi restano inconsistenti",
+    "transfer non valida saldi/id/currency non finiti o malformati e puo propagare NaN/Infinity o ricevute ambigue",
+    "apply_fee puo restituire importo negativo quando fee_min supera amount",
+    "apply_fee non valida fee_pct massimo: percentuali oltre 100% possono azzerare o rendere negativo l'importo",
+    "fx_convert non valida rate positivo/finito: rate negativo, zero, NaN o Infinity producono conversioni invalide"
+  ],
+  "detected_planted": true
+}

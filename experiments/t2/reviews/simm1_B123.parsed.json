@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment nega monthly_rate: i tassi positivi vengono rifiutati e quelli negativi accettati come positivi",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

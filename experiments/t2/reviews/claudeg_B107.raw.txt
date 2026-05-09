@@ -1,0 +1,1 @@
+{"bugs_found": ["loan_payment returns Decimal(0) when monthly_rate==0 instead of principal/months, so a zero-interest loan is reported as having no payment"], "verdict": "REQUEST_CHANGES"}

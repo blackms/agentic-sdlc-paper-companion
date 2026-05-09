@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "loan_payment adds two months before calculation",
+    "loan_payment validates shifted months, allowing zero or negative terms",
+    "integer casts silently truncate fractional years, compounds, and months",
+    "transfer can debit before credit failure, breaking atomicity",
+    "transfer does not normalize amount to Decimal before arithmetic",
+    "finance outputs lack explicit currency rounding or quantization"
+  ],
+  "detected_planted": true
+}

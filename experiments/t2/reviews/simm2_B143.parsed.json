@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer sottrae float(amount) da un Decimal, causando TypeError e perdita di precisione; deve usare Decimal coerentemente",
+    "transfer non normalizza/valida amount come Decimal, quindi float/stringhe possono generare confronti o somme non sicure",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer converts amount to float, causing Decimal comparison/arithmetic TypeError with Account.balance declared as Decimal",
+    "transfer loses monetary precision and returns Receipt.amount as float despite Decimal contract",
+    "transfer accepts NaN/Infinity via float conversion path without explicit validation, risking invalid amounts if balances are not strict Decimal",
+    "compound_interest/loan_payment silently truncate years/months/compounds_per_year with int(), accepting fractional periods without validation"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest has inverted rate validation: it rejects positive rates and allows negative rates",
+    "compound_interest silently truncates fractional years with int(years)",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError or introduce precision/type issues",
+    "fx_convert does not validate exchange rates, allowing zero or negative conversion rates"
+  ],
+  "detected_planted": true
+}

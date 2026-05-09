@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment divide monthly_rate per 12 nonostante il nome indichi un tasso mensile, producendo rate errate",
+    "loan_payment usa Decimal(monthly_rate / 12), introducendo errori binari se monthly_rate e' float",
+    "transfer non normalizza amount a Decimal: input float/string possono causare TypeError o ricevute con tipo incoerente",
+    "apply_fee puo' restituire importi negativi quando fee_min supera amount",
+    "fx_convert non valida che il cambio sia positivo, accettando tassi zero o negativi"
+  ],
+  "detected_planted": true
+}

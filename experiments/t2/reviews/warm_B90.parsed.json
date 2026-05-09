@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest adds rate to principal instead of multiplying principal",
+    "compound_interest allows negative principal values",
+    "compound_interest silently truncates fractional years",
+    "loan_payment silently truncates non-integer month values",
+    "transfer is not atomic if credit update fails",
+    "transfer does not normalize amount to Decimal",
+    "apply_fee can return negative proceeds when fee exceeds amount",
+    "fx_convert accepts non-positive exchange rates"
+  ],
+  "detected_planted": true
+}

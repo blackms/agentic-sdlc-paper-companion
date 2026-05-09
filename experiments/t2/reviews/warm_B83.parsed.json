@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest divides rate by years instead of compounds_per_year",
+    "compound_interest crashes when years is zero",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest does not reject negative principal",
+    "transfer is non-atomic if credit update fails",
+    "transfer does not normalize amount to Decimal",
+    "apply_fee can return negative net amount when fees exceed amount",
+    "fx_convert accepts negative or zero exchange rates",
+    "fx_convert does not validate currency codes or rate table shape"
+  ],
+  "detected_planted": true
+}

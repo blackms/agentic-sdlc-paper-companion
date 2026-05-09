@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert returns a * rate without converting rate to Decimal: if rate is a float this raises TypeError (Decimal * float unsupported), if rate is int it works inconsistently with the rest of the codebase",
+    "fx_convert does not validate that rate is positive",
+    "transfer() is not atomic with no rollback on partial failure",
+    "compound_interest silently truncates fractional years",
+    "no thread-safety on Account mutations"
+  ],
+  "detected_planted": true
+}

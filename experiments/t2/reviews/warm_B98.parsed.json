@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest tronca years frazionari invece di validarli",
+    "compound_interest ignora currency, nessuna validazione o rounding",
+    "loan_payment tronca months frazionari invece di validarli",
+    "transfer confronta self-transfer per identit\u00e0, non per id",
+    "transfer aggiorna saldi senza atomicit\u00e0 o protezione concorrente",
+    "transfer pu\u00f2 lasciare addebito senza accredito se credito fallisce",
+    "apply_fee pu\u00f2 restituire netto negativo se fee supera amount",
+    "fx_convert accetta rate zero, negativi o non finiti",
+    "valori NaN o Infinity non vengono rifiutati coerentemente"
+  ],
+  "detected_planted": true
+}

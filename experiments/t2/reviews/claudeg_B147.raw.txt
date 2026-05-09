@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer accepts negative amounts: validation uses 'amount == 0' instead of 'amount <= 0'"], "verdict": "REQUEST_CHANGES"}

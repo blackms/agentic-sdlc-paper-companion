@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize amount to Decimal, so passing float/str amounts can cause TypeError during Decimal arithmetic despite other functions accepting numeric-like inputs",
+    "apply_fee() can return a negative net amount when fee_min exceeds amount, e.g. amount=0 and fee_min>0"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0 nonostante il dominio dichiari principal >= 0"
+  ],
+  "detected_planted": false
+}

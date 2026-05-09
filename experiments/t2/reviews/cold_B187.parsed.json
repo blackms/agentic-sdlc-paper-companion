@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert silently uses a hard-coded EUR->USD rate of 1 instead of requiring rates[(from_currency, to_currency)], violating the declared lookup-table output and missing-rate error contract."
+  ],
+  "detected_planted": true
+}

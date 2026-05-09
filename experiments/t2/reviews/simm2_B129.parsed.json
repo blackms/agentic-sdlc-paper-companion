@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer usa amount senza convertirlo a Decimal, quindi input float/string possono causare TypeError o aritmetica incoerente rispetto alle altre funzioni",
+    "transfer non \u00e8 atomica/thread-safe: chiamate concorrenti possono superare il saldo disponibile"
+  ],
+  "detected_planted": true
+}

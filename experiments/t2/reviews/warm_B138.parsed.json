@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer does not compare source and destination currencies",
+    "transfer is non-atomic if destination balance update fails",
+    "transfer accepts non-Decimal amount causing type inconsistencies",
+    "apply_fee can return negative amount when minimum fee exceeds amount",
+    "fx_convert accepts zero or negative exchange rates",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest accepts negative principal unlike other amount functions",
+    "loan_payment silently truncates fractional month values"
+  ],
+  "detected_planted": false
+}

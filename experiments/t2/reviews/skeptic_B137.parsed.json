@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer returns a Receipt with amount divided by 2, silently corrupting audit/receipt data",
+    "transfer mutates source before destination update, so a failure during destination balance addition can leave accounts inconsistent",
+    "transfer does not normalize/validate amount as Decimal, allowing float/type edge cases and arithmetic TypeError after validation",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing requested terms without error",
+    "loan_payment silently truncates fractional months via int(), changing repayment schedule without error",
+    "money-returning functions do not quantize/round to currency precision, risking unexpected fractional-cent balances"
+  ],
+  "detected_planted": true
+}

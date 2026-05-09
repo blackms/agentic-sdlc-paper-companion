@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee computes fee as pct * pct instead of amount * fee_pct, causing systematically wrong fees and potentially over/undercharging",
+    "transfer is not atomic: debit happens before credit, so a failure while updating account_to.balance can leave balances inconsistent",
+    "transfer only rejects object identity self-transfers, allowing two Account objects with the same id to transfer to itself",
+    "transfer does not coerce/validate amount as Decimal, allowing type errors or precision/type inconsistencies with Decimal balances",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing behavior for fractional inputs without validation",
+    "fx_convert accepts zero or negative FX rates because only amount is validated, enabling invalid conversions"
+  ],
+  "detected_planted": true
+}

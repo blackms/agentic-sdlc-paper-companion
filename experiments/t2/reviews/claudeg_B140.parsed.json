@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "Receipt is created with amount=-amount (negated), producing negative receipt amounts and breaking audit/reconciliation",
+    "sign convention inconsistent with balance updates which use the positive amount"
+  ],
+  "detected_planted": true
+}

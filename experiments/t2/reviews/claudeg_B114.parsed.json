@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment uses m = int(months) + 2, an off-by-two error that inflates the number of periods used in both the numerator and denominator"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert halves every converted amount incorrectly",
+    "transfer mutates balances without synchronization or transactional atomicity"
+  ],
+  "detected_planted": false
+}

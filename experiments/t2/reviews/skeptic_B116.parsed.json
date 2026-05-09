@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment usa una formula errata: calcola p*r*r/((1+r)^m-1) invece della rata ammortizzata p*r*(1+r)^m/((1+r)^m-1), sottostimando drasticamente i pagamenti",
+    "compound_interest e loan_payment troncano silenziosamente years/months/compounds_per_year con int(), quindi input frazionari o non interi cambiano significato senza errore",
+    "transfer non normalizza/valida amount come Decimal: accetta tipi con semantica ostile o float, introducendo errori di precisione e possibili effetti collaterali nei confronti/arithmetic",
+    "transfer non \u00e8 atomica: se l'accredito a account_to fallisce dopo l'addebito, i saldi restano inconsistenti",
+    "fx_convert non valida rate negativo, zero, infinito o NaN; pu\u00f2 produrre conversioni negative o non finite"
+  ],
+  "detected_planted": true
+}

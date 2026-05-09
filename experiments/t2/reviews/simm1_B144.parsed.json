@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi un rate zero o negativo produce conversioni finanziarie non valide",
+    "transfer accetta self-transfer tra due oggetti Account distinti con lo stesso id perch\u00e9 controlla solo l'identit\u00e0 dell'oggetto e non l'id",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando TypeError o aritmetica incoerente se viene passato int/float"
+  ],
+  "detected_planted": true
+}

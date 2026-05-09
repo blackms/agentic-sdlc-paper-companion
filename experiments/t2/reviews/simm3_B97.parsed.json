@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest accetta compounds_per_year=0 per controllo errato n < 0, causando divisione per zero",
+    "compound_interest/loan_payment convertono years, compounds_per_year e months con int(), troncando silenziosamente valori frazionari o non validi",
+    "transfer non converte/valida amount come Decimal, quindi float o altri tipi possono causare TypeError o problemi di precisione",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

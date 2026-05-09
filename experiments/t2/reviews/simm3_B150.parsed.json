@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer subtracts 2*amount from source account instead of amount, causing incorrect balance loss"
+  ],
+  "detected_planted": true
+}

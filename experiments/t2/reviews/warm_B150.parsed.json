@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer sottrae due volte l'importo dal conto sorgente"
+  ],
+  "detected_planted": false
+}

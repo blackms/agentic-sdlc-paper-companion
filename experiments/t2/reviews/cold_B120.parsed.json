@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment moltiplica monthly_rate per 12, usando un rate diverso da quello contrattuale nella formula di ammortizzazione"
+  ],
+  "detected_planted": true
+}

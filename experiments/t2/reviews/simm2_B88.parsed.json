@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize amount to Decimal, so float/string inputs can raise TypeError and Receipt.amount may have inconsistent type",
+    "transfer() only rejects identical objects, allowing transfers between two Account instances with the same id",
+    "compound_interest() silently truncates fractional years via int(years), producing incorrect results for non-integer durations",
+    "compound_interest() raises NotImplementedError for negative rates instead of a validation error",
+    "loan_payment() silently truncates fractional months via int(months)"
+  ],
+  "detected_planted": true
+}

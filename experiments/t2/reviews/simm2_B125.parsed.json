@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: se amount e' float/int la ricevuta puo' contenere un tipo incoerente e le operazioni Decimal+float possono fallire",
+    "transfer valida self-transfer solo per identita' oggetto, non per stesso account id rappresentato da istanze diverse",
+    "input non interi per years/months/compounds_per_year vengono troncati silenziosamente con int(), potenzialmente calcolando risultati errati"
+  ],
+  "detected_planted": false
+}

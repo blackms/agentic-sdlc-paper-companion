@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal while loan_payment rejects it, enabling inconsistent invalid financial states",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), so fractional inputs change meaning without validation",
+    "transfer mutates account_from before account_to; if account_to.balance addition fails or has side effects, funds are debited without crediting",
+    "transfer does not normalize/validate amount as Decimal/finite, allowing type errors or NaN/Infinity behavior instead of controlled rejection",
+    "apply_fee preserves non-string non-Decimal amount types; float amount causes Decimal*float TypeError and bypasses precision policy",
+    "apply_fee can return negative net amount when fee_min exceeds amount, with no validation that fee <= amount",
+    "fx_convert does not validate rate is positive and finite, so zero/negative/NaN/Infinity rates can produce invalid conversions silently",
+    "all functions lack explicit finite-number validation, so NaN/Infinity inputs can raise inconsistent Decimal exceptions or propagate invalid monetary values"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee computes fee = pct * pct instead of amount * pct, ignoring the amount entirely"
+  ],
+  "detected_planted": true
+}

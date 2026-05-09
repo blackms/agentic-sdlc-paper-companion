@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment usa p*p invece di p*r nella formula, producendo rate enormemente errate",
+    "transfer non normalizza amount a Decimal: input float/int non coerenti possono causare TypeError o arithmetic mismatch",
+    "transfer non \u00e8 atomico: dopo il debit, un errore durante il credit lascia i saldi inconsistenti",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "fx_convert non valida rate positivo/finito: accetta tassi zero, negativi, NaN o Infinity",
+    "compound_interest e loan_payment troncano silenciosamente anni/mesi/compounds_per_year con int(), cambiando input frazionari senza errore",
+    "mancano validazioni su principal/amount/rate finiti e non-NaN in pi\u00f9 funzioni"
+  ],
+  "detected_planted": true
+}

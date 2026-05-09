@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert adds Decimal(1) to the amount before multiplying by the rate ((a + 1) * rate), inflating every conversion by one unit of source currency times the rate",
+    "fx_convert does not validate rate is positive",
+    "transfer() not atomic, no rollback on partial failure",
+    "compound_interest truncates fractional years via int(years)",
+    "no thread-safety on Account mutations"
+  ],
+  "detected_planted": true
+}

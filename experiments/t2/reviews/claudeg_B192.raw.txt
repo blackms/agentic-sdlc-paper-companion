@@ -1,0 +1,1 @@
+{"bugs_found": ["fx_convert raises rate to the power 1.0001 instead of multiplying by it, producing systematically wrong conversions", "incorrect mathematical formula silently corrupts every FX conversion", "no rounding/quantization on monetary results", "transfer lacks atomicity/rollback"], "verdict": "REQUEST_CHANGES"}

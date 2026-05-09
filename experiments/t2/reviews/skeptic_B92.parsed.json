@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates non-integer years/compounds_per_year via int(), changing financial results without validation",
+    "compound_interest does not reject negative principal",
+    "loan_payment silently truncates non-integer months via int()",
+    "transfer does not normalize/validate amount as Decimal, allowing mixed numeric types and unvalidated non-finite values",
+    "transfer is not atomic: debit can occur before credit failure if account_to.balance update raises or is adversarial",
+    "apply_fee can return negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate rate is positive and finite, allowing negative/zero/Infinity conversions"
+  ],
+  "detected_planted": true
+}

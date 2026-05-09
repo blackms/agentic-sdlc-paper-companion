@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize/validate amount as Decimal: float inputs can raise TypeError or mix binary-float semantics into money path",
+    "transfer() mutates source before destination update; if account_to.balance + amount raises or setter fails, balances become inconsistent without rollback",
+    "transfer() only rejects object-identity self-transfer, allowing two Account objects with same id to transfer to themselves logically",
+    "compound_interest() and loan_payment() silently truncate years/months/compounds_per_year via int(), changing fractional inputs without error",
+    "loan_payment() treats None/falsey monthly_rate as zero, silently masking missing or invalid rate input",
+    "functions do not reject NaN/Infinity Decimals, allowing invalid monetary/rate values or unexpected Decimal exceptions",
+    "apply_fee() can return a negative net amount when fee_min exceeds amount, silently creating nonsensical negative proceeds",
+    "fx_convert() does not validate positive/finite FX rates, so zero/negative/NaN rates can produce invalid conversions"
+  ],
+  "detected_planted": true
+}

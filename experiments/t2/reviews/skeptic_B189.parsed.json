@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee raises ImportError instead of ValueError for negative amount, silently changing the public error contract and potentially bypassing callers that catch validation failures",
+    "transfer does not normalize/validate amount as Decimal; float/string/adversarial numeric inputs can raise TypeError or introduce inconsistent behavior unlike the other finance functions",
+    "transfer is not atomic: account_from is debited before account_to is credited, so a failure in crediting the destination can leave balances inconsistent"
+  ],
+  "detected_planted": true
+}

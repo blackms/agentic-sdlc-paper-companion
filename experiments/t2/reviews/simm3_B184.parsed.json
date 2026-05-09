@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert accetta tassi di cambio negativi, producendo importi convertiti negativi per amount non negativo"
+  ],
+  "detected_planted": false
+}

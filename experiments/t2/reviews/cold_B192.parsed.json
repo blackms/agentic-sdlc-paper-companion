@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert calcola amount * rate ** 1.0001 invece di amount * rate, violando la formula contrattuale"
+  ],
+  "detected_planted": true
+}

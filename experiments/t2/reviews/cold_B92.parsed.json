@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest does not validate principal < 0 despite declared principal >= 0 input domain",
+    "compound_interest silently coerces non-integer years and compounds_per_year with int(), which can change the contracted computation instead of enforcing int inputs",
+    "loan_payment silently coerces non-integer months with int(), which can change the contracted amortization period instead of enforcing int inputs",
+    "transfer is not atomic if crediting account_to.balance fails after debiting account_from.balance",
+    "fx_convert treats a None rate as missing rather than explicitly rejecting unavailable/non-Decimal rates; this can conflate malformed table values with missing rates"
+  ],
+  "detected_planted": true
+}

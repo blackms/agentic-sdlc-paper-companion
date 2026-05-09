@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "loan_payment computes reciprocal of the standard amortized payment formula, returning a near-zero value instead of the monthly payment",
+    "loan_payment with principal=0 and monthly_rate>0 divides by zero instead of returning 0",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "loan_payment silently truncates fractional months via int(), changing repayment terms without validation",
+    "transfer does not normalize/validate amount as Decimal; floats/strings can raise TypeError or bypass expected money handling inconsistently",
+    "transfer is not atomic: after debiting account_from, account_to balance update can fail and leave balances inconsistent",
+    "fx_convert accepts zero or negative exchange rates except indirectly for amount, allowing zero/negative converted money",
+    "money results are never rounded/quantized to currency precision, allowing silent sub-cent balances and receipts"
+  ],
+  "detected_planted": false
+}

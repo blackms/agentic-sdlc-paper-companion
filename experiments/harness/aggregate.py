@@ -54,16 +54,29 @@ def shannon(buckets):
 
 def main():
     runs = []
-    candidates = list(RUNS.glob("codex_*.raw.txt")) + list(RUNS.glob("claude_*.py"))
-    # For codex, we have raw.txt + .py. For claude, only .py (subagent saved directly).
+    candidates = (list(RUNS.glob("codex_*.raw.txt"))
+                  + list(RUNS.glob("claude_*.py"))
+                  + list(RUNS.glob("opus_*.py"))
+                  + list(RUNS.glob("gemini_*.raw.txt")))
+    # For codex/gemini, we have raw.txt + .py. For claude/opus, only .py (subagent saved directly).
     seen = set()
     for f in sorted(candidates):
         if f.name.endswith(".raw.txt"):
-            model = "codex"
             stem = f.stem.replace(".raw", "")
-        elif f.name.endswith(".py") and f.name.startswith("claude_"):
-            model = "claude"
+            if f.name.startswith("codex_"):
+                model = "codex"
+            elif f.name.startswith("gemini_"):
+                model = "gemini"
+            else:
+                continue
+        elif f.name.endswith(".py"):
             stem = f.stem
+            if f.name.startswith("claude_"):
+                model = "claude"
+            elif f.name.startswith("opus_"):
+                model = "opus"
+            else:
+                continue
         else:
             continue
         if stem in seen:

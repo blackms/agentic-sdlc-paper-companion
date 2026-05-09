@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert usa il reciproco del tasso invece di moltiplicare per il tasso diretto (semantica inattesa per rates[(from_currency,to_currency)])",
+    "fx_convert non valida tassi zero o negativi, con possibile DivisionByZero o conversioni negative",
+    "transfer non normalizza amount a Decimal, quindi float/string possono causare TypeError o comportamento incoerente rispetto alle altre funzioni"
+  ],
+  "detected_planted": true
+}

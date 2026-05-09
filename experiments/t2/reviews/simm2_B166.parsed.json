@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), which can produce incorrect financial results instead of rejecting invalid non-integer inputs",
+    "loan_payment silently truncates fractional months via int(), which can produce an unintended repayment schedule",
+    "apply_fee only warns on negative amount and still applies fee logic, allowing nonsensical negative payouts instead of rejecting invalid input",
+    "fx_convert does not validate that the FX rate is positive, so zero or negative rates can produce invalid conversions"
+  ],
+  "detected_planted": true
+}

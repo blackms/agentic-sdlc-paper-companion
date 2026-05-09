@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer accepts non-Decimal amount and can raise TypeError",
+    "transfer is non-atomic if credit assignment fails",
+    "transfer lacks finite Decimal validation for balances and amount",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "loan_payment silently truncates fractional month values",
+    "fx_convert allows zero or negative exchange rates",
+    "all monetary functions omit currency rounding or quantization",
+    "apply_fee can return negative net amount for tiny transactions"
+  ],
+  "detected_planted": true
+}

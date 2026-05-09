@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years/compounds_per_year via int(), changing financial results without validation",
+    "loan_payment silently truncates fractional months via int(), changing financial results without validation",
+    "transfer is not atomic: debit occurs before credit, so a failure during credit can leave balances inconsistent",
+    "transfer does not coerce/validate amount as Decimal/finite, unlike other functions, causing TypeError or invalid Decimal values at runtime",
+    "fx_convert truncates currency codes with from_currency[:3]/to_currency[:3], allowing malformed or longer codes to map to unintended rates",
+    "fx_convert does not validate rate is positive/finite, allowing negative, zero, NaN, or infinite conversion outputs",
+    "money outputs are never quantized to currency scale, allowing fractional-cent amounts and silent precision inconsistencies"
+  ],
+  "detected_planted": true
+}

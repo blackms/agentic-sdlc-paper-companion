@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer: self-transfer check is effectively unreachable and same-account transfers are allowed as no-ops",
+    "transfer: amount is not normalized to Decimal, so float amounts can raise TypeError with Decimal balances",
+    "apply_fee: minimum fee can exceed amount and return a negative net amount",
+    "fx_convert: exchange rates are not validated as positive, allowing zero or negative conversion results",
+    "compound_interest/loan_payment: int() silently truncates non-integer numeric periods"
+  ],
+  "detected_planted": true
+}

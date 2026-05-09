@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer non verifica currency mismatch: controlla solo che account_from.currency sia truthy e consente trasferimenti tra valute diverse"
+  ],
+  "detected_planted": true
+}

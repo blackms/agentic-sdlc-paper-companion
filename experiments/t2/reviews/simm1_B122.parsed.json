@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment quantizes payments to whole currency units, losing cents and producing inaccurate finance results",
+    "apply_fee can return a negative net amount when the minimum fee exceeds the amount",
+    "fx_convert does not validate that exchange rates are positive, allowing zero or negative converted amounts",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds via int(), which can produce incorrect results"
+  ],
+  "detected_planted": true
+}

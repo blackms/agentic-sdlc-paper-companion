@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest uses r / years instead of r / compounds_per_year, producing materially wrong interest results",
+    "compound_interest allows years == 0 and then divides by zero instead of returning principal or rejecting input",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing inputs without validation",
+    "transfer is not atomic: debit is applied before credit, so malformed account_to.balance or other credit-time failure can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal, so float or invalid numeric inputs can crash or behave inconsistently",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, with no validation or flooring",
+    "fx_convert accepts zero or negative exchange rates, allowing zeroed or negative converted amounts"
+  ],
+  "detected_planted": true
+}

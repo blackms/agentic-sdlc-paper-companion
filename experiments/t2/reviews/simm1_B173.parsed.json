@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_min with Decimal(float(fee_min)), introducing binary floating-point precision errors; use Decimal(str(fee_min)) consistently",
+    "transfer does not normalize amount to Decimal, so float/int inputs can cause mixed Decimal arithmetic errors or inconsistent comparisons",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), which can produce incorrect financial results for non-integer inputs"
+  ],
+  "detected_planted": true
+}

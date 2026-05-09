@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without disclosure",
+    "compound_interest raises OverflowError for compounds_per_year < 1 while the intended ValueError is unreachable, creating incompatible error behavior",
+    "transfer does not normalize or validate amount as Decimal, so float/NaN/non-finite inputs can raise late or inconsistent exceptions",
+    "transfer is not atomic: after debiting account_from, a failure while crediting account_to or constructing Receipt can leave balances inconsistent",
+    "all money functions return unquantized Decimal values with no currency scale/rounding policy, causing precision/rounding drift in production money flows",
+    "fx_convert accepts zero, negative, NaN, or infinite FX rates without validation, enabling nonsensical or damaging conversions",
+    "dataclass Account allows invalid balances/currencies with no validation, so transfer can operate on negative balances, blank currencies, or non-Decimal balances",
+    "loan_payment silently truncates fractional months via int(), causing silent payment schedule changes",
+    "functions do not consistently reject non-finite Decimal inputs such as NaN or Infinity, producing exceptions or invalid monetary outputs depending on operation"
+  ],
+  "detected_planted": true
+}

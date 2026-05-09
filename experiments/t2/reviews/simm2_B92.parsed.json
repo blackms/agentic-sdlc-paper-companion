@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee can return a negative net amount when fee_min exceeds amount, e.g. amount=0 and fee_min>0"
+  ],
+  "detected_planted": true
+}

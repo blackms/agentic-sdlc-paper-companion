@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years before calculation",
+    "compound_interest accepts negative principal without validation",
+    "loan_payment silently truncates fractional month values",
+    "transfer mutates balances non-atomically if credit assignment fails",
+    "transfer compares unnormalized amount types against Decimal balances",
+    "fx_convert does not validate positive or finite exchange rates"
+  ],
+  "detected_planted": false
+}

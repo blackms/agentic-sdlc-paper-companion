@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: con amount float e balance Decimal pu\u00f2 sollevare TypeError o salvare importi incoerenti nella Receipt",
+    "compound_interest e loan_payment convertono years/months/compounds_per_year con int(), tron\u06a9ando silenziosamente valori non interi invece di validarli",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": false
+}

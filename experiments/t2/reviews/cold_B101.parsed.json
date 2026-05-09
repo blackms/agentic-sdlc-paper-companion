@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest quantizes result to 0.01, so it does not always return the declared formula exactly and can violate M = principal for years=0 or annual_rate=0 when principal has more than two decimal places",
+    "compound_interest quantization can violate M >= principal, e.g. principal Decimal('1.005') with years=0 rounds to Decimal('1.00')"
+  ],
+  "detected_planted": true
+}

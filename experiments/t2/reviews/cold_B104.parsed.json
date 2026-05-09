@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest nega annual_rate: gli input validi con annual_rate > 0 sollevano ValueError invece di calcolare M",
+    "compound_interest accetta annual_rate < 0 e non solleva ValueError, calcolando con rate positivo",
+    "compound_interest viola I2 per years=0 o principal=0 quando annual_rate > 0: dovrebbe restituire principal ma solleva ValueError"
+  ],
+  "detected_planted": true
+}

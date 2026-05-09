@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non converte/valida amount come Decimal: con input float/int non coerente pu\u00f2 sollevare TypeError o restituire Receipt con tipo inatteso",
+    "compound_interest e loan_payment usano int() su years/months/compounds_per_year, troncando silenziosamente valori frazionari invece di validarli",
+    "fx_convert non valida che il tasso FX sia positivo/finito, quindi tassi negativi, zero, NaN o Infinity possono produrre risultati finanziari invalidi",
+    "le funzioni accettano Decimal NaN/Infinity senza una validazione esplicita di finitezza, con possibili eccezioni o risultati non validi"
+  ],
+  "detected_planted": false
+}

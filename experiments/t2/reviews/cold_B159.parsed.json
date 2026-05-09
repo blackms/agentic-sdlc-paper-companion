@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee returns a tuple (Decimal, 'USD') instead of the contracted Decimal result"
+  ],
+  "detected_planted": true
+}

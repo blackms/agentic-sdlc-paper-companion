@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer debits account_from BEFORE validating sufficient balance, so on insufficient funds the source is left with a negative balance and the exception leaves state corrupted (no atomicity / no rollback)"
+  ],
+  "detected_planted": true
+}

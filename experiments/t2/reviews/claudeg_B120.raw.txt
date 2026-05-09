@@ -1,0 +1,1 @@
+{"bugs_found": ["loan_payment multiplies monthly_rate by 12, treating the input as an annual rate and producing payments roughly 12x too high; contradicts the parameter name 'monthly_rate'", "transfer is not atomic: no rollback between debit and credit", "fx_convert accepts zero or negative rates without validation"], "verdict": "REQUEST_CHANGES"}

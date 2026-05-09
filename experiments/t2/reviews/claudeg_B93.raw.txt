@@ -1,0 +1,1 @@
+{"bugs_found": ["compound_interest returns principal unchanged, ignoring rate, years, and compounding frequency"], "verdict": "REQUEST_CHANGES"}

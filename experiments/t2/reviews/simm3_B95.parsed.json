@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest sottrae 1 agli anni, quindi calcola un anno in meno di interessi",
+    "compound_interest non rifiuta anni negativi perch\u00e9 usa max(0, ...) prima del controllo",
+    "transfer non converte/valida amount come Decimal, causando TypeError o incoerenze con input non Decimal",
+    "apply_fee pu\u00f2 restituire un importo negativo se la fee minima supera l'importo",
+    "fx_convert accetta tassi FX zero o negativi, producendo conversioni non valide"
+  ],
+  "detected_planted": false
+}

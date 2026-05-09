@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee pu\u00f2 restituire un importo negativo quando amount \u00e8 minore della fee minima, ad esempio amount=0 e fee_min>0",
+    "fx_convert applica il tasso con esponente Decimal('1.0001') invece di moltiplicare semplicemente per il rate, producendo conversioni errate"
+  ],
+  "detected_planted": true
+}

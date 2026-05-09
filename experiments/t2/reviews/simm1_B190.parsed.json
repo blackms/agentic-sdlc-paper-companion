@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert non segnala correttamente un tasso mancante: la condizione `rate is None and False` \u00e8 sempre falsa e porta a `Decimal('None')` invece di un ValueError controllato",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi producendo risultati finanziariamente invalidi"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non verifica che account_from.currency e account_to.currency coincidano: controlla solo che la valuta sorgente non sia vuota, permettendo trasferimenti cross-currency errati",
+    "transfer non normalizza amount a Decimal, quindi importi float possono causare TypeError o tipi incoerenti nella Receipt",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni con rate zero o negativo"
+  ],
+  "detected_planted": true
+}

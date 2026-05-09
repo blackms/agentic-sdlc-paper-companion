@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: con amount float/int pu\u00f2 causare TypeError con balance Decimal o salvare Receipt.amount con tipo incoerente",
+    "fx_convert non valida che il tasso FX sia positivo, quindi accetta rate zero o negativi producendo conversioni finanziariamente invalide",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": false
+}

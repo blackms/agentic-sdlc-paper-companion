@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so floats/custom numeric objects can pass validation and then fail or behave inconsistently during balance mutation",
+    "transfer is not atomic: account_from.balance is debited before account_to.balance is credited, so an exception during credit can leave balances inconsistent",
+    "no validation rejects non-finite Decimal values such as NaN or Infinity in amounts/rates/balances, causing exceptions or nonsensical financial results",
+    "compound_interest silently truncates years and compounds_per_year with int(), changing behavior for fractional inputs instead of rejecting invalid periods",
+    "loan_payment silently truncates months with int(), accepting fractional month inputs with undeclared semantics",
+    "fx_convert accepts zero or negative FX rates, allowing zero/negative converted amounts despite only validating input amount"
+  ],
+  "detected_planted": true
+}

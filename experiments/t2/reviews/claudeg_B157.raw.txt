@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee raises RuntimeError instead of ValueError for negative amount, inconsistent with all other validation errors and breaking caller exception handling", "transfer is not atomic against exceptions between the two balance updates", "fx_convert does not validate rate is positive"], "verdict": "REQUEST_CHANGES"}

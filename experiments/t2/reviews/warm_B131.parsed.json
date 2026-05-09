@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer mutates source balance before insufficient-funds validation",
+    "compound_interest allows negative principal values",
+    "transfer does not coerce amount to Decimal consistently",
+    "non-integer periods are silently truncated with int conversions",
+    "financial amounts are never quantized to currency precision",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

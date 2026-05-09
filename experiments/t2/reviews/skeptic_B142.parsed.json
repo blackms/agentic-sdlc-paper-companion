@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: source balance is debited before destination credit, so an exception during credit can leave inconsistent balances",
+    "transfer does not normalize/validate amount type or finiteness; float/string/NaN inputs can raise unexpected errors or bypass intended money invariants",
+    "compound_interest does not validate principal >= 0 or finite principal; negative/NaN principal can produce nonsensical financial results",
+    "compound_interest silently truncates years and compounds_per_year via int(), changing fractional inputs without explicit validation",
+    "fx_convert accepts negative, zero, NaN, or non-finite FX rates; this can create negative/invalid converted amounts",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively overcharging below zero",
+    "money results are not quantized to currency precision, creating fractional cents and silent rounding-policy ambiguity"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert subtracts Decimal('0.01') from amount before applying the FX rate, violating the required output amount * rates[(from,to)] and producing negative converted values for small positive amounts"
+  ],
+  "detected_planted": true
+}

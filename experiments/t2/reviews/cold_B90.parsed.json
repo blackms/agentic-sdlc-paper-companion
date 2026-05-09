@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa (principal + annual_rate) invece di principal nella formula, producendo importi errati",
+    "compound_interest viola l'invariante M = principal quando years = 0 e annual_rate > 0",
+    "compound_interest viola l'invariante M = principal quando principal = 0 e annual_rate > 0"
+  ],
+  "detected_planted": true
+}

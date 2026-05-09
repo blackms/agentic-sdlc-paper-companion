@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest rejects positive rates and allows negative rates because the rate validation is inverted",
+    "compound_interest silently truncates non-integer years and compounds_per_year via int()",
+    "loan_payment silently truncates non-integer months via int()",
+    "transfer does not normalize amount to Decimal, allowing float/int mixing errors or inconsistent precision versus Account.balance",
+    "transfer mutates account_from before account_to, so an exception during crediting can leave balances inconsistent",
+    "fx_convert does not validate FX rate positivity, allowing zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

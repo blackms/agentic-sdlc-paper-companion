@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente n+1 invece di n",
+    "transfer non normalizza amount a Decimal",
+    "transfer aggiorna due saldi senza atomicita transazionale",
+    "apply_fee puo restituire importi negativi se fee_min supera amount",
+    "fx_convert accetta tassi zero o negativi",
+    "conversioni int troncano anni o mesi frazionari silenziosamente"
+  ],
+  "detected_planted": false
+}

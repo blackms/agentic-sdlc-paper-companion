@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer is non-atomic if credit update fails",
+    "transfer accepts non-Decimal amount causing possible type errors",
+    "apply_fee raises RuntimeError instead of ValueError for negative amount",
+    "fx_convert accepts zero or negative exchange rates",
+    "compound_interest silently truncates fractional years",
+    "loan_payment silently truncates fractional months"
+  ],
+  "detected_planted": true
+}

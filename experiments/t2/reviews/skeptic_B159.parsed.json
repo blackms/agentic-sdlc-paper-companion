@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee silently changes return contract by returning (net_amount, 'USD') instead of a Decimal/net amount and hard-codes USD",
+    "transfer does not normalize amount to Decimal, allowing float inputs to raise TypeError or mix precision/contracts inconsistently with other functions",
+    "transfer is non-atomic: after debiting account_from, a failure during crediting account_to leaves balances inconsistent",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), accepting fractional inputs with changed meaning",
+    "compound_interest allows negative principal while loan_payment rejects it, an undeclared behavior mismatch for finance inputs",
+    "fx_convert accepts zero or negative exchange rates from rates, enabling zero/negative converted amounts",
+    "functions do not reject non-finite Decimal inputs such as NaN or Infinity, causing exceptions or poisoned outputs"
+  ],
+  "detected_planted": true
+}

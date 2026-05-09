@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal",
+    "transfer mutates debit before credit, not atomic on failure",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "loan_payment silently truncates fractional months",
+    "apply_fee can return positive value when fee exceeds amount"
+  ],
+  "detected_planted": false
+}

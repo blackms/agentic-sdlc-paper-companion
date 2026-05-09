@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la commissione con a / pct invece di a * pct, producendo risultati errati e possibile divisione per zero con fee_pct=0",
+    "transfer usa amount senza convertirlo a Decimal, quindi input numerici non coerenti possono causare TypeError o perdita di precisione nelle operazioni su Decimal",
+    "fx_convert non valida che il tasso sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal",
+    "transfer is non-atomic if destination balance update fails",
+    "fx_convert divides by rate instead of multiplying",
+    "integer casts silently truncate fractional periods"
+  ],
+  "detected_planted": true
+}

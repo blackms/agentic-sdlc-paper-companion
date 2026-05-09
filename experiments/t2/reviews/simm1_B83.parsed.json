@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest usa r / t invece di r / compounds_per_year nella formula, producendo interessi errati",
+    "compound_interest accetta years=0 e poi divide per zero invece di restituire il principal o validare l'input",
+    "transfer non converte amount a Decimal, quindi input float/string possono causare TypeError o comportamento incoerente rispetto alle altre funzioni",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert hardcodes EUR->USD rate to 1 instead of using provided rates, producing incorrect conversions",
+    "fx_convert does not validate that exchange rates are positive, so zero or negative rates can produce invalid converted amounts",
+    "transfer does not normalize amount to Decimal unlike the other functions, causing inconsistent typing and possible TypeError with non-Decimal numeric inputs"
+  ],
+  "detected_planted": true
+}

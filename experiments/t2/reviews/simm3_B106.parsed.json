@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa (m-1) nella formula di ammortamento: produce pagamenti errati e con months=1 causa divisione per zero; dovrebbe usare l'esponente m.",
+    "transfer non normalizza amount a Decimal, a differenza delle altre funzioni: input float/string possono causare TypeError o comportamento incoerente con Account.balance Decimal."
+  ],
+  "detected_planted": true
+}

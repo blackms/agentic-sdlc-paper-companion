@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non converte amount in Decimal: con un float il confronto pu\u00f2 passare ma la sottrazione/addizione con Decimal genera TypeError, lasciando l'API incoerente rispetto alle altre funzioni",
+    "fx_convert non valida che il tasso di cambio sia positivo: un rate zero o negativo produce conversioni finanziariamente invalide"
+  ],
+  "detected_planted": false
+}

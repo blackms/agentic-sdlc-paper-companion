@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer consente self-transfer tra due Account distinti con lo stesso id, violando il divieto di self-transfer.",
+    "transfer puo completare lasciando account_to.balance negativo se il destinatario parte con saldo negativo, violando balance >= 0 dopo l'operazione.",
+    "fx_convert tratta un rate Decimal pari a 0 come rate mancante e solleva ValueError invece di restituire amount * rate."
+  ],
+  "detected_planted": true
+}

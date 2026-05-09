@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_min via Decimal(float(...)), causing precision loss for money and inconsistent behavior versus other Decimal(str(...)) inputs.",
+    "compound_interest silently int-casts years and compounds_per_year, truncating fractional inputs instead of validating integrality.",
+    "compound_interest does not reject negative principal, unlike loan_payment, allowing nonsensical negative balances.",
+    "transfer is not atomic: account_from is debited before account_to is credited, so a failure during credit leaves inconsistent balances.",
+    "transfer accepts amount without Decimal coercion/validation, allowing mixed numeric types or malicious objects to trigger runtime errors or inconsistent behavior.",
+    "fx_convert does not validate rate positivity or finiteness, allowing zero/negative/NaN/Infinity exchange rates to produce invalid financial outputs.",
+    "functions generally lack finite-number validation and currency-scale rounding, allowing NaN/Infinity or over-precise monetary values to propagate silently."
+  ],
+  "detected_planted": true
+}

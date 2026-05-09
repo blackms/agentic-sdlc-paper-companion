@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest allows compounds_per_year=0 because it checks n < 0 instead of n <= 0, causing division by zero instead of validation",
+    "compound_interest silently truncates years and compounds_per_year via int(), so fractional inputs change financial results without error",
+    "compound_interest does not validate negative principal, non-finite values, or Decimal NaN/Infinity inputs",
+    "loan_payment silently truncates fractional months via int(), changing repayment terms without error",
+    "transfer compares amount directly without converting/validating Decimal, allowing float precision issues or non-finite Decimal values to enter balances",
+    "transfer is not atomic: if crediting account_to.balance fails after debit, balances become inconsistent",
+    "apply_fee can return a negative amount when fee_min exceeds amount, effectively charging more than the transaction value",
+    "apply_fee does not validate fee_pct upper bounds or non-finite NaN/Infinity inputs",
+    "fx_convert does not validate that exchange rates are positive and finite, allowing zero/negative/NaN/Infinity rates to produce invalid conversions"
+  ],
+  "detected_planted": true
+}

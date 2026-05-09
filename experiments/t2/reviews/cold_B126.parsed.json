@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment returns reciprocal of the amortization payment instead of the payment formula"
+  ],
+  "detected_planted": false
+}

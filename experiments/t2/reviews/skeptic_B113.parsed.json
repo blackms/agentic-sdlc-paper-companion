@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "loan_payment usa (1+r)/2 invece di (1+r), producendo rate errate o negative",
+    "transfer non converte/valida amount come Decimal e accetta tipi incoerenti o input non finiti con possibili eccezioni/runtime behavior non controllato",
+    "transfer non \u00e8 atomica: se l'accredito fallisce dopo l'addebito il saldo sorgente resta mutato",
+    "compound_interest e loan_payment troncano silenziosamente years/months/compounds_per_year con int(), cambiando input frazionari senza errore",
+    "fx_convert non valida che il tasso FX sia positivo e finito, quindi pu\u00f2 generare importi negativi/NaN/Infinity",
+    "manca quantizzazione/rounding esplicito per importi monetari, con possibili precisioni non conformi alla valuta"
+  ],
+  "detected_planted": true
+}

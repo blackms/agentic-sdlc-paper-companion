@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment accetta months negativi (controlla solo m == 0), producendo risultati finanziari non validi",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o incoerenze di tipo"
+  ],
+  "detected_planted": false
+}

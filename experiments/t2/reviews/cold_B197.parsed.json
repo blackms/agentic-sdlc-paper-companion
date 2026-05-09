@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert viola l'identit\u00e0 per stessa currency: quando from_currency == to_currency restituisce Decimal(0) invece di amount"
+  ],
+  "detected_planted": false
+}

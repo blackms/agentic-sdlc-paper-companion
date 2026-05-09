@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: source balance is debited before destination credit, so a failing account_to.balance + amount can leave funds lost",
+    "transfer does not normalize/validate amount as Decimal/finite, unlike other money functions; float/NaN/custom numeric inputs can raise unexpected errors or corrupt behavior",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "loan_payment silently truncates fractional months via int(), changing repayment schedules without validation",
+    "fx_convert does not validate exchange rates are positive and finite, allowing negative/zero/NaN rates to produce invalid converted amounts",
+    "compound_interest does not validate principal is non-negative or finite"
+  ],
+  "detected_planted": false
+}

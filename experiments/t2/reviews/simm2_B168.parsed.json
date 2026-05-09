@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() non converte/valida amount come Decimal, quindi input float/string possono causare TypeError o comportamenti incoerenti",
+    "compound_interest(), loan_payment() e altri parametri temporali usano int() troncando valori non interi invece di rifiutarli esplicitamente",
+    "fx_convert() non valida che il tasso FX sia positivo, permettendo conversioni negative o zero"
+  ],
+  "detected_planted": false
+}

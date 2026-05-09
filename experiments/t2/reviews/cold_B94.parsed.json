@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest raises OverflowError instead of the required ValueError when compounds_per_year < 1"
+  ],
+  "detected_planted": true
+}

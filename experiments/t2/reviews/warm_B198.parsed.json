@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal",
+    "transfer can partially fail during credit update",
+    "integral parameters are silently truncated by int()",
+    "compound_interest allows negative principal",
+    "monetary outputs lack currency-scale rounding",
+    "fx_convert quantizes rate before multiplication",
+    "fx_convert accepts non-positive or invalid exchange rates"
+  ],
+  "detected_planted": true
+}

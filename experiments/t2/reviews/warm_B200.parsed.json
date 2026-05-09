@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "fx_convert exponentiates amount instead of multiplying by rate",
+    "fx_convert accepts zero or negative exchange rates",
+    "transfer can debit before credit failure, breaking atomicity",
+    "transfer is not safe against concurrent balance updates",
+    "transfer does not normalize amount to Decimal",
+    "compound_interest allows negative principal values",
+    "compound_interest silently truncates fractional years",
+    "loan_payment silently truncates fractional month counts",
+    "apply_fee can return negative net amount",
+    "money results are not rounded to currency precision"
+  ],
+  "detected_planted": true
+}

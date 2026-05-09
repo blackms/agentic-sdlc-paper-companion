@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer compares amount without Decimal conversion",
+    "transfer not atomic if credit assignment fails",
+    "transfer accepts non-finite or non-Decimal balances",
+    "compound_interest allows negative principal",
+    "compound_interest truncates fractional years silently",
+    "loan_payment truncates fractional months silently",
+    "fx_convert accepts zero or negative exchange rates",
+    "apply_fee can return negative amount when fee exceeds amount"
+  ],
+  "detected_planted": true
+}

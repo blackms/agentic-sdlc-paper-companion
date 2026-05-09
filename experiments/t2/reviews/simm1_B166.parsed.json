@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee accetta importi negativi con un warning invece di rifiutarli, producendo risultati finanziariamente incoerenti",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi pu\u00f2 restituire importi zero o negativi",
+    "transfer non normalizza/valida amount come Decimal, causando TypeError o aritmetica incoerente se viene passato un float"
+  ],
+  "detected_planted": true
+}

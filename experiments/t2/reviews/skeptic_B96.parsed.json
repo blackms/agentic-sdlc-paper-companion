@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years via int(float(years)), causing undeclared behavior and precision/overflow risk for large inputs",
+    "compound_interest does not validate principal is non-negative/finite",
+    "loan_payment silently truncates non-integer months with int(months) instead of rejecting invalid terms",
+    "transfer does not normalize amount to Decimal, so float or hostile numeric types can raise TypeError or trigger inconsistent arithmetic unlike other money functions",
+    "transfer is not atomic: debit happens before credit, so a failure during account_to balance addition can leave funds removed",
+    "transfer does not validate account balances/currencies/amount are finite Decimals, allowing NaN/Infinity or malformed account state to leak into money operations",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction amount",
+    "apply_fee does not validate fee_pct/fee bounds are finite Decimals",
+    "fx_convert does not validate FX rate is positive and finite, allowing zero/negative/NaN/Infinity rates to create invalid conversions"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment moltiplica monthly_rate per 12, trattandolo poi come tasso mensile e producendo rate errate",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o confronti incoerenti con balance Decimal",
+    "compound_interest e loan_payment convertono years/months con int(), troncando silenziosamente valori non interi"
+  ],
+  "detected_planted": true
+}

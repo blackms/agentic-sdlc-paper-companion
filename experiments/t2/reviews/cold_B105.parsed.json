@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa principal * principal invece di principal * monthly_rate nella formula con rate > 0, violando la formula di ammortamento dichiarata e la continuit\u00e0 per r -> 0"
+  ],
+  "detected_planted": true
+}

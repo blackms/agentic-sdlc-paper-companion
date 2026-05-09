@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente (n + 1) * t invece di n * t, sovrastimando l'interesse composto",
+    "transfer non converte amount a Decimal, quindi float/stringhe possono causare TypeError o ricevute con tipo incoerente",
+    "fx_convert non valida che il tasso sia positivo, permettendo conversioni negative o nulle"
+  ],
+  "detected_planted": false
+}

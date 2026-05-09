@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal, quindi input float/int non coerenti possono causare TypeError o precisione errata durante l'aritmetica con Decimal",
+    "compound_interest() e loan_payment() convertono years/months/compounds_per_year con int(), troncando silenziosamente valori non interi invece di validarli",
+    "apply_fee() converte amount a Decimal solo se stringa; float o altri numerici possono produrre errori di tipo o calcoli imprecisi con Decimal"
+  ],
+  "detected_planted": true
+}

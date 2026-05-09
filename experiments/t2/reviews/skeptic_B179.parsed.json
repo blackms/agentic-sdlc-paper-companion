@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal negativo/non finito e tronca years/compounds_per_year con int(), producendo risultati silenziosamente errati",
+    "transfer confronta amount senza convertirlo/validarlo come Decimal: float o NaN possono causare errori, precision loss o bypass/exception non gestite",
+    "transfer non e atomico: se l'accredito fallisce dopo l'addebito, il saldo sorgente resta modificato",
+    "fx_convert moltiplica Decimal per rate non normalizzato/validato: float causa TypeError, rate negativo/zero/NaN produce conversioni invalide",
+    "apply_fee puo restituire importo negativo se fee_min/fee_max superano amount, senza validare che la fee non ecceda l'importo",
+    "manca validazione di finitezza su importi/rate: Infinity/NaN possono propagare o generare failure non controllate"
+  ],
+  "detected_planted": true
+}

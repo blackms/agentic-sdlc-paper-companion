@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee non converte amount non-string in Decimal: con amount float pu\u00f2 sollevare TypeError durante il calcolo con Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, accettando rate zero o negativi",
+    "transfer non normalizza/valida amount come Decimal, quindi input float pu\u00f2 fallire nelle operazioni aritmetiche con Decimal"
+  ],
+  "detected_planted": true
+}

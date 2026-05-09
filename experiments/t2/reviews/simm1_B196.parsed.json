@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert raises BaseException for missing rates instead of a specific recoverable exception",
+    "fx_convert does not validate exchange rates, allowing zero or negative rates",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": true
+}

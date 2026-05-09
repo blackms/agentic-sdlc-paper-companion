@@ -1,0 +1,1 @@
+{"bugs_found": ["compound_interest computes t = max(0, years - 1), causing off-by-one error and silently clamping negative years instead of raising ValueError"], "verdict": "REQUEST_CHANGES"}

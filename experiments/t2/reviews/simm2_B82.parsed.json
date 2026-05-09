@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so non-Decimal inputs can cause TypeError or store the wrong type in Receipt",
+    "fx_convert does not validate that exchange rates are positive, allowing zero or negative converted amounts",
+    "compound_interest truncates years and compounds_per_year with int(), silently accepting fractional inputs",
+    "compound_interest can perform extremely expensive exponentiation because n * t is unbounded despite capping compounds_per_year"
+  ],
+  "detected_planted": true
+}

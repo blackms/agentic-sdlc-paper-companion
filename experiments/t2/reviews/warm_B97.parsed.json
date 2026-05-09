@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest allows zero compounds_per_year causing division by zero",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "transfer accepts non-Decimal amounts causing Decimal arithmetic TypeError",
+    "transfer is non-atomic if destination credit assignment fails",
+    "transfer check-then-update is unsafe under concurrent transfers",
+    "transfer only blocks identical objects, not same account id",
+    "fx_convert does not reject negative or zero exchange rates"
+  ],
+  "detected_planted": true
+}

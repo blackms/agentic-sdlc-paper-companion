@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount in Decimal: importi float/int possono causare TypeError nell'aritmetica con Decimal o comportamenti incoerenti",
+    "apply_fee arrotonda il risultato a unita intere con quantize(Decimal('1')), perdendo centesimi in calcoli finanziari",
+    "apply_fee puo restituire un importo netto negativo se la commissione minima o percentuale supera l'importo"
+  ],
+  "detected_planted": false
+}

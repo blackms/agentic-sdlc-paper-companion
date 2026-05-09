@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates non-integer years and compounds_per_year via int(), changing financial results without validation",
+    "compound_interest allows negative principal, producing nonsensical negative growth amounts",
+    "loan_payment silently truncates non-integer months via int(), changing amortization behavior without validation",
+    "transfer does not normalize or validate amount as Decimal, so float/string/NaN inputs can raise unexpected errors or bypass intended money-type invariants",
+    "transfer mutates balances in two separate assignments with no rollback if the credit step fails, allowing money to disappear on partial failure",
+    "apply_fee computes fee as amount + amount*fee_pct instead of amount*fee_pct, so normal percentage fees can consume the whole amount or hit max incorrectly",
+    "apply_fee can return a negative net amount when minimum fee exceeds amount, with no validation or explicit overdraft semantics",
+    "fx_convert does not validate exchange rates are positive and finite, allowing zero, negative, NaN, or infinite conversions"
+  ],
+  "detected_planted": true
+}

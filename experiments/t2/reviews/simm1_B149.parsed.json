@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer verifica solo balance < amount ma poi sottrae anche 0.01, quindi puo mandare il saldo in negativo",
+    "transfer non normalizza amount a Decimal, causando TypeError o incoerenze con float/stringhe",
+    "apply_fee puo restituire importi negativi quando fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

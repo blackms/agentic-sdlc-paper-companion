@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest calcola l'interesse su (principal + annual_rate) invece che su principal, producendo risultati errati",
+    "transfer non converte/valida amount come Decimal, quindi input float o stringhe possono causare TypeError o tipi incoerenti"
+  ],
+  "detected_planted": true
+}

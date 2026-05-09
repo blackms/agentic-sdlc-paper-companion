@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer only emits a warning on currency mismatch instead of raising, allowing cross-currency debits/credits at 1:1 rate"
+  ],
+  "detected_planted": true
+}

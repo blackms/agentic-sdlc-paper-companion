@@ -1,0 +1,1 @@
+{"bugs_found": ["fx_convert looks up rates with key (from_currency, from_currency) instead of (from_currency, to_currency), producing wrong rate or always missing", "to_currency parameter is effectively ignored in the lookup", "no rounding/quantization on monetary results", "transfer lacks transactional atomicity"], "verdict": "REQUEST_CHANGES"}

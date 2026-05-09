@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal coerentemente",
+    "transfer non atomico se accredito fallisce dopo addebito",
+    "cast int tronca silenziosamente anni mesi e frequenza",
+    "fx_convert non valida rate negativo o nullo",
+    "compound_interest accetta principal negativo senza validazione"
+  ],
+  "detected_planted": false
+}

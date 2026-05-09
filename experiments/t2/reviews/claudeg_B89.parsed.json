@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest uses 'principal or 0' which silently coerces falsy values (None, 0, '') to 0 instead of validating input"
+  ],
+  "detected_planted": true
+}

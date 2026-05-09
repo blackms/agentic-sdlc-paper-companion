@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not coerce/validate amount as Decimal, so float inputs can raise TypeError with Decimal balances and Receipt may store a non-Decimal amount",
+    "fx_convert does not validate that the exchange rate is positive, allowing zero or negative conversion results",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": false
+}

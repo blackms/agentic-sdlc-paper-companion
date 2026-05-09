@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "loan_payment silently truncates fractional months via int(), accepting invalid schedules and under/overcharging",
+    "transfer does not coerce/validate amount as Decimal, finite, or currency-scale-compatible; mixed numeric types or NaN/Infinity can crash or corrupt balances",
+    "transfer is not atomic: debit is applied before credit, so a failing/custom balance setter on account_to can leave money removed without receipt consistency",
+    "apply_fee only warns on negative amount and still returns a more-negative result after applying minimum fee; negative monetary inputs should be rejected",
+    "fx_convert does not validate rate positivity or finiteness, allowing zero/negative/NaN/Infinity exchange rates to produce invalid converted amounts",
+    "all money functions omit quantization/rounding policy to currency minor units, causing silent fractional-cent balances and receipts"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest ignora annual_rate, years e compounds_per_year e restituisce sempre il principal invece del montante composto",
+    "transfer non normalizza amount a Decimal, quindi input float/str possono causare TypeError o ricevute incoerenti con bilanci Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

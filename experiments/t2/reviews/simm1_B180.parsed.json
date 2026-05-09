@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert moltiplica Decimal per float: `a * float(rate)` solleva TypeError e perde precisione; convertire il rate a Decimal"
+  ],
+  "detected_planted": true
+}

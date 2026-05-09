@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest raises OverflowError instead of documented ValueError",
+    "compound_interest silently truncates fractional years",
+    "compound_interest allows negative principal values",
+    "transfer is non-atomic if credit update fails",
+    "transfer accepts non-Decimal amount causing type errors",
+    "fx_convert accepts negative or zero exchange rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Silent integer truncation for fractional years and months",
+    "Fractional compounds_per_year is silently truncated instead of rejected",
+    "transfer compares raw amount without Decimal normalization",
+    "transfer is non-atomic if credit update fails after debit",
+    "fx_convert accepts zero or negative exchange rates",
+    "No upper bound on years or months can cause DoS"
+  ],
+  "detected_planted": true
+}

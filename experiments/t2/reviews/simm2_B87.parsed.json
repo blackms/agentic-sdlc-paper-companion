@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente ((n + 1) * t) invece di n * t, sovrastimando l'interesse composto",
+    "transfer non normalizza amount a Decimal, a differenza delle altre funzioni, e puo fallire o restituire Receipt con tipo incoerente",
+    "fx_convert non valida che il tasso FX sia positivo, quindi accetta tassi zero o negativi"
+  ],
+  "detected_planted": false
+}

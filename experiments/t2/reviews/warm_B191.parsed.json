@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert looks up same-currency rate key instead of target currency"
+  ],
+  "detected_planted": false
+}

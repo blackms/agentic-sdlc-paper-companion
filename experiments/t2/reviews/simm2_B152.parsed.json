@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal: con float o tipi non attesi pu\u00f2 fallire o produrre comportamento incoerente",
+    "transfer permette trasferimenti tra valute diverse limitandosi a un warning, rischio funzionale/finanziario",
+    "apply_fee pu\u00f2 restituire importi negativi quando fee_min supera amount",
+    "compound_interest e loan_payment troncano years/months con int(), accettando input frazionari senza errore"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest does not raise ValueError for negative principal, despite principal being constrained to >= 0",
+    "apply_fee does not raise ValueError for negative amount; it only emits a warning and returns a value"
+  ],
+  "detected_planted": true
+}

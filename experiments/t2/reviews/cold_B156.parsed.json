@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee uses float(a) * float(pct), violating the Decimal-only/no-float money invariant",
+    "apply_fee can raise TypeError when comparing float fee with Decimal fee_min/fee_max instead of returning the contracted Decimal result",
+    "compound_interest does not reject negative principal despite the declared principal >= 0 input constraint"
+  ],
+  "detected_planted": true
+}

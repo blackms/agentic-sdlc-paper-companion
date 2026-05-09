@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest accepts negative principal values without validation",
+    "loan_payment silently truncates fractional month counts",
+    "transfer self-transfer guard is unreachable and permits self-transfers",
+    "transfer updates balances without locking or rollback guarantees",
+    "apply_fee can return negative proceeds when fees exceed amount",
+    "fx_convert accepts zero or negative exchange rates",
+    "NaN or infinite numeric inputs are not consistently rejected"
+  ],
+  "detected_planted": true
+}

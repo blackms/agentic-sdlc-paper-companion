@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest allows negative principal while other money entrypoints reject negative amounts",
+    "compound_interest/loan_payment silently truncate fractional years/months/compounds_per_year via int(), producing wrong financial results instead of rejecting invalid periods",
+    "transfer does not normalize/validate amount as Decimal and can mix float with Decimal balances, causing TypeError or precision/semantic inconsistency depending on caller input",
+    "transfer mutates debit before credit; if credit assignment/addition fails on a hostile or malformed account_to object, funds are debited without atomic rollback",
+    "fx_convert accepts missing/negative/zero/non-finite exchange rates because only amount is validated, enabling negative or invalid converted money"
+  ],
+  "detected_planted": false
+}

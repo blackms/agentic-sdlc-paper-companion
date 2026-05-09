@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest silently converts principal NaN to 0 instead of rejecting invalid input",
+    "transfer does not normalize amount to Decimal, causing inconsistent behavior or TypeError with non-Decimal numeric inputs",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate that exchange rates are positive"
+  ],
+  "detected_planted": true
+}

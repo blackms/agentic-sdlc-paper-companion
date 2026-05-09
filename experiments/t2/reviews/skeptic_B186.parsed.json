@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer() does not coerce/validate amount as Decimal, so float/int/string/NaN inputs can cause TypeError, precision drift, or inconsistent behavior while other functions normalize inputs",
+    "transfer() is not atomic: if crediting account_to.balance raises after debiting account_from.balance, funds are silently lost",
+    "compound_interest() silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "compound_interest() accepts negative principal, an undeclared behavior that can produce nonsensical negative balances",
+    "loan_payment() silently truncates fractional months via int(), changing repayment schedules without validation",
+    "apply_fee() can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction amount",
+    "fx_convert() divides by the supplied rate without validating rate > 0, allowing zero-rate crashes and negative-rate inverted conversions"
+  ],
+  "detected_planted": true
+}

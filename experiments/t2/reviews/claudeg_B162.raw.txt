@@ -1,0 +1,1 @@
+{"bugs_found": ["apply_fee returns a - fee - fee, double-subtracting the fee from the amount and producing a result that can be negative or grossly understated", "transfer not atomic", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: if account_to.balance += amount fails after debiting account_from, money is lost (no transaction/rollback)",
+    "transfer accepts non-Decimal amount without normalization, risking float precision issues in balance arithmetic",
+    "fx_convert lacks a non-negative or sanity check on the rate value retrieved from rates",
+    "apply_fee does not round the fee to a currency-appropriate precision, allowing sub-cent residues"
+  ],
+  "detected_planted": false
+}

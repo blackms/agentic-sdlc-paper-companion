@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer consente scoperti fino a 0.01 a causa del controllo account_from.balance < amount - Decimal('0.01') invece di verificare balance < amount",
+    "transfer non normalizza amount a Decimal, causando possibili TypeError o incoerenze con input float/string",
+    "compound_interest e loan_payment convertono years/months/compounds_per_year con int(), troncando silenziosamente valori non interi"
+  ],
+  "detected_planted": true
+}

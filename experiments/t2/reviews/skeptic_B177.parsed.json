@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert applies the FX rate squared instead of once, silently over/under-converting all cross-currency amounts",
+    "transfer is not atomic: it debits account_from before crediting account_to, so a failure during the credit step can leave balances inconsistent",
+    "apply_fee can return a negative amount when fee_min exceeds amount, effectively charging more than the transaction value",
+    "monetary inputs are not validated as finite Decimals; NaN/Infinity or hostile numeric objects can bypass or explode comparisons/arithmetic"
+  ],
+  "detected_planted": true
+}

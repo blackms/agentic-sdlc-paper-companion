@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee uses abs(a - fee), so when the bounded fee exceeds the amount it returns a positive value larger than the original amount instead of preventing/representing an over-fee case"
+  ],
+  "detected_planted": true
+}

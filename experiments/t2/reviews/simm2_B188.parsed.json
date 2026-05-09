@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert converts amount with Decimal(int(a)), truncating fractional amounts before applying the exchange rate",
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError or produce inconsistent Receipt.amount types"
+  ],
+  "detected_planted": true
+}

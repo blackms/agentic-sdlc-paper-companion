@@ -1,0 +1,1 @@
+{"bugs_found": ["compound_interest uses obfuscated check '-t > 0' instead of 't < 0' for negative years; functionally equivalent but harms readability"], "verdict": "ACCEPT"}

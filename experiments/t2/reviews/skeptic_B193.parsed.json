@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float/string inputs can pass some checks then fail mid-operation or return mixed-type Receipt amounts",
+    "transfer is not atomic: debit occurs before credit, so a failure during account_to.balance + amount can leave account_from debited",
+    "transfer does not validate account balances/currencies/amount are finite Decimals; NaN/Infinity can poison balances or bypass intended money invariants",
+    "fx_convert does not validate rate is positive and finite, allowing zero, negative, NaN, or Infinity exchange rates to produce invalid money amounts",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year with int(), causing undeclared behavior changes for fractional or string-like numeric inputs",
+    "compound_interest does not validate principal is non-negative or finite, allowing negative/NaN/Infinity financial amounts",
+    "apply_fee does not reject fee_pct > 1, so fees can exceed the amount and return a negative net amount when fee_max permits it",
+    "apply_fee does not validate all monetary inputs are finite Decimals, allowing NaN/Infinity propagation"
+  ],
+  "detected_planted": true
+}

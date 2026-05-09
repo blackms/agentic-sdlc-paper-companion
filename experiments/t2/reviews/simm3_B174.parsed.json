@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee usa assert per fee_pct negativo: con Python -O il controllo viene rimosso e una fee negativa aumenta l'importo invece di fallire",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo risultati zero o negativi",
+    "transfer non normalizza amount a Decimal, quindi input float causano TypeError e Receipt pu\u00f2 contenere un tipo incoerente"
+  ],
+  "detected_planted": true
+}

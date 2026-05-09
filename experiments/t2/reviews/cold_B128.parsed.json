@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment returns a string with currency suffix when monthly_rate == 0, violating the Decimal return type and money contract",
+    "loan_payment zero-rate branch returns non-numeric value, so invariants such as payment > 0 and payment * months >= principal cannot hold for valid inputs"
+  ],
+  "detected_planted": true
+}

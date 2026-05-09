@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee non converte amount non-stringa a Decimal: con float causa TypeError durante la moltiplicazione con Decimal",
+    "transfer non normalizza amount a Decimal: valori float/stringa possono causare TypeError o confronti incoerenti con balance Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta rate zero o negativi e produce conversioni finanziariamente invalide"
+  ],
+  "detected_planted": true
+}

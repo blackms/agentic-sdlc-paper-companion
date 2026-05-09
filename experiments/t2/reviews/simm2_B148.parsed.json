@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() confronta le valute in modo errato: account_from.currency.replace('EUR','eur') causa mismatch per due conti EUR e pu\u00f2 accettare combinazioni incoerenti come EUR -> eur.",
+    "transfer() non converte amount a Decimal come le altre funzioni: input numerici non Decimal possono causare TypeError o ricevute con tipo incoerente."
+  ],
+  "detected_planted": true
+}

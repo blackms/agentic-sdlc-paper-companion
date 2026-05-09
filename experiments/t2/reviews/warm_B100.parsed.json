@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest omits compounds_per_year in exponent",
+    "compound_interest silently truncates fractional years",
+    "compound_interest silently truncates fractional compound frequency",
+    "compound_interest allows negative principal",
+    "loan_payment silently truncates fractional month count",
+    "transfer lacks Decimal conversion for amount",
+    "transfer mutates balances non-atomically between debit and credit",
+    "transfer accepts non-finite Decimal amounts",
+    "apply_fee can return negative net amount when fee exceeds amount",
+    "fx_convert does not validate positive exchange rate",
+    "fx_convert accepts non-finite rates or amounts"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest computes with years-1 instead of years, violating the declared compound-interest formula for positive years",
+    "compound_interest never raises ValueError for negative years because max(0, int(years)-1) makes the negative-years check unreachable",
+    "transfer allows self-transfer between distinct Account objects with the same id, violating the no self-transfer contract"
+  ],
+  "detected_planted": true
+}

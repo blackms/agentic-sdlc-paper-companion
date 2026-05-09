@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert applica il tasso al quadrato invece di moltiplicare una sola volta per il rate",
+    "transfer non normalizza amount a Decimal: con float/stringhe pu\u00f2 fallire o produrre tipi incoerenti",
+    "apply_fee pu\u00f2 restituire un importo negativo se la fee minima o massima supera amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer accepts unnormalized amount, so float amounts can pass validation then fail during Decimal arithmetic after no state change or with type-dependent behavior",
+    "transfer is not atomic: account_to.balance mutation can fail after account_from.balance has already been debited if account_to.balance is invalid or incompatible",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing fractional inputs instead of rejecting them",
+    "compound_interest does not validate negative principal",
+    "fx_convert does not validate rate positivity, finite values, or currency code presence, allowing negative/zero/invalid rates to produce destructive conversions",
+    "no functions reject NaN/Infinity Decimals, enabling invalid balances/amounts/results to propagate or raise unexpected comparison errors",
+    "money outputs are not quantized to currency scale, causing sub-cent precision drift and downstream accounting inconsistencies"
+  ],
+  "detected_planted": true
+}

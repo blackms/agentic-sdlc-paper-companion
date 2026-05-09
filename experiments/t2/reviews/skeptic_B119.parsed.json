@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates non-integer years and compounds_per_year via int(), changing financial results without validation",
+    "compound_interest accepts negative principal and non-finite Decimal values such as Infinity/NaN, enabling nonsensical balances or exceptions outside declared validation",
+    "compound_interest raises OverflowError for negative rate while other validation errors use ValueError, creating inconsistent error handling",
+    "loan_payment silently truncates fractional months via int(), changing repayment schedules without validation",
+    "loan_payment accepts non-finite principal/rate values such as Infinity/NaN, producing invalid outputs or unexpected decimal exceptions",
+    "transfer does not coerce or validate amount as Decimal; float or malformed numeric types can pass early checks then fail during mutation/arithmetic",
+    "transfer is not atomic: if debit succeeds and credit assignment fails due to account object behavior or numeric type interaction, balances can be left inconsistent",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively creating a negative payout",
+    "apply_fee accepts non-finite amount/fee values such as Infinity/NaN, leading to invalid outputs or unexpected decimal exceptions",
+    "fx_convert does not validate currency identifiers or rate positivity/finite-ness; zero, negative, Infinity, or NaN rates can silently produce impossible conversions",
+    "fx_convert returns amount unchanged for same-currency conversion before validating whether currencies are valid or rates policy permits that path"
+  ],
+  "detected_planted": true
+}

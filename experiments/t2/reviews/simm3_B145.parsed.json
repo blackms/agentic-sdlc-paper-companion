@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non converte amount in Decimal: con float/stringhe pu\u00f2 generare TypeError o comportamento incoerente rispetto alle altre funzioni",
+    "apply_fee pu\u00f2 restituire importi negativi quando fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo, consentendo conversioni negative o zero",
+    "compound_interest e loan_payment convertono anni/mesi con int(), troncando silenziosamente valori frazionari o non interi"
+  ],
+  "detected_planted": false
+}

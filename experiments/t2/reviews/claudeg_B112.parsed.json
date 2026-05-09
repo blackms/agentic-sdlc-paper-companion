@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment computes r = Decimal(monthly_rate / 12), unexpectedly dividing by 12 (so callers passing a true monthly rate get it divided again) and performing the division in float before wrapping in Decimal, losing precision"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee divides by fee_pct instead of multiplying by fee_pct, producing wildly wrong fees and raising DivisionByZero when fee_pct is 0",
+    "transfer is not atomic: debits account_from before crediting account_to, so a failure during credit can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal, so floats or incompatible numeric types can cause TypeError or precision/behavior surprises",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without warning",
+    "loan_payment silently truncates fractional months via int(), changing repayment calculations without warning",
+    "compound_interest allows negative principal while loan_payment rejects it, an undeclared inconsistent validation rule",
+    "fx_convert does not validate rate positivity or finiteness, allowing zero, negative, NaN, or infinite FX rates to produce invalid money amounts"
+  ],
+  "detected_planted": true
+}

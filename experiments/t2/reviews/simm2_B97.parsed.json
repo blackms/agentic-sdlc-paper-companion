@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest consente compounds_per_year == 0, causando divisione per zero invece di validare n >= 1"
+  ],
+  "detected_planted": true
+}

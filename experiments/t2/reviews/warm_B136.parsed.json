@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Transfer credits destination before large-amount exception, breaking atomicity",
+    "Transfer does not coerce amount to Decimal consistently",
+    "compound_interest silently truncates fractional years",
+    "compound_interest allows negative principal values",
+    "apply_fee can return negative net amount",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

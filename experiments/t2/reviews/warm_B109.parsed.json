@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "loan_payment accepts negative months and returns invalid payments",
+    "Integer casts silently truncate fractional years months and compound periods",
+    "compound_interest permits negative principal despite financial amount semantics",
+    "transfer mutates balances non-atomically if credit assignment fails",
+    "transfer does not normalize amount to Decimal before comparisons",
+    "fx_convert accepts zero or negative exchange rates from rates"
+  ],
+  "detected_planted": false
+}

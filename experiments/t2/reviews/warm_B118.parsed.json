@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest azzera o muta principal con effetto collaterale inutile",
+    "compound_interest tronca anni frazionari con int senza validazione",
+    "compound_interest tronca compounds_per_year non interi senza validazione",
+    "transfer non converte amount a Decimal prima dell'aritmetica",
+    "transfer non \u00e8 atomico se il credito al destinatario fallisce",
+    "transfer consente trasferimenti tra account distinti con stesso id",
+    "transfer ha check saldo e mutazioni non protetti da race",
+    "apply_fee pu\u00f2 restituire importi negativi con fee superiori all'importo",
+    "apply_fee applica fee_min anche su importo zero",
+    "fx_convert accetta tassi zero o negativi senza validazione",
+    "funzioni finanziarie non quantizzano o arrotondano importi monetari"
+  ],
+  "detected_planted": true
+}

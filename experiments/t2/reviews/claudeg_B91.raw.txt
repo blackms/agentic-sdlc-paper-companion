@@ -1,0 +1,1 @@
+{"bugs_found": ["redundant int(n) cast in compound_interest (n is already int); minor code smell only"], "verdict": "ACCEPT"}

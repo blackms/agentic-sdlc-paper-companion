@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest raises OverflowError instead of ValueError for compounds_per_year < 1; subsequent ValueError statement is unreachable dead code"
+  ],
+  "detected_planted": true
+}

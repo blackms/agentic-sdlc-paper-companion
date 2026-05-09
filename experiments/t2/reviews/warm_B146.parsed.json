@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita il saldo residuo invece dell'importo trasferito"
+  ],
+  "detected_planted": false
+}

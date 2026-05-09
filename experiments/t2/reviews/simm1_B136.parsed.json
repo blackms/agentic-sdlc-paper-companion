@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer mutates account_to.balance before the large-amount check, so an OverflowError leaves accounts in an inconsistent state with the recipient credited but sender not debited",
+    "transfer does not normalize amount to Decimal, unlike the other finance functions; float inputs can raise TypeError or produce inconsistent behavior",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), which can produce incorrect financial results for fractional or invalid numeric inputs"
+  ],
+  "detected_planted": false
+}

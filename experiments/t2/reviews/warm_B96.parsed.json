@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest tronca anni frazionari tramite int(float(years))",
+    "compound_interest perde precisione convertendo years attraverso float",
+    "compound_interest non valida principal negativo",
+    "compound_interest accetta compounds_per_year frazionario troncandolo silenziosamente",
+    "loan_payment tronca months non interi invece di rifiutarli",
+    "transfer confronta amount non normalizzato con Decimal",
+    "transfer non \u00e8 atomico se accredito fallisce dopo addebito",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "fx_convert non valida tassi negativi o nulli"
+  ],
+  "detected_planted": true
+}

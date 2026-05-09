@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject negative principal despite the declared principal >= 0 input constraint"
+  ],
+  "detected_planted": false
+}

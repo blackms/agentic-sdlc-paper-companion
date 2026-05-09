@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee subtracts the computed fee twice",
+    "transfer does not normalize amount to Decimal",
+    "transfer balance updates are non-atomic and race-prone"
+  ],
+  "detected_planted": true
+}

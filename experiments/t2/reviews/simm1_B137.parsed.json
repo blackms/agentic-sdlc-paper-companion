@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer restituisce una Receipt con amount dimezzato rispetto all'importo realmente trasferito"
+  ],
+  "detected_planted": true
+}

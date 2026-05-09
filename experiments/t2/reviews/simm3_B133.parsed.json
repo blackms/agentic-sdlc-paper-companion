@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert does not validate exchange rate positivity; zero or negative rates can produce invalid converted amounts",
+    "transfer does not normalize amount to Decimal, so float inputs can fail during Decimal arithmetic unlike the other finance functions",
+    "integer parameters are coerced with int(), silently truncating non-integer years/months/compound counts"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer debits sender by amount + 0.01 extra (hidden fee), breaking conservation of funds"
+  ],
+  "detected_planted": true
+}

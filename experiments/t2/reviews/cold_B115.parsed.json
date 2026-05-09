@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer allows self-transfer between distinct Account objects with the same id because it checks object identity instead of account id"
+  ],
+  "detected_planted": false
+}

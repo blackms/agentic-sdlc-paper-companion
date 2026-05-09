@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa one_plus_r=(r+1)/2 invece di 1+r, producendo rate errate",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi",
+    "compound_interest tronca years e compounds_per_year con int(), perdendo input frazionari o mascherando valori non interi"
+  ],
+  "detected_planted": true
+}

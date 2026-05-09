@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accepts amount == 0 even though contract requires amount > 0 and ValueError for amount <= 0"
+  ],
+  "detected_planted": true
+}

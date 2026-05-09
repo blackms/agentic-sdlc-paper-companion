@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment uses (1+r)^(m-1) in both numerator and denominator instead of standard (1+r)^m amortization formula, producing incorrect payment amounts"
+  ],
+  "detected_planted": true
+}

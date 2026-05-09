@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without rejection",
+    "compound_interest does not validate principal is non-negative",
+    "loan_payment silently truncates fractional months via int(), accepting invalid loan terms",
+    "transfer is not atomic: source balance is debited before destination credit, so a later failure can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal, so floats or malformed numeric types can cause runtime failures or inconsistent behavior",
+    "apply_fee can return a negative net amount when minimum fee exceeds amount or fee percentage exceeds 100%, with no validation",
+    "fx_convert does not validate FX rate is positive/non-zero, allowing negative or zero conversions"
+  ],
+  "detected_planted": true
+}

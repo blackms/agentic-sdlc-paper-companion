@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without error",
+    "compound_interest allows negative principal, enabling nonsensical negative accruals unless explicitly intended",
+    "transfer does not coerce/validate amount as Decimal, so float/string/NaN inputs can cause TypeError, inconsistent comparisons, or invalid balances",
+    "transfer is non-atomic: if crediting account_to fails after debiting account_from, balances become inconsistent",
+    "apply_fee returns abs(a - fee), so a fee greater than amount becomes a positive payout-like result instead of rejecting or flooring at zero",
+    "fx_convert does not validate exchange rate positivity/finite value, allowing zero/negative/NaN/Infinity rates to produce invalid converted money",
+    "all money-returning functions omit currency-scale quantization/rounding, risking precision/settlement mismatches"
+  ],
+  "detected_planted": true
+}

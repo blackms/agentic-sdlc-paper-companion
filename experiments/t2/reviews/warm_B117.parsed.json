@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal",
+    "transfer non atomico se accredito fallisce",
+    "transfer pu\u00f2 restituire Receipt con amount non Decimal",
+    "compound_interest accetta principal negativo",
+    "compound_interest tronca anni frazionari con int",
+    "loan_payment tronca mesi frazionari con int",
+    "compound_interest tronca compounds_per_year non intero",
+    "nessuna funzione quantizza importi monetari alla valuta",
+    "fx_convert non valida tassi positivi o finiti"
+  ],
+  "detected_planted": false
+}

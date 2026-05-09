@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "fx_convert multiplies Decimal amount by float rate",
+    "transfer does not normalize amount to Decimal",
+    "transfer can debit source before destination update fails",
+    "fractional years are silently truncated by int conversion",
+    "fractional months are silently truncated by int conversion",
+    "fractional compounds_per_year is silently truncated by int conversion",
+    "compound_interest allows negative principal values"
+  ],
+  "detected_planted": true
+}

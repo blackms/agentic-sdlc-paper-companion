@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment returns reciprocal of correct annuity payment",
+    "transfer compares raw amount without Decimal coercion",
+    "transfer can leave balances inconsistent if credit update fails",
+    "fx_convert accepts negative or zero exchange rates",
+    "compound_interest silently truncates fractional years",
+    "compound_interest silently truncates fractional compounding frequency",
+    "compound_interest allows negative principal values"
+  ],
+  "detected_planted": false
+}

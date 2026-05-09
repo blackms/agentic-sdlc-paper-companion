@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee treats fee_pct as a multiplier instead of a percentage, so 2 means 200% rather than 2%",
+    "transfer does not normalize amount to Decimal, causing inconsistent behavior or TypeError for float/string inputs",
+    "fx_convert does not validate exchange rates are positive, allowing zero or negative converted amounts"
+  ],
+  "detected_planted": true
+}

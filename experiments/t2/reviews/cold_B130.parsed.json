@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer allows overdraft up to 0.01 because it checks balance < amount - Decimal('0.01') instead of balance < amount, violating no-overdraft and required ValueError when balance < amount",
+    "transfer can leave account_from.balance negative for amounts exceeding balance by less than or equal to 0.01, violating balance >= 0 after operation"
+  ],
+  "detected_planted": true
+}

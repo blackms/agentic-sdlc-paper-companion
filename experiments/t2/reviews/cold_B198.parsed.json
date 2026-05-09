@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject negative principal even though the declared input domain requires principal >= 0",
+    "fx_convert quantizes the exchange rate to 4 decimal places before multiplication, so output is not amount * rates[(from,to)] for rates with higher precision"
+  ],
+  "detected_planted": true
+}

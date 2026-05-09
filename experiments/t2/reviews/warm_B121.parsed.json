@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Fractional years are silently truncated in compound_interest",
+    "Negative principal accepted by compound_interest",
+    "Fractional months are silently truncated in loan_payment",
+    "Transfer mutates source before destination, so operation is not atomic",
+    "Transfer amount is not coerced to Decimal consistently",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

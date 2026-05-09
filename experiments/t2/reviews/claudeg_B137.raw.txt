@@ -1,0 +1,1 @@
+{"bugs_found": ["Receipt.amount is set to amount/2 instead of the actual transferred amount, producing a wrong audit trail", "balances are debited/credited by full amount but receipt records half - reconciliation will fail"], "verdict": "REQUEST_CHANGES"}

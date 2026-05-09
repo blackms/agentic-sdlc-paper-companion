@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest uses r/(n+1) instead of r/n, silently undercalculating interest",
+    "transfer is not atomic: debit occurs before credit, so a failure adding to destination can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal, allowing type errors or non-Decimal inputs after partial checks",
+    "transfer only blocks same object, not same account id, allowing logical self-transfers via distinct Account instances",
+    "fx_convert does not validate rates are positive/nonzero, allowing negative or zero FX rates",
+    "integer casts silently truncate years/months/compounds_per_year instead of rejecting non-integer inputs"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer raises AttributeError instead of ValueError for self-transfer, violating the specified error contract"
+  ],
+  "detected_planted": true
+}

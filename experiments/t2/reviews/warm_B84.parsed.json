@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer does not coerce amount to Decimal consistently",
+    "transfer can partially debit if credit assignment fails",
+    "numeric periods are silently truncated by int conversion",
+    "compound_interest accepts negative principal values",
+    "compound_interest converts float principal with binary precision artifacts",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

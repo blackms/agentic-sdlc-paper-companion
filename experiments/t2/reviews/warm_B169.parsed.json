@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer non atomico se accredito fallisce dopo addebito",
+    "transfer non converte amount a Decimal prima dell'aritmetica",
+    "compound_interest accetta principal negativo senza validazione",
+    "compound_interest tronca anni frazionari con int senza segnalare",
+    "loan_payment tronca mesi frazionari con int senza segnalare",
+    "fx_convert non valida tassi negativi o nulli",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee sottrae la commissione due volte: return a - fee - fee dovrebbe probabilmente essere a - fee"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest converte principal con Decimal(principal), introducendo artefatti di precisione se principal \u00e8 float; usare Decimal(str(principal)) come altrove",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), accettando valori frazionari invece di validarli",
+    "transfer non normalizza amount a Decimal, quindi input float/int non coerenti possono causare TypeError o Receipt.amount di tipo inatteso",
+    "fx_convert non valida che il tasso FX sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

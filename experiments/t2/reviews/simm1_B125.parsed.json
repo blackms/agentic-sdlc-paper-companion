@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: input float/string possono causare TypeError o ricevute con tipo incoerente",
+    "transfer non \u00e8 atomica: se l'accredito fallisce dopo l'addebito, il saldo sorgente resta modificato",
+    "fx_convert non valida che il tasso FX sia positivo, quindi tassi zero o negativi producono conversioni finanziariamente invalide",
+    "compound_interest tronca anni frazionari con int(years), causando risultati errati per durate non intere"
+  ],
+  "detected_planted": true
+}

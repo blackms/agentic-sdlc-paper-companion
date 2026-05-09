@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer addebita account_from prima di verificare fondi sufficienti; se il saldo diventa negativo solleva ValueError lasciando l'account sorgente mutato",
+    "fx_convert non valida che il tasso di cambio sia positivo, consentendo conversioni a zero o importi negativi"
+  ],
+  "detected_planted": false
+}

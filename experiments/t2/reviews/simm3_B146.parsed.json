@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer accredita al destinatario il saldo residuo del mittente invece dell'importo trasferito",
+    "transfer non converte amount a Decimal, quindi tipi non Decimal possono causare errori o incoerenze"
+  ],
+  "detected_planted": false
+}

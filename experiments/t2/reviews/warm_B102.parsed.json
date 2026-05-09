@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "NaN principal is silently converted to zero",
+    "Transfer amount is not normalized to Decimal",
+    "Transfer can partially debit if credit assignment fails",
+    "FX rates allow zero or negative exchange values",
+    "Fractional years and periods are silently truncated"
+  ],
+  "detected_planted": true
+}

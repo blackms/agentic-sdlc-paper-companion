@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer may debit before credit failure, breaking atomicity",
+    "fx_convert uses assert for missing rates, disabled under optimization",
+    "fx_convert accepts negative or zero exchange rates",
+    "transfer does not coerce amount to Decimal consistently",
+    "int conversion silently truncates fractional years or months",
+    "financial results are not rounded to currency precision"
+  ],
+  "detected_planted": true
+}

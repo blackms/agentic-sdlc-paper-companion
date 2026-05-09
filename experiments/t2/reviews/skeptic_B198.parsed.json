@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer non \u00e8 atomico: dopo il debit, un errore nel credit lascia i saldi inconsistenti",
+    "transfer assume amount/balance Decimal senza validazione/coercizione; input float o balance invalido causano TypeError o crash parziali",
+    "int() su years/months/compounds_per_year tronca silenziosamente valori frazionari invece di rifiutarli o gestirli",
+    "manca validazione di valori NaN/Infinity in importi, rate e limiti, con risultati non finiti o eccezioni non controllate",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert quantizza il tasso prima della moltiplicazione, perdendo precisione su conversioni monetarie"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment moltiplica monthly_rate per 12 e poi lo usa come tasso mensile, producendo rate errate",
+    "fx_convert non valida che il cambio sia positivo, accettando tassi zero o negativi",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount",
+    "compound_interest accetta principal negativo senza validazione"
+  ],
+  "detected_planted": true
+}

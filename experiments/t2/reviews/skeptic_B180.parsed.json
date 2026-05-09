@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert mixes Decimal with float: return a * float(rate) raises TypeError for Decimal amounts, and would lose precision if coerced elsewhere",
+    "transfer does not normalize/validate amount as Decimal; float amounts can trigger Decimal/float TypeError or precision surprises, and NaN/non-finite Decimal amounts bypass <= 0 then poison balances",
+    "compound_interest allows negative principal and silently truncates years/compounds_per_year via int(), changing inputs like 1.9 years to 1 without error",
+    "loan_payment silently truncates months via int(), so fractional month inputs are accepted with changed semantics",
+    "No function consistently rejects NaN/Infinity inputs; Decimal non-finite values can raise unexpected InvalidOperation or propagate invalid monetary results",
+    "Money results are never quantized/rounded to currency minor units, allowing sub-cent balances and fee/payment drift"
+  ],
+  "detected_planted": true
+}

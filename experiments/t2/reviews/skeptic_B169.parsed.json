@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: debit is applied before credit, so if credit assignment/addition fails the source account remains debited",
+    "transfer does not normalize or validate amount as Decimal, allowing wrong types or non-finite Decimal values to cause TypeError or corrupt balances/receipts",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial behavior without error",
+    "loan_payment silently truncates fractional months via int(), changing repayment behavior without error",
+    "compound_interest does not reject negative principal, allowing nonsensical negative balances to grow",
+    "fx_convert does not validate FX rate positivity/finite value, so zero, negative, NaN, or Infinity rates can produce invalid conversions",
+    "all money functions omit scale/rounding rules, so returned monetary amounts can have arbitrary precision and silently differ from production ledger expectations"
+  ],
+  "detected_planted": false
+}

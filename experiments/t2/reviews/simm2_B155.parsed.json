@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee interpreta fee_pct come fattore invece che percentuale: con fee_pct=2 applica una commissione del 200% invece del 2%",
+    "fx_convert non valida che il tasso di cambio sia positivo, consentendo conversioni con tassi zero o negativi",
+    "transfer non normalizza amount a Decimal, quindi input float/stringa possono causare TypeError o aritmetica incoerente"
+  ],
+  "detected_planted": true
+}

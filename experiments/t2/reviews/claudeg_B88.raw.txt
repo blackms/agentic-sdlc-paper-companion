@@ -1,0 +1,1 @@
+{"bugs_found": ["compound_interest raises NotImplementedError instead of ValueError for negative rate, breaking expected error contract"], "verdict": "REQUEST_CHANGES"}

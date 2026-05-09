@@ -1,0 +1,1 @@
+{"bugs_found": ["currency mismatch check uses 'not account_from.currency' instead of comparing from/to currencies, so cross-currency transfers are silently allowed", "error message 'currency mismatch' is misleading because the check actually verifies that from-currency is truthy"], "verdict": "REQUEST_CHANGES"}

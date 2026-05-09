@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert tronca la parte frazionaria dell'importo usando Decimal(int(a)) prima della moltiplicazione, violando l'output amount * rate per importi Decimal non interi"
+  ],
+  "detected_planted": true
+}

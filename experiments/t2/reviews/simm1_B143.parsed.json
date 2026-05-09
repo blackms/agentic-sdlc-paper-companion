@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer() mescola Decimal e float: account_from.balance - float(amount) solleva TypeError con balance Decimal e introduce perdita di precisione; amount va normalizzato a Decimal prima dei calcoli"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,1 @@
+{"bugs_found": ["currency mismatch check is bypassed whenever the destination account is in EUR, allowing cross-currency transfers without FX conversion", "amounts are added to destination balance in source currency without conversion, corrupting balances"], "verdict": "REQUEST_CHANGES"}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa principal al quadrato invece di principal * monthly_rate nella formula della rata, producendo importi errati",
+    "transfer non converte amount in Decimal: con float o altri tipi compatibili a parole puo sollevare TypeError o restituire Receipt.amount di tipo inatteso"
+  ],
+  "detected_planted": true
+}

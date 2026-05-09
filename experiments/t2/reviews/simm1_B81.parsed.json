@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa r/(n+1) invece di r/n, calcolando interessi troppo bassi",
+    "transfer non converte amount a Decimal prima di confronti/operazioni, causando TypeError o incoerenze se amount non \u00e8 gi\u00e0 Decimal",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

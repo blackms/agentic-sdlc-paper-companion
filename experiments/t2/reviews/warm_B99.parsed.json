@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer does not coerce amount to Decimal",
+    "transfer is non-atomic under concurrent balance updates",
+    "transfer debits before credit, risking partial mutation on failure",
+    "self-transfer check ignores duplicate account ids",
+    "apply_fee can return negative amount when fee exceeds amount",
+    "fx_convert accepts zero or negative exchange rates",
+    "non-finite Decimal values are not rejected",
+    "monetary outputs are not rounded to currency precision"
+  ],
+  "detected_planted": true
+}

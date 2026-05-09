@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates non-integer float years/compounds_per_year via int(), changing financial results without rejection",
+    "compound_interest does not reject negative principal or non-finite values, allowing nonsensical balances or Decimal infinities/NaNs",
+    "transfer does not coerce/validate amount as Decimal/finite, so float/NaN inputs can crash or bypass expected validation paths",
+    "transfer is not atomic: debit happens before credit, so an exception during account_to.balance update can lose funds",
+    "apply_fee can return a negative amount when fee_min exceeds amount; fee is not capped to the charged amount",
+    "fx_convert does not validate exchange rate positivity/finite-ness, allowing zero/negative/NaN/Infinity rates to create invalid converted amounts",
+    "fx_convert trusts rates.get, so non-dict rate providers can execute arbitrary side effects during conversion before validation completes"
+  ],
+  "detected_planted": false
+}

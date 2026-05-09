@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "transfer non atomico: se l'accredito fallisce dopo il debito, i saldi restano incoerenti",
+    "transfer non protetto da lock/transaction: trasferimenti concorrenti possono causare overdraft o lost update",
+    "transfer non normalizza/valida amount come Decimal: float o tipi ostili possono causare TypeError o mutazioni parziali",
+    "apply_fee puo restituire importi negativi quando fee_min supera amount",
+    "apply_fee applica una soglia arbitraria 0.001 sotto fee_min, causando undercharge silenzioso",
+    "fx_convert non valida che il cambio sia positivo e finito: rate zero/negativi/NaN producono conversioni invalide",
+    "compound_interest/loan_payment troncano anni, mesi e compounds_per_year con int(), cambiando silenziosamente input frazionari",
+    "mancano quantizzazione e rounding per currency minor units, quindi importi monetari possono uscire con precisione/scale non validi",
+    "mancano validazioni su principal negativo in compound_interest e su valori non finiti/NaN in piu funzioni"
+  ],
+  "detected_planted": false
+}

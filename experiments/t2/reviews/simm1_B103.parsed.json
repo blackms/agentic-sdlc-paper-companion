@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest calcola l'esponente come n + t invece di n * t, producendo interessi errati",
+    "fx_convert non valida che il tasso di cambio sia positivo, consentendo risultati zero o negativi non validi",
+    "compound_interest non valida principal negativo e tronca anni frazionari con int(years)"
+  ],
+  "detected_planted": false
+}

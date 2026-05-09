@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente n + t invece di n * t, calcolando interessi composti errati",
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input numerici non Decimal possono causare TypeError o incoerenze"
+  ],
+  "detected_planted": false
+}

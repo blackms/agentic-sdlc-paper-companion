@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest uses r/(n+1) instead of r/n in the compounding formula, producing incorrect results"
+  ],
+  "detected_planted": true
+}

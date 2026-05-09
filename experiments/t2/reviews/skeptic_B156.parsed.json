@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "apply_fee mixes Decimal with float: when computed fee is within min/max bounds, return a - fee raises TypeError at runtime",
+    "apply_fee converts monetary values to float, causing precision loss and possible incorrect fees/balances",
+    "transfer does not coerce/validate amount as Decimal; float amounts can raise TypeError or introduce unsafe mixed numeric behavior",
+    "compound_interest does not reject negative principal, allowing nonsensical negative balances",
+    "fx_convert does not validate rate positivity, so zero/negative exchange rates can silently produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

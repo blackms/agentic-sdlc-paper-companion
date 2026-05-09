@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0 nonostante il contratto dichiari principal >= 0"
+  ],
+  "detected_planted": true
+}

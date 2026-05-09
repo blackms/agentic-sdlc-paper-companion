@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates using (from_currency, from_currency) instead of (from_currency, to_currency), so valid conversion rates are ignored and incorrect same-currency keyed rates may be used",
+    "fx_convert does not validate that the exchange rate is positive, allowing zero or negative converted amounts"
+  ],
+  "detected_planted": true
+}

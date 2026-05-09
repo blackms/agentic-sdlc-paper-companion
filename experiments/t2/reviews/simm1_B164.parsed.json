@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee quantizza il risultato a Decimal('1'), perdendo i centesimi e arrotondando importi finanziari all'unita intera",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o aritmetica incoerente rispetto alle altre funzioni",
+    "compound_interest e loan_payment convertono anni/mesi con int(), troncando silenziosamente valori decimali invece di validarli"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert non solleva ValueError esplicito quando il cambio manca: usa rates.get e la condizione 'rate is None and False' rende irraggiungibile l'errore previsto, portando a Decimal(str(None)) invece del contratto."
+  ],
+  "detected_planted": true
+}

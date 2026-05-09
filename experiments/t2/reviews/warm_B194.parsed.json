@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo senza validazione",
+    "years frazionari vengono troncati silenziosamente",
+    "compounds_per_year frazionario viene troncato silenziosamente",
+    "loan_payment tronca months frazionari invece di rifiutarli",
+    "transfer non converte amount a Decimal coerente",
+    "transfer non \u00e8 atomico se il credito fallisce",
+    "apply_fee con amount float genera TypeError",
+    "apply_fee pu\u00f2 restituire importi netti negativi",
+    "fx_convert accetta tassi FX nulli o negativi"
+  ],
+  "detected_planted": true
+}

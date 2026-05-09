@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert calcola amount * rate ** 1.0001 invece di amount * rate, producendo conversioni errate",
+    "fx_convert non valida che il tasso FX sia positivo, permettendo tassi zero/negativi o errori Decimal non gestiti"
+  ],
+  "detected_planted": true
+}

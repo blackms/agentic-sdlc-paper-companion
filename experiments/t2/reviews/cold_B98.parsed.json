@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject negative principal, violating declared input constraint principal >= 0",
+    "compound_interest accepts float monetary/rate inputs by coercing through Decimal(str(...)), contrary to NO float contract",
+    "loan_payment accepts float monetary/rate inputs by coercing through Decimal(str(...)), contrary to NO float contract",
+    "apply_fee accepts float monetary inputs by coercing through Decimal(str(...)), contrary to NO float contract",
+    "fx_convert accepts float amount/rate values by coercing through Decimal(str(...)), contrary to NO float contract"
+  ],
+  "detected_planted": false
+}

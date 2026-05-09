@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer() non converte amount a Decimal: con importi float/int pu\u00f2 fallire in aritmetica con Decimal o restituire Receipt.amount con tipo incoerente",
+    "compound_interest() e loan_payment() convertono years/months/compounds_per_year con int(), troncando silenziosamente valori non interi invece di validarli",
+    "compound_interest() non valida principal negativo",
+    "fx_convert() non valida che il tasso FX sia positivo: un rate zero o negativo produce conversioni finanziariamente invalide",
+    "apply_fee() contiene codice morto/superfluo nell'errore fmin > fmax: assegna fmin/fmax prima di sollevare eccezione"
+  ],
+  "detected_planted": true
+}

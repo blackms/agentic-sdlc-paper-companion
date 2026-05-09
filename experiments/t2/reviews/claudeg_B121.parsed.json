@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment error message 'months <= 0' is raised even when the failure is m > 1000000, misleading the caller",
+    "the 1_000_000 month upper bound is a magic number with no justification or documentation",
+    "transfer is not atomic and lacks rollback if credit step fails",
+    "fx_convert does not enforce a positive rate"
+  ],
+  "detected_planted": true
+}

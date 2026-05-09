@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal negativo e tronca anni frazionari con int(years)",
+    "loan_payment solleva Exception generica per months <= 0 invece di un errore specifico",
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError durante l'aritmetica",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert restituisce Decimal(0) quando le valute coincidono, azzerando l'importo invece di restituire l'importo originale"
+  ],
+  "detected_planted": false
+}

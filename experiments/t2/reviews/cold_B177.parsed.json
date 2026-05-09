@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert moltiplica per rate^2 invece che per rate, violando la formula amount * rates[(from,to)]"
+  ],
+  "detected_planted": true
+}

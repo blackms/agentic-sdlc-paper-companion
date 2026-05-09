@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject negative principal despite principal being declared >= 0",
+    "transfer credits account_to with account_from.balance after debit instead of amount, violating conservation and receipt semantics"
+  ],
+  "detected_planted": false
+}

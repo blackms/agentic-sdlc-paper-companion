@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee calcola pct*pct invece di amount*fee_pct",
+    "transfer non converte amount in Decimal prima dell'aritmetica"
+  ],
+  "detected_planted": true
+}

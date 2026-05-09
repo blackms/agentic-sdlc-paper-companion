@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert never raises the intended missing-rate ValueError because condition rate is None and False is always false; missing rates reach Decimal(str(None)) and fail unpredictably",
+    "fx_convert does not validate FX rate positivity, allowing zero or negative rates to produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

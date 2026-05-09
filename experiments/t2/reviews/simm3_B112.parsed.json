@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment mixes numeric types by computing Decimal(monthly_rate / 12), causing precision loss and TypeError for string rates; parameter name also suggests the rate is already monthly, so dividing by 12 may undercharge payments",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError when applied to Decimal balances",
+    "fx_convert accepts zero or negative exchange rates, allowing invalid zero/negative converted amounts",
+    "apply_fee can return a negative net amount when the minimum fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

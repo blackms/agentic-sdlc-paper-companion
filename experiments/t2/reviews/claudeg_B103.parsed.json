@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest: WRONG FORMULA \u2014 exponent is (n + t) instead of (n * t); completely incorrect compounding result",
+    "transfer: not atomic \u2014 partial-failure leaves balances inconsistent",
+    "transfer: balances not quantized to currency precision",
+    "apply_fee: can return negative result when fee_min > amount",
+    "fx_convert: missing rate>0 validation"
+  ],
+  "detected_planted": true
+}

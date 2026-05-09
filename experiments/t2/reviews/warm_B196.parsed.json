@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "Fractional periods are silently truncated by int conversion",
+    "Transfer amount is not normalized to Decimal",
+    "Transfer can debit source before credit failure",
+    "Self-transfer allowed between distinct objects sharing same id",
+    "Minimum fee can exceed amount and produce negative payout",
+    "Fees are not capped at the transaction amount",
+    "FX missing rate raises BaseException instead of normal exception",
+    "FX conversion accepts zero or negative exchange rates",
+    "Currency amounts are never rounded or quantized"
+  ],
+  "detected_planted": true
+}

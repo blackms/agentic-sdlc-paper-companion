@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa r/(n+1) invece di r/n, sottostimando sempre l'interesse composto",
+    "transfer non normalizza amount a Decimal: input float/int possono causare TypeError o Receipt con tipo incoerente"
+  ],
+  "detected_planted": true
+}

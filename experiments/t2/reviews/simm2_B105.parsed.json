@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa p * p invece di p * r nella formula, producendo rate enormemente errate per tassi positivi"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer non rifiuta mai i self-transfer: la condizione `account_from is account_to and account_from.currency != account_to.currency` e' irraggiungibile per lo stesso oggetto; se l'intento e' bloccarli dovrebbe controllare solo `account_from is account_to`"
+  ],
+  "detected_planted": true
+}

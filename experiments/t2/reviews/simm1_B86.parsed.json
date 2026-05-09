@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest uses exponent t ** n instead of n * t, producing incorrect compound growth for most inputs",
+    "fx_convert does not validate exchange rate is positive, allowing zero or negative converted amounts"
+  ],
+  "detected_planted": true
+}

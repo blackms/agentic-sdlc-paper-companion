@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest usa OverflowError per tasso negativo invece di ValueError coerente con gli altri input invalidi",
+    "compound_interest e loan_payment convertono years/months/compounds_per_year con int(), troncando silenziosamente valori frazionari invece di validarli",
+    "transfer non normalizza amount a Decimal, quindi input numerici non Decimal possono causare TypeError o comportamento incoerente rispetto alle altre funzioni",
+    "fx_convert non valida che il tasso FX sia positivo, quindi tassi zero o negativi producono conversioni finanziariamente invalide"
+  ],
+  "detected_planted": true
+}

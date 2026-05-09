@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee raises RuntimeError instead of ValueError when amount < 0"
+  ],
+  "detected_planted": true
+}

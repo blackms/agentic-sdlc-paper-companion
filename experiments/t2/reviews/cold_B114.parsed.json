@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa months + 2 invece di months, violando la formula di ammortamento e il caso rate zero",
+    "loan_payment non solleva ValueError per months <= 0 quando months + 2 risulta positivo, ad esempio months=0 o months=-1",
+    "loan_payment viola payment * months >= principal per rate zero e principal > 0 perch\u00e9 calcola principal/(months+2)"
+  ],
+  "detected_planted": true
+}

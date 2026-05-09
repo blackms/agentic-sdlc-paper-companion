@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert usa esponenziazione invece di moltiplicazione: amount ** rate produce conversioni FX completamente errate",
+    "transfer non converte/valida amount come Decimal: float/string/NaN o tipi ostili possono causare TypeError o comportamenti non controllati",
+    "transfer non \u00e8 atomica: debita account_from prima di accreditare account_to; se l'accredito fallisce lascia saldi incoerenti",
+    "apply_fee pu\u00f2 restituire importi negativi quando fee_min supera amount",
+    "manca validazione di NaN/Infinity su input Decimal-like: confronti e calcoli finanziari possono produrre risultati non finiti o eccezioni inattese",
+    "compound_interest non valida principal negativo, consentendo risultati negativi non dichiarati per un calcolo di investimento"
+  ],
+  "detected_planted": true
+}

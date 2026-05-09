@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer restituisce una Receipt con amount dimezzato rispetto all'importo realmente trasferito",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi zero o negativi producono conversioni finanziariamente invalide"
+  ],
+  "detected_planted": true
+}

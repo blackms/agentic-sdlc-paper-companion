@@ -1,0 +1,1 @@
+{"bugs_found": ["transfer accepts amount == 0 (uses 'amount < 0' instead of '<= 0'), allowing zero-value transfers and zero-amount receipts", "error message 'amount must be positive' contradicts the actual check"], "verdict": "REQUEST_CHANGES"}

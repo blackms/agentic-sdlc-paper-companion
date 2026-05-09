@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee divides by fee percentage instead of multiplying",
+    "apply_fee raises DivisionByZero when fee_pct is zero"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente t ** n invece di n * t, producendo risultati drasticamente errati",
+    "transfer non normalizza amount a Decimal: con float/int pu\u00f2 generare errori di tipo o aritmetica incoerente con Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta rate zero o negativi",
+    "compound_interest non valida principal negativo"
+  ],
+  "detected_planted": false
+}

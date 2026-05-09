@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "EUR to USD conversion ignores supplied exchange rate",
+    "FX conversion accepts zero or negative rates",
+    "Transfer updates balances non-atomically under concurrent access",
+    "Transfer can partially debit if destination update fails",
+    "Fee can exceed amount and return negative proceeds"
+  ],
+  "detected_planted": true
+}

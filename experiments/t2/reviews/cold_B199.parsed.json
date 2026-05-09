@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates using from_currency[:3] and to_currency[:3] instead of the exact (from_currency, to_currency) key required by the contract, causing silent fallback to truncated currency codes and incorrect handling of available/missing rates."
+  ],
+  "detected_planted": true
+}

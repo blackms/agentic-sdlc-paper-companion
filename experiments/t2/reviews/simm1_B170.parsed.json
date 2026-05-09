@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal: importi float causano TypeError durante l'aritmetica e la Receipt pu\u00f2 contenere un tipo incoerente",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi zero o negativi producono conversioni non valide",
+    "compound_interest non valida principal negativo, diversamente da loan_payment"
+  ],
+  "detected_planted": true
+}

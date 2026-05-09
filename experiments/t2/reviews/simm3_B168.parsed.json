@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal, quindi input float/int pu\u00f2 causare TypeError o receipt con tipo incoerente",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min o fee_pct producono una fee maggiore dell'importo",
+    "fx_convert non valida che il tasso sia positivo, accettando rate zero o negativi",
+    "conversioni int() per years/months/compounds_per_year troncano valori frazionari invece di rifiutarli esplicitamente",
+    "apply_fee contiene codice morto con if False, da rimuovere"
+  ],
+  "detected_planted": false
+}

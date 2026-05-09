@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates using (to_currency, from_currency) instead of the contractual (from_currency, to_currency), causing valid rates to be rejected or wrong reverse rates to be applied"
+  ],
+  "detected_planted": true
+}

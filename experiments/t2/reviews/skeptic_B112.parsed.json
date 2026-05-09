@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "loan_payment divide monthly_rate by 12 despite parameter name monthly_rate, causing 12x rate undercharging if caller passes a monthly rate",
+    "loan_payment constructs Decimal after monthly_rate / 12, preserving binary float error and rejecting string rates unlike other functions",
+    "transfer accepts amount without Decimal coercion/finite validation, allowing float precision loss or Decimal NaN/Infinity edge cases",
+    "transfer is not atomic if credit-side balance update fails after debit, leaving accounts inconsistent",
+    "compound_interest silently truncates years and compounds_per_year via int(), changing fractional inputs without validation",
+    "compound_interest does not reject negative principal or non-finite Decimal values, allowing nonsensical balances/results",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate rate positivity or finiteness, allowing negative/zero/NaN/Infinity FX outputs"
+  ],
+  "detected_planted": true
+}
