@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert violates identity contract: when from_currency == to_currency it still requires a rate and raises ValueError if missing instead of returning amount"
+  ],
+  "detected_planted": true
+}

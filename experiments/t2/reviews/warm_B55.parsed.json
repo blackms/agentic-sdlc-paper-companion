@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer rejects matching currencies instead of mismatched currencies",
+    "transfer permits cross-currency movement without FX conversion"
+  ],
+  "detected_planted": true
+}

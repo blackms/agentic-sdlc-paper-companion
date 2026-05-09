@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee solleva ZeroDivisionError per importi negativi invece di ValueError, eccezione semanticamente errata",
+    "transfer non converte/valida amount come Decimal: con float pu\u00f2 fallire in sottrazione o restituire Receipt con tipo incoerente",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi pu\u00f2 produrre importi negativi o nulli da input valido"
+  ],
+  "detected_planted": true
+}

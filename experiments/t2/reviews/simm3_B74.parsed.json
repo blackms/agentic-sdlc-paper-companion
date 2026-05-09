@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert normalizza le valute in lowercase per la lookup, quindi fallisce se rates usa chiavi standard uppercase come ('USD','EUR')",
+    "transfer non converte amount in Decimal: con amount float pu\u00f2 causare TypeError nei confronti/operazioni con balance Decimal"
+  ],
+  "detected_planted": true
+}

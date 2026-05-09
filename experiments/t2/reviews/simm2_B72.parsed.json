@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates with reversed key (to_currency, from_currency) instead of (from_currency, to_currency), causing wrong conversions or missing-rate errors",
+    "apply_fee can return a negative net amount when the minimum fee exceeds the amount",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), which can produce unexpected financial results",
+    "transfer does not normalize amount to Decimal like the other functions, so float inputs can fail or behave inconsistently"
+  ],
+  "detected_planted": true
+}

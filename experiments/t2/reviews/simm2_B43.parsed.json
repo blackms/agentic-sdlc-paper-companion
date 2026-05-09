@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment leaves monthly_rate uncast, so float or string rates can cause TypeError when mixed with Decimal",
+    "transfer does not normalize amount to Decimal, so float/string inputs can fail or produce inconsistent Receipt amount types"
+  ],
+  "detected_planted": true
+}

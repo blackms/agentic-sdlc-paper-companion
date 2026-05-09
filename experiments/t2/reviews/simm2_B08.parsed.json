@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment mixes float with Decimal, causing TypeError for non-zero rates and precision loss",
+    "loan_payment returns float for zero-rate loans instead of Decimal, creating inconsistent return types",
+    "transfer does not normalize amount to Decimal, so float/string amounts can cause type errors or inconsistent receipts",
+    "compound_interest silently truncates fractional years and compounds_per_year via int()"
+  ],
+  "detected_planted": true
+}

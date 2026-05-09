@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest converte principal in float e poi lo moltiplica per Decimal, causando TypeError e perdita di precisione monetaria",
+    "compound_interest tronca years e compounds_per_year con int(), accettando valori frazionari in modo silenzioso",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o confronti incoerenti con balance Decimal",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min o fee_max superano amount",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

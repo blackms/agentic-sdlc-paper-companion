@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment implements the amortization formula incorrectly for monthly_rate > 0: it returns r*p*(1+r)^(months-1) instead of principal*r*(1+r)^months/((1+r)^months-1), violating repayment and continuity invariants"
+  ],
+  "detected_planted": true
+}

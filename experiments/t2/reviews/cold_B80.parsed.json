@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert violates same-currency identity: when from_currency == to_currency it multiplies by rates[(currency,currency)] if present instead of always returning amount."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest allows negative principal values",
+    "integer casts silently truncate fractional years and months",
+    "transfer accepts non-Decimal amount causing type errors",
+    "transfer self-check misses distinct objects with same account id",
+    "transfer is non-atomic if credit assignment fails",
+    "fx_convert does not validate positive exchange rates"
+  ],
+  "detected_planted": false
+}

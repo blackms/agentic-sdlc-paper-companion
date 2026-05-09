@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest does not validate annual_rate, so negative or invalid rates can produce nonsensical results",
+    "compound_interest does not validate principal >= 0",
+    "transfer compares amount directly without Decimal normalization, allowing type errors or precision issues when amount is float/int",
+    "fx_convert does not validate that the exchange rate is positive"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest uses exponent n + t instead of n * t, producing materially wrong interest results",
+    "years and compounds_per_year are coerced with int(), silently truncating fractional inputs instead of validating/rejecting them",
+    "loan_payment months is coerced with int(), silently truncating fractional month inputs",
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError or behave inconsistently with other functions",
+    "transfer is not atomic: if crediting account_to fails after debiting account_from, balances can be left inconsistent",
+    "missing finite/NaN/Infinity validation across monetary values and rates can allow invalid Decimal states or unexpected exceptions",
+    "fx_convert does not validate exchange rate positivity or finiteness, allowing negative, zero, NaN, or infinite rates to produce invalid conversions",
+    "apply_fee can return a negative net amount when minimum fee exceeds amount, which may be unacceptable for finance flows"
+  ],
+  "detected_planted": true
+}

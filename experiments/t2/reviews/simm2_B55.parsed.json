@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer ha la condizione valuta invertita: rifiuta account con stessa valuta e permette trasferimenti tra valute diverse senza conversione",
+    "transfer non converte amount a Decimal, quindi input float/non-Decimal possono causare TypeError o aritmetica incoerente",
+    "transfer muta i saldi senza atomicit\u00e0 o locking, con rischio di stato incoerente in caso di errore o accessi concorrenti"
+  ],
+  "detected_planted": false
+}

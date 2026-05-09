@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert multiplies a Decimal amount by float(rate), violating the NO float invariant and raising TypeError for Decimal rates instead of returning amount * rate."
+  ],
+  "detected_planted": true
+}

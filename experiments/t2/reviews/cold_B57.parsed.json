@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer returns Receipt.amount as Decimal(0) instead of the transferred amount, violating the declared output Receipt(from_id, to_id, amount)."
+  ],
+  "detected_planted": true
+}

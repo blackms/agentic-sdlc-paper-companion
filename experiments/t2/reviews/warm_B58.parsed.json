@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo senza validazione",
+    "compound_interest tronca anni e compounding frazionari con int()",
+    "loan_payment tronca mesi frazionari con int()",
+    "conversioni Decimal accettano NaN e infiniti senza validazione esplicita",
+    "transfer non converte amount a Decimal prima dell'aritmetica",
+    "transfer pu\u00f2 perdere atomicit\u00e0 se l'accredito fallisce",
+    "transfer non \u00e8 sicura contro race condition concorrenti",
+    "transfer consente self-transfer tra oggetti con stesso id",
+    "apply_fee pu\u00f2 restituire importo negativo quando fee supera amount",
+    "apply_fee non impedisce percentuali fee oltre il 100%",
+    "fx_convert accetta tassi zero, negativi o non finiti",
+    "calcoli usano precisione Decimal globale senza policy di rounding"
+  ],
+  "detected_planted": true
+}

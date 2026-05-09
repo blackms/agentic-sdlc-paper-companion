@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest raises TypeError instead of ValueError for a negative annual_rate, producing an inconsistent/incorrect API contract",
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError or break Decimal arithmetic unlike the other finance functions"
+  ],
+  "detected_planted": true
+}

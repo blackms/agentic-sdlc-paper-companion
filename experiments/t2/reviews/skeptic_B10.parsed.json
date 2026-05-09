@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment uses +1 in denominator; amortization formula should subtract 1, causing systematic undercharging",
+    "apply_fee can return negative net amount when fee_min/fee_max or pct-derived fee exceeds amount",
+    "fx_convert does not validate rate > 0, allowing zero or negative exchange rates to create invalid converted amounts",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), causing undeclared behavior changes for fractional inputs",
+    "transfer mutates source before destination with no atomicity guard; a failure during destination balance update can debit without credit"
+  ],
+  "detected_planted": true
+}

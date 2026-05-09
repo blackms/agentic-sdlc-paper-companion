@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee converte fee_min in float invece che Decimal: pu\u00f2 introdurre errori di precisione e, quando fee < fee_min, assegna fee a un float causando TypeError in `a - fee` con Decimal"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest calcola l'esponente come compounds_per_year + years invece di compounds_per_year * years, violando la formula dichiarata e l'invariante M = principal quando years = 0"
+  ],
+  "detected_planted": true
+}

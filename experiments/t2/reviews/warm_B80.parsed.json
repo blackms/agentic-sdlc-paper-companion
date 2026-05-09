@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx same-currency conversion can apply an arbitrary configured rate",
+    "transfer does not normalize amount to Decimal before arithmetic",
+    "transfer is non-atomic if credit assignment fails after debit",
+    "integer casts silently truncate fractional years, months, and compounds"
+  ],
+  "detected_planted": true
+}

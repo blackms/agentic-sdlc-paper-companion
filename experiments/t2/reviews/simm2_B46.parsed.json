@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment con monthly_rate == 0 divide per (months - 1) invece che per months, producendo importi errati e DivisionByZero quando months == 1",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi 0 o negativi generano conversioni finanziariamente invalide",
+    "transfer accetta amount senza normalizzarlo a Decimal, causando TypeError se viene passato un float con saldi Decimal"
+  ],
+  "detected_planted": true
+}

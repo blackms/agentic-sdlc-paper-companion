@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee forza la fee a fee_max anche quando la fee clippata dovrebbe essere fee_min o un valore intermedio, violando l'output amount - clip(amount * fee_pct, fee_min, fee_max)"
+  ],
+  "detected_planted": false
+}

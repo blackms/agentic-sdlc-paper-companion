@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment uses exponent months+1 instead of months in the amortization formula, producing payments that violate the declared output formula"
+  ],
+  "detected_planted": true
+}

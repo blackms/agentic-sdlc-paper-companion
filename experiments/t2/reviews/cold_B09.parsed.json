@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment non valida principal < 0: per contratto deve sollevare ValueError, invece calcola e pu\u00f2 restituire pagamenti negativi"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment uses 1 - monthly_rate instead of 1 + monthly_rate, producing negative or nonsensical payments for positive-rate loans",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError or mix precision semantics inconsistently with the other money functions",
+    "transfer is not atomic: if crediting account_to.balance fails after debiting account_from.balance, balances are left inconsistent",
+    "fx_convert accepts zero or negative FX rates, allowing conversion to zero or negative amounts",
+    "years/months/compounds_per_year are coerced with int(), silently truncating fractional inputs instead of rejecting them"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest uses multiplication by (n * years) instead of exponentiation, so it does not compute principal * (1 + rate/n)^(n*years).",
+    "compound_interest returns 0 when years == 0 with principal > 0, violating M = principal and M >= principal.",
+    "compound_interest returns principal * n * years when annual_rate == 0, violating M = principal for zero rate."
+  ],
+  "detected_planted": true
+}

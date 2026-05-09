@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest uses (1 - r/n) instead of (1 + r/n), reversing growth for positive rates",
+    "transfer does not normalize amount to Decimal; float/string amounts can pass or fail inconsistently and may raise mid-transfer",
+    "transfer is not atomic: debit happens before credit, so an exception during credit can leave balances inconsistent",
+    "transfer lacks validation that account balances and amount are Decimal/finite, allowing NaN/Infinity or hostile numeric objects to break invariants",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing financial terms without validation",
+    "compound_interest allows negative principal, producing nonsensical debt/investment results without declared intent",
+    "apply_fee can return a negative net amount when minimum fee exceeds amount",
+    "fx_convert does not validate rate positivity/finite value, allowing negative, zero, NaN, or infinite FX outputs"
+  ],
+  "detected_planted": false
+}

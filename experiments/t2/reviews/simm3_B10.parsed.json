@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa '+ 1' nel denominatore invece di '- 1', producendo rate drasticamente sottostimate per tassi positivi"
+  ],
+  "detected_planted": true
+}

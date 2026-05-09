@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "apply_fee returns amount plus fee even though fee application appears to require subtracting the fee, causing silent over-credit/overcharge behavior",
+    "transfer is not atomic: source balance is debited before destination credit is guaranteed, so invalid destination balance/type can leave funds lost",
+    "transfer does not normalize/validate amount as Decimal; floats/NaN/Infinity or non-Decimal inputs can crash or produce inconsistent behavior",
+    "fx_convert accepts zero/negative/NaN exchange rates from rates, enabling zero or negative converted money values",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing fractional inputs without validation"
+  ],
+  "detected_planted": true
+}

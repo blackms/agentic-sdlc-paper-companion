@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non verifica che account_from.balance sia sufficiente, permettendo saldi negativi/overdraft non autorizzati",
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError e Receipt.amount pu\u00f2 avere tipo incoerente"
+  ],
+  "detected_planted": true
+}

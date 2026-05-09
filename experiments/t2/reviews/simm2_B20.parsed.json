@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la commissione ma restituisce a + fee; se la fee deve essere applicata come costo detratto dall'importo netto, dovrebbe sottrarre la fee o restituirla separatamente.",
+    "transfer non normalizza amount a Decimal come le altre funzioni: input float/string possono causare TypeError o comportamento incoerente."
+  ],
+  "detected_planted": true
+}

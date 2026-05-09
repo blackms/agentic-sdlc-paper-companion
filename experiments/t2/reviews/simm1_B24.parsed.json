@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee non valida che fee_min <= fee_max, producendo risultati incoerenti con limiti invertiti",
+    "fx_convert accetta tassi di cambio zero o negativi e pu\u00f2 restituire importi nulli o negativi",
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input float pu\u00f2 causare TypeError o comportamenti incoerenti"
+  ],
+  "detected_planted": true
+}

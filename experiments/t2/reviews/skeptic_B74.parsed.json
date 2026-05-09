@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize amount to Decimal; float inputs can pass validation then raise TypeError during balance mutation, and Receipt may contain non-Decimal amount",
+    "transfer() is non-atomic: account_from is debited before account_to is credited, so a failure in account_to.balance addition or setter leaves money lost",
+    "fx_convert() lowercases lookup keys without normalizing the rates dict contract, silently rejecting rates keyed with original uppercase ISO currencies",
+    "fx_convert() does not validate rate positivity/finite value, allowing zero, negative, NaN, or Infinity FX rates to produce invalid money",
+    "compound_interest() and loan_payment() silently truncate years/months/compounds_per_year via int(), causing undeclared behavior changes for fractional numeric inputs",
+    "apply_fee() can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction value without explicit validation"
+  ],
+  "detected_planted": true
+}

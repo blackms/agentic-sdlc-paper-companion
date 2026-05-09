@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer accetta self-transfer quando account_from e account_to sono oggetti diversi ma hanno lo stesso id",
+    "transfer non garantisce atomicit\u00e0 se il debito riesce ma l'accredito fallisce: account_from.balance pu\u00f2 restare modificato"
+  ],
+  "detected_planted": false
+}

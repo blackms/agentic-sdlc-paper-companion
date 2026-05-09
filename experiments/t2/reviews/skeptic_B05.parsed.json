@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest does not validate compounds_per_year >= 1, so 0 causes division by zero and negative values produce nonsensical results",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing inputs like 1.9 to 1 and -0.5 to 0",
+    "compound_interest does not reject negative principal",
+    "loan_payment silently truncates fractional months via int(), changing repayment schedule semantics without validation",
+    "transfer does not coerce or validate amount as Decimal/finite, so float/NaN/non-Decimal inputs can raise TypeError or corrupt balances",
+    "transfer is not atomic: debit succeeds before credit assignment, so a failure during credit can leave balances inconsistent",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate rate is positive/finite, allowing zero/negative/NaN rates to produce invalid conversions"
+  ],
+  "detected_planted": true
+}

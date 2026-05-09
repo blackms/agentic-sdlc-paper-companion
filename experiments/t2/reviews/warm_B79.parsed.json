@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal",
+    "transfer non atomico se accredito fallisce",
+    "apply_fee solleva ArithmeticError invece di ValueError"
+  ],
+  "detected_planted": true
+}

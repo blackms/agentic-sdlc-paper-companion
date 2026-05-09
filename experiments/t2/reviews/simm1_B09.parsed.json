@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment non valida principal: importi negativi producono rate negative invece di errore",
+    "fx_convert non valida che il tasso di cambio sia positivo: rate 0 o negativo genera risultati finanziariamente invalidi",
+    "transfer non normalizza amount a Decimal come le altre funzioni: con input non Decimal puo causare TypeError o incoerenze di precisione"
+  ],
+  "detected_planted": false
+}

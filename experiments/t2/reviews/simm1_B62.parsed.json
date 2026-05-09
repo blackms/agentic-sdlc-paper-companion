@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee raises TypeError instead of ValueError for negative fee_pct, making validation errors inconsistent",
+    "transfer does not normalize amount to Decimal, so float inputs can pass initial checks then fail during Decimal arithmetic"
+  ],
+  "detected_planted": true
+}

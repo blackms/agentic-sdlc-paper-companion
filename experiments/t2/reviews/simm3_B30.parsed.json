@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee accetta importi negativi invece di validarli, producendo risultati finanziari non validi",
+    "transfer non normalizza amount a Decimal: con float o tipi inattesi puo fallire dopo i controlli o restituire Receipt con tipo incoerente",
+    "compound_interest e loan_payment usano int() su anni/mesi, troncando silenziosamente valori frazionari invece di validarli"
+  ],
+  "detected_planted": false
+}

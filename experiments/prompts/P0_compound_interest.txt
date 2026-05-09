@@ -1,0 +1,1 @@
+Scrivi una funzione Python `compound_interest(principal, annual_rate, years, compounds_per_year=1)` che calcoli l'interesse composto.

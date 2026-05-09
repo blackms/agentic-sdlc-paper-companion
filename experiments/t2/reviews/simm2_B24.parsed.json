@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee non valida che fee_min <= fee_max, quindi limiti incoerenti producono risultati finanziari errati invece di fallire"
+  ],
+  "detected_planted": true
+}

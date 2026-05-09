@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "transfer consente overdraft: manca controllo che account_from.balance >= amount prima di addebitare",
+    "transfer non converte/valida amount come Decimal: input float o NaN possono causare precision loss o stati invalidi",
+    "transfer non \u00e8 atomico: se l'accredito fallisce dopo l'addebito, i saldi restano inconsistenti",
+    "compound_interest accetta principal negativo e valori non finiti senza validazione esplicita",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), cambiando input frazionari invece di rifiutarli",
+    "loan_payment tronca silenziosamente months con int(), accettando durate frazionarie come mesi interi",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert non valida rate positivo e finito: rate zero/negativo/NaN/Infinity produce conversioni invalide",
+    "nessuna funzione monetaria quantizza alla precisione della valuta, quindi pu\u00f2 produrre frazioni non rappresentabili di denaro"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment non gestisce monthly_rate == 0: dovrebbe restituire principal/months ma divide per zero"
+  ],
+  "detected_planted": false
+}

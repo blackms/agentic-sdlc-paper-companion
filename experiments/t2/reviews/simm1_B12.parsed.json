@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment non valida months > 0: months=0 causa DivisionByZero e months negativi produce risultati non validi",
+    "transfer non normalizza amount a Decimal, quindi input float/str possono causare TypeError e comportamento incoerente rispetto alle altre funzioni",
+    "apply_fee pu\u00f2 restituire importi negativi quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

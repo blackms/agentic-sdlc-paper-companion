@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal < 0: accetta capitale negativo e restituisce un montante negativo, fuori dominio dichiarato principal >= 0"
+  ],
+  "detected_planted": false
+}

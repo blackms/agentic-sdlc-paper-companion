@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest uses (1 - annual_rate / compounds_per_year) instead of (1 + annual_rate / compounds_per_year), violating the declared formula and causing decreases for positive rates",
+    "compound_interest violates invariant M >= principal for valid inputs with principal > 0, annual_rate > 0, years > 0",
+    "compound_interest violates monotonicity in annual_rate and time because increasing rate/time can reduce the result"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee computes fee as fee_pct * fee_pct instead of amount * fee_pct, violating the declared output formula and effective-fee invariant"
+  ],
+  "detected_planted": true
+}

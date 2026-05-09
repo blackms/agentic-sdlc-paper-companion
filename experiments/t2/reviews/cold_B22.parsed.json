@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee clips incorrectly: when amount * fee_pct is greater than fee_min it sets fee to fee_min, so fees above the minimum are undercharged and the output violates the required clip(amount * fee_pct, fee_min, fee_max)."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "transfer() is non-atomic: debits account_from then can raise RuntimeError 'inconsistent state' on the isinstance check, leaving funds destroyed (money lost) without crediting account_to",
+    "transfer() has a bogus invariant check (isinstance(account_to.balance, Decimal)) that arbitrarily fails for valid Decimal-typed balances depending on prior arithmetic and is a deliberate failure point that should be removed",
+    "loan_payment() with r==0 returns p/m as Decimal division which yields a non-rounded value and does not enforce monetary quantization; also lacks principal>0 sanity beyond non-negative",
+    "compound_interest() does not validate principal (negative principal accepted) and does not cap r to a sane upper bound",
+    "apply_fee() applies fee as a*pct without dividing by 100 if fee_pct is expressed as a percentage (ambiguous contract, undocumented unit) leading to potential 100x overcharge",
+    "fx_convert() trusts rates dict without validating rate>0; a zero or negative rate would silently corrupt amounts",
+    "fx_convert() uses Decimal(str(rate)) but does not quantize the result to currency precision, risking sub-cent residuals",
+    "No rounding/quantize step in any monetary function (compound_interest, loan_payment, apply_fee, fx_convert) \u2014 results carry full Decimal precision and can leak fractional cents into ledgers",
+    "transfer() mutates Account.balance in place without locking/transaction context \u2014 not safe for concurrent callers",
+    "Receipt lacks timestamp, currency, and unique id, making it insufficient as an audit record",
+    "Type hints are missing on all public functions, reducing API clarity and static-analysis coverage",
+    "Module docstring claims 'NO BUGS' which is misleading given the deliberate failure path in transfer()"
+  ],
+  "detected_planted": true
+}

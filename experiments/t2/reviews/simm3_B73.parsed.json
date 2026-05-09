@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert restituisce float invece di Decimal, causando perdita di precisione e tipo di ritorno incoerente rispetto alle conversioni stessa valuta."
+  ],
+  "detected_planted": true
+}

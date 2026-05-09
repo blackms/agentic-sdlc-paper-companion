@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert returns float instead of Decimal, causing money precision loss and inconsistent return type versus other functions",
+    "transfer does not coerce/validate amount as Decimal, so float/string/non-Decimal inputs can cause TypeError or precision/consistency defects after partial validation",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing non-integer inputs without rejection",
+    "compound_interest does not validate negative principal, allowing nonsensical negative balances/returns",
+    "functions do not reject NaN/Infinity Decimal inputs, allowing invalid monetary values or rates to propagate"
+  ],
+  "detected_planted": true
+}

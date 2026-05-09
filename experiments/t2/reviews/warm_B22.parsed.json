@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "apply_fee applica fee_min quando la fee lo supera",
+    "compound_interest tronca anni frazionari senza validazione esplicita",
+    "loan_payment tronca mesi frazionari senza validazione esplicita",
+    "transfer non normalizza amount, float causano TypeError",
+    "transfer non atomica se l'accredito fallisce dopo l'addebito"
+  ],
+  "detected_planted": true
+}

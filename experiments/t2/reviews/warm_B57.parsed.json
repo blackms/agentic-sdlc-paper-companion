@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer receipt records zero instead of transferred amount",
+    "transfer does not normalize amount to Decimal",
+    "transfer balance updates are not atomic on second assignment failure"
+  ],
+  "detected_planted": true
+}

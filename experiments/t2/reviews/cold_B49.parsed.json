@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment returns a float instead of Decimal when monthly_rate == 0, violating the Decimal/no-float money contract and declared return type"
+  ],
+  "detected_planted": true
+}

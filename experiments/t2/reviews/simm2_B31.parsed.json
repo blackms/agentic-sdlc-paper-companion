@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest incrementa compounds_per_year di 1, producendo interessi composti errati e accettando compounds_per_year=0",
+    "compound_interest tronca years e compounds_per_year con int(), perdendo input frazionari senza errore",
+    "transfer non normalizza amount a Decimal, causando possibili TypeError o incoerenze con input float/string"
+  ],
+  "detected_planted": true
+}

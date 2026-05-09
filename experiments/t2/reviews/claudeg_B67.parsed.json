@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "apply_fee: redundant/incorrect clamp 'if fee < fmax: fee = fmax' forces fee to fmax whenever computed fee is below the cap, effectively always charging the maximum fee",
+    "transfer: balance mutation is not atomic \u2014 if an exception occurs between debit and credit (or in concurrent use) funds can be lost; should be wrapped in a transaction/try-except with rollback and use a lock",
+    "compound_interest: division r/n uses Decimal/int which is fine, but no validation that principal >= 0 (negative principal silently accepted)",
+    "loan_payment: when r == 0 returns p/m as Decimal/int division which yields a non-quantized Decimal; also no rounding to currency precision (cents)",
+    "fx_convert: rate is fetched only as direct pair (from,to); missing inverse-rate fallback and no validation that rate > 0",
+    "apply_fee: order of clamping is wrong \u2014 after capping with fmax the buggy line re-raises fee to fmax; even without the bug, no rounding to monetary precision",
+    "No monetary quantization (ROUND_HALF_EVEN to 2 decimals) anywhere \u2014 financial results may carry excessive precision and cause downstream rounding inconsistencies",
+    "Account/Receipt dataclasses are mutable and not frozen; balance is mutated directly without thread-safety",
+    "Type hints missing on all public functions, reducing static-analysis safety for a finance module",
+    "compound_interest: parameter compounds_per_year coerced via int() silently truncates floats (e.g. 12.9 -> 12) instead of raising"
+  ],
+  "detected_planted": true
+}

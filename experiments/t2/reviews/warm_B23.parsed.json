@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "apply_fee converte fee_pct in float, causando TypeError e perdita di precisione",
+    "fx_convert accetta tassi zero o negativi, producendo importi invalidi",
+    "transfer addebita prima dell'accredito, lasciando stato parziale su errore",
+    "transfer non sincronizza le mutazioni, consentendo overdraft concorrenti",
+    "transfer rifiuta solo oggetti identici, non account con stesso id",
+    "transfer non converte amount in Decimal, violando il tipo Receipt",
+    "compound_interest tronca anni frazionari e frequenza, alterando il risultato",
+    "loan_payment tronca mesi frazionari invece di rifiutarli"
+  ],
+  "detected_planted": true
+}

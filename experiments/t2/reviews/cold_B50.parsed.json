@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest raises RuntimeError instead of ValueError when annual_rate < 0",
+    "compound_interest does not reject negative principal despite principal >= 0 contract"
+  ],
+  "detected_planted": true
+}

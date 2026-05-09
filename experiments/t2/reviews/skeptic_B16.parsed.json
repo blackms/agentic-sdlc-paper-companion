@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer credits the source account instead of debiting it, creating money",
+    "transfer does not normalize or type-check amount as Decimal, so floats/strings can crash or introduce mixed-type behavior",
+    "transfer is non-atomic and has no concurrency protection, so balance checks can race or partial mutation can leave inconsistent balances",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year with int(), changing caller intent without validation",
+    "compound_interest allows negative principal, which can produce nonsensical negative balances/returns",
+    "fx_convert does not validate rate positivity, allowing zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

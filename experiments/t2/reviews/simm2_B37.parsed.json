@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest rifiuta annual_rate=0 anche se un tasso zero dovrebbe essere valido e restituire il principal",
+    "compound_interest tronca silently years con int(years), producendo risultati errati per anni frazionari",
+    "transfer non normalizza amount a Decimal, quindi input numerici/stringa possono causare TypeError o incoerenze di precisione"
+  ],
+  "detected_planted": true
+}

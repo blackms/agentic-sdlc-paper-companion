@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest non valida principal negativa",
+    "compound_interest accetta tassi annuali negativi non validati",
+    "Conversioni int troncano silenziosamente anni, mesi e frequenze",
+    "transfer non converte amount a Decimal",
+    "transfer identifica self-transfer solo per identit\u00e0 oggetto",
+    "transfer non \u00e8 atomica se il credito fallisce",
+    "transfer manca lock contro race condition e overdraft concorrenti",
+    "apply_fee pu\u00f2 restituire importi netti negativi",
+    "fx_convert accetta cambi zero, negativi o non finiti",
+    "Risultati monetari non quantizzati generano frazioni di centesimo",
+    "Valori NaN o infiniti non sono rifiutati coerentemente"
+  ],
+  "detected_planted": false
+}

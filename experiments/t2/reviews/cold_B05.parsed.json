@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest does not raise ValueError when compounds_per_year < 1; compounds_per_year=0 raises division error and negative values compute instead of rejecting"
+  ],
+  "detected_planted": true
+}

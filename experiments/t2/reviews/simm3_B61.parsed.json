@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert accepts zero or negative exchange rates, which can produce invalid zero/negative converted amounts",
+    "transfer does not normalize amount to Decimal, so float inputs can pass validation but fail during Decimal arithmetic"
+  ],
+  "detected_planted": false
+}

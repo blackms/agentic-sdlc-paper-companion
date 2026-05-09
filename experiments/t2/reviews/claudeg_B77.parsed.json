@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "fx_convert does not validate rate <= 0, allowing zero or negative exchange rates to produce nonsensical converted amounts",
+    "loan_payment zero-rate branch returns p/m as Decimal/int division which yields a non-quantized result and silently accepts months as float truncated to int",
+    "compound_interest accepts years as float but truncates via int(years), silently discarding fractional years instead of raising",
+    "transfer mutates balances non-atomically without locking, so concurrent transfers can corrupt balances (no thread/transaction safety)",
+    "transfer uses 'is' identity check to prevent self-transfer; two distinct Account instances with the same id would bypass the check",
+    "apply_fee does not quantize the fee or result to a currency precision (e.g. 2 decimals), risking sub-cent residues",
+    "fx_convert performs Decimal(str(rate)) after .get(); if rates dict stores floats, precision is preserved but no symmetry/inverse-rate validation is done",
+    "No rounding/quantization strategy (ROUND_HALF_EVEN) is applied anywhere money is computed, violating financial best practice",
+    "Account.balance is a mutable field with no invariant enforcement (could be set negative directly, bypassing transfer checks)",
+    "Error messages are inconsistent and not localized/structured (plain ValueError strings), hindering programmatic handling"
+  ],
+  "detected_planted": true
+}

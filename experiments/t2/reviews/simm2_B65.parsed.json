@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee non valida esplicitamente fee_max negativo; il valore viene rifiutato solo indirettamente in alcuni casi tramite fee_min > fee_max, con semantica di errore fragile"
+  ],
+  "detected_planted": false
+}

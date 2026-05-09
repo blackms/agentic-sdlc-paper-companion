@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest solleva RuntimeError per annual_rate negativo invece di ValueError, incoerente con la validazione degli input",
+    "compound_interest converte years con int(), quindi valori frazionari negativi come -0.5 diventano 0 e bypassano il controllo",
+    "transfer non normalizza amount a Decimal, quindi input float o tipi non Decimal possono causare TypeError o incoerenze nelle operazioni con balance Decimal",
+    "apply_fee puo restituire un importo negativo se la fee minima o massima supera amount"
+  ],
+  "detected_planted": true
+}

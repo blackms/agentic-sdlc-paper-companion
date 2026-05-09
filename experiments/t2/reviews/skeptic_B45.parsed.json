@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest accetta annual_rate non validato: rate <= -compounds_per_year puo produrre risultati zero/negativi non finanziari o errori non dichiarati",
+    "compound_interest non valida principal negativo o valori non finiti, quindi NaN/Infinity/negativi possono propagare o esplodere in modo non controllato",
+    "years, compounds_per_year e months vengono convertiti con int(), troncando input frazionari senza errore e cambiando silenziosamente il contratto economico",
+    "transfer non normalizza/valida amount come Decimal finito: float/NaN/tipi custom possono causare TypeError o comportamenti non controllati",
+    "transfer non e atomica: se il credito a account_to fallisce dopo il debito, account_from resta modificato e i saldi diventano inconsistenti",
+    "apply_fee puo restituire importi negativi se fee_min supera amount, creando una fee maggiore del capitale senza validazione",
+    "fx_convert non valida rate positivo e finito: rate zero/negativo/NaN/Infinity puo produrre conversioni economicamente invalide",
+    "nessuna funzione applica quantizzazione/arrotondamento per currency, quindi valori monetari possono accumulare precisione non conforme"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest raises RuntimeError instead of ValueError for negative annual_rate",
+    "transfer does not normalize amount to Decimal, so floats/strings can cause TypeError or inconsistent Receipt.amount type",
+    "fx_convert accepts zero or negative exchange rates, producing invalid conversions",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": true
+}

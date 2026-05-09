@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "Transfer accredita un centesimo extra creando denaro",
+    "Transfer non converte amount a Decimal come le altre funzioni",
+    "Transfer non atomico pu\u00f2 lasciare saldi incoerenti",
+    "Transfer senza locking pu\u00f2 subire race condition sui saldi"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee clamps to fee_min when fee exceeds fee_min; condition is flipped and undercharges most fees",
+    "transfer does not coerce amount to Decimal, so float/string inputs can cause TypeError or inconsistent Receipt amount type"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer converts amount to float, losing monetary precision",
+    "transfer mixes Decimal balances with float amount, causing TypeError",
+    "Receipt amount is float despite dataclass declaring Decimal",
+    "transfer debits before crediting, so mutation is not atomic",
+    "transfer accepts NaN amount because comparisons fail silently",
+    "compound_interest allows negative principal, unlike loan_payment contract",
+    "integer casts silently truncate fractional years, months, or compounds"
+  ],
+  "detected_planted": true
+}

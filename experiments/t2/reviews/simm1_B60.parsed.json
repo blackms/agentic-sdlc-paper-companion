@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer() muta account_from.balance prima del controllo post-sottrazione: se quel controllo fallisce lascia stato parzialmente aggiornato",
+    "transfer() non normalizza amount a Decimal, a differenza delle altre funzioni, causando TypeError o precisione incoerente con float/string",
+    "compound_interest() e loan_payment() usano int() su anni/mesi/composti, troncando silenziosamente valori non interi invece di validarli",
+    "fx_convert() non valida che il tasso FX sia positivo, permettendo conversioni negative o zero",
+    "apply_fee() pu\u00f2 restituire importi negativi se fee_min supera amount"
+  ],
+  "detected_planted": false
+}

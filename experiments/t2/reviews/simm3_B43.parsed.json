@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment non converte monthly_rate in Decimal, causando TypeError con float/string e aritmetica mista Decimal/non-Decimal"
+  ],
+  "detected_planted": true
+}

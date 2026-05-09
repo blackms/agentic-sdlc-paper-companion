@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "apply_fee has no upper bound validation for fee_pct, allowing nonsensical or abusive fees such as 200% before fee_max clamps behavior",
+    "transfer does not normalize amount to Decimal; float/int/NaN inputs can cause type errors, precision surprises, or invalid comparisons during balance updates",
+    "transfer is not atomic: debit occurs before credit, so a failure during credit mutation can leave accounts inconsistent",
+    "transfer accepts non-finite Decimal amounts such as NaN/Infinity without explicit validation, which can corrupt balances",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without warning",
+    "loan_payment silently truncates fractional months via int(), changing repayment calculations without warning",
+    "fx_convert does not validate exchange rates as positive and finite, allowing zero/negative/NaN/Infinity rates to produce invalid conversions",
+    "money outputs are never quantized/rounded to currency minor units, creating precision and settlement inconsistencies"
+  ],
+  "detected_planted": true
+}

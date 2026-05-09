@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer accetta self-transfer tra due Account distinti con lo stesso id, violando il divieto di self-transfer",
+    "transfer non garantisce atomicit\u00e0 se l'aggiornamento del balance del destinatario fallisce dopo l'addebito del mittente"
+  ],
+  "detected_planted": false
+}

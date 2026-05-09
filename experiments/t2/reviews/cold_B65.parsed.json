@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee does not validate fee_max < 0: negative fee_max is accepted, violating the declared ValueError requirement for any negative input."
+  ],
+  "detected_planted": true
+}

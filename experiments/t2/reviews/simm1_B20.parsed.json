@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee restituisce amount + fee mentre il commento indica che la fee dovrebbe essere sottratta, producendo importi netti errati",
+    "transfer non converte/valida amount come Decimal: input float/int possono causare TypeError o Receipt con tipo incoerente"
+  ],
+  "detected_planted": true
+}

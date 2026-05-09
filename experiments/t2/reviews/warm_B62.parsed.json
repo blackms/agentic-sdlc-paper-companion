@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "Negative compound principal is accepted without validation",
+    "Fractional years and periods are silently truncated",
+    "Negative fee percentage raises TypeError instead of ValueError",
+    "Transfer mutates debit before credit, so it is not atomic",
+    "Transfer amount is not normalized to Decimal before arithmetic",
+    "FX conversion accepts zero or negative exchange rates",
+    "Monetary results are never rounded to currency precision"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee calcola pct squared invece di amount times pct",
+    "transfer non normalizza amount a Decimal coerentemente",
+    "transfer pu\u00f2 debitare prima di fallire sull'accredito",
+    "transfer non \u00e8 atomico/thread-safe tra conti concorrenti",
+    "compound_interest tronca anni frazionari con int",
+    "loan_payment tronca mesi frazionari con int"
+  ],
+  "detected_planted": true
+}

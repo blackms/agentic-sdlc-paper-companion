@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment non converte/valida months come intero, causando TypeError con input string/Decimal o calcoli non corretti con valori frazionari",
+    "transfer non normalizza amount a Decimal, quindi input int/float possono causare TypeError o incoerenze rispetto alle altre funzioni"
+  ],
+  "detected_planted": true
+}

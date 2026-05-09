@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non verifica che account_from.currency e account_to.currency coincidano, consentendo trasferimenti tra valute diverse senza conversione",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o comportamento incoerente rispetto alle altre funzioni"
+  ],
+  "detected_planted": true
+}

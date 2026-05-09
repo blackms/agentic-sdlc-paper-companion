@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment with zero monthly_rate divides by months - 1 instead of months, producing incorrect payments and division by zero when months is 1",
+    "transfer does not normalize amount to Decimal, so non-Decimal numeric inputs can cause type errors or inconsistent precision"
+  ],
+  "detected_planted": true
+}

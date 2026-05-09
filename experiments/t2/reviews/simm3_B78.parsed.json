@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert ignora il parametro rates per EUR->USD e usa un tasso hardcoded 1.0, producendo conversioni errate"
+  ],
+  "detected_planted": true
+}

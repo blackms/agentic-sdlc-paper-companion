@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee applica il fee_min quando la fee calcolata e' maggiore del minimo; la condizione dovrebbe imporre il minimo quando fee < fee_min, quindi le commissioni vengono sottostimate e fee_max puo' risultare inefficace",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee clamps fees above fee_max to fee_min instead of fee_max, violating output formula and effective fee range invariant"
+  ],
+  "detected_planted": true
+}

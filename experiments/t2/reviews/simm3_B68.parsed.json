@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee pu\u00f2 restituire importi negativi quando fee_pct > 100% o fee_min/fee_max superano amount",
+    "transfer non normalizza amount a Decimal, causando TypeError o incoerenze con input float/string",
+    "compound_interest e loan_payment convertono years/months con int() troncando silenziosamente valori non interi"
+  ],
+  "detected_planted": true
+}

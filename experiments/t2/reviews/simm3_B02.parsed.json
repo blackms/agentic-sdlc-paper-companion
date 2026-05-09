@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest converts principal to float and then multiplies by Decimal, causing TypeError and precision loss",
+    "compound_interest silently truncates fractional years and does not validate negative principal",
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError with Decimal balances",
+    "transfer mutates balances without transactional/locking protection, risking inconsistent state under concurrency",
+    "apply_fee can return a negative amount when the minimum fee exceeds the amount",
+    "fx_convert does not validate that exchange rates are positive"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment converte principal e monthly_rate in float causando perdita di precisione finanziaria",
+    "loan_payment fallisce per tasso non zero perch\u00e9 somma Decimal e float",
+    "loan_payment restituisce float nel ramo a tasso zero, tipo incoerente con il resto delle funzioni",
+    "months, years e compounds_per_year vengono convertiti con int() troncando input non interi senza validazione"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest mixes float and Decimal causing TypeError",
+    "compound_interest converts principal to float losing monetary precision",
+    "compound_interest silently truncates fractional years",
+    "loan_payment silently truncates fractional months",
+    "transfer compares unnormalized amount types against Decimal balances",
+    "transfer is non-atomic if credit assignment fails",
+    "apply_fee can return negative net amount for small amounts",
+    "fx_convert accepts negative or zero exchange rates"
+  ],
+  "detected_planted": true
+}

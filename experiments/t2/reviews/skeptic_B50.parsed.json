@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest raises RuntimeError for negative rate instead of a validation exception, inconsistent with the rest of the API",
+    "compound_interest allows negative principal and silently truncates fractional years/compounds_per_year with int()",
+    "loan_payment silently truncates fractional months with int()",
+    "transfer does not coerce or validate amount as Decimal, so float/NaN/non-finite inputs can raise unexpected errors or corrupt balances",
+    "transfer is non-atomic: if crediting account_to fails after debiting account_from, balances become inconsistent",
+    "fx_convert does not validate rate positivity or finiteness, allowing negative/zero/NaN/Infinity FX rates to produce invalid money values",
+    "functions do not consistently reject NaN/Infinity inputs, allowing silent propagation or unexpected Decimal exceptions",
+    "money results are not quantized to currency precision, risking silent rounding/precision regressions"
+  ],
+  "detected_planted": true
+}

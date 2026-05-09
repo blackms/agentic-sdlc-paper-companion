@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest does not raise ValueError for negative principal, violating principal >= 0 input constraint",
+    "loan_payment raises base Exception instead of ValueError when principal < 0",
+    "transfer does not enforce Decimal-only amount; float amounts can be used in money arithmetic",
+    "fx_convert silently accepts float amount/rate by converting via str, violating Decimal-only amount/rate contract"
+  ],
+  "detected_planted": true
+}

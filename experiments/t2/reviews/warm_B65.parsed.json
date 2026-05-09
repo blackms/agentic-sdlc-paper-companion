@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee non valida fee_max negativo",
+    "transfer non atomico se accredito fallisce dopo addebito"
+  ],
+  "detected_planted": false
+}

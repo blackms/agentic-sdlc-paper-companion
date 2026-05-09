@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert returns zero for same-currency conversion"
+  ],
+  "detected_planted": true
+}

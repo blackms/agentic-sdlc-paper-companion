@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment raises base Exception for negative principal instead of ValueError",
+    "transfer does not normalize amount to Decimal, causing TypeError or inconsistent arithmetic for float/string inputs",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate FX rate is positive, allowing zero or negative conversions"
+  ],
+  "detected_planted": true
+}

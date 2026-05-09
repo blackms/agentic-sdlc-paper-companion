@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest raises TypeError instead of ValueError for negative rate, creating inconsistent API behavior",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), accepting fractional inputs with changed meaning",
+    "transfer does not coerce or validate amount as Decimal, so float/int/NaN inputs can cause type errors, precision issues, or invalid receipts",
+    "transfer is not atomic: if account_to.balance update fails after debit, source account remains debited",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate exchange rate positivity/nonzero/finite, allowing negative, zero, NaN, or infinite conversions",
+    "all functions miss finite/NaN validation, allowing silent NaN propagation or unexpected Decimal exceptions"
+  ],
+  "detected_planted": true
+}

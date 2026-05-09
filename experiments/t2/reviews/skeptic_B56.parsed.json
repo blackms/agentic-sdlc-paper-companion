@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "transfer muta account_to.balance prima di verificare fondi: su saldo insufficiente solleva ma lascia il destinatario accreditato",
+    "transfer non normalizza/valida amount come Decimal finito: float/NaN/Infinity/custom types possono causare errori, precision loss o receipt incoerenti",
+    "transfer non \u00e8 atomico n\u00e9 protetto da concorrenza: trasferimenti simultanei possono superare il saldo disponibile",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min o fee_pct producono una fee maggiore dell'amount",
+    "fx_convert accetta tassi zero, negativi, NaN o Infinity, producendo conversioni nulle/negative/non finite",
+    "compound_interest non valida principal negativo o non finito",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), cambiando durata/frequenza senza errore",
+    "loan_payment tronca silenziosamente months con int(), alterando il piano di rimborso",
+    "nessuna funzione monetaria quantizza/arrotonda alla minor unit della valuta, generando importi sub-cent e drift contabile"
+  ],
+  "detected_planted": true
+}

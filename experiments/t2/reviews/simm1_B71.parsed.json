@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest and loan_payment silently truncate non-integer years/months via int(), which can undercalculate rather than reject invalid input",
+    "transfer does not normalize amount to Decimal like the other functions, so float amounts can raise TypeError during balance arithmetic and receipt amount may have an inconsistent type",
+    "fx_convert accepts zero or negative exchange rates, producing invalid financial conversions"
+  ],
+  "detected_planted": true
+}

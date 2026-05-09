@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert uses rates.get and converts missing rate None to Decimal, raising TypeError/InvalidOperation instead of explicit ValueError for unavailable rate"
+  ],
+  "detected_planted": true
+}

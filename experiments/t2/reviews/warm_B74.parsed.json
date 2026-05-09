@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "fx_convert lowercasa le chiavi e fallisce con tassi uppercase",
+    "fx_convert accetta tassi zero o negativi senza validazione",
+    "apply_fee pu\u00f2 restituire importi negativi se la commissione supera l'importo",
+    "transfer non normalizza amount, causando TypeError con importi float",
+    "transfer pu\u00f2 addebitare il mittente prima di fallire l'accredito",
+    "transfer non \u00e8 thread-safe e pu\u00f2 consentire scoperti concorrenti",
+    "self-transfer con oggetti distinti ma stesso id non bloccato",
+    "compound_interest tronca anni e frequenze frazionarie senza errore",
+    "loan_payment tronca mesi frazionari invece di rifiutarli"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "compound_interest usa compounds_per_year incrementato, gonfiando gli interessi",
+    "compounds_per_year zero viene accettato invece di fallire",
+    "Durate e frequenze frazionarie vengono troncate silenziosamente",
+    "compound_interest accetta principal negativo senza validazione",
+    "loan_payment tronca months non interi senza errore",
+    "transfer non converte amount a Decimal, causando TypeError",
+    "transfer usa identit\u00e0 oggetto, permettendo trasferimenti stesso id",
+    "transfer non \u00e8 atomico n\u00e9 thread-safe sul saldo",
+    "apply_fee pu\u00f2 restituire importi negativi se fee supera amount",
+    "Importi e risultati non vengono quantizzati alla valuta",
+    "fx_convert accetta tassi zero o negativi",
+    "fx_convert non valida codici valuta o tabella rates"
+  ],
+  "detected_planted": true
+}

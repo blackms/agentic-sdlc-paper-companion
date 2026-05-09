@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer accredita amount + 0.01 al destinatario, creando denaro e rompendo la conservazione del saldo",
+    "transfer non normalizza amount a Decimal: float/string possono causare TypeError o confronti incoerenti",
+    "compound_interest e loan_payment usano int() su years/months/compounds_per_year, troncando silenziosamente input frazionari o stringhe numeriche",
+    "compound_interest non valida principal negativo",
+    "fx_convert non valida che il tasso esista come numero positivo: tassi zero/negativi producono conversioni invalide",
+    "apply_fee pu\u00f2 restituire importo netto negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

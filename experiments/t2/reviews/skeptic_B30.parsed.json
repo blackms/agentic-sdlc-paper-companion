@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee accepts negative amount; negative inputs can produce negative fees and inflate/return nonsensical balances",
+    "transfer does not coerce/validate amount as Decimal; floats or NaN-like values can break comparisons/arithmetic or create inconsistent behavior",
+    "transfer mutates account_from before account_to; if account_to.balance addition fails, balances become inconsistent and no rollback occurs",
+    "fx_convert does not validate rate positivity; zero or negative FX rates silently produce zero/negative converted amounts",
+    "compound_interest does not reject negative principal",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing inputs like 1.9 without error",
+    "finance results are not quantized/rounded to currency minor units, allowing precision drift in money-facing outputs"
+  ],
+  "detected_planted": true
+}

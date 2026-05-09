@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita al destinatario amount + 0.01 invece di amount, creando denaro e rendendo incoerenti i saldi"
+  ],
+  "detected_planted": true
+}

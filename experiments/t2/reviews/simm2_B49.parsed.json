@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment restituisce float nel ramo monthly_rate == 0 invece di Decimal, causando tipo incoerente e possibile perdita di precisione",
+    "transfer non normalizza amount a Decimal: con input numerici comuni come float pu\u00f2 sollevare TypeError durante sottrazione/addizione con balance Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative non valide"
+  ],
+  "detected_planted": true
+}

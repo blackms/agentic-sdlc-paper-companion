@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment adds 1 to months, causing an off-by-one payment calculation and incorrectly accepting months=0 as valid"
+  ],
+  "detected_planted": true
+}

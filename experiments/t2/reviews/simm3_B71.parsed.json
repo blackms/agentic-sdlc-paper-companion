@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so int/float/string inputs can raise TypeError or mix numeric types unlike the other finance functions",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), which can produce incorrect financial results"
+  ],
+  "detected_planted": true
+}

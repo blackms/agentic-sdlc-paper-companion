@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer does not coerce/validate amount as Decimal; float or non-Decimal amounts can raise TypeError after partial assumptions and bypass consistent validation semantics",
+    "transfer does not reject NaN/Infinity explicitly; Decimal NaN/Infinity or float NaN can produce unexpected exceptions or invalid balances",
+    "transfer is non-atomic: if crediting account_to.balance fails after debiting account_from.balance, funds are lost",
+    "loan_payment silently truncates non-integer months via int(months), changing repayment terms without error",
+    "compound_interest silently truncates years and compounds_per_year via int(...), producing undeclared behavior for fractional inputs",
+    "compound_interest does not validate principal >= 0, allowing negative principal outputs",
+    "apply_fee allows fee_pct > 1 and fee_min/fee_max greater than amount, returning negative net amounts",
+    "fx_convert does not validate rate > 0 or finite, so zero/negative/NaN/Infinity rates can produce invalid conversions"
+  ],
+  "detected_planted": true
+}

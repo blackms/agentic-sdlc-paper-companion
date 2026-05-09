@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee raises ZeroDivisionError for a negative amount instead of ValueError, producing misleading error semantics.",
+    "fx_convert does not validate exchange rates; zero or negative rates can produce invalid converted amounts.",
+    "transfer does not normalize/validate amount as Decimal, so non-Decimal inputs such as floats/strings can raise TypeError or cause inconsistent behavior."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert applica un tasso configurato anche quando from_currency e to_currency coincidono, quindi una conversione nella stessa valuta pu\u00f2 modificare erroneamente l'importo invece di restituirlo invariato"
+  ],
+  "detected_planted": false
+}

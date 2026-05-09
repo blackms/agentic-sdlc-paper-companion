@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "Transfer lacks self-transfer check",
+    "Transfer updates balances non-atomically between debit and credit",
+    "Transfer does not coerce amount to Decimal",
+    "Interest years are silently truncated with int",
+    "Interest allows negative fractional years as zero",
+    "Loan months are silently truncated with int",
+    "FX conversion accepts nonpositive exchange rates"
+  ],
+  "detected_planted": true
+}

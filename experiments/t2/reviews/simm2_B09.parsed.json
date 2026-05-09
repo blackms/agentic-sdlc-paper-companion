@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment non valida il principal: valori <= 0 producono pagamenti nulli o negativi invece di errore",
+    "fx_convert non valida che il tasso FX sia positivo: tassi 0 o negativi generano conversioni invalide",
+    "transfer non normalizza/valida amount come Decimal, quindi importi float/stringa possono causare TypeError o comportamenti incoerenti",
+    "apply_fee pu\u00f2 restituire un importo netto negativo quando la fee minima supera l'amount"
+  ],
+  "detected_planted": false
+}

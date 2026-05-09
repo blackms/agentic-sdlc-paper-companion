@@ -1,0 +1,18 @@
+{
+  "bugs_found": [
+    "compound_interest: 'n = int(compounds_per_year) + 1' incorrectly increments compounds_per_year, producing wrong results (e.g., monthly compounding uses 13 instead of 12)",
+    "compound_interest: validation check 'if n < 1' happens after the +1 increment so it cannot catch compounds_per_year=0 properly and never rejects negative inputs as intended",
+    "compound_interest: missing validation that principal is non-negative",
+    "loan_payment: when r == 0 returns 'p / m' as Decimal division which may yield non-quantized result; also no rounding to currency precision",
+    "transfer: not atomic - if any later step fails between debit and credit, funds could be lost; also no locking for concurrent transfers",
+    "transfer: mutates account balances in-place without transactional safety or audit log",
+    "apply_fee: returns negative net amount when fee_min exceeds amount (no check that fee <= a)",
+    "apply_fee: docstring/contract unclear whether fee_pct is fraction or percent; no upper bound on pct (e.g., > 1)",
+    "fx_convert: no validation that rate is positive; a zero or negative rate would be accepted",
+    "fx_convert: no support for inverse rates or triangulation; missing rate raises but symmetric pair not tried",
+    "General: monetary results not quantized to currency minor units (e.g., 2 decimals), risking sub-cent drift",
+    "General: docstring claims 'NO BUGS' but compound_interest has an explicit '# bug' comment and incorrect logic",
+    "General: no type hints on function signatures despite using dataclasses with types"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer usa AssertionError per validazione runtime del self-transfer; dovrebbe usare ValueError o un'eccezione di dominio",
+    "transfer non normalizza amount a Decimal: stringhe o float possono causare TypeError con balance Decimal",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount",
+    "fx_convert non valida che il tasso FX sia positivo, quindi rate zero o negativi producono risultati finanziari invalidi"
+  ],
+  "detected_planted": true
+}

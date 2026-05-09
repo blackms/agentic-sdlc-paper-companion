@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "Missing fx rate yields confusing TypeError instead of ValueError",
+    "fx_convert accepts None rate and fails during multiplication",
+    "fx_convert allows zero or negative exchange rates",
+    "transfer compares unconverted amount against Decimal balances",
+    "transfer can partially debit if credit update fails",
+    "compound_interest silently truncates fractional years",
+    "compound_interest silently truncates fractional compound frequency",
+    "compound_interest allows negative principal values",
+    "loan_payment silently truncates fractional month counts",
+    "apply_fee may return negative net amount when fee exceeds amount"
+  ],
+  "detected_planted": true
+}

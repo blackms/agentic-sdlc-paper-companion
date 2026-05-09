@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer allows zero or negative amount; negative transfers credit source and debit destination",
+    "transfer does not coerce/validate amount as Decimal, finite, numeric, or same unit before mutating balances",
+    "transfer is non-atomic if balance mutation or receipt construction fails after debiting source",
+    "compound_interest accepts negative principal and silently truncates non-integer years/compounds_per_year via int()",
+    "loan_payment silently truncates non-integer months via int()",
+    "fx_convert does not validate exchange rate is positive/non-zero/finite, allowing negative rates or NaN/Infinity outputs",
+    "money outputs are not quantized/rounded to currency minor units, causing implicit Decimal context rounding and inconsistent monetary values"
+  ],
+  "detected_planted": true
+}

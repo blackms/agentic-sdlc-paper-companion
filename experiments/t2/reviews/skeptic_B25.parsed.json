@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert does not validate missing FX rate; Decimal(str(None)) raises a confusing ConversionSyntax exception instead of a controlled domain error",
+    "transfer mutates account_from before mutating account_to; if crediting account_to fails due to invalid balance type or hostile object, debit is committed without matching credit",
+    "transfer does not normalize or validate amount as Decimal, allowing type errors or non-finite Decimal values to break consistency",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing financial results for fractional inputs without explicit rejection",
+    "money outputs are not quantized to currency minor units, allowing silent fractional-cent results"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment restituisce un float nel ramo monthly_rate == 0, causando tipo di ritorno incoerente e perdita di precisione rispetto a Decimal",
+    "transfer non normalizza amount a Decimal, quindi input numerici non-Decimal possono causare TypeError o incoerenze di precisione"
+  ],
+  "detected_planted": true
+}

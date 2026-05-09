@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert applica un tasso arbitrario anche quando from_currency == to_currency; dovrebbe restituire l'importo invariato o ignorare rates",
+    "fx_convert nel caso stessa valuta non normalizza il rate con Decimal(str(rate)), quindi un rate float/string pu\u00f2 causare TypeError",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando TypeError o incoerenze se amount \u00e8 float",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

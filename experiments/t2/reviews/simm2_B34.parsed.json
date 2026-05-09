@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest non converte principal in Decimal: input float/string causa TypeError o comportamento incoerente con le altre funzioni",
+    "transfer non normalizza amount a Decimal: con amount float l'aritmetica su balance Decimal fallisce e Receipt pu\u00f2 contenere un tipo inatteso",
+    "fx_convert non valida che il tasso FX sia positivo: rate zero o negativo produce conversioni invalide"
+  ],
+  "detected_planted": true
+}

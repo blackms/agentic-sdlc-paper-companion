@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita al destinatario amount + Decimal('0.01'), creando denaro e rendendo il saldo totale incoerente"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "apply_fee clamps fee above fee_max to fee_min instead of fee_max, silently undercharging large fees",
+    "transfer is non-atomic: source balance is debited before destination credit, so a failure during credit can lose funds",
+    "transfer has no concurrency control; concurrent transfers can race and overdraw or lose balance updates",
+    "transfer does not coerce/validate amount as finite Decimal, causing type errors or precision/type inconsistency versus other money functions",
+    "compound_interest accepts negative principal, enabling nonsensical negative balances/returns"
+  ],
+  "detected_planted": true
+}

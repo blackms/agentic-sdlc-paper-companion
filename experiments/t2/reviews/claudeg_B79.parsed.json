@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "compound_interest: r/n uses integer division semantics avoided by Decimal but no validation that annual_rate is non-NaN; missing upper sanity bound",
+    "loan_payment: when r==0 returns p/m as Decimal/int which works but lacks explicit Decimal conversion of m; also no check that principal is finite",
+    "transfer: not atomic - if second assignment fails after first, account_from is debited without crediting account_to (no rollback/transaction)",
+    "transfer: uses 'is' identity check instead of comparing account ids, so two Account objects with same id are not detected as self-transfer",
+    "apply_fee: raises ArithmeticError for negative amount instead of ValueError, inconsistent exception type with rest of module",
+    "apply_fee: fee computed as a*pct treats fee_pct as a fraction but parameter name suggests percentage - ambiguous contract, no documentation",
+    "fx_convert: only supports direct rate lookup, no inverse rate fallback (e.g., if (USD,EUR) missing but (EUR,USD) present)",
+    "fx_convert: rate is converted via Decimal(str(rate)) but rates dict values type is unspecified - could silently accept floats causing precision concerns",
+    "Module-wide: no rounding/quantization to currency precision (e.g., 2 decimals) on monetary outputs",
+    "Module-wide: Account/Receipt dataclasses are mutable; balance mutation has no locking for concurrent access"
+  ],
+  "detected_planted": true
+}

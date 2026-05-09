@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest converts principal to float and then multiplies it by Decimal, causing TypeError and losing monetary precision",
+    "compound_interest does not reject negative principal values",
+    "transfer does not normalize amount to Decimal, so float inputs can cause TypeError or precision issues",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate that exchange rates are positive"
+  ],
+  "detected_planted": true
+}

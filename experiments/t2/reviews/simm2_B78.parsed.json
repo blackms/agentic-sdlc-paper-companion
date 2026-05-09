@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert hardcodes EUR->USD rate to 1.0 and ignores the provided rates table, producing incorrect conversions.",
+    "transfer does not normalize amount to Decimal, so passing int/float can cause Decimal comparison/arithmetic errors or inconsistent Receipt.amount types.",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, which is usually invalid for fee application."
+  ],
+  "detected_planted": true
+}

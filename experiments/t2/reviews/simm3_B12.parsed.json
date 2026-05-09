@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment non valida months: months <= 0 causa divisione per zero o pagamenti non validi",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono generare TypeError o Receipt con tipo incoerente"
+  ],
+  "detected_planted": true
+}

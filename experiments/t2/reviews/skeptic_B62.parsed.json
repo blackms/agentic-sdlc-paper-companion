@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "apply_fee raises TypeError instead of ValueError for negative fee_pct, creating inconsistent validation behavior",
+    "transfer is not atomic: account_from is debited before account_to credit is guaranteed, so a failing credit can corrupt balances",
+    "transfer does not normalize/validate amount as Decimal, allowing type errors or mixed numeric behavior unlike other money functions",
+    "loan_payment and compound_interest silently truncate years/months/compounds_per_year via int(), changing financial terms without explicit validation",
+    "fx_convert does not validate rate positivity or finiteness, allowing negative, zero, NaN, or infinite FX rates"
+  ],
+  "detected_planted": true
+}

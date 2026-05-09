@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest uses float(years), violating the no-float Decimal money/precision invariant",
+    "compound_interest computes Decimal ** float, causing TypeError for valid inputs instead of returning the contract formula"
+  ],
+  "detected_planted": true
+}

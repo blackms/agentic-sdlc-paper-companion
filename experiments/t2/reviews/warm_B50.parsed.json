@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Negative rate raises RuntimeError instead of ValueError",
+    "Years and compounding frequency silently truncate fractional inputs",
+    "Loan months silently truncate fractional inputs",
+    "Transfer mutates debit before credit without rollback",
+    "Transfer accepts unnormalized amount types causing possible TypeError"
+  ],
+  "detected_planted": true
+}

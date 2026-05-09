@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "apply_fee allows fee_pct above one hundred percent",
+    "transfer mutates source before destination update, breaking atomicity",
+    "transfer does not normalize amount to Decimal",
+    "fx_convert accepts zero or negative exchange rates",
+    "fx_convert lacks validation for finite rates",
+    "compound_interest silently truncates fractional years",
+    "loan_payment silently truncates fractional months",
+    "compound_interest allows negative principal values"
+  ],
+  "detected_planted": true
+}

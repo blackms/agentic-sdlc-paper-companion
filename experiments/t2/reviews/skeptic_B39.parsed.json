@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo e produce risultati finanziari invalidi",
+    "conversione int(years/months/compounds_per_year) tronca silenziosamente input frazionari cambiando durata o frequenza",
+    "transfer non normalizza/valida amount come Decimal: float/NaN/tipi malevoli possono causare errori o comportamenti non controllati",
+    "transfer non e atomica: dopo il debit, un errore durante il credit lascia i conti inconsistenti",
+    "fx_convert non valida che il tasso sia positivo e finito: tassi zero/negativi/NaN/Infinity producono conversioni invalidhe",
+    "mancano validazioni di finitezza per importi, rate, saldi e fee: Decimal NaN/Infinity puo generare eccezioni non dichiarate o risultati non utilizzabili"
+  ],
+  "detected_planted": true
+}

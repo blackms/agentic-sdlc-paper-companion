@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "transfer() has flipped currency check: raises 'currency mismatch' when currencies are equal and allows transfers between different currencies without conversion",
+    "compound_interest() divides r by n without converting n to Decimal first in the expression context (works due to Decimal/int coercion, but lacks explicit Decimal(n)) and does not validate principal >= 0",
+    "loan_payment() zero-rate branch returns p/m using Decimal/int which is fine, but the function lacks consistent input validation symmetry (no upper bound checks) and may suffer precision loss without explicit rounding/quantize",
+    "apply_fee() treats fee_pct as a raw multiplier rather than a percentage (e.g., 5% must be passed as 0.05), which is ambiguous and undocumented, easy source of 100x errors",
+    "apply_fee() computes fee = a * pct without rounding to currency precision, leading to sub-cent residues in monetary results",
+    "fx_convert() does not validate that the rate is positive; a zero or negative rate would silently produce wrong/zero conversions",
+    "fx_convert() uses only direct (from,to) lookup with no fallback to inverse rate (1/rate) or triangulation, causing avoidable ValueError for symmetric pairs",
+    "Account.balance and Receipt.amount are typed as Decimal but constructors accept any type without coercion/validation, allowing float contamination and precision loss",
+    "transfer() mutates account balances before returning but is not atomic/transactional: an exception between the two assignments (extremely unlikely here, but a best-practice concern) would leave state inconsistent; also no thread-safety",
+    "No use of decimal.getcontext() precision configuration nor quantize() to currency scale, risking inconsistent rounding across functions",
+    "Docstring claims 'NO BUGS' which is misleading given the flipped currency condition in transfer()"
+  ],
+  "detected_planted": true
+}

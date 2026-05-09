@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee returns the fee amount, not the net amount, despite likely caller expectation of applying a fee",
+    "transfer does not coerce/validate amount as Decimal, so float/int/string inputs can cause TypeError after validation or inconsistent comparisons",
+    "transfer is non-atomic: debit happens before credit, so a failure on credit can leave balances inconsistent",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without error",
+    "loan_payment silently truncates fractional months via int(), changing financial results without error",
+    "fx_convert does not validate rate positivity/finite value, allowing zero/negative/NaN/Infinity rates to produce invalid conversions",
+    "money outputs are not quantized to currency precision, allowing sub-cent balances/fees/payments to propagate"
+  ],
+  "detected_planted": true
+}

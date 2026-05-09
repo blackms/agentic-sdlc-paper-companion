@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal without validation",
+    "compound_interest silently truncates fractional years or compounding frequency",
+    "loan_payment silently truncates fractional month values",
+    "transfer does not normalize amount to Decimal",
+    "transfer allows different objects with the same account id",
+    "transfer is not atomic if crediting recipient fails",
+    "transfer lacks locking, enabling concurrent insufficient-funds races",
+    "apply_fee accepts negative amounts without validation",
+    "apply_fee can return negative proceeds when fee exceeds amount",
+    "fx_convert accepts nonpositive exchange rates",
+    "Currency outputs are not rounded to target minor units",
+    "Missing finite checks allow NaN or Infinity values"
+  ],
+  "detected_planted": true
+}

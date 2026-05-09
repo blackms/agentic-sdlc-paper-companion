@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment does not raise ValueError when months <= 0; months=0 causes division by zero for zero rate and invalid formula behavior otherwise"
+  ],
+  "detected_planted": true
+}

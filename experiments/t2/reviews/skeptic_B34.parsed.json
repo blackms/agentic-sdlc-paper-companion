@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest non converte principal a Decimal: principal float/string causa TypeError o comportamento incoerente rispetto alle altre funzioni",
+    "compound_interest non valida principal negativo/NaN/Infinity, consentendo risultati finanziari invalidi",
+    "transfer non normalizza amount a Decimal: amount float supera le validazioni ma fallisce durante sottrazione/addizione dopo controlli parziali",
+    "transfer non \u00e8 atomica rispetto a account_to.balance non valido o setter che fallisce: pu\u00f2 addebitare account_from senza accredito corrispondente",
+    "transfer non valida balance/account/currency/amount finiti e Decimal, quindi NaN/Infinity o campi corrotti possono propagare inconsistenze",
+    "compound_interest, loan_payment e transfer troncano o accettano input numerici non integrali tramite int(...) o tipi grezzi, creando cambi silenziosi di durata/rateizzazione",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount, bug critico per commissioni minime su piccoli importi",
+    "fx_convert non valida che il cambio sia positivo e finito: rate negativo, zero, NaN o Infinity produce conversioni invalide",
+    "nessuna funzione quantizza/arrotonda per valuta, quindi importi con frazioni sub-cent possono propagare in produzione"
+  ],
+  "detected_planted": true
+}

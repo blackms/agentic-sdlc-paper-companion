@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non converte/valida amount come Decimal, causando TypeError o confronti incoerenti con input float/non Decimal",
+    "transfer non \u00e8 atomica: un'eccezione dopo l'addebito pu\u00f2 lasciare stato parziale senza accredito",
+    "compound_interest e loan_payment troncano silenziosamente years/months/compounds_per_year con int(), accettando input frazionari invece di validarli",
+    "fx_convert non valida che il tasso sia positivo, quindi accetta tassi zero o negativi producendo conversioni non valide"
+  ],
+  "detected_planted": true
+}

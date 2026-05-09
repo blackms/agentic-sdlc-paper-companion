@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer converte amount in float: introduce perdita di precisione e causa TypeError nelle operazioni Decimal - float/Decimal + float",
+    "transfer restituisce Receipt.amount come float nonostante il dataclass dichiari Decimal",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

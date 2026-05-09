@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer su currency mismatch solleva ValueError con messaggio errato 'insufficient balance' invece di errore esplicito di currency mismatch"
+  ],
+  "detected_planted": true
+}

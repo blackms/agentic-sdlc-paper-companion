@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal e non valida NaN/Infinity, causando TypeError/InvalidOperation o input non finiti non gestiti in modo controllato",
+    "fx_convert non valida che il tasso sia positivo e finito: un rate negativo, zero, NaN o Infinity produce conversioni finanziarie invalide",
+    "apply_fee puo restituire un importo negativo se la commissione minima supera amount"
+  ],
+  "detected_planted": true
+}

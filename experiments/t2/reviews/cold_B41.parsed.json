@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa months + 1 nella formula invece di months, quindi produce pagamenti errati per rate zero e positivo",
+    "loan_payment non solleva ValueError per months = 0 perch\u00e9 valida int(months)+1, violando il contratto months <= 0",
+    "loan_payment viola payment * months >= principal, ad esempio principal > 0 e monthly_rate = 0 restituisce principal/(months+1)"
+  ],
+  "detected_planted": true
+}

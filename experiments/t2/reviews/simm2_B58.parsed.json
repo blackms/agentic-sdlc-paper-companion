@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer accetta amount senza convertirlo/validarlo come Decimal finito, quindi NaN/Infinity o tipi inattesi possono produrre eccezioni non gestite o saldi corrotti",
+    "fx_convert non valida che il tasso FX sia positivo e finito, consentendo conversioni con tassi zero, negativi, NaN o Infinity",
+    "apply_fee pu\u00f2 restituire importi negativi se la fee calcolata/cappata supera l'importo, senza validare che la fee finale non ecceda amount",
+    "compound_interest e loan_payment usano int() su years/months/compounds_per_year, troncando silenziosamente input non interi"
+  ],
+  "detected_planted": true
+}

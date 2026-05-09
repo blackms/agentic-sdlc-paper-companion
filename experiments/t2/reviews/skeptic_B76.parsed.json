@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "fx_convert inverte il tasso: ritorna amount / rate invece di amount * rate",
+    "transfer non \u00e8 atomico: se il credito su account_to fallisce dopo il debito, il saldo sorgente resta ridotto",
+    "transfer non \u00e8 concurrency-safe: check saldo e aggiornamenti separati permettono overdraft/lost update in trasferimenti concorrenti",
+    "transfer non normalizza/valida amount come Decimal finito, causando TypeError o Decimal NaN/Infinity non gestiti",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), cambiando input frazionari invece di rifiutarli",
+    "loan_payment tronca silenziosamente months con int(), accettando durate frazionarie come mesi interi",
+    "mancano validazioni di finitezza per importi/tassi: NaN/Infinity possono propagare o sollevare eccezioni non dichiarate",
+    "mancano arrotondamento/quantizzazione a precisione valuta, quindi valori monetari possono produrre frazioni non rappresentabili"
+  ],
+  "detected_planted": true
+}

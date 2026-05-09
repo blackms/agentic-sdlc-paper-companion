@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente errato: years ** n invece di n * years, producendo interessi composti sbagliati",
+    "compound_interest valida int(years) ma poi usa years originale nell'esponente, causando possibili TypeError o risultati incoerenti con input non interi",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare errori di confronto o sottrazione con Decimal",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

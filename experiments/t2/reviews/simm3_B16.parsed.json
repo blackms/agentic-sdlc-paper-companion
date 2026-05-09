@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer() incrementa il saldo del conto sorgente invece di decrementarlo, creando fondi e rendendo errati entrambi i saldi netti"
+  ],
+  "detected_planted": false
+}

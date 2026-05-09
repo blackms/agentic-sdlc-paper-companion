@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input float/string possono causare TypeError o comportamenti incoerenti",
+    "compound_interest non valida principal negativo, consentendo risultati finanziari probabilmente non validi",
+    "fx_convert non valida che il tasso FX sia positivo, quindi tassi zero o negativi producono conversioni non sensate"
+  ],
+  "detected_planted": false
+}

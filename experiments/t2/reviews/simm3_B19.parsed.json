@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non normalizza amount a Decimal: input float/string possono causare TypeError o Receipt con tipo incoerente",
+    "fx_convert non valida che il tasso FX sia positivo, quindi rate zero o negativo produce conversioni finanziariamente invalide",
+    "compound_interest tronca years e compounds_per_year con int(), accettando silenziosamente valori frazionari invece di validarli",
+    "loan_payment tronca months con int(), accettando silenziosamente durate frazionarie"
+  ],
+  "detected_planted": false
+}

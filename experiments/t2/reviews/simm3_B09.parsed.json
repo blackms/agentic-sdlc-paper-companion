@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment accepts negative principal and can return nonsensical negative payments",
+    "transfer does not normalize amount to Decimal, so float or string inputs can raise TypeError during comparison/arithmetic and Receipt.amount may have inconsistent type",
+    "apply_fee can return a negative net amount when fee_min or fee_max exceed amount"
+  ],
+  "detected_planted": true
+}

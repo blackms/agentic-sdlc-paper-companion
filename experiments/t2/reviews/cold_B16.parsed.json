@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita amount anche a account_from invece di addebitarlo, violando conservazione del saldo e semantica del trasferimento"
+  ],
+  "detected_planted": true
+}

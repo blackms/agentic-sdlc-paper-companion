@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "compound_interest usa TypeError invece di ValueError per tassi negativi",
+    "compound_interest non rifiuta capitale iniziale negativo",
+    "compound_interest tronca anni frazionari con int senza segnalarlo",
+    "loan_payment tronca mesi non interi con int senza errore",
+    "transfer non converte amount a Decimal prima delle operazioni",
+    "transfer non \u00e8 atomica se l'accredito fallisce dopo l'addebito",
+    "transfer permette auto-trasferimenti tra oggetti con stesso id",
+    "transfer non protegge saldo da race condition concorrenti",
+    "apply_fee pu\u00f2 restituire importi negativi con fee minima alta",
+    "apply_fee non limita fee_pct sopra il cento per cento",
+    "fx_convert accetta tassi di cambio zero o negativi",
+    "Funzioni monetarie non arrotondano o quantizzano alla valuta"
+  ],
+  "detected_planted": true
+}

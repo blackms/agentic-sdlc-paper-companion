@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer debits/credits the requested amount but returns a Receipt with amount Decimal(0), breaking audit/reconciliation",
+    "transfer does not normalize or validate amount as Decimal, allowing mixed numeric types or float precision issues in a money path",
+    "fx_convert accepts zero or negative exchange rates, producing invalid zero/negative converted amounts",
+    "apply_fee can return a negative net amount when the bounded fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

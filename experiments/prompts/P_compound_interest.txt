@@ -1,0 +1,11 @@
+Implementa `compound_interest(principal, annual_rate, years, compounds_per_year=1)` in Python seguendo questo protocollo strutturato:
+
+1. SPEC PHASE — Scrivi prima la specifica Given/When/Then (almeno 4 scenari, includendo edge case: rate=0, years=0, principal=0, valori negativi).
+
+2. CONTRACT PHASE — Scrivi un contract docstring con: inputs (tipi e range), output (tipo, range, invarianti), invarianti (monotonicità rispetto a t e r), determinismo, no-floats per money.
+
+3. RED PHASE — Scrivi almeno 5 test pytest che catturino spec + edge case. I test devono FALLIRE all'inizio (NotImplementedError o assertion).
+
+4. GREEN PHASE — Implementa la funzione. Usa `decimal.Decimal`, NON `float` per money. Solleva `ValueError` per input invalidi (rate negativa, years negativi, n=0).
+
+5. Output finale: produci UN UNICO blocco Python che contenga: SPEC commentata, contract docstring, tests, implementazione. In quest'ordine.

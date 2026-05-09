@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee forza la commissione a fee_max quando fee < fee_max, ignorando il valore percentuale/minimo e addebitando quasi sempre la fee massima"
+  ],
+  "detected_planted": false
+}

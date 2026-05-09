@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "fx_convert multiplies Decimal amount by float(rate), losing precision and breaking Decimal type contract",
+    "fx_convert does not validate rate (could be zero or negative) and lacks inverse/cross-rate handling",
+    "apply_fee treats fee_pct as a multiplier but does not validate pct <= 1 (e.g. 1.5 means 150% fee, possibly returning negative result before clamp)",
+    "loan_payment with r==0 returns p/m without converting m to Decimal consistently (works but inconsistent) and does not validate principal could be zero edge case",
+    "compound_interest accepts compounds_per_year as int but silently truncates floats; no upper sanity bound",
+    "transfer mutates balances non-atomically; no rollback if second assignment fails, risking inconsistent state",
+    "transfer uses 'is' identity check instead of comparing account ids, allowing self-transfer between two distinct Account objects with same id",
+    "Account/Receipt dataclasses are mutable and unfrozen, allowing external tampering with balances and receipts",
+    "No locking/concurrency control on transfer; race conditions possible in multi-threaded use",
+    "Decimal precision/rounding context not explicitly set, leading to unbounded precision growth in compound_interest"
+  ],
+  "detected_planted": true
+}

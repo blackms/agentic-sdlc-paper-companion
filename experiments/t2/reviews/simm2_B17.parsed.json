@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer accetta amount <= 0: importi negativi invertono il trasferimento e possono sottrarre fondi al conto destinatario",
+    "transfer non converte amount a Decimal, causando TypeError o incoerenze con input float/string",
+    "fx_convert non valida che il tasso di cambio sia positivo",
+    "apply_fee pu\u00f2 restituire un importo negativo se la commissione minima supera l'importo"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment uses (1+r)^months + 1 as denominator instead of (1+r)^months - 1, violating the declared amortization formula",
+    "loan_payment for positive rates can produce total payments below principal, violating payment * months >= principal",
+    "loan_payment general-rate branch is not continuous as r approaches 0, violating the continuity invariant"
+  ],
+  "detected_planted": true
+}

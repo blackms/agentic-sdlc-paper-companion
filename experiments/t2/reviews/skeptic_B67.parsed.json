@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee overwrites any fee below fee_max to fee_max, so it always charges the maximum fee instead of clamping between min and max",
+    "fx_convert does not validate that FX rates are positive, allowing zero or negative conversion outputs",
+    "transfer does not normalize amount to Decimal, so float inputs can cause TypeError during debit/credit and precision/type inconsistencies in receipts",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), causing undeclared behavior changes for non-integer inputs"
+  ],
+  "detected_planted": true
+}

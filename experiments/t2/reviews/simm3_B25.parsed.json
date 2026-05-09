@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert non gestisce tasso mancante: rates.get restituisce None e Decimal(str(None)) genera errore non chiaro invece di ValueError controllato",
+    "transfer non normalizza amount a Decimal, quindi float/string possono causare TypeError o Receipt con tipo incoerente",
+    "transfer verifica self-transfer con identit\u00e0 oggetto invece che id conto, permettendo trasferimenti tra due istanze dello stesso account logico",
+    "compound_interest e loan_payment troncano years/months/compounds_per_year con int(), accettando input frazionari invece di validarli esplicitamente"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_pct to float, causing Decimal * float TypeError and precision loss instead of reliable fee calculation",
+    "compound_interest silently truncates years and compounds_per_year with int(), accepting fractional inputs as different periods",
+    "loan_payment silently truncates months with int(), changing repayment schedule without validation",
+    "transfer does not normalize or validate amount as Decimal, so float/non-Decimal amounts can pass early checks then fail during debit",
+    "transfer is not atomic: account_from is debited before account_to credit is guaranteed to succeed",
+    "negative principal is accepted in compound_interest, producing nonsensical negative balances"
+  ],
+  "detected_planted": true
+}

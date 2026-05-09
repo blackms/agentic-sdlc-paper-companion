@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal and returns a negative future value instead of rejecting invalid money input",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), causing undeclared behavior changes for non-integer inputs",
+    "loan_payment silently truncates fractional months via int(), accepting invalid loan terms instead of rejecting them",
+    "transfer mutates account_from before mutating account_to, so a failure during the credit step can leave balances inconsistent with no rollback",
+    "fx_convert does not validate that the FX rate is positive, so zero or negative rates can silently produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "Self-transfer raises AssertionError instead of domain ValueError",
+    "Transfer does not normalize amount to Decimal",
+    "Transfer is non-atomic if credit operation fails"
+  ],
+  "detected_planted": true
+}

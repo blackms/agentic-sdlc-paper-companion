@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "loan_payment divide per zero con monthly_rate=0 invece di restituire principal/months",
+    "transfer non normalizza/valida amount come Decimal: float/string possono causare TypeError o precision/behavior inconsistente",
+    "transfer non \u00e8 atomica: se l'accredito fallisce dopo l'addebito il saldo sorgente resta gi\u00e0 modificato",
+    "mancano validazioni finite/NaN/Infinity su importi, tassi e saldi, con propagazione o eccezioni non controllate",
+    "compound_interest accetta principal negativo e tronca silenziosamente years/compounds_per_year via int(), cambiando il comportamento su input frazionari",
+    "loan_payment tronca silenziosamente months via int(), alterando durata e pagamento",
+    "fx_convert non valida rate positivo/finito: rate negativo, zero, NaN o Infinity produce conversioni finanziarie invalide",
+    "apply_fee pu\u00f2 restituire importi negativi se fee_min supera amount, senza validazione o clamp dichiarato",
+    "nessuna funzione monetaria quantizza/arrotonda alla scala valuta, creando importi con precisione non spendibile"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee does not reject negative amounts, producing invalid fee/net values",
+    "apply_fee can return a negative net amount when the capped/minimum fee exceeds the amount",
+    "fx_convert does not validate exchange rates are positive, allowing zero or negative conversion results",
+    "transfer does not coerce amount to Decimal, so float/string inputs can raise TypeError during comparison/arithmetic"
+  ],
+  "detected_planted": true
+}

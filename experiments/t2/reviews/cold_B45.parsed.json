@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest non solleva ValueError per annual_rate < 0, permettendo risultati sotto il principal e violando il contratto sugli errori"
+  ],
+  "detected_planted": true
+}

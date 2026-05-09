@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest allows negative principal, producing invalid negative returns",
+    "compound_interest truncates fractional years and compounding frequency",
+    "loan_payment silently truncates fractional month counts",
+    "transfer does not coerce or validate Decimal amount type",
+    "transfer is non-atomic if credit update fails after debit",
+    "transfer lacks locking, allowing concurrent overdrafts or lost updates",
+    "transfer permits self-transfer through different objects with same id",
+    "apply_fee accepts negative amounts without validation",
+    "apply_fee can return negative net when fees exceed amount",
+    "fx_convert accepts zero or negative exchange rates",
+    "monetary outputs are never rounded to currency precision"
+  ],
+  "detected_planted": true
+}

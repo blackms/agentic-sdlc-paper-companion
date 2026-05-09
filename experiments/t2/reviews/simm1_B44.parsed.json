@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa Decimal(1) - r invece di Decimal(1) + r nella formula di ammortamento, producendo rate errate o negative",
+    "transfer non normalizza amount a Decimal come le altre funzioni: input float/string possono causare TypeError o comportamento incoerente"
+  ],
+  "detected_planted": true
+}

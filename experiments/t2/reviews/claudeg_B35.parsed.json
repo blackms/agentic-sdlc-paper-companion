@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest exponent is years**n instead of n*years, producing wrong results (e.g., monthly compounding raises to years**12)",
+    "compound_interest uses raw years (float/int) for exponent instead of converted Decimal t, mixing types and bypassing validation",
+    "loan_payment returns p/m when r==0 but does not convert m to Decimal context cleanly (works but loses precision intent); also missing upper bound / overflow guard for very large m",
+    "transfer is not atomic: if the second balance update fails, funds can be lost; should use a transactional wrapper or rollback",
+    "transfer allows zero-amount? actually rejects <=0 which is fine, but does not check amount type/Decimal conversion, allowing float amounts that compromise precision",
+    "apply_fee does not validate that fee_pct is expressed consistently (0.05 vs 5); silent semantic bug risk",
+    "apply_fee can return negative result if fmin > a (fee greater than amount), should clamp result to >= 0 or raise",
+    "fx_convert accepts arbitrary rates dict without validating rate > 0, allowing zero/negative rates",
+    "fx_convert does not support inverse rate lookup (USD->EUR works only if explicitly present, not via 1/EUR->USD)",
+    "Account.balance and Receipt.amount have no invariants enforced (could be negative or non-Decimal at construction)",
+    "docstring claims 'NO BUGS' but compound_interest contains an explicit '# bug' comment and incorrect formula"
+  ],
+  "detected_planted": true
+}

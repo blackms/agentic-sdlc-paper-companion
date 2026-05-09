@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment accepts negative principal and returns negative payments instead of rejecting invalid loan amounts",
+    "transfer does not normalize amount to Decimal, so float inputs can pass validation then fail arithmetic at runtime",
+    "transfer mutates account_from before updating account_to; if crediting account_to fails, funds are debited without rollback",
+    "fx_convert does not validate rate is positive/finite, allowing zero, negative, NaN, or infinite FX rates",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds via int(), changing requested terms without error",
+    "money amounts are never quantized to currency minor units, causing fractional-cent balances/payments/fees to propagate",
+    "functions do not consistently reject NaN/Infinity for amounts, rates, balances, or fees"
+  ],
+  "detected_planted": true
+}

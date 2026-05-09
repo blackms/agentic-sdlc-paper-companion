@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Compound interest subtracts rate instead of adding it",
+    "Durations are silently truncated with int conversions",
+    "compound_interest allows negative principal amounts",
+    "transfer compares unnormalized amount against Decimal balances",
+    "transfer is non-atomic across debit and credit updates",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": false
+}

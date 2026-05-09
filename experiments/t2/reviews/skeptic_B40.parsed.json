@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest formula is wrong: swaps principal/rate, omits exponent, and ignores years in the returned value.",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds_per_year via int(), changing terms without validation.",
+    "transfer is not atomic: source is debited before destination credit, so a later failure can leave balances inconsistent.",
+    "transfer does not validate amount/account balances as finite Decimals, allowing type errors or NaN/Infinity edge cases into balance logic.",
+    "apply_fee can return a negative net amount when fee_min or capped fee exceeds the amount.",
+    "fx_convert does not validate FX rate positivity/finite value, so zero, negative, NaN, or Infinity rates can produce invalid converted amounts.",
+    "Money outputs are not quantized to currency minor units, so divisions/conversions can silently use Decimal context precision instead of explicit financial rounding."
+  ],
+  "detected_planted": true
+}

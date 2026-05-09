@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment converts money/rates to float, causing precision loss and returning float for zero-rate loans",
+    "loan_payment nonzero-rate path mixes Decimal and float, raising TypeError instead of computing a payment",
+    "compound_interest silently truncates fractional years and compounds_per_year with int(), changing behavior without validation",
+    "transfer does not coerce/validate amount as Decimal/finite; float amounts can corrupt Decimal arithmetic or raise TypeError",
+    "transfer updates source before destination; if destination balance mutation fails, balances become inconsistent",
+    "fx_convert does not validate FX rate is positive/finite; zero, negative, NaN, or Infinity rates can produce invalid money values",
+    "compound_interest/apply_fee/fx_convert do not consistently reject NaN/Infinity inputs, allowing silent NaN/Infinity propagation"
+  ],
+  "detected_planted": true
+}

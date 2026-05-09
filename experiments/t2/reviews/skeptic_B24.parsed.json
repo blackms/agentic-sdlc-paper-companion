@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee non valida fee_min <= fee_max: con bounds invertiti produce importi errati o fee incoerenti",
+    "transfer non converte amount a Decimal e accetta tipi non dichiarati: confronti/sottrazioni con float o input malevoli possono fallire a meta-operazione",
+    "transfer non garantisce atomicita: se l'accredito fallisce dopo l'addebito, il saldo sorgente resta ridotto",
+    "fx_convert non valida rate positivo/finito: tassi zero, negativi, NaN o Infinity possono produrre conversioni finanziarie invalide",
+    "compound_interest tronca years e compounds_per_year con int(), causando regressioni silenziose su input frazionari",
+    "loan_payment tronca months con int(), causando regressioni silenziose su input frazionari",
+    "mancano validazioni di finitezza per importi/rate: NaN e Infinity possono propagare risultati NaN/Infinity o generare eccezioni non controllate"
+  ],
+  "detected_planted": true
+}

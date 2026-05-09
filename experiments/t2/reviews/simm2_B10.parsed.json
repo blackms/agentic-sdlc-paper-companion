@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa un denominatore errato: dovrebbe sottrarre 1 da (1 + r)^m, non aggiungere 1, quindi calcola rate troppo basse"
+  ],
+  "detected_planted": true
+}

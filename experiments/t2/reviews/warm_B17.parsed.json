@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "transfer accetta importi zero o negativi",
+    "transfer non converte amount a Decimal coerente",
+    "transfer pu\u00f2 restituire Receipt.amount con tipo non Decimal",
+    "transfer consente trasferimenti tra oggetti con stesso id",
+    "transfer non \u00e8 atomico se il secondo accredito fallisce",
+    "transfer espone race condition tra controllo saldo e aggiornamento",
+    "apply_fee pu\u00f2 restituire importi netti negativi",
+    "fx_convert accetta tassi zero, negativi o non finiti",
+    "compound_interest accetta valori principal negativi",
+    "cast a int tronca anni, mesi e frequenze frazionarie",
+    "input non finiti possono produrre risultati o eccezioni invalidi",
+    "nessuna funzione quantizza importi alla precisione valutaria"
+  ],
+  "detected_planted": true
+}

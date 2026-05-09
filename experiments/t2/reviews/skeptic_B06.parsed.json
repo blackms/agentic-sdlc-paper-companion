@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest uses multiplication by n*t instead of exponentiation, producing catastrophically wrong balances and returning 0 for zero years",
+    "compound_interest silently truncates years and compounds_per_year with int(), losing fractional inputs instead of validating them",
+    "compound_interest does not reject negative principal",
+    "transfer does not coerce/validate amount as Decimal, allowing float precision/type interaction failures against Decimal balances",
+    "transfer mutates account_from before account_to; if credit mutation fails, debit is already committed and transfer is non-atomic",
+    "apply_fee can return a negative net amount when fee_min or fee_max exceed amount",
+    "fx_convert does not validate rate positivity/finite value, allowing negative, zero, NaN, or infinite FX rates to produce invalid money"
+  ],
+  "detected_planted": true
+}

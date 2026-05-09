@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert aggiunge 1 all'importo prima di applicare il tasso, quindi restituisce (amount + 1) * rate invece di amount * rate."
+  ],
+  "detected_planted": true
+}

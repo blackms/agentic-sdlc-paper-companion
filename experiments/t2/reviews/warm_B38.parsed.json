@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest moltiplica Decimal per float causando TypeError",
+    "compound_interest non rifiuta principal negativo",
+    "compound_interest tronca years frazionari con int()",
+    "compound_interest tronca compounds_per_year frazionari con int()",
+    "loan_payment tronca months frazionari con int()",
+    "transfer confronta amount non normalizzato, possibili TypeError",
+    "transfer aggiorna due saldi senza protezione atomica",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert non valida rate negativo o nullo"
+  ],
+  "detected_planted": true
+}

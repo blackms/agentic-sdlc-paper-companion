@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert non gestisce conversioni stessa valuta: from_currency == to_currency richiede comunque un rate e pu\u00f2 fallire invece di restituire l'importo invariato",
+    "fx_convert non valida che il tasso sia positivo, quindi accetta rate zero o negativi producendo importi non validi",
+    "transfer non normalizza amount a Decimal: con input float pu\u00f2 causare TypeError nelle operazioni con balance Decimal e Receipt pu\u00f2 contenere un tipo incoerente",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": false
+}

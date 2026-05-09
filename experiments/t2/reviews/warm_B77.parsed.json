@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert accepts negative exchange rates",
+    "transfer mutates source before destination update can fail"
+  ],
+  "detected_planted": true
+}

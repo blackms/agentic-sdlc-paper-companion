@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee clamps fees above fee_max to fee_min instead of fee_max, producing an undercharged fee and incorrect net amount"
+  ],
+  "detected_planted": true
+}

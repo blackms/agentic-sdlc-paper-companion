@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "apply_fee ha logica min/max invertita: una fee percentuale sopra fee_min viene ridotta a fee_min, mentre una sotto fee_min non viene alzata al minimo",
+    "apply_fee puo' restituire importi negativi se fee_pct/fee_min/fee_max superano l'amount",
+    "fx_convert non valida rate positivo e finito: tassi zero/negativi/Infinity producono conversioni monetarie invalide",
+    "transfer muta i bilanci in due step senza atomicita': un errore durante il credito puo' lasciare il conto sorgente gia' addebitato",
+    "transfer controlla self-transfer solo per identita' oggetto, non per stesso account id",
+    "conversioni int() su years/months/compounds_per_year troncano silenziosamente input frazionari cambiando termini finanziari",
+    "manca validazione di valori Decimal finiti: Infinity/NaN possono propagare risultati invalidi o crash non controllati"
+  ],
+  "detected_planted": true
+}

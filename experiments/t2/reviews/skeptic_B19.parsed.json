@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: account_from is debited before account_to is credited, so malformed account_to.balance or incompatible amount can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal, allowing type errors or inconsistent behavior with floats/other numeric types",
+    "compound_interest accepts negative principal, producing nonsensical negative-money results",
+    "integer casts silently truncate years and compounds_per_year when given non-integer numeric inputs",
+    "fx_convert does not validate that exchange rates are positive/nonzero, allowing negative or zero conversions",
+    "functions do not reject non-finite Decimal values such as NaN or Infinity explicitly"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee does not validate negative amounts, allowing invalid fee calculations",
+    "apply_fee can return a negative net amount when the minimum or maximum fee exceeds the amount",
+    "fx_convert does not validate that exchange rates are positive",
+    "numeric period arguments are coerced with int(), silently truncating non-integer years/months/compound counts"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest sottrae 1 a years, quindi calcola un anno in meno e tratta years=0 come errore invece di restituire il principal"
+  ],
+  "detected_planted": true
+}

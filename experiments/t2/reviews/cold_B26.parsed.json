@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert returns 0 for same-currency conversion instead of returning the original amount, violating identity invariant I1 and the declared output contract"
+  ],
+  "detected_planted": true
+}

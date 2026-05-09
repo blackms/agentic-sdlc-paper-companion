@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Transfer lacks currency compatibility check before moving funds",
+    "Transfer updates accounts non-atomically, risking partial balance mutation",
+    "Transfer compares raw amount without Decimal coercion or validation",
+    "Non-integer periods are silently truncated in interest and loan calculations",
+    "FX conversion accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

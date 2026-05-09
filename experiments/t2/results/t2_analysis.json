@@ -1,0 +1,16 @@
+{
+  "asimm": {
+    "label": "ASIMM (warm + cold + skeptic)",
+    "rho_bar_phi": 0.6073997392098391,
+    "kappa_bar": 0.5908289241622574,
+    "p_2of3_miss": 0.1,
+    "n_effective": 30
+  },
+  "simm": {
+    "label": "SIMM (3\u00d7 generic)",
+    "rho_bar_phi": 0.6318496787745022,
+    "kappa_bar": 0.6273923444976077,
+    "p_2of3_miss": 0.23333333333333334,
+    "n_effective": 30
+  }
+}

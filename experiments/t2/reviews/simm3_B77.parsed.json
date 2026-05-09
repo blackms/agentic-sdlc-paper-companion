@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta tassi zero o negativi producendo conversioni finanziariamente invalide"
+  ],
+  "detected_planted": true
+}

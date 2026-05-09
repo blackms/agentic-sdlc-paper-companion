@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "compound_interest usa moltiplicazione invece di elevamento a potenza",
+    "compound_interest restituisce zero per durata pari a zero",
+    "compound_interest tronca silenziosamente anni e frequenze frazionarie",
+    "compound_interest accetta principal negativo senza validazione",
+    "loan_payment tronca silenziosamente mesi frazionari",
+    "transfer puo restituire Receipt con amount non Decimal",
+    "transfer non serializza operazioni, rischiando race e overdraft",
+    "apply_fee puo restituire importi negativi con fee eccessive",
+    "fx_convert accetta tassi di cambio nulli o negativi",
+    "risultati monetari senza arrotondamento o quantizzazione valutaria"
+  ],
+  "detected_planted": false
+}

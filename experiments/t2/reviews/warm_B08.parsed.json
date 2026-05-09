@@ -1,0 +1,19 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo senza validazione",
+    "compound_interest tronca anni frazionari con int()",
+    "compound_interest tronca compounds_per_year non intero silenziosamente",
+    "loan_payment converte a float causando perdita di precisione",
+    "loan_payment mescola Decimal e float, TypeError con tassi positivi",
+    "loan_payment restituisce float per tasso zero",
+    "loan_payment tronca months non intero silenziosamente",
+    "transfer non converte amount a Decimal, rompendo il contratto",
+    "transfer non \u00e8 atomico se il credito fallisce",
+    "transfer non protegge saldo e controllo da race condition",
+    "apply_fee pu\u00f2 restituire importi negativi con fee_min alta",
+    "apply_fee non arrotonda alla precisione della valuta",
+    "fx_convert accetta tassi zero o negativi",
+    "fx_convert non arrotonda alla precisione della valuta"
+  ],
+  "detected_planted": true
+}

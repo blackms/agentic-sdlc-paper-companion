@@ -1,0 +1,18 @@
+{
+  "bugs_found": [
+    "compound_interest does not convert principal to Decimal",
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest allows negative principal amounts",
+    "loan_payment silently truncates fractional month values",
+    "transfer does not normalize or validate amount type",
+    "transfer only blocks identical objects, not same account id",
+    "transfer mutation is not atomic if crediting fails",
+    "transfer has no concurrency guard against overdrafts",
+    "apply_fee can return negative net amount",
+    "apply_fee does not cap percentage fees at amount",
+    "fx_convert accepts zero, negative, or non-finite rates",
+    "Monetary results are never rounded to currency precision",
+    "Non-finite Decimal inputs can raise or propagate unexpectedly"
+  ],
+  "detected_planted": true
+}

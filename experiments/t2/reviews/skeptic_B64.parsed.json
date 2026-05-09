@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_min to float, causing Decimal/float comparison TypeError and precision loss on money inputs",
+    "apply_fee can assign fee as float and then compute Decimal - float, crashing when fee_min is selected",
+    "transfer does not normalize/validate amount type, so float amounts crash against Decimal balances and non-finite Decimal amounts are not rejected",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), accepting fractional periods with changed behavior instead of rejecting",
+    "fx_convert does not validate exchange rate positivity or finiteness, allowing negative/zero/NaN/Infinity rates to produce invalid money results",
+    "money functions generally omit finite-value validation and currency/code validation, allowing NaN/Infinity or malformed identifiers through"
+  ],
+  "detected_planted": true
+}

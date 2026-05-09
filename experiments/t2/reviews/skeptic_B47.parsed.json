@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment positive-rate formula is wrong: missing denominator (one_plus_r ** m - 1), producing materially incorrect payments",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), causing undeclared behavior changes",
+    "monetary outputs are not quantized/rounded to currency scale, allowing sub-cent balances/receipts to propagate",
+    "transfer accepts amount without Decimal coercion or type validation, so floats/custom numeric types can cause precision issues or runtime failures mid-flow",
+    "fx_convert does not validate rate is positive/finite, allowing zero/negative/infinite FX rates to create invalid conversions"
+  ],
+  "detected_planted": true
+}

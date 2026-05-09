@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "conversione int tronca years, months e compounds_per_year",
+    "transfer confronta identita invece dell'id account",
+    "transfer non e atomico contro trasferimenti concorrenti",
+    "apply_fee puo produrre importi netti negativi",
+    "fx_convert accetta tassi FX zero o negativi"
+  ],
+  "detected_planted": false
+}

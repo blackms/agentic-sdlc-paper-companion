@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "compound_interest allows negative principal values",
+    "compound_interest silently truncates fractional years",
+    "compound_interest silently truncates fractional compounds_per_year",
+    "loan_payment silently truncates fractional months",
+    "transfer compares raw amount before Decimal normalization",
+    "transfer can leave partial state if credit update fails",
+    "transfer accepts NaN amount and corrupts balances",
+    "apply_fee raises ZeroDivisionError for negative amount",
+    "apply_fee can return negative net amount when minimum fee exceeds amount",
+    "fx_convert does not validate positive finite exchange rates",
+    "fx_convert returns negative conversions for negative rates"
+  ],
+  "detected_planted": true
+}

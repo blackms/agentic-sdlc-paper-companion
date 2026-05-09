@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest converte years in float: Decimal ** float causa TypeError per input normali e introduce deriva di precisione",
+    "transfer non normalizza amount a Decimal: con importi float/string pu\u00f2 fallire in confronto o sottrazione con Decimal"
+  ],
+  "detected_planted": true
+}

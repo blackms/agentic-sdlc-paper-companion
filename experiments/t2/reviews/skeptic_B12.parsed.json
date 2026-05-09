@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment does not validate months > 0, causing divide-by-zero for 0 and nonsensical payments for negative months",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "loan_payment silently truncates fractional months via int(), changing repayment schedules without validation",
+    "transfer is non-atomic: source balance is debited before destination credit, so an exception during credit can leave inconsistent balances",
+    "transfer does not normalize/validate amount as Decimal/finite, so float or malformed amounts can raise unexpectedly or bypass intended money handling",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction amount",
+    "fx_convert does not validate exchange rate positivity/finite value, allowing negative, zero, NaN, or infinite rates to produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

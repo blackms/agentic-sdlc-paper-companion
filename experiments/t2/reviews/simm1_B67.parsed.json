@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee forza sempre la commissione a fee_max quando la fee calcolata e' inferiore, ignorando fee_pct e fee_min",
+    "transfer non converte amount a Decimal: float o tipi non Decimal possono causare TypeError o aritmetica incoerente",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta rate zero o negativo"
+  ],
+  "detected_planted": false
+}

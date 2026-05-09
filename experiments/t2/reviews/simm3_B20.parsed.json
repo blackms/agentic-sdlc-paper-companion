@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee restituisce amount + fee invece di sottrarre la fee come indicato dal commento interno",
+    "transfer non normalizza amount a Decimal, causando TypeError o incoerenze se riceve int/float/string invece di Decimal"
+  ],
+  "detected_planted": true
+}

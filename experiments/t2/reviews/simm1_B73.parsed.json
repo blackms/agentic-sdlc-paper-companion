@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert restituisce float invece di Decimal nelle conversioni, perdendo precisione e producendo un tipo incoerente rispetto al caso stessa valuta",
+    "transfer non normalizza amount a Decimal, quindi input float possono causare TypeError o comportamento incoerente con le altre funzioni"
+  ],
+  "detected_planted": true
+}

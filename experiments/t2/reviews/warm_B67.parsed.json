@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee forza fee_max anche quando fee calcolata \u00e8 inferiore",
+    "transfer non converte amount a Decimal, creando tipi incoerenti",
+    "transfer aggiorna due saldi senza atomicit\u00e0 o rollback",
+    "transfer accetta amount non Decimal con precisione potenzialmente errata"
+  ],
+  "detected_planted": false
+}

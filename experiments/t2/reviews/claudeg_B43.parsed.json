@@ -1,0 +1,20 @@
+{
+  "bugs_found": [
+    "loan_payment: monthly_rate is not cast to Decimal (comment admits bug); mixing float and Decimal will raise TypeError when computing Decimal(1) + r or p * r if r is float",
+    "loan_payment: r == 0 branch returns p / m without converting m to Decimal; works but inconsistent typing, and zero-rate check fails or behaves oddly if r is a float like 0.0 vs Decimal",
+    "compound_interest: missing validation that principal can be negative (allows negative principal silently)",
+    "compound_interest: result of Decimal ** (n*t) with non-integer-like exponent is fine, but no rounding/quantize applied \u2014 monetary results returned with arbitrary precision",
+    "transfer: not atomic \u2014 if the second balance assignment failed (e.g., overflow/exception in a real system), funds would be lost; no transactional guarantee",
+    "transfer: amount is not cast to Decimal nor validated for type/currency consistency with accounts; comparisons between Decimal and float can raise or give wrong results",
+    "transfer: does not check that amount has compatible scale/precision with currency (e.g., fractions of cents allowed)",
+    "apply_fee: returns a - fee which can be negative if fmin > a; no guard ensuring net amount stays non-negative",
+    "apply_fee: no rounding to currency precision (e.g., 2 decimals) \u2014 fee and net can have arbitrary decimal places",
+    "fx_convert: does not validate that rate is positive; a zero or negative rate would silently produce zero/negative converted amounts",
+    "fx_convert: no rounding/quantize on result; monetary precision not enforced",
+    "fx_convert: rates dict lookup is one-directional \u2014 no fallback to inverse rate (to,from) with 1/rate",
+    "General: monetary functions lack explicit quantization (Decimal.quantize) and rounding mode (ROUND_HALF_EVEN) \u2014 financial best practice violation",
+    "General: docstring claims 'NO BUGS' but code comment on line 36 explicitly marks a bug \u2014 misleading documentation",
+    "General: no type hints on function signatures despite using dataclasses with types"
+  ],
+  "detected_planted": true
+}

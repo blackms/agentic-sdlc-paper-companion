@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer treats currency codes case-insensitively; contract requires same currency, so currencies like \"usd\" and \"USD\" must not be silently accepted"
+  ],
+  "detected_planted": true
+}

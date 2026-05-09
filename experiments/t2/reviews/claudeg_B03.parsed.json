@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest: missing validation for negative principal and negative annual_rate (comment explicitly notes 'missing rate check')",
+    "transfer: balance mutation is not atomic/transactional - no rollback mechanism if a later step fails",
+    "apply_fee: fee_pct has no upper bound validation (e.g., pct > 1 silently accepted, can produce negative result after subtraction)",
+    "fx_convert: no fallback to inverse rate (B,A) when only (A,B) is provided, and no triangulation via a base currency",
+    "loan_payment when r==0 returns Decimal/int division which yields a Decimal but loses the standard amortization shape - acceptable but inconsistent typing vs the annuity branch",
+    "Decimal precision/rounding context is never set (getcontext) - results may carry excessive or insufficient precision for monetary outputs",
+    "Receipt has no timestamp, currency or transaction id - weak audit trail for a finance module",
+    "fx_convert accepts rate values via Decimal(str(rate)) but does not validate rate > 0"
+  ],
+  "detected_planted": true
+}

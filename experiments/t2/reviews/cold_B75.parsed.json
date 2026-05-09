@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert restituisce (amount + 1) * rate invece di amount * rate per conversioni tra currency diverse"
+  ],
+  "detected_planted": true
+}

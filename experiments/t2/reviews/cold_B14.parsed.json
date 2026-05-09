@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer non valida currency mismatch: consente trasferimenti tra account con valute diverse invece di sollevare ValueError, violando stesso currency obbligatorio"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest usa la moltiplicazione per (n * t) invece dell'elevamento a potenza, producendo risultati errati e 0 per years=0"
+  ],
+  "detected_planted": false
+}

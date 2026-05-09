@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divide per il tasso invece di moltiplicare, producendo conversioni valutarie invertite se rates[(from_currency,to_currency)] rappresenta il normale tasso di cambio diretto"
+  ],
+  "detected_planted": true
+}

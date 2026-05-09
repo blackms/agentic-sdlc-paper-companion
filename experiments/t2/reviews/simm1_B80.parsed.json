@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert applica un tasso anche quando from_currency == to_currency se la coppia e presente in rates; dovrebbe restituire l'importo invariato",
+    "transfer non converte amount a Decimal, quindi input float possono causare TypeError nelle operazioni con balance Decimal",
+    "apply_fee puo restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

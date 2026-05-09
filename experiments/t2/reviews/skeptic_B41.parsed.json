@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment usa int(months)+1: off-by-one su tutte le rate, months=0 viene accettato e months frazionali/negativi possono essere troncati in modo pericoloso",
+    "compound_interest non valida principal negativo e tronca anni/compounds_per_year con int(), cambiando silenziosamente input frazionali",
+    "transfer confronta amount senza convertirlo/validarlo come Decimal: type mixing, NaN/Infinity e mutazioni non atomiche possono lasciare stato inconsistente se il secondo aggiornamento fallisce",
+    "apply_fee pu\u00f2 restituire importo negativo quando fee_min supera amount e non valida fee_pct/fee bounds finiti",
+    "fx_convert non valida rate positivo/finito: rate zero, negativo, NaN o Infinity producono conversioni finanziarie invalide"
+  ],
+  "detected_planted": true
+}

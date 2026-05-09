@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer rejects same-currency transfers and allows cross-currency transfers because the currency check is inverted",
+    "transfer does not coerce/validate amount as Decimal, so float/string inputs can raise TypeError or mix types inconsistently while other functions normalize inputs",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds_per_year via int(), changing financial results without error",
+    "fx_convert accepts zero or negative FX rates from rates, allowing zero/negative converted amounts despite nonnegative input",
+    "money outputs are never quantized/rounded to currency minor units, causing fractional-cent balances/payments/fees to propagate"
+  ],
+  "detected_planted": true
+}

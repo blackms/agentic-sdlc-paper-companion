@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest does not reject negative principal, allowing nonsensical negative balances/returns",
+    "compound_interest and loan_payment silently truncate non-integer years/months via int(), changing terms without caller awareness",
+    "transfer does not normalize/validate amount as Decimal, so float/int/string/NaN inputs can fail inconsistently or bypass expected precision rules",
+    "transfer updates source balance before destination balance with no atomic rollback; a failing destination assignment can debit without credit",
+    "transfer treats currency codes case-insensitively, silently allowing malformed/non-canonical currencies like usd vs USD",
+    "fx_convert does not validate FX rates are positive, finite Decimals, so zero/negative/NaN rates can produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

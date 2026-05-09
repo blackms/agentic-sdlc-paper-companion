@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, quindi input float/stringa possono causare TypeError o confronti incoerenti rispetto alle altre funzioni",
+    "transfer restituisce il messaggio di errore 'insufficient balance' anche per mismatch di valuta, rendendo indistinguibile un errore funzionale diverso",
+    "compound_interest e loan_payment convertono anni/mesi con int(), troncando silenziosamente valori non interi invece di validarli"
+  ],
+  "detected_planted": true
+}

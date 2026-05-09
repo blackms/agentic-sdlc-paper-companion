@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: debits source before crediting destination, so incompatible/malicious destination balance or amount type can make funds disappear after partial mutation",
+    "transfer does not normalize/validate amount as Decimal, allowing floats/custom numeric values and inconsistent TypeErrors after validation",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing requested terms without error",
+    "loan_payment silently truncates fractional months via int(), changing loan term without error",
+    "compound_interest does not reject negative principal, producing nonsensical negative balances",
+    "fx_convert does not validate FX rate positivity/finite value, allowing zero, negative, NaN, or Infinity rates",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, likely invalid for fees"
+  ],
+  "detected_planted": true
+}

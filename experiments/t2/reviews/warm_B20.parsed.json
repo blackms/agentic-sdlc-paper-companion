@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee adds fee instead of subtracting from amount",
+    "transfer updates source before destination, risking non-atomic partial transfer",
+    "transfer does not normalize amount to Decimal consistently",
+    "integer casts silently truncate years, months, and compounding frequency",
+    "compound_interest allows negative principal values",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

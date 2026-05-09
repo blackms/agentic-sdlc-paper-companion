@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest uses compounds_per_year + 1, so it does not implement the declared compound interest formula",
+    "compound_interest accepts compounds_per_year = 0 because validation is applied after adding 1, but contract requires ValueError for compounds_per_year < 1"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee mixes float fee_min with Decimal calculations",
+    "Minimum fee path can raise Decimal-float TypeError"
+  ],
+  "detected_planted": true
+}

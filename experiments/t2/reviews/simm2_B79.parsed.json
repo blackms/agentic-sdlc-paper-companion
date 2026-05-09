@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float/int inputs can raise TypeError or store inconsistent Receipt.amount types",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), which can produce incorrect results for non-integer inputs instead of rejecting them",
+    "fx_convert accepts zero or negative exchange rates, allowing nonsensical zero/negative converted amounts",
+    "apply_fee can return a negative net amount when the minimum fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

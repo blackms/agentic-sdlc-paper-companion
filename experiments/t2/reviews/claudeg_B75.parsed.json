@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert: incorrect formula (amount + 1) * rate instead of amount * rate, off-by-one inflates conversion",
+    "loan_payment: zero-rate branch returns p/m without coercing months to Decimal, risking float division if Decimal/int mixing changes; minor but inconsistent typing",
+    "compound_interest: missing validation that principal is non-negative",
+    "transfer: not atomic; if second balance assignment fails, source is already debited (no rollback)",
+    "transfer: uses 'is' identity check instead of comparing account ids, allowing self-transfer between two distinct Account objects with same id"
+  ],
+  "detected_planted": true
+}

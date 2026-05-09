@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee computes fee as fee_pct squared instead of amount * fee_pct, causing systematically wrong charges/refunds",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without error",
+    "loan_payment silently truncates fractional months via int(), changing amortization results without error",
+    "transfer does not normalize/validate amount as Decimal; float or non-Decimal inputs can pass checks then fail at arithmetic",
+    "transfer is not atomic: debit is applied before credit, so a failure during credit update can leave accounts inconsistent",
+    "fx_convert accepts zero or negative exchange rates, allowing zeroed or negative converted balances"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo senza validazione",
+    "compound_interest tronca anni frazionari con int(years)",
+    "compound_interest tronca compounds_per_year frazionari senza errore",
+    "loan_payment tronca months frazionari senza validazione",
+    "transfer non converte amount a Decimal prima dei confronti",
+    "transfer non \u00e8 atomico se accredito fallisce dopo addebito",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert accetta tassi negativi o nulli senza validazione"
+  ],
+  "detected_planted": true
+}

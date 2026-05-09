@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal values",
+    "integer casts silently truncate fractional periods",
+    "transfer does not normalize amount to Decimal",
+    "transfer mutates source before completing destination credit",
+    "fx_convert accepts negative or zero exchange rates"
+  ],
+  "detected_planted": false
+}

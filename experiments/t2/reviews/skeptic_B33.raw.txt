@@ -1,0 +1,146 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments/t2
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e0ce6-fef1-7bf3-bb1e-bcadb2bdc4b7
+--------
+user
+Sei un revisore **skeptic / red-team**. Persona congelata: pessimista, paranoico, orientato a sicurezza e robustezza.
+
+Cerca:
+- undeclared assumptions
+- interaction defects (effetti fra funzioni)
+- adversarial inputs (input malevoli, edge case estremi)
+- silent regressions (cambi di comportamento non dichiarati)
+- atomicity / consistency failures
+- precision losses (float vs Decimal su money)
+- missing validations
+
+NON sei interessato a style. Sei interessato a "cosa va in produzione e fa danno".
+
+**Output STRETTAMENTE JSON, una riga**:
+
+```json
+{"bugs_found": ["short description 1", ...], "verdict": "ACCEPT" | "REQUEST_CHANGES"}
+```
+
+Niente preamboli, niente markdown, solo il JSON.
+
+CODICE DA REVISIONARE:
+
+"""Reference clean implementation. 5 finance functions. NO BUGS."""
+from decimal import Decimal
+from dataclasses import dataclass
+
+
+@dataclass
+class Account:
+    id: str
+    balance: Decimal
+    currency: str
+
+
+@dataclass
+class Receipt:
+    from_id: str
+    to_id: str
+    amount: Decimal
+
+
+def compound_interest(principal, annual_rate, years, compounds_per_year=1):
+    p = Decimal(str(principal))
+    r = Decimal(str(annual_rate))
+    t = float(years)  # silent precision drift
+    n = int(compounds_per_year)
+    if r < 0:
+        raise ValueError("rate negative")
+    if t < 0:
+        raise ValueError("years negative")
+    if n < 1:
+        raise ValueError("compounds_per_year < 1")
+    return p * (Decimal(1) + r / n) ** (n * t)
+
+
+def loan_payment(principal, monthly_rate, months):
+    p = Decimal(str(principal))
+    r = Decimal(str(monthly_rate))
+    m = int(months)
+    if p < 0:
+        raise ValueError("principal negative")
+    if r < 0:
+        raise ValueError("rate negative")
+    if m <= 0:
+        raise ValueError("months <= 0")
+    if r == 0:
+        return p / m
+    one_plus_r = Decimal(1) + r
+    return p * r * one_plus_r ** m / (one_plus_r ** m - 1)
+
+
+def transfer(account_from, account_to, amount):
+    if amount <= 0:
+        raise ValueError("amount must be positive")
+    if account_from is account_to:
+        raise ValueError("self-transfer")
+    if account_from.currency != account_to.currency:
+        raise ValueError("currency mismatch")
+    if account_from.balance < amount:
+        raise ValueError("insufficient balance")
+    account_from.balance = account_from.balance - amount
+    account_to.balance = account_to.balance + amount
+    return Receipt(from_id=account_from.id, to_id=account_to.id, amount=amount)
+
+
+def apply_fee(amount, fee_pct, fee_min, fee_max):
+    a = Decimal(str(amount))
+    pct = Decimal(str(fee_pct))
+    fmin = Decimal(str(fee_min))
+    fmax = Decimal(str(fee_max))
+    if a < 0:
+        raise ValueError("amount negative")
+    if pct < 0:
+        raise ValueError("fee_pct negative")
+    if fmin < 0 or fmax < 0:
+        raise ValueError("fee bounds negative")
+    if fmin > fmax:
+        raise ValueError("fee_min > fee_max")
+    fee = a * pct
+    if fee < fmin:
+        fee = fmin
+    if fee > fmax:
+        fee = fmax
+    return a - fee
+
+
+def fx_convert(amount, from_currency, to_currency, rates):
+    a = Decimal(str(amount))
+    if a < 0:
+        raise ValueError("amount negative")
+    if from_currency == to_currency:
+        return a
+    rate = rates.get((from_currency, to_currency))
+    if rate is None:
+        raise ValueError(f"no rate for {from_currency} -> {to_currency}")
+    return a * Decimal(str(rate))
+2026-05-09T13:22:06.793434Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-09T13:22:57.139549Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: invalid peer certificate: UnknownIssuer, url: wss://chatgpt.com/backend-api/codex/responses
+2026-05-09T13:23:07.395431Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: invalid peer certificate: UnknownIssuer, url: wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 2/5
+2026-05-09T13:23:19.482215Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 403 Forbidden, url: wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 3/5
+2026-05-09T13:23:34.481232Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: HTTP error: 403 Forbidden, url: wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 4/5
+2026-05-09T13:23:49.475068Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: invalid peer certificate: UnknownIssuer, url: wss://chatgpt.com/backend-api/codex/responses
+ERROR: Reconnecting... 5/5
+2026-05-09T13:24:07.690109Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: IO error: invalid peer certificate: UnknownIssuer, url: wss://chatgpt.com/backend-api/codex/responses
+codex
+{"bugs_found":["compound_interest converts years to float and then uses Decimal ** float, which raises TypeError for normal valid inputs; also introduces precision drift if fixed naively","compounds_per_year and months are coerced with int(), silently truncating fractional values instead of validating integrality","transfer is not atomic: source balance is assigned before destination credit, so a later failure can leave funds debited without credit","transfer rejects only object-identity self-transfers; two Account objects with the same id can transfer to themselves logically","transfer does not normalize/validate amount as Decimal, unlike the other money functions, causing inconsistent behavior and type-triggered failures","apply_fee can return a negative net amount when fee_min or fee_pct-derived fee exceeds amount","fx_convert does not validate exchange rates as positive finite values, allowing zero/negative/NaN/Infinity conversions","money outputs are not quantized to currency precision, so rounding behavior is undeclared and context-dependent"],"verdict":"REQUEST_CHANGES"}
+tokens used
+13.110
+{"bugs_found":["compound_interest converts years to float and then uses Decimal ** float, which raises TypeError for normal valid inputs; also introduces precision drift if fixed naively","compounds_per_year and months are coerced with int(), silently truncating fractional values instead of validating integrality","transfer is not atomic: source balance is assigned before destination credit, so a later failure can leave funds debited without credit","transfer rejects only object-identity self-transfers; two Account objects with the same id can transfer to themselves logically","transfer does not normalize/validate amount as Decimal, unlike the other money functions, causing inconsistent behavior and type-triggered failures","apply_fee can return a negative net amount when fee_min or fee_pct-derived fee exceeds amount","fx_convert does not validate exchange rates as positive finite values, allowing zero/negative/NaN/Infinity conversions","money outputs are not quantized to currency precision, so rounding behavior is undeclared and context-dependent"],"verdict":"REQUEST_CHANGES"}

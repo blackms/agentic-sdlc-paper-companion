@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer does not normalize amount to Decimal, so float/string inputs can raise TypeError or behave inconsistently while other finance functions accept numeric-like inputs",
+    "apply_fee raises ArithmeticError for negative amount instead of ValueError, creating inconsistent input-validation semantics"
+  ],
+  "detected_planted": true
+}

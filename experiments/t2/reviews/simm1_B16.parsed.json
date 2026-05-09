@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita l'importo al conto sorgente invece di addebitarlo: account_from.balance viene aumentato, creando saldo dal nulla"
+  ],
+  "detected_planted": true
+}

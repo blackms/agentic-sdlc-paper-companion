@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment usa l'esponente m + 1 invece di m nella formula di ammortamento, producendo rate mensili errate.",
+    "transfer non normalizza amount a Decimal; input float/string possono causare TypeError o comportamenti incoerenti."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest fails for valid inputs because Decimal is multiplied by float 1.0, raising TypeError",
+    "compound_interest does not reject negative principal",
+    "compound_interest silently truncates non-integer years and compounds_per_year via int(), changing financial results",
+    "loan_payment silently truncates non-integer months via int()",
+    "transfer uses raw amount without Decimal normalization/type validation, so float amounts can raise TypeError or introduce inconsistent behavior",
+    "transfer is not atomic if crediting account_to.balance raises after debiting account_from.balance",
+    "apply_fee can return negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate that FX rate is positive or finite, allowing negative/zero/Infinity/NaN conversions"
+  ],
+  "detected_planted": true
+}

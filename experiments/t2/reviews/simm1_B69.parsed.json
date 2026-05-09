@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee restituisce solo la commissione calcolata invece dell'importo netto dopo l'applicazione della fee",
+    "transfer non normalizza/valida amount come Decimal, causando possibili TypeError o incoerenze se viene passato un int/float"
+  ],
+  "detected_planted": true
+}

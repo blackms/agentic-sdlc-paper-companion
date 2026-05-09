@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment does not validate/cast months as an integer, so float/string/Decimal inputs can cause TypeError or fractional exponents instead of a controlled validation failure",
+    "compound_interest silently truncates years and compounds_per_year via int(), changing inputs like 1.9 years or 12.7 compounds/year without error",
+    "transfer uses amount without Decimal coercion or finite/type validation, so float amounts can raise TypeError and NaN/Infinity-like Decimal values are not explicitly rejected",
+    "transfer is not atomic if crediting account_to fails after debiting account_from, leaving balances inconsistent",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, silently turning a small charge into a negative payout",
+    "fx_convert does not validate rate positivity or finiteness, allowing zero/negative/NaN/Infinity FX rates to produce invalid conversions",
+    "money functions do not enforce currency precision/rounding, allowing sub-cent balances and unbounded Decimal precision to leak into receipts/payments"
+  ],
+  "detected_planted": true
+}

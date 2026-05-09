@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest non valida annual_rate: tassi negativi eccessivi possono produrre risultati finanziariamente non validi",
+    "transfer non normalizza amount a Decimal: con float/int pu\u00f2 generare TypeError o incoerenze rispetto a balance Decimal"
+  ],
+  "detected_planted": true
+}

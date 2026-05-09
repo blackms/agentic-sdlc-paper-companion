@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer debits source before possible failure, breaking atomicity",
+    "transfer does not validate destination balance before mutation",
+    "transfer accepts non-Decimal amount, risking type errors or precision loss"
+  ],
+  "detected_planted": true
+}

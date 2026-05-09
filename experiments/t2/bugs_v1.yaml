@@ -1,0 +1,249 @@
+# 30 bug iniettati. 5 funzioni × 6 bug.
+# Per ogni bug: file dove viene iniettato, funzione, categoria, descrizione del bug,
+# linea/sostituzione testuale, ground-truth pattern (regex per riconoscere se la review l'ha trovato).
+
+bugs:
+  # ===== compound_interest (6 bug) =====
+  - id: B01
+    function: compound_interest
+    category: off-by-one
+    description: "n*t replaced by n+t"
+    sub_old: "(n * t)"
+    sub_new: "(n + t)"
+    detection_keywords: [exponent, n*t, n+t, off-by-one, addition instead of multiplication, exponentiation, formula]
+
+  - id: B02
+    function: compound_interest
+    category: precision
+    description: "uses float() instead of Decimal()"
+    sub_old: "p = Decimal(str(principal))"
+    sub_new: "p = float(principal)  # bug: float for money"
+    detection_keywords: [float, Decimal, precision, money, no-float, type, monetary]
+
+  - id: B03
+    function: compound_interest
+    category: contract
+    description: "missing rate negative check"
+    sub_old: "    if r < 0:\n        raise ValueError(\"rate negative\")\n"
+    sub_new: "    # bug: missing rate check\n"
+    detection_keywords: [negative rate, rate, validation, check, contract, ValueError]
+
+  - id: B04
+    function: compound_interest
+    category: logic
+    description: "(1 + r/n) replaced by (1 - r/n)"
+    sub_old: "return p * (Decimal(1) + r / n)"
+    sub_new: "return p * (Decimal(1) - r / n)"
+    detection_keywords: [sign, "1+", "1-", subtraction, plus, minus, sign error, formula, "minus instead"]
+
+  - id: B05
+    function: compound_interest
+    category: contract
+    description: "missing compounds_per_year < 1 check"
+    sub_old: "    if n < 1:\n        raise ValueError(\"compounds_per_year < 1\")\n"
+    sub_new: "    # bug: no n<1 check; division by zero possible\n"
+    detection_keywords: [zero division, n=0, compounds_per_year, division by zero, validation]
+
+  - id: B06
+    function: compound_interest
+    category: logic
+    description: "exponentiation replaced by multiplication"
+    sub_old: "** (n * t)"
+    sub_new: "* (n * t)  # bug: should be exponentiation"
+    detection_keywords: [exponentiation, power, "**", multiplication, formula, exponent, pow]
+
+  # ===== loan_payment (6 bug) =====
+  - id: B07
+    function: loan_payment
+    category: off-by-one
+    description: "(1+r)^m replaced by (1+r)^(m+1)"
+    sub_old: "return p * r * one_plus_r ** m / (one_plus_r ** m - 1)"
+    sub_new: "return p * r * one_plus_r ** (m + 1) / (one_plus_r ** (m + 1) - 1)  # bug"
+    detection_keywords: [off-by-one, exponent, m+1, months, formula]
+
+  - id: B08
+    function: loan_payment
+    category: precision
+    description: "uses float arithmetic"
+    sub_old: "    p = Decimal(str(principal))\n    r = Decimal(str(monthly_rate))"
+    sub_new: "    p = float(principal)  # bug: float\n    r = float(monthly_rate)  # bug: float"
+    detection_keywords: [float, Decimal, precision, money]
+
+  - id: B09
+    function: loan_payment
+    category: contract
+    description: "missing principal < 0 check"
+    sub_old: "    if p < 0:\n        raise ValueError(\"principal negative\")\n"
+    sub_new: "    # bug: no principal check\n"
+    detection_keywords: [negative principal, validation, check, contract]
+
+  - id: B10
+    function: loan_payment
+    category: logic
+    description: "denominator sign flip"
+    sub_old: "/ (one_plus_r ** m - 1)"
+    sub_new: "/ (one_plus_r ** m + 1)  # bug"
+    detection_keywords: [denominator, sign, formula, "+1", "-1"]
+
+  - id: B11
+    function: loan_payment
+    category: contract
+    description: "missing zero-rate handling"
+    sub_old: "    if r == 0:\n        return p / m\n"
+    sub_new: "    # bug: no zero-rate handling; division by zero in formula\n"
+    detection_keywords: [zero rate, "r == 0", division by zero, edge case]
+
+  - id: B12
+    function: loan_payment
+    category: contract
+    description: "months <= 0 not validated"
+    sub_old: "    if m <= 0:\n        raise ValueError(\"months <= 0\")\n"
+    sub_new: "    # bug: no months check\n"
+    detection_keywords: [months, validation, "<= 0", zero, negative]
+
+  # ===== transfer (6 bug) =====
+  - id: B13
+    function: transfer
+    category: atomicity
+    description: "from updated, to update could fail (no rollback)"
+    sub_old: "    account_from.balance = account_from.balance - amount\n    account_to.balance = account_to.balance + amount"
+    sub_new: "    account_from.balance = account_from.balance - amount\n    if not isinstance(account_to.balance, Decimal):  # bug: arbitrary failure point\n        raise RuntimeError('inconsistent state')\n    account_to.balance = account_to.balance + amount"
+    detection_keywords: [atomic, rollback, partial state, atomicity, transaction, consistency]
+
+  - id: B14
+    function: transfer
+    category: currency
+    description: "currency mismatch check removed"
+    sub_old: "    if account_from.currency != account_to.currency:\n        raise ValueError(\"currency mismatch\")\n"
+    sub_new: "    # bug: no currency check\n"
+    detection_keywords: [currency, mismatch, conversion, FX, EUR, USD, validation]
+
+  - id: B15
+    function: transfer
+    category: contract
+    description: "self-transfer check removed"
+    sub_old: "    if account_from is account_to:\n        raise ValueError(\"self-transfer\")\n"
+    sub_new: "    # bug: no self-transfer check\n"
+    detection_keywords: [self-transfer, same account, identity, "is", validation]
+
+  - id: B16
+    function: transfer
+    category: logic
+    description: "from balance updated wrong sign"
+    sub_old: "    account_from.balance = account_from.balance - amount"
+    sub_new: "    account_from.balance = account_from.balance + amount  # bug"
+    detection_keywords: [sign, "+=", "-=", debit, credit, formula, arithmetic]
+
+  - id: B17
+    function: transfer
+    category: contract
+    description: "missing amount > 0 check"
+    sub_old: "    if amount <= 0:\n        raise ValueError(\"amount must be positive\")\n"
+    sub_new: "    # bug: no amount > 0 check\n"
+    detection_keywords: [amount, positive, "<= 0", negative, validation, zero]
+
+  - id: B18
+    function: transfer
+    category: contract
+    description: "insufficient balance check removed"
+    sub_old: "    if account_from.balance < amount:\n        raise ValueError(\"insufficient balance\")\n"
+    sub_new: "    # bug: no balance check\n"
+    detection_keywords: [insufficient, balance, overdraft, validation, "balance < amount"]
+
+  # ===== apply_fee (6 bug) =====
+  - id: B19
+    function: apply_fee
+    category: off-by-one
+    description: "fee > fmax becomes fee >= fmax (boundary off-by-one)"
+    sub_old: "    if fee > fmax:\n        fee = fmax"
+    sub_new: "    if fee >= fmax:\n        fee = fmax  # bug: subtle boundary"
+    detection_keywords: [boundary, off-by-one, ">=", ">", inclusive, edge]
+
+  - id: B20
+    function: apply_fee
+    category: logic
+    description: "return amount + fee instead of amount - fee"
+    sub_old: "    return a - fee"
+    sub_new: "    return a + fee  # bug: should subtract"
+    detection_keywords: [sign, "+", "-", subtraction, fee, formula, applied]
+
+  - id: B21
+    function: apply_fee
+    category: contract
+    description: "missing amount < 0 check"
+    sub_old: "    if a < 0:\n        raise ValueError(\"amount negative\")\n"
+    sub_new: "    # bug: no amount check\n"
+    detection_keywords: [negative amount, validation, "< 0", contract]
+
+  - id: B22
+    function: apply_fee
+    category: logic
+    description: "fee < fmin becomes fee > fmin (sign flip)"
+    sub_old: "    if fee < fmin:\n        fee = fmin"
+    sub_new: "    if fee > fmin:\n        fee = fmin  # bug: condition flipped"
+    detection_keywords: [sign, "<", ">", min, fmin, condition, flipped]
+
+  - id: B23
+    function: apply_fee
+    category: precision
+    description: "uses float for fee_pct"
+    sub_old: "    pct = Decimal(str(fee_pct))"
+    sub_new: "    pct = float(fee_pct)  # bug"
+    detection_keywords: [float, Decimal, precision, fee_pct, money]
+
+  - id: B24
+    function: apply_fee
+    category: contract
+    description: "fmin > fmax check removed"
+    sub_old: "    if fmin > fmax:\n        raise ValueError(\"fee_min > fee_max\")\n"
+    sub_new: "    # bug: no fmin/fmax sanity\n"
+    detection_keywords: [fmin, fmax, sanity, contract, bounds, range, max, min]
+
+  # ===== fx_convert (6 bug) =====
+  - id: B25
+    function: fx_convert
+    category: contract
+    description: "missing rate is None check"
+    sub_old: "    if rate is None:\n        raise ValueError(f\"no rate for {from_currency} -> {to_currency}\")\n"
+    sub_new: "    # bug: no rate check; will raise TypeError later\n"
+    detection_keywords: [rate, None, missing, KeyError, validation, contract, "is None"]
+
+  - id: B26
+    function: fx_convert
+    category: currency
+    description: "from==to returns amount * 0 instead of amount"
+    sub_old: "    if from_currency == to_currency:\n        return a"
+    sub_new: "    if from_currency == to_currency:\n        return a * Decimal(0)  # bug"
+    detection_keywords: [same currency, identity, zero, "* 0", same-currency]
+
+  - id: B27
+    function: fx_convert
+    category: precision
+    description: "rate stored as float"
+    sub_old: "    return a * Decimal(str(rate))"
+    sub_new: "    return a * float(rate)  # bug"
+    detection_keywords: [float, Decimal, precision, rate, money]
+
+  - id: B28
+    function: fx_convert
+    category: logic
+    description: "multiplication replaced by division"
+    sub_old: "    return a * Decimal(str(rate))"
+    sub_new: "    return a / Decimal(str(rate))  # bug: should multiply"
+    detection_keywords: [multiply, divide, formula, "/", "*", FX, conversion]
+
+  - id: B29
+    function: fx_convert
+    category: contract
+    description: "from==to handling removed; will look up (X,X) in dict"
+    sub_old: "    if from_currency == to_currency:\n        return a\n"
+    sub_new: "    # bug: no same-currency shortcut\n"
+    detection_keywords: [same currency, shortcut, identity, lookup, validation]
+
+  - id: B30
+    function: fx_convert
+    category: contract
+    description: "amount < 0 check removed"
+    sub_old: "    if a < 0:\n        raise ValueError(\"amount negative\")\n"
+    sub_new: "    # bug: no amount check\n"
+    detection_keywords: [negative amount, validation, "< 0", contract]

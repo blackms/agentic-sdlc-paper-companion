@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment non converte months a int/Decimal: float o string causano TypeError e valori non interi non sono validati",
+    "transfer non normalizza amount a Decimal, quindi amount float/string pu\u00f2 rompere confronti o aritmetica e Receipt pu\u00f2 contenere tipo inatteso",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

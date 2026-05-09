@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, quindi float/string possono causare TypeError o Receipt con tipo incoerente",
+    "transfer solleva AssertionError per self-transfer invece di ValueError, API incoerente per input non valido",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount",
+    "fx_convert non valida che il tasso FX sia positivo, permettendo conversioni zero o negative",
+    "conversioni int(years/months/compounds_per_year) troncano valori non interi senza errore"
+  ],
+  "detected_planted": true
+}

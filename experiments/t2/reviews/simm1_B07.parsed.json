@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment calcola la rata usando l'esponente m+1 invece di m, producendo pagamenti errati per prestiti con interesse"
+  ],
+  "detected_planted": true
+}

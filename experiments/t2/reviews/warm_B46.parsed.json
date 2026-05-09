@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "Zero-rate loan payment divides by months minus one",
+    "One-month zero-rate loan raises division by zero"
+  ],
+  "detected_planted": true
+}

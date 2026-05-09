@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer violates conservation by crediting account_to with amount + 0.01 instead of amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert ignores supplied EUR to USD rate",
+    "Numeric horizon parameters are silently truncated with int",
+    "compound_interest accepts negative principal values"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest usa una formula errata: scambia principal/rate e non eleva alla potenza n*t, restituendo un valore finanziariamente sbagliato"
+  ],
+  "detected_planted": true
+}

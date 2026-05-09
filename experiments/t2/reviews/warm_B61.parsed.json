@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, causando errori o precisione incoerente",
+    "transfer non atomico se l'accredito fallisce dopo l'addebito",
+    "compound_interest tronca years frazionari con int senza validazione esplicita",
+    "compound_interest non valida principal negativo, incoerente con loan_payment",
+    "compound_interest tronca compounds_per_year non intero senza errore",
+    "loan_payment tronca months frazionari con int senza validazione esplicita",
+    "fx_convert non valida tassi FX negativi o nulli",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

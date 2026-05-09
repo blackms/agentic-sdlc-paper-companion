@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer modifica account_to.balance prima di verificare fondi sufficienti: in caso di balance < amount solleva ValueError ma lascia account_to modificato, violando atomicita e conservazione su fallimento"
+  ],
+  "detected_planted": true
+}

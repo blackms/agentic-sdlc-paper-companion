@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest does not validate annual_rate, allowing negative rates inconsistent with loan_payment and potentially nonsensical negative/zero growth bases",
+    "compound_interest does not validate principal, so negative principal values can produce invalid financial results",
+    "transfer does not coerce or validate amount as Decimal, unlike other functions, causing TypeError or precision issues for common numeric inputs",
+    "apply_fee can return a negative net amount when the bounded fee exceeds the amount"
+  ],
+  "detected_planted": true
+}

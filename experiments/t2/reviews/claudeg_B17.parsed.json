@@ -1,0 +1,20 @@
+{
+  "bugs_found": [
+    "transfer(): missing validation that amount > 0, allowing zero or negative transfers (negative would drain destination and credit sender)",
+    "transfer(): amount is not coerced to Decimal, mixing float/int amount with Decimal balance can raise TypeError or lose precision",
+    "transfer() is not atomic: no locking/transactional guard, concurrent calls can cause race conditions and double-spend",
+    "compound_interest(): principal is not validated to be non-negative",
+    "loan_payment(): when r == 0 returns p/m as Decimal/int division which yields a non-quantized Decimal; result is not rounded to currency precision",
+    "apply_fee(): fee is not clamped against the amount, so fee_min greater than amount yields a negative returned value",
+    "fx_convert(): rates dict values are trusted without validating rate > 0",
+    "fx_convert(): no inverse-rate fallback; (EUR,USD) present but (USD,EUR) missing raises even when derivable",
+    "No monetary rounding/quantize to currency minor units anywhere (compound_interest, loan_payment, apply_fee, fx_convert) leading to sub-cent residuals",
+    "Account.balance and amounts have no invariant enforcing Decimal type; dataclass accepts any type silently",
+    "Receipt has no timestamp, no unique id, and no currency field, weakening auditability",
+    "Use of ** with Decimal exponent in loan_payment works only for integer exponents; months as Decimal would fail (currently cast to int, but no guard if months is fractional input -> silent truncation)",
+    "Error messages are non-localized bare strings; no custom exception types for domain errors",
+    "Missing type hints on all function signatures reduces static analysis and IDE support",
+    "Module docstring claims 'NO BUGS' but transfer has an acknowledged bug (// 'bug: no amount > 0 check') - misleading documentation"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "apply_fee: fee_pct cast to float instead of Decimal causes TypeError when multiplying Decimal a * float pct (and loses precision); should use Decimal(str(fee_pct))",
+    "apply_fee: comment '# bug' left in source code is a code smell indicating known defect not fixed",
+    "loan_payment: when r == 0 returns p / m as Decimal division which may produce non-terminating decimal repr; acceptable but no rounding/quantization to currency precision",
+    "compound_interest: no upper bound / overflow protection on n*t exponent; missing validation that principal >= 0",
+    "transfer: not atomic \u2014 if second assignment fails (unlikely with Decimal but possible with subclasses), funds could be lost; should use try/except or transactional pattern",
+    "transfer: mutates input Account dataclasses directly without locking; not thread-safe for concurrent transfers on the same account",
+    "fx_convert: silently uses provided rate without validating rate > 0; negative or zero rates would produce nonsensical results",
+    "fx_convert: no support for inverse rates \u2014 if only (USD,EUR) is provided, conversion EUR->USD fails instead of using 1/rate",
+    "No rounding to currency minor units (e.g., 2 decimals) anywhere \u2014 financial outputs may carry excessive precision causing reconciliation issues",
+    "Account/Receipt dataclasses lack validation (e.g., balance type, currency code format), allowing construction with invalid state",
+    "Missing __all__, type hints on function signatures, and docstrings on public functions reduce maintainability"
+  ],
+  "detected_planted": true
+}

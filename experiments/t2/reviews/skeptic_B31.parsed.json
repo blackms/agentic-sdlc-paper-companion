@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest adds 1 to compounds_per_year, producing systematically incorrect interest and accepting 0 compounds as valid",
+    "integer coercion silently truncates years/months/compounds_per_year, changing financial terms without validation",
+    "transfer does not coerce/validate amount as Decimal, so float/int/NaN inputs can cause TypeError, inconsistent comparisons, or non-finite balances",
+    "no validation for non-finite Decimal values such as NaN/Infinity across money/rate inputs",
+    "fx_convert does not validate rate positivity or finiteness, allowing negative/NaN/Infinity rates to create invalid converted amounts",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, silently overcharging beyond the transaction amount",
+    "compound_interest does not validate principal non-negative"
+  ],
+  "detected_planted": true
+}

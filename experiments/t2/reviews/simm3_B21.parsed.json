@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee non valida amount negativo o nullo, consentendo risultati finanziariamente non validi",
+    "transfer non normalizza amount a Decimal: float/int non Decimal possono causare TypeError o confronti incoerenti",
+    "compound_interest non valida principal negativo"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest usa int(years) - 1: calcola un anno in meno e rifiuta years=0 come negativo",
+    "compound_interest tronca silently anni frazionari con int(years), producendo risultati finanziari errati",
+    "transfer non normalizza amount a Decimal: input float possono causare TypeError o incoerenze rispetto agli altri calcoli"
+  ],
+  "detected_planted": true
+}

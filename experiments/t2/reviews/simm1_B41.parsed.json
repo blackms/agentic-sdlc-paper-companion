@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa int(months)+1 causando un errore off-by-one nel numero di rate e accetta months=0 come valido",
+    "compound_interest e loan_payment troncano silenziosamente valori frazionari con int(), producendo risultati finanziari errati",
+    "transfer non normalizza amount a Decimal: input float/string possono causare TypeError o confronti incoerenti con balance Decimal"
+  ],
+  "detected_planted": true
+}

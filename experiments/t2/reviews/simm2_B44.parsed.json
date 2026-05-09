@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa Decimal(1) - r invece di Decimal(1) + r, producendo rate negative o errate per tassi positivi e possibili divisioni per zero con alcuni valori di monthly_rate"
+  ],
+  "detected_planted": true
+}

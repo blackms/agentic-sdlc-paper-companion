@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment raises base Exception for negative principal instead of ValueError, breaking callers that handle validation failures via ValueError",
+    "transfer mutates account_from before mutating account_to, so a failure during credit update can debit without crediting; transfer is not atomic",
+    "transfer does not coerce/validate amount as Decimal, so float amounts cause TypeError with Decimal balances or mixed numeric behavior",
+    "fx_convert accepts zero or negative exchange rates and silently returns zero/negative converted amounts",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing requested terms without validation",
+    "compound_interest does not reject negative principal",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": true
+}

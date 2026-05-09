@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert does not handle same-currency conversion; converting USD to USD requires an unnecessary rate and raises ValueError if missing"
+  ],
+  "detected_planted": false
+}

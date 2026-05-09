@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "fx_convert returns float instead of Decimal, losing monetary precision",
+    "compound_interest silently truncates fractional years via int conversion",
+    "compound_interest silently truncates fractional compounds_per_year values",
+    "loan_payment silently truncates fractional months via int conversion",
+    "compound_interest allows negative principal without validation",
+    "transfer does not coerce or validate amount as Decimal",
+    "transfer mutation is not atomic if credit assignment fails"
+  ],
+  "detected_planted": true
+}

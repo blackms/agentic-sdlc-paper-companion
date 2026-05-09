@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "Loan payment formula uses months plus one exponent",
+    "Month count is silently truncated instead of validated",
+    "Compound interest silently truncates fractional years",
+    "Compound frequency silently truncates non-integer values",
+    "Compound interest allows negative principal without validation",
+    "Transfer is non-atomic if credit assignment fails",
+    "Transfer accepts non-Decimal amount without normalization",
+    "FX conversion accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

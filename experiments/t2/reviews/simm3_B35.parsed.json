@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente errato years ** n invece di years * compounds_per_year, producendo risultati finanziari completamente sbagliati e potenziali TypeError con anni non interi",
+    "compound_interest converte years in int per validarlo ma poi usa il valore originale years nel calcolo, rendendo incoerente validazione e comportamento"
+  ],
+  "detected_planted": true
+}

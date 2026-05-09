@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert: rate is inverted (multiplies by 1/rate instead of rate), producing wrong converted amounts",
+    "loan_payment: zero-rate branch returns p/m but should return Decimal(p)/Decimal(m) consistently and lacks principal=0 short-circuit consideration; minor but acceptable",
+    "compound_interest: missing validation that principal can be negative (allows negative principal silently)",
+    "transfer: not atomic \u2014 if second assignment failed, source already debited (no rollback/transaction)",
+    "apply_fee: fee computed as a*pct assumes pct is a fraction (e.g. 0.02) but naming 'fee_pct' suggests percentage; ambiguous contract, no documentation",
+    "fx_convert: uses dict.get with tuple key but does not consider inverse rate fallback (to,from)"
+  ],
+  "detected_planted": true
+}

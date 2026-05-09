@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee allows fee_pct greater than 100%, which can produce a fee larger than the amount and return a negative net amount",
+    "transfer does not normalize amount to Decimal, so float amounts can raise TypeError during Decimal arithmetic"
+  ],
+  "detected_planted": true
+}

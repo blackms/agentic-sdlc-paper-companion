@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divides by the exchange rate instead of multiplying, producing inverted conversion results for rates expressed as from_currency to to_currency"
+  ],
+  "detected_planted": true
+}

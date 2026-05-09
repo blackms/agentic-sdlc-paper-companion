@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee solleva TypeError invece di ValueError per fee_pct negativo",
+    "transfer non converte/valida amount come Decimal, causando TypeError o comportamento incoerente con input non Decimal"
+  ],
+  "detected_planted": true
+}

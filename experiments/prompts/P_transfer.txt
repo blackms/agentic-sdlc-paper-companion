@@ -1,0 +1,13 @@
+Implementa `transfer(account_from, account_to, amount) -> Receipt` in Python seguendo questo protocollo strutturato.
+
+Account ha attributi `balance: Decimal`, `currency: str`, `id: str`. Receipt ha `from_id`, `to_id`, `amount`, `timestamp`.
+
+1. SPEC PHASE — Given/When/Then per: happy path, saldo insufficiente, amount<=0, currency mismatch, self-transfer. Almeno 5 scenari.
+
+2. CONTRACT PHASE — docstring formale con: inputs, output, validazioni richieste (4 condizioni), invarianti (conservazione: from.balance + to.balance prima = dopo, atomicità), no-float, deterministico.
+
+3. RED PHASE — almeno 8 test pytest, includendo: happy, esatto saldo, saldo insufficiente, amount=0, amount<0, currency mismatch, self-transfer, atomicità (verifica che in caso di errore lo stato non sia parziale).
+
+4. GREEN PHASE — Implementa. Usa `Decimal`. Solleva `ValueError` per input invalidi. Garantisce **atomicità**: se una qualsiasi validazione fallisce, NESSUN balance viene modificato.
+
+5. Output: UN UNICO blocco Python con SPEC, contract, tests, classi (Account, Receipt) + funzione transfer. In quest'ordine.

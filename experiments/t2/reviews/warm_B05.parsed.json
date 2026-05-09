@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "compound_interest non valida compounds_per_year minore di uno",
+    "compound_interest accetta principal negativo senza errore",
+    "compound_interest tronca silenziosamente anni e frequenza frazionari",
+    "loan_payment tronca silenziosamente months frazionari",
+    "transfer non converte amount a Decimal coerentemente",
+    "transfer controlla self-transfer solo per identita oggetto",
+    "transfer non atomica: update parziale se accredito fallisce",
+    "transfer vulnerabile a race condition e overdraft concorrenti",
+    "apply_fee puo restituire importi netti negativi",
+    "fx_convert accetta tassi zero o negativi"
+  ],
+  "detected_planted": true
+}

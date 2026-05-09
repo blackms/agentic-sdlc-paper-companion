@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non rifiuta trasferimenti verso lo stesso account",
+    "transfer non normalizza amount a Decimal, causando TypeError o comportamento incoerente con input non Decimal",
+    "apply_fee pu\u00f2 restituire importi negativi quando la fee supera l'importo",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": false
+}

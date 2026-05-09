@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment calcola male il pagamento con tasso zero: usa p/(m-1) invece di p/m, causando anche divisione per zero quando months=1",
+    "transfer non normalizza amount a Decimal, quindi input float pu\u00f2 causare TypeError nelle operazioni con balance Decimal"
+  ],
+  "detected_planted": true
+}

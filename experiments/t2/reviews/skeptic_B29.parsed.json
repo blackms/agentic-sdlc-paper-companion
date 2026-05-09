@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert rejects same-currency conversions unless an explicit rate exists; this can break zero-risk identity conversions",
+    "transfer is not atomic: debit happens before credit, so a failure during credit can leave balances inconsistent",
+    "transfer does not normalize amount to Decimal, allowing float/type errors and Receipt.amount type drift",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), causing undeclared behavior changes for fractional inputs",
+    "money results are not quantized to currency scale, so sub-cent balances/fees/payments can leak into production"
+  ],
+  "detected_planted": true
+}

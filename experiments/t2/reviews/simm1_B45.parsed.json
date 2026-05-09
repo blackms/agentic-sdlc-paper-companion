@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest non valida annual_rate/principal e accetta tassi impossibili o negativi senza controllo",
+    "compound_interest tronca years e compounds_per_year con int(), producendo risultati errati per input non interi",
+    "transfer non converte amount in Decimal: importi float/int possono causare TypeError o incoerenze con balance Decimal",
+    "transfer consente trasferimenti tra oggetti diversi con lo stesso account id",
+    "apply_fee puo restituire importi negativi se la fee minima/massima supera l'importo",
+    "fx_convert non valida che il tasso FX sia positivo, quindi accetta tassi zero o negativi"
+  ],
+  "detected_planted": true
+}

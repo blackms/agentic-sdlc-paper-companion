@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee restituisce la fee calcolata invece dell'importo netto amount - fee, violando la formula di output e l'invariante I1"
+  ],
+  "detected_planted": true
+}

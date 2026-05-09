@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest calcola una formula errata: usa r * (1 + principal / n) invece di principal * (1 + annual_rate / n) ** (n * years)",
+    "compound_interest non dipende da years nel risultato, violando la formula e la monotonicita in t",
+    "compound_interest viola i casi identita: con years=0 o annual_rate=0 o principal=0 deve restituire principal, ma non lo fa"
+  ],
+  "detected_planted": true
+}

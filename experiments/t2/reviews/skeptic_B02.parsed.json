@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest converts principal to float, causing precision loss and TypeError when multiplied by Decimal",
+    "compound_interest does not validate negative principal",
+    "compound_interest silently truncates fractional years and compounds_per_year via int()",
+    "loan_payment silently truncates fractional months via int()",
+    "transfer does not normalize amount to Decimal, allowing float precision issues or mixed-type failures",
+    "transfer is non-atomic: debit can succeed and credit can fail if account_to.balance mutation raises",
+    "fx_convert does not validate rate positivity, so zero or negative FX rates produce invalid money results",
+    "financial functions do not consistently reject NaN/Infinity inputs"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa years-1: per years=0 valido solleva ValueError invece di restituire principal",
+    "compound_interest calcola l'interesse su un anno in meno, violando la formula e la monotonicit\u00e0 temporale"
+  ],
+  "detected_planted": true
+}

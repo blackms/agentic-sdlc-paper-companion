@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer() does not normalize/validate amount as Decimal, so float/string/NaN inputs can raise unexpected TypeError or corrupt comparison semantics instead of controlled validation",
+    "transfer() mutates account_from before account_to; if crediting account_to fails due to invalid balance/type/custom object behavior, funds are debited without corresponding credit",
+    "transfer() raises AssertionError for self-transfer, which can be disabled or mishandled in production compared with ValueError",
+    "compound_interest() and loan_payment() silently truncate years/months/compounds_per_year via int(), changing fractional inputs without rejection",
+    "finance functions do not reject NaN/Infinity non-finite Decimal inputs, allowing invalid money/rates to propagate or fail with unexpected decimal exceptions",
+    "fx_convert() does not validate rate positivity or finiteness, so zero/negative/NaN/Infinity FX rates can produce invalid conversions",
+    "apply_fee() can return a negative amount when fee_min exceeds amount, with no validation that fee bounds are compatible with the amount",
+    "money-returning functions do not quantize/round to currency precision, risking silent sub-cent amounts and inconsistent accounting"
+  ],
+  "detected_planted": true
+}

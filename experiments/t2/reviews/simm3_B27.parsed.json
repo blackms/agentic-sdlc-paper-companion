@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert moltiplica un Decimal per un float, causando TypeError e/o perdita di precisione; il rate va convertito a Decimal",
+    "transfer non normalizza amount a Decimal, quindi importi float possono causare TypeError nelle operazioni con balance Decimal"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer accredita account_to prima di verificare fondi sufficienti; se il saldo \u00e8 insufficiente solleva eccezione lasciando il destinatario aumentato"
+  ],
+  "detected_planted": false
+}

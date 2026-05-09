@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment non gestisce tasso zero causando DivisionByZero",
+    "conversione int tronca silenziosamente anni, rate e mesi frazionari",
+    "transfer non normalizza amount a Decimal e pu\u00f2 fallire con float",
+    "transfer non \u00e8 atomico se accredito fallisce dopo addebito",
+    "fx_convert accetta tassi negativi o zero generando importi invalidi",
+    "compound_interest accetta principal negativo senza validazione",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": false
+}

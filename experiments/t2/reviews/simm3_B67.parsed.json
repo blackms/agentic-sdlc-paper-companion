@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee imposta sempre la fee a fee_max quando la fee calcolata \u00e8 inferiore al massimo, ignorando fee_pct e fee_min; la condizione finale `if fee < fmax: fee = fmax` dovrebbe essere rimossa."
+  ],
+  "detected_planted": false
+}

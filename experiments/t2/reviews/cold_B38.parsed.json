@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa il float 1.0 con Decimal: per input Decimal validi solleva TypeError e viola il vincolo NO float",
+    "compound_interest non valida principal < 0, permettendo risultati fuori dominio invece di preservare principal >= 0"
+  ],
+  "detected_planted": true
+}

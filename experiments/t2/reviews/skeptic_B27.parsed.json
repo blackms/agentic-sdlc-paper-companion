@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "fx_convert multiplies Decimal by float(rate), causing TypeError or precision loss instead of Decimal-safe conversion",
+    "transfer is not atomic: debit happens before credit, so a failure crediting account_to can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal, allowing float/type edge cases and arithmetic failures",
+    "apply_fee can return negative net amount when fee_min, fee_max, or fee_pct allow fee > amount",
+    "compound_interest silently truncates fractional years and compounds_per_year with int(), changing behavior without validation",
+    "loan_payment silently truncates fractional months with int(), changing repayment schedule without validation",
+    "principal in compound_interest is not validated non-negative, allowing nonsensical negative investments"
+  ],
+  "detected_planted": true
+}

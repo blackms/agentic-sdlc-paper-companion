@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer aumenta il saldo del conto sorgente invece di addebitarlo, creando denaro invece di trasferirlo"
+  ],
+  "detected_planted": true
+}

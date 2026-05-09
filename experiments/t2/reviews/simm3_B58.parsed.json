@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer does not validate/coerce amount as Decimal, so floats/strings can raise TypeError and Decimal NaN/Infinity are not explicitly rejected",
+    "fx_convert does not validate that exchange rate is positive and finite, allowing negative, zero, NaN, or Infinity rates",
+    "compound_interest, loan_payment, and apply_fee do not reject NaN/Infinity inputs, which can propagate invalid financial values"
+  ],
+  "detected_planted": true
+}

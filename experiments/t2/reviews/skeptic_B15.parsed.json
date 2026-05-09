@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer accepts amount without Decimal conversion/validation, so floats or non-Decimal numeric types can cause precision/type issues unlike the other money functions",
+    "transfer has no self-transfer guard; same Account can produce a Receipt for a transfer that did not actually move funds",
+    "transfer mutates debit before credit; if credit assignment/addition fails due to malicious Account-like object or invalid balance type, balances can become inconsistent",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial behavior without validation",
+    "loan_payment silently truncates fractional months via int(), changing repayment schedule without validation",
+    "fx_convert does not validate rate positivity or finiteness, so zero/negative/NaN/Infinity rates can create invalid converted amounts",
+    "apply_fee allows fee_min greater than amount, returning a negative net amount for small transactions"
+  ],
+  "detected_planted": true
+}

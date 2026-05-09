@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest moltiplica Decimal per float (1.0), causando TypeError per input validi e contaminazione float",
+    "transfer non normalizza amount a Decimal: con importi float/string pu\u00f2 fallire nei confronti o nell'aritmetica e produrre tipi incoerenti",
+    "conversioni int(years), int(compounds_per_year) e int(months) troncano silenziosamente valori non interi, potenzialmente alterando i calcoli finanziari"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert restituisce 0 quando from_currency e to_currency coincidono; dovrebbe restituire l'importo originale"
+  ],
+  "detected_planted": false
+}

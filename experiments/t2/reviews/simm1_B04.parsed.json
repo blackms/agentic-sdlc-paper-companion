@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest uses subtraction in the growth factor (1 - r/n) instead of addition, producing decreasing balances for positive rates",
+    "fx_convert does not validate that exchange rates are positive, so zero or negative rates can produce invalid conversions"
+  ],
+  "detected_planted": true
+}

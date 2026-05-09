@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert usa il tasso al contrario: divide per rate invece di moltiplicare",
+    "fx_convert non valida che il tasso sia positivo, permettendo risultati negativi o divisione per zero",
+    "transfer non normalizza amount a Decimal, quindi input numerici non Decimal possono causare TypeError durante l'aritmetica"
+  ],
+  "detected_planted": true
+}

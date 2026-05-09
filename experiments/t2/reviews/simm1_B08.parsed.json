@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "loan_payment mescola float e Decimal: con rate non zero solleva TypeError e perde precisione finanziaria",
+    "loan_payment restituisce float nel caso monthly_rate == 0, incoerente con il resto dell'API Decimal",
+    "transfer non converte/valida amount come Decimal, quindi input float pu\u00f2 rompere l'aritmetica o introdurre precisione errata",
+    "apply_fee pu\u00f2 restituire importi negativi quando fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

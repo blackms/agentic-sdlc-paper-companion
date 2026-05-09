@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer accetta amount non normalizzato a Decimal: con float/string pu\u00f2 generare TypeError o aritmetica incoerente rispetto alle altre funzioni",
+    "transfer usa il messaggio di errore 'insufficient balance' anche per mismatch di valuta, rendendo ambigua la causa dell'errore",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min o fee_max superano amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "fx_convert divides by FX rate instead of multiplying, producing systematically wrong conversions",
+    "transfer does not coerce or validate amount as Decimal, so floats can raise TypeError or introduce inconsistent behavior compared with other functions",
+    "compound_interest allows negative principal while loan_payment rejects negative principal, an undeclared inconsistent money validation",
+    "compound_interest and loan_payment silently truncate non-integer years/months/compounds_per_year via int(), causing silent under-calculation for fractional inputs",
+    "no finite-number validation: NaN/Infinity inputs can raise unexpected Decimal errors or propagate invalid monetary values",
+    "monetary outputs are never rounded/quantized to currency precision, allowing fractional-cent balances and receipts",
+    "transfer is non-atomic: if crediting account_to.balance fails after debiting account_from.balance, balances become inconsistent",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction amount"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "compound_interest: division r/n uses integer n without Decimal conversion, but works due to Decimal __truediv__ accepting int; minor: no validation that principal is non-negative",
+    "loan_payment: when r==0 returns p/m without converting m to Decimal explicitly (works but inconsistent); no upper bound check on rate",
+    "transfer: non-atomic balance update \u2014 if second assignment fails after first, source account is debited without credit; no locking for concurrent access",
+    "transfer: uses 'is' identity check instead of comparing account ids, so two Account objects with same id would not be detected as self-transfer",
+    "apply_fee: does not quantize result to currency precision (e.g. 2 decimals), may return values with excessive precision",
+    "fx_convert: does not validate rate is positive; a zero or negative rate in the dict would silently produce wrong results",
+    "fx_convert: no quantization of result; precision of input rate string is preserved without rounding policy",
+    "General: no use of Decimal context/rounding (ROUND_HALF_EVEN) for monetary calculations, results may differ across environments",
+    "General: Account.balance is mutable dataclass field without thread-safety; concurrent transfers can cause race conditions",
+    "General: no type hints on function signatures reduces clarity and static analysis"
+  ],
+  "detected_planted": true
+}

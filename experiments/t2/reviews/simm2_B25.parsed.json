@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert non gestisce il caso di tasso di cambio mancante: rates.get pu\u00f2 restituire None e Decimal(str(rate)) solleva un errore non controllato invece di un ValueError esplicito",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount, perch\u00e9 la fee non viene limitata all'importo disponibile",
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input float/string possono causare TypeError o comportamento incoerente"
+  ],
+  "detected_planted": true
+}

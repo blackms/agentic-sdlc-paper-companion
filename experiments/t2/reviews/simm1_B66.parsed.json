@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee calcola la commissione come fee_pct * fee_pct invece di amount * fee_pct, quindi applica importi errati"
+  ],
+  "detected_planted": true
+}

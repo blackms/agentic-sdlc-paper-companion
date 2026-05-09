@@ -1,0 +1,21 @@
+{
+  "bugs_found": [
+    "compound_interest raises RuntimeError instead of ValueError for negative rate (inconsistent with other validators and misleading exception type)",
+    "compound_interest does not validate that principal is non-negative (other functions validate principal/amount, this one accepts negatives silently)",
+    "loan_payment with r==0 returns p/m as Decimal division which may produce non-quantized result and does not handle precision/rounding for monetary output",
+    "Monetary results are not quantized/rounded to a fixed number of decimal places, leading to representation drift in financial calculations",
+    "transfer mutates account balances without atomicity: if a later step failed between the two assignments, funds could be lost; no transactional/rollback guard",
+    "transfer uses 'is' identity check to prevent self-transfer but does not catch the case where two distinct Account instances share the same id",
+    "apply_fee allows fee_pct > 1 (e.g., 200%) which would make the fee exceed the amount and return a negative net value before clamping by fmax; semantics of fee_pct are undocumented (fraction vs percentage)",
+    "apply_fee: when fee exceeds amount and fmax is large, the function can return a negative result (a - fee < 0) with no guard",
+    "fx_convert silently returns the same amount when from_currency == to_currency without validating that the currency code is known/whitelisted",
+    "fx_convert relies on float-like rate lookup via Decimal(str(rate)); if rate is a float with imprecise representation, precision can still be affected; no validation that rate > 0",
+    "No use of Decimal context/quantization (getcontext) \u2014 results have unbounded precision and may not match expected monetary scale",
+    "Type hints are missing on all public functions, reducing API clarity and static-analysis support",
+    "Account and Receipt dataclasses are mutable; Receipt should be frozen=True to act as an immutable audit record",
+    "No logging/audit trail for transfer (financial operation) \u2014 required for traceability",
+    "Input types are coerced via Decimal(str(x)) but bool is a subclass of int and would be silently accepted (e.g., principal=True)",
+    "Module docstring claims 'NO BUGS' which is misleading given the issues above"
+  ],
+  "detected_planted": true
+}

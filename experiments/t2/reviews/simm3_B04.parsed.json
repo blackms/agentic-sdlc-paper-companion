@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest uses (1 - r / n) instead of (1 + r / n), so positive rates reduce the principal instead of growing it",
+    "fx_convert does not validate that the exchange rate is positive, allowing zero or negative rates to produce invalid conversions"
+  ],
+  "detected_planted": false
+}

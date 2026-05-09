@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest does not validate annual_rate, allowing negative or pathological rates that can produce nonsensical balances",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without error",
+    "compound_interest does not reject negative principal, unlike loan_payment's validation model",
+    "transfer accepts raw amount without Decimal normalization/type validation, so float inputs can raise TypeError or introduce inconsistent behavior versus other money functions",
+    "transfer is not atomic: if crediting account_to.balance fails after debiting account_from.balance, funds disappear",
+    "fx_convert does not validate rate positivity, so zero or negative FX rates can silently produce invalid converted amounts",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, silently overcharging beyond the transaction amount",
+    "all functions lack finite-number validation, allowing NaN/Infinity-style Decimal inputs or rates to propagate or fail inconsistently"
+  ],
+  "detected_planted": true
+}

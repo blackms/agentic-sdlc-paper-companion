@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, quindi input numerici come float possono causare TypeError o confronti/operazioni incoerenti rispetto alle altre funzioni",
+    "compound_interest e loan_payment usano int() su years/months/compounds_per_year, troncando silenziosamente valori non interi invece di validarli",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni negative o nulle"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: it debits account_from before all failure points are eliminated, so a bad account_to.balance type/value or later exception can leave a partial debit",
+    "transfer does not normalize/validate amount as Decimal, allowing floats or incompatible numeric types to fail mid-operation and returning receipts with non-Decimal amounts",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds_per_year via int(), changing financial terms without validation",
+    "fx_convert does not validate rate positivity or finiteness, so zero/negative/NaN/Infinity rates can silently produce invalid conversions",
+    "apply_fee can return a negative net amount when minimum fee exceeds amount, which may create negative proceeds from a nonnegative amount"
+  ],
+  "detected_planted": true
+}

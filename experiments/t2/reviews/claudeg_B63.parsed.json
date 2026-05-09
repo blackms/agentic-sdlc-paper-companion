@@ -1,0 +1,18 @@
+{
+  "bugs_found": [
+    "apply_fee: when computed fee exceeds fee_max it is clamped to fee_min instead of fee_max (line 81), producing incorrect fee for high amounts",
+    "apply_fee: fee_pct is treated as a raw multiplier (e.g., 0.02 for 2%) but parameter name suggests a percentage; ambiguous contract not documented",
+    "loan_payment: when r == 0 returns p / m as Decimal/int division which may yield non-quantized result; no rounding to currency precision",
+    "compound_interest: result is not quantized to a monetary precision (e.g., 2 decimals), leaking full Decimal precision to callers",
+    "transfer: balance mutation is not atomic and not transactional; partial failure between debit and credit could corrupt state; no locking",
+    "transfer: amount is not converted to Decimal, so passing a float could introduce precision errors in balance arithmetic",
+    "fx_convert: rate lookup is one-directional; missing inverse-rate fallback and no triangulation; silently fails on reverse pair",
+    "fx_convert: no validation that rate is positive/non-zero",
+    "apply_fee/compound_interest/loan_payment: using Decimal(str(x)) is safe but inconsistent with transfer which accepts raw amount without normalization",
+    "Account.balance and amount types are not enforced (no runtime check that they are Decimal), risking float contamination",
+    "No rounding/quantize step anywhere: monetary results should be quantized with ROUND_HALF_EVEN to currency minor units",
+    "Receipt lacks timestamp, transaction id, and currency fields, limiting auditability",
+    "Error messages are inconsistent and not localized/structured; no custom exception types for domain errors"
+  ],
+  "detected_planted": true
+}

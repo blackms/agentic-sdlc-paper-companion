@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest rejects annual_rate=0 even though zero interest should return principal",
+    "compound_interest does not validate principal >= 0, allowing negative balances/returns",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), e.g. 12.9 becomes 12",
+    "transfer mutates account_from before account_to; if credit assignment fails or is adversarial, balances become inconsistent",
+    "transfer does not normalize/validate amount as Decimal/finite, allowing type-mixing or NaN/Infinity edge cases",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert does not validate rate is positive and finite, allowing zero/negative/NaN/Infinity conversion rates"
+  ],
+  "detected_planted": true
+}

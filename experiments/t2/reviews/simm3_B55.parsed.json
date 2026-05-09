@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer rejects same-currency accounts and allows cross-currency transfers because the currency mismatch check is inverted",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError during balance updates",
+    "fx_convert accepts zero or negative exchange rates, producing invalid conversions"
+  ],
+  "detected_planted": true
+}

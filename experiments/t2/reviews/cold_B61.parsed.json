@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee uses fee_min when amount * fee_pct == fee_min due to <= instead of strict lower-bound clipping; this does not change the returned Decimal and is not an observable contract violation"
+  ],
+  "detected_planted": true
+}

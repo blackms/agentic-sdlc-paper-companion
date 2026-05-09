@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal: input int/float pu\u00f2 causare TypeError o Receipt con tipo incoerente",
+    "compound_interest e loan_payment troncano silenziosamente years/months/compounds_per_year con int(), accettando input frazionari non validi",
+    "fx_convert non valida rate <= 0, consentendo conversioni zero o negative",
+    "fx_convert non normalizza i codici valuta, comportamento incoerente con transfer e lookup fragile",
+    "apply_fee pu\u00f2 restituire importi negativi se la fee minima supera amount"
+  ],
+  "detected_planted": false
+}

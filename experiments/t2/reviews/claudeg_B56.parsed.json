@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "transfer() credits destination account before validating sender has sufficient balance, leading to inconsistent state when the insufficient-balance ValueError is raised (destination keeps the credited amount)",
+    "transfer() is not atomic and lacks rollback / locking, so a partial failure or concurrent execution can corrupt balances",
+    "transfer() does not coerce amount to Decimal nor validate its type, allowing float inputs that introduce precision errors and mixed-type arithmetic",
+    "compound_interest() does not coerce principal to Decimal when negative principal is passed and never validates principal sign",
+    "loan_payment() returns p/m for zero rate without rounding to currency precision; same for the main formula (no quantize), exposing fractional cents",
+    "apply_fee() does not round fee/result to monetary precision (no Decimal.quantize), risking sub-cent residues",
+    "fx_convert() accepts arbitrary rate dict without validating rate > 0 and does not round result to target-currency precision",
+    "Account.balance and Receipt.amount typed as Decimal but constructors do not enforce the type (dataclass without __post_init__ coercion/validation)",
+    "No logging/audit trail for financial operations (transfer, fee application, fx conversion)",
+    "Module-level docstring claims 'NO BUGS' which is misleading given the transfer() ordering defect"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "apply_fee does not reject negative amount, so a malicious negative amount can produce nonsensical payouts after min/max fee logic",
+    "fx_convert does not validate rate positivity or finiteness, allowing negative/zero/Infinity/NaN exchange rates and invalid converted money",
+    "transfer is not atomic: debit happens before credit, so a failing account_to.balance update can leave funds removed without receipt",
+    "transfer does not normalize/validate amount as Decimal/finite, allowing TypeError paths or mixed numeric behavior instead of controlled validation",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds_per_year via int(), causing undeclared behavior changes",
+    "all functions lack explicit non-finite Decimal validation, allowing Infinity/NaN to leak or raise inconsistent Decimal exceptions"
+  ],
+  "detected_planted": true
+}

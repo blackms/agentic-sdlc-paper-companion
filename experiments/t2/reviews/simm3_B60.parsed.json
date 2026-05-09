@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, a differenza delle altre funzioni, causando TypeError o tipi incoerenti se viene passato un int/float/stringa",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": false
+}

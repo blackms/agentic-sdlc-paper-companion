@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest accepts negative principal even though the contract declares principal must be non-negative"
+  ],
+  "detected_planted": true
+}

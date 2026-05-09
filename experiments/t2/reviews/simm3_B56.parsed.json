@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer accredita account_to.balance prima di verificare fondi sufficienti: se solleva ValueError il destinatario resta accreditato",
+    "transfer non normalizza amount a Decimal: input float/string possono causare TypeError o aritmetica incoerente con balance Decimal",
+    "fx_convert non valida che il tasso sia positivo e pu\u00f2 produrre importi nulli o negativi",
+    "compound_interest tronca silenziosamente years con int(), alterando il calcolo per anni frazionari"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee returns amount plus fee instead of amount minus fee, violating output formula and invariant result <= amount"
+  ],
+  "detected_planted": true
+}

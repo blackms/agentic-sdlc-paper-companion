@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest rejects annual_rate=0 because it checks r <= 0 instead of r < 0",
+    "transfer does not normalize amount to Decimal, so float inputs can raise TypeError during Decimal arithmetic and Receipt.amount may not match the declared Decimal type"
+  ],
+  "detected_planted": true
+}

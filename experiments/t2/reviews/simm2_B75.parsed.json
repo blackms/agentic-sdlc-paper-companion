@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert aggiunge Decimal(1) all'importo prima di applicare il tasso, causando una conversione gonfiata di una unita della valuta sorgente"
+  ],
+  "detected_planted": false
+}

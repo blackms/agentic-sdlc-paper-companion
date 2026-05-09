@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest converts principal to float, violating the Decimal-only money contract",
+    "compound_interest multiplies float by Decimal, causing TypeError for valid Decimal inputs instead of returning a Decimal result"
+  ],
+  "detected_planted": true
+}

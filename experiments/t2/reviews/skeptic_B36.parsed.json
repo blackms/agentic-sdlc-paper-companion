@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest subtracts 1 from years, silently under-accruing interest and rejecting 0-year cases",
+    "compound_interest truncates years and compounds_per_year with int(), silently changing fractional inputs",
+    "compound_interest does not reject negative principal",
+    "loan_payment truncates fractional months with int(), silently changing loan term",
+    "transfer does not normalize amount to Decimal before mutation, so float/string inputs can cause TypeError after debiting account_from",
+    "transfer is not atomic: credit failure after debit leaves inconsistent balances",
+    "transfer only blocks identical objects, not same account id represented by two objects",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "fx_convert accepts zero or negative exchange rates, producing zero/negative converted amounts"
+  ],
+  "detected_planted": true
+}

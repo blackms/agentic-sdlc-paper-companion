@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest usa moltiplicazione per n*t invece di esponenziazione, producendo interessi errati",
+    "transfer non converte amount a Decimal: con float pu\u00f2 generare TypeError e Receipt con tipo incoerente",
+    "fx_convert non valida che il tasso sia positivo, consentendo conversioni a zero o negative",
+    "apply_fee pu\u00f2 restituire un importo netto negativo se fee_min supera amount"
+  ],
+  "detected_planted": false
+}

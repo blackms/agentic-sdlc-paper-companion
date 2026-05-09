@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest usa formula errata e ignora years",
+    "compound_interest scambia principal e rate nel calcolo",
+    "periodi convertiti con int troncano valori non interi",
+    "transfer non atomica se accredito fallisce dopo addebito",
+    "fx_convert accetta tassi zero o negativi"
+  ],
+  "detected_planted": true
+}

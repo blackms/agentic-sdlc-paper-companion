@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Compound interest exponent uses years squared instead of periods",
+    "Compound interest validates truncated years but uses original value",
+    "Compound interest silently truncates compounds_per_year decimals",
+    "Transfer is non-atomic if credit update fails",
+    "Transfer compares raw amount without Decimal normalization",
+    "FX conversion accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

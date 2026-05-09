@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest calcola l'esponente come n + t invece di n * t, producendo interessi composti errati",
+    "fx_convert non valida che il tasso di cambio sia positivo: tassi zero o negativi generano conversioni finanziariamente invalide"
+  ],
+  "detected_planted": false
+}

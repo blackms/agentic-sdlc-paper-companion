@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "loan_payment returns float instead of Decimal in the zero-rate branch (float(p)/m), breaking type consistency and precision",
+    "compound_interest divides r/n without converting n to Decimal first, but n is int so it works; however no validation that annual_rate is non-absurd and no handling of principal<0",
+    "loan_payment does not validate that principal>0 strictly when needed; allows principal=0 returning 0 which may be acceptable but undocumented",
+    "fx_convert accepts rate values without validating rate>0, allowing zero or negative rates to silently produce wrong results",
+    "apply_fee does not validate fee_pct upper bound (e.g., >1 means fee exceeds amount, can return negative result with no error)",
+    "transfer mutates account balances non-atomically without a lock/transaction, risking partial updates on concurrent access or mid-operation exception",
+    "compound_interest uses ** with Decimal exponent only when n*t fits int; fine here, but no explicit rounding/quantize means results carry excessive precision",
+    "No use of Decimal context/quantize for monetary results in any function, leading to non-deterministic precision in outputs",
+    "Receipt has no timestamp, no transaction id, and no currency field, limiting auditability for a finance module",
+    "Docstring claims 'NO BUGS' but loan_payment zero-rate branch returns float, contradicting the claim"
+  ],
+  "detected_planted": true
+}

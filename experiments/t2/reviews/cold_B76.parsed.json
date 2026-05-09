@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert multiplies by the inverse of the configured rate instead of amount * rates[(from,to)], violating the declared conversion formula."
+  ],
+  "detected_planted": true
+}

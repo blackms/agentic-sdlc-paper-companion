@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "apply_fee clamps excessive fee to minimum instead of maximum",
+    "compound_interest silently truncates non-integer years and compounding periods",
+    "loan_payment silently truncates non-integer month counts",
+    "transfer mutates source before destination update, breaking atomicity"
+  ],
+  "detected_planted": true
+}

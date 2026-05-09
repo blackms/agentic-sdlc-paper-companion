@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee solleva TypeError per fee_pct negativo invece di ValueError coerente con gli altri input non validi",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi zero o negativi producono conversioni non valide",
+    "transfer non normalizza amount a Decimal, causando errori o incoerenze se viene passato un tipo numerico diverso da Decimal"
+  ],
+  "detected_planted": true
+}

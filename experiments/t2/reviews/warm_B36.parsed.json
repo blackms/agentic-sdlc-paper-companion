@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest subtracts one year before calculating growth",
+    "compound_interest rejects zero years instead of returning principal",
+    "compound_interest truncates fractional years without validation",
+    "compound_interest truncates non-integer compounding frequency silently",
+    "loan_payment truncates non-integer months without validation",
+    "transfer does not coerce amount to Decimal consistently",
+    "transfer is non-atomic if credit update fails",
+    "apply_fee can return negative amount when fee exceeds amount",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

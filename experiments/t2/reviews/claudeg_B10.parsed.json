@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment uses incorrect formula: denominator should be (one_plus_r ** m - 1), not (one_plus_r ** m + 1), producing wrong amortized payments"
+  ],
+  "detected_planted": true
+}

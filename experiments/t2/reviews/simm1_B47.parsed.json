@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa una formula errata: manca il denominatore dell'ammortamento, quindi il pagamento mensile calcolato \u00e8 funzionalmente sbagliato.",
+    "transfer non converte amount a Decimal prima di confronti/operazioni, quindi float o tipi non Decimal possono causare TypeError o Receipt con tipo incoerente.",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), accettando input frazionari in modo potenzialmente errato."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer converts amount to float, violating NO float and causing Decimal/float TypeError when comparing or updating Decimal balances",
+    "transfer returns Receipt.amount as float instead of Decimal, violating the Receipt contract",
+    "transfer is not contract-atomic for normal valid Decimal accounts because the first Decimal/float operation can fail after validation path starts instead of completing the specified operation"
+  ],
+  "detected_planted": true
+}

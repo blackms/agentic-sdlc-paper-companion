@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert applies a caller-supplied same-currency rate instead of returning the original amount, allowing accidental or malicious balance changes on identity conversion",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), causing undeclared calculation changes",
+    "loan_payment silently truncates fractional months via int(), causing undeclared repayment schedule changes",
+    "transfer does not normalize or validate amount as Decimal/finite, unlike other functions, so non-Decimal inputs or NaN/Infinity can cause inconsistent failures",
+    "transfer is non-atomic: debit happens before credit, so a failure during account_to balance update can lose funds",
+    "money outputs are never quantized to currency minor units, allowing precision/rounding drift in fees, loans, interest, FX, and transfers"
+  ],
+  "detected_planted": true
+}

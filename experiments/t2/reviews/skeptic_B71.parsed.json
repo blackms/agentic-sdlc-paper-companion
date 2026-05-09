@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial terms without validation",
+    "loan_payment silently truncates fractional months via int(), potentially undercharging/overcharging loans",
+    "compound_interest does not reject negative principal, allowing nonsensical negative investment results",
+    "fx_convert accepts zero or negative FX rates from rates, producing zero/negative converted amounts",
+    "transfer uses amount without Decimal coercion/validation, so float/string/NaN inputs can cause runtime errors or inconsistent behavior",
+    "apply_fee can return a negative net amount when fee_min exceeds amount"
+  ],
+  "detected_planted": false
+}

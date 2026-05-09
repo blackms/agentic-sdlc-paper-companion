@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divides by exchange rate instead of multiplying"
+  ],
+  "detected_planted": true
+}

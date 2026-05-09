@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non converte principal a Decimal, quindi input float causano TypeError e comportamento incoerente con le altre funzioni",
+    "compound_interest e loan_payment troncano silenziosamente years/months/compounds_per_year con int(), accettando valori frazionari o stringhe non strettamente intere in modo potenzialmente errato",
+    "transfer non normalizza amount a Decimal, quindi importi float possono causare TypeError durante sottrazione/addizione con balance Decimal",
+    "apply_fee pu\u00f2 restituire un importo negativo quando fee_min supera amount",
+    "fx_convert non valida che il tasso di cambio sia positivo, consentendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

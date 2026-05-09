@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest solleva RuntimeError per un annual_rate negativo invece di ValueError, rendendo incoerente la gestione degli input non validi."
+  ],
+  "detected_planted": true
+}

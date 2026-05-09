@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer does not coerce amount to Decimal",
+    "transfer mutation is not atomic if credit assignment fails",
+    "numeric casts silently truncate fractional periods",
+    "no currency or money quantization/rounding policy",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": false
+}

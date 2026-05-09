@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest rejects zero annual_rate despite valid zero return",
+    "compound_interest truncates fractional years silently via int conversion",
+    "transfer does not normalize amount to Decimal before arithmetic",
+    "transfer is non-atomic if credit assignment fails after debit"
+  ],
+  "detected_planted": false
+}

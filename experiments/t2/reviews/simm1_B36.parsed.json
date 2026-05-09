@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest sottrae 1 agli anni, calcolando un anno in meno e rifiutando years=0 come negativo",
+    "transfer non normalizza amount a Decimal: input float/string possono causare TypeError o ricevute con tipo incoerente"
+  ],
+  "detected_planted": true
+}

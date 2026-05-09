@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest solleva TypeError invece di ValueError per annual_rate negativo",
+    "compound_interest converte years con int(), troncando silenziosamente anni frazionari",
+    "transfer non normalizza amount a Decimal prima dei confronti e delle operazioni, con possibili TypeError o incongruenze di precisione"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert returns 0 for same-currency conversion instead of returning the original amount",
+    "fx_convert does not validate exchange rates as positive, allowing zero or negative conversions"
+  ],
+  "detected_planted": true
+}

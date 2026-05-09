@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert calcola (amount + 1) * rate invece di amount * rate, producendo conversioni errate"
+  ],
+  "detected_planted": true
+}

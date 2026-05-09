@@ -1,0 +1,1029 @@
+bugs:
+- id: B01
+  function: compound_interest
+  category: off-by-one
+  description: n*t replaced by n+t
+  sub_old: (n * t)
+  sub_new: (n + t)
+  detection_keywords:
+  - exponent
+  - n*t
+  - n+t
+  - off-by-one
+  - addition instead of multiplication
+  - exponentiation
+  - formula
+- id: B02
+  function: compound_interest
+  category: precision
+  description: uses float() instead of Decimal()
+  sub_old: p = Decimal(str(principal))
+  sub_new: 'p = float(principal)  # bug: float for money'
+  detection_keywords:
+  - float
+  - Decimal
+  - precision
+  - money
+  - no-float
+  - type
+  - monetary
+- id: B03
+  function: compound_interest
+  category: contract
+  description: missing rate negative check
+  sub_old: "    if r < 0:\n        raise ValueError(\"rate negative\")\n"
+  sub_new: '    # bug: missing rate check
+
+    '
+  detection_keywords:
+  - negative rate
+  - rate
+  - validation
+  - check
+  - contract
+  - ValueError
+- id: B04
+  function: compound_interest
+  category: logic
+  description: (1 + r/n) replaced by (1 - r/n)
+  sub_old: return p * (Decimal(1) + r / n)
+  sub_new: return p * (Decimal(1) - r / n)
+  detection_keywords:
+  - sign
+  - 1+
+  - 1-
+  - subtraction
+  - plus
+  - minus
+  - sign error
+  - formula
+  - minus instead
+- id: B05
+  function: compound_interest
+  category: contract
+  description: missing compounds_per_year < 1 check
+  sub_old: "    if n < 1:\n        raise ValueError(\"compounds_per_year < 1\")\n"
+  sub_new: '    # bug: no n<1 check; division by zero possible
+
+    '
+  detection_keywords:
+  - zero division
+  - n=0
+  - compounds_per_year
+  - division by zero
+  - validation
+- id: B06
+  function: compound_interest
+  category: logic
+  description: exponentiation replaced by multiplication
+  sub_old: '** (n * t)'
+  sub_new: '* (n * t)  # bug: should be exponentiation'
+  detection_keywords:
+  - exponentiation
+  - power
+  - '**'
+  - multiplication
+  - formula
+  - exponent
+  - pow
+- id: B07
+  function: loan_payment
+  category: off-by-one
+  description: (1+r)^m replaced by (1+r)^(m+1)
+  sub_old: return p * r * one_plus_r ** m / (one_plus_r ** m - 1)
+  sub_new: 'return p * r * one_plus_r ** (m + 1) / (one_plus_r ** (m + 1) - 1)  #
+    bug'
+  detection_keywords:
+  - off-by-one
+  - exponent
+  - m+1
+  - months
+  - formula
+- id: B08
+  function: loan_payment
+  category: precision
+  description: uses float arithmetic
+  sub_old: "    p = Decimal(str(principal))\n    r = Decimal(str(monthly_rate))"
+  sub_new: "    p = float(principal)  # bug: float\n    r = float(monthly_rate)  #\
+    \ bug: float"
+  detection_keywords:
+  - float
+  - Decimal
+  - precision
+  - money
+- id: B09
+  function: loan_payment
+  category: contract
+  description: missing principal < 0 check
+  sub_old: "    if p < 0:\n        raise ValueError(\"principal negative\")\n"
+  sub_new: '    # bug: no principal check
+
+    '
+  detection_keywords:
+  - negative principal
+  - validation
+  - check
+  - contract
+- id: B10
+  function: loan_payment
+  category: logic
+  description: denominator sign flip
+  sub_old: / (one_plus_r ** m - 1)
+  sub_new: '/ (one_plus_r ** m + 1)  # bug'
+  detection_keywords:
+  - denominator
+  - sign
+  - formula
+  - '+1'
+  - '-1'
+- id: B11
+  function: loan_payment
+  category: contract
+  description: missing zero-rate handling
+  sub_old: "    if r == 0:\n        return p / m\n"
+  sub_new: '    # bug: no zero-rate handling; division by zero in formula
+
+    '
+  detection_keywords:
+  - zero rate
+  - r == 0
+  - division by zero
+  - edge case
+- id: B12
+  function: loan_payment
+  category: contract
+  description: months <= 0 not validated
+  sub_old: "    if m <= 0:\n        raise ValueError(\"months <= 0\")\n"
+  sub_new: '    # bug: no months check
+
+    '
+  detection_keywords:
+  - months
+  - validation
+  - <= 0
+  - zero
+  - negative
+- id: B13
+  function: transfer
+  category: atomicity
+  description: from updated, to update could fail (no rollback)
+  sub_old: "    account_from.balance = account_from.balance - amount\n    account_to.balance\
+    \ = account_to.balance + amount"
+  sub_new: "    account_from.balance = account_from.balance - amount\n    if not isinstance(account_to.balance,\
+    \ Decimal):  # bug: arbitrary failure point\n        raise RuntimeError('inconsistent\
+    \ state')\n    account_to.balance = account_to.balance + amount"
+  detection_keywords:
+  - atomic
+  - rollback
+  - partial state
+  - atomicity
+  - transaction
+  - consistency
+- id: B14
+  function: transfer
+  category: currency
+  description: currency mismatch check removed
+  sub_old: "    if account_from.currency != account_to.currency:\n        raise ValueError(\"\
+    currency mismatch\")\n"
+  sub_new: '    # bug: no currency check
+
+    '
+  detection_keywords:
+  - currency
+  - mismatch
+  - conversion
+  - FX
+  - EUR
+  - USD
+  - validation
+- id: B15
+  function: transfer
+  category: contract
+  description: self-transfer check removed
+  sub_old: "    if account_from is account_to:\n        raise ValueError(\"self-transfer\"\
+    )\n"
+  sub_new: '    # bug: no self-transfer check
+
+    '
+  detection_keywords:
+  - self-transfer
+  - same account
+  - identity
+  - is
+  - validation
+- id: B16
+  function: transfer
+  category: logic
+  description: from balance updated wrong sign
+  sub_old: '    account_from.balance = account_from.balance - amount'
+  sub_new: '    account_from.balance = account_from.balance + amount  # bug'
+  detection_keywords:
+  - sign
+  - +=
+  - -=
+  - debit
+  - credit
+  - formula
+  - arithmetic
+- id: B17
+  function: transfer
+  category: contract
+  description: missing amount > 0 check
+  sub_old: "    if amount <= 0:\n        raise ValueError(\"amount must be positive\"\
+    )\n"
+  sub_new: '    # bug: no amount > 0 check
+
+    '
+  detection_keywords:
+  - amount
+  - positive
+  - <= 0
+  - negative
+  - validation
+  - zero
+- id: B18
+  function: transfer
+  category: contract
+  description: insufficient balance check removed
+  sub_old: "    if account_from.balance < amount:\n        raise ValueError(\"insufficient\
+    \ balance\")\n"
+  sub_new: '    # bug: no balance check
+
+    '
+  detection_keywords:
+  - insufficient
+  - balance
+  - overdraft
+  - validation
+  - balance < amount
+- id: B19
+  function: apply_fee
+  category: off-by-one
+  description: fee > fmax becomes fee >= fmax (boundary off-by-one)
+  sub_old: "    if fee > fmax:\n        fee = fmax"
+  sub_new: "    if fee >= fmax:\n        fee = fmax  # bug: subtle boundary"
+  detection_keywords:
+  - boundary
+  - off-by-one
+  - '>='
+  - '>'
+  - inclusive
+  - edge
+- id: B20
+  function: apply_fee
+  category: logic
+  description: return amount + fee instead of amount - fee
+  sub_old: '    return a - fee'
+  sub_new: '    return a + fee  # bug: should subtract'
+  detection_keywords:
+  - sign
+  - +
+  - '-'
+  - subtraction
+  - fee
+  - formula
+  - applied
+- id: B21
+  function: apply_fee
+  category: contract
+  description: missing amount < 0 check
+  sub_old: "    if a < 0:\n        raise ValueError(\"amount negative\")\n"
+  sub_new: '    # bug: no amount check
+
+    '
+  detection_keywords:
+  - negative amount
+  - validation
+  - < 0
+  - contract
+- id: B22
+  function: apply_fee
+  category: logic
+  description: fee < fmin becomes fee > fmin (sign flip)
+  sub_old: "    if fee < fmin:\n        fee = fmin"
+  sub_new: "    if fee > fmin:\n        fee = fmin  # bug: condition flipped"
+  detection_keywords:
+  - sign
+  - <
+  - '>'
+  - min
+  - fmin
+  - condition
+  - flipped
+- id: B23
+  function: apply_fee
+  category: precision
+  description: uses float for fee_pct
+  sub_old: '    pct = Decimal(str(fee_pct))'
+  sub_new: '    pct = float(fee_pct)  # bug'
+  detection_keywords:
+  - float
+  - Decimal
+  - precision
+  - fee_pct
+  - money
+- id: B24
+  function: apply_fee
+  category: contract
+  description: fmin > fmax check removed
+  sub_old: "    if fmin > fmax:\n        raise ValueError(\"fee_min > fee_max\")\n"
+  sub_new: '    # bug: no fmin/fmax sanity
+
+    '
+  detection_keywords:
+  - fmin
+  - fmax
+  - sanity
+  - contract
+  - bounds
+  - range
+  - max
+  - min
+- id: B25
+  function: fx_convert
+  category: contract
+  description: missing rate is None check
+  sub_old: "    if rate is None:\n        raise ValueError(f\"no rate for {from_currency}\
+    \ -> {to_currency}\")\n"
+  sub_new: '    # bug: no rate check; will raise TypeError later
+
+    '
+  detection_keywords:
+  - rate
+  - None
+  - missing
+  - KeyError
+  - validation
+  - contract
+  - is None
+- id: B26
+  function: fx_convert
+  category: currency
+  description: from==to returns amount * 0 instead of amount
+  sub_old: "    if from_currency == to_currency:\n        return a"
+  sub_new: "    if from_currency == to_currency:\n        return a * Decimal(0)  #\
+    \ bug"
+  detection_keywords:
+  - same currency
+  - identity
+  - zero
+  - '* 0'
+  - same-currency
+- id: B27
+  function: fx_convert
+  category: precision
+  description: rate stored as float
+  sub_old: '    return a * Decimal(str(rate))'
+  sub_new: '    return a * float(rate)  # bug'
+  detection_keywords:
+  - float
+  - Decimal
+  - precision
+  - rate
+  - money
+- id: B28
+  function: fx_convert
+  category: logic
+  description: multiplication replaced by division
+  sub_old: '    return a * Decimal(str(rate))'
+  sub_new: '    return a / Decimal(str(rate))  # bug: should multiply'
+  detection_keywords:
+  - multiply
+  - divide
+  - formula
+  - /
+  - '*'
+  - FX
+  - conversion
+- id: B29
+  function: fx_convert
+  category: contract
+  description: from==to handling removed; will look up (X,X) in dict
+  sub_old: "    if from_currency == to_currency:\n        return a\n"
+  sub_new: '    # bug: no same-currency shortcut
+
+    '
+  detection_keywords:
+  - same currency
+  - shortcut
+  - identity
+  - lookup
+  - validation
+- id: B30
+  function: fx_convert
+  category: contract
+  description: amount < 0 check removed
+  sub_old: "    if a < 0:\n        raise ValueError(\"amount negative\")\n"
+  sub_new: '    # bug: no amount check
+
+    '
+  detection_keywords:
+  - negative amount
+  - validation
+  - < 0
+  - contract
+- id: B31
+  function: compound_interest
+  category: off-by-one
+  description: n=int(...) replaced by n=int(...)+1
+  sub_old: n = int(compounds_per_year)
+  sub_new: 'n = int(compounds_per_year) + 1  # bug'
+  detection_keywords:
+  - off-by-one
+  - n
+  - compounds_per_year
+  - increment
+  - '+1'
+- id: B32
+  function: compound_interest
+  category: exception
+  description: raises TypeError instead of ValueError on negative rate
+  sub_old: '        raise ValueError("rate negative")'
+  sub_new: '        raise TypeError("rate negative")  # wrong exception type'
+  detection_keywords:
+  - exception
+  - TypeError
+  - ValueError
+  - wrong type
+  - exception type
+- id: B33
+  function: compound_interest
+  category: logic
+  description: years cast to float instead of int (silent precision)
+  sub_old: '    t = int(years)'
+  sub_new: '    t = float(years)  # silent precision drift'
+  detection_keywords:
+  - float
+  - int
+  - type
+  - precision
+  - cast
+  - years
+- id: B34
+  function: compound_interest
+  category: contract
+  description: principal cast missing; passes raw number through
+  sub_old: '    p = Decimal(str(principal))'
+  sub_new: '    p = principal  # no Decimal cast'
+  detection_keywords:
+  - Decimal
+  - cast
+  - principal
+  - type
+  - no cast
+- id: B35
+  function: compound_interest
+  category: logic
+  description: exponent uses years**n instead of (n*t)
+  sub_old: '** (n * t)'
+  sub_new: '** (years ** n)  # bug'
+  detection_keywords:
+  - exponent
+  - formula
+  - years
+  - power
+- id: B36
+  function: compound_interest
+  category: off-by-one
+  description: years off by one (years - 1)
+  sub_old: '    t = int(years)'
+  sub_new: '    t = int(years) - 1  # bug'
+  detection_keywords:
+  - off-by-one
+  - years
+  - '-1'
+  - decrement
+- id: B37
+  function: compound_interest
+  category: contract
+  description: rate strict > 0 instead of >= 0 (rejects 0)
+  sub_old: '    if r < 0:'
+  sub_new: '    if r <= 0:  # bug: rejects rate=0'
+  detection_keywords:
+  - zero rate
+  - boundary
+  - <=
+  - <
+  - rate=0
+- id: B38
+  function: compound_interest
+  category: logic
+  description: principal multiplied by 1.0 (Decimal semantics broken)
+  sub_old: '    p = Decimal(str(principal))'
+  sub_new: '    p = Decimal(str(principal)) * 1.0  # bug: float contamination'
+  detection_keywords:
+  - float
+  - contamination
+  - '1.0'
+  - Decimal
+- id: B39
+  function: compound_interest
+  category: contract
+  description: no validation that principal is non-negative
+  sub_old: "    if r < 0:\n        raise ValueError(\"rate negative\")\n"
+  sub_new: "    if r < 0:\n        raise ValueError(\"rate negative\")\n    # bug:\
+    \ principal can be negative without error\n"
+  detection_keywords:
+  - principal
+  - negative
+  - validation
+  - missing check
+- id: B40
+  function: compound_interest
+  category: logic
+  description: swapped p and r in formula
+  sub_old: return p * (Decimal(1) + r / n)
+  sub_new: 'return r * (Decimal(1) + p / n)  # bug: p/r swap'
+  detection_keywords:
+  - swap
+  - p
+  - r
+  - principal
+  - rate
+  - formula
+- id: B41
+  function: loan_payment
+  category: off-by-one
+  description: months iterated as range(months) but used as exponent +1
+  sub_old: '    m = int(months)'
+  sub_new: '    m = int(months) + 1  # bug: off-by-one'
+  detection_keywords:
+  - off-by-one
+  - months
+  - '+1'
+  - increment
+- id: B42
+  function: loan_payment
+  category: exception
+  description: raises Exception base class instead of ValueError
+  sub_old: '        raise ValueError("principal negative")'
+  sub_new: '        raise Exception("principal negative")  # base class'
+  detection_keywords:
+  - Exception
+  - ValueError
+  - exception type
+- id: B43
+  function: loan_payment
+  category: precision
+  description: Decimal(str(rate)) vs rate (float passthrough)
+  sub_old: '    r = Decimal(str(monthly_rate))'
+  sub_new: '    r = monthly_rate  # bug: no Decimal cast'
+  detection_keywords:
+  - Decimal
+  - cast
+  - rate
+  - type
+- id: B44
+  function: loan_payment
+  category: logic
+  description: uses (1 - r) instead of (1 + r)
+  sub_old: '    one_plus_r = Decimal(1) + r'
+  sub_new: '    one_plus_r = Decimal(1) - r  # bug: minus'
+  detection_keywords:
+  - sign
+  - +
+  - '-'
+  - plus
+  - minus
+  - formula
+- id: B45
+  function: loan_payment
+  category: contract
+  description: negative rate accepted silently
+  sub_old: "    if r < 0:\n        raise ValueError(\"rate negative\")\n"
+  sub_new: '    # bug: no rate check
+
+    '
+  detection_keywords:
+  - negative rate
+  - validation
+  - rate
+  - missing
+- id: B46
+  function: loan_payment
+  category: off-by-one
+  description: principal divided by (months - 1) in zero-rate branch
+  sub_old: '        return p / m'
+  sub_new: '        return p / (m - 1)  # bug'
+  detection_keywords:
+  - off-by-one
+  - months
+  - '-1'
+  - zero rate
+- id: B47
+  function: loan_payment
+  category: logic
+  description: p, r, principal swap in numerator
+  sub_old: return p * r * one_plus_r ** m
+  sub_new: 'return r * p * one_plus_r ** (m - 1)  # bug'
+  detection_keywords:
+  - swap
+  - formula
+  - numerator
+  - off-by-one
+- id: B48
+  function: loan_payment
+  category: contract
+  description: months can be a string and silently converted
+  sub_old: '    m = int(months)'
+  sub_new: '    m = months  # bug: no int cast'
+  detection_keywords:
+  - int
+  - cast
+  - months
+  - type
+- id: B49
+  function: loan_payment
+  category: precision
+  description: principal mixed with int default in zero-branch
+  sub_old: '        return p / m'
+  sub_new: '        return float(p) / m  # bug: float in zero branch'
+  detection_keywords:
+  - float
+  - Decimal
+  - precision
+  - zero rate
+- id: B50
+  function: loan_payment
+  category: exception
+  description: raises RuntimeError instead of ValueError on rate negative
+  sub_old: '        raise ValueError("rate negative")'
+  sub_new: '        raise RuntimeError("rate negative")  # wrong exception'
+  detection_keywords:
+  - exception
+  - RuntimeError
+  - ValueError
+  - type
+- id: B51
+  function: transfer
+  category: atomicity
+  description: 'validation order swapped: balance before currency'
+  sub_old: "    if account_from.currency != account_to.currency:\n        raise ValueError(\"\
+    currency mismatch\")\n    if account_from.balance < amount:"
+  sub_new: "    if account_from.balance < amount:\n        raise ValueError(\"insufficient\
+    \ balance\")\n    if account_from.currency != account_to.currency:"
+  detection_keywords:
+  - validation order
+  - balance
+  - currency
+  - ordering
+- id: B52
+  function: transfer
+  category: logic
+  description: to balance updated by amount + 1 (bonus injection)
+  sub_old: '    account_to.balance = account_to.balance + amount'
+  sub_new: '    account_to.balance = account_to.balance + amount + Decimal(''0.01'')  #
+    bug'
+  detection_keywords:
+  - balance
+  - addition
+  - logic
+  - extra
+  - '0.01'
+- id: B53
+  function: transfer
+  category: contract
+  description: amount float() coercion (precision loss)
+  sub_old: '    if amount <= 0:'
+  sub_new: "    amount = float(amount)  # bug\n    if amount <= 0:"
+  detection_keywords:
+  - float
+  - precision
+  - amount
+  - cast
+- id: B54
+  function: transfer
+  category: exception
+  description: self-transfer raises AssertionError instead of ValueError
+  sub_old: '        raise ValueError("self-transfer")'
+  sub_new: '        raise AssertionError("self-transfer")  # wrong exception'
+  detection_keywords:
+  - exception
+  - AssertionError
+  - ValueError
+  - type
+- id: B55
+  function: transfer
+  category: currency
+  description: currency check uses == instead of !=
+  sub_old: '    if account_from.currency != account_to.currency:'
+  sub_new: '    if account_from.currency == account_to.currency:  # bug: condition
+    flipped'
+  detection_keywords:
+  - currency
+  - ==
+  - '!='
+  - flipped
+  - condition
+- id: B56
+  function: transfer
+  category: atomicity
+  description: to balance updated BEFORE from check (state leak)
+  sub_old: "    if account_from.balance < amount:\n        raise ValueError(\"insufficient\
+    \ balance\")\n    account_from.balance = account_from.balance - amount\n    account_to.balance\
+    \ = account_to.balance + amount"
+  sub_new: "    account_to.balance = account_to.balance + amount  # bug: write before\
+    \ validate\n    if account_from.balance < amount:\n        raise ValueError(\"\
+    insufficient balance\")\n    account_from.balance = account_from.balance - amount"
+  detection_keywords:
+  - atomic
+  - rollback
+  - order
+  - consistency
+  - atomicity
+- id: B57
+  function: transfer
+  category: logic
+  description: Receipt amount field set to 0
+  sub_old: '    return Receipt(from_id=account_from.id, to_id=account_to.id, amount=amount)'
+  sub_new: '    return Receipt(from_id=account_from.id, to_id=account_to.id, amount=Decimal(0))  #
+    bug'
+  detection_keywords:
+  - receipt
+  - amount
+  - zero
+  - field
+- id: B58
+  function: transfer
+  category: contract
+  description: amount NaN check missing (Decimal can be NaN)
+  sub_old: '    if amount <= 0:'
+  sub_new: "    # bug: no NaN check\n    if amount <= 0:"
+  detection_keywords:
+  - NaN
+  - amount
+  - Decimal
+  - validation
+  - missing
+- id: B59
+  function: transfer
+  category: currency
+  description: case-insensitive currency comparison (USD == usd)
+  sub_old: '    if account_from.currency != account_to.currency:'
+  sub_new: '    if account_from.currency.upper() != account_to.currency.upper():  #
+    case-insensitive bug'
+  detection_keywords:
+  - currency
+  - case
+  - uppercase
+  - comparison
+  - string
+- id: B60
+  function: transfer
+  category: atomicity
+  description: exception in middle of transfer leaves partial state
+  sub_old: "    account_from.balance = account_from.balance - amount\n    account_to.balance\
+    \ = account_to.balance + amount"
+  sub_new: "    account_from.balance = account_from.balance - amount\n    if account_from.balance\
+    \ < 0:\n        raise RuntimeError('overflow')  # partial state\n    account_to.balance\
+    \ = account_to.balance + amount"
+  detection_keywords:
+  - atomic
+  - partial
+  - rollback
+  - consistency
+- id: B61
+  function: apply_fee
+  category: off-by-one
+  description: fmin >= fee instead of fmin > fee (boundary)
+  sub_old: "    if fee < fmin:\n        fee = fmin"
+  sub_new: "    if fee <= fmin:\n        fee = fmin  # bug"
+  detection_keywords:
+  - boundary
+  - off-by-one
+  - <=
+  - <
+  - fmin
+  - fee
+- id: B62
+  function: apply_fee
+  category: exception
+  description: fee_pct negative raises TypeError
+  sub_old: "    if pct < 0:\n        raise ValueError(\"fee_pct negative\")"
+  sub_new: "    if pct < 0:\n        raise TypeError(\"fee_pct negative\")  # wrong\
+    \ type"
+  detection_keywords:
+  - exception
+  - TypeError
+  - ValueError
+  - type
+- id: B63
+  function: apply_fee
+  category: logic
+  description: fmax replaced by fmin (clip wrong)
+  sub_old: "    if fee > fmax:\n        fee = fmax"
+  sub_new: "    if fee > fmax:\n        fee = fmin  # bug: clamps to wrong value"
+  detection_keywords:
+  - clamp
+  - fmin
+  - fmax
+  - logic
+  - clip
+  - boundary
+- id: B64
+  function: apply_fee
+  category: precision
+  description: fmin float coercion
+  sub_old: '    fmin = Decimal(str(fee_min))'
+  sub_new: '    fmin = float(fee_min)  # bug'
+  detection_keywords:
+  - float
+  - Decimal
+  - fmin
+  - precision
+- id: B65
+  function: apply_fee
+  category: contract
+  description: no fmax negative validation
+  sub_old: "    if fmin < 0 or fmax < 0:\n        raise ValueError(\"fee bounds negative\"\
+    )\n"
+  sub_new: "    if fmin < 0:\n        raise ValueError(\"fee bounds negative\")\n\
+    \    # bug: no fmax check\n"
+  detection_keywords:
+  - fmax
+  - negative
+  - validation
+  - bounds
+- id: B66
+  function: apply_fee
+  category: logic
+  description: fee = pct * pct instead of a * pct
+  sub_old: '    fee = a * pct'
+  sub_new: '    fee = pct * pct  # bug: squared instead of multiplied'
+  detection_keywords:
+  - formula
+  - fee
+  - squared
+  - multiplication
+- id: B67
+  function: apply_fee
+  category: off-by-one
+  description: double clamp; second clamp wrong direction
+  sub_old: "    if fee > fmax:\n        fee = fmax"
+  sub_new: "    if fee > fmax:\n        fee = fmax\n    if fee < fmax:\n        fee\
+    \ = fmax  # bug"
+  detection_keywords:
+  - clamp
+  - double
+  - boundary
+  - logic
+- id: B68
+  function: apply_fee
+  category: contract
+  description: fee_pct can be > 1.0 (no upper bound)
+  sub_old: "    if pct < 0:\n        raise ValueError(\"fee_pct negative\")"
+  sub_new: "    if pct < 0:\n        raise ValueError(\"fee_pct negative\")\n    #\
+    \ bug: no upper bound on fee_pct (e.g. 200% fee)"
+  detection_keywords:
+  - fee_pct
+  - upper bound
+  - '1.0'
+  - validation
+  - 100%
+- id: B69
+  function: apply_fee
+  category: logic
+  description: amount returned is the fee itself (semantic flip)
+  sub_old: '    return a - fee'
+  sub_new: '    return fee  # bug: returns fee, not net'
+  detection_keywords:
+  - return
+  - fee
+  - net
+  - amount
+  - subtraction
+  - semantic
+- id: B70
+  function: apply_fee
+  category: exception
+  description: amount < 0 raises ZeroDivisionError
+  sub_old: '        raise ValueError("amount negative")'
+  sub_new: '        raise ZeroDivisionError("amount negative")  # bizarre'
+  detection_keywords:
+  - exception
+  - ZeroDivisionError
+  - ValueError
+  - type
+- id: B71
+  function: fx_convert
+  category: exception
+  description: rate None raises KeyError instead of ValueError
+  sub_old: '        raise ValueError(f"no rate for {from_currency} -> {to_currency}")'
+  sub_new: '        raise KeyError(f"no rate for {from_currency} -> {to_currency}")  #
+    type'
+  detection_keywords:
+  - exception
+  - KeyError
+  - ValueError
+  - type
+- id: B72
+  function: fx_convert
+  category: logic
+  description: rate looked up reversed (to, from) instead of (from, to)
+  sub_old: '    rate = rates.get((from_currency, to_currency))'
+  sub_new: '    rate = rates.get((to_currency, from_currency))  # reversed'
+  detection_keywords:
+  - lookup
+  - reversed
+  - from
+  - to
+  - swap
+- id: B73
+  function: fx_convert
+  category: precision
+  description: amount cast to float on output
+  sub_old: '    return a * Decimal(str(rate))'
+  sub_new: '    return float(a * Decimal(str(rate)))  # bug'
+  detection_keywords:
+  - float
+  - Decimal
+  - precision
+  - return
+  - money
+- id: B74
+  function: fx_convert
+  category: contract
+  description: currency string lower-cased silently
+  sub_old: '    rate = rates.get((from_currency, to_currency))'
+  sub_new: '    rate = rates.get((from_currency.lower(), to_currency.lower()))  #
+    case bug'
+  detection_keywords:
+  - case
+  - lower
+  - currency
+  - lookup
+  - ISO
+- id: B75
+  function: fx_convert
+  category: off-by-one
+  description: amount adjusted by +1 before multiplication
+  sub_old: '    return a * Decimal(str(rate))'
+  sub_new: '    return (a + Decimal(1)) * Decimal(str(rate))  # bug'
+  detection_keywords:
+  - off-by-one
+  - amount
+  - '+1'
+  - addition
+- id: B76
+  function: fx_convert
+  category: logic
+  description: rate inverted (1/rate) used
+  sub_old: '    return a * Decimal(str(rate))'
+  sub_new: '    return a * Decimal(1) / Decimal(str(rate))  # bug: inverted'
+  detection_keywords:
+  - inverted
+  - 1/rate
+  - division
+  - rate
+  - logic
+- id: B77
+  function: fx_convert
+  category: contract
+  description: rate < 0 not validated (negative FX rate)
+  sub_old: "    if rate is None:\n        raise ValueError(f\"no rate for {from_currency}\
+    \ -> {to_currency}\")\n"
+  sub_new: "    if rate is None:\n        raise ValueError(f\"no rate for {from_currency}\
+    \ -> {to_currency}\")\n    # bug: rate < 0 not checked\n"
+  detection_keywords:
+  - rate
+  - negative
+  - validation
+  - FX
+- id: B78
+  function: fx_convert
+  category: currency
+  description: EUR/USD hardcoded shortcut returns wrong rate
+  sub_old: '    rate = rates.get((from_currency, to_currency))'
+  sub_new: "    if from_currency == 'EUR' and to_currency == 'USD':\n        rate\
+    \ = Decimal('1.0')  # bug: hardcoded wrong rate\n    else:\n        rate = rates.get((from_currency,\
+    \ to_currency))"
+  detection_keywords:
+  - hardcoded
+  - shortcut
+  - EUR
+  - USD
+  - rate
+- id: B79
+  function: fx_convert
+  category: exception
+  description: amount < 0 raises ArithmeticError
+  sub_old: '        raise ValueError("amount negative")'
+  sub_new: '        raise ArithmeticError("amount negative")  # type'
+  detection_keywords:
+  - exception
+  - ArithmeticError
+  - ValueError
+  - type
+- id: B80
+  function: fx_convert
+  category: logic
+  description: from==to returns amount * rate (where rate is None)
+  sub_old: "    if from_currency == to_currency:\n        return a"
+  sub_new: "    if from_currency == to_currency:\n        return a * rates.get((from_currency,\
+    \ to_currency), Decimal(1))  # bug"
+  detection_keywords:
+  - same currency
+  - logic
+  - rate
+  - lookup
+  - identity

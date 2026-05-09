@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "loan_payment formula omits amortization denominator",
+    "transfer accepts non-Decimal amount risking precision/type errors",
+    "transfer is not atomic between debit and credit",
+    "monetary results are never rounded to currency scale",
+    "compound_interest silently truncates fractional years",
+    "compound_interest permits negative principal values",
+    "loan_payment silently truncates fractional months",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

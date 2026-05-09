@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest incrementa compounds_per_year di 1, calcolando interessi errati",
+    "transfer non normalizza amount a Decimal: con float pu\u00f2 fallire o produrre tipi incoerenti",
+    "fx_convert non valida che il tasso di cambio sia positivo"
+  ],
+  "detected_planted": true
+}

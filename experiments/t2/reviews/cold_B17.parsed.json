@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer non valida amount <= 0: accetta zero o importi negativi, violando il contratto e permettendo anche spostamenti inversi di saldo"
+  ],
+  "detected_planted": true
+}

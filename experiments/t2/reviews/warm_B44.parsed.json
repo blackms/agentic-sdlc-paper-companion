@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment uses 1-r instead of 1+r",
+    "loan_payment returns negative payments for typical positive rates"
+  ],
+  "detected_planted": true
+}

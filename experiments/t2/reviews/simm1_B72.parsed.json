@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert usa la coppia di valute invertita per cercare il tasso, quindi fallisce con tassi diretti validi o applica un tasso errato se \u00e8 presente il tasso inverso"
+  ],
+  "detected_planted": true
+}

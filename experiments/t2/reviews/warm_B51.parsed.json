@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "Decimal inputs accept NaN or Infinity without explicit rejection",
+    "year and month arguments are silently truncated by int()",
+    "compound_interest allows negative principal values",
+    "transfer compares uncoerced amount against Decimal balances",
+    "transfer mutates first account before second update may fail",
+    "currency mismatch raises misleading insufficient balance error",
+    "fx_convert allows zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert adds one unit before applying exchange rate",
+    "transfer is not atomic if credit assignment fails",
+    "transfer does not normalize amount to Decimal",
+    "integer casts silently truncate fractional periods"
+  ],
+  "detected_planted": true
+}

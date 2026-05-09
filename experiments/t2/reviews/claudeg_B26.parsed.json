@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "fx_convert returns zero when from_currency == to_currency (multiplies by Decimal(0)) instead of returning the original amount",
+    "transfer mutation is not atomic: if a later assignment fails after debiting, funds can be lost (no transaction/rollback)",
+    "compound_interest does not validate principal can be negative (no check on p < 0)",
+    "loan_payment uses annual-style formula with monthly_rate but no check that rate is sensible; r==0 branch returns p/m which is fine but no rounding/quantization for monetary output",
+    "apply_fee computes fee = a * pct treating pct as a raw multiplier (e.g. 0.02) but lacks documentation; also no rounding to currency precision",
+    "fx_convert uses dict lookup on (from,to) but does not consider inverse rate or triangulation, and rate conversion via Decimal(str(rate)) loses precision if rate is float",
+    "monetary results are not quantized to a fixed number of decimals, risking inconsistent precision across operations",
+    "Account.balance and amounts are not validated to be Decimal on construction (dataclass accepts any type)",
+    "using `is` to compare accounts in transfer prevents detecting same-account by id when distinct instances represent the same account",
+    "no thread-safety/locking around mutable Account.balance updates in transfer"
+  ],
+  "detected_planted": true
+}

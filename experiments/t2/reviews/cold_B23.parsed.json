@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_pct to float, violating the Decimal-only/no-float contract",
+    "apply_fee attempts Decimal * float for percentage fee, causing TypeError for valid inputs instead of returning amount - clipped fee"
+  ],
+  "detected_planted": true
+}

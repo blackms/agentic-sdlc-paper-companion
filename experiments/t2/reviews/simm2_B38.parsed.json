@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest usa Decimal * 1.0, causando TypeError e contaminazione float per input validi",
+    "compound_interest converte years a int, troncando silenziosamente anni frazionari",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi puo restituire importi zero o negativi",
+    "transfer non normalizza amount a Decimal, causando TypeError o tipi incoerenti se viene passato un int/float"
+  ],
+  "detected_planted": true
+}

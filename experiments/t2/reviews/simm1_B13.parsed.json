@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "transfer is not atomic: account_from.balance is debited before validating account_to.balance, so an exception can leave balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal before comparisons/arithmetic, which can cause TypeError or inconsistent Receipt amount types",
+    "apply_fee can return a negative amount when fee_min exceeds amount",
+    "fx_convert accepts zero or negative exchange rates, producing invalid conversions",
+    "compound_interest and loan_payment silently truncate fractional years/months/compounds_per_year via int() instead of rejecting invalid non-integer inputs"
+  ],
+  "detected_planted": true
+}

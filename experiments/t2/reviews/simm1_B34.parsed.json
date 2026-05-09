@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest non converte principal a Decimal e non lo valida: con float genera TypeError e consente principal negativo",
+    "conversione con int() per years/months/compounds_per_year tronca valori frazionari invece di rifiutarli esplicitamente",
+    "transfer non normalizza amount a Decimal: input float pu\u00f2 fallire durante aggiornamento dei saldi e manca validazione del tipo"
+  ],
+  "detected_planted": true
+}

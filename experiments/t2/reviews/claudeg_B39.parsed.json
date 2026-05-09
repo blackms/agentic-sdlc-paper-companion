@@ -1,0 +1,18 @@
+{
+  "bugs_found": [
+    "compound_interest does not validate negative principal (comment acknowledges this)",
+    "compound_interest uses r/n without converting n to Decimal first - works but inconsistent typing",
+    "loan_payment treats monthly_rate as already-monthly without documenting; misleading if caller passes annual rate",
+    "transfer is not atomic: if any assignment fails between debit and credit, funds can be lost (no rollback/transaction)",
+    "transfer compares account identity with 'is' rather than account id, allowing self-transfer if two distinct objects share the same id",
+    "apply_fee does not validate fee_pct upper bound (e.g., > 1 means fee can exceed amount, returning negative result silently capped only by fmax)",
+    "apply_fee can return a negative value when fmin > a*pct and fmin > a (no check that fee <= a)",
+    "fx_convert does not validate rate is positive/non-zero",
+    "fx_convert lacks reverse-rate fallback or cross-currency triangulation, raising on missing direct pair",
+    "no rounding/quantization to currency precision (e.g., 2 decimals) anywhere - results carry full Decimal precision which is incorrect for monetary display/storage",
+    "Decimal(str(rate)) accepts arbitrary types silently; no input type validation",
+    "Account.balance has no invariant enforcement (could be constructed negative)",
+    "no thread-safety on transfer for concurrent access"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer coerces amount to float, causing Decimal/float TypeError during balance mutation for valid Decimal accounts",
+    "transfer loses money precision by converting Decimal amounts to float and returning a float in Receipt",
+    "transfer validation and mutation are not atomic: if account_from balance subtraction succeeds with non-Decimal balances but account_to addition fails, balances can become inconsistent",
+    "compound_interest silently truncates non-integer years and compounds_per_year via int(), changing requested terms without validation",
+    "loan_payment silently truncates non-integer months via int(), changing amortization period without validation",
+    "compound_interest does not reject negative principal, allowing nonsensical finance results",
+    "fx_convert does not validate rate positivity, allowing zero or negative FX rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "apply_fee raises ZeroDivisionError for negative amount instead of the declared validation-style ValueError",
+    "apply_fee can return a negative net amount when fee_min or computed fee exceeds amount",
+    "fx_convert accepts zero, negative, NaN, or infinite rates, producing zero/negative/non-finite converted money",
+    "transfer does not normalize or validate amount as Decimal, unlike other functions, so floats/strings can crash and receipts can carry non-Decimal amounts",
+    "transfer is not atomic: source balance is debited before destination credit is proven safe, so invalid destination state can leave a partial transfer",
+    "years, months, and compounds_per_year are silently truncated with int(), changing terms like 1.9 to 1 without validation",
+    "monetary results are never quantized to currency precision, so fractional cents can enter balances and receipts",
+    "compound_interest accepts negative principal while loan_payment rejects it, an inconsistent undeclared assumption",
+    "non-finite Decimal inputs such as NaN/Infinity are not rejected consistently and can propagate or raise unexpected exceptions"
+  ],
+  "detected_planted": true
+}

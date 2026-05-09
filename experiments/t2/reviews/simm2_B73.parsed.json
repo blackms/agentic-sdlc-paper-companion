@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert returns float instead of Decimal, causing precision loss and inconsistent return type when currencies match"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert non valida che il tasso di cambio sia positivo: un rate negativo produce importi negativi e un rate zero azzera l'importo",
+    "apply_fee pu\u00f2 restituire un importo netto negativo quando fee_min supera amount",
+    "transfer non normalizza amount a Decimal come le altre funzioni, quindi input float/stringa possono causare TypeError o inconsistenze"
+  ],
+  "detected_planted": true
+}

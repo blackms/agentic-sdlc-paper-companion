@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer aggiorna correttamente i saldi ma restituisce Receipt.amount=Decimal(0) invece dell'importo trasferito"
+  ],
+  "detected_planted": true
+}

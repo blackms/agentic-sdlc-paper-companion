@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest converte years in float e usa poi un esponente float con Decimal, causando TypeError o perdita di precisione; usare Decimal/int per l'esponente.",
+    "transfer non normalizza amount a Decimal, quindi input float/str possono causare TypeError o risultati incoerenti rispetto agli altri helper.",
+    "apply_fee puo restituire un importo negativo se fee_min supera amount; una funzione fee dovrebbe probabilmente limitare il fee all'importo o validare questa condizione.",
+    "fx_convert non valida che il tasso FX sia positivo; tassi zero o negativi producono conversioni finanziariamente invalide."
+  ],
+  "detected_planted": true
+}

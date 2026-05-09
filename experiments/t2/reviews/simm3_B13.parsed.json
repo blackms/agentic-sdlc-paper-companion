@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer non \u00e8 atomica: sottrae il saldo da account_from prima di un possibile errore su account_to.balance, lasciando gli account in stato incoerente",
+    "transfer non normalizza/valida amount come Decimal, quindi importi float o tipi non Decimal possono causare TypeError o ricevute con tipo incoerente",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": true
+}

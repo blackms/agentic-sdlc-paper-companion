@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest usa moltiplicazione per n*t invece dell'esponenziazione: il risultato \u00e8 errato e con years=0 restituisce 0 invece del principal",
+    "transfer non normalizza amount a Decimal: con float/string pu\u00f2 fallire o produrre Receipt.amount di tipo incoerente"
+  ],
+  "detected_planted": false
+}

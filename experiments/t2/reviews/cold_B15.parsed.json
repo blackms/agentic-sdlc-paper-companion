@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer non rifiuta self-transfer: account_from e account_to possono essere lo stesso account, violando l'invariante I4 e l'errore richiesto"
+  ],
+  "detected_planted": true
+}

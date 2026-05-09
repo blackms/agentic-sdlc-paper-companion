@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer non rifiuta self-transfer, consentendo ricevute da e verso lo stesso account",
+    "transfer non converte amount a Decimal, causando TypeError o tipi incoerenti con input float/string",
+    "fx_convert non valida che il tasso FX sia positivo, quindi accetta conversioni a zero o negative",
+    "apply_fee puo restituire importi netti negativi quando la fee minima supera l'importo"
+  ],
+  "detected_planted": true
+}

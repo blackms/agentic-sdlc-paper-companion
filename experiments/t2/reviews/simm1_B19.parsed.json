@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal: con float o stringa puo fallire durante confronto/sottrazione o restituire Receipt.amount con tipo incoerente",
+    "compound_interest(), loan_payment() e compound_interest() troncano silently years/months/compounds_per_year con int(), accettando input frazionari invece di validarli"
+  ],
+  "detected_planted": false
+}

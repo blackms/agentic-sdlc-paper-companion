@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divide l'importo per il tasso diretto rates[(from_currency,to_currency)] invece di moltiplicare, producendo conversioni FX errate"
+  ],
+  "detected_planted": true
+}

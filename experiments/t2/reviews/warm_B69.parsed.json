@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee returns fee instead of net amount",
+    "transfer does not coerce amount to Decimal consistently"
+  ],
+  "detected_planted": true
+}

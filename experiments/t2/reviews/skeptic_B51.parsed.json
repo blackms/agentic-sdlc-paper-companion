@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "transfer non converte/valida amount come Decimal: float/int/NaN/Infinity possono causare TypeError, risultati non monetari o ricevute incoerenti",
+    "transfer non \u00e8 atomica/thread-safe: controlla saldo e poi muta due oggetti separatamente, quindi chiamate concorrenti possono produrre overdraft o saldi persi",
+    "compound_interest tronca silenziosamente years con int(), cambiando input frazionari invece di rifiutarli o gestirli",
+    "loan_payment tronca silenziosamente months con int(), accettando durate frazionarie con pagamento errato",
+    "fx_convert non valida che il tasso sia positivo e finito: tassi zero/negativi/Infinity producono conversioni finanziariamente invalide",
+    "nessuna funzione quantizza/arrotonda a unit\u00e0 monetarie: risultati Decimal ad alta precisione possono propagare centesimi frazionari e causare disallineamenti contabili"
+  ],
+  "detected_planted": false
+}

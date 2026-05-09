@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer converts amount to float, causing Decimal/float type errors during balance comparison/arithmetic and losing monetary precision",
+    "transfer returns Receipt.amount as float despite Receipt declaring Decimal"
+  ],
+  "detected_planted": true
+}

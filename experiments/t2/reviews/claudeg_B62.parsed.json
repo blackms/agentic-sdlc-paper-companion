@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "apply_fee raises TypeError instead of ValueError when fee_pct is negative, inconsistent with other validation errors",
+    "loan_payment with r==0 returns p/m without converting m to Decimal explicitly (works but inconsistent); also missing upper bound on months/rate sanity checks",
+    "compound_interest does not validate principal can be negative (allows negative principal silently)",
+    "transfer mutates both account balances without atomicity/rollback: if the second assignment fails, the first is already applied",
+    "fx_convert does not validate that rate is positive (a zero or negative rate would silently produce non-sensical results)",
+    "apply_fee multiplies amount by pct directly, assuming pct is already a fraction (e.g. 0.02), but no documentation/validation of the expected scale",
+    "Decimal arithmetic does not set a context/precision or rounding, which can lead to non-deterministic results across environments for compound_interest and loan_payment",
+    "transfer compares account_from is account_to by identity rather than by id, so two Account objects with the same id are treated as different"
+  ],
+  "detected_planted": true
+}

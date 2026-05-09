@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment with monthly_rate == 0 returns principal/(months - 1) instead of principal/months, causing ZeroDivisionError for months == 1 and overpayment for months > 1"
+  ],
+  "detected_planted": true
+}

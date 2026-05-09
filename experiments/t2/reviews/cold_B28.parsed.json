@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert violates the contract by dividing by the exchange rate instead of multiplying: expected amount * rates[(from,to)]."
+  ],
+  "detected_planted": true
+}

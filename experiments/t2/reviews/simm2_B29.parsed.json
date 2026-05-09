@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert non gestisce la conversione tra la stessa valuta: dovrebbe restituire l'importo senza richiedere un tasso",
+    "transfer non normalizza amount a Decimal, quindi input float possono causare TypeError o ricevute con tipo incoerente"
+  ],
+  "detected_planted": false
+}

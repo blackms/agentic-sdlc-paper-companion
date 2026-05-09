@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest raises ValueError when annual_rate == 0, but contract permits zero rate and requires returning principal"
+  ],
+  "detected_planted": true
+}

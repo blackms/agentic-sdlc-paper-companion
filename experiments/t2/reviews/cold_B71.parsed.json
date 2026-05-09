@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert solleva KeyError per rate mancante, ma il contratto richiede ValueError"
+  ],
+  "detected_planted": true
+}

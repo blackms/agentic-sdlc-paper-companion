@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert accepts zero or negative FX rates and can silently create zero/negative converted amounts",
+    "transfer is not atomic: after debiting source, crediting destination can fail for adversarial amount/types, leaving balances inconsistent",
+    "transfer does not normalize/validate amount as Decimal/finite, allowing type errors or non-finite Decimal inputs outside intended validation",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without error",
+    "loan_payment silently truncates fractional months via int(), changing repayment calculations without error",
+    "compound_interest does not reject negative principal, enabling nonsensical negative balances/returns"
+  ],
+  "detected_planted": true
+}

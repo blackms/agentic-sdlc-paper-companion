@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee solleva ZeroDivisionError per importi negativi invece di ValueError, rendendo l'errore semanticamente errato e difficile da gestire",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi un rate zero o negativo produce conversioni finanziarie non valide",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), causando risultati errati per input non interi invece di validarli"
+  ],
+  "detected_planted": true
+}

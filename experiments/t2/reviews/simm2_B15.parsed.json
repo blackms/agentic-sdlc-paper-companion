@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non converte amount a Decimal, causando TypeError o comportamento incoerente con input float/string rispetto alle altre funzioni",
+    "transfer non blocca self-transfer, permettendo ricevute da e verso lo stesso account"
+  ],
+  "detected_planted": true
+}

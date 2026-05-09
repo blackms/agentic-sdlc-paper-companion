@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente n + t invece di n * t, producendo interessi errati anche per anni=0"
+  ],
+  "detected_planted": false
+}

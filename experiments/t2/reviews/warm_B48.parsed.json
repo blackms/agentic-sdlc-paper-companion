@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment does not normalize months to integer",
+    "transfer does not normalize amount to Decimal",
+    "transfer debit can persist if credit update fails"
+  ],
+  "detected_planted": true
+}

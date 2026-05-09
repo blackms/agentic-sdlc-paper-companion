@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "compound_interest silently truncates fractional years and compounding frequency",
+    "compound_interest allows negative principal without validation",
+    "loan_payment silently truncates fractional months instead of rejecting them",
+    "transfer does not normalize amount to Decimal",
+    "transfer debit and credit are not atomic on failure",
+    "transfer balance check and update are unsafe concurrently",
+    "apply_fee can return negative amount when fee exceeds amount",
+    "apply_fee allows fee_pct above one without capping fee",
+    "fx_convert looks up reversed currency pair",
+    "fx_convert accepts nonpositive exchange rates"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa int(months)+1, causando rate calcolate su un mese in pi\u00f9 e accettando months=0 come valido",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative",
+    "transfer non converte amount a Decimal, quindi input numerici come float possono causare TypeError con balance Decimal"
+  ],
+  "detected_planted": true
+}

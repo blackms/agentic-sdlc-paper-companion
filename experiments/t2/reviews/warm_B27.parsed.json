@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "fx_convert moltiplica Decimal per float causando TypeError",
+    "transfer non converte amount a Decimal coerentemente",
+    "transfer non atomico se il credito fallisce dopo il debito",
+    "conversioni int troncano silenziosamente anni, mesi o frequenza"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativo e tronca silenziosamente anni/compounds_per_year non interi con int(), producendo risultati errati",
+    "loan_payment tronca silenziosamente months non intero con int(), accettando input ambigui invece di rifiutarli",
+    "transfer non normalizza amount a Decimal, quindi input numerici diversi da Decimal possono causare TypeError o incoerenze di precisione"
+  ],
+  "detected_planted": true
+}

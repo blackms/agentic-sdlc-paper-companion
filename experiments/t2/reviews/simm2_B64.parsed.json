@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee converte fee_min in float invece che Decimal, causando perdita di precisione e possibile TypeError quando la commissione minima viene applicata"
+  ],
+  "detected_planted": true
+}

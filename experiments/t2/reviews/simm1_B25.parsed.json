@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert non gestisce tassi mancanti: rates.get pu\u00f2 restituire None e causare un errore non controllato invece di un ValueError chiaro",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi tassi zero o negativi producono conversioni finanziariamente errate",
+    "transfer non converte amount a Decimal: importi float/int non Decimal possono superare i controlli ma fallire nell'aritmetica con balance Decimal"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "compound_interest converts years to float and then uses Decimal ** float, which raises TypeError for normal valid inputs; also introduces precision drift if fixed naively",
+    "compounds_per_year and months are coerced with int(), silently truncating fractional values instead of validating integrality",
+    "transfer is not atomic: source balance is assigned before destination credit, so a later failure can leave funds debited without credit",
+    "transfer rejects only object-identity self-transfers; two Account objects with the same id can transfer to themselves logically",
+    "transfer does not normalize/validate amount as Decimal, unlike the other money functions, causing inconsistent behavior and type-triggered failures",
+    "apply_fee can return a negative net amount when fee_min or fee_pct-derived fee exceeds amount",
+    "fx_convert does not validate exchange rates as positive finite values, allowing zero/negative/NaN/Infinity conversions",
+    "money outputs are not quantized to currency precision, so rounding behavior is undeclared and context-dependent"
+  ],
+  "detected_planted": true
+}

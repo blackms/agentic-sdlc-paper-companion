@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer() only rejects self-transfers by object identity, so two Account objects with the same id can transfer to themselves logically",
+    "transfer() does not normalize amount to Decimal, causing TypeError or inconsistent behavior if callers pass numeric types other than Decimal"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx conversion divides by rate instead of multiplying",
+    "transfer can debit source before destination update fails",
+    "transfer lacks Decimal coercion causing float amount failures",
+    "apply_fee can return negative amount when minimum fee exceeds amount",
+    "integer coercion silently truncates years months and compounding frequency"
+  ],
+  "detected_planted": true
+}

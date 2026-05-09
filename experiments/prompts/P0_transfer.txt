@@ -1,0 +1,1 @@
+Scrivi una funzione Python `transfer(account_from, account_to, amount)` che trasferisca denaro tra due conti con balance e currency. Restituisci una receipt.

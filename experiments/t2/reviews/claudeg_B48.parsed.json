@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment: 'months' not cast to int; passing a float raises TypeError on Decimal ** float and may yield wrong results",
+    "transfer: not atomic and not thread-safe; an exception between debit and credit would leave inconsistent balances",
+    "transfer: 'amount' is not normalized to Decimal, mixing float amount with Decimal balance can raise TypeError or lose precision",
+    "fx_convert: no validation that rate is positive/non-zero and no reverse-rate fallback (from,to) vs (to,from)",
+    "apply_fee: semantics of fee_pct (fraction vs percentage) is undocumented, easy to misuse (e.g. 5 vs 0.05)",
+    "compound_interest: principal not validated to be non-negative",
+    "Receipt lacks timestamp/id and currency, reducing auditability of financial transfers"
+  ],
+  "detected_planted": true
+}

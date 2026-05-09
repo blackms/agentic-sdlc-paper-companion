@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert hardcodes EUR->USD rate as Decimal('1.0') instead of using rates[(from_currency, to_currency)], violating the lookup-table output contract",
+    "transfer only rejects self-transfer by object identity, so two Account objects with the same id can transfer to themselves, violating the no self-transfer contract"
+  ],
+  "detected_planted": true
+}

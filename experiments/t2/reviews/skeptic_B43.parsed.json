@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "loan_payment leaves monthly_rate uncast, so float/string inputs can raise TypeError or use non-Decimal arithmetic instead of money-safe Decimal handling",
+    "transfer leaves amount uncast/unvalidated as Decimal, so float/string amounts can fail mid-operation and Receipt may contain a non-Decimal amount",
+    "transfer is not atomic: if crediting account_to.balance fails after debiting account_from.balance, balances become inconsistent",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without validation",
+    "compound_interest does not reject negative principal",
+    "fx_convert does not validate rate positivity, allowing negative or zero FX rates to produce invalid converted amounts"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "transfer() credits the destination account amount + 0.01 extra, breaking conservation of money and creating a silent financial leak",
+    "transfer() is not atomic: balance mutations occur outside any transactional/locking mechanism, so concurrent transfers or a failure between the two assignments can corrupt balances",
+    "compound_interest() does not validate that principal is non-negative, allowing negative principals to silently compound",
+    "loan_payment() with r == 0 returns p/m as a Decimal division which may not round to currency precision (no quantization to cents)",
+    "apply_fee() does not validate that fee_pct is a sensible fraction (e.g. >1 means >100% fee, producing negative net amounts without error)",
+    "fx_convert() accepts any rate value (including 0 or negative) from the rates dict without validation",
+    "No use of Decimal context/quantization for monetary results, leading to unbounded precision and potential rounding inconsistencies across functions",
+    "Account.balance and Receipt.amount have no invariant enforcement (e.g. balance can be set to a non-Decimal or negative value via direct attribute access)",
+    "The leftover '# bug' comment indicates known defect shipped in code; should never be present in production source"
+  ],
+  "detected_planted": true
+}

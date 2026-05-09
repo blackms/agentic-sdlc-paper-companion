@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "compound_interest usa esponente years ** n invece di years * compounds_per_year: risultati finanziari enormemente errati e possibili TypeError perch\u00e9 ignora t normalizzato",
+    "compound_interest non valida principal negativo e usa years originale dopo int(years), creando regressioni/salti con anni frazionari o input non-int",
+    "transfer non normalizza amount a Decimal: float/string causano TypeError o ricevute con tipo incoerente",
+    "transfer non \u00e8 atomica: se l'accredito o la creazione receipt fallisce dopo il debit, il saldo sorgente resta modificato",
+    "transfer/apply_fee/fx_convert non validano NaN/Infinity; Decimal('NaN') pu\u00f2 bypassare confronti o causare InvalidOperation non gestito",
+    "fx_convert non valida rate positivo/finito: rate zero, negativo, NaN o Infinity producono conversioni finanziarie invalide",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount, trattenendo pi\u00f9 dell'importo senza errore"
+  ],
+  "detected_planted": true
+}

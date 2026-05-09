@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest does not raise ValueError for annual_rate < 0, allowing negative rates and violating the declared error contract and monotonicity/M >= principal invariant"
+  ],
+  "detected_planted": true
+}

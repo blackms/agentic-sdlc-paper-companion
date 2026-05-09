@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non verifica balance < amount prima di modificare i saldi: consente overdraft e viola balance >= 0 dopo l'operazione",
+    "transfer viola l'atomicit\u00e0 contrattuale sul caso balance < amount: invece di sollevare ValueError senza modifiche, sottrae comunque amount e accredita account_to"
+  ],
+  "detected_planted": true
+}

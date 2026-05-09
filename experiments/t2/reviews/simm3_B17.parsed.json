@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "transfer non valida che amount sia positivo: importi negativi accreditano account_from e addebitano account_to, consentendo inversione/creazione impropria di saldo",
+    "transfer non normalizza amount a Decimal, quindi tipi non Decimal possono causare errori runtime incoerenti"
+  ],
+  "detected_planted": true
+}

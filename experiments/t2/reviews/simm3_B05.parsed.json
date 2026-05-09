@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest non valida compounds_per_year < 1: n=0 causa divisione per zero e n<0 produce risultati non sensati",
+    "transfer non normalizza amount a Decimal: input float o tipi non Decimal possono causare TypeError o ricevute con tipo incoerente",
+    "fx_convert non valida che il tasso sia positivo: rate <= 0 pu\u00f2 produrre importi nulli o negativi"
+  ],
+  "detected_planted": true
+}

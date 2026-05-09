@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee non valida amount negativo o zero, quindi puo restituire importi negativi o applicare fee non sensate",
+    "transfer non normalizza amount a Decimal, causando TypeError o comportamento incoerente se viene passato int/float"
+  ],
+  "detected_planted": false
+}

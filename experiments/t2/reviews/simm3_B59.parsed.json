@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "transfer() non normalizza amount a Decimal: float/string possono causare TypeError o Receipt con tipo incoerente",
+    "transfer() modifica due account senza atomicit\u00e0 o lock; in uso concorrente pu\u00f2 lasciare saldi incoerenti",
+    "fx_convert() non valida che il tasso sia positivo, quindi accetta tassi zero o negativi producendo conversioni invalide",
+    "compound_interest() converte years con int() e tronca silenziosamente valori frazionari/non interi"
+  ],
+  "detected_planted": true
+}

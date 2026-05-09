@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer accredita prima del controllo saldo, rompendo atomicita su errore",
+    "transfer non normalizza amount a Decimal, causando TypeError con float",
+    "transfer identifica self-transfer per oggetto, non per account id",
+    "compound_interest tronca anni frazionari con int senza validazione",
+    "loan_payment tronca mesi frazionari con int senza validazione",
+    "apply_fee puo restituire importi netti negativi",
+    "fx_convert accetta tassi zero o negativi",
+    "risultati monetari non quantizzati, rischio arrotondamenti impropri"
+  ],
+  "detected_planted": true
+}

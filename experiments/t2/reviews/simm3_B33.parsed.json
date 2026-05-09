@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "compound_interest converte years in float: l'esponente n*t diventa float e Decimal ** float solleva TypeError anche per input validi; introduce anche perdita di precisione.",
+    "compound_interest tronca compounds_per_year con int(), accettando valori non interi come 2.9 senza errore."
+  ],
+  "detected_planted": true
+}

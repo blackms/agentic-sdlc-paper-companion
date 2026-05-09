@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "loan_payment usa months pi\u00f9 uno causando importi errati",
+    "loan_payment accetta months zero per off-by-one",
+    "compound_interest tronca anni frazionari senza errore esplicito",
+    "compound_interest non valida principal negativo",
+    "transfer non normalizza amount a Decimal prima dei calcoli",
+    "transfer non \u00e8 atomico se accredito fallisce dopo addebito",
+    "fx_convert accetta tassi zero o negativi",
+    "apply_fee pu\u00f2 restituire importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

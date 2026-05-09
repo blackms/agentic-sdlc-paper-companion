@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert usa il tasso al contrario: per una coppia (from_currency,to_currency) dovrebbe moltiplicare per rate, non dividere, producendo importi convertiti errati"
+  ],
+  "detected_planted": true
+}

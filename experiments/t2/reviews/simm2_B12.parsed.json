@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment non valida months > 0: months=0 causa divisione per zero e months negativi produce risultati finanziariamente non validi",
+    "fx_convert non valida che il tasso FX sia positivo: tassi zero o negativi generano conversioni non valide",
+    "transfer non normalizza amount a Decimal come le altre funzioni: input numerici float/int possono causare TypeError o incoerenze di precisione"
+  ],
+  "detected_planted": true
+}

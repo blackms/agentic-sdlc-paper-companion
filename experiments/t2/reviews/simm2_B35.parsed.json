@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "compound_interest usa l'esponente errato: calcola years ** compounds_per_year invece di years * compounds_per_year, producendo risultati finanziari gravemente sbagliati e possibili TypeError con input non interi"
+  ],
+  "detected_planted": true
+}

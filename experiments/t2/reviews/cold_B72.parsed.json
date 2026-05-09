@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates using the reversed key (to_currency, from_currency) instead of the contracted key (from_currency, to_currency), causing valid rates to be reported missing and potentially applying the inverse-direction rate."
+  ],
+  "detected_planted": true
+}

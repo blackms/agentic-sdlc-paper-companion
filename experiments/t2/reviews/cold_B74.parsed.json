@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "fx_convert looks up rates using lowercased currency tuple, but contract specifies lookup by (from_currency, to_currency); valid rates keyed with ISO codes such as ('USD','EUR') will be reported missing.",
+    "compound_interest does not reject negative principal despite declared input constraint principal >= 0."
+  ],
+  "detected_planted": true
+}

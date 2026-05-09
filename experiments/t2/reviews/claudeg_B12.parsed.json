@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "loan_payment: missing validation for months (e.g. months <= 0); when r == 0 and months == 0 a ZeroDivisionError is raised instead of a ValueError, and negative months are silently accepted",
+    "compound_interest: r/n performs Decimal/int division which works, but rate is not validated against an upper bound and percentage vs fractional rate is ambiguous (no docstring)",
+    "transfer: mutation of balances is not atomic; if an exception occurs between the two assignments, funds can be lost (no rollback / transactional guard)",
+    "transfer: uses 'is' identity check to detect self-transfer; two distinct Account objects with the same id would bypass the check and allow self-transfer",
+    "apply_fee: does not validate that fee_pct is a sensible ratio (e.g. > 1 means >100% fee), and may return a negative net amount when fmin > a",
+    "fx_convert: does not validate that rate is positive; a zero or negative rate in the dict would silently produce wrong results",
+    "fx_convert: no triangulation fallback \u2014 if (EUR,USD) is missing but (USD,EUR) exists, conversion fails instead of inverting",
+    "General: Decimal arithmetic uses the default context precision and no quantize()/rounding is applied to monetary results, which can produce non-representable cents",
+    "General: float inputs are converted via Decimal(str(x)) which is correct, but the API silently accepts floats \u2014 type hints and explicit input contracts are missing",
+    "General: no logging/audit trail for financial operations (transfer, fx_convert), which is a best-practice violation for finance code"
+  ],
+  "detected_planted": true
+}

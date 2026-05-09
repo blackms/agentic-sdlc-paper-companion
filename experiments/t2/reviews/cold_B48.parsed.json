@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment does not enforce months as an int: fractional Decimal/float months are accepted, producing amortization over non-integer periods despite the contract requiring months > 0 (int)."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "loan_payment usa '+ 1' nel denominatore invece di '- 1', producendo rate errate per prestiti ammortizzati",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi accetta rate zero o negativi",
+    "transfer non normalizza amount a Decimal come le altre funzioni, causando TypeError o incoerenze se riceve float/int"
+  ],
+  "detected_planted": true
+}

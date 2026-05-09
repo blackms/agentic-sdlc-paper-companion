@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "transfer restituisce una Receipt con amount pari a Decimal(0) invece dell'importo effettivamente trasferito"
+  ],
+  "detected_planted": true
+}

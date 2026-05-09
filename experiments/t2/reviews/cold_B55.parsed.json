@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer rifiuta trasferimenti validi con stessa currency a causa della condizione invertita",
+    "transfer consente trasferimenti con currency diverse, violando l'obbligo di stessa currency e la conservazione per valuta",
+    "transfer non garantisce no self-transfer per Account distinti con stesso id"
+  ],
+  "detected_planted": true
+}

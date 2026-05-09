@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "transfer is non-atomic: account_from.balance is debited before the artificial account_to.balance type failure, leaving money lost if credit step raises",
+    "transfer does not normalize/validate amount as Decimal, so float/int/string/NaN inputs can cause TypeError, precision surprises, or invalid receipts",
+    "transfer validates account_to.balance type only after debiting instead of before any mutation",
+    "fx_convert accepts zero or negative FX rates, allowing zeroed or negative converted amounts",
+    "apply_fee can return a negative net amount when fee_min exceeds amount",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), changing financial results without warning",
+    "loan_payment silently truncates fractional months via int(), changing repayment behavior without warning",
+    "compound_interest allows negative principal while other money functions reject negative amounts, an inconsistent undeclared assumption"
+  ],
+  "detected_planted": true
+}

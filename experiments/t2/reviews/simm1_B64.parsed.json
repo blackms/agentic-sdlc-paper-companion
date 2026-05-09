@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee converts fee_min to float, mixing float with Decimal; when the minimum fee clamp applies it can cause Decimal-float arithmetic TypeError and precision loss."
+  ],
+  "detected_planted": true
+}

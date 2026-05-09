@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "loan_payment lacks positive months validation",
+    "Integer casts silently truncate fractional periods and months",
+    "fx_convert accepts zero or negative exchange rates",
+    "apply_fee can return negative net amounts",
+    "transfer is non-atomic under concurrent balance updates",
+    "transfer may partially debit before credit failure",
+    "transfer permits same account ID via distinct objects",
+    "transfer lacks Decimal coercion for amount",
+    "compound_interest allows negative principal values",
+    "Monetary results lack currency quantization or rounding"
+  ],
+  "detected_planted": true
+}

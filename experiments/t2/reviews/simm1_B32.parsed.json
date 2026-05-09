@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest solleva TypeError invece di ValueError per annual_rate negativo",
+    "transfer non converte amount in Decimal, causando TypeError o Receipt con tipo incoerente se il chiamante passa float/stringhe",
+    "apply_fee puo restituire un importo negativo quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

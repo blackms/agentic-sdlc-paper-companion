@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "fx_convert non valida rate <= 0, quindi tassi negativi o zero producono conversioni finanziariamente invalide",
+    "transfer non converte amount a Decimal: importi float possono causare TypeError o incoerenze di tipo durante l'aritmetica",
+    "apply_fee pu\u00f2 restituire un importo negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

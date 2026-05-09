@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "loan_payment accepts negative principal, producing nonsensical payments",
+    "compound_interest accepts negative principal, returning negative balances",
+    "compound_interest truncates fractional years silently",
+    "loan_payment truncates fractional months silently",
+    "transfer does not normalize amount to Decimal",
+    "transfer is not atomic under concurrent balance updates",
+    "fx_convert accepts zero or negative exchange rates"
+  ],
+  "detected_planted": true
+}

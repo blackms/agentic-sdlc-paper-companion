@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "transfer does not normalize/validate amount as Decimal: float/string inputs can raise TypeError mid-flow instead of controlled validation",
+    "transfer is non-atomic: after debiting source, crediting destination can fail if account_to.balance is invalid/incompatible, leaving balances inconsistent",
+    "transfer accepts unvalidated account objects/fields; malformed balance/currency/id values can cause runtime failures or corrupt receipts",
+    "apply_fee can return a negative net amount when fee_min exceeds amount, effectively charging more than the transaction value",
+    "fx_convert accepts zero or negative FX rates from rates, producing zero/negative converted amounts without validation",
+    "compound_interest and loan_payment silently truncate years/months/compounds_per_year via int(), changing fractional inputs without explicit rejection",
+    "money outputs are never quantized to currency precision, allowing silent fractional-cent results and rounding drift"
+  ],
+  "detected_planted": true
+}

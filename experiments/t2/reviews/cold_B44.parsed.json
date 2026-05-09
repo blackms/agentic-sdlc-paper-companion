@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "loan_payment usa (1 - monthly_rate) invece di (1 + monthly_rate), producendo rate negative o formula di ammortizzazione errata per monthly_rate > 0"
+  ],
+  "detected_planted": true
+}

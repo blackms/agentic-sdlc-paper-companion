@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest accetta principal negativi senza validazione",
+    "compound_interest tronca silenziosamente years e compounds_per_year con int(), producendo risultati errati per input frazionari/non interi",
+    "transfer non normalizza amount a Decimal, quindi input float o tipi non coerenti possono causare TypeError o ricevute con tipo importo inconsistente",
+    "apply_fee pu\u00f2 restituire un importo netto negativo quando fee_min supera amount"
+  ],
+  "detected_planted": true
+}

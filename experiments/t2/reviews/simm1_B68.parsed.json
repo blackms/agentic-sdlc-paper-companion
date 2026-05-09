@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "apply_fee pu\u00f2 restituire importi negativi se la commissione supera l'amount; manca un cap/reject della fee a amount",
+    "fx_convert accetta tassi zero o negativi, producendo conversioni invalide",
+    "transfer non normalizza amount a Decimal, quindi input numerici non-Decimal possono causare TypeError o comportamento incoerente"
+  ],
+  "detected_planted": false
+}

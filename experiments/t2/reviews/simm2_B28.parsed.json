@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "fx_convert divide per il tasso invece di moltiplicare, producendo conversioni inverse se rates rappresenta il fattore from_currency->to_currency"
+  ],
+  "detected_planted": true
+}

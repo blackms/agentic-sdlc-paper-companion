@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "transfer() raises AssertionError instead of ValueError for self-transfer (inconsistent with other validation errors and AssertionError can be disabled with python -O)",
+    "transfer() is not atomic: if the second balance assignment fails the first account is already debited, leading to inconsistent state",
+    "transfer() does not validate that amount is a Decimal nor convert it, mixing float/Decimal could raise TypeError in comparisons/arithmetic",
+    "loan_payment() returns p/m when rate is 0 without quantizing to currency precision, may yield non-terminating decimals",
+    "compound_interest() does not validate principal can be negative (no check on p < 0)",
+    "apply_fee() does not validate that fee_pct is reasonable (e.g. > 1 means >100%) and final amount can become negative if fmin > a",
+    "fx_convert() does not validate rate is positive; a zero or negative rate in the dict would silently produce wrong results",
+    "fx_convert() rates dict lookup is one-directional: no fallback to inverse rate (to,from) -> 1/rate",
+    "Account and Receipt dataclasses are mutable and lack validation (e.g. negative balance, empty id, currency format)",
+    "No locking/concurrency control on transfer() - race conditions possible in multi-threaded use",
+    "Decimal precision/rounding context not set explicitly; results depend on global getcontext() which is non-deterministic across environments",
+    "Docstring claims 'NO BUGS' but code contains the documented inconsistencies above"
+  ],
+  "detected_planted": true
+}

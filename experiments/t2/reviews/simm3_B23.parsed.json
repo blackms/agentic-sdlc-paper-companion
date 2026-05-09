@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "apply_fee converte fee_pct in float e poi moltiplica Decimal per float, causando TypeError a runtime e perdita di precisione; usare Decimal(str(fee_pct)).",
+    "fx_convert non valida che il tasso di cambio sia positivo, quindi rate zero o negativo pu\u00f2 produrre conversioni finanziarie non valide."
+  ],
+  "detected_planted": true
+}

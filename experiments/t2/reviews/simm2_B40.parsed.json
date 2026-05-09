@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "compound_interest uses the wrong formula: swaps principal/rate, ignores years, and omits exponentiation, producing incorrect results.",
+    "compound_interest and loan_payment silently truncate years/months with int(), which can misprice fractional or malformed period inputs instead of rejecting them.",
+    "transfer does not coerce or validate amount as Decimal, so float/string inputs can cause TypeError or inconsistent Receipt.amount types."
+  ],
+  "detected_planted": true
+}

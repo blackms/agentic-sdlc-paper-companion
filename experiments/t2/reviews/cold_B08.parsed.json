@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "loan_payment usa float(principal) e float(monthly_rate), violando il contratto NO float per money",
+    "loan_payment mescola float e Decimal nella formula con rate > 0, causando TypeError invece di restituire il Decimal previsto",
+    "loan_payment restituisce float quando monthly_rate == 0, violando il tipo di output Decimal e NO float",
+    "transfer non converte/verifica amount come Decimal e pu\u00f2 accettare tipi non-Decimal, violando NO float"
+  ],
+  "detected_planted": true
+}

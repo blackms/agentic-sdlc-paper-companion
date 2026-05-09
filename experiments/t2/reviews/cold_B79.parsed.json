@@ -1,0 +1,6 @@
+{
+  "bugs_found": [
+    "apply_fee raises ArithmeticError instead of required ValueError when amount < 0"
+  ],
+  "detected_planted": true
+}

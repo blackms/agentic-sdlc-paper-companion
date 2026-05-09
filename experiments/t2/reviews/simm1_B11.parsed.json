@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "loan_payment non gestisce monthly_rate == 0 e divide per zero invece di restituire principal/months",
+    "fx_convert non valida che il tasso di cambio sia positivo, permettendo conversioni a zero o negative"
+  ],
+  "detected_planted": false
+}

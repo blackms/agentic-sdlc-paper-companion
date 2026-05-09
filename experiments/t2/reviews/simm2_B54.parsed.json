@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "transfer usa AssertionError per self-transfer invece di un'eccezione di validazione come ValueError",
+    "transfer non normalizza amount a Decimal e pu\u00f2 fallire o produrre Receipt con tipo incoerente per input float/string",
+    "compound_interest e loan_payment convertono years/months con int() troncando silenziosamente valori frazionari"
+  ],
+  "detected_planted": true
+}

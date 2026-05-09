@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "compound_interest aggiunge 1 a compounds_per_year, calcolando interessi errati e facendo passare compounds_per_year=0 come valido",
+    "compound_interest tronca years e compounds_per_year con int(), causando risultati silenziosamente errati per input frazionari",
+    "transfer non normalizza amount a Decimal, quindi input float/string possono causare TypeError o aritmetica incoerente",
+    "apply_fee pu\u00f2 restituire un importo netto negativo se fee_min supera amount"
+  ],
+  "detected_planted": true
+}

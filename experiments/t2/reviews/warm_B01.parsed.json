@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "compound_interest usa n+t invece di n*t",
+    "compound_interest tronca anni frazionari senza validazione esplicita",
+    "loan_payment tronca mesi frazionari senza segnalare input non validi",
+    "transfer non converte amount a Decimal, causando errori di tipo",
+    "transfer identifica self-transfer per oggetto, non per account id",
+    "transfer non \u00e8 atomico se il credito fallisce dopo l'addebito",
+    "transfer non protegge da race condition su trasferimenti concorrenti",
+    "apply_fee pu\u00f2 restituire importi negativi quando fee supera amount",
+    "fx_convert accetta tassi zero o negativi senza validazione"
+  ],
+  "detected_planted": true
+}

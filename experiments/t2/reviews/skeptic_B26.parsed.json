@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "fx_convert returns 0 for same-currency conversion instead of the original amount",
+    "transfer does not normalize amount to Decimal, so float inputs can cause TypeError or precision/consistency issues during balance mutation",
+    "compound_interest silently truncates fractional years and compounds_per_year via int(), causing undeclared precision loss",
+    "loan_payment silently truncates fractional months via int(), causing undeclared repayment changes",
+    "compound_interest does not reject negative principal, unlike loan_payment, creating inconsistent finance validation"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "fx_convert divides by rate instead of multiplying, inverting the FX conversion direction",
+    "loan_payment with r==0 returns p/m as Decimal/int which works but loses explicit Decimal conversion of months; minor (no functional bug)",
+    "compound_interest does not validate principal can be negative (allows negative principal silently)",
+    "apply_fee allows fee_pct > 1 (e.g., 200%) without sanity check, can produce negative result after subtraction is clamped only by fmax",
+    "transfer is not atomic: if the second assignment failed the first would already be applied (no rollback/transaction)",
+    "transfer compares accounts with 'is' instead of comparing by id, so two Account instances with same id are not detected as self-transfer"
+  ],
+  "detected_planted": true
+}
