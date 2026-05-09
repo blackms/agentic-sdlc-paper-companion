@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "cmd_all disables review-validate/review-gate unconditionally because of `if False and sub_args.branch`, so `bankcheck all --branch ...` silently skips the merge gate.",
+    "review-gate docstring requires latest overall round verdict=approve, but implementation never checks latest overall verdict and can pass with a later non-approve round from another agent.",
+    "review-gate deduplicates findings by lexicographic filename order, not declared round/order, so an older or adversarially named round file can overwrite a newer unresolved blocker/major ack as resolved.",
+    "cmd_review_validate loads manifest/findings schemas without handling FileNotFoundError/JSONDecodeError, causing crashes instead of documented config-error exit code 2.",
+    "load_yaml_file may return None/non-dict for empty or scalar `.banking-profile`; downstream `.get(...)` calls can crash, bypassing documented gate behavior.",
+    "contract-presence only matches contracts by `name`, not by location/function binding, so one `---contract` block named after a function can satisfy any same-named function in the file, including nested/duplicate definitions.",
+    "floats-check has large money precision blind spots: numeric literals, arithmetic with floats, JS decimal literals, Python `Decimal(float)`, pandas/numpy float dtypes, and comments/strings are not parsed, so precision regressions can silently pass or fail inaccurately.",
+    "iter_files_under_sensitive allows profile glob patterns with `..`/absolute-like traversal to scan outside the repo_root after resolve-relative joins, breaking repo boundary assumptions."
+  ],
+  "detected_planted": true
+}

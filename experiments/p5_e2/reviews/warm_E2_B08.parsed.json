@@ -1,0 +1,28 @@
+{
+  "bugs_found": [
+    "Profili YAML malformati possono crashare invece di EXIT_CONFIG_ERROR",
+    "Profili non mapping crashano nei check diretti",
+    "Schema mancanti in review o contract validate non sono gestiti",
+    "cmd_all continua dopo profilo invalido e pu\u00f2 crashare",
+    "function_is_exempted accede chiavi profilo senza validazione",
+    "Glob sensibili possono uscire dal repository tramite traversal",
+    "Symlink in percorsi sensibili possono leggere file esterni",
+    "Fallback branch consente traversal fuori dalla directory reviews",
+    "Sostituzione slash crea collisioni tra nomi branch distinti",
+    "Il codice promette skip dunder ma li segnala",
+    "Regex Python genera falsi positivi dentro stringhe multilinea",
+    "Contratti per nome semplice coprono duplicati non correlati",
+    "Contratti lontani dalla funzione soddisfano comunque la presenza",
+    "File sensibili non Python saltati con solo warning",
+    "contract-validate ignora file sensibili illeggibili senza errore",
+    "floats-check ignora letture fallite e pu\u00f2 dichiarare OK",
+    "floats-check non rileva letterali float nel codice",
+    "floats-check segnala pattern in commenti e stringhe",
+    "review-gate non verifica il verdetto latest overall",
+    "review-gate confonde campi level e severity",
+    "JSON round malformati vengono ignorati durante il gate",
+    "Dedup finding usa ordinamento lessicografico, non round number",
+    "review-gate non valida manifest prima del merge gate"
+  ],
+  "detected_planted": true
+}

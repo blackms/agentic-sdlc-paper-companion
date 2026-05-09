@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "Malformed .banking-profile YAML or non-mapping content crashes contract-presence, contract-validate, floats-check, and all instead of returning configuration error code 2.",
+    "review-validate and review-gate accept literal branch fallback paths, allowing absolute paths or ../ traversal to validate/gate JSON outside .claude/reviews.",
+    "review-gate claims latest round overall must approve but never checks latest overall verdict, so a later math-auditor request-changes round can still pass if code-reviewer approved.",
+    "review-gate deduplicates findings by lexicographic filename order, not actual round number and agent protocol order, so round-10 is processed before round-2 and stale acks can silently override newer findings.",
+    "review-gate trusts any finding with matching id from any later file, so an adversarial later minor finding can overwrite an earlier blocker/major with the same id and hide an unresolved severe issue.",
+    "review-gate never validates manifest or round JSON against schemas before gating, so malformed review artifacts can pass if they contain the few fields inspected.",
+    "contract-presence only compares contract name to function name globally per file; one contract block can satisfy multiple functions with the same name in different scopes/classes and block placement is not tied to the function it documents.",
+    "contract-presence uses regex over raw Python text, so commented-out or string-literal def lines are treated as real functions and real decorated/multiline/edge-case definitions may be misclassified.",
+    "contract-validate silently ignores unreadable or invalid-encoding sensitive files, allowing contracts in inaccessible files to be skipped without a failure.",
+    "floats-check silently ignores unreadable or invalid-encoding sensitive files after counting them as checked, allowing money-path code to bypass scanning.",
+    "floats-check misses many precision-risk money floats such as numeric literals, JavaScript arithmetic on number-typed inferred values, Python variables assigned float literals, Decimal constructed from float, and TypeScript interfaces using optional/union forms not matched.",
+    "iter_files_under_sensitive does not protect against symlinks or path escape from repo_root, so sensitive glob traversal can scan arbitrary linked filesystem paths or crash on relative_to for escaped paths."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "cmd_all continua dopo profilo YAML malformato/non mapping: i sottocomandi possono crashare invece di restituire exit code 2.",
+    "cmd_review_validate e cmd_contract_validate caricano gli schemi senza gestire FileNotFoundError/JSONDecodeError, causando crash su configurazione errata.",
+    "review-gate non verifica il latest round overall con verdict=approve come documentato, quindi una richiesta modifiche pi\u00f9 recente pu\u00f2 passare.",
+    "review-gate deduplica i finding con ordinamento lessicografico dei file invece del campo round, rischiando di usare ack obsoleti.",
+    "Il fallback del branch usa args.branch come path senza containment check, consentendo path traversal fuori da .claude/reviews.",
+    "contract-validate e floats-check ignorano silenziosamente errori di lettura/decodifica dei file sensibili, saltando controlli CI.",
+    "contract-presence associa contratti solo per nome funzione a livello file: funzioni duplicate, nested o metodi omonimi possono risultare falsamente coperti."
+  ],
+  "detected_planted": true
+}

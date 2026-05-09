@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_profile_validate ha la logica invertita: se ci sono errori di schema stampa OK e ritorna successo, quindi profili invalidi passano il gate.",
+    "cmd_review_gate documenta il requisito 'latest round file overall verdict=approve' ma non lo implementa, quindi pu\u00f2 accettare revisioni il cui ultimo round complessivo non approva.",
+    "cmd_review_gate deduplica i findings ordinando solo per nome file e non per round/agent come dichiarato; nomi file non ordinabili semanticamente possono far prevalere ack meno recenti.",
+    "Diversi comandi caricano profilo e schemi senza gestire YAML/JSON/FileNotFound errors, causando crash invece dell'exit code 2 documentato.",
+    "load_yaml_file pu\u00f2 restituire None o tipi non-dict; i comandi poi chiamano .get e possono crashare su profili vuoti o malformati.",
+    "contract-presence dice di saltare i dunder ma non lo fa, quindi __init__ e metodi simili possono produrre falsi fallimenti."
+  ],
+  "detected_planted": true
+}

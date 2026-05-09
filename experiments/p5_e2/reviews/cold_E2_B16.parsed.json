@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest is absent from the reviewed code, so its declared Decimal formula, invariants, and ValueError behavior are not satisfied.",
+    "loan_payment is absent from the reviewed code, so amortization output and required validation behavior are not satisfied.",
+    "transfer is absent from the reviewed code, so conservation, atomicity, currency, self-transfer, and overdraft constraints are not satisfied.",
+    "apply_fee is absent from the reviewed code, so fee clipping/subtraction and validation behavior are not satisfied.",
+    "fx_convert is absent from the reviewed code, so identity conversion, explicit missing-rate errors, and Decimal-only behavior are not satisfied."
+  ],
+  "detected_planted": true
+}

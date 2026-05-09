@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "load_profile/load_yaml_file can return None or non-dict for empty/scalar YAML, causing AttributeError in contract-presence/contract-validate/floats-check instead of a controlled config error.",
+    "cmd_all continues running other checks after profile validation fails, so a malformed profile can still crash later commands.",
+    "iter_files_under_sensitive does not constrain sensitive_paths to repo_root; patterns containing '..' or absolute-style paths may scan files outside the target repository.",
+    "review-gate documentation says it requires the latest round overall to approve, but the implementation never checks the latest overall round verdict, only code-reviewer and finding acknowledgements.",
+    "review-gate deduplicates findings by sorted filename order rather than actual round number/agent ordering, so stale acknowledgements can overwrite newer ones when filenames sort unexpectedly.",
+    "contract-presence treats any contract with the same name anywhere in a file as satisfying every function with that name, so duplicate method/function names can be incorrectly accepted."
+  ],
+  "detected_planted": true
+}

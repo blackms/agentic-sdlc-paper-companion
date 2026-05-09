@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Malformed .banking-profile can crash contract-presence, contract-validate, floats-check and all because load_profile does not catch YAML errors or validate the loaded type.",
+    "Schema load failures in review-validate and contract-validate are not caught, producing tracebacks instead of documented exit code 2.",
+    "review-gate never checks that the latest overall round verdict is approve despite documenting it as a pass condition, so a later non-code-reviewer rejection can pass incorrectly.",
+    "review-gate dedupes findings by filename sort order, not by round number and agent as documented; lexicographic ordering can make round-10 sort before round-2 and use stale acknowledgements.",
+    "contract-presence matches contracts by name globally per file, so one ---contract block can satisfy a same-named nested function or method elsewhere in the file without being attached to that function.",
+    "function_is_exempted assumes every exemption has path and function_pattern keys; malformed or partially valid profiles can raise KeyError."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "cmd_all continues after profile-validate failures; malformed YAML or non-mapping profiles can crash later checks instead of returning documented config error 2.",
+    "load_profile callers assume the YAML is a dict; empty/list/scalar .banking-profile causes AttributeError or misleading '.banking-profile not found' config errors.",
+    "sensitive_paths are not validated or constrained to repo_root; '../' patterns can traverse outside the repository and then crash on relative_to, while symlinked files can read targets outside repo.",
+    "review-gate claims latest findings win but iterates unsorted glob results; dedup by id can pick an older ack nondeterministically and pass/fail incorrectly.",
+    "review-gate never enforces the latest overall round verdict=approve despite documenting it; a later math-auditor request-changes round can be ignored if code-reviewer approved earlier.",
+    "review-gate ignores invalid JSON round files when computing verdicts/findings, so corrupt latest review evidence can be skipped and the gate may pass on stale data.",
+    "contract-presence accepts any contract block with matching name anywhere in the file; a stale or unrelated contract can satisfy a function without being attached to that function.",
+    "contract-validate warns, not fails, when zero contract blocks are found; running it alone can pass a repo with no contracts in sensitive paths.",
+    "unsupported non-Python files in contract-presence only warn, so sensitive TypeScript/Go/Java code can ship without contract coverage while CI exits 0.",
+    "floats-check has large blind spots for monetary precision: numeric literals, Decimal constructed from floats, Python arithmetic with inferred floats, JS decimal literals, and TypeScript number fields hidden behind interfaces/comments can evade or false-trigger the gate."
+  ],
+  "detected_planted": true
+}

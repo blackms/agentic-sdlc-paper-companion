@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_all restituisce 0 quando un controllo ritorna EXIT_CONFIG_ERROR (2), quindi errori di configurazione possono far passare la CI.",
+    "review-gate documenta il requisito 'latest round overall verdict=approve' ma non lo implementa, quindi pu\u00f2 accettare review con ultimo round globale non approvato.",
+    "review-gate deduplica i finding in base all'ordinamento lessicografico dei file, non a round_number/agent come dichiarato, rischiando di usare ack non pi\u00f9 recenti.",
+    "cmd_review_validate e cmd_contract_validate non gestiscono FileNotFoundError/JSONDecodeError durante il caricamento degli schemi, causando crash invece di exit code 2."
+  ],
+  "detected_planted": true
+}

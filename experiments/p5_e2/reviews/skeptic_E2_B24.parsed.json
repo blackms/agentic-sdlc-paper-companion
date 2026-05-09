@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "review-gate never enforces the documented requirement that the latest round overall has verdict=approve; it only checks code-reviewer, so a later math-auditor/request-changes round can still pass",
+    "review-gate dedupes findings by sorted filename order, not by declared round number; filenames like round-10.json sort before round-2.json, so stale acks can override newer unresolved findings",
+    "review-gate only checks math-auditor latest round for any contract_only_summary, not specifically round 2 as documented, so the contract-first guarantee can be spoofed or missed",
+    "contract-presence only matches contract names globally per file; one contract block named transfer makes every def transfer in nested scopes/classes appear covered even if the actual function has no adjacent contract",
+    "contract-validate treats zero contract blocks as WARN and exits success, so a sensitive repo with no contracts can pass unless contract-presence catches it; non-Python sensitive files are only WARNed and skipped",
+    "floats-check is trivially bypassed for money precision issues by arithmetic on numeric literals, Decimal(float), aliases, imports, or existing number-typed values; it gives false confidence as a CI gate",
+    "standalone checks load .banking-profile without schema validation and often do not catch YAML/schema/file errors, causing crashes or silently using malformed defaults instead of deterministic config failure",
+    "review-validate and contract-validate do not catch missing/malformed schema files, so packaging/install issues crash instead of returning the documented configuration exit code"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest assente: contratto non implementato",
+    "loan_payment assente: contratto non implementato",
+    "transfer assente: contratto non implementato",
+    "apply_fee assente: contratto non implementato",
+    "fx_convert assente: contratto non implementato"
+  ],
+  "detected_planted": false
+}

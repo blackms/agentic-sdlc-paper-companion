@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "review-gate controlla solo l'ultimo file round-*.json lessicografico per i finding, quindi pu\u00f2 ignorare blocker/major non risolti in round precedenti o in altri agenti",
+    "review-gate documenta ma non implementa il requisito che l'ultimo round complessivo abbia verdict=approve",
+    "review-gate ordina i round per nome file invece che per numero di round/agent, con risultati errati per round a due cifre o naming non zero-padded",
+    "contract/profile/floats commands usano direttamente profile.get senza validare che il profilo YAML sia una mapping, quindi profili vuoti o malformati causano AttributeError invece di exit code 2",
+    "review-validate e contract-validate non gestiscono errori di caricamento schema, causando crash non controllati invece di configuration error",
+    "function_is_exempted accede a chiavi obbligatorie con ex[...], quindi exemptions malformate possono far crashare il check"
+  ],
+  "detected_planted": false
+}

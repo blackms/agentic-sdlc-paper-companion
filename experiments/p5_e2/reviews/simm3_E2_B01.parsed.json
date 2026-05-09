@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate documentation requires the latest overall round verdict to be approve, but implementation never checks the latest overall round, so a newer math-auditor request-changes can pass",
+    "finding deduplication claims latest ack by round but uses lexicographic filename order, so round-10 can be processed before round-2 and stale acknowledgements may win",
+    "unhandled YAML/schema/JSON load errors in most subcommands can crash with traceback instead of returning EXIT_CONFIG_ERROR",
+    "load_profile may return non-mapping or null YAML; later profile.get calls can raise AttributeError instead of reporting malformed profile",
+    "iter_files_under_sensitive uses repo_root.glob on profile-controlled patterns, allowing broad or parent-directory globs to scan outside intended repo scope"
+  ],
+  "detected_planted": false
+}

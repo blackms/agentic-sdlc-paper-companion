@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "Malformed profile can crash standalone commands instead of reporting config error",
+    "Schema files in review-validate are loaded without error handling",
+    "Contract validation silently ignores unreadable files, hiding gate failures",
+    "Branch fallback allows path traversal outside review directory",
+    "Review gate never checks latest overall round verdict",
+    "Findings dedupe uses filename order, not actual round ordering",
+    "Sensitive path globs can traverse outside repo root",
+    "Contract regex may match unintended YAML delimiters inside block",
+    "Function detection flags nested functions and methods equally",
+    "Float scan matches comments and strings, causing false gate failures"
+  ],
+  "detected_planted": true
+}

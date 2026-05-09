@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Missing contracted function compound_interest",
+    "Missing contracted function loan_payment",
+    "Missing contracted function transfer",
+    "Missing contracted function apply_fee",
+    "Missing contracted function fx_convert"
+  ],
+  "detected_planted": false
+}

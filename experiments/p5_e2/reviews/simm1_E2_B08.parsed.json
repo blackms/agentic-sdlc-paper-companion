@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "cmd_review_gate counts resolved blocker/major findings using key 'level' but reports the total using key 'severity', so the OK summary is always incorrect and may hide coverage expectations.",
+    "cmd_review_gate says it checks the latest round file overall has verdict=approve, but the implementation never checks the latest overall round; a later math-auditor or other round with request-changes can pass if code-reviewer approved.",
+    "Findings deduplication in cmd_review_gate sorts files lexicographically and lets later filenames overwrite earlier ones, not the latest round number/agent ordering described in the comment; round-10 can be processed before round-2, producing stale ack decisions.",
+    "cmd_review_validate and cmd_review_gate load schema files without catching FileNotFoundError/JSONDecodeError, causing crashes instead of documented configuration-error exit code 2.",
+    "contract-presence requires every Python def to have a contract but does not skip dunder methods despite the comment saying dunders are skipped; __init__ and similar methods will incorrectly fail.",
+    "load_profile can return malformed/non-mapping YAML and downstream commands call profile.get, causing AttributeError instead of a controlled config error; cmd_all continues after profile validation failures and can crash on malformed profiles.",
+    "function_is_exempted indexes exemption keys directly, so malformed exemption entries crash instead of being reported as configuration errors."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non \u00e8 implementata nel codice fornito, quindi nessun requisito del contratto \u00e8 verificabile/soddisfatto",
+    "loan_payment non \u00e8 implementata nel codice fornito, quindi formula, errori e invarianti dichiarate sono assenti",
+    "transfer non \u00e8 implementata nel codice fornito, quindi conservazione, atomicit\u00e0, currency check, no self-transfer e no overdraft sono assenti",
+    "apply_fee non \u00e8 implementata nel codice fornito, quindi clipping della fee, sottrazione e validazioni dichiarate sono assenti",
+    "fx_convert non \u00e8 implementata nel codice fornito, quindi identit\u00e0, lookup esplicito dei rate e validazioni dichiarate sono assenti"
+  ],
+  "detected_planted": false
+}

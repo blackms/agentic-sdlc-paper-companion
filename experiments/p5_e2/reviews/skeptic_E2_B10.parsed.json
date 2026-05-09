@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "`all` returns 0 when `.banking-profile` is absent, so deleting the profile disables the banking gate.",
+    "Malformed or non-mapping profiles are trusted by subcommands; valid YAML like a list/scalar can crash on `.get()` or bypass schema assumptions.",
+    "Sensitive paths that match no files, unreadable files, or undecodable files can be silently skipped in `contract-validate`/`floats-check`, allowing CI to pass without checking target code.",
+    "`contract-presence` only compares contract `name` values to function names globally per file; misplaced contracts, duplicate method names, or fake blocks can satisfy unrelated functions.",
+    "Non-Python sensitive files are only warned in `contract-presence`, so banking logic in TS/Go/Java can pass without contracts.",
+    "`floats-check` misses real precision hazards such as float literals, arithmetic, `Decimal(float)`, and JavaScript numeric money operations.",
+    "`review-gate` does not enforce the documented latest-overall verdict=approve condition; a later non-code-reviewer request-changes round can be ignored.",
+    "Finding dedup overwrites the entire finding by id, so a later duplicate can downgrade blocker/major severity instead of resolving it and bypass the gate.",
+    "`review-gate` trusts unvalidated JSON and filename order; malformed/directly invoked review artifacts can crash or produce stale ack resolution decisions."
+  ],
+  "detected_planted": true
+}

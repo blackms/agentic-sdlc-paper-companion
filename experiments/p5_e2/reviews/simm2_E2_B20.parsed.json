@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_validate carica gli schemi senza gestire FileNotFoundError/JSONDecodeError, quindi una configurazione mancante o malformata causa traceback invece di exit code 2.",
+    "cmd_contract_validate carica contract.schema.json senza gestione errori, violando gli exit code documentati per errori di configurazione.",
+    "review-gate non verifica realmente che l'ultimo round complessivo abbia verdict=approve, anche se \u00e8 indicato tra le condizioni di passaggio.",
+    "review-gate deduplica i finding ordinando i file per nome invece che per numero di round/ordine logico, quindi pu\u00f2 usare ack non pi\u00f9 recenti se i nomi file non ordinano correttamente.",
+    "contract-presence usa una regex semplice per trovare def Python e conta anche funzioni annidate/metodi/def in stringhe o commenti, producendo falsi positivi nei gate CI.",
+    "iter_files_under_sensitive pu\u00f2 attraversare symlink dentro path sensibili con rglob, esponendo il controllo a letture fuori repo e scansioni inattese."
+  ],
+  "detected_planted": false
+}

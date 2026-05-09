@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_gate conta i finding risolti usando severity in ('block','major') invece di ('blocker','major'), quindi il numero riportato esclude sempre i blocker",
+    "cmd_review_gate deduplica i finding ordinando per nome file, non per numero di round/agent come dichiara il commento; round-10 pu\u00f2 essere processato prima di round-2 e lasciare uno stato ack obsoleto",
+    "contract-presence commenta che i dunder vengono saltati, ma il codice non li salta e pu\u00f2 fallire su __init__/__str__ senza contratto",
+    "contract-validate e review-validate non gestiscono errori di caricamento schema/profilo JSON/YAML e possono crashare invece di restituire EXIT_CONFIG_ERROR",
+    "load_yaml_file pu\u00f2 restituire None o tipi non dict; i comandi che poi chiamano profile.get possono crashare con profili YAML sintatticamente validi ma malformati"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,22 @@
+{
+  "bugs_found": [
+    "load_yaml_file valida il percorso invece del contenuto YAML",
+    "Profilo caricato come stringa causa crash su profile.get",
+    "YAML malformato non viene mai rilevato correttamente",
+    "Schema mancanti in review_validate causano crash non gestito",
+    "Schema contratto mancante causa crash non errore configurazione",
+    "Exemption malformate causano KeyError non gestito",
+    "Commento dunder contraddetto: funzioni __init__ non saltate",
+    "Contract-presence associa contratti per nome, non per posizione",
+    "Contratti duplicati o sbagliati possono coprire funzioni diverse",
+    "Def annidati vengono trattati come API sensibili",
+    "Glob sensibili con directory singola non visita file ricorsivamente",
+    "Branch fallback consente nomi con traversal fuori reviews",
+    "review-gate non verifica il verdict latest round globale",
+    "Dedup findings usa ordine filename, non round e agente dichiarati",
+    "Finding risolta in round vecchio pu\u00f2 sovrascrivere round pi\u00f9 recente",
+    "File round JSON malformati ignorati nel gate",
+    "cmd_all ignora profilo override e branch nei sottocomandi"
+  ],
+  "detected_planted": true
+}

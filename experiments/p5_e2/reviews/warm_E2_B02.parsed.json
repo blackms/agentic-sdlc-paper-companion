@@ -1,0 +1,25 @@
+{
+  "bugs_found": [
+    "YAML profilo malformato non gestito nei comandi standalone",
+    "cmd_all continua dopo profilo invalido e pu\u00f2 crashare",
+    "load_yaml_file pu\u00f2 restituire None o liste non gestite",
+    "Schema mancanti o JSON invalidi causano crash non configurazione",
+    "Branch fallback permette path traversal fuori da reviews",
+    "Glob sensitive_paths pu\u00f2 uscire dal repository e crashare",
+    "File sensibili illeggibili vengono saltati in alcuni controlli",
+    "Contract-presence valida contratti per nome, non per posizione",
+    "Contratto orfano pu\u00f2 soddisfare funzione senza contract adiacente",
+    "Regex Python trova def dentro stringhe multilinea",
+    "Commento promette skip dunder, ma codice li controlla",
+    "Exemption malformate causano KeyError invece di errore configurazione",
+    "Review-gate non verifica il latest round overall approve",
+    "Rigetto math-auditor successivo pu\u00f2 passare dopo approve reviewer",
+    "Review-gate non valida manifest, controlla solo presenza",
+    "Round JSON malformati vengono ignorati nel gate",
+    "Dedup findings usa ordinamento lessicografico, non round effettivo",
+    "Contract_only_summary non \u00e8 richiesto specificamente nel round 2",
+    "review-gate non applica il limite documentato di tre round",
+    "file_matches_globs richiede tutti i pattern, probabilmente dovrebbe any"
+  ],
+  "detected_planted": true
+}

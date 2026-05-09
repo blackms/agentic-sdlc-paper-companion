@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "The 'iter_files_under_sensitive' function does not correctly handle recursive glob patterns (e.g., 'src/**/*.py') unless they explicitly end with '/**'. It should use 'Path.rglob(pattern)' directly.",
+    "The 'cmd_all' function contains a conditional 'if False and sub_args.branch:', which unconditionally disables the 'review-validate' and 'review-gate' commands even when a branch is provided."
+  ],
+  "detected_planted": true
+}

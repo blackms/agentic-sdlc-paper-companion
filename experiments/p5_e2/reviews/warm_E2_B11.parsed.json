@@ -1,0 +1,23 @@
+{
+  "bugs_found": [
+    "Unvalidated profile data can crash profile-dependent commands",
+    "cmd_all continues after profile validation failures",
+    "Profile and schema read errors are not consistently caught",
+    "Sensitive path selection can read files outside repository root",
+    "Review branch fallback permits directory traversal outside reviews",
+    "Unreadable files are silently skipped in contract and float checks",
+    "Non-Python sensitive files skip contract presence without failing",
+    "Contract matching ignores scope, location, and duplicate function names",
+    "Python regex treats strings and comments as real functions",
+    "Dunder function skip is documented but not implemented",
+    "Contract regex is unanchored and can truncate YAML bodies",
+    "floats-check misses float literals and generic float annotations",
+    "review-gate omits documented latest-overall approval check",
+    "review-gate checks latest math summary, not round two",
+    "review-gate accepts incomplete review round sequences",
+    "Finding dedup uses filename order, not declared round number",
+    "Malformed round JSON is ignored by review-gate aggregation",
+    "Standalone review-gate checks manifest presence, not schema validity"
+  ],
+  "detected_planted": true
+}

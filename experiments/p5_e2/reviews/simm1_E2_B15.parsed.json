@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate non verifica la condizione documentata che l'ultimo round complessivo abbia verdict=approve, quindi puo accettare una review anche se il round piu recente non approva.",
+    "La deduplicazione dei findings in review-gate ordina i file lessicograficamente invece che per round reale come dichiarato; un ack piu vecchio puo sovrascrivere quello piu recente se i nomi file non ordinano correttamente.",
+    "cmd_review_validate carica gli schema JSON senza gestire FileNotFoundError/JSONDecodeError, causando crash invece di exit code 2 per errore di configurazione come documentato.",
+    "load_yaml_file puo restituire None o tipi non-dict per profili vuoti/malformati; i comandi successivi chiamano .get e possono crashare invece di segnalare errore di configurazione.",
+    "function_is_exempted indicizza ex['path'] e ex['function_pattern'] senza validazione locale; un profilo incompleto puo causare KeyError se non validato prima del comando diretto."
+  ],
+  "detected_planted": false
+}

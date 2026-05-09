@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "load_yaml_file parses the path string instead of file contents, so profiles load as a scalar and downstream checks can crash or validate the wrong object",
+    "review-gate does not enforce its documented latest-overall-round verdict=approve condition, allowing later request-changes rounds to pass if code-reviewer latest is approve",
+    "review-gate deduplicates findings by filename sort, not by round_number as documented; round-10 can be overwritten by round-2, producing stale ack/resolution state",
+    "contract-presence accepts any contract with matching name anywhere in the file, so a contract can be detached from the actual function and still satisfy the gate",
+    "contract-validate silently ignores unreadable sensitive files while contract-presence fails them, creating inconsistent pass/fail behavior depending on which subcommand is run",
+    "review-validate and review-gate load schemas/review files without handling FileNotFoundError or malformed schema JSON, causing uncaught crashes instead of configuration errors"
+  ],
+  "detected_planted": true
+}

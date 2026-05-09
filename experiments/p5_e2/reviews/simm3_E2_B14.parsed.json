@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "review-gate processes only the lexicographically last round file when checking unresolved findings (`all_round_files[-1:]`), so unresolved blocker/major findings from earlier rounds can be missed and the gate can incorrectly pass.",
+    "review-gate documentation says the latest overall round must have `verdict=approve`, but implementation never checks the latest overall round verdict, only the latest code-reviewer verdict.",
+    "Several commands load schemas/profile files without handling FileNotFoundError, JSONDecodeError, or YAML errors, causing uncaught exceptions instead of the documented exit code 2 configuration error.",
+    "Malformed or non-mapping `.banking-profile` content can cause AttributeError later because profile type is not validated before calling `.get()`."
+  ],
+  "detected_planted": true
+}

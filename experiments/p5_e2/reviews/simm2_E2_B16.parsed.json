@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence usa fp.name invece del path relativo, quindi le contract_exemptions con path annidati non matchano e i report diventano ambigui",
+    "cmd_contract_presence commenta che i metodi dunder vengono saltati, ma in realt\u00e0 richiede contratti anche per __init__/__str__/ecc., causando falsi positivi",
+    "load_profile/load_yaml_file non gestiscono YAML valido ma non mapping o YAML malformato nei comandi diversi da profile-validate: profile.get pu\u00f2 crashare e violare gli exit code documentati",
+    "cmd_review_validate e cmd_contract_validate caricano gli schema senza gestione di FileNotFoundError/JSONDecodeError, quindi una configurazione rotta pu\u00f2 produrre traceback invece di exit code 2",
+    "contract-presence considera coperta una funzione se esiste un contract con lo stesso name ovunque nel file, senza verificarne associazione/posizione rispetto alla funzione"
+  ],
+  "detected_planted": true
+}

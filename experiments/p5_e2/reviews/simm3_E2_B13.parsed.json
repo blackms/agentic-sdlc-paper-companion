@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "review-gate documenta che deve verificare che l'ultimo round complessivo abbia verdict=approve, ma l'implementazione non lo controlla: un round pi\u00f9 recente non approvato pu\u00f2 passare se l'ultimo code-reviewer \u00e8 approve.",
+    "L'aggregazione degli ack dei finding in review-gate usa l'ordinamento lessicografico dei file invece del campo round, nonostante il commento dica il contrario; pu\u00f2 scegliere uno stato ack non realmente pi\u00f9 recente se i nomi file non ordinano esattamente per round.",
+    "cmd_review_validate carica gli schema senza gestire FileNotFoundError/JSONDecodeError, quindi una configurazione mancante o malformata pu\u00f2 causare crash invece di exit code 2 come documentato."
+  ],
+  "detected_planted": true
+}

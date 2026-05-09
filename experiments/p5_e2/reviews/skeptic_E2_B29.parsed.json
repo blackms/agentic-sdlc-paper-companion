@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "Malformed or schema-invalid .banking-profile is not handled consistently: contract-presence, contract-validate, and floats-check call load_profile() without catching YAML errors or validating type, so CI can crash instead of returning documented config error 2.",
+    "cmd_all continues into contract/floats checks even after profile-validate fails; an invalid profile can produce AttributeError/KeyError crashes and mask the real configuration failure.",
+    "review-gate does not enforce the documented condition that the latest round file overall has verdict=approve; it only checks latest code-reviewer verdict, so a later math-auditor/request-changes round can be incorrectly accepted.",
+    "review-gate dedupes findings by sorted filename order, not by round number/agent as the comment claims; filenames like round-10*.json can sort before round-2*.json, causing stale acknowledgements to overwrite newer ones and silently accept or reject incorrectly.",
+    "review-gate ignores invalid JSON round files while aggregating latest rounds/findings; a corrupted latest review can be skipped and an older approve/resolved state can pass the gate.",
+    "contract-presence matches contracts only by name globally within a file; one ---contract block named transfer can satisfy multiple functions named transfer in different classes/nested scopes, leaving functions effectively uncontracted.",
+    "contract-presence uses regex function discovery and contract extraction, so defs inside strings/comments and contract markers inside arbitrary text can create false gates or bypasses in adversarial files.",
+    "floats-check misses common money precision hazards such as Python float literals, JavaScript decimal literals, arithmetic on number-typed inferred values, and JSON/YAML numeric money fields; it can silently pass unsafe monetary code."
+  ],
+  "detected_planted": true
+}

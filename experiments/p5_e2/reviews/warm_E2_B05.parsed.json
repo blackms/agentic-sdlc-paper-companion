@@ -1,0 +1,16 @@
+{
+  "bugs_found": [
+    "Malformed profiles crash contract and floats checks",
+    "Review schema load errors are not handled",
+    "Contract schema load errors are not handled",
+    "Invalid exemption entries can raise KeyError",
+    "Contract presence ignores malformed contract blocks",
+    "Dunder functions are not actually skipped",
+    "Latest finding dedupe uses filename order, not round order",
+    "review-gate never checks latest overall round verdict",
+    "review-gate ignores manifest contents despite requiring manifest",
+    "Review directory branch mapping can collide on slash replacement",
+    "Float check misses unreadable files after counting them"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "contract-validate silently accepts invalid contracts: validation errors call reporter.ok('schema OK') and iterate over an empty list, so schema violations never fail CI",
+    "review-gate does not enforce its documented 'latest round overall verdict=approve' condition; a later non-code-reviewer request-changes round can be ignored",
+    "review-gate dedupes findings using lexicographic filename order, not declared round_number ordering, so stale/resolved acks can overwrite newer unresolved findings, especially with round-10 vs round-2 style names",
+    "review-gate branch fallback uses the raw branch string as a path under .claude/reviews without sanitizing '..', allowing path traversal outside the intended review directory",
+    "review-validate and review-gate load schema/JSON files without handling FileNotFoundError or JSONDecodeError for schemas, causing crashes instead of configuration-error exit code 2",
+    "load_yaml_file can return None/non-dict for an empty or scalar profile; downstream .get calls can crash instead of reporting malformed profile consistently"
+  ],
+  "detected_planted": true
+}

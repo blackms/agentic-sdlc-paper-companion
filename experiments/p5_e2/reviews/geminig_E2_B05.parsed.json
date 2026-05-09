@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "The comment in `cmd_contract_presence` regarding skipping dunder methods is misleading; the code processes them like any other function, requiring explicit exemption for dunders without contracts.",
+    "`cmd_contract_presence`, `cmd_contract_validate`, and `cmd_floats_check` do not gracefully handle `yaml.YAMLError` if the `.banking-profile` is malformed, leading to a script crash instead of reporting a configuration error.",
+    "`cmd_review_validate` and `cmd_review_gate` do not handle `json.JSONDecodeError` or `FileNotFoundError` for schema files (e.g., `manifest.schema.json`, `findings.schema.json`), potentially leading to script crashes if these critical files are missing or malformed."
+  ],
+  "detected_planted": false
+}

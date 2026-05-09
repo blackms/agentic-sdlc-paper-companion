@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest is not implemented in the provided code, so its Decimal formula, validation, and invariants cannot be satisfied",
+    "loan_payment is not implemented in the provided code, so amortization behavior and validation cannot be satisfied",
+    "transfer is not implemented in the provided code, so conservation, atomicity, currency, self-transfer, and overdraft invariants cannot be satisfied",
+    "apply_fee is not implemented in the provided code, so fee clipping/subtraction and validation cannot be satisfied",
+    "fx_convert is not implemented in the provided code, so identity conversion, rate lookup, and missing-rate error behavior cannot be satisfied"
+  ],
+  "detected_planted": false
+}

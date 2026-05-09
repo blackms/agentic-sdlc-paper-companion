@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "review-gate docstring requires latest overall round verdict=approve, but implementation never checks latest overall round; a later math-auditor request-changes round can pass if code-reviewer latest approve and findings are acked",
+    "review-gate dedupes findings by sorted filename order, not by round_number/agent as comment claims; lexicographic ordering makes round-10 sort before round-2 and stale acknowledgements can overwrite newer ones",
+    "review-gate accepts any matching filename round-*.json without schema validation and ignores invalid JSON, so malformed or adversarial review files can silently disappear from the merge gate",
+    "contract-presence only matches contract names at file scope, not adjacency or binding to the actual function; a stale block anywhere in the file with the same name satisfies the gate",
+    "contract-presence ignores parse errors in contract blocks, so a malformed contract can still satisfy presence if another valid name is present and validation is not run together",
+    "contract-validate only warns when zero contracts are found; standalone use can return success even when every sensitive function has no contract",
+    "load_profile callers other than profile-validate do not catch malformed YAML or non-mapping profiles, causing tracebacks instead of deterministic config errors",
+    "review-validate does not catch missing or malformed schema files, unlike profile-validate, so CI can crash instead of returning documented exit code 2",
+    "iter_files_under_sensitive follows symlinked sensitive paths via Path.glob/rglob and reads files outside repo_root without containment checks, allowing profile-controlled traversal of external filesystem content",
+    "floats-check misses direct float literals in money code such as 0.01, 1.23, scientific notation, and Python float assignments without annotations, so precision-loss regressions pass silently"
+  ],
+  "detected_planted": true
+}

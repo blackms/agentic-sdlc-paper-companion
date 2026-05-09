@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_profile_validate ha la logica invertita: quando ci sono errori di schema stampa OK e ritorna successo, quindi profili invalidi passano la gate.",
+    "cmd_review_validate e cmd_contract_validate caricano gli schemi senza gestire FileNotFoundError/JSONDecodeError, causando crash non controllati invece di EXIT_CONFIG_ERROR.",
+    "cmd_review_gate documenta il requisito che l'ultimo round complessivo abbia verdict=approve, ma l'implementazione non lo verifica; una review pi\u00f9 recente non approvata pu\u00f2 passare.",
+    "cmd_review_gate deduplica i finding ordinando i file lessicograficamente invece che per round/ordine reale, quindi pu\u00f2 usare ack non pi\u00f9 recenti se i nomi file non ordinano correttamente."
+  ],
+  "detected_planted": false
+}

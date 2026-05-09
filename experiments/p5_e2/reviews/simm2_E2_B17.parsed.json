@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "load_profile callers do not catch YAML parse errors or non-mapping profiles, so malformed .banking-profile can crash contract/floats checks instead of returning configuration error code 2.",
+    "review-validate, review-gate and contract-validate load schema files without handling FileNotFoundError or JSONDecodeError, violating documented config-error behavior and causing uncaught crashes.",
+    "review branch fallback uses repo_root/.claude/reviews/args.branch directly; absolute paths or ../ components can escape the expected reviews directory and validate/gate attacker-chosen directories.",
+    "review-gate comment says latest round overall must approve, but implementation never checks the latest overall verdict, so a later math-auditor request-changes round can be accepted if code-reviewer approved.",
+    "review-gate dedupes findings by lexicographic filename order, not by parsed round number; round-10 sorts before round-2, so older acknowledgements can overwrite newer ones.",
+    "review-gate computes latest round per agent by max round only and ignores ties/duplicate round files, making results dependent on glob order when duplicate agent/round files exist.",
+    "contract-presence claims to skip dunder methods but does not implement that skip, so __init__ and similar methods are incorrectly required to have contracts."
+  ],
+  "detected_planted": true
+}

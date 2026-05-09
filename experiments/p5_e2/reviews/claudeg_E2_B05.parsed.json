@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_profile_validate uses Path.exists() instead of Path.is_file(); a directory named .banking-profile (or a symlink to a dir) passes the presence check and load_yaml_file then fails with IsADirectoryError, producing a confusing traceback instead of the structured config-error",
+    "fnmatch '**' is not natively supported, only the '/**' suffix branch handles recursion",
+    "contract-presence does not actually skip dunders despite its comment",
+    "review-gate success message tuple ('blocker',) omits 'major' from the count",
+    "floats-check regex false-positives in strings/comments",
+    "load_yaml_file annotated -> dict but yaml.safe_load may return None/list"
+  ],
+  "detected_planted": true
+}

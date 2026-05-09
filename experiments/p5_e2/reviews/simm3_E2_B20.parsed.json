@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_gate documenta come requisito che l'ultimo round complessivo abbia verdict=approve, ma l'implementazione controlla solo il latest code-reviewer: un round successivo di math-auditor con request-changes pu\u00f2 passare indebitamente.",
+    "cmd_all continua a eseguire contract-validate/contract-presence/floats-check anche se profile-validate fallisce; con profilo YAML malformato o non-dict pu\u00f2 generare crash/AttributeError invece di exit code 2 controllato.",
+    "load_profile/load_yaml_file non validano che il profilo sia una mapping: un .banking-profile vuoto, lista o scalare rompe i comandi che chiamano profile.get.",
+    "cmd_review_validate e cmd_review_gate caricano schemi/JSON senza gestire FileNotFoundError o JSONDecodeError per gli schemi, causando traceback invece di errore di configurazione.",
+    "cmd_contract_presence commenta che i metodi dunder vengono saltati, ma il codice non li salta: __init__ e simili vengono segnalati come mancanti di contratto."
+  ],
+  "detected_planted": false
+}

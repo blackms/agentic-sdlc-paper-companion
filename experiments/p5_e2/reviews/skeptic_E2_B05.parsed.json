@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "review-gate documents a required check that the latest round overall must verdict=approve, but implementation never checks it; a later math-auditor/request-changes round can be ignored and merge allowed if code-reviewer latest is approve",
+    "review-gate trusts unvalidated round JSON when run standalone; malformed or adversarial round files can omit required fields, spoof round numbers, or reshape findings and still influence/pass the gate",
+    "finding dedupe in review-gate overwrites by lexicographic filename order, not actual round number/agent chronology as the comment claims; stale or adversarial files can replace newer unresolved blocker/major findings with resolved acks",
+    "contract-presence matches contracts by name anywhere in the file, not by function adjacency/scope; one stray ---contract block named transfer can satisfy any def transfer in that file, including nested or unrelated functions",
+    "contract-validate silently returns success when no contract blocks are found, only warning; if contract-presence is skipped or fails to parse a language, missing contracts do not fail this check",
+    "contract-presence warns but does not fail for non-Python files inside sensitive paths, so TypeScript/Java/Go sensitive code can ship without contract coverage",
+    "profile loading is not type-checked in contract/floats commands; empty/list/scalar YAML can crash with AttributeError instead of deterministic config error exit 2",
+    "review schema loading/JSON loading errors are not consistently caught in review-validate/review-gate, causing crashes instead of controlled config errors"
+  ],
+  "detected_planted": false
+}

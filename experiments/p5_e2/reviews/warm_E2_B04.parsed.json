@@ -1,0 +1,29 @@
+{
+  "bugs_found": [
+    "profile-validate accepts invalid profiles due to inverted error check",
+    "profile validation errors are never reported to users",
+    "malformed profile types can crash later checks via get",
+    "review schema load failures crash instead of returning config error",
+    "contract schema load failures crash instead of returning config error",
+    "profile YAML parse errors crash non-validation commands",
+    "function exemptions can KeyError on malformed exemption entries",
+    "contract presence ignores contract parse errors completely",
+    "dunder functions are checked despite documented skip convention",
+    "contract regex can mis-detect delimiter lines inside YAML",
+    "contract blocks without newline before closing delimiter are missed",
+    "decorated functions may require contracts even when intentionally generated",
+    "sensitive glob handling misses directory patterns without trailing wildcard",
+    "repo-root symlink resolution can break relative_to during glob iteration",
+    "review-gate never checks latest overall round verdict approve",
+    "latest finding ack uses filename order, not round order",
+    "round dedupe can regress with multi-agent same-round ordering",
+    "review-gate ignores malformed round JSON instead of failing",
+    "review-gate does not validate manifest content before enforcing gate",
+    "floats-check reads then silently skips unreadable sensitive files",
+    "floats-check flags comments and strings as violations",
+    "Number constructor pattern flags non-monetary JavaScript conversions",
+    "contract-validate silently skips unreadable sensitive files",
+    "all command ignores explicit profile override capability"
+  ],
+  "detected_planted": true
+}

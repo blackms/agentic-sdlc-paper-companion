@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_gate claims to require latest overall round verdict=approve but never checks the latest round overall, so a later math-auditor/request-changes round can still pass if code-reviewer approved.",
+    "cmd_review_gate deduplicates findings by lexicographic filename order, not by the embedded round number, so files like round-10.json can be overwritten by round-2.json and stale acknowledgements may decide the gate.",
+    "cmd_review_gate comment says latest ack wins, but it overwrites the whole finding by id; if later rounds omit a previously reported blocker/major, the finding disappears and can be treated as resolved.",
+    "cmd_review_validate, cmd_contract_validate, and related schema loads do not catch missing/malformed schema files, causing uncaught exceptions instead of documented exit code 2.",
+    "function_is_exempted indexes exemption keys path and function_pattern directly, so a malformed profile can crash contract-presence instead of reporting a configuration error.",
+    "contract-presence only checks whether any contract block in the file has the same name as a function; it does not ensure the contract is attached to the function, so misplaced or duplicate contract names can falsely satisfy the gate."
+  ],
+  "detected_planted": true
+}

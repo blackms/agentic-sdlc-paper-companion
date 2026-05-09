@@ -1,0 +1,30 @@
+{
+  "bugs_found": [
+    "cmd_all maschera errori di configurazione restituendo zero",
+    "cmd_all continua dopo profilo invalido e puo crashare",
+    "YAML profilo invalido crasha comandi diversi da profile-validate",
+    "Profili non mapping causano AttributeError su profile.get",
+    "Exemption senza chiavi obbligatorie causa KeyError",
+    "Schemi mancanti o corrotti crashano diversi comandi",
+    "review-validate puo passare senza manifest.json",
+    "Fallback branch consente traversal fuori da reviews",
+    "Glob sensibili possono uscire dal repository",
+    "File illeggibili bypassano contract-validate e floats-check",
+    "contract-presence ignora errori di parsing dei contratti",
+    "Commento promette skip dunder ma codice non lo fa",
+    "Regex delle funzioni intercetta commenti e stringhe",
+    "Un contratto nominale copre funzioni omonime multiple",
+    "Contratti non sono associati alla definizione corretta",
+    "Regex contratti puo catturare blocchi dentro stringhe",
+    "floats-check manca letterali float e Decimal da float",
+    "floats-check segnala falsi positivi in commenti",
+    "review-gate non verifica verdict latest round complessivo",
+    "review-gate ignora JSON round invalidi",
+    "JSON round non mapping crashano review-gate",
+    "Finding deduplicati per nome file, non round",
+    "review-gate non valida il manifest, solo presenza",
+    "review-gate non garantisce summary math-auditor al round 2",
+    "Nessuno snapshot atomicamente coerente tra validate e gate"
+  ],
+  "detected_planted": false
+}

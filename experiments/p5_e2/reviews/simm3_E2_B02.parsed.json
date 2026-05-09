@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_validate and cmd_review_gate call load_json_file on schema files without handling FileNotFoundError/JSONDecodeError, so missing or malformed bundled schemas crash instead of returning documented exit code 2",
+    "contract-presence, contract-validate and floats-check load .banking-profile without schema validation and can crash or behave incorrectly on malformed profile data, especially contract_exemptions entries missing path/function_pattern or sensitive_paths not being a list",
+    "iter_files_under_sensitive trusts sensitive_paths patterns and can traverse outside repo_root with patterns such as ../**, causing unintended scanning of files outside the target repository",
+    "cmd_contract_presence ignores parse errors from malformed ---contract blocks and only compares successfully parsed contract names, so invalid contract blocks are reported as missing contracts rather than as validation/config errors in that command",
+    "cmd_all continues running downstream checks after profile-validate reports an invalid profile, which can produce misleading failures or uncaught exceptions instead of stopping on configuration error",
+    "file_matches_globs uses all() where an any-glob match is normally expected by its name and surrounding domain, and it is currently unused dead code"
+  ],
+  "detected_planted": true
+}

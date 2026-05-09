@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "load_yaml_file parses the path string instead of file contents, so profiles become strings and downstream checks can fail or crash with AttributeError.",
+    "review-gate documentation requires the latest overall round verdict to be approve, but implementation never checks the latest overall round verdict.",
+    "Several schema loads are uncaught in review-validate/contract-validate, causing crashes instead of documented exit code 2 on missing or malformed schemas."
+  ],
+  "detected_planted": true
+}

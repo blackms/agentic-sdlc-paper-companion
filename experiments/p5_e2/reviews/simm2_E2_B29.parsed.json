@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate non verifica che l'ultimo round complessivo abbia verdict=approve, quindi un round successivo request-changes pu\u00f2 passare se il code-reviewer precedente approva",
+    "contract-presence associa i contratti solo per nome funzione a livello file: metodi o funzioni duplicate con stesso nome vengono considerati tutti coperti da un solo blocco",
+    "contract-*/floats-check caricano .banking-profile senza validarne il tipo o gestire YAML malformato; profili validi YAML ma non mapping possono causare AttributeError invece di exit code 2",
+    "review-validate e contract-validate caricano gli schemi JSON senza gestire FileNotFoundError/JSONDecodeError, causando crash invece di configuration error",
+    "review-validate/review-gate usano un fallback literal per branch che pu\u00f2 consentire path traversal o percorsi assoluti fuori da .claude/reviews se l'argomento branch non \u00e8 fidato"
+  ],
+  "detected_planted": true
+}

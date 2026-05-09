@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate non verifica il verdetto dell'ultimo round complessivo nonostante lo dichiari: un round successivo con request-changes puo essere ignorato se l'ultimo code-reviewer approva",
+    "review-gate deduplica i findings ordinando i file lessicograficamente invece che per round JSON, quindi round-10 puo essere applicato prima di round-2 e scegliere ack obsoleti",
+    "profili YAML vuoti/non mapping o schemi JSON mancanti/malformati in vari comandi causano traceback invece di exit code 2/config_error",
+    "contract-presence commenta che salta i dunder ma in realta controlla anche __init__ e simili, causando falsi fallimenti",
+    "contract-presence considera valido qualunque contratto con lo stesso name ovunque nel file, quindi blocchi stale o spostati possono soddisfare funzioni senza contratto reale"
+  ],
+  "detected_planted": true
+}

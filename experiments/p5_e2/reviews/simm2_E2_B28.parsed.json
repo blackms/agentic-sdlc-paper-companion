@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_all masks configuration errors by returning 0 when aggregated exit code is 2, allowing CI to pass on missing/malformed schemas or config errors",
+    "review-gate documents requiring latest overall round verdict=approve but never checks the latest round overall, so stale code-reviewer approval can pass despite a later non-approve round",
+    "finding aggregation sorts round files lexicographically, so round-10 can be processed before round-2 and older acknowledgements may incorrectly overwrite newer ones",
+    "cmd_review_validate loads manifest/findings schemas without handling FileNotFoundError or JSONDecodeError, causing uncaught exceptions instead of the documented config-error exit code"
+  ],
+  "detected_planted": true
+}

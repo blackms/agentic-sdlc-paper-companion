@@ -1,0 +1,20 @@
+{
+  "bugs_found": [
+    "Invalid YAML is swallowed, so malformed profiles become empty dictionaries",
+    "Non-mapping profiles can crash downstream checks via profile.get",
+    "cmd_all continues after invalid profile validation failures",
+    "Missing profile in all exits successfully, enabling gate bypass",
+    "Schema load failures crash review and contract validators",
+    "Unreadable files are silently skipped in contract-validate and floats-check",
+    "Exemption entries missing keys crash contract-presence",
+    "Dunder functions are not skipped despite documented behavior",
+    "Regex contract extraction can miss or truncate valid contract blocks",
+    "Regex function discovery matches nested or string-contained definitions",
+    "review-gate omits documented latest-overall verdict approval check",
+    "Math Auditor summary is not checked specifically on round two",
+    "Finding deduplication uses lexicographic filenames, not numeric round order",
+    "Later severity downgrade can hide unresolved blocker or major findings",
+    "Raw branch fallback allows path traversal outside review directory"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non implementata: nessuna funzione con questo nome nel codice fornito",
+    "loan_payment non implementata: nessuna funzione con questo nome nel codice fornito",
+    "transfer non implementata: nessuna funzione con questo nome nel codice fornito",
+    "apply_fee non implementata: nessuna funzione con questo nome nel codice fornito",
+    "fx_convert non implementata: nessuna funzione con questo nome nel codice fornito"
+  ],
+  "detected_planted": false
+}

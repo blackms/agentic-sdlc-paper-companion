@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non \u00e8 presente nel codice fornito, quindi formula, validazioni, invarianti e uso Decimal non sono soddisfatti.",
+    "loan_payment non \u00e8 presente nel codice fornito, quindi formula di ammortamento, validazioni e invarianti non sono implementate.",
+    "transfer non \u00e8 presente nel codice fornito, inclusi atomicit\u00e0, conservazione, currency check, no self-transfer e no overdraft.",
+    "apply_fee non \u00e8 presente nel codice fornito, quindi clipping della fee, sottrazione e validazioni non sono implementati.",
+    "fx_convert non \u00e8 presente nel codice fornito, quindi identit\u00e0, lookup rate e errore esplicito per rate mancante non sono implementati."
+  ],
+  "detected_planted": true
+}

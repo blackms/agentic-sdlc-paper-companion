@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_validate e cmd_contract_validate caricano gli schemi JSON senza gestire FileNotFoundError/JSONDecodeError, quindi errori di configurazione possono causare crash invece dell'exit code 2 documentato.",
+    "load_yaml_file pu\u00f2 restituire None/list/scalari da yaml.safe_load; varie chiamate successive usano profile.get o accessi dict senza validare il tipo, causando AttributeError su profili YAML vuoti o malformati.",
+    "Il fallback di review directory usa args.branch come path letterale sotto .claude/reviews senza normalizzazione/validazione; valori con componenti di path possono permettere traversal fuori dalla directory reviews.",
+    "contract-presence associa i contratti alle funzioni solo tramite name globale nel file: due funzioni con lo stesso nome in scope diversi, metodi o nested function possono risultare falsamente coperti.",
+    "review-gate commenta che deve verificare il latest round file overall con verdict=approve, ma il codice controlla solo il latest del code-reviewer e non implementa quella condizione."
+  ],
+  "detected_planted": true
+}

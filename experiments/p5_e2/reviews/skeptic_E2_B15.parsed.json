@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "Malformed or schema-invalid .banking-profile is still used by contract-validate/contract-presence/floats-check, causing AttributeError/KeyError crashes or nonsensical scans instead of controlled config failure; cmd_all does not stop after profile-validate fails.",
+    "sensitive_paths are trusted as filesystem globs with no containment validation; ../ or absolute/path-like patterns can crash on relative_to(repo_root) or scan outside the repo depending on branch, breaking CI isolation.",
+    "review-gate claims to require latest overall round verdict=approve but never checks latest overall round, only code-reviewer approval, so a later math-auditor/request-changes round can be silently accepted.",
+    "review-gate dedupes findings by lexicographic filename order, not by parsed round number/timestamp despite the comment; round-10 sorts before round-2, so stale acks can overwrite newer findings and unresolved blockers may be accepted.",
+    "review-gate ignores invalid JSON round files while deciding approval/resolution; if review-validate is not run together, corrupt or malicious round files can be skipped and the gate may pass on incomplete evidence.",
+    "contract-presence matches contract block names globally per file, not tied to function location; a contract named foo anywhere in the file satisfies any def foo including nested/duplicate functions, so missing contracts can be masked.",
+    "contract-validate silently ignores unreadable/undecodable sensitive files while contract-presence fails them, creating inconsistent gates and allowing contract validation to pass with files it did not actually inspect.",
+    "contract-presence warns, but does not fail, for non-Python files in sensitive paths; mixed-language banking code can ship with no contract enforcement.",
+    "review directory branch fallback uses the literal branch name after sanitized lookup; branch names containing path separators or traversal-like components can select unintended nested directories under .claude/reviews."
+  ],
+  "detected_planted": false
+}

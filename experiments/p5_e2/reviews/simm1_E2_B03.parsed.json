@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_all usa min() per aggregare profile-validate: un errore o config error del profilo pu\u00f2 essere azzerato e far uscire il comando all con codice 0.",
+    "I comandi contract-presence/contract-validate/floats-check caricano .banking-profile senza gestire YAML malformato, file vuoto o tipo non-dict: possono crashare con traceback invece di restituire EXIT_CONFIG_ERROR.",
+    "review-gate documenta il requisito che l\u2019ultimo round globale abbia verdict=approve, ma l\u2019implementazione controlla solo l\u2019ultimo round del code-reviewer, quindi pu\u00f2 accettare una review con round successivo non approvato.",
+    "sensitive_paths non viene confinato a repo_root: pattern con .. o assoluti possono far scansionare file fuori dal repository e potenzialmente esporre contenuti nei log CI.",
+    "contract-presence usa regex sul testo invece dell\u2019AST e considera valido un contratto con lo stesso nome ovunque nel file, producendo falsi positivi/negativi su funzioni in stringhe, commenti, nested scope o contratti non associati alla funzione reale."
+  ],
+  "detected_planted": true
+}

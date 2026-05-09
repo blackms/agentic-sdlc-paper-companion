@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_all continua dopo profile-validate anche se il profilo \u00e8 YAML malformato o non conforme; i check successivi chiamano load_profile senza try/validazione e possono terminare con traceback invece di exit code 2.",
+    "cmd_review_gate dichiara di richiedere che il round pi\u00f9 recente complessivo abbia verdict=approve, ma il codice verifica solo il latest round del code-reviewer, quindi pu\u00f2 accettare review in cui l'ultimo round reale \u00e8 ancora request-changes.",
+    "cmd_review_gate aggrega i findings con list(branch_dir.glob(...)) non ordinato e sovrascrive per id senza confrontare round/agent; pu\u00f2 usare ack vecchi in modo non deterministico e accettare o rifiutare erroneamente.",
+    "sensitive_paths e il fallback literal del branch non verificano che i path restino dentro repo_root/.claude/reviews; pattern o branch malevoli possono causare scansione/lettura di file fuori dall'area prevista e potenziale leakage nei log CI.",
+    "cmd_review_validate e cmd_contract_validate caricano gli schema JSON senza gestione di FileNotFoundError/JSONDecodeError, violando la semantica dichiarata di errore configurazione e causando crash."
+  ],
+  "detected_planted": false
+}

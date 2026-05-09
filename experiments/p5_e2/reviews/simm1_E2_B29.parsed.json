@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "review-gate non verifica la condizione documentata 'latest round file overall has verdict=approve'; un round math-auditor pi\u00f9 recente con request-changes pu\u00f2 passare se code-reviewer \u00e8 approve",
+    "Aggregazione finding in review-gate ordina solo per nome file e sovrascrive per ordine lessicografico, non per round/agent come descritto; con nomi round-10 vs round-2 o agent diversi pu\u00f2 usare ack non pi\u00f9 recente",
+    "cmd_review_validate e cmd_review_gate non gestiscono FileNotFoundError/JSONDecodeError nel caricamento degli schemi, causando crash invece di exit code 2 per errore di configurazione",
+    "contract-presence considera valido un contratto se esiste un block con lo stesso name ovunque nel file, senza associarlo alla funzione; pu\u00f2 mascherare funzioni realmente prive di contratto"
+  ],
+  "detected_planted": true
+}

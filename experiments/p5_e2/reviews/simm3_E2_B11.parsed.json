@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "contract/floats checks load .banking-profile without catching YAML/type errors, so malformed or non-mapping profiles can crash instead of returning documented configuration error exit code 2",
+    "review-validate, review-gate, and related schema-loading paths do not handle missing or malformed schema files, causing uncaught exceptions instead of controlled configuration errors",
+    "review directory fallback uses raw args.branch as a path component, allowing absolute/path-traversal style branch arguments to read review JSON from outside .claude/reviews"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "file_matches_globs usa all() invece di any(), quindi un file deve combaciare con tutti i glob; anche se oggi \u00e8 inutilizzata \u00e8 una logica errata/latente.",
+    "cmd_review_gate dichiara di richiedere che l'ultimo round complessivo abbia verdict=approve, ma il codice controlla solo l'ultimo round del code-reviewer e ignora il verdict pi\u00f9 recente globale.",
+    "cmd_review_gate deduplica i finding iterando file ordinati alfabeticamente e sovrascrivendo per id; non ordina per numero round/agent come da commento, quindi round-10 pu\u00f2 essere valutato prima di round-2 e produrre stato ack errato.",
+    "function_is_exempted accede direttamente a ex['path'] e ex['function_pattern']; un profilo malformato causa KeyError invece di errore di configurazione gestito.",
+    "cmd_review_validate e cmd_contract_validate caricano schemi JSON senza gestione di FileNotFoundError/JSONDecodeError, causando traceback invece dell'exit code 2 documentato.",
+    "contract-presence associa contratti e funzioni solo per nome a livello file: funzioni/metodi omonimi possono risultare erroneamente coperte da un solo contratto non collegato alla definizione specifica."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,264 @@
+# E2 — Repository-scale bug benchmark v2 (calibrated to actual bankcheck.py text)
+# Target: integration/checks/bankcheck.py (597 LOC, real codebase)
+# 30 bugs balanced across 10 Codex-recommended categories (3/category)
+
+bugs:
+  # ===== boundary-drift (3) =====
+  - id: E2_B01
+    category: boundary-drift
+    severity: high
+    function: cmd_review_gate
+    description: 'severity comparison flipped'
+    sub_old: "in ('blocker','major')"
+    sub_new: "in ('blocker',)"
+    detection_keywords: [severity, blocker, major, missing, threshold]
+  - id: E2_B02
+    category: boundary-drift
+    severity: medium
+    function: file_matches_globs
+    description: 'any → all in glob match'
+    sub_old: "return any(fnmatch.fnmatch(rel_path, pat) for pat in patterns)"
+    sub_new: "return all(fnmatch.fnmatch(rel_path, pat) for pat in patterns)"
+    detection_keywords: [any, all, predicate, glob, file matching]
+  - id: E2_B03
+    category: boundary-drift
+    severity: high
+    function: cmd_review_validate
+    description: 'aggregation max → min hides worst error'
+    sub_old: "aggregated = max(aggregated, cmd_profile_validate(sub_args))"
+    sub_new: "aggregated = min(aggregated, cmd_profile_validate(sub_args))"
+    detection_keywords: [max, min, aggregation, exit code]
+
+  # ===== predicate-composition (3) =====
+  - id: E2_B04
+    category: predicate-composition
+    severity: high
+    function: cmd_review_gate
+    description: 'and → or in resolution check'
+    sub_old: "if not errors:"
+    sub_new: "if errors:"
+    detection_keywords: [negation, condition, errors, validation]
+  - id: E2_B05
+    category: predicate-composition
+    severity: medium
+    function: cmd_floats_check
+    description: 'profile_path is_file → exists (loosens precondition)'
+    sub_old: "if not profile_path.is_file():"
+    sub_new: "if not profile_path.exists():"
+    detection_keywords: [is_file, exists, precondition, file check]
+  - id: E2_B06
+    category: predicate-composition
+    severity: medium
+    function: cmd_all
+    description: 'short-circuit removes review-gate when branch present'
+    sub_old: "if sub_args.branch:"
+    sub_new: "if False and sub_args.branch:"
+    detection_keywords: [short-circuit, branch, review-gate, skip, dead code]
+
+  # ===== data-flow (3) =====
+  - id: E2_B07
+    category: data-flow
+    severity: high
+    function: cmd_contract_presence
+    description: 'use raw fp instead of relative path'
+    sub_old: "rel = fp.relative_to(repo_root).as_posix()"
+    sub_new: "rel = str(fp)"
+    detection_keywords: [path, relative, absolute, data-flow, normalization]
+  - id: E2_B08
+    category: data-flow
+    severity: medium
+    function: cmd_review_validate
+    description: 'wrong key for severity field'
+    sub_old: 'sev = finding.get("severity")'
+    sub_new: 'sev = finding.get("level")'
+    detection_keywords: [severity, level, dict key, field rename]
+  - id: E2_B09
+    category: data-flow
+    severity: high
+    function: load_yaml_file
+    description: 'pass file path instead of file handle to yaml'
+    sub_old: "return yaml.safe_load(fh)"
+    sub_new: "return yaml.safe_load(str(path))"
+    detection_keywords: [yaml, safe_load, file handle, string, parsing]
+
+  # ===== unit-schema (3) =====
+  - id: E2_B10
+    category: unit-schema
+    severity: high
+    function: cmd_review_gate
+    description: 'severity tuple changed silently'
+    sub_old: "f.get('severity') in ('blocker','major')"
+    sub_new: "f.get('severity') in ('block','major')"
+    detection_keywords: [severity, enum, schema, blocker, block]
+  - id: E2_B11
+    category: unit-schema
+    severity: medium
+    function: build_parser
+    description: 'subparser dest changed breaking dispatch'
+    sub_old: 'sub = p.add_subparsers(dest="cmd", required=True)'
+    sub_new: 'sub = p.add_subparsers(dest="command", required=True)'
+    detection_keywords: [dest, cmd, schema, subparser]
+  - id: E2_B12
+    category: unit-schema
+    severity: medium
+    function: cmd_floats_check
+    description: 'EXIT codes shifted by one (schema invariant)'
+    sub_old: "return EXIT_OK"
+    sub_new: "return 1"
+    detection_keywords: [exit code, EXIT_OK, schema, return]
+
+  # ===== aggregation (3) =====
+  - id: E2_B13
+    category: aggregation
+    severity: high
+    function: cmd_all
+    description: 'aggregation uses sum instead of max'
+    sub_old: "aggregated = max(aggregated, cmd_profile_validate(sub_args))"
+    sub_new: "aggregated = aggregated + cmd_profile_validate(sub_args)"
+    detection_keywords: [sum, max, aggregation, exit code]
+  - id: E2_B14
+    category: aggregation
+    severity: medium
+    function: cmd_review_validate
+    description: 'count discarded by overwriting in loop'
+    sub_old: "for fp in all_round_files:"
+    sub_new: "for fp in all_round_files[-1:]:"
+    detection_keywords: [loop, iteration, count, slice, last]
+  - id: E2_B15
+    category: aggregation
+    severity: low
+    function: cmd_contract_presence
+    description: 'wrong subset for unsupported languages'
+    sub_old: "for ext, count in sorted(unsupported_languages.items()):"
+    sub_new: "for ext, count in sorted(unsupported_languages.items())[:1]:"
+    detection_keywords: [aggregation, slice, unsupported, languages]
+
+  # ===== dedup (3) =====
+  - id: E2_B16
+    category: dedup
+    severity: high
+    function: cmd_floats_check
+    description: 'rel uses fp.name (basename) — dedup collapses different paths'
+    sub_old: "rel = fp.relative_to(repo_root).as_posix()"
+    sub_new: "rel = fp.name"
+    detection_keywords: [dedup, basename, relative, path, identity]
+  - id: E2_B17
+    category: dedup
+    severity: medium
+    function: cmd_contract_validate
+    description: 'dedup invariants by name only'
+    sub_old: "errors = list(validator.iter_errors(parsed))"
+    sub_new: "errors = list({e.message: e for e in validator.iter_errors(parsed)}.values())"
+    detection_keywords: [dedup, errors, message, dict, validator]
+  - id: E2_B18
+    category: dedup
+    severity: medium
+    function: cmd_review_validate
+    description: 'agent dedup uses agent name without round'
+    sub_old: "for fp in all_round_files:"
+    sub_new: "_seen = set()\n    all_round_files = [fp for fp in all_round_files if fp.name not in _seen and not _seen.add(fp.name)]\n    for fp in all_round_files:"
+    detection_keywords: [agent, round, dedup, key, collapse]
+
+  # ===== state-leakage (3) =====
+  - id: E2_B19
+    category: state-leakage
+    severity: high
+    function: cmd_all
+    description: 'aggregated initialized at module level (leaks between calls)'
+    sub_old: "aggregated = EXIT_OK"
+    sub_new: "aggregated = max(aggregated, EXIT_OK) if 'aggregated' in globals() else EXIT_OK"
+    detection_keywords: [state, leakage, aggregated, between, global]
+  - id: E2_B20
+    category: state-leakage
+    severity: medium
+    function: load_profile
+    description: 'cache profile globally without invalidation'
+    sub_old: "def load_profile(repo_root: Path, override: Path | None = None) -> dict | None:"
+    sub_new: "_profile_cache = {}\ndef load_profile(repo_root: Path, override: Path | None = None) -> dict | None:"
+    detection_keywords: [cache, global, invalidation, state]
+  - id: E2_B21
+    category: state-leakage
+    severity: medium
+    function: cmd_review_validate
+    description: 'reporter object reused across calls'
+    sub_old: "    reporter = Reporter()\n    branch_dir = _branch_dir(repo_root, args.branch)"
+    sub_new: "    reporter = reporter if 'reporter' in dir() else Reporter()\n    branch_dir = _branch_dir(repo_root, args.branch)"
+    detection_keywords: [reporter, reuse, between, state, leakage]
+
+  # ===== error-masking (3) =====
+  - id: E2_B22
+    category: error-masking
+    severity: high
+    function: load_yaml_file
+    description: 'broad except returns empty dict on parse error'
+    sub_old: "        return yaml.safe_load(fh)"
+    sub_new: "        try:\n            return yaml.safe_load(fh) or {}\n        except Exception:\n            return {}"
+    detection_keywords: [except, mask, error, fallback, silent]
+  - id: E2_B23
+    category: error-masking
+    severity: high
+    function: cmd_review_validate
+    description: 'errors converted to ok via reporter.ok'
+    sub_old: "                for e in errors:"
+    sub_new: "                reporter.ok('schema OK')\n                for e in []:"
+    detection_keywords: [error, ok, masking, success, schema]
+  - id: E2_B24
+    category: error-masking
+    severity: medium
+    function: cmd_floats_check
+    description: 'fp.read_text exception swallowed silently'
+    sub_old: "        rel = fp.relative_to(repo_root).as_posix()"
+    sub_new: "        try:\n            fp.read_text()\n        except Exception:\n            continue\n        rel = fp.relative_to(repo_root).as_posix()"
+    detection_keywords: [read_text, exception, swallow, silent, masking]
+
+  # ===== ordering (3) =====
+  - id: E2_B25
+    category: ordering
+    severity: high
+    function: cmd_all
+    description: 'check order swapped: floats-check before contract-validate'
+    sub_old: '    print("== contract-validate ==")\n    aggregated = max(aggregated, cmd_contract_validate(sub_args))\n    print("== contract-presence ==")'
+    sub_new: '    print("== floats-check ==")\n    aggregated = max(aggregated, cmd_floats_check(sub_args))\n    print("== contract-validate ==")\n    aggregated = max(aggregated, cmd_contract_validate(sub_args))\n    print("== contract-presence ==")'
+    detection_keywords: [order, sequence, dependency, command, ordering]
+  - id: E2_B26
+    category: ordering
+    severity: medium
+    function: cmd_review_validate
+    description: 'iteration order non-deterministic (uses set instead of sorted)'
+    sub_old: "all_round_files = sorted(branch_dir.glob"
+    sub_new: "all_round_files = list(branch_dir.glob"
+    detection_keywords: [order, sorted, set, iteration, non-deterministic]
+  - id: E2_B27
+    category: ordering
+    severity: medium
+    function: cmd_floats_check
+    description: 'glob iteration order changes results'
+    sub_old: "for fp in sorted(repo_root.rglob"
+    sub_new: "for fp in repo_root.rglob"
+    detection_keywords: [glob, sorted, order, deterministic]
+
+  # ===== partial-failure (3) =====
+  - id: E2_B28
+    category: partial-failure
+    severity: high
+    function: cmd_all
+    description: 'rc aggregation with sum hides partial failures'
+    sub_old: "    print(f\"== bankcheck exit code: {aggregated} ==\")\n    return aggregated"
+    sub_new: "    print(f\"== bankcheck exit code: {aggregated} ==\")\n    return aggregated if aggregated <= 1 else 0"
+    detection_keywords: [partial, failure, exit code, masking]
+  - id: E2_B29
+    category: partial-failure
+    severity: medium
+    function: cmd_review_validate
+    description: 'one round error becomes ok'
+    sub_old: "                for e in errors:"
+    sub_new: "                if not errors: pass\n                for e in errors:"
+    detection_keywords: [error, mask, propagation, partial]
+  - id: E2_B30
+    category: partial-failure
+    severity: medium
+    function: cmd_contract_presence
+    description: 'missing contract reports ok'
+    sub_old: 'reporter = Reporter()'
+    sub_new: 'reporter = Reporter()  # downgrade missing contract from error to ok'
+    detection_keywords: [missing, contract, downgrade, error, propagation]

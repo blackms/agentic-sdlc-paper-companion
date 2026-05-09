@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_all inizializza aggregated leggendo un possibile globale e pu\u00f2 generare UnboundLocalError se il modulo contiene un globale aggregated; va inizializzato localmente a EXIT_OK",
+    "cmd_contract_presence dichiara di saltare i metodi dunder ma non lo fa, quindi segnala falsi failure su __init__ e simili",
+    "cmd_review_validate e cmd_contract_validate caricano schemi JSON senza gestire FileNotFoundError/JSONDecodeError, causando crash invece dell'exit code 2 previsto per errori di configurazione",
+    "load_yaml_file pu\u00f2 restituire None o tipi non-dict per profili vuoti/malformati; i comandi successivi chiamano .get e possono crashare prima della validazione schema",
+    "cmd_review_gate deduplica i finding ordinando per nome file anzich\u00e9 per round/agent come dichiarato, quindi l'ack pi\u00f9 recente pu\u00f2 essere sovrascritto in modo errato"
+  ],
+  "detected_planted": true
+}

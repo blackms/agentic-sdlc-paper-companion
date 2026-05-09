@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_validate and cmd_review_gate load schema/review files without catching FileNotFoundError/JSONDecodeError, causing uncaught crashes instead of exit code 2/1.",
+    "cmd_contract_validate and review commands do not catch missing or malformed schema JSON, so CI can fail with stack traces rather than configured errors.",
+    "contract-presence matches contracts only by function name, so duplicate function names in different classes/scopes can be incorrectly accepted by a single contract block.",
+    "profile-dependent checks use profile fields without validating shape first; malformed exemptions or sensitive_paths can raise KeyError/TypeError in standalone commands or after profile-validate fails in all.",
+    "review-gate says latest round should approve, but never actually checks the latest round overall, only code-reviewer verdict, so a later non-approve round from another agent can pass.",
+    "review-gate dedupe comment claims latest ack wins, but glob order is filename sort and not ordered by round number/agent semantics, so findings can be overwritten by older/stale data."
+  ],
+  "detected_planted": true
+}

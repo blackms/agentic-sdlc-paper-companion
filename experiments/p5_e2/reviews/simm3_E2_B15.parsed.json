@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence/cmd_contract_validate/cmd_floats_check do not catch malformed YAML or non-mapping profiles, so standalone checks can crash with tracebacks instead of returning configuration exit code 2",
+    "cmd_review_validate and cmd_contract_validate load schema files without FileNotFoundError/JSONDecodeError handling, causing uncaught exceptions if packaged schemas are missing or malformed",
+    "review-gate claims to require the latest round overall to have verdict=approve but never implements that check, so a later math-auditor request-changes round can still pass if code-reviewer approved",
+    "review-gate dedupes findings by sorted filename order rather than parsed round number, so files like round-10 can be processed before round-2 and stale acknowledgements may overwrite newer ones",
+    "contract-presence matches contracts only by contract name globally within a file, so a contract block for one function can satisfy another same-named nested/function occurrence and it does not verify proximity or binding",
+    "function_is_exempted indexes exemption fields directly; malformed exemptions in standalone use can raise KeyError instead of reporting a validation/config error",
+    "contract-presence reports only the first unsupported extension because of sorted(... )[:1], hiding other skipped sensitive file types"
+  ],
+  "detected_planted": true
+}

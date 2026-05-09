@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "load_yaml_file can return non-dict or raise yaml.YAMLError; contract-presence, contract-validate, floats-check and all can crash instead of returning configuration error for malformed/empty .banking-profile",
+    "cmd_review_validate and cmd_contract_validate load schema JSON without handling FileNotFoundError/JSONDecodeError, causing uncaught crashes instead of documented exit code 2",
+    "review directory fallback uses unsanitized args.branch, allowing path traversal outside .claude/reviews via branch values like ../..",
+    "contract-presence validates every Python def in a file by matching contract name only, so one contract block with a reused function name can satisfy multiple functions/classes incorrectly",
+    "unsupported language warning in contract-presence reports only the first extension because of sorted(... )[:1], hiding skipped sensitive files for other extensions"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,19 @@
+{
+  "bugs_found": [
+    "review-gate only inspects all_round_files[-1:], so unresolved blocker/major findings from earlier rounds or other agents are silently ignored despite the comment claiming aggregation across all rounds.",
+    "review-gate never enforces the documented condition that the latest round file overall has verdict=approve; it only checks the latest code-reviewer verdict.",
+    "review-gate uses lexicographic filename ordering, not parsed round number/agent ordering, so round-10 sorts before round-2 and the 'latest' finding/round can be wrong.",
+    "review-gate does not require math-auditor round 2 specifically; any latest math-auditor file with contract_only_summary passes, weakening the stated contract-first guarantee.",
+    "cmd_review_validate loads manifest/findings schemas without handling FileNotFoundError/JSONDecodeError, causing unhandled crashes instead of exit code 2 for configuration errors.",
+    "cmd_contract_validate loads the contract schema without handling FileNotFoundError/JSONDecodeError, causing unhandled crashes instead of exit code 2.",
+    "cmd_all continues running contract/floats checks after profile-validate fails, so malformed profiles can trigger crashes or misleading downstream behavior instead of stopping on configuration failure.",
+    "individual checks load .banking-profile without validating it against schema first; wrong types like sensitive_paths as a string/list entries with unexpected shapes can cause incorrect scans or unhandled exceptions.",
+    "function_is_exempted indexes ex['path'] and ex['function_pattern'] without validation, so malformed contract_exemptions can crash the gate.",
+    "iter_files_under_sensitive trusts profile globs and can escape repo_root via patterns like '../**', then fp.relative_to(repo_root) can crash or the gate can scan unintended files.",
+    "contract-presence matches functions to contracts only by name, not by location or uniqueness, so one contract block named 'foo' can satisfy multiple foo functions in the same sensitive file.",
+    "contract-validate only warns when no contract blocks exist, returning success; if used without contract-presence or on unsupported/non-Python sensitive files, missing contracts can silently pass.",
+    "contract-presence treats unsupported sensitive languages as WARN only and returns success, so sensitive TypeScript/Go/Java code can ship with no contracts while the CI gate passes.",
+    "floats-check skips unreadable files after incrementing files_checked and does not fail, so protected or invalid-encoding sensitive files can evade float scanning silently."
+  ],
+  "detected_planted": false
+}

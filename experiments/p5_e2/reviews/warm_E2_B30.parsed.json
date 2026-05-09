@@ -1,0 +1,31 @@
+{
+  "bugs_found": [
+    "Malformed profile YAML crashes most subcommands",
+    "Missing schemas crash instead of configuration error",
+    "Malformed review schemas crash review validation",
+    "Malformed contract schema crashes contract validation",
+    "Empty YAML profile misreported as missing profile",
+    "Unvalidated profile fields can raise KeyError or TypeError",
+    "Sensitive path glob can escape repository root",
+    "Contract extraction requires newline before closing delimiter",
+    "Contract presence ignores unparsable contract blocks",
+    "Duplicate contract names can satisfy wrong functions",
+    "Nested functions require contracts unintentionally",
+    "Dunder functions comment contradicts actual behavior",
+    "Review gate ignores latest overall verdict requirement",
+    "Latest findings are sorted by filename, not round order",
+    "Review gate may overwrite newer acknowledgements incorrectly",
+    "Review gate trusts malformed round files without schema validation",
+    "Review gate never verifies round cap of three",
+    "Review gate only checks latest math summary, not round two",
+    "Review gate accepts missing manifest contents",
+    "Float check matches comments and string literals",
+    "Float check misses numeric float literals and Decimal from float",
+    "Unreadable files in contract validation silently pass",
+    "Unreadable files in float check counted as checked",
+    "Unsupported languages only warn in contract presence",
+    "No contracts found only warns, allowing empty coverage",
+    "Branch directory fallback permits unsafe branch path traversal"
+  ],
+  "detected_planted": true
+}

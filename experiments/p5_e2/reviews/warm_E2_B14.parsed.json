@@ -1,0 +1,20 @@
+{
+  "bugs_found": [
+    "review-gate ignora findings precedenti, leggendo solo l'ultimo round",
+    "review-gate non verifica il verdetto dell'ultimo round globale",
+    "contract_only_summary \u00e8 verificato sull'ultimo Math Auditor, non round 2",
+    "Profilo YAML malformato pu\u00f2 causare crash nei sottocomandi",
+    "cmd_all continua dopo profilo invalido e pu\u00f2 crashare",
+    "Caricamento schema non gestito pu\u00f2 terminare con traceback",
+    "File illeggibili sono ignorati in contract-validate e floats-check",
+    "Globs sensibili possono uscire dal repository e fallire",
+    "Esenzioni contratto prive di chiavi causano KeyError",
+    "Contratti associati solo per nome ignorano duplicati e scope",
+    "Regex def rileva funzioni dentro stringhe multilinea",
+    "Regex contract pu\u00f2 accettare blocchi in stringhe o commenti",
+    "floats-check non intercetta letterali float n\u00e9 Decimal da float",
+    "File sensibili non-Python bypassano contract-presence con solo warning",
+    "Fallback branch pu\u00f2 attraversare directory fuori reviews"
+  ],
+  "detected_planted": false
+}

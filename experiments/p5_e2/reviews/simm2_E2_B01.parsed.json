@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Malformed .banking-profile YAML in contract-presence, contract-validate, floats-check and all is not caught, causing stack traces/wrong exit code instead of documented configuration error exit 2.",
+    "review-validate/review-gate fallback path uses the raw branch name under .claude/reviews, allowing path traversal with branch values containing '..' to read/validate directories outside the intended reviews tree.",
+    "sensitive_paths from the profile are used directly with repo_root / pattern and glob/rglob; '../' patterns can traverse outside the repository and scan arbitrary readable files.",
+    "review-gate claims to require the latest round overall to have verdict=approve but never checks the latest overall round, so a later math-auditor/request-changes round can still pass if code-reviewer approved earlier.",
+    "review-gate deduplicates findings by sorted filename order rather than actual round number; lexicographic ordering makes round-10 sort before round-2, so older acknowledgements can overwrite newer ones.",
+    "review-gate success message counts only blocker findings while saying blocker/major findings, making gate output misleading."
+  ],
+  "detected_planted": true
+}

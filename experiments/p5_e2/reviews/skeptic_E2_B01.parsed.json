@@ -1,0 +1,18 @@
+{
+  "bugs_found": [
+    "`all` silently exits 0 when `.banking-profile` is absent, contradicting documented exit code 2 and allowing CI banking gates to be bypassed by deleting/omitting the profile.",
+    "`cmd_review_validate` loads manifest/findings schemas without catching `FileNotFoundError`/`JSONDecodeError`, so missing or malformed installed schemas crash instead of returning controlled config error 2.",
+    "`cmd_contract_validate` also loads the contract schema without error handling, causing an unhandled crash on missing/malformed schema instead of a deterministic CI config failure.",
+    "Review-gate ignores the documented requirement that the latest overall round verdict must be approve; it only checks code-reviewer approve, so a later math-auditor request-changes round can be incorrectly accepted.",
+    "Finding deduplication in review-gate sorts files lexicographically and overwrites by filename order, not by declared round number/time; `round-10.json` can be processed before `round-2.json`, producing stale ack state and wrong gate decisions.",
+    "Review-gate counts a blocker/major finding as resolved solely from any latest finding object with `ack.stance=resolved`, without validating that the ack came from an authorized later reviewer or corresponds to the same finding content; malicious/stale JSON can self-resolve severe findings.",
+    "`_latest_round_per_agent` trusts `doc.get(\"round\", 0)` without type validation; malformed round values can raise TypeError or distort latest-round selection before review-validate has enforced schemas.",
+    "`contract-presence` only matches functions by name globally within a file, so duplicate function names or methods in different classes can be incorrectly marked covered by a single contract block with the same name.",
+    "`contract-presence` validates only that a contract block name equals a function name, not that the block is attached to or near the function; contracts can be placed anywhere in the file and still satisfy the gate.",
+    "`contract-presence` warns but does not fail for non-Python sensitive files, creating a silent coverage hole for TypeScript/Go/Java code in banking-sensitive paths.",
+    "`contract-validate` warns and exits 0 when no contract blocks are found, so it can pass independently even when contract coverage is completely absent.",
+    "`load_yaml_file` can return `None` or non-dict YAML; commands other than profile-validate call `.get()` on it and may crash or misreport malformed profile as missing instead of returning config error.",
+    "`iter_files_under_sensitive` relies on user-controlled glob patterns without validating that matches stay inside `repo_root`, so hostile or accidental profile patterns/symlinks can make the gate inspect unintended files or miss intended ones."
+  ],
+  "detected_planted": true
+}

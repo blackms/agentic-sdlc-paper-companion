@@ -1,0 +1,15 @@
+{
+  "bugs_found": [
+    "review-gate documenta che il latest round overall deve avere verdict=approve, ma il codice non lo controlla: una round successiva di math-auditor con request-changes puo passare se code-reviewer resta approve.",
+    "review-gate deduplica findings usando sorted(filename) e non round number/mtime: round-10 viene prima di round-2, quindi ack piu vecchi possono sovrascrivere quelli piu recenti e falsare resolved/unresolved.",
+    "review-gate accetta qualunque finding major/blocker come resolved se ack.stance='resolved', senza verificare che l'ack provenga da un round successivo o dall'agente corretto: un finding puo auto-marcarsi resolved nello stesso documento.",
+    "review-gate ignora JSON non validi nei round file quando aggrega verdict/finding, quindi file corrotti possono essere esclusi silenziosamente dal gate se review-validate non viene eseguito insieme.",
+    "contract-presence associa contratti alle funzioni solo per name globale: un singolo ---contract con name='charge' puo coprire piu funzioni charge in classi diverse o scope diversi, nascondendo funzioni sensibili non contrattualizzate.",
+    "contract-presence usa regex su testo Python invece dell'AST: rileva def dentro stringhe/commenti e non comprende nesting/decorator/context, producendo gate falsabili o failure spurie.",
+    "contract-validate non fallisce se trova zero contratti, emette solo WARN: se contract-presence e bypassato o non copre linguaggi/non-Python, la validazione contratti puo passare senza alcun contratto reale.",
+    "file discovery non esclude symlink: sensitive_paths puo far leggere file fuori repo tramite symlink, con possibili leak in log e gate dipendente da contenuti esterni non versionati.",
+    "profile YAML malformato o schema/JSON schema mancanti in vari subcommand non sono gestiti uniformemente: molte funzioni crashano con traceback invece di exit code 2, rompendo il contratto CI documentato.",
+    "floats-check e contract-presence saltano estensioni/linguaggi non supportati con WARN ma non FAIL: codice money-path in TS/Java/Kotlin/etc o file senza estensione puo passare il gate senza controlli effettivi."
+  ],
+  "detected_planted": true
+}

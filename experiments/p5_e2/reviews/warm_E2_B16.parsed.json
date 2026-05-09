@@ -1,0 +1,25 @@
+{
+  "bugs_found": [
+    "cmd_all continua dopo profilo non valido, rischiando crash successivi",
+    "Subcomandi non validano lo schema del profilo caricato",
+    "Errori YAML profilo non gestiti fuori da profile-validate",
+    "Schema JSON mancanti causano crash in diversi subcomandi",
+    "File sensibili illeggibili vengono ignorati in contract-validate",
+    "File sensibili illeggibili possono produrre OK in floats-check",
+    "Globs sensitive_paths possono uscire dalla root del repository",
+    "Fallback branch literal consente traversal fuori da reviews",
+    "contract-presence usa solo basename, rompendo esenzioni per percorso",
+    "Funzioni dunder sono segnalate nonostante il commento contrario",
+    "Contratti associati solo per nome, non per funzione specifica",
+    "Def rilevate via regex includono stringhe e funzioni annidate",
+    "Regex contract pu\u00f2 troncare blocchi con separatori YAML interni",
+    "review-gate non verifica il verdetto dell'ultimo round complessivo",
+    "review-gate controlla summary latest, non round 2 math-auditor",
+    "Risoluzione findings usa ordine filename, non numero round",
+    "JSON round invalidi ignorati possono falsare review-gate",
+    "review-validate non richiede manifest.json presente",
+    "Exemption malformate causano KeyError non gestito",
+    "load_yaml_file accetta YAML vuoto come profilo mancante"
+  ],
+  "detected_planted": true
+}

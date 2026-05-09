@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "load_yaml_file ignora il contenuto del file e fa yaml.safe_load(str(path)); i profili vengono caricati come stringhe invece che come YAML, causando validazioni errate e possibili AttributeError nei comandi che usano profile.get().",
+    "cmd_review_validate e cmd_review_gate caricano gli schemi JSON senza gestire FileNotFoundError/JSONDecodeError, quindi un problema di configurazione produce traceback invece dell'exit code 2 documentato.",
+    "cmd_contract_validate ignora silenziosamente errori di lettura dei file sensibili, a differenza degli altri check, permettendo a file non leggibili di bypassare il gate.",
+    "review-gate commenta che deve verificare il latest round globale con verdict=approve, ma l'implementazione controlla solo il latest round del code-reviewer e non il latest round overall.",
+    "L'aggregazione dei finding in review-gate ordina solo per nome file e non per round/agent come dichiarato; round-10.json pu\u00f2 essere ordinato prima/dopo in modo lessicografico errato rispetto al numero di round."
+  ],
+  "detected_planted": true
+}

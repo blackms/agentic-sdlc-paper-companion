@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence uses str(fp) absolute paths when matching contract_exemptions, so typical repo-relative exemption globs will not match and valid exemptions may be ignored.",
+    "cmd_review_gate claims to require the latest round overall verdict=approve but never checks the latest round across all agents, so a later math-auditor request-changes round can still pass if code-reviewer approves.",
+    "cmd_review_gate dedupes findings by lexicographic filename order, not by the documented (round_number, agent) ordering; round-10 can sort before round-2 and stale acknowledgements may overwrite newer ones.",
+    "cmd_review_validate and cmd_review_gate load schema files without catching FileNotFoundError/JSONDecodeError, causing uncaught tracebacks instead of documented exit code 2 configuration errors.",
+    "load_yaml_file can return None or a non-dict for an empty/malformed profile; later .get calls can crash instead of reporting a configuration error.",
+    "iter_files_under_sensitive trusts profile globs without constraining resolved paths to repo_root, so crafted sensitive_paths such as ../ can scan files outside the repository."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Il codice revisionato non implementa compound_interest, quindi il relativo contratto non \u00e8 verificabile n\u00e9 soddisfatto.",
+    "Il codice revisionato non implementa loan_payment, quindi il relativo contratto non \u00e8 verificabile n\u00e9 soddisfatto.",
+    "Il codice revisionato non implementa transfer, quindi il relativo contratto non \u00e8 verificabile n\u00e9 soddisfatto.",
+    "Il codice revisionato non implementa apply_fee, quindi il relativo contratto non \u00e8 verificabile n\u00e9 soddisfatto.",
+    "Il codice revisionato non implementa fx_convert, quindi il relativo contratto non \u00e8 verificabile n\u00e9 soddisfatto."
+  ],
+  "detected_planted": false
+}

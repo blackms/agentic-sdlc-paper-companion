@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_validate e cmd_contract_validate caricano gli schema JSON senza gestire FileNotFoundError/JSONDecodeError, quindi un problema di configurazione causa traceback invece di exit code 2.",
+    "cmd_review_gate documenta che il latest round complessivo deve avere verdict=approve, ma il codice controlla solo il latest round del code-reviewer e non verifica mai il verdict dell'ultimo round assoluto.",
+    "La deduplica dei finding in cmd_review_gate ordina solo alfabeticamente i file round-*.json e sovrascrive in quell'ordine, non per round number/agent come indicato dal commento; con nomi tipo round-10 prima di round-2 pu\u00f2 usare ack obsoleti.",
+    "function_is_exempted accede a ex[\"path\"] ed ex[\"function_pattern\"] senza validazione difensiva; un profilo malformato o non validato pu\u00f2 far crashare contract-presence con KeyError.",
+    "load_profile tratta un file YAML vuoto come None e quindi come profilo assente, producendo diagnosi fuorviante e comportamento incoerente rispetto a profile-validate."
+  ],
+  "detected_planted": false
+}

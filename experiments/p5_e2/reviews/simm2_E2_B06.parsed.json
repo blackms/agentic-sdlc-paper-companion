@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_all non esegue mai review-validate/review-gate perch\u00e9 usa `if False and sub_args.branch`, quindi `--branch` \u00e8 ignorato e il gate CI pu\u00f2 essere bypassato.",
+    "Diversi comandi caricano profili/schemi JSON/YAML senza gestire FileNotFoundError, JSONDecodeError o YAMLError, causando traceback invece dell'exit code 2 documentato.",
+    "`load_profile` tratta un profilo YAML vuoto come profilo mancante, producendo un errore fuorviante e comportamento diverso da profile-validate.",
+    "contract-presence deduplica i contratti solo per `name`: due funzioni con lo stesso nome in classi/scope diversi possono essere considerate coperte da un solo blocco contract."
+  ],
+  "detected_planted": true
+}

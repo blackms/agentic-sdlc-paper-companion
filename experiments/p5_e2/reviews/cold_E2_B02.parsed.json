@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Implementazione assente per compound_interest: contratto non verificabile n\u00e9 soddisfatto.",
+    "Implementazione assente per loan_payment: contratto non verificabile n\u00e9 soddisfatto.",
+    "Implementazione assente per transfer: contratto non verificabile n\u00e9 soddisfatto.",
+    "Implementazione assente per apply_fee: contratto non verificabile n\u00e9 soddisfatto.",
+    "Implementazione assente per fx_convert: contratto non verificabile n\u00e9 soddisfatto."
+  ],
+  "detected_planted": false
+}

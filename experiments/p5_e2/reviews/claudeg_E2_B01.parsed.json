@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "review-gate success message counts only severity=='blocker' (tuple ('blocker',)) and omits 'major', so the 'all blocker/major findings (N) resolved' line under-reports the count",
+    "fnmatch is used for sensitive_paths globs but '**' is not supported by fnmatch, so patterns like 'src/portfolio/**' work only via the special-cased rglob branch and any other '**' usage silently misses files",
+    "_extract_contracts_from_text regex requires the closing '---' to be on its own line preceded by a newline; trailing fences without a leading newline before the closing '---' will not match",
+    "contract-presence flags every function (including __init__/dunders, nested helpers, tests) despite the comment claiming dunders are skipped \u2014 no actual skip logic exists",
+    "floats-check regex matches occurrences inside comments and string literals, producing false positives that fail CI",
+    "cmd_review_gate counts only severity=='blocker' in its 'resolved' summary count, mismatching the message which claims 'blocker/major'",
+    "load_yaml_file/load_json_file are typed as -> dict but yaml.safe_load can return None or a list, leading to AttributeError on .get() downstream",
+    "review-gate aggregates findings keyed by id taking the LAST round in glob-sorted order, but glob-sorted order is not guaranteed to reflect round order across agents (e.g. round-10 vs round-2 lexicographic)"
+  ],
+  "detected_planted": true
+}

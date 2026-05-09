@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate dichiara di richiedere che il round piu recente complessivo abbia verdict=approve, ma non lo controlla: puo passare con math-auditor piu recente in request-changes",
+    "contract-presence usa fp.name invece del path relativo: le contract_exemptions basate su path non matchano e file omonimi in directory diverse diventano indistinguibili",
+    "review-gate deduplica findings usando ordinamento lessicografico dei filename, non round/agent dichiarato: ack piu vecchi possono sovrascrivere quelli piu recenti se i nomi non ordinano come atteso",
+    "review-validate e review-gate caricano gli schema JSON senza gestire FileNotFoundError/JSONDecodeError: errore di configurazione diventa crash invece di exit code 2",
+    "commento dice che i dunder Python vengono saltati in contract-presence, ma il codice li controlla: possibile regressione silenziosa con failure CI su __init__ e metodi strutturali"
+  ],
+  "detected_planted": true
+}

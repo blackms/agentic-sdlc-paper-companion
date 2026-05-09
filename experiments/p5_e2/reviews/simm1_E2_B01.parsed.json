@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "review-gate non verifica che l'ultimo round complessivo abbia verdict=approve, quindi puo' passare anche se un round successivo richiede modifiche",
+    "I comandi standalone contract-presence/contract-validate/floats-check non gestiscono profilo YAML vuoto/malformato o schema mancante: possono terminare con eccezioni invece dell'exit code 2 documentato",
+    "sensitive_paths non viene vincolato a repo_root: pattern come ../** possono far scandire file fuori repository e causare crash/DoS su relative_to()",
+    "La deduplicazione dei finding in review-gate usa ordinamento lessicografico dei file invece del numero di round, quindi un ack vecchio puo' sovrascrivere quello piu' recente"
+  ],
+  "detected_planted": false
+}

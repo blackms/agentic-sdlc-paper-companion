@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non \u00e8 implementata nel codice fornito",
+    "loan_payment non \u00e8 implementata nel codice fornito",
+    "transfer non \u00e8 implementata nel codice fornito",
+    "apply_fee non \u00e8 implementata nel codice fornito",
+    "fx_convert non \u00e8 implementata nel codice fornito"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "review-validate/review-gate branch fallback accepts path traversal via branch name, allowing reads outside .claude/reviews",
+    "all continues after profile-validate failure and later checks use unvalidated profile objects, so malformed .banking-profile can crash or run with bad assumptions",
+    "contract-validate/review-validate/review-gate load schema and JSON files without configuration-error handling, causing uncaught exceptions instead of documented exit code 2",
+    "review-gate dedupes findings by sorted filename order, not by actual round chronology; lexicographic round-10 can be overwritten by older round-2, producing wrong resolution status",
+    "contract-presence treats any contract block with matching name anywhere in the file as covering a function, so duplicate functions or misplaced/stale contracts can falsely pass",
+    "contract-validate silently ignores unreadable or non-UTF8 sensitive files, allowing invalid or missing contracts to pass without a failure",
+    "unsupported non-Python files in contract-presence and unknown extensions in floats-check are warnings only, so sensitive code can bypass required contract and money precision gates",
+    "floats-check misses direct float literals and arithmetic in money paths, so precision-loss risks can pass the CI gate"
+  ],
+  "detected_planted": true
+}

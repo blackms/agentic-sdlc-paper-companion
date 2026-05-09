@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence uses fp.name instead of repo-relative path, so contract_exemptions with paths like src/foo.py will not match and diagnostics are ambiguous.",
+    "review-gate claims to require the latest overall round verdict=approve but never implements that check, so a later math-auditor/request-changes round can pass if code-reviewer is approve and findings are resolved.",
+    "review-gate dedupes findings by lexicographic filename order, not by declared round/order semantics; filenames such as round-10.json can be processed before round-2.json, causing stale acknowledgements to overwrite newer ones.",
+    "cmd_review_validate and review-gate load schema files without handling FileNotFoundError/JSONDecodeError, unlike profile-validate, so missing or malformed bundled schemas crash instead of returning configuration error code 2.",
+    "Profile-consuming commands trust malformed profile contents and can crash with TypeError/KeyError, e.g. sensitive_paths not a list or exemptions missing path/function_pattern, unless the caller separately ran profile-validate."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,25 @@
+{
+  "bugs_found": [
+    "Profili YAML malformati causano crash nei comandi standalone",
+    "Profili YAML non mapping causano AttributeError su get",
+    "function_is_exempted assume chiavi obbligatorie e pu\u00f2 crashare",
+    "Schema mancanti o invalidi non sono gestiti in pi\u00f9 comandi",
+    "Fallback branch consente path traversal fuori dalla review root",
+    "sensitive_paths con .. pu\u00f2 scandire file fuori repository",
+    "relative_to crasha quando sensitive_paths esce dal repository",
+    "cmd_all continua dopo profilo invalido, rischiando crash successivi",
+    "Il codice promette skip dunder, ma __init__ viene controllato",
+    "Regex dei def interpreta commenti e stringhe come funzioni",
+    "Contratti sono abbinati per nome, non alla funzione corretta",
+    "Metodi omonimi in classi diverse condividono lo stesso contratto",
+    "contract-validate salta silenziosamente file sensibili illeggibili",
+    "floats-check salta silenziosamente file sensibili illeggibili",
+    "floats-check segnala commenti e stringhe come violazioni reali",
+    "review-gate non verifica il verdict dell'ultimo round globale",
+    "review-gate controlla il summary sull'ultimo math-auditor, non round due",
+    "Aggregazione findings usa ordine filesystem, non numero di round",
+    "review-gate ignora JSON malformati, bypassando possibili finding",
+    "review-gate non valida schema dei round prima del gate"
+  ],
+  "detected_planted": false
+}

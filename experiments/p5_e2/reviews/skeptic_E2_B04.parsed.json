@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "cmd_profile_validate has inverted validation logic: invalid profiles produce [OK] and exit 0, while valid profiles silently return 0 without reporting validation success.",
+    "review-gate docstring requires latest round overall verdict=approve, but implementation never checks the latest overall round; a later math-auditor request-changes round can pass if code-reviewer latest is approve.",
+    "review-gate dedupes findings by lexicographic filename order, not by parsed round/agent chronology, so round-10.json sorts before round-2.json and older acknowledgements can overwrite newer ones.",
+    "contract-presence accepts contracts by global name only, not by location or qualified symbol; one contract named transfer can satisfy unrelated functions/classes/nested defs with the same name.",
+    "contract-presence does not fail on unsupported sensitive languages; it only warns, so CI can pass while sensitive non-Python code has no contract coverage.",
+    "contract-validate warns but exits 0 when no contract blocks exist; as a standalone gate it can silently pass complete absence of contracts.",
+    "profile loading is not validated before other commands; malformed or non-mapping YAML can crash with AttributeError instead of returning configuration error code 2.",
+    "review-validate and review-gate do not handle missing/malformed schema files, causing uncaught exceptions instead of deterministic CI configuration failures.",
+    "float checks are regex-only and miss common monetary precision hazards such as numeric literals, arithmetic on number-typed aliases, Decimal constructed from float, JavaScript arithmetic without annotations, and Python inferred float variables."
+  ],
+  "detected_planted": true
+}

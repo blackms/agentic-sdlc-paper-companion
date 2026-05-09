@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "contract-validate ignores schema validation errors: it prints 'schema OK' and iterates over an empty list instead of reporting actual errors, so invalid contracts pass CI",
+    "review-gate docstring requires latest round overall to have verdict=approve, but the implementation never checks the latest overall round verdict",
+    "review-gate deduplicates findings using lexicographic filename order instead of round metadata, so the 'latest ack' can be wrong if filenames do not sort exactly by review chronology",
+    "review-validate and contract-validate load schema files without handling FileNotFoundError/JSONDecodeError, causing crashes instead of documented configuration exit code 2"
+  ],
+  "detected_planted": true
+}

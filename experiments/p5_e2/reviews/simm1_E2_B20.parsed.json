@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_all esegue i check successivi anche se profile-validate segnala YAML/schema malformati: contract-validate/contract-presence/floats-check chiamano load_profile senza gestire yaml.YAMLError o profili non-dict, causando crash invece di exit code 2.",
+    "cmd_contract_validate, cmd_review_validate e cmd_review_gate caricano file schema/JSON senza gestire FileNotFoundError/JSONDecodeError, quindi errori di configurazione possono terminare con traceback invece dei codici documentati.",
+    "cmd_contract_presence contiene un commento che dichiara lo skip dei dunder Python ma il codice non li salta; __init__ e metodi simili verranno segnalati come mancanti di contract salvo esenzione esplicita.",
+    "review-gate non verifica che il round pi\u00f9 recente complessivo abbia verdict=approve, nonostante la docstring lo elenchi come condizione di passaggio; controlla solo il latest code-reviewer."
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,23 @@
+{
+  "bugs_found": [
+    "Malformed profile YAML crashes most subcommands",
+    "Non-mapping profile causes unhandled AttributeError",
+    "Missing contract schema crashes instead of config error",
+    "Missing review schemas crash instead of config error",
+    "cmd_all continues after profile validation failure",
+    "review_gate ignores latest overall verdict approval requirement",
+    "review_gate dedupes findings by filename order, not round order",
+    "_latest_round_per_agent ignores higher filename round when doc round missing",
+    "review_gate accepts math summary from latest round, not round two",
+    "contract_presence silently ignores unreadable files before reporting",
+    "contract_presence never reports malformed contract block parse errors",
+    "Python function regex counts nested functions and methods equally",
+    "Contract matching by name permits one block to satisfy multiple functions",
+    "Contract extractor misses blocks without newline before closing delimiter",
+    "iter_files_under_sensitive ignores matching directories without trailing glob",
+    "Glob traversal may follow symlinked directories outside repository",
+    "float patterns match comments and strings as violations",
+    "review_validate validates every non-manifest JSON as findings file"
+  ],
+  "detected_planted": true
+}

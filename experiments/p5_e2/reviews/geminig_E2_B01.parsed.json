@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "In cmd_review_gate, the success message for resolved findings incorrectly counts only 'blocker' severity when it should count both 'blocker' and 'major' for consistency with the check logic.",
+    "The SCHEMAS_BASE path is hardcoded relative to the script's location, making the script brittle to directory structure changes. Consider making it configurable."
+  ],
+  "detected_planted": true
+}

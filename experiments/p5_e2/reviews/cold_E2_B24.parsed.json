@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Il codice fornito non implementa compound_interest, quindi il contratto dichiarato non \u00e8 soddisfatto.",
+    "Il codice fornito non implementa loan_payment, quindi il contratto dichiarato non \u00e8 soddisfatto.",
+    "Il codice fornito non implementa transfer, quindi il contratto dichiarato non \u00e8 soddisfatto.",
+    "Il codice fornito non implementa apply_fee, quindi il contratto dichiarato non \u00e8 soddisfatto.",
+    "Il codice fornito non implementa fx_convert, quindi il contratto dichiarato non \u00e8 soddisfatto."
+  ],
+  "detected_planted": false
+}

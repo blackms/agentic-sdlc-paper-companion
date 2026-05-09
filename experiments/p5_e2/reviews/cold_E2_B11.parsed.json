@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Missing required function compound_interest; contract output, invariants and ValueError behavior are not implemented.",
+    "Missing required function loan_payment; contract output, invariants and ValueError behavior are not implemented.",
+    "Missing required function transfer; Receipt output, atomic balance mutation rules, validation errors and invariants are not implemented.",
+    "Missing required function apply_fee; fee clipping/subtraction contract and validation errors are not implemented.",
+    "Missing required function fx_convert; identity conversion, rate lookup, missing-rate ValueError and Decimal-only constraints are not implemented."
+  ],
+  "detected_planted": false
+}

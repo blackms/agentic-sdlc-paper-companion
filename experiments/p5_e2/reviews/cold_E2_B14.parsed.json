@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Il codice fornito non implementa compound_interest, quindi nessun requisito del relativo contratto \u00e8 soddisfatto.",
+    "Il codice fornito non implementa loan_payment, quindi nessun requisito del relativo contratto \u00e8 soddisfatto.",
+    "Il codice fornito non implementa transfer, quindi nessun requisito del relativo contratto \u00e8 soddisfatto.",
+    "Il codice fornito non implementa apply_fee, quindi nessun requisito del relativo contratto \u00e8 soddisfatto.",
+    "Il codice fornito non implementa fx_convert, quindi nessun requisito del relativo contratto \u00e8 soddisfatto."
+  ],
+  "detected_planted": false
+}

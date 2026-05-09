@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "cmd_all restituisce EXIT_OK quando .banking-profile manca, quindi in CI un PR pu\u00f2 rimuovere il profilo e bypassare tutti i gate",
+    "contract-validate e floats-check ignorano silenziosamente OSError/UnicodeDecodeError sui file sensibili, lasciando passare file non controllati",
+    "load_profile e vari comandi non gestiscono YAML/JSON/schema malformati e possono terminare con traceback invece di EXIT_CONFIG_ERROR",
+    "review-gate non verifica la condizione documentata latest round overall verdict=approve e pu\u00f2 accettare una review pi\u00f9 recente con verdict request-changes",
+    "review-gate deduplica i finding ordinando per nome file invece che per campo round, quindi l'ack pi\u00f9 recente pu\u00f2 essere calcolato male",
+    "il fallback di _branch_dir usa args.branch come path relativo non sanificato, consentendo path traversal fuori da .claude/reviews se l'input \u00e8 controllabile",
+    "contract-presence usa regex sul sorgente invece dell'AST: pu\u00f2 rilevare def in stringhe/commenti, richiede contratti per __init__ nonostante il commento dica di saltare i dunder e non associa i blocchi contratto alla posizione della funzione"
+  ],
+  "detected_planted": true
+}

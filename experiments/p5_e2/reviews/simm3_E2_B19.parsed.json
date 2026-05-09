@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_gate documenta ma non verifica che il round pi\u00f9 recente complessivo abbia verdict=approve, quindi pu\u00f2 accettare una revisione finale non approvata.",
+    "L'aggregazione dei findings sovrascrive in ordine lessicografico dei filename invece che per numero di round/tempo, quindi ack pi\u00f9 vecchi possono prevalere su quelli pi\u00f9 recenti.",
+    "cmd_review_validate e cmd_review_gate non gestiscono FileNotFoundError/JSONDecodeError nel caricamento degli schemi, causando crash invece di exit code 2 per errore di configurazione.",
+    "load_yaml_file pu\u00f2 restituire None/lista per profili vuoti o non mapping; i comandi successivi chiamano .get e possono crashare invece di segnalare configurazione invalida.",
+    "function_is_exempted accede a ex[\"path\"] e ex[\"function_pattern\"] senza validazione, quindi exemptions malformate causano KeyError durante i gate.",
+    "cmd_all usa una variabile aggregated inizializzata tramite globals() in modo errato e fragile; se esiste un globale omonimo pu\u00f2 causare UnboundLocalError."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "`all` returns exit code 0 when `.banking-profile` is absent, so the default CI command can be bypassed by deleting/omitting the profile despite missing profile being documented as config error.",
+    "`review-gate` never enforces its stated requirement that the latest round overall has `verdict=approve`; a later `math-auditor` or other round with request-changes can be silently ignored if code-reviewer\u2019s latest verdict is approve.",
+    "`review-gate` dedupes findings by lexicographic filename order, not by the JSON `round` number as documented, so `round-10.json` can be overwritten by older `round-2.json` and unresolved major/blocker findings can be misclassified.",
+    "`contract-validate` silently skips unreadable or undecodable sensitive files instead of failing, allowing contracts in inaccessible/bad-encoding files to escape validation.",
+    "`contract-presence` does not treat malformed `---contract` blocks as failures; a function with a syntactically broken contract name is reported only as missing/other functions may proceed without surfacing the parse error directly."
+  ],
+  "detected_planted": true
+}

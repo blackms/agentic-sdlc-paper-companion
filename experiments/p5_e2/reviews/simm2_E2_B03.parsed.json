@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_all usa min() per aggregare profile-validate, quindi un errore di validazione profilo pu\u00f2 essere ignorato e produrre exit code 0.",
+    "review-gate documenta il requisito che l'ultimo round complessivo abbia verdict=approve, ma l'implementazione controlla solo l'ultimo round del code-reviewer.",
+    "Il dedupe dei finding in review-gate ordina solo per nome file, non per round/agent come indicato dal commento; con nomi non zero-padded o ordine agent diverso pu\u00f2 conservare un ack non pi\u00f9 recente.",
+    "load_profile/load_yaml_file non gestiscono profili YAML vuoti o non mapping: i comandi successivi possono fallire con AttributeError invece di restituire EXIT_CONFIG_ERROR.",
+    "cmd_review_validate e cmd_review_gate caricano gli schema JSON senza gestione di FileNotFoundError/JSONDecodeError, causando traceback invece di errore di configurazione controllato.",
+    "function_is_exempted accede direttamente a ex['path'] e ex['function_pattern']; esenzioni malformate possono far crashare il controllo invece di segnalare configurazione non valida."
+  ],
+  "detected_planted": true
+}

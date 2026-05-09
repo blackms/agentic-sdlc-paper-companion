@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_validate carica gli schemi JSON senza gestire FileNotFoundError/JSONDecodeError, quindi una configurazione mancante o corrotta provoca traceback invece dell'exit code 2 documentato.",
+    "cmd_contract_validate carica CONTRACT_SCHEMA_PATH senza gestione degli errori, causando crash invece di errore di configurazione controllato.",
+    "iter_files_under_sensitive accetta glob dal profilo senza confinamento al repo_root: pattern con '..' possono uscire dal repository, leggere file inattesi o far fallire relative_to().",
+    "_latest_round_per_agent e review-gate deduplicano/ordinano i round tramite ordinamento lessicografico dei nomi file e poi sovrascrivono i finding; round-10 pu\u00f2 essere processato prima di round-2, producendo ack/verdetti non realmente pi\u00f9 recenti.",
+    "cmd_review_gate documenta che il round pi\u00f9 recente complessivo deve avere verdict=approve, ma l'implementazione verifica solo il code-reviewer e ignora il latest round overall.",
+    "cmd_contract_presence richiede che il nome del contratto coincida con il nome della funzione ma non verifica che il blocco sia associato o vicino alla funzione; un unico contratto con lo stesso nome pu\u00f2 soddisfare una funzione non documentata altrove nel file."
+  ],
+  "detected_planted": true
+}

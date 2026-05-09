@@ -1,0 +1,21 @@
+{
+  "bugs_found": [
+    "Review-gate never verifies latest overall verdict is approve",
+    "Round overwrite uses filename order, not documented round-agent ordering",
+    "Review-gate ignores malformed round JSON, hiding gate data corruption",
+    "Review-validate schema load failures crash instead of configuration errors",
+    "Contract-validate schema load failures crash instead of configuration errors",
+    "Profile YAML non-mapping can crash downstream checks",
+    "Empty profile file reported as missing profile",
+    "Malformed exemption entries can crash contract-presence",
+    "Only first unsupported extension is warned in contract-presence",
+    "Contract-presence marks invalid contract blocks as simply missing",
+    "Contract-presence matches contract names across whole file, not function scope",
+    "Regex function parsing misses decorated assignments and nested contract context",
+    "Float checks scan comments and strings, causing false gate failures",
+    "Float checks skip unreadable files without failure",
+    "Branch path fallback allows path traversal outside reviews directory",
+    "load_yaml_file type contract violated when YAML is empty"
+  ],
+  "detected_planted": true
+}

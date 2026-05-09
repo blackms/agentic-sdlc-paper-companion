@@ -1,0 +1,20 @@
+{
+  "bugs_found": [
+    "Malformed profile YAML can crash several subcommands",
+    "Review schema loading errors are uncaught and crash",
+    "Contract schema loading errors are uncaught and crash",
+    "YAML profile returning null violates declared dict contract",
+    "Exemption dictionaries use required keys without validation",
+    "Contract regex misses blocks without trailing newline",
+    "Contract presence matches nested functions as top-level requirements",
+    "Contract name matching ignores duplicate or misplaced contract blocks",
+    "Contract validation silently ignores unreadable sensitive files",
+    "Floats check silently ignores unreadable sensitive files",
+    "Review gate does not validate or parse manifest contents",
+    "Review gate omits documented latest-overall approve check",
+    "Finding dedupe uses filename order, not round numbers",
+    "Finding overwrite can lose latest acknowledgement semantics",
+    "Review branch fallback allows slash paths outside intended directory"
+  ],
+  "detected_planted": true
+}

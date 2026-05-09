@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non implementata nel codice fornito: formula, invarianti ed errori dichiarati non sono soddisfatti",
+    "loan_payment non implementata nel codice fornito: formula di ammortizzazione, invarianti ed errori dichiarati non sono soddisfatti",
+    "transfer non implementata nel codice fornito: conservazione, atomicit\u00e0, validazioni ed errori dichiarati non sono soddisfatti",
+    "apply_fee non implementata nel codice fornito: clipping fee, sottrazione, invarianti ed errori dichiarati non sono soddisfatti",
+    "fx_convert non implementata nel codice fornito: identit\u00e0, lookup rate ed errori dichiarati non sono soddisfatti"
+  ],
+  "detected_planted": false
+}

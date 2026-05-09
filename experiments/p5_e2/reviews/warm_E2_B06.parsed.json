@@ -1,0 +1,21 @@
+{
+  "bugs_found": [
+    "all ignores --branch because review checks are permanently disabled",
+    "all prints branch-missing warning even when branch is provided",
+    "Non-profile commands use unvalidated profiles and can crash",
+    "Malformed contract exemptions can raise KeyError during presence checks",
+    "Sensitive path globs can traverse outside the repository root",
+    "Trailing /** glob handling treats earlier wildcards as literal paths",
+    "Contract presence accepts detached or stale contract blocks by name",
+    "Dunder functions are checked despite documented skip behavior",
+    "Unreadable files are silently skipped in contract-validate and floats-check",
+    "floats-check misses float literals and inferred numeric money values",
+    "review-gate omits the documented latest-overall approve check",
+    "Finding acknowledgements are ordered lexicographically, not by round number",
+    "Malformed round files are ignored during review-gate decisions",
+    "Later duplicate findings can downgrade severity and bypass resolution",
+    "Review branch fallback permits path traversal outside reviews directory",
+    "Schema load failures can crash review validation commands"
+  ],
+  "detected_planted": true
+}

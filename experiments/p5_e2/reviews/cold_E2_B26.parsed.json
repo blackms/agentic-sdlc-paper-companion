@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest assente: il codice fornito non implementa la funzione contrattualizzata",
+    "loan_payment assente: il codice fornito non implementa la funzione contrattualizzata",
+    "transfer assente: il codice fornito non implementa la funzione contrattualizzata",
+    "apply_fee assente: il codice fornito non implementa la funzione contrattualizzata",
+    "fx_convert assente: il codice fornito non implementa la funzione contrattualizzata"
+  ],
+  "detected_planted": false
+}

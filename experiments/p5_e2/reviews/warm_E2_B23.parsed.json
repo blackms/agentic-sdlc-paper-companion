@@ -1,0 +1,32 @@
+{
+  "bugs_found": [
+    "contract-validate ignora errori schema e approva contratti invalidi",
+    "contract-validate salta file sensibili illeggibili senza fallire",
+    "Check diretti non catturano YAML malformato del profilo",
+    "load_profile puo restituire None o non-dict e far crashare i comandi",
+    "cmd_all continua dopo profilo invalido, causando crash o risultati fuorvianti",
+    "function_is_exempted accede chiavi obbligatorie senza validare le esenzioni",
+    "sensitive_paths con parent directory possono leggere fuori repository",
+    "Pattern glob assoluti possono generare eccezioni non gestite",
+    "Comandi review accettano branch fallback con traversal fuori reviews",
+    "Comandi review non gestiscono errori di caricamento degli schemi",
+    "review-gate non verifica il verdict dell'ultimo round complessivo",
+    "review-gate controlla summary math-auditor sul round sbagliato",
+    "review-gate ignora JSON round malformati e puo passare comunque",
+    "review-gate richiede manifest esistente ma non ne valida contenuto",
+    "review-gate non applica il limite massimo di tre round",
+    "Ordinamento findings usa nomi file, non numeri round",
+    "Dedup findings sovrascrive ack risolti con finding successivi incompleti",
+    "contract-presence abbina contratti per nome, non per posizione",
+    "Metodi omonimi o funzioni annidate possono risultare falsamente coperti",
+    "PYTHON_DEF_RE rileva def dentro stringhe e commenti",
+    "Funzioni dunder documentate come escluse vengono comunque richieste",
+    "contract-presence non segnala direttamente blocchi contratto malformati",
+    "contract-presence lascia passare linguaggi non-Python con solo warning",
+    "floats-check non intercetta literal float Python ne annotazioni annidate",
+    "floats-check puo fallire su commenti e stringhe innocue",
+    "floats-check salta file illeggibili e puo riportare successo",
+    "Errori I/O su file YAML e JSON causano crash"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "contract-presence accepts a contract by function name anywhere in the file, so a stale/misplaced block can satisfy an unrelated function with the same name and silently leave the real function uncontracted",
+    "contract-presence does not validate or even report malformed ---contract blocks; an invalid block with matching name can pass presence and only fails if contract-validate is also run",
+    "cmd_contract_validate silently ignores unreadable or non-UTF8 sensitive files, so CI can pass while contracts are not checked at all for those files",
+    "review-gate never checks the latest overall round verdict despite documenting it as a pass condition; math-auditor or any later round can be request-changes while gate still passes if code-reviewer approves",
+    "review-gate dedupes findings by lexicographic filename order, not by declared round/agent chronology, so latest ack/resolution can be overwritten by an older file with a later-sorting name",
+    "review-gate only loads the latest round per agent and does not require math-auditor round 2 specifically; any latest math-auditor file with contract_only_summary satisfies the claimed contract-first guarantee",
+    "cmd_review_validate loads schemas without catching FileNotFoundError/JSONDecodeError, causing a crash instead of documented configuration exit code 2",
+    "sensitive_paths can traverse outside repo_root via patterns like ../** or absolute/odd globs, causing crashes at relative_to() or unintended filesystem scanning"
+  ],
+  "detected_planted": true
+}

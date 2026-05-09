@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "cmd_all converts EXIT_CONFIG_ERROR=2 to success with `return aggregated if aggregated <= 1 else 0`, so schema/profile configuration failures can pass CI silently.",
+    "review-validate, review-gate, contract-validate, contract-presence, and floats-check do not consistently catch missing/malformed schema/profile JSON/YAML; several paths can crash instead of returning the documented configuration error code.",
+    "review-gate does not enforce that the latest round overall has verdict=approve despite its own documented pass condition; a later math-auditor request-changes round can be ignored if code-reviewer latest is approve.",
+    "review-gate dedupes findings by sorted filename order, not by round number from file content or actual latest ack; round-10 can sort before round-2, causing stale/resolved findings to overwrite newer unresolved ones or vice versa.",
+    "review-gate does not validate review JSON before applying the gate, so malformed findings, severities, ack objects, duplicate ids, or invalid verdict values can be skipped or misinterpreted.",
+    "contract-presence only checks that a function name appears in any contract block in the file; a stale, misplaced, or duplicate contract for the same name can satisfy unrelated functions without binding contract to implementation location.",
+    "contract-validate only warns when zero contract blocks are found, returning success; if contract-presence is not run together, a repo with no contracts passes contract validation.",
+    "floats-check misses common money precision hazards such as Python float literals, arithmetic with decimals represented as numeric literals, TypeScript numeric literals, JSON numeric amounts, and Decimal constructed from float values."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_gate non verifica il verdetto del round pi\u00f9 recente complessivo, nonostante sia una condizione documentata: una review successiva con request-changes pu\u00f2 passare se code-reviewer \u00e8 approve.",
+    "cmd_contract_presence usa str(fp) assoluto per exemption matching, quindi contract_exemptions con path relativi al repo probabilmente non vengono mai applicate.",
+    "load_profile/load_yaml_file non gestiscono YAML malformato o profili non mapping nei comandi contract/floats; `all` continua dopo profile-validate e pu\u00f2 crashare invece di restituire exit code 2.",
+    "cmd_review_validate e cmd_contract_validate caricano schemi JSON senza gestione di FileNotFoundError/JSONDecodeError, causando crash invece di errore di configurazione controllato.",
+    "cmd_review_gate deduplica i finding ordinando i file lessicograficamente, quindi round-10 pu\u00f2 essere considerato prima di round-2 e ack meno recenti possono sovrascrivere quelli corretti."
+  ],
+  "detected_planted": true
+}

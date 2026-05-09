@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "Empty YAML profiles crash or masquerade as missing profile",
+    "Malformed contract exemptions can raise KeyError during checks",
+    "Review schema files load without error handling, crashing CI",
+    "Contract schema file loads without error handling, crashing CI",
+    "Unreadable files are silently ignored during contract validation",
+    "Review gate never checks latest overall verdict is approve",
+    "Latest findings overwrite by filename, not round and agent order",
+    "Resolved count checks severities block and major inconsistently",
+    "Contract presence ignores unparsable contract blocks entirely",
+    "Python function regex misses decorated or multiline definitions edge cases",
+    "Float check reports matches inside comments and strings",
+    "All command continues after invalid profile, causing later crashes"
+  ],
+  "detected_planted": true
+}

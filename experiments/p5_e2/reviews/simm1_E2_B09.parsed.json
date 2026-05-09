@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "load_yaml_file ignora il contenuto del file e fa yaml.safe_load(str(path)): i profili risultano una stringa, la validazione YAML \u00e8 falsa e i comandi con profile.get possono crashare",
+    "cmd_review_gate non verifica davvero che il round pi\u00f9 recente complessivo abbia verdict=approve, quindi pu\u00f2 passare anche con un round successivo non approvato",
+    "cmd_review_gate controlla contract_only_summary solo sull'ultimo round del math-auditor, non specificamente sul round 2 come dichiarato",
+    "cmd_review_validate e cmd_contract_validate non gestiscono errori di caricamento degli schema, causando traceback invece di exit code 2",
+    "La fallback path repo_root/.claude/reviews/args.branch accetta branch arbitrari con componenti di path, rischiando path traversal locale"
+  ],
+  "detected_planted": true
+}

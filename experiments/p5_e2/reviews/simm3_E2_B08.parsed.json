@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_gate counts resolved findings using f.get('severity') but filtering uses f.get('level'), so the OK summary reports 0 even when blocker/major findings exist.",
+    "cmd_review_gate deduplicates findings by sorted filename order rather than round number; lexicographic ordering can make round-10 data overwritten by round-2 data, producing incorrect gate decisions.",
+    "load_profile can return malformed YAML/non-mapping data and callers immediately use profile.get, causing crashes instead of configuration errors.",
+    "cmd_review_validate/cmd_contract_validate load schema files without catching FileNotFoundError/JSONDecodeError, so missing or malformed bundled schemas crash instead of returning EXIT_CONFIG_ERROR.",
+    "cmd_contract_presence comment says dunder functions are skipped, but implementation checks __init__ and other dunders, causing likely false failures."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,19 @@
+{
+  "bugs_found": [
+    "cmd_all uses min for profile validation, masking configuration errors",
+    "Malformed profile YAML crashes most subcommands without config exit code",
+    "Missing review schemas crash review-validate instead of configuration error",
+    "Missing contract schema crashes contract-validate instead of configuration error",
+    "function_is_exempted raises KeyError on malformed exemption entries",
+    "contract-presence ignores unparsable contract blocks when checking presence",
+    "Nested Python functions are incorrectly required to have contracts",
+    "Class methods collide when contracts share identical method names",
+    "Decorated multiline Python definitions are missed by regex parser",
+    "review-gate never checks latest overall round verdict approval",
+    "review-gate ordering uses filename, not documented round and agent order",
+    "review-gate silently ignores invalid JSON round files",
+    "review-gate accepts missing or malformed manifest contents",
+    "cmd_all prints configuration warning to stdout, not stderr"
+  ],
+  "detected_planted": true
+}

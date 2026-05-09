@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "cmd_all continua dopo profile-validate fallito: un profilo YAML malformato causa crash nei check successivi invece di restituire exit code 2 in modo controllato",
+    "review-validate e contract-validate caricano gli schema senza gestione di FileNotFoundError/JSONDecodeError: installazione corrotta o schema malformati producono stack trace/exit code errato invece di configuration error",
+    "review-gate dichiara di richiedere che il round pi\u00f9 recente assoluto abbia verdict=approve, ma il codice controlla solo il latest code-reviewer; un round successivo math-auditor con verdict request-changes pu\u00f2 passare il gate",
+    "review-gate deduplica findings ordinando per nome file invece che per round effettivo: nomi tipo round-10.json possono essere processati prima di round-2.json e ack obsoleti possono sovrascrivere quelli pi\u00f9 recenti",
+    "contract-presence considera valido un contratto se esiste qualunque contract block con name uguale alla funzione, senza associare il blocco alla funzione; un singolo blocco spostato o duplicato pu\u00f2 far passare funzioni non realmente contrattualizzate",
+    "contract-validate avvisa soltanto quando total==0 e restituisce successo: sensitive paths senza alcun contratto possono passare se contract-presence \u00e8 saltato, non eseguito o limitato a linguaggi non Python",
+    "file discovery per pattern non terminati in /** usa repo_root.glob e quindi non attraversa ricorsivamente directory tipo src/**/*.py se non esplicitamente supportate dal pattern; profili con glob comuni possono lasciare aree sensibili non controllate",
+    "floats-check usa regex testuali e segnala solo pattern limitati: money math con literal float, divisioni, Decimal(float), scientific notation o number alias/type indiretti passano senza rilevazione"
+  ],
+  "detected_planted": false
+}

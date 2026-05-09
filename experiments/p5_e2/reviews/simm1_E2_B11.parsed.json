@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "cmd_all continua dopo un errore di validazione profilo; YAML invalido/vuoto/non mapping puo causare eccezioni invece dell'exit code 2.",
+    "contract-validate, contract-presence e floats-check usano il profilo senza validarlo; profili malformati possono far saltare i controlli o causare KeyError/AttributeError.",
+    "review-gate dichiara di richiedere l'approvazione dell'ultimo round complessivo ma controlla solo l'ultimo round del code-reviewer; un round successivo request-changes puo passare.",
+    "review-gate ignora JSON di round malformati e deduplica i finding in ordine lessicografico dei file, non per numero round reale; puo usare ack obsoleti.",
+    "contract-presence usa regex e matching solo per nome funzione: def in stringhe/nested scope e funzioni/metodi omonimi possono produrre falsi positivi o falsi negativi.",
+    "Il commento dice che i metodi dunder sono saltati, ma il codice li controlla e quindi __init__ puo fallire inatteso.",
+    "review-validate e contract-validate non gestiscono errori nel caricamento degli schema bundle; schema mancanti/malfomati causano traceback invece di errore di configurazione.",
+    "Il fallback del branch path usa args.branch non sanificato, consentendo traversal con ../ fuori da .claude/reviews se il branch name e non fidato."
+  ],
+  "detected_planted": true
+}

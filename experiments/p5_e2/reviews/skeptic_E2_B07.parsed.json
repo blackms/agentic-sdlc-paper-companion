@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "review-gate documenta il requisito 'latest round overall verdict=approve' ma non lo implementa: un round piu recente di math-auditor con request-changes puo passare se code-reviewer e' approve",
+    "review-gate deduplica i finding con sorted(filename) invece che ordinare per round numerico: round-10.json viene prima/contro round-2.json in ordine lessicografico, quindi ack vecchi possono sovrascrivere ack recenti o viceversa",
+    "contract-presence usa str(fp) assoluto per il match delle exemption, mentre i profili tipicamente dichiarano path relativi: exemption valide non si applicano e il gate puo fallire in modo spurio",
+    "contract-presence considera soddisfatta una funzione se esiste qualunque contract block con lo stesso name nel file, senza legame strutturale con quella specifica funzione/classe; funzioni duplicate o contract spostati possono mascherare assenze reali",
+    "review-validate e review-gate caricano gli schema JSON senza gestire FileNotFoundError/JSONDecodeError, quindi una configurazione rotta produce traceback invece di exit code 2 coerente",
+    "sensitive_paths dal profilo non sono confinati al repo_root: glob con '..' o pattern aggressivi puo scandire file fuori repo e stampare contenuti di linee matchate nel log CI",
+    "floats-check e contract-validate ignorano errori di lettura in modi incoerenti: contract-validate li silenzia completamente, quindi file sensibili illeggibili possono saltare la validazione senza fallire"
+  ],
+  "detected_planted": true
+}

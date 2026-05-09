@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non implementata nel codice fornito: contratto non verificabile n\u00e9 soddisfatto",
+    "loan_payment non implementata nel codice fornito: contratto non verificabile n\u00e9 soddisfatto",
+    "transfer non implementata nel codice fornito: contratto non verificabile n\u00e9 soddisfatto",
+    "apply_fee non implementata nel codice fornito: contratto non verificabile n\u00e9 soddisfatto",
+    "fx_convert non implementata nel codice fornito: contratto non verificabile n\u00e9 soddisfatto"
+  ],
+  "detected_planted": false
+}

@@ -1,0 +1,17 @@
+{
+  "bugs_found": [
+    "review-validate crashes when schema files are missing or invalid",
+    "review-gate ignores latest overall verdict despite documented pass condition",
+    "review-gate orders filenames lexically, not by round number",
+    "findings dedupe lets older rounds overwrite newer round acknowledgements",
+    "function exemptions can KeyError on malformed profile entries",
+    "empty or non-mapping YAML profile can crash checks",
+    "contract-validate silently ignores unreadable sensitive files",
+    "contract-presence claims dunders skipped but still checks them",
+    "contract block regex misses blocks without preceding newline before terminator",
+    "sensitive glob handling misses directory patterns without trailing slash-star-star",
+    "branch directory fallback can escape reviews directory via path traversal",
+    "floats-check reports unsupported files as success when some reads fail"
+  ],
+  "detected_planted": false
+}

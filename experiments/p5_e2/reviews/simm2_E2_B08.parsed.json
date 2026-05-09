@@ -1,0 +1,13 @@
+{
+  "bugs_found": [
+    "cmd_all continua dopo un profilo YAML/schema non valido e i check successivi possono terminare con traceback invece di exit code 2",
+    "contract-presence/contract-validate/floats-check non gestiscono profilo vuoto o YAML malformato: profile.get pu\u00f2 sollevare eccezioni",
+    "review-validate e contract-validate caricano gli schemi JSON senza try/except, quindi schemi mancanti o invalidi causano crash",
+    "contract-presence associa contratti e funzioni solo per nome a livello file: funzioni/metodi omonimi o non adiacenti possono risultare falsamente coperti",
+    "Il commento dice di saltare i metodi dunder, ma __init__ e simili vengono comunque segnalati",
+    "review-gate documenta il requisito che l'ultimo round complessivo sia approve, ma controlla solo il latest del code-reviewer",
+    "review-gate usa campi incoerenti level/severity, rischiando conteggi errati o mancata rilevazione se lo schema usa severity",
+    "contract-validate e floats-check ignorano silenziosamente file sensibili non leggibili, riducendo l'affidabilit\u00e0 del gate"
+  ],
+  "detected_planted": true
+}

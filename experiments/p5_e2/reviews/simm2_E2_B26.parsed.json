@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Malformatted or empty .banking-profile can crash contract/floats commands because load_profile result is used with profile.get without type/schema validation or YAML error handling.",
+    "review-validate and contract-validate load schema files without catching FileNotFoundError/JSONDecodeError, causing tracebacks instead of documented exit code 2 configuration errors.",
+    "sensitive_paths patterns containing ../ can make iter_files_under_sensitive traverse and read files outside repo_root.",
+    "review-gate claims latest findings/acks win, but processes glob results in filesystem order without sorting by round, so older findings can overwrite newer ones incorrectly.",
+    "review-gate docstring says latest overall round must approve, but implementation only checks code-reviewer verdict and never enforces the latest overall round verdict."
+  ],
+  "detected_planted": true
+}

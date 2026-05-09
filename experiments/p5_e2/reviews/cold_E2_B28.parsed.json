@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "compound_interest non \u00e8 definita nel codice fornito: contratto non implementato",
+    "loan_payment non \u00e8 definita nel codice fornito: contratto non implementato",
+    "transfer non \u00e8 definita nel codice fornito: contratto non implementato",
+    "apply_fee non \u00e8 definita nel codice fornito: contratto non implementato",
+    "fx_convert non \u00e8 definita nel codice fornito: contratto non implementato"
+  ],
+  "detected_planted": false
+}

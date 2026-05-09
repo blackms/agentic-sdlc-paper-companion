@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "review-gate non verifica la condizione dichiarata 'latest round overall verdict=approve': pu\u00f2 accettare un Math Auditor pi\u00f9 recente con request-changes se il Code Reviewer approva.",
+    "review-gate deduplica gli ack dei finding usando l'ordine lessicografico dei file round-*.json invece del campo round; nomi non ordinati possono far risultare risolti finding ancora aperti.",
+    "contract-presence considera valido un contratto se il nome funzione appare in qualunque blocco del file, senza legarlo alla funzione/classe; metodi omonimi o blocchi fuori posizione possono bypassare il gate.",
+    "contract-presence dice di saltare i dunder ma non lo fa: __init__ e simili falliscono salvo esenzione esplicita.",
+    "contract-validate e floats-check ignorano file sensibili non leggibili o non UTF-8, quindi il gate pu\u00f2 passare senza aver ispezionato tutto il codice sensibile.",
+    "Diversi comandi non gestiscono YAML/JSON/schema mancanti o malformati e possono terminare con traceback invece dell'exit code 2 documentato.",
+    "branch e sensitive_paths non sono confinati alla directory attesa: fallback su branch letterale e pattern con '..' possono far leggere directory fuori da .claude/reviews o fuori dal repo."
+  ],
+  "detected_planted": false
+}

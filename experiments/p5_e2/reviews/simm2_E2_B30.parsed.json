@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "review-gate documenta che deve verificare il verdetto dell'ultimo round complessivo, ma controlla solo l'ultimo round del code-reviewer; un round successivo del math-auditor con request-changes pu\u00f2 passare il gate.",
+    "load_profile e i comandi contract-presence/contract-validate/floats-check non gestiscono YAML malformato o profili non mapping/null: possono terminare con stack trace invece di exit code 2.",
+    "review-validate e contract-validate caricano gli schema JSON senza gestione di FileNotFoundError/JSONDecodeError, violando il contratto degli exit code per errori di configurazione.",
+    "review-gate deduplica i finding ordinando i file lessicograficamente invece che per campo round, quindi l'ack pi\u00f9 recente pu\u00f2 essere sovrascritto da uno pi\u00f9 vecchio se i nomi file non ordinano correttamente."
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_validate/cmd_contract_validate/floats-check/contract-presence do not consistently catch missing or malformed schemas/profiles, so documented exit code 2 can become an uncaught traceback",
+    "review directory fallback uses unsanitized args.branch, allowing absolute paths or '..' traversal outside .claude/reviews",
+    "review-gate docs say the latest round overall must approve, but implementation only checks code-reviewer approval and unresolved findings, so it can pass when the latest overall round is not approve",
+    "findings deduplication claims later rounds win but sorts by filename string, so round-10.json orders before round-2.json and can use stale acknowledgements",
+    "contract-presence matches contracts by function name only, so one contract block named foo can satisfy multiple foo functions in different classes or scopes within the same file"
+  ],
+  "detected_planted": false
+}

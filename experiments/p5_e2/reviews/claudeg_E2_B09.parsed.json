@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "load_yaml_file calls yaml.safe_load(str(path)) instead of yaml.safe_load(fh); it parses the FILE PATH STRING as YAML, returning the path as a scalar string, and never actually reads the file contents. Every downstream consumer (load_profile, _extract_contracts_from_text via cmd_*, profile-validate) receives the wrong data \u2014 load_profile then returns a string, profile.get(...) crashes with AttributeError, and the gate is effectively broken",
+    "fnmatch '**' patterns are not natively supported beyond the '/**' suffix branch",
+    "contract-presence does not actually skip dunders despite the comment",
+    "review-gate success message tuple ('blocker',) omits 'major' from the count",
+    "floats-check regex false-positives inside strings/comments",
+    "Resource: file handle is opened but never used after the broken safe_load call (still closed by the with-statement, but is wasted I/O and misleading)"
+  ],
+  "detected_planted": true
+}

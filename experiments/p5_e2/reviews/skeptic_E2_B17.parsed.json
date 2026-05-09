@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "review-gate docstring requires latest round overall verdict=approve, but implementation never checks latest overall round; a later request-changes round can be silently ignored if code-reviewer latest is approve.",
+    "review-gate dedupes findings by sorted filename order, not by JSON round number; round-10 sorts before round-2, so older findings/acks can overwrite newer ones and mark blockers/majors resolved incorrectly.",
+    "review-gate treats finding ids as globally unique across agents; two agents using the same id can overwrite each other, hiding an unresolved blocker/major from one agent.",
+    "Malformed or non-mapping .banking-profile in contract-presence/contract-validate/floats-check can raise uncaught exceptions or be misreported as missing, producing wrong exit semantics and brittle CI.",
+    "all returns success when .banking-profile is absent, so a repo can silently opt out of banking gates by deleting/renaming the profile instead of failing closed.",
+    "contract-presence only matches contracts by contract name equal to function name anywhere in the file; a single stale/duplicate contract block can satisfy an unrelated function with the same name, and nested/class methods with same names are not distinguished.",
+    "contract-validate only warns when zero contracts are found; when run standalone it can exit 0 even though no sensitive code has any enforceable contracts."
+  ],
+  "detected_planted": true
+}

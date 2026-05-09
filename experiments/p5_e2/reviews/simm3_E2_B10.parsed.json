@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_review_gate non verifica davvero il verdict del round pi\u00f9 recente complessivo, nonostante sia una condizione dichiarata, quindi pu\u00f2 accettare review non concluse correttamente",
+    "cmd_review_gate controlla contract_only_summary solo sull'ultimo round del math-auditor invece che sul round 2 richiesto, causando falsi fail o falsi pass",
+    "L'aggregazione dei finding usa sort lessicografico dei filename e sovrascrive per id, non l'ordine reale per numero di round, quindi pu\u00f2 scegliere ack non pi\u00f9 recenti",
+    "Il messaggio di conteggio dei blocker/major risolti usa 'block' invece di 'blocker', producendo conteggi errati",
+    "load_profile pu\u00f2 restituire YAML non mapping o None; i comandi successivi chiamano .get e possono crashare invece di segnalare errore di configurazione"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_all masks configuration errors: returns 0 when aggregated exit code is 2, letting CI pass despite schema/profile config failures",
+    "review-validate/review-gate fallback branch path uses unsanitized user input, allowing path traversal or absolute paths outside .claude/reviews",
+    "load_profile callers do not catch YAML parse errors, so malformed profiles can crash with a traceback instead of returning documented config error 2",
+    "contract-presence comment says dunder methods are skipped, but implementation does not skip them, causing likely false failures for __init__ and similar methods"
+  ],
+  "detected_planted": true
+}

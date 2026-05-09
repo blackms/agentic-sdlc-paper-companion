@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "Malformed or empty YAML profiles can crash commands using profile.get instead of returning configuration error exit code 2.",
+    "review-validate, contract-validate and review-gate load schema/review files without handling FileNotFoundError or JSONDecodeError, so CI can crash instead of producing documented config errors.",
+    "review-gate documentation says the latest round overall must approve, but implementation only checks the latest code-reviewer verdict and can accept a later non-approve round from another agent.",
+    "Finding deduplication in review-gate relies on lexicographic filename order instead of parsed round numbers, so latest acknowledgements can be overwritten by older files, especially with round-10 style names.",
+    "review directory branch fallback accepts raw branch names, allowing path traversal outside .claude/reviews via branch values containing '..'.",
+    "contract-presence reads each Python file twice and silently ignores unreadable files during the first read attempt, hiding potential CI coverage gaps."
+  ],
+  "detected_planted": true
+}

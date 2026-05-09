@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_review_gate does not enforce its documented requirement that the latest round file overall has verdict=approve; it only checks the latest code-reviewer verdict, so a later math-auditor request-changes round can incorrectly pass.",
+    "cmd_review_gate claims findings are deduped using the latest ack, but sorted(branch_dir.glob(...)) orders filenames lexicographically, so round-10 can be processed before round-2 and stale findings/acks may overwrite newer ones.",
+    "load_profile consumers assume yaml.safe_load returns a dict; empty or non-mapping .banking-profile files can raise AttributeError instead of returning the documented configuration-error exit code.",
+    "cmd_review_validate loads manifest/findings schemas without catching FileNotFoundError or JSONDecodeError, unlike profile validation, so schema installation/configuration errors can crash with a traceback."
+  ],
+  "detected_planted": true
+}

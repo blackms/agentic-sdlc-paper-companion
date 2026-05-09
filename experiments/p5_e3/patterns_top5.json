@@ -1,0 +1,37 @@
+{
+  "train_n": 99,
+  "parse_fails": 7,
+  "miss_by_category": {
+    "logic": 6,
+    "exception": 2,
+    "currency": 2,
+    "contract": 4,
+    "off-by-one": 3,
+    "atomicity": 1
+  },
+  "n_by_category": {
+    "logic": 26,
+    "contract": 25,
+    "precision": 11,
+    "off-by-one": 12,
+    "exception": 11,
+    "currency": 9,
+    "atomicity": 5
+  },
+  "miss_rates": {
+    "atomicity": 0.2,
+    "contract": 0.16,
+    "currency": 0.2222222222222222,
+    "exception": 0.18181818181818182,
+    "logic": 0.23076923076923078,
+    "off-by-one": 0.25,
+    "precision": 0.0
+  },
+  "top5_patterns": [
+    "off-by-one",
+    "logic",
+    "currency",
+    "atomicity",
+    "exception"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "review-gate counts resolved blocker/major findings using key 'severity' while enforcement uses 'level', so the OK count is silently wrong and can mask audit drift.",
+    "review-gate deduplicates findings by lexicographic filename order, not declared round number; round-10.json sorts before round-2.json, so stale acknowledgements can overwrite newer ones and incorrectly pass/fail gates.",
+    "cmd_review_validate and review-gate load schemas/files without handling FileNotFoundError or JSONDecodeError for schema files, causing uncontrolled traceback instead of documented config error exit code 2.",
+    "load_profile can return None/list/scalar from empty or malformed YAML; contract/floats subcommands then call profile.get and crash instead of validating profile shape before use.",
+    "sensitive_paths patterns are trusted without containment validation; '../' or broad recursive globs can escape repo scope or crash relative_to(), making the CI gate brittle/adversarially bypassable.",
+    "contract-presence only matches function names to contract names globally per file, so duplicate function names/nested functions or one contract with a reused name can satisfy multiple functions incorrectly.",
+    "contract-presence warns but still exits 0 for unsupported sensitive languages, so non-Python code in sensitive paths can bypass the required contract gate silently."
+  ],
+  "detected_planted": true
+}

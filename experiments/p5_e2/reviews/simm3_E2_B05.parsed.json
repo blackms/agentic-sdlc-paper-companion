@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate non verifica davvero che l'ultimo round complessivo abbia verdict=approve, nonostante sia una condizione documentata.",
+    "contract-presence considera valido un contratto solo perch\u00e9 esiste un blocco con lo stesso name nello stesso file, senza associarlo alla funzione specifica; duplicati, metodi o blocchi fuori posizione possono produrre falsi positivi.",
+    "I comandi contract-validate/review-validate caricano gli schema senza gestire FileNotFoundError/JSONDecodeError, causando crash invece dell'exit code 2 documentato.",
+    "load_profile pu\u00f2 restituire YAML non-dict o None; i comandi successivi chiamano .get e possono crashare o segnalare erroneamente profilo mancante.",
+    "cmd_all continua a eseguire altri check anche dopo profilo invalido, aumentando il rischio di eccezioni invece di una failure controllata."
+  ],
+  "detected_planted": false
+}

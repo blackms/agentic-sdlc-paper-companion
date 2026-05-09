@@ -1,0 +1,14 @@
+{
+  "bugs_found": [
+    "review-gate never checks the latest round overall verdict=approve despite documenting it, so a later math-auditor request-changes round can pass if code-reviewer approved earlier",
+    "review-gate dedupes findings by sorted filename order, not by round number; round-10 sorts before round-2 and stale acks can override newer ones",
+    "review-gate accepts malformed or schema-invalid review JSON because it loads files directly and skips JSONDecodeError instead of failing; review-gate can pass while review-validate would fail",
+    "all silently skips review-validate and review-gate when --branch is omitted, so CI can pass without enforcing the dual-agent review gate",
+    "contract-presence treats any contract block with matching name anywhere in the file as satisfying a function; stale or misplaced contracts can mask missing per-function contracts",
+    "contract-validate only warns when zero contract blocks are found, so running it alone can pass a completely undocumented sensitive codebase",
+    "sensitive_paths can escape repo_root via patterns like ../** in the /** branch, causing scans and possible source/secret leakage outside the repository boundary",
+    "standalone checks do not validate the profile before using it; malformed exemptions or sensitive_paths can crash with KeyError/TypeError instead of returning a controlled config error",
+    "contract-presence intentionally skips all non-Python sensitive files with WARN only, so TS/Go/Java sensitive logic can ship with no contract gate while CI still exits 0"
+  ],
+  "detected_planted": true
+}

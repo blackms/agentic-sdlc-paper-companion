@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "review-validate/contract-validate/review-gate load schema/JSON files without handling FileNotFoundError or malformed schema JSON, causing uncaught crashes instead of documented exit code 2",
+    "review-validate and review-gate fallback to a literal branch path, allowing path traversal via branch values containing ../",
+    "review-gate does not enforce its documented requirement that the latest round overall has verdict=approve; it only checks the latest code-reviewer verdict",
+    "review-gate deduplicates findings by lexicographic filename order, not by round/agent chronology as the comment claims, so latest ack resolution can be computed incorrectly",
+    "contract-presence matches contract names globally per file, so one ---contract block named foo can satisfy multiple same-named nested/class functions without verifying placement or association",
+    "contract-presence parses invalid contract blocks but does not fail on parse errors; malformed contracts can still be ignored for presence semantics"
+  ],
+  "detected_planted": true
+}

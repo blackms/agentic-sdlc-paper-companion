@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "`sensitive_paths` viene usato senza normalizzazione: glob con `../` possono far analizzare file fuori dal repo e potenzialmente esporre contenuti nei log.",
+    "`review-gate` non applica tutte le condizioni dichiarate: non controlla il verdict del round pi\u00f9 recente globale e non richiede il round 2 del math-auditor.",
+    "`cmd_all` continua dopo profilo YAML/schema non valido; i controlli successivi possono crashare invece di restituire exit code 2.",
+    "`contract-validate` e `floats-check` ignorano errori di lettura dei file sensibili, permettendo bypass del gate.",
+    "`contract-presence` associa i contratti solo per nome funzione: un singolo blocco pu\u00f2 coprire falsamente pi\u00f9 funzioni/metodi omonimi.",
+    "Il commento dice di saltare i dunder come `__init__`, ma il codice li controlla e li segnala."
+  ],
+  "detected_planted": true
+}

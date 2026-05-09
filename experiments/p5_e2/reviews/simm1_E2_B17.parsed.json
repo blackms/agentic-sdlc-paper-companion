@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate documentation says latest overall round must approve, but implementation never checks the latest round overall verdict; a later math-auditor/request-changes round can still pass if code-reviewer approved",
+    "review-gate deduplicates findings by filename sort order rather than by actual round number, despite the comment; lexicographic ordering makes round-10 sort before round-2 and can use stale ack state",
+    "cmd_review_validate and cmd_review_gate load schema files without handling FileNotFoundError/JSONDecodeError, causing uncaught crashes instead of documented configuration error exit code 2",
+    "function_is_exempted indexes exemption fields directly, so malformed profile entries can crash contract-presence instead of producing a validation/configuration failure",
+    "cmd_all runs later checks even after profile-validate fails, so malformed profiles can trigger misleading results or crashes"
+  ],
+  "detected_planted": true
+}

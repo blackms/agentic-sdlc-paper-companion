@@ -1,0 +1,6 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5699ms...
+Attempt 2 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 11562ms...
+```json
+{"bugs_found": ["`file_matches_globs` logic uses `all()` instead of `any()` for typical glob inclusion semantics, potentially missing sensitive files.", "`cmd_contract_presence` claims to skip dunder methods but does not implement this, leading to unnecessary contract checks.", "`cmd_floats_check` re-compiles regex patterns inside a loop, causing performance inefficiency.", "`cmd_review_gate` and `_latest_round_per_agent` incorrectly determine the 'latest' review round by relying on alphabetical file sorting instead of numerical round number sorting, which can lead to older rounds overwriting newer ones."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence usa fp.name invece del percorso relativo al repo: le contract_exemptions basate su glob di path non funzionano e i report sono ambigui per file omonimi.",
+    "review-gate documenta come requisito che l'ultimo round complessivo abbia verdict=approve, ma il codice non lo verifica; pu\u00f2 accettare una review il cui round pi\u00f9 recente complessivo \u00e8 ancora request-changes.",
+    "review-validate carica gli schema JSON senza gestire FileNotFoundError/JSONDecodeError, quindi errori di configurazione possono causare crash invece di exit code 2 strutturato.",
+    "load_yaml_file pu\u00f2 restituire None o tipi non-dict per profili vuoti/malformati; i comandi successivi chiamano .get e possono crashare invece di segnalare configurazione non valida."
+  ],
+  "detected_planted": true
+}

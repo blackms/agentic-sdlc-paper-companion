@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "review-gate documenta che il round pi\u00f9 recente complessivo deve avere verdict=approve, ma il codice non lo verifica: un round successivo di math-auditor con request-changes pu\u00f2 passare il gate se code-reviewer approva.",
+    "review-gate deduplica i finding con sorted(branch_dir.glob(\"round-*.json\")) e sovrascrive in ordine lessicografico del filename, non per numero di round/tempo: round-10 pu\u00f2 essere processato prima di round-2, rendendo lo stato latest ack errato.",
+    "I subcommand contract-presence, contract-validate e floats-check caricano .banking-profile senza gestire yaml.YAMLError/OSError; un profilo malformato causa traceback invece dell'exit code 2 documentato.",
+    "cmd_all continua a eseguire gli altri controlli anche se profile-validate fallisce; con un profilo invalido pu\u00f2 produrre risultati fuorvianti o crash successivi invece di fermarsi su errore di configurazione.",
+    "review-validate e contract-validate caricano gli schema JSON senza gestione di FileNotFoundError/JSONDecodeError, violando gli exit code documentati e causando crash su installazioni incomplete o schema corrotti."
+  ],
+  "detected_planted": true
+}

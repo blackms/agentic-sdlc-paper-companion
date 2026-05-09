@@ -1,0 +1,628 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e0eae-6be5-70f0-8b54-63c3570ce0f6
+--------
+user
+Sei un revisore di codice esperto. Analizza questo codice alla ricerca di bug funzionali, vulnerabilità di sicurezza, violazioni delle best practice, inefficienze e potenziali miglioramenti.
+
+**Output STRETTAMENTE JSON, una riga**:
+
+```json
+{"bugs_found": ["short description 1", ...], "verdict": "ACCEPT" | "REQUEST_CHANGES"}
+```
+
+Niente preamboli, niente markdown, solo il JSON.
+
+CODICE DA REVISIONARE:
+
+#!/usr/bin/env python3
+"""bankcheck — CI gates for the banking profile.
+
+Discovers schemas relative to its install path (script location). Designed to be
+invoked from a target repo's CI pipeline, typically as:
+
+    python .dev-prompts/integration/checks/bankcheck.py all
+
+Exit codes:
+    0 = all checks passed
+    1 = at least one check failed (gate violation)
+    2 = configuration error (profile missing or malformed JSON/YAML)
+"""
+
+from __future__ import annotations
+
+import argparse
+import fnmatch
+import json
+import re
+import sys
+from pathlib import Path
+from typing import Iterable
+
+try:
+    import yaml
+except ImportError:  # pragma: no cover
+    sys.stderr.write("bankcheck: PyYAML not installed. Run: pip install -r requirements.txt\n")
+    sys.exit(2)
+
+try:
+    import jsonschema
+except ImportError:  # pragma: no cover
+    sys.stderr.write("bankcheck: jsonschema not installed. Run: pip install -r requirements.txt\n")
+    sys.exit(2)
+
+
+EXIT_OK = 0
+EXIT_FAIL = 1
+EXIT_CONFIG_ERROR = 2
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+SCHEMAS_BASE = SCRIPT_DIR.parent / "claude"
+
+PROFILE_SCHEMA_PATH = SCHEMAS_BASE / "profile" / "banking-profile.schema.json"
+CONTRACT_SCHEMA_PATH = SCHEMAS_BASE / "contracts" / "contract.schema.json"
+MANIFEST_SCHEMA_PATH = SCHEMAS_BASE / "reviews" / "schema" / "manifest.schema.json"
+FINDINGS_SCHEMA_PATH = SCHEMAS_BASE / "reviews" / "schema" / "findings.schema.json"
+
+CONTRACT_BLOCK_RE = re.compile(
+    r"---contract\s*\n(?P<body>.*?)\n\s*---",
+    re.DOTALL,
+)
+
+PYTHON_DEF_RE = re.compile(
+    r"^\s*(?:async\s+)?def\s+(?P<name>\w+)\s*\(",
+    re.MULTILINE,
+)
+
+# Float patterns by file extension. Conservative: match obvious money-path
+# float introductions. Comments-only matches are not perfectly excluded but
+# the floats-check is a strong nudge, not a perfect parser.
+FLOAT_PATTERNS: dict[str, list[str]] = {
+    ".py": [r"\bfloat\s*\(", r":\s*float\b", r"->\s*float\b"],
+    ".ts": [r":\s*number\b", r"\bparseFloat\s*\(", r"\bNumber\s*\("],
+    ".tsx": [r":\s*number\b", r"\bparseFloat\s*\(", r"\bNumber\s*\("],
+    ".js": [r"\bparseFloat\s*\(", r"\bNumber\s*\("],
+    ".go": [r"\bfloat32\b", r"\bfloat64\b"],
+    ".java": [r"\bfloat\b", r"\bdouble\b", r"\bFloat\b", r"\bDouble\b"],
+}
+
+
+# ---------------------------------------------------------------------------
+# Reporting helpers
+
+
+class Reporter:
+    """Print structured status lines and accumulate worst exit code."""
+
+    def __init__(self) -> None:
+        self.exit_code = EXIT_OK
+
+    def ok(self, msg: str) -> None:
+        print(f"[OK]   {msg}")
+
+    def warn(self, msg: str) -> None:
+        print(f"[WARN] {msg}")
+
+    def fail(self, msg: str) -> None:
+        print(f"[FAIL] {msg}")
+        if self.exit_code < EXIT_FAIL:
+            self.exit_code = EXIT_FAIL
+
+    def config_error(self, msg: str) -> None:
+        print(f"[CFG]  {msg}", file=sys.stderr)
+        if self.exit_code < EXIT_CONFIG_ERROR:
+            self.exit_code = EXIT_CONFIG_ERROR
+
+
+# ---------------------------------------------------------------------------
+# Profile loading and matching
+
+
+def load_yaml_file(path: Path) -> dict:
+    with path.open("r", encoding="utf-8") as fh:
+        return yaml.safe_load(fh)
+
+
+def load_json_file(path: Path) -> dict:
+    with path.open("r", encoding="utf-8") as fh:
+        return json.load(fh)
+
+
+def load_profile(repo_root: Path, override: Path | None = None) -> dict | None:
+    path = override if override is not None else repo_root / ".banking-profile"
+    if not path.is_file():
+        return None
+    return load_yaml_file(path)
+
+
+def file_matches_globs(rel_path: str, patterns: Iterable[str]) -> bool:
+    return any(fnmatch.fnmatch(rel_path, pat) for pat in patterns)
+
+
+def function_is_exempted(rel_file: str, func_name: str, exemptions: list[dict]) -> tuple[bool, str]:
+    for ex in exemptions or []:
+        if fnmatch.fnmatch(rel_file, ex["path"]) and fnmatch.fnmatch(func_name, ex["function_pattern"]):
+            return True, ex.get("reason", "")
+    return False, ""
+
+
+def iter_files_under_sensitive(repo_root: Path, sensitive_paths: list[str]) -> Iterable[Path]:
+    """Yield every file matching at least one sensitive_paths glob, relative to repo_root."""
+    seen: set[Path] = set()
+    for pattern in sensitive_paths:
+        # fnmatch globs like "src/portfolio/**" => use Path.rglob
+        # Strip trailing /** for rglob; otherwise treat as simple glob
+        if pattern.endswith("/**"):
+            base = repo_root / pattern[:-3]
+            if base.is_dir():
+                for p in base.rglob("*"):
+                    if p.is_file() and p not in seen:
+                        seen.add(p)
+                        yield p
+        else:
+            for p in repo_root.glob(pattern):
+                if p.is_file() and p not in seen:
+                    seen.add(p)
+                    yield p
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: profile-validate
+
+
+def cmd_profile_validate(args: argparse.Namespace) -> int:
+    reporter = Reporter()
+    repo_root = Path(args.repo_root).resolve()
+    profile_path = (
+        Path(args.profile).resolve() if args.profile else repo_root / ".banking-profile"
+    )
+
+    if not profile_path.is_file():
+        reporter.config_error(f"profile not found at {profile_path}")
+        return reporter.exit_code
+
+    try:
+        profile = load_yaml_file(profile_path)
+    except yaml.YAMLError as exc:
+        reporter.config_error(f"profile is not valid YAML: {exc}")
+        return reporter.exit_code
+
+    try:
+        schema = load_json_file(PROFILE_SCHEMA_PATH)
+    except (FileNotFoundError, json.JSONDecodeError) as exc:
+        reporter.config_error(f"cannot load schema {PROFILE_SCHEMA_PATH}: {exc}")
+        return reporter.exit_code
+
+    validator = jsonschema.Draft202012Validator(schema)
+    errors = list(validator.iter_errors(profile))
+    if not errors:
+        reporter.ok(f"profile {profile_path.name} validates against schema")
+        return reporter.exit_code
+
+    for err in errors:
+        path = "/".join(str(p) for p in err.absolute_path) or "<root>"
+        reporter.fail(f"profile {profile_path.name} @ {path}: {err.message}")
+    return reporter.exit_code
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: review-validate
+
+
+def _branch_dir(repo_root: Path, branch: str) -> Path:
+    """Map a branch name to its on-disk directory under .claude/reviews/."""
+    safe = branch.replace("/", "__")
+    return repo_root / ".claude" / "reviews" / safe
+
+
+def cmd_review_validate(args: argparse.Namespace) -> int:
+    reporter = Reporter()
+    repo_root = Path(args.repo_root).resolve()
+    branch_dir = _branch_dir(repo_root, args.branch)
+
+    if not branch_dir.is_dir():
+        # Fall back to literal name (already filesystem-safe or example fixture).
+        alt = repo_root / ".claude" / "reviews" / args.branch
+        if alt.is_dir():
+            branch_dir = alt
+        else:
+            reporter.config_error(f"review directory not found: {branch_dir}")
+            return reporter.exit_code
+
+    manifest_schema = load_json_file(MANIFEST_SCHEMA_PATH)
+    findings_schema = load_json_file(FINDINGS_SCHEMA_PATH)
+    mv = jsonschema.Draft202012Validator(manifest_schema)
+    fv = jsonschema.Draft202012Validator(findings_schema)
+
+    files = sorted(branch_dir.glob("*.json"))
+    if not files:
+        reporter.fail(f"no JSON files in {branch_dir}")
+        return reporter.exit_code
+
+    for fp in files:
+        try:
+            doc = load_json_file(fp)
+        except json.JSONDecodeError as exc:
+            reporter.fail(f"{fp.name}: invalid JSON: {exc}")
+            continue
+        if fp.name == "manifest.json":
+            errors = list(mv.iter_errors(doc))
+        else:
+            errors = list(fv.iter_errors(doc))
+        if not errors:
+            reporter.ok(f"{fp.name} validates")
+        else:
+            for err in errors:
+                path = "/".join(str(p) for p in err.absolute_path) or "<root>"
+                reporter.fail(f"{fp.name} @ {path}: {err.message}")
+    return reporter.exit_code
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: contract-presence (Python only V1)
+
+
+def _extract_contracts_from_text(text: str) -> list[tuple[dict | None, str | None]]:
+    """Extract every ---contract block. Return list of (parsed_dict, parse_error_or_None)."""
+    out: list[tuple[dict | None, str | None]] = []
+    for m in CONTRACT_BLOCK_RE.finditer(text):
+        body = m.group("body")
+        try:
+            parsed = yaml.safe_load(body)
+            if not isinstance(parsed, dict):
+                out.append((None, "contract block did not parse to a mapping"))
+            else:
+                out.append((parsed, None))
+        except yaml.YAMLError as exc:
+            out.append((None, str(exc)))
+    return out
+
+
+def cmd_contract_presence(args: argparse.Namespace) -> int:
+    reporter = Reporter()
+    repo_root = Path(args.repo_root).resolve()
+    profile = load_profile(repo_root, Path(args.profile).resolve() if args.profile else None)
+    if profile is None:
+        reporter.config_error(".banking-profile not found; nothing to check")
+        return reporter.exit_code
+
+    sensitive_paths = profile.get("sensitive_paths", [])
+    exemptions = profile.get("contract_exemptions", []) or []
+    unsupported_languages: dict[str, int] = {}
+
+    for fp in iter_files_under_sensitive(repo_root, sensitive_paths):
+        rel = fp.relative_to(repo_root).as_posix()
+        suffix = fp.suffix
+        if suffix != ".py":
+            unsupported_languages[suffix] = unsupported_languages.get(suffix, 0) + 1
+            continue
+        try:
+            text = fp.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError) as exc:
+            reporter.fail(f"{rel}: cannot read ({exc})")
+            continue
+
+        contracts = _extract_contracts_from_text(text)
+        contract_names = {
+            c.get("name") for c, _ in contracts if isinstance(c, dict) and c.get("name")
+        }
+        funcs = [m.group("name") for m in PYTHON_DEF_RE.finditer(text)]
+        # Skip dunders by convention: __init__ etc. are usually structural; explicit
+        # exemption is still required to silence the check entirely.
+        for func in funcs:
+            exempted, reason = function_is_exempted(rel, func, exemptions)
+            if exempted:
+                reporter.ok(f"{rel}::{func} exempted ({reason})")
+                continue
+            if func in contract_names:
+                reporter.ok(f"{rel}::{func} has contract")
+            else:
+                reporter.fail(f"{rel}::{func} is missing a ---contract block")
+
+    for ext, count in sorted(unsupported_languages.items()):
+        reporter.warn(
+            f"{count} file(s) with extension {ext or '<none>'} in sensitive paths skipped — "
+            "contract-presence V1 supports only Python; verify manually."
+        )
+    return reporter.exit_code
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: contract-validate
+
+
+def cmd_contract_validate(args: argparse.Namespace) -> int:
+    reporter = Reporter()
+    repo_root = Path(args.repo_root).resolve()
+    profile = load_profile(repo_root, Path(args.profile).resolve() if args.profile else None)
+    if profile is None:
+        reporter.config_error(".banking-profile not found; nothing to check")
+        return reporter.exit_code
+
+    schema = load_json_file(CONTRACT_SCHEMA_PATH)
+    validator = jsonschema.Draft202012Validator(schema)
+
+    sensitive_paths = profile.get("sensitive_paths", [])
+    total = 0
+    for fp in iter_files_under_sensitive(repo_root, sensitive_paths):
+        try:
+            text = fp.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        rel = fp.relative_to(repo_root).as_posix()
+        for parsed, err in _extract_contracts_from_text(text):
+            total += 1
+            if err is not None:
+                reporter.fail(f"{rel}: contract block parse error: {err}")
+                continue
+            errors = list(validator.iter_errors(parsed))
+            label = parsed.get("name", "<unnamed>") if isinstance(parsed, dict) else "<invalid>"
+            if not errors:
+                reporter.ok(f"{rel}::{label} contract validates")
+            else:
+                for e in errors:
+                    p = "/".join(str(x) for x in e.absolute_path) or "<root>"
+                    reporter.fail(f"{rel}::{label} @ {p}: {e.message}")
+    if total == 0:
+        reporter.warn("no ---contract blocks found in any sensitive-path file")
+    return reporter.exit_code
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: floats-check
+
+
+def cmd_floats_check(args: argparse.Namespace) -> int:
+    reporter = Reporter()
+    repo_root = Path(args.repo_root).resolve()
+    profile = load_profile(repo_root, Path(args.profile).resolve() if args.profile else None)
+    if profile is None:
+        reporter.config_error(".banking-profile not found; nothing to check")
+        return reporter.exit_code
+
+    sensitive_paths = profile.get("sensitive_paths", [])
+    hits = 0
+    files_checked = 0
+    skipped: dict[str, int] = {}
+
+    for fp in iter_files_under_sensitive(repo_root, sensitive_paths):
+        suffix = fp.suffix
+        patterns = FLOAT_PATTERNS.get(suffix)
+        if patterns is None:
+            skipped[suffix] = skipped.get(suffix, 0) + 1
+            continue
+        files_checked += 1
+        try:
+            text = fp.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        rel = fp.relative_to(repo_root).as_posix()
+        for pattern in patterns:
+            regex = re.compile(pattern)
+            for lineno, line in enumerate(text.splitlines(), start=1):
+                if regex.search(line):
+                    reporter.fail(f"{rel}:{lineno} float pattern '{pattern}': {line.strip()[:120]}")
+                    hits += 1
+
+    if hits == 0 and files_checked > 0:
+        reporter.ok(f"no float patterns in {files_checked} sensitive-path file(s)")
+    elif files_checked == 0:
+        reporter.warn("no files with known extensions found in sensitive paths")
+    for ext, count in sorted(skipped.items()):
+        reporter.warn(f"{count} file(s) with extension {ext or '<none>'} skipped — floats-check has no pattern set for this extension")
+    return reporter.exit_code
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: review-gate
+
+
+def _latest_round_per_agent(branch_dir: Path) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for fp in sorted(branch_dir.glob("round-*.json")):
+        try:
+            doc = load_json_file(fp)
+        except json.JSONDecodeError:
+            continue
+        agent = doc.get("agent")
+        if not agent:
+            continue
+        prev = out.get(agent)
+        if prev is None or doc.get("round", 0) > prev.get("round", 0):
+            out[agent] = doc
+    return out
+
+
+def cmd_review_gate(args: argparse.Namespace) -> int:
+    """Enforce the merge gate per DUAL-AGENT-REVIEW.md.
+
+    The protocol caps the loop at 3 rounds and gives round 3 (Code Reviewer
+    response) the closing word. Math Auditor's last verdict typically remains
+    request-changes from round 2 even after fixes; the gate therefore looks
+    at the LATEST round across all agents to determine resolution status,
+    not at each agent's verdict in isolation.
+
+    Pass conditions:
+    - manifest.json present.
+    - Both agents have at least one round file (so contract-first audit happened).
+    - The latest round file overall has verdict=approve.
+    - The latest round file by code-reviewer has verdict=approve.
+    - Math Auditor produced a non-empty contract_only_summary in its round 2.
+    - Every finding (deduped by id, taking the most recent ack) of severity
+      blocker or major has ack.stance=resolved.
+    """
+    reporter = Reporter()
+    repo_root = Path(args.repo_root).resolve()
+    branch_dir = _branch_dir(repo_root, args.branch)
+    if not branch_dir.is_dir():
+        alt = repo_root / ".claude" / "reviews" / args.branch
+        if alt.is_dir():
+            branch_dir = alt
+        else:
+            reporter.config_error(f"review directory not found: {branch_dir}")
+            return reporter.exit_code
+
+    manifest_path = branch_dir / "manifest.json"
+    if not manifest_path.is_file():
+        reporter.fail(f"manifest.json missing in {branch_dir}")
+        return reporter.exit_code
+
+    rounds = _latest_round_per_agent(branch_dir)
+    if "code-reviewer" not in rounds:
+        reporter.fail("no round file for agent 'code-reviewer'")
+    if "math-auditor" not in rounds:
+        reporter.fail("no round file for agent 'math-auditor'")
+    if reporter.exit_code >= EXIT_FAIL:
+        return reporter.exit_code
+
+    cr = rounds["code-reviewer"]
+    ma = rounds["math-auditor"]
+
+    if cr.get("verdict") == "approve":
+        reporter.ok("code-reviewer latest round verdict=approve")
+    else:
+        reporter.fail(f"code-reviewer latest round verdict={cr.get('verdict')!r}, expected approve")
+
+    summary = ma.get("contract_only_summary") or ""
+    if summary.strip():
+        reporter.ok("math-auditor produced contract_only_summary (contract-first audit happened)")
+    else:
+        reporter.fail("math-auditor missing or empty contract_only_summary; contract-first guarantee broken")
+
+    # Aggregate findings across all round files, deduped by id, taking the latest
+    # ack overall. Order rounds by (round_number, agent) so that later rounds win.
+    all_round_files = sorted(branch_dir.glob("round-*.json"))
+    seen: dict[str, dict] = {}
+    for fp in all_round_files:
+        try:
+            doc = load_json_file(fp)
+        except json.JSONDecodeError:
+            continue
+        for finding in doc.get("findings", []) or []:
+            fid = finding.get("id")
+            if not fid:
+                continue
+            seen[fid] = finding  # later rounds overwrite earlier
+
+    unresolved = 0
+    for fid, finding in seen.items():
+        sev = finding.get("severity")
+        if sev not in ("blocker", "major"):
+            continue
+        ack = finding.get("ack") or {}
+        stance = ack.get("stance")
+        if stance == "resolved":
+            continue
+        reporter.fail(
+            f"finding {fid} severity={sev} not resolved (latest ack stance={stance!r})"
+        )
+        unresolved += 1
+    if unresolved == 0:
+        reporter.ok(f"all blocker/major findings ({sum(1 for f in seen.values() if f.get('severity') in ('blocker',))}) resolved")
+    return reporter.exit_code
+
+
+# ---------------------------------------------------------------------------
+# Subcommand: all
+
+
+def cmd_all(args: argparse.Namespace) -> int:
+    """Run every standalone check in sequence; review-gate is opt-in via --branch."""
+    repo_root = Path(args.repo_root).resolve()
+    profile_path = repo_root / ".banking-profile"
+    if not profile_path.is_file():
+        print("[CFG]  .banking-profile absent; banking gates do not apply to this repo.")
+        return EXIT_OK
+
+    aggregated = EXIT_OK
+    sub_args = argparse.Namespace(repo_root=str(repo_root), profile=None, branch=getattr(args, "branch", None))
+
+    print("== profile-validate ==")
+    aggregated = max(aggregated, cmd_profile_validate(sub_args))
+    print("== contract-validate ==")
+    aggregated = max(aggregated, cmd_contract_validate(sub_args))
+    print("== contract-presence ==")
+    aggregated = max(aggregated, cmd_contract_presence(sub_args))
+    print("== floats-check ==")
+    aggregated = max(aggregated, cmd_floats_check(sub_args))
+
+    if sub_args.branch:
+        print(f"== review-validate {sub_args.branch} ==")
+        aggregated = max(aggregated, cmd_review_validate(sub_args))
+        print(f"== review-gate {sub_args.branch} ==")
+        aggregated = max(aggregated, cmd_review_gate(sub_args))
+    else:
+        print("[WARN] --branch not provided; review-validate and review-gate skipped")
+
+    print(f"== bankcheck exit code: {aggregated} ==")
+    return aggregated
+
+
+# ---------------------------------------------------------------------------
+# CLI
+
+
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        prog="bankcheck",
+        description="CI gates for the dev-prompts banking profile.",
+    )
+    p.add_argument("--repo-root", default=".", help="Repository root (default: cwd)")
+    sub = p.add_subparsers(dest="cmd", required=True)
+
+    pv = sub.add_parser("profile-validate", help="Validate .banking-profile against schema")
+    pv.add_argument("--profile", help="Override profile path (default: <repo-root>/.banking-profile)")
+    pv.set_defaults(func=cmd_profile_validate)
+
+    rv = sub.add_parser("review-validate", help="Validate review JSON files for a branch")
+    rv.add_argument("branch", help="Branch name (e.g. feat/portfolio-x or example dir name)")
+    rv.set_defaults(func=cmd_review_validate)
+
+    cp = sub.add_parser("contract-presence", help="Every Python function in sensitive paths has a ---contract block")
+    cp.add_argument("--profile", help="Override profile path")
+    cp.set_defaults(func=cmd_contract_presence)
+
+    cv = sub.add_parser("contract-validate", help="Every ---contract block validates against contract schema")
+    cv.add_argument("--profile", help="Override profile path")
+    cv.set_defaults(func=cmd_contract_validate)
+
+    fc = sub.add_parser("floats-check", help="No float patterns in sensitive paths")
+    fc.add_argument("--profile", help="Override profile path")
+    fc.set_defaults(func=cmd_floats_check)
+
+    rg = sub.add_parser("review-gate", help="Review verdicts approve and no unresolved blockers/majors")
+    rg.add_argument("branch", help="Branch name")
+    rg.set_defaults(func=cmd_review_gate)
+
+    al = sub.add_parser("all", help="Run all standalone checks; pass --branch to also run review-* checks")
+    al.add_argument("--branch", help="Branch name (enables review-validate and review-gate)")
+    al.set_defaults(func=cmd_all)
+
+    return p
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+    if not hasattr(args, "func"):
+        parser.print_help()
+        return EXIT_CONFIG_ERROR
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+2026-05-09T21:39:32.787125Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["review-gate non verifica che l'ultimo round complessivo abbia verdict=approve, quindi puo' passare anche se un round successivo richiede modifiche","I comandi standalone contract-presence/contract-validate/floats-check non gestiscono profilo YAML vuoto/malformato o schema mancante: possono terminare con eccezioni invece dell'exit code 2 documentato","sensitive_paths non viene vincolato a repo_root: pattern come ../** possono far scandire file fuori repository e causare crash/DoS su relative_to()","La deduplicazione dei finding in review-gate usa ordinamento lessicografico dei file invece del numero di round, quindi un ack vecchio puo' sovrascrivere quello piu' recente"],"verdict":"REQUEST_CHANGES"}
+tokens used
+21.768
+{"bugs_found":["review-gate non verifica che l'ultimo round complessivo abbia verdict=approve, quindi puo' passare anche se un round successivo richiede modifiche","I comandi standalone contract-presence/contract-validate/floats-check non gestiscono profilo YAML vuoto/malformato o schema mancante: possono terminare con eccezioni invece dell'exit code 2 documentato","sensitive_paths non viene vincolato a repo_root: pattern come ../** possono far scandire file fuori repository e causare crash/DoS su relative_to()","La deduplicazione dei finding in review-gate usa ordinamento lessicografico dei file invece del numero di round, quindi un ack vecchio puo' sovrascrivere quello piu' recente"],"verdict":"REQUEST_CHANGES"}

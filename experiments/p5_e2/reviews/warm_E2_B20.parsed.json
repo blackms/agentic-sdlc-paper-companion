@@ -1,0 +1,25 @@
+{
+  "bugs_found": [
+    "Malformazioni profilo non gestite causano crash nei controlli standalone",
+    "YAML vuoto trattato come profilo assente invece che invalido",
+    "Profilo non mapping causa AttributeError su chiamate profile.get",
+    "Eccezioni caricamento schemi JSON non gestite in vari comandi",
+    "Exemption senza chiavi obbligatorie causa KeyError non controllato",
+    "Branch review path permette traversal tramite nome branch letterale",
+    "Regex contratti ignora blocchi senza newline finale",
+    "Presenza contratti non segnala blocchi YAML non parsabili",
+    "Associazione contratti solo per nome consente contratti fuori funzione",
+    "Regex funzioni conta metodi annidati e funzioni interne",
+    "Parser funzioni ignora decorator, classi e contesto lessicale",
+    "Review gate non verifica latest round globale verdict approve",
+    "Dedup findings per ordine filename pu\u00f2 scegliere ack non pi\u00f9 recente",
+    "Review gate non valida manifest n\u00e9 round schema prima del gating",
+    "Review gate ignora assenza di latest math auditor approve",
+    "Float check produce falsi positivi in commenti e stringhe",
+    "Float check non conta file illeggibili come failure",
+    "Unsupported language warning non fallisce gate contract presence",
+    "iter_files_sensitive con glob non ricorsivi pu\u00f2 saltare file annidati",
+    "load_profile override relativo risolto contro cwd, non repo_root"
+  ],
+  "detected_planted": true
+}

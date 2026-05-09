@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence emits only the first unsupported-language warning due to '[:1]' slice; remaining unsupported extensions are silently dropped, hiding gaps",
+    "round-*.json lexicographic sort misorders round 10+",
+    "FLOAT_PATTERNS false positives in comments/strings",
+    "load_yaml_file returns None for empty files breaking validators"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_all uses min() for profile-validate result, so profile validation failures can be ignored and the command may exit 0 despite an invalid profile.",
+    "contract-presence/contract-validate/floats-check do not catch YAML parse errors or non-mapping profiles from load_profile, causing crashes instead of documented exit code 2.",
+    "cmd_review_validate and cmd_review_gate load schema/review files without handling FileNotFoundError or JSONDecodeError for schemas, so malformed/missing configuration can crash rather than return a config error.",
+    "review-gate overwrites findings by lexicographic filename order, not by round number, so round-10 sorts before round-2 and stale acknowledgements can incorrectly determine gate status.",
+    "review-gate claims the latest overall round must approve but never actually checks the latest round overall verdict, only the code-reviewer verdict."
+  ],
+  "detected_planted": true
+}

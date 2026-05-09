@@ -1,0 +1,12 @@
+{
+  "bugs_found": [
+    "contract-presence dice di saltare le funzioni dunder ma il codice non le salta, quindi __init__/__str__ possono fallire ingiustamente",
+    "load_profile e i comandi contract/floats non gestiscono YAML malformato o profilo non-dict: possono crashare invece di uscire con errore di configurazione",
+    "review-gate non verifica davvero che l'ultimo round complessivo abbia verdict=approve, nonostante sia un requisito documentato",
+    "review-gate controlla contract_only_summary sull'ultimo round del math-auditor, non specificamente sul round 2 come dichiarato",
+    "il fallback con branch letterale in review-validate/review-gate permette path traversal tramite branch con ../",
+    "sensitive_paths del profilo non sono confinati a repo_root e possono far leggere/scansionare file fuori repository",
+    "review-gate deduplica i finding in ordine lessicografico dei filename, non per numero round reale; con nomi non zero-padded o non standard pu\u00f2 usare ack obsoleti"
+  ],
+  "detected_planted": true
+}

@@ -1,0 +1,33 @@
+{
+  "bugs_found": [
+    "Profilo YAML malformato non gestito fuori da profile-validate",
+    "Profilo vuoto o non mapping causa AttributeError sui get",
+    "Errori di caricamento schemi non gestiti in vari comandi",
+    "cmd_all continua dopo profilo invalido producendo risultati fuorvianti",
+    "Percorsi sensitive_paths assoluti causano crash o escape repo",
+    "Fallback branch literal consente path traversal fuori reviews",
+    "Branch slash-to-underscore crea collisioni tra nomi distinti",
+    "Esenzioni contract-presence confrontate con path assoluti spesso falliscono",
+    "function_is_exempted pu\u00f2 sollevare KeyError su esenzioni malformate",
+    "Contratti associati solo per nome non per posizione o scope",
+    "Funzioni omonime in classi diverse condividono indebitamente un contratto",
+    "contract-presence accetta contratti non validati con solo nome",
+    "Regex def rileva funzioni dentro stringhe e nested scopes",
+    "Commento sui dunder contraddetto: __init__ richiede comunque contratto",
+    "Regex contract non ancorata produce falsi positivi e troncamenti YAML",
+    "contract-presence salta file sensibili non Python con solo WARN",
+    "contract-validate ignora file illeggibili senza fallire o avvisare",
+    "floats-check ignora letture fallite e pu\u00f2 stampare OK",
+    "floats-check segnala float in commenti e stringhe",
+    "Estensioni sconosciute floats-check saltate con WARN non FAIL",
+    "review-gate non verifica il verdetto latest round globale",
+    "review-gate accetta summary Math Auditor da round sbagliato",
+    "Ack findings deduplicati per ordine filename non round effettivo",
+    "_latest_round_per_agent gestisce male round duplicati dello stesso agente",
+    "Manifest richiesto ma contenuto non verificato in review-gate",
+    "review-validate pu\u00f2 passare senza manifest obbligatorio",
+    "review-validate ignora OSError sui JSON di review",
+    "Review JSON letti senza snapshot atomico durante scritture concorrenti"
+  ],
+  "detected_planted": true
+}

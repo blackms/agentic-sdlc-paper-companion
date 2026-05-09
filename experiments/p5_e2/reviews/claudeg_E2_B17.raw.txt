@@ -1,0 +1,1 @@
+{"bugs_found": ["cmd_contract_validate dedupes validator errors by message ({e.message: e}.values()); distinct schema violations sharing the same message at different paths are collapsed, hiding real findings and underreporting failures", "round-*.json lexicographic sort misorders round 10+", "FLOAT_PATTERNS false positives in comments/strings"], "verdict": "REQUEST_CHANGES"}

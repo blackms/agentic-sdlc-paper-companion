@@ -1,0 +1,7 @@
+{
+  "bugs_found": [
+    "cmd_profile_validate has inverted validation logic: profiles with schema errors are reported as OK and invalid profiles pass.",
+    "review-gate documents a requirement that the latest round overall must have verdict=approve, but the implementation never checks the latest overall round verdict, so later request-changes rounds can be incorrectly accepted."
+  ],
+  "detected_planted": true
+}

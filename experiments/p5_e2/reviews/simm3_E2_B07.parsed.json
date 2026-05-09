@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "Le esenzioni in contract-presence usano un path assoluto (`str(fp)`) invece del path relativo al repo, quindi i glob configurati in `contract_exemptions` probabilmente non matchano mai.",
+    "Diversi comandi caricano profili/schemi JSON/YAML senza gestire FileNotFoundError, JSONDecodeError o YAMLError, causando traceback invece dell'exit code 2 documentato per errori di configurazione.",
+    "review-gate documenta che il round pi\u00f9 recente globale deve avere verdict=approve, ma il codice controlla solo l'ultimo round del code-reviewer e ignora il verdict pi\u00f9 recente complessivo.",
+    "L'aggregazione dei finding in review-gate ordina solo per nome file (`sorted(glob)`), quindi round con numeri a due cifre o naming diverso possono sovrascrivere ack pi\u00f9 recenti con ack pi\u00f9 vecchi."
+  ],
+  "detected_planted": true
+}

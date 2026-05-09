@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "review-gate controlla solo l'ultimo file round-*.json per i findings a causa di all_round_files[-1:], quindi pu\u00f2 ignorare blocker/major non risolti in round precedenti",
+    "review-gate non verifica che il round pi\u00f9 recente complessivo abbia verdict=approve, nonostante il docstring lo dichiari",
+    "load_profile/load_yaml_file non validano che il profilo YAML sia una mapping: file vuoto o lista causano AttributeError nei comandi invece di exit code 2",
+    "contract-presence confronta solo i nomi dei contratti a livello file, quindi un contratto omonimo pu\u00f2 coprire funzioni diverse o duplicate senza verificare posizione/associazione reale",
+    "i comandi review-validate e contract-validate caricano gli schema senza gestione di FileNotFoundError/JSONDecodeError, causando crash invece di configuration error",
+    "il commento dice che le funzioni dunder sono escluse, ma il codice non le salta e richiede contratti anche per __init__ e simili"
+  ],
+  "detected_planted": false
+}

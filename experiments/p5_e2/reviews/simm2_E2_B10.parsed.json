@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "cmd_review_gate non implementa la regola documentata: non controlla che l'ultimo round complessivo abbia verdict=approve, quindi pu\u00f2 passare dopo un request-changes pi\u00f9 recente.",
+    "contract-presence/contract-validate/floats-check non gestiscono YAML malformato o profili non-mapping: possono terminare con traceback invece di exit code 2.",
+    "cmd_review_validate e cmd_contract_validate caricano gli schema JSON senza gestione errori: schema mancanti o corrotti fanno crashare il tool.",
+    "contract-presence associa i contratti solo per nome funzione nel file: blocchi scollegati o nomi duplicati tra metodi possono far passare funzioni non realmente coperte.",
+    "Il fallback della directory review usa args.branch come path raw, con rischio di path traversal se l'input non \u00e8 fidato.",
+    "Nel report di review-gate il conteggio usa 'block' invece di 'blocker', sottostimando i blocker risolti."
+  ],
+  "detected_planted": true
+}

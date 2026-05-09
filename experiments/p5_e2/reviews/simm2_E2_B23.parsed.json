@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_contract_validate ignora completamente gli errori di validazione schema: stampa 'schema OK' e itera su una lista vuota, quindi contratti invalidi passano come validi.",
+    "review-gate non implementa la regola documentata 'latest round file overall has verdict=approve'; controlla solo l'ultimo round del code-reviewer, quindi pu\u00f2 accettare uno stato finale non approvato.",
+    "review-gate deduplica i finding usando l'ordine alfabetico dei file invece del numero di round; 'round-10.json' pu\u00f2 essere processato prima di 'round-2.json', facendo vincere ack pi\u00f9 vecchi.",
+    "review-validate, contract-validate e altri comandi non gestiscono FileNotFoundError/JSONDecodeError/YAMLError per schema o profilo, causando crash invece dell'exit code 2 documentato.",
+    "load_yaml_file pu\u00f2 restituire None o tipi non-dict; i comandi successivi usano profile.get e possono fallire con AttributeError su profili vuoti o malformati."
+  ],
+  "detected_planted": true
+}

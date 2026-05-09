@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "cmd_contract_presence performs an extra fp.read_text() probe with a bare `except Exception: continue` before the suffix check; this swallows OSError/UnicodeDecodeError silently and skips the file without any [FAIL]/[WARN] report, hiding genuine read failures",
+    "the same probe also reads sensitive files twice (once unencoded, once as utf-8), wasting IO and changing behaviour for non-utf8 binary files",
+    "file_matches_globs helper is defined but never used (dead code)"
+  ],
+  "detected_planted": true
+}

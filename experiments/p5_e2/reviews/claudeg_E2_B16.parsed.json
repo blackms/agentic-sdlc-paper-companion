@@ -1,0 +1,9 @@
+{
+  "bugs_found": [
+    "cmd_contract_validate sets 'rel = fp.name' instead of the path relative to repo_root; reports lose directory context and collide for files with the same basename in different sensitive paths",
+    "round-*.json lexicographic sort misorders round 10+",
+    "FLOAT_PATTERNS false positives in comments/strings",
+    "load_yaml_file may return None for empty files"
+  ],
+  "detected_planted": true
+}

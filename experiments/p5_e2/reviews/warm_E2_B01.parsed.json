@@ -1,0 +1,29 @@
+{
+  "bugs_found": [
+    "cmd_all returns OK when profile is missing, bypassing gates",
+    "cmd_all continues after profile validation errors and may crash",
+    "Malformed YAML profile crashes contract and float subcommands",
+    "Non-mapping profiles cause unchecked .get attribute crashes",
+    "Operational subcommands skip profile schema validation before trusting fields",
+    "Schema load errors are unhandled in review and contract checks",
+    "Unreadable files bypass contract validation and floats-check",
+    "Sensitive globs and symlinks can escape repository boundaries",
+    "Exemption entries use unchecked keys and can crash",
+    "Branch directory fallback allows traversal and absolute paths",
+    "Branch normalization collides for slash and double-underscore names",
+    "Missing --branch only warns, skipping review gate in all",
+    "Review gate omits latest-overall verdict approval check",
+    "Math auditor summary checked on latest round, not round two",
+    "Finding acknowledgements sorted by filename, not declared round",
+    "Review gate trusts malformed review JSON shapes and crashes",
+    "Success message counts blockers only, omitting major findings",
+    "Contract presence accepts stale name-only blocks detached from functions",
+    "Contract presence regex can match defs inside strings",
+    "Contract presence misses Python 3.12 generic function definitions",
+    "Dunder function skip is documented but not implemented",
+    "Unsupported sensitive languages only warn, bypassing contract enforcement",
+    "Float scan misses literals, aliases, unions, and Optional annotations",
+    "Float scan flags comments and strings as violations"
+  ],
+  "detected_planted": true
+}

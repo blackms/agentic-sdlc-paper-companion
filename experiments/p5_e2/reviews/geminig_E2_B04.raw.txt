@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5293ms...
+```json
+{"bugs_found": ["The `cmd_profile_validate` function contains a logical error where it reports 'OK' for profile validation even when validation errors are present, due to an inverted conditional check. It should only report 'OK' if there are no errors.", "Path traversal vulnerability in `cmd_review_validate` and `cmd_review_gate` functions: the fallback logic for resolving the branch directory directly uses `args.branch` without sanitization, allowing `..` segments to potentially access directories outside the intended '.claude/reviews' structure. This could lead to unauthorized file access or manipulation."], "verdict": "REQUEST_CHANGES"}
+```

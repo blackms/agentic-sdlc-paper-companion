@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "Il codice non definisce compound_interest, quindi nessun contratto della funzione \u00e8 soddisfatto",
+    "Il codice non definisce loan_payment, quindi nessun contratto della funzione \u00e8 soddisfatto",
+    "Il codice non definisce transfer, quindi nessun contratto della funzione \u00e8 soddisfatto",
+    "Il codice non definisce apply_fee, quindi nessun contratto della funzione \u00e8 soddisfatto",
+    "Il codice non definisce fx_convert, quindi nessun contratto della funzione \u00e8 soddisfatto"
+  ],
+  "detected_planted": false
+}

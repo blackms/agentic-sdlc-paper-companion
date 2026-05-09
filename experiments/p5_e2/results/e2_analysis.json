@@ -1,0 +1,66 @@
+{
+  "per_condition": {
+    "asymm-codex": {
+      "q": 0.2692307692307692,
+      "n_eff": 26,
+      "miss_count": 7
+    },
+    "symm-mono": {
+      "q": 0.15384615384615385,
+      "n_eff": 26,
+      "miss_count": 4
+    },
+    "symm-multi": {
+      "q": 0.08333333333333333,
+      "n_eff": 24,
+      "miss_count": 2
+    },
+    "asymm-multi": {
+      "q": 0.20833333333333334,
+      "n_eff": 24,
+      "miss_count": 5
+    }
+  },
+  "paired_mcnemar": [
+    {
+      "a": "asymm-codex",
+      "b": 4,
+      "n": 26,
+      "c": 1,
+      "p": 0.96875,
+      "verdict": "n/s"
+    },
+    {
+      "a": "symm-multi",
+      "b": 0,
+      "n": 24,
+      "c": 1,
+      "p": 0.5,
+      "verdict": "n/s"
+    },
+    {
+      "a": "asymm-multi",
+      "b": 3,
+      "n": 24,
+      "c": 1,
+      "p": 0.9375,
+      "verdict": "n/s"
+    },
+    {
+      "a": "asymm-multi",
+      "b": 0,
+      "n": 24,
+      "c": 1,
+      "p": 0.5,
+      "verdict": "n/s"
+    },
+    {
+      "a": "asymm-multi",
+      "b": 3,
+      "n": 24,
+      "c": 0,
+      "p": 1.0,
+      "verdict": "n/s"
+    }
+  ]
+}

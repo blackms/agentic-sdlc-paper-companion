@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_contract_validate ignores jsonschema validation errors: it prints OK and iterates over an empty list, so invalid contracts pass CI.",
+    "review-gate docstring requires latest overall round verdict=approve, but implementation never checks the latest round overall, allowing a newer request-changes verdict to pass if code-reviewer's latest is approve.",
+    "review-gate deduplicates findings using lexicographic filename order instead of parsed round ordering, so the chosen latest ack can be wrong for names like round-10 vs round-2 or nonstandard filenames.",
+    "load_profile/load_yaml_file can return None or non-dict YAML; downstream commands call .get and may crash instead of returning configuration error.",
+    "function_is_exempted indexes exemption keys directly, so malformed or partially specified exemptions can crash with KeyError."
+  ],
+  "detected_planted": true
+}

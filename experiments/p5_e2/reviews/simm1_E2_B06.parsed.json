@@ -1,0 +1,10 @@
+{
+  "bugs_found": [
+    "cmd_all skips review-validate and review-gate unconditionally because of `if False and sub_args.branch`, so `all --branch` never enforces review gates",
+    "cmd_review_gate documents requiring the latest overall round verdict to be approve but never checks the latest overall round, allowing a later non-approve round to pass",
+    "finding aggregation relies on lexicographic filename sorting, so files like round-10.json can be overwritten by older round-2.json acknowledgements",
+    "cmd_review_validate loads schema files without catching FileNotFoundError/JSONDecodeError, causing crashes instead of documented configuration-error exit code",
+    "load_yaml_file may return None/non-dict for empty or scalar profiles; later `.get()` calls can crash instead of reporting malformed configuration"
+  ],
+  "detected_planted": true
+}

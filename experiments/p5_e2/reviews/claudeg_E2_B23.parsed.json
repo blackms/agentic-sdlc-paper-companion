@@ -1,0 +1,8 @@
+{
+  "bugs_found": [
+    "cmd_contract_validate else-branch reports reporter.ok('schema OK') and then iterates an empty list `for e in []` instead of `errors`, silently swallowing real schema validation failures and turning REQUEST_CHANGES into ACCEPT \u2014 a critical gate bypass",
+    "the bogus 'schema OK' message is also misleading because it is printed even when validation actually failed",
+    "file_matches_globs helper is defined but never used (dead code)"
+  ],
+  "detected_planted": true
+}

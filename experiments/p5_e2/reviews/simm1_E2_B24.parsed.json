@@ -1,0 +1,11 @@
+{
+  "bugs_found": [
+    "contract-presence legge ogni file una prima volta senza encoding e ignora qualsiasi eccezione, quindi file sensibili illeggibili/non UTF-8 vengono saltati silenziosamente invece di fallire il gate.",
+    "contract-presence, contract-validate, floats-check e review-validate non gestiscono profili/schemi YAML/JSON mancanti o malformati: possono terminare con traceback invece dell'exit code 2 documentato.",
+    "load_profile/load_yaml_file possono restituire None o tipi non dict; i comandi successivi chiamano .get e possono crashare su profili vuoti o strutturalmente invalidi.",
+    "review-gate dichiara di richiedere che l'ultimo round globale abbia verdict=approve, ma il codice controlla solo l'ultimo round del code-reviewer; pu\u00f2 accettare un round pi\u00f9 recente di un altro agente con verdict non approvato.",
+    "review-gate deduplica i finding ordinando per nome file, non per numero round/ordine logico come indicato dal commento; round-10.json pu\u00f2 essere processato prima/dopo in modo errato rispetto a round-2.json, producendo ack non affidabili.",
+    "all ignora l'opzione --profile anche se i singoli check la supportano, rendendo impossibile usare un profilo alternativo nel comando aggregato."
+  ],
+  "detected_planted": false
+}
