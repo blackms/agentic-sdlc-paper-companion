@@ -19,6 +19,18 @@ from scipy.stats import chi2
 ROOT = Path(__file__).parent
 DOMAINS = ["csv_dom", "jsondec_dom"]
 FAMILIES = ["cold", "cold_opus", "cold_gemini31"]
+# Mismatched (per-family specificity contrast); only csv_dom for cross-family scope
+MM_FAMILIES = {
+    "csv_dom": {"cold": "cold_mismatched", "cold_opus": "cold_mismatched_opus", "cold_gemini31": "cold_mismatched_gemini31"},
+    "jsondec_dom": {"cold": "cold_mismatched"},  # Codex-only on jsondec
+}
+
+
+def mcnemar_one_sided(b, c):
+    n = b + c
+    if n == 0:
+        return 1.0
+    return sum(comb(n, k) for k in range(0, b + 1)) / (2 ** n)
 
 
 def extract_json(raw_path: Path):
@@ -116,6 +128,41 @@ def main():
             if per_fam[fam]["parsed"] > 0:
                 delta = (other - codex) * 100
                 print(f"  Δ {fam} vs cold(codex): {delta:+.1f}pp strict")
+
+        # Specificity per family: cold_X vs mismatched_X (paired)
+        print(f"\n  ## Specificity per family (paired McNemar one-sided H1: cold > mismatched)")
+        for fam in FAMILIES:
+            mm_role = MM_FAMILIES.get(domain, {}).get(fam)
+            if not mm_role:
+                continue
+            # collect paired
+            pairs = []
+            for bug in bugs:
+                bid = bug["bug_id"]
+                cf = extract_json(rev / f"{fam}_{bid}.raw.txt")
+                mf = extract_json(rev / f"{mm_role}_{bid}.raw.txt")
+                cd = detects(bug, cf)
+                md = detects(bug, mf)
+                if cd is not None and md is not None:
+                    pairs.append((cd, md))
+            n_p = len(pairs)
+            if n_p == 0:
+                print(f"  {fam:18s}: no paired data ({mm_role})")
+                continue
+            cold_caught = sum(1 for cd, md in pairs if cd)
+            mm_caught = sum(1 for cd, md in pairs if md)
+            cold_r = cold_caught / n_p
+            mm_r = mm_caught / n_p
+            b = sum(1 for cd, md in pairs if not cd and md)
+            c = sum(1 for cd, md in pairs if cd and not md)
+            p_mc = mcnemar_one_sided(b, c)
+            print(f"  {fam:18s}: cold={cold_r:.2%} mm({mm_role[:18]:18s})={mm_r:.2%} Δ={cold_r-mm_r:+.2%}  "
+                  f"McNemar n={n_p} b={b} c={c} p={p_mc:.6f}  {'SIG' if p_mc < 0.05 else 'NS'}")
+            per_fam[fam]["specificity"] = {
+                "mm_role": mm_role, "n_paired": n_p,
+                "cold_rate": cold_r, "mm_rate": mm_r, "delta": cold_r - mm_r,
+                "b": b, "c": c, "p": p_mc,
+            }
 
     out = {"domains": results}
     (ROOT / "results" / "p9_cross_family.json").write_text(

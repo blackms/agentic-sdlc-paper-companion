@@ -1,0 +1,1 @@
+{"bugs_found":["Code under review is Python stdlib csv.py, completely unrelated to the bankcheck contracts provided; no bankcheck functions (Reporter, load_yaml_file, cmd_*, etc.) are present, so contract compliance cannot be assessed and is trivially violated by absence"],"verdict":"REQUEST_CHANGES"}

@@ -17,7 +17,19 @@ Total: 60 + 60 + 60 = 180 cold-reviewer calls (csv + jsondec).
 | Domain | Codex (cold) | Opus 4.7 | Gemini 3.1 Pro | Δ Opus | Δ Gemini |
 |---|---|---|---|---|---|
 | csv_dom | 13/30 = **43.33%** [27.4%, 60.8%] | 9/30 = **30.00%** [16.7%, 47.9%] | 19/30 = **63.33%** [45.5%, 78.1%] | **−13.3pp** | **+20.0pp** |
-| jsondec_dom | 13/30 = **43.33%** [27.4%, 60.8%] | 12/30 = **40.00%** [24.6%, 57.7%] | 26/30 = **86.67%** [70.3%, 94.7%] | **−3.3pp** | **+43.3pp** |
+| jsondec_dom | 13/30 = **43.33%** [27.4%, 60.8%] | 12/30 = **40.00%** [24.6%, 57.7%] | 28/30 = **93.33%** [78.7%, 98.2%] | **−3.3pp** | **+50.0pp** |
+
+## Specificity per family (paired McNemar, one-sided H1: cold > mismatched) — csv_dom only
+
+To address the methodological gap raised by Codex peer review (specificity claim must be tested per family, not only for Codex), we added 60 mismatched-condition calls on csv_dom: 30 Opus + 30 Gemini 3.1 Pro with the bankcheck-CI contracts substituted in (categorical mismatch, identical to the Codex P9 ablation).
+
+| Family | cold | cold_mismatched | Δ | McNemar paired | p (one-sided) |
+|---|---|---|---|---|---|
+| Codex | 43.33% | 0.00% | **+43.33 pp** | n=30, b=0, c=13 | 0.000122 |
+| Opus 4.7 | 30.00% | 3.33% | **+26.67 pp** | n=30, b=0, c=8 | 0.003906 |
+| Gemini 3.1 Pro | 63.33% | 3.33% | **+60.00 pp** | n=30, b=0, c=18 | 0.000004 |
+
+**All three families show paired McNemar significance (p < 0.01) for cold > cold_mismatched on csv_dom.** Specificity over categorical mismatch is the most family-robust finding of P9: the *direction* of the cold-aligned advantage holds for every reviewer family tested; the *magnitude* varies (Δ 27 pp Opus → 43 pp Codex → 60 pp Gemini 3.1 Pro), driven primarily by the cold-aligned absolute rate, not by the mismatched control (which is 0–3.3% in all 3 families).
 
 ## Headline finding
 

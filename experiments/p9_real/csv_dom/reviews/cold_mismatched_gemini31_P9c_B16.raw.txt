@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5974ms...
+{"bugs_found": ["The implementation provided is for a CSV parsing module and completely missing all the functions defined in the bankcheck contract (e.g., Reporter, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}

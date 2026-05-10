@@ -1,0 +1,1 @@
+{"bugs_found":["_guess_delimiter uses '%c ' // delim (integer division on string) instead of '%c ' % delim — TypeError at runtime when a single-delimiter chunk is found"],"verdict":"REQUEST_CHANGES"}

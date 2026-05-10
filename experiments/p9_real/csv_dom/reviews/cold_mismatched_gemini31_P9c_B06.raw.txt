@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5448ms...
+```json
+{"bugs_found": ["The provided code (csv.py) does not implement any of the contracted bankcheck functions (Reporter, load_yaml_file, cmd_*, etc.)", "Type error in _guess_quote_and_delimiter: using floor division '//' instead of string formatting '%' for the regex pattern interpolation"], "verdict": "REQUEST_CHANGES"}
+```

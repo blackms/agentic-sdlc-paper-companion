@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5983ms...
+{"bugs_found": ["The provided code does not implement the bankcheck contract; all specified functions and classes (e.g., Reporter, load_yaml_file, cmd_all) are completely missing, as the code instead implements a CSV module."], "verdict": "REQUEST_CHANGES"}

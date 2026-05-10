@@ -1,0 +1,1 @@
+{"bugs_found":["Code under review is Python stdlib csv module, completely unrelated to bankcheck contracts; no bankcheck functions present to evaluate against contracts"],"verdict":"REQUEST_CHANGES"}

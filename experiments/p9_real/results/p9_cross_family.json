@@ -10,7 +10,17 @@
         "wilson95_strict": [
           0.2737723743061511,
           0.6080299045459127
-        ]
+        ],
+        "specificity": {
+          "mm_role": "cold_mismatched",
+          "n_paired": 30,
+          "cold_rate": 0.43333333333333335,
+          "mm_rate": 0.0,
+          "delta": 0.43333333333333335,
+          "b": 0,
+          "c": 13,
+          "p": 0.0001220703125
+        }
       },
       "cold_opus": {
         "caught": 9,
@@ -21,7 +31,17 @@
         "wilson95_strict": [
           0.16664562643958933,
           0.4787612101166018
-        ]
+        ],
+        "specificity": {
+          "mm_role": "cold_mismatched_opus",
+          "n_paired": 30,
+          "cold_rate": 0.3,
+          "mm_rate": 0.03333333333333333,
+          "delta": 0.26666666666666666,
+          "b": 0,
+          "c": 8,
+          "p": 0.00390625
+        }
       },
       "cold_gemini31": {
         "caught": 19,
@@ -32,7 +52,17 @@
         "wilson95_strict": [
           0.45513246433604937,
           0.7812629779598231
-        ]
+        ],
+        "specificity": {
+          "mm_role": "cold_mismatched_gemini31",
+          "n_paired": 30,
+          "cold_rate": 0.6333333333333333,
+          "mm_rate": 0.03333333333333333,
+          "delta": 0.6,
+          "b": 0,
+          "c": 18,
+          "p": 3.814697265625e-06
+        }
       }
     },
     "jsondec_dom": {
@@ -45,7 +75,17 @@
         "wilson95_strict": [
           0.2737723743061511,
           0.6080299045459127
-        ]
+        ],
+        "specificity": {
+          "mm_role": "cold_mismatched",
+          "n_paired": 25,
+          "cold_rate": 0.52,
+          "mm_rate": 0.0,
+          "delta": 0.52,
+          "b": 0,
+          "c": 13,
+          "p": 0.0001220703125
+        }
       },
       "cold_opus": {
         "caught": 12,
@@ -59,14 +99,14 @@
         ]
       },
       "cold_gemini31": {
-        "caught": 26,
-        "parsed": 28,
+        "caught": 28,
+        "parsed": 30,
         "n_total": 30,
-        "rate_parsed": 0.9285714285714286,
-        "rate_strict": 0.8666666666666667,
+        "rate_parsed": 0.9333333333333333,
+        "rate_strict": 0.9333333333333333,
         "wilson95_strict": [
-          0.7031831605558306,
-          0.9469043057578189
+          0.7867618227892791,
+          0.9815233646723066
         ]
       }
     }
