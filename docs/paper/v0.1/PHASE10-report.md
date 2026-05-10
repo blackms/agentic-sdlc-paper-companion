@@ -50,6 +50,22 @@ Cross-family spread: **13.3 pp**. parsy is the only domain where cold is below 7
 
 Cross-family spread: **3.3 pp**.
 
+## Parse failure rates per family per cell (Codex peer review request)
+
+| Domain | Family | cold parsed | mm parsed |
+|---|---|---|---|
+| dateutil | Codex | 30/30 | 30/30 |
+| dateutil | Opus | 29/30 (1 fail) | 30/30 |
+| dateutil | Gemini 3.1 Pro | 30/30 | 30/30 |
+| parsy | Codex | 30/30 | 30/30 |
+| parsy | Opus | 28/30 (2 fail) | 29/30 (1 fail) |
+| parsy | Gemini 3.1 Pro | 30/30 | 22/30 (8 fail) |
+| chardet | Codex | 30/30 | 30/30 |
+| chardet | Opus | 30/30 | 30/30 |
+| chardet | Gemini 3.1 Pro | 30/30 | 30/30 |
+
+Parse failures are concentrated in parsy/Gemini-mismatched (8/30 fail) and parsy/Opus (2-3 fail). Parsing reliability does not differentially favor cold over mismatched in dateutil and chardet (both at 0 fail in nearly all cells). The parsy/Gemini mismatched parse failure may inflate apparent specificity Δ; under a strict-unparsed-as-miss policy this is conservative for the cold (penalizes cold-only parse failures, which are 0 in parsy).
+
 ## Pre-registered metrics — verdict
 
 | Metric | Pass cells |
@@ -60,19 +76,23 @@ Cross-family spread: **3.3 pp**.
 | Cross-domain Fisher Codex-only (P7 + 3 P9 + 3 P10 = 7 tests) | χ²(14) = 167.72, combined p ≈ 0 (machine-zero, < 10⁻¹⁵) |
 | Cross-domain Fisher all-families (3 P10 × 3 families = 9) | χ²(18) = 289.74, combined p ≈ 0 |
 
-## Key finding: stdlib-bias hypothesis is *reversed*
+## Sample-level difference (not yet a causal claim)
 
-The Phase-9 v0.8 framing ("training-data overlap on stdlib biases reviewer toward leniency") predicts cold detection should be **lower on stdlib than on third-party**, or at most similar. **The data show the opposite**: on identical AST-mutator-generated bugs with the same prompt and contract format:
+In the prior stdlib sample and the preregistered third-party sample, cold detection is substantially higher on the third-party sample:
 
-| Domain class | Cold-aligned detection (Codex strict) |
+| Sample (Codex strict) | Cold-aligned detection |
 |---|---|
 | Stdlib (P9: csv, urllib, jsondec) | 43.3%, 50.0%, 43.3% |
 | Third-party (P10: dateutil, parsy, chardet) | **93.3%, 53.3%, 96.7%** |
 
-**Possible mechanisms** (Phase-11 desiderata):
-1. **Anti-stdlib carelessness**: high training prior on stdlib → reviewers assume the code is correct and fail to scrutinize ("trust the canon"). Third-party libs trigger more careful contract-vs-implementation comparison.
-2. **Contract-quality interaction**: auto-extracted contracts may be more *informative* for third-party libs (the reviewer relies on them more, since it has no internal "I know csv.py" prior).
-3. **Mutation salience**: heavy-abstraction code (parsy combinators, chardet probability tables) may make individual operator changes more semantically visible than in well-worn stdlib idioms.
+**This is a sample-level observation, not a controlled library-type contrast.** The two samples differ in many uncontrolled ways: LOC, complexity, contract document length, operator distribution of valid AST mutations, mutation salience, local-invariant clarity, and the categorical-mismatch ablation's coherence. We cannot attribute the gap to library class alone.
+
+**Candidate moderators / mechanisms** (Phase-11 desiderata, none established by P10):
+1. **Reduced scrutiny under high familiarity/authority priors**: high training prior on stdlib → reviewers may defer to apparent authority. Requires *direct provenance-label experiments* (relabel stdlib as third-party and vice versa) to confirm.
+2. **Contract-quality interaction**: auto-extracted contracts may differ in informativeness by library; requires *blinded contract audit*.
+3. **Mutation salience**: heavy-abstraction code may make individual operator changes more semantically visible; requires *matched mutation-operator-mix experiments*.
+4. **Task-coherence of the mismatched ablation**: the bankcheck mismatch may suppress useful reasoning differently across library classes; requires *shuffled-within-domain* and *no-contract* controls.
+5. **Local-invariant clarity**: third-party files may have more localized invariants than stdlib idioms; requires *structured contract complexity audit*.
 
 ## Reviewer-choice sensitivity collapses on third-party libs
 
@@ -88,9 +108,9 @@ The P9 cross-family finding reported a 33-47 pp spread on stdlib. **On third-par
 
 The "reviewer-choice sensitivity" failure mode reported in v0.9.5 is **stdlib-specific**: choice of reviewer family matters massively on stdlib, much less on third-party libs. This further weakens the v0.9 framing.
 
-## Updated C1 statement (for paper v1.0)
+## Updated C1 statement (for paper v1.0, after Codex peer review reframing)
 
-> **C1 (Cold reviewer transfer — generalizes to third-party libs across families; weaker on stdlib)**: across two pilot domains (bankcheck CI, JSON parser), three Phase-8 hand-written domains, three Phase-9 real Python stdlib codebases (csv, urllib.parse, json.decoder), and **three Phase-10 third-party Python libraries (dateutil/relativedelta, parsy, chardet/chardistribution)**, the specificity component (cold > cold_mismatched) generalizes overwhelmingly: across the 9 P10 cells (3 domains × 3 reviewer families), all 9 show paired McNemar p < 0.010 (range 2.4·10⁻⁴ to <10⁻⁶), specificity Δ ∈ [50, 97] pp, and the pre-registered absolute primary threshold "cold > 50%" passes in **9/9 P10 cells** (vs 1/3 P9 cells with Codex+Opus). The **Fisher's combined paired McNemar p over 7 Codex-only tests (P7 + 3 P9 + 3 P10) is at machine zero** (χ²(14) = 167.72). Cross-family spread on third-party libs is 3-13 pp (vs 33-47 pp on stdlib), suggesting that **reviewer-choice sensitivity is itself a stdlib-specific phenomenon**, not a general property of the cold-reviewer technique. Counter to the v0.9.5 stdlib-bias hypothesis, the data are most parsimoniously explained by **anti-stdlib carelessness**: high training prior on stdlib idioms reduces the reviewer's scrutiny of stdlib code, an effect that does not transfer to lesser-known third-party libraries. **The paper's empirical claim now extends to: aligned auto-extracted contracts substantially outperform categorically-mismatched contracts in 9/9 cells across 3 third-party Python libraries and 3 reviewer families, with absolute detection ≥ 50% in every cell, and cross-family spread within 13 pp**.
+> **C1 (Cold reviewer transfer — contract-aligned specificity replicates across 3 reviewer families on a 3-library third-party sample; library-class is a candidate but unconfirmed moderator)**: across two pilot domains (bankcheck CI, JSON parser), three Phase-8 hand-written domains, three Phase-9 real Python stdlib codebases (csv, urllib.parse, json.decoder), and **three Phase-10 third-party Python libraries (dateutil/relativedelta, parsy, chardet/chardistribution)**, the specificity component (cold > cold_mismatched) replicates within each tested sample: all 9 P10 cells (3 domains × 3 families) show paired McNemar p < 0.010, specificity Δ ∈ [50, 97] pp. The **pre-registered absolute primary threshold "cold > 50%" is exceeded by all 9 point estimates** (range 53–97%); however parsy/Codex sits at 53.33% with Wilson 95% CI [36.1%, 69.8%] straddling 50% — the absolute threshold is **only convincingly above 50% under interval evidence in 6 of 9 cells**. In this 3-library third-party sample, cold detection is substantially higher than in the prior 3-library stdlib sample; the cross-family spread is 3.3–13.3 pp (vs 33–47 pp in the stdlib sample). **These are sample-level differences, not a controlled library-type contrast**: the two samples differ in LOC, complexity, contract document length, operator distribution of valid AST mutations, mutation salience, and ablation-task coherence. Library class is a candidate moderator; alternative explanations (contract-extraction quality, mutation salience, local-invariant clarity, ablation incoherence) remain equally consistent with the data. Phase-11 desiderata: provenance-label experiments, contract informativeness audit, matched stdlib/third-party operator-mix experiments, shuffled-in-domain and no-contract controls.
 
 ## Limitations
 
