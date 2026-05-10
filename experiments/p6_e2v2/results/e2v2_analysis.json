@@ -1,0 +1,272 @@
+{
+  "preregistered": true,
+  "phase": "P6.1 E2v2",
+  "n_bugs": 27,
+  "detection": {
+    "E2_B01": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": true
+    },
+    "E2_B02": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B03": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B04": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B05": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": true
+    },
+    "E2_B06": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B07": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B08": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B09": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B10": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B11": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B12": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B13": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B14": {
+      "warm": false,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B15": {
+      "warm": true,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B16": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B17": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": null
+    },
+    "E2_B18": {
+      "warm": true,
+      "cold": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B19": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": false,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B20": {
+      "warm": true,
+      "cold": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false,
+      "claudeg": null
+    },
+    "E2_B22": {
+      "warm": true,
+      "cold": null,
+      "skeptic": null,
+      "simm1": null,
+      "simm2": null,
+      "simm3": null,
+      "claudeg": null
+    },
+    "E2_B23": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B24": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B26": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": false,
+      "claudeg": false
+    },
+    "E2_B28": {
+      "warm": false,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B29": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    },
+    "E2_B30": {
+      "warm": true,
+      "cold": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true,
+      "claudeg": true
+    }
+  },
+  "per_condition_q": {
+    "asymm-codex": {
+      "q": 0.15384615384615385,
+      "miss": 4,
+      "n_eff": 26
+    },
+    "symm-mono": {
+      "q": 0.15384615384615385,
+      "miss": 4,
+      "n_eff": 26
+    },
+    "symm-multi": {
+      "q": 0.08333333333333333,
+      "miss": 2,
+      "n_eff": 24
+    },
+    "asymm-multi": {
+      "q": 0.125,
+      "miss": 3,
+      "n_eff": 24
+    }
+  }
+}
