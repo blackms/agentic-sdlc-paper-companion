@@ -1,0 +1,527 @@
+{
+  "ref": "/Users/alessiorocchi/Projects/agentic-sdlc/experiments/p9_real/csv_dom/ref/csv_module.py",
+  "bugs": [
+    {
+      "bug_id": "P9c_B01",
+      "operator": "AOR",
+      "line": 361,
+      "old_op": "Mod",
+      "new_op": "FloorDiv",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "//",
+        "%",
+        "floordiv",
+        "mod ",
+        "modulo",
+        "floor division"
+      ],
+      "description": "AOR Mod -> FloorDiv"
+    },
+    {
+      "bug_id": "P9c_B02",
+      "operator": "AOR",
+      "line": 338,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P9c_B03",
+      "operator": "ROR",
+      "line": 46,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B04",
+      "operator": "BOR",
+      "line": 250,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_guess_quote_and_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B05",
+      "operator": "ROR",
+      "line": 127,
+      "old_op": "Lt",
+      "new_op": "LtE",
+      "enclosing": "__next__",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR Lt -> LtE (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B06",
+      "operator": "AOR",
+      "line": 274,
+      "old_op": "Mod",
+      "new_op": "FloorDiv",
+      "enclosing": "_guess_quote_and_delimiter",
+      "op_keywords": [
+        "//",
+        "%",
+        "floordiv",
+        "mod ",
+        "modulo",
+        "floor division"
+      ],
+      "description": "AOR Mod -> FloorDiv"
+    },
+    {
+      "bug_id": "P9c_B07",
+      "operator": "AOR",
+      "line": 241,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "_guess_quote_and_delimiter",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P9c_B08",
+      "operator": "BOR",
+      "line": 353,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B09",
+      "operator": "BOR",
+      "line": 330,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B10",
+      "operator": "ROR",
+      "line": 350,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B11",
+      "operator": "AOR",
+      "line": 253,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "_guess_quote_and_delimiter",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P9c_B12",
+      "operator": "AOR",
+      "line": 157,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "_dict_to_list",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P9c_B13",
+      "operator": "BOR",
+      "line": 250,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "_guess_quote_and_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9c_B14",
+      "operator": "AOR",
+      "line": 325,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9c_B15",
+      "operator": "ROR",
+      "line": 426,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "has_header",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B16",
+      "operator": "ROR",
+      "line": 352,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        " ge ",
+        ">=",
+        " gt ",
+        "greater or equal",
+        ">",
+        "greater than"
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B17",
+      "operator": "BOR",
+      "line": 140,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B18",
+      "operator": "BOR",
+      "line": 205,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "sniff",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9c_B19",
+      "operator": "ROR",
+      "line": 350,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        " ge ",
+        ">=",
+        " gt ",
+        ">",
+        "greater or equal",
+        "greater than"
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B20",
+      "operator": "ROR",
+      "line": 317,
+      "old_op": "Lt",
+      "new_op": "LtE",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR Lt -> LtE (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B21",
+      "operator": "BOR",
+      "line": 354,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9c_B22",
+      "operator": "AOR",
+      "line": 353,
+      "old_op": "Div",
+      "new_op": "Mult",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "divis",
+        "*",
+        "divide",
+        "/",
+        "times",
+        "multipl"
+      ],
+      "description": "AOR Div -> Mult"
+    },
+    {
+      "bug_id": "P9c_B23",
+      "operator": "BOR",
+      "line": 350,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B24",
+      "operator": "ROR",
+      "line": 352,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        " ge ",
+        ">=",
+        " gt ",
+        "greater or equal",
+        ">",
+        "greater than"
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B25",
+      "operator": "ROR",
+      "line": 439,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "has_header",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9c_B26",
+      "operator": "BOR",
+      "line": 352,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B27",
+      "operator": "AOR",
+      "line": 345,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "_guess_delimiter",
+      "op_keywords": [
+        "divis",
+        "*",
+        "multipl",
+        "divide",
+        "/",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P9c_B28",
+      "operator": "BOR",
+      "line": 86,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9c_B29",
+      "operator": "AOR",
+      "line": 244,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "_guess_quote_and_delimiter",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9c_B30",
+      "operator": "ROR",
+      "line": 451,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "has_header",
+      "op_keywords": [
+        " ge ",
+        ">=",
+        " gt ",
+        "greater or equal",
+        ">",
+        "greater than"
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    }
+  ]
+}

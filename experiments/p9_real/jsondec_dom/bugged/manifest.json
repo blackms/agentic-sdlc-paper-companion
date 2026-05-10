@@ -1,0 +1,308 @@
+{
+  "ref": "p9_real/jsondec_dom/ref/decoder_module.py",
+  "seed": 20260510,
+  "total_valid_mutations": 58,
+  "sampled_n": 30,
+  "bugs": [
+    {
+      "bug_id": "P9j_B01",
+      "operator": "ROR",
+      "location": [
+        119,
+        15
+      ],
+      "description": "ROR LtE -> Lt (idx 0)",
+      "new_op_cls": "Lt"
+    },
+    {
+      "bug_id": "P9j_B02",
+      "operator": "AOR",
+      "location": [
+        147,
+        21
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B03",
+      "operator": "AOR",
+      "location": [
+        157,
+        31
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B04",
+      "operator": "BOR",
+      "location": [
+        322,
+        30
+      ],
+      "description": "BOR Or -> And",
+      "new_op_cls": "And"
+    },
+    {
+      "bug_id": "P9j_B05",
+      "operator": "ROR",
+      "location": [
+        201,
+        13
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)",
+      "new_op_cls": "Eq"
+    },
+    {
+      "bug_id": "P9j_B06",
+      "operator": "BOR",
+      "location": [
+        119,
+        15
+      ],
+      "description": "BOR And -> Or",
+      "new_op_cls": "Or"
+    },
+    {
+      "bug_id": "P9j_B07",
+      "operator": "AOR",
+      "location": [
+        222,
+        20
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B08",
+      "operator": "BOR",
+      "location": [
+        321,
+        25
+      ],
+      "description": "BOR Or -> And",
+      "new_op_cls": "And"
+    },
+    {
+      "bug_id": "P9j_B09",
+      "operator": "AOR",
+      "location": [
+        247,
+        32
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B10",
+      "operator": "AOR",
+      "location": [
+        193,
+        28
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B11",
+      "operator": "AOR",
+      "location": [
+        60,
+        20
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B12",
+      "operator": "ROR",
+      "location": [
+        119,
+        43
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)",
+      "new_op_cls": "NotEq"
+    },
+    {
+      "bug_id": "P9j_B13",
+      "operator": "BOR",
+      "location": [
+        320,
+        27
+      ],
+      "description": "BOR Or -> And",
+      "new_op_cls": "And"
+    },
+    {
+      "bug_id": "P9j_B14",
+      "operator": "ROR",
+      "location": [
+        61,
+        7
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)",
+      "new_op_cls": "NotEq"
+    },
+    {
+      "bug_id": "P9j_B15",
+      "operator": "ROR",
+      "location": [
+        121,
+        19
+      ],
+      "description": "ROR LtE -> Lt (idx 0)",
+      "new_op_cls": "Lt"
+    },
+    {
+      "bug_id": "P9j_B16",
+      "operator": "ROR",
+      "location": [
+        95,
+        13
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)",
+      "new_op_cls": "Eq"
+    },
+    {
+      "bug_id": "P9j_B17",
+      "operator": "ROR",
+      "location": [
+        121,
+        19
+      ],
+      "description": "ROR LtE -> Lt (idx 1)",
+      "new_op_cls": "Lt"
+    },
+    {
+      "bug_id": "P9j_B18",
+      "operator": "AOR",
+      "location": [
+        122,
+        39
+      ],
+      "description": "AOR Sub -> Add",
+      "new_op_cls": "Add"
+    },
+    {
+      "bug_id": "P9j_B19",
+      "operator": "AOR",
+      "location": [
+        120,
+        40
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B20",
+      "operator": "BOR",
+      "location": [
+        61,
+        7
+      ],
+      "description": "BOR And -> Or",
+      "new_op_cls": "Or"
+    },
+    {
+      "bug_id": "P9j_B21",
+      "operator": "AOR",
+      "location": [
+        181,
+        32
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B22",
+      "operator": "ROR",
+      "location": [
+        206,
+        11
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)",
+      "new_op_cls": "Eq"
+    },
+    {
+      "bug_id": "P9j_B23",
+      "operator": "AOR",
+      "location": [
+        122,
+        26
+      ],
+      "description": "AOR Add -> Sub",
+      "new_op_cls": "Sub"
+    },
+    {
+      "bug_id": "P9j_B24",
+      "operator": "BOR",
+      "location": [
+        130,
+        13
+      ],
+      "description": "BOR Or -> And",
+      "new_op_cls": "And"
+    },
+    {
+      "bug_id": "P9j_B25",
+      "operator": "ROR",
+      "location": [
+        171,
+        11
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)",
+      "new_op_cls": "Eq"
+    },
+    {
+      "bug_id": "P9j_B26",
+      "operator": "ROR",
+      "location": [
+        154,
+        11
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)",
+      "new_op_cls": "NotEq"
+    },
+    {
+      "bug_id": "P9j_B27",
+      "operator": "AOR",
+      "location": [
+        34,
+        17
+      ],
+      "description": "AOR Mod -> FloorDiv",
+      "new_op_cls": "FloorDiv"
+    },
+    {
+      "bug_id": "P9j_B28",
+      "operator": "ROR",
+      "location": [
+        149,
+        7
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)",
+      "new_op_cls": "Eq"
+    },
+    {
+      "bug_id": "P9j_B29",
+      "operator": "ROR",
+      "location": [
+        119,
+        15
+      ],
+      "description": "ROR LtE -> Lt (idx 1)",
+      "new_op_cls": "Lt"
+    },
+    {
+      "bug_id": "P9j_B30",
+      "operator": "ROR",
+      "location": [
+        339,
+        11
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)",
+      "new_op_cls": "Eq"
+    }
+  ]
+}

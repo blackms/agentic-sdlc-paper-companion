@@ -1,0 +1,535 @@
+{
+  "ref": "/Users/alessiorocchi/Projects/agentic-sdlc/experiments/p9_real/urllib_dom/ref/parse_module.py",
+  "bugs": [
+    {
+      "bug_id": "P9u_B01",
+      "operator": "AOR",
+      "line": 1038,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "urlencode",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B02",
+      "operator": "BOR",
+      "line": 422,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "_checknetloc",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9u_B03",
+      "operator": "BOR",
+      "line": 920,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "quote_plus",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9u_B04",
+      "operator": "BOR",
+      "line": 1068,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "unwrap",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9u_B05",
+      "operator": "AOR",
+      "line": 327,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "geturl",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B06",
+      "operator": "AOR",
+      "line": 346,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "geturl",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B07",
+      "operator": "ROR",
+      "line": 645,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "_unquote_impl",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B08",
+      "operator": "ROR",
+      "line": 487,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "urlsplit",
+      "op_keywords": [
+        " ge ",
+        ">=",
+        " gt ",
+        "greater or equal",
+        ">",
+        "greater than"
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B09",
+      "operator": "AOR",
+      "line": 653,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "_unquote_impl",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B10",
+      "operator": "ROR",
+      "line": 580,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "urljoin",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B11",
+      "operator": "BOR",
+      "line": 920,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "quote_plus",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9u_B12",
+      "operator": "ROR",
+      "line": 598,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "urljoin",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B13",
+      "operator": "BOR",
+      "line": 771,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "parse_qsl",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9u_B14",
+      "operator": "ROR",
+      "line": 799,
+      "old_op": "Lt",
+      "new_op": "LtE",
+      "enclosing": "parse_qsl",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR Lt -> LtE (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B15",
+      "operator": "AOR",
+      "line": 436,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "_checknetloc",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B16",
+      "operator": "BOR",
+      "line": 495,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "urlsplit",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9u_B17",
+      "operator": "AOR",
+      "line": 1009,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "urlencode",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B18",
+      "operator": "BOR",
+      "line": 804,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "parse_qsl",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9u_B19",
+      "operator": "AOR",
+      "line": 536,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "urlunsplit",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B20",
+      "operator": "ROR",
+      "line": 1113,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "_splithost",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B21",
+      "operator": "AOR",
+      "line": 492,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "urlsplit",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B22",
+      "operator": "ROR",
+      "line": 1070,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "unwrap",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B23",
+      "operator": "BOR",
+      "line": 397,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "urlparse",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9u_B24",
+      "operator": "AOR",
+      "line": 1009,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "urlencode",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9u_B25",
+      "operator": "BOR",
+      "line": 129,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_coerce_args",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9u_B26",
+      "operator": "ROR",
+      "line": 953,
+      "old_op": "Lt",
+      "new_op": "LtE",
+      "enclosing": "quote_from_bytes",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR Lt -> LtE (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B27",
+      "operator": "ROR",
+      "line": 529,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "urlunsplit",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B28",
+      "operator": "ROR",
+      "line": 591,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "urljoin",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9u_B29",
+      "operator": "BOR",
+      "line": 529,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "urlunsplit",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9u_B30",
+      "operator": "AOR",
+      "line": 1057,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "_to_bytes",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    }
+  ]
+}

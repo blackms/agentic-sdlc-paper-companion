@@ -1,0 +1,877 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e1227-4397-7532-af26-cd4a76baed02
+--------
+user
+Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
+
+Devi eseguire una review in 2 fasi:
+
+**FASE A — Solo contratti**: ricevi i contratti formali delle funzioni di bankcheck. Sulla base SOLO di questi contratti, deriva un set di "expected outcomes" / proprietà che il codice DEVE soddisfare. Genera mentalmente almeno 5 counter-example per funzione (input edge case che dovrebbero far rispettare le invarianti dichiarate).
+
+**FASE B — Confronto con codice**: dopo aver fatto la FASE A nella tua testa, ricevi anche il codice. Confronta le tue expectations con l'implementazione e identifica VIOLAZIONI del contratto.
+
+**Output STRETTAMENTE JSON, una riga**:
+
+```json
+{"bugs_found": ["short description 1", ...], "verdict": "ACCEPT" | "REQUEST_CHANGES"}
+```
+
+Niente preamboli, niente markdown, solo il JSON. Concentrati su violazioni del CONTRATTO, non su style.
+
+CONTRATTI FORMALI DI BANKCHECK:
+# Contract Document
+
+## Public API
+
+The module explicitly exports:
+
+```python
+__all__ = ["JSONDecoder", "JSONDecodeError"]
+```
+
+The following non-private callables are also documented because they are public by name: `py_scanstring`, `JSONObject`, and `JSONArray`.
+
+---
+
+## `class JSONDecodeError(ValueError)`
+
+### Signature
+
+```python
+class JSONDecodeError(ValueError)
+```
+
+### Purpose
+
+Represents a JSON decoding failure with structured position metadata.
+
+### Invariants
+
+Instances expose:
+
+```python
+msg: original unformatted error message
+doc: JSON document being parsed
+pos: character index where parsing failed
+lineno: 1-based line number for pos
+colno: 1-based column number for pos
+```
+
+The string form of the exception is formatted as:
+
+```text
+{msg}: line {lineno} column {colno} (char {pos})
+```
+
+---
+
+### `JSONDecodeError.__init__`
+
+#### Signature
+
+```python
+def __init__(self, msg, doc, pos)
+```
+
+#### Preconditions
+
+- `doc` supports string-like `count()` and `rfind()` operations.
+- `pos` is an integer index into, or relative to, `doc`.
+- `msg` is suitable for string formatting.
+
+#### Postconditions / Return Guarantees
+
+- Initializes the base `ValueError` with a formatted message.
+- Sets:
+  - `self.msg == msg`
+  - `self.doc == doc`
+  - `self.pos == pos`
+  - `self.lineno == doc.count("\n", 0, pos) + 1`
+  - `self.colno == pos - doc.rfind("\n", 0, pos)`
+- Returns `None`.
+
+#### Invariants
+
+- `lineno` is 1-based.
+- `colno` is computed relative to the last newline before `pos`.
+
+#### Side Effects / Exceptions Raised
+
+- Mutates the exception instance by assigning metadata attributes.
+- May propagate exceptions from `doc.count`, `doc.rfind`, or string formatting if incompatible arguments are supplied.
+
+---
+
+### `JSONDecodeError.__reduce__`
+
+#### Signature
+
+```python
+def __reduce__(self)
+```
+
+#### Preconditions
+
+- The instance has `msg`, `doc`, and `pos` attributes.
+
+#### Postconditions / Return Guarantees
+
+Returns:
+
+```python
+(self.__class__, (self.msg, self.doc, self.pos))
+```
+
+This supports reconstruction of the exception.
+
+#### Invariants
+
+- The reduction tuple uses the concrete runtime class of the instance.
+
+#### Side Effects / Exceptions Raised
+
+- No intentional side effects.
+
+---
+
+## `py_scanstring`
+
+### Signature
+
+```python
+def py_scanstring(
+    s,
+    end,
+    strict=True,
+    _b=BACKSLASH,
+    _m=STRINGCHUNK.match
+)
+```
+
+### Purpose
+
+Scans and decodes a JSON string literal body from `s`, beginning immediately after the opening quote.
+
+### Preconditions
+
+- `s` is a string-like object containing JSON string content.
+- `end` is the index immediately after the opening double quote.
+- `strict` is a boolean controlling whether literal control characters are rejected.
+- `_b` maps recognized single-character escape codes to decoded characters.
+- `_m` matches chunks of string content and string terminators.
+
+### Postconditions / Return Guarantees
+
+Returns a tuple:
+
+```python
+(decoded_string, end_index)
+```
+
+Where:
+
+- `decoded_string` is the decoded Python string.
+- `end_index` is the index immediately after the closing quote.
+- Valid JSON escape sequences are decoded.
+- Unicode escapes of the form `\uXXXX` are decoded.
+- Valid UTF-16 surrogate pairs are combined into a single code point.
+- If `strict` is `False`, literal control characters are included in the result.
+
+#### Recognized Escapes
+
+```python
+\"  -> "
+\\  -> \
+\/  -> /
+\b  -> backspace
+\f  -> form feed
+\n  -> newline
+\r  -> carriage return
+\t  -> tab
+\uXXXX -> Unicode code point
+```
+
+### Invariants
+
+- Output chunks are accumulated in order.
+- The returned index always points after the terminating double quote when decoding succeeds.
+- Escapes are interpreted before appending to the output string.
+
+### Side Effects / Exceptions Raised
+
+Raises `JSONDecodeError` when:
+
+- The string is unterminated.
+- A control character is encountered while `strict` is true.
+- An escape sequence is not recognized.
+- A Unicode escape is not a valid `\uXXXX` sequence.
+
+No intentional external side effects.
+
+---
+
+## `JSONObject`
+
+### Signature
+
+```python
+def JSONObject(
+    s_and_end,
+    strict,
+    scan_once,
+    object_hook,
+    object_pairs_hook,
+    memo=None,
+    _w=WHITESPACE.match,
+    _ws=WHITESPACE_STR
+)
+```
+
+### Purpose
+
+Parses a JSON object from a string and returns its Python representation plus the ending index.
+
+### Preconditions
+
+- `s_and_end` is a pair `(s, end)`.
+- `s` is the JSON source string.
+- `end` is the index where object content begins, after the opening `{`.
+- `scan_once` parses a JSON value and returns `(value, new_end)`.
+- Object property names are JSON strings enclosed in double quotes.
+- Object member names and values are separated by `:`.
+- Object members are separated by `,`.
+- `object_hook`, when provided, is callable.
+- `object_pairs_hook`, when provided, is callable.
+- `memo`, when provided, supports `setdefault`.
+
+### Postconditions / Return Guarantees
+
+Returns:
+
+```python
+(result, end_index)
+```
+
+Where:
+
+- `end_index` is the index immediately after the closing `}`.
+- Empty objects decode to `{}` unless a hook changes the result.
+- Object members are parsed as key/value pairs.
+- Whitespace is skipped where permitted.
+- Keys are memoized through `memo.setdefault`.
+
+Hook behavior:
+
+- If `object_pairs_hook` is not `None`, it is called with the ordered list of `(key, value)` pairs, and its return value is used.
+- Otherwise, pairs are converted to `dict`.
+- If `object_hook` is not `None`, it is called with that dict, and its return value is used.
+- `object_pairs_hook` takes priority over `object_hook`.
+
+### Invariants
+
+- Parsed key/value pairs are accumulated in source order before final conversion or hook invocation.
+- Each property name is parsed using `scanstring`.
+- Each value is parsed using `scan_once`.
+- The returned index advances past the complete object.
+
+### Side Effects / Exceptions Raised
+
+Raises `JSONDecodeError` when:
+
+- A property name is not enclosed in double quotes.
+- A `:` delimiter is missing.
+- A value is expected but not present.
+- A `,` delimiter is missing between members.
+
+May propagate exceptions from:
+
+- `scanstring`
+- `scan_once`
+- `object_hook`
+- `object_pairs_hook`
+- `memo.setdefault`
+
+---
+
+## `JSONArray`
+
+### Signature
+
+```python
+def JSONArray(
+    s_and_end,
+    scan_once,
+    _w=WHITESPACE.match,
+    _ws=WHITESPACE_STR
+)
+```
+
+### Purpose
+
+Parses a JSON array from a string and returns its Python list representation plus the ending index.
+
+### Preconditions
+
+- `s_and_end` is a pair `(s, end)`.
+- `s` is the JSON source string.
+- `end` is the index where array content begins, after the opening `[`.
+- `scan_once` parses a JSON value and returns `(value, new_end)`.
+- Array elements are separated by `,`.
+
+### Postconditions / Return Guarantees
+
+Returns:
+
+```python
+(values, end_index)
+```
+
+Where:
+
+- `values` is a list of decoded array elements.
+- `end_index` is the index immediately after the closing `]`.
+- Empty arrays decode to `[]`.
+- Whitespace is skipped where permitted.
+- Elements are appended in source order.
+
+### Invariants
+
+- The result is always a list when parsing succeeds.
+- Each array element is parsed using `scan_once`.
+- The returned index advances past the complete array.
+
+### Side Effects / Exceptions Raised
+
+Raises `JSONDecodeError` when:
+
+- A value is expected but not present.
+- A `,` delimiter is missing between elements.
+
+May propagate exceptions from `scan_once`.
+
+---
+
+## `class JSONDecoder(object)`
+
+### Signature
+
+```python
+class JSONDecoder(object)
+```
+
+### Purpose
+
+Decodes JSON documents into Python values.
+
+### Default JSON-to-Python Mapping
+
+| JSON value | Python value |
+|---|---|
+| object | `dict` |
+| array | `list` |
+| string | `str` |
+| integer number | `int` |
+| real number | `float` |
+| `true` | `True` |
+| `false` | `False` |
+| `null` | `None` |
+
+The decoder also recognizes:
+
+```python
+NaN
+Infinity
+-Infinity
+```
+
+as floating-point values by default.
+
+---
+
+### `JSONDecoder.__init__`
+
+#### Signature
+
+```python
+def __init__(
+    self,
+    *,
+    object_hook=None,
+    parse_float=None,
+    parse_int=None,
+    parse_constant=None,
+    strict=True,
+    object_pairs_hook=None
+)
+```
+
+#### Preconditions
+
+- All arguments are keyword-only.
+- `object_hook`, if supplied, is callable.
+- `object_pairs_hook`, if supplied, is callable.
+- `parse_float`, if supplied, is callable and accepts a JSON float string.
+- `parse_int`, if supplied, is callable and accepts a JSON integer string.
+- `parse_constant`, if supplied, is callable and accepts one of:
+  - `"-Infinity"`
+  - `"Infinity"`
+  - `"NaN"`
+
+#### Postconditions / Return Guarantees
+
+Initializes the decoder with these attributes:
+
+```python
+self.object_hook
+self.parse_float
+self.parse_int
+self.parse_constant
+self.strict
+self.object_pairs_hook
+self.parse_object
+self.parse_array
+self.parse_string
+self.memo
+self.scan_once
+```
+
+Defaults:
+
+- `parse_float` defaults to `float`.
+- `parse_int` defaults to `int`.
+- `parse_constant` defaults to `_CONSTANTS.__getitem__`.
+- `parse_object` is `JSONObject`.
+- `parse_array` is `JSONArray`.
+- `parse_string` is `scanstring`.
+- `memo` is initialized to `{}`.
+- `scan_once` is created by `scanner.make_scanner(self)`.
+
+Returns `None`.
+
+#### Invariants
+
+- `self.strict` controls whether literal control characters are allowed in strings.
+- `object_pairs_hook`, when set, has priority over `object_hook`.
+- The scanner is configured from the decoder instance.
+
+#### Side Effects / Exceptions Raised
+
+- Mutates the decoder instance by assigning configuration and parser attributes.
+- May propagate exceptions from `scanner.make_scanner(self)`.
+
+---
+
+### `JSONDecoder.decode`
+
+#### Signature
+
+```python
+def decode(self, s, _w=WHITESPACE.match)
+```
+
+#### Preconditions
+
+- `s` is a `str` instance containing a complete JSON document.
+- Leading and trailing JSON whitespace are allowed.
+- `_w` is a whitespace matcher compatible with `WHITESPACE.match`.
+
+#### Postconditions / Return Guarantees
+
+Returns the Python representation of the JSON document.
+
+Processing guarantees:
+
+- Leading whitespace is skipped before decoding.
+- `raw_decode` is used to parse the document.
+- Trailing whitespace is skipped after decoding.
+- The full input string must be consumed after trailing whitespace.
+
+#### Invariants
+
+- Successful decoding consumes exactly one complete JSON document plus surrounding whitespace.
+- The return value is the decoded Python representation, possibly transformed by configured hooks or parse functions.
+
+#### Side Effects / Exceptions Raised
+
+Raises `JSONDecodeError` when:
+
+- No JSON value can be decoded.
+- Extra non-whitespace data remains after the JSON document.
+
+May propagate exceptions from:
+
+- `raw_decode`
+- configured parse functions
+- configured hooks
+- the scanner
+
+---
+
+### `JSONDecoder.raw_decode`
+
+#### Signature
+
+```python
+def raw_decode(self, s, idx=0)
+```
+
+#### Preconditions
+
+- `s` is a `str` beginning with a JSON document at index `idx`.
+- `idx` is the index where decoding should begin.
+- `self.scan_once` is available and callable.
+
+#### Postconditions / Return Guarantees
+
+Returns:
+
+```python
+(obj, end)
+```
+
+Where:
+
+- `obj` is the decoded Python representation.
+- `end` is the index in `s` where the decoded JSON document ends.
+- Characters after `end` are not consumed or validated.
+
+#### Invariants
+
+- Decoding starts exactly at `idx`.
+- The method delegates value parsing to `self.scan_once`.
+
+#### Side Effects / Exceptions Raised
+
+Raises `JSONDecodeError` with message `"Expecting value"` when no value can be decoded at `idx`.
+
+May propagate exceptions from:
+
+- `self.scan_once`
+- configured parse functions
+- configured hooks
+
+CODICE DA REVISIONARE:
+"""Implementation of JSONDecoder
+"""
+import re
+from json import scanner
+try:
+    from _json import scanstring as c_scanstring
+except ImportError:
+    c_scanstring = None
+__all__ = ['JSONDecoder', 'JSONDecodeError']
+FLAGS = re.VERBOSE | re.MULTILINE | re.DOTALL
+NaN = float('nan')
+PosInf = float('inf')
+NegInf = float('-inf')
+
+class JSONDecodeError(ValueError):
+    """Subclass of ValueError with the following additional properties:
+
+    msg: The unformatted error message
+    doc: The JSON document being parsed
+    pos: The start index of doc where parsing failed
+    lineno: The line corresponding to pos
+    colno: The column corresponding to pos
+
+    """
+
+    def __init__(self, msg, doc, pos):
+        lineno = doc.count('\n', 0, pos) + 1
+        colno = pos - doc.rfind('\n', 0, pos)
+        errmsg = '%s: line %d column %d (char %d)' % (msg, lineno, colno, pos)
+        ValueError.__init__(self, errmsg)
+        self.msg = msg
+        self.doc = doc
+        self.pos = pos
+        self.lineno = lineno
+        self.colno = colno
+
+    def __reduce__(self):
+        return (self.__class__, (self.msg, self.doc, self.pos))
+_CONSTANTS = {'-Infinity': NegInf, 'Infinity': PosInf, 'NaN': NaN}
+STRINGCHUNK = re.compile('(.*?)(["\\\\\\x00-\\x1f])', FLAGS)
+BACKSLASH = {'"': '"', '\\': '\\', '/': '/', 'b': '\x08', 'f': '\x0c', 'n': '\n', 'r': '\r', 't': '\t'}
+
+def _decode_uXXXX(s, pos):
+    esc = s[pos + 1:pos + 5]
+    if len(esc) == 4 and esc[1] not in 'xX':
+        try:
+            return int(esc, 16)
+        except ValueError:
+            pass
+    msg = 'Invalid \\uXXXX escape'
+    raise JSONDecodeError(msg, s, pos)
+
+def py_scanstring(s, end, strict=True, _b=BACKSLASH, _m=STRINGCHUNK.match):
+    """Scan the string s for a JSON string. End is the index of the
+    character in s after the quote that started the JSON string.
+    Unescapes all valid JSON string escape sequences and raises ValueError
+    on attempt to decode an invalid string. If strict is False then literal
+    control characters are allowed in the string.
+
+    Returns a tuple of the decoded string and the index of the character in s
+    after the end quote."""
+    chunks = []
+    _append = chunks.append
+    begin = end - 1
+    while 1:
+        chunk = _m(s, end)
+        if chunk is None:
+            raise JSONDecodeError('Unterminated string starting at', s, begin)
+        end = chunk.end()
+        content, terminator = chunk.groups()
+        if content:
+            _append(content)
+        if terminator == '"':
+            break
+        elif terminator != '\\':
+            if strict:
+                msg = 'Invalid control character {0!r} at'.format(terminator)
+                raise JSONDecodeError(msg, s, end)
+            else:
+                _append(terminator)
+                continue
+        try:
+            esc = s[end]
+        except IndexError:
+            raise JSONDecodeError('Unterminated string starting at', s, begin) from None
+        if esc != 'u':
+            try:
+                char = _b[esc]
+            except KeyError:
+                msg = 'Invalid \\escape: {0!r}'.format(esc)
+                raise JSONDecodeError(msg, s, end)
+            end += 1
+        else:
+            uni = _decode_uXXXX(s, end)
+            end += 5
+            if 55296 <= uni <= 56319 and s[end:end + 2] == '\\u':
+                uni2 = _decode_uXXXX(s, end + 1)
+                if 56320 <= uni2 <= 57343:
+                    uni = 65536 - (uni - 55296 << 10 | uni2 - 56320)
+                    end += 6
+            char = chr(uni)
+        _append(char)
+    return (''.join(chunks), end)
+scanstring = c_scanstring or py_scanstring
+WHITESPACE = re.compile('[ \\t\\n\\r]*', FLAGS)
+WHITESPACE_STR = ' \t\n\r'
+
+def JSONObject(s_and_end, strict, scan_once, object_hook, object_pairs_hook, memo=None, _w=WHITESPACE.match, _ws=WHITESPACE_STR):
+    s, end = s_and_end
+    pairs = []
+    pairs_append = pairs.append
+    if memo is None:
+        memo = {}
+    memo_get = memo.setdefault
+    nextchar = s[end:end + 1]
+    if nextchar != '"':
+        if nextchar in _ws:
+            end = _w(s, end).end()
+            nextchar = s[end:end + 1]
+        if nextchar == '}':
+            if object_pairs_hook is not None:
+                result = object_pairs_hook(pairs)
+                return (result, end + 1)
+            pairs = {}
+            if object_hook is not None:
+                pairs = object_hook(pairs)
+            return (pairs, end + 1)
+        elif nextchar != '"':
+            raise JSONDecodeError('Expecting property name enclosed in double quotes', s, end)
+    end += 1
+    while True:
+        key, end = scanstring(s, end, strict)
+        key = memo_get(key, key)
+        if s[end:end + 1] != ':':
+            end = _w(s, end).end()
+            if s[end:end + 1] != ':':
+                raise JSONDecodeError("Expecting ':' delimiter", s, end)
+        end += 1
+        try:
+            if s[end] in _ws:
+                end += 1
+                if s[end] in _ws:
+                    end = _w(s, end + 1).end()
+        except IndexError:
+            pass
+        try:
+            value, end = scan_once(s, end)
+        except StopIteration as err:
+            raise JSONDecodeError('Expecting value', s, err.value) from None
+        pairs_append((key, value))
+        try:
+            nextchar = s[end]
+            if nextchar in _ws:
+                end = _w(s, end + 1).end()
+                nextchar = s[end]
+        except IndexError:
+            nextchar = ''
+        end += 1
+        if nextchar == '}':
+            break
+        elif nextchar != ',':
+            raise JSONDecodeError("Expecting ',' delimiter", s, end - 1)
+        end = _w(s, end).end()
+        nextchar = s[end:end + 1]
+        end += 1
+        if nextchar != '"':
+            raise JSONDecodeError('Expecting property name enclosed in double quotes', s, end - 1)
+    if object_pairs_hook is not None:
+        result = object_pairs_hook(pairs)
+        return (result, end)
+    pairs = dict(pairs)
+    if object_hook is not None:
+        pairs = object_hook(pairs)
+    return (pairs, end)
+
+def JSONArray(s_and_end, scan_once, _w=WHITESPACE.match, _ws=WHITESPACE_STR):
+    s, end = s_and_end
+    values = []
+    nextchar = s[end:end + 1]
+    if nextchar in _ws:
+        end = _w(s, end + 1).end()
+        nextchar = s[end:end + 1]
+    if nextchar == ']':
+        return (values, end + 1)
+    _append = values.append
+    while True:
+        try:
+            value, end = scan_once(s, end)
+        except StopIteration as err:
+            raise JSONDecodeError('Expecting value', s, err.value) from None
+        _append(value)
+        nextchar = s[end:end + 1]
+        if nextchar in _ws:
+            end = _w(s, end + 1).end()
+            nextchar = s[end:end + 1]
+        end += 1
+        if nextchar == ']':
+            break
+        elif nextchar != ',':
+            raise JSONDecodeError("Expecting ',' delimiter", s, end - 1)
+        try:
+            if s[end] in _ws:
+                end += 1
+                if s[end] in _ws:
+                    end = _w(s, end + 1).end()
+        except IndexError:
+            pass
+    return (values, end)
+
+class JSONDecoder(object):
+    """Simple JSON <https://json.org> decoder
+
+    Performs the following translations in decoding by default:
+
+    +---------------+-------------------+
+    | JSON          | Python            |
+    +===============+===================+
+    | object        | dict              |
+    +---------------+-------------------+
+    | array         | list              |
+    +---------------+-------------------+
+    | string        | str               |
+    +---------------+-------------------+
+    | number (int)  | int               |
+    +---------------+-------------------+
+    | number (real) | float             |
+    +---------------+-------------------+
+    | true          | True              |
+    +---------------+-------------------+
+    | false         | False             |
+    +---------------+-------------------+
+    | null          | None              |
+    +---------------+-------------------+
+
+    It also understands ``NaN``, ``Infinity``, and ``-Infinity`` as
+    their corresponding ``float`` values, which is outside the JSON spec.
+
+    """
+
+    def __init__(self, *, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, strict=True, object_pairs_hook=None):
+        """``object_hook``, if specified, will be called with the result
+        of every JSON object decoded and its return value will be used in
+        place of the given ``dict``.  This can be used to provide custom
+        deserializations (e.g. to support JSON-RPC class hinting).
+
+        ``object_pairs_hook``, if specified will be called with the result of
+        every JSON object decoded with an ordered list of pairs.  The return
+        value of ``object_pairs_hook`` will be used instead of the ``dict``.
+        This feature can be used to implement custom decoders.
+        If ``object_hook`` is also defined, the ``object_pairs_hook`` takes
+        priority.
+
+        ``parse_float``, if specified, will be called with the string
+        of every JSON float to be decoded. By default this is equivalent to
+        float(num_str). This can be used to use another datatype or parser
+        for JSON floats (e.g. decimal.Decimal).
+
+        ``parse_int``, if specified, will be called with the string
+        of every JSON int to be decoded. By default this is equivalent to
+        int(num_str). This can be used to use another datatype or parser
+        for JSON integers (e.g. float).
+
+        ``parse_constant``, if specified, will be called with one of the
+        following strings: -Infinity, Infinity, NaN.
+        This can be used to raise an exception if invalid JSON numbers
+        are encountered.
+
+        If ``strict`` is false (true is the default), then control
+        characters will be allowed inside strings.  Control characters in
+        this context are those with character codes in the 0-31 range,
+        including ``'\\t'`` (tab), ``'\\n'``, ``'\\r'`` and ``'\\0'``.
+        """
+        self.object_hook = object_hook
+        self.parse_float = parse_float or float
+        self.parse_int = parse_int or int
+        self.parse_constant = parse_constant or _CONSTANTS.__getitem__
+        self.strict = strict
+        self.object_pairs_hook = object_pairs_hook
+        self.parse_object = JSONObject
+        self.parse_array = JSONArray
+        self.parse_string = scanstring
+        self.memo = {}
+        self.scan_once = scanner.make_scanner(self)
+
+    def decode(self, s, _w=WHITESPACE.match):
+        """Return the Python representation of ``s`` (a ``str`` instance
+        containing a JSON document).
+
+        """
+        obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+        end = _w(s, end).end()
+        if end != len(s):
+            raise JSONDecodeError('Extra data', s, end)
+        return obj
+
+    def raw_decode(self, s, idx=0):
+        """Decode a JSON document from ``s`` (a ``str`` beginning with
+        a JSON document) and return a 2-tuple of the Python
+        representation and the index in ``s`` where the document ended.
+
+        This can be used to decode a JSON document from a string that may
+        have extraneous data at the end.
+
+        """
+        try:
+            obj, end = self.scan_once(s, idx)
+        except StopIteration as err:
+            raise JSONDecodeError('Expecting value', s, err.value) from None
+        return (obj, end)
+2026-05-10T13:50:23.971046Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["py_scanstring combina erroneamente coppie surrogate UTF-16: usa 65536 - (...) invece di 65536 + (...), producendo code point sbagliati o ValueError per surrogate pair valide"],"verdict":"REQUEST_CHANGES"}
+tokens used
+3296
+{"bugs_found":["py_scanstring combina erroneamente coppie surrogate UTF-16: usa 65536 - (...) invece di 65536 + (...), producendo code point sbagliati o ValueError per surrogate pair valide"],"verdict":"REQUEST_CHANGES"}

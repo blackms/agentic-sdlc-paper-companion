@@ -1,0 +1,535 @@
+{
+  "ref": "/Users/alessiorocchi/Projects/agentic-sdlc/experiments/p9_real/jsondec_dom/ref/decoder_module.py",
+  "bugs": [
+    {
+      "bug_id": "P9j_B01",
+      "operator": "ROR",
+      "line": 119,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR LtE -> Lt (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B02",
+      "operator": "AOR",
+      "line": 147,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B03",
+      "operator": "AOR",
+      "line": 157,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B04",
+      "operator": "BOR",
+      "line": 322,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9j_B05",
+      "operator": "ROR",
+      "line": 201,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B06",
+      "operator": "BOR",
+      "line": 119,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9j_B07",
+      "operator": "AOR",
+      "line": 222,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "JSONArray",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B08",
+      "operator": "BOR",
+      "line": 321,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9j_B09",
+      "operator": "AOR",
+      "line": 247,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "JSONArray",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B10",
+      "operator": "AOR",
+      "line": 193,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B11",
+      "operator": "AOR",
+      "line": 60,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "_decode_uXXXX",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B12",
+      "operator": "ROR",
+      "line": 119,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B13",
+      "operator": "BOR",
+      "line": 320,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9j_B14",
+      "operator": "ROR",
+      "line": 61,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "_decode_uXXXX",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B15",
+      "operator": "ROR",
+      "line": 121,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR LtE -> Lt (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B16",
+      "operator": "ROR",
+      "line": 95,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B17",
+      "operator": "ROR",
+      "line": 121,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR LtE -> Lt (idx 1)"
+    },
+    {
+      "bug_id": "P9j_B18",
+      "operator": "AOR",
+      "line": 122,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P9j_B19",
+      "operator": "AOR",
+      "line": 120,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B20",
+      "operator": "BOR",
+      "line": 61,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "_decode_uXXXX",
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P9j_B21",
+      "operator": "AOR",
+      "line": 181,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B22",
+      "operator": "ROR",
+      "line": 206,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B23",
+      "operator": "AOR",
+      "line": 122,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "+ ",
+        "- ",
+        " + ",
+        "minus",
+        "plus",
+        " - ",
+        "subtract",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P9j_B24",
+      "operator": "BOR",
+      "line": 130,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": null,
+      "op_keywords": [
+        "and ",
+        "&&",
+        "logical or",
+        "logical and",
+        "or ",
+        "||"
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P9j_B25",
+      "operator": "ROR",
+      "line": 171,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B26",
+      "operator": "ROR",
+      "line": 154,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B27",
+      "operator": "AOR",
+      "line": 34,
+      "old_op": "Mod",
+      "new_op": "FloorDiv",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "//",
+        "%",
+        "floordiv",
+        "mod ",
+        "modulo",
+        "floor division"
+      ],
+      "description": "AOR Mod -> FloorDiv"
+    },
+    {
+      "bug_id": "P9j_B28",
+      "operator": "ROR",
+      "line": 149,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "JSONObject",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P9j_B29",
+      "operator": "ROR",
+      "line": 119,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "py_scanstring",
+      "op_keywords": [
+        "<",
+        "less than",
+        "<=",
+        " lt ",
+        " le ",
+        "less or equal"
+      ],
+      "description": "ROR LtE -> Lt (idx 1)"
+    },
+    {
+      "bug_id": "P9j_B30",
+      "operator": "ROR",
+      "line": 339,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "decode",
+      "op_keywords": [
+        "equality",
+        "==",
+        "not equal",
+        "equal",
+        "!=",
+        "inequality"
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    }
+  ]
+}

@@ -1,0 +1,1677 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e11c5-199f-76f1-bc7f-6009b4726b28
+--------
+user
+Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
+
+Devi eseguire una review in 2 fasi:
+
+**FASE A — Solo contratti**: ricevi i contratti formali delle funzioni di bankcheck. Sulla base SOLO di questi contratti, deriva un set di "expected outcomes" / proprietà che il codice DEVE soddisfare. Genera mentalmente almeno 5 counter-example per funzione (input edge case che dovrebbero far rispettare le invarianti dichiarate).
+
+**FASE B — Confronto con codice**: dopo aver fatto la FASE A nella tua testa, ricevi anche il codice. Confronta le tue expectations con l'implementazione e identifica VIOLAZIONI del contratto.
+
+**Output STRETTAMENTE JSON, una riga**:
+
+```json
+{"bugs_found": ["short description 1", ...], "verdict": "ACCEPT" | "REQUEST_CHANGES"}
+```
+
+Niente preamboli, niente markdown, solo il JSON. Concentrati su violazioni del CONTRATTO, non su style.
+
+CONTRATTI FORMALI DI BANKCHECK:
+# Contract Document: `bankcheck`
+
+## `Reporter.ok`
+
+**Signature**
+
+```python
+Reporter.ok(self, msg: str) -> None
+```
+
+**Preconditions**
+
+- `msg` is expected to be string-format-compatible.
+
+**Postconditions / Return Guarantees**
+
+- Returns `None`.
+- Writes `[OK]   {msg}` to standard output.
+
+**Invariants**
+
+- Does not modify `self.exit_code`.
+
+**Side Effects**
+
+- Performs console output via `print`.
+
+---
+
+## `Reporter.warn`
+
+**Signature**
+
+```python
+Reporter.warn(self, msg: str) -> None
+```
+
+**Preconditions**
+
+- `msg` is expected to be string-format-compatible.
+
+**Postconditions / Return Guarantees**
+
+- Returns `None`.
+- Writes `[WARN] {msg}` to standard output.
+
+**Invariants**
+
+- Does not modify `self.exit_code`.
+
+**Side Effects**
+
+- Performs console output via `print`.
+
+---
+
+## `Reporter.fail`
+
+**Signature**
+
+```python
+Reporter.fail(self, msg: str) -> None
+```
+
+**Preconditions**
+
+- `msg` is expected to be string-format-compatible.
+- `self.exit_code` exists and is comparable with `EXIT_FAIL`.
+
+**Postconditions / Return Guarantees**
+
+- Returns `None`.
+- Writes `[FAIL] {msg}` to standard output.
+- Ensures `self.exit_code >= EXIT_FAIL`.
+
+**Invariants**
+
+- `self.exit_code` is monotonic: this method never lowers it.
+
+**Side Effects**
+
+- Mutates `self.exit_code` when it is below `EXIT_FAIL`.
+- Performs console output via `print`.
+
+---
+
+## `Reporter.config_error`
+
+**Signature**
+
+```python
+Reporter.config_error(self, msg: str) -> None
+```
+
+**Preconditions**
+
+- `msg` is expected to be string-format-compatible.
+- `self.exit_code` exists and is comparable with `EXIT_CONFIG_ERROR`.
+
+**Postconditions / Return Guarantees**
+
+- Returns `None`.
+- Writes `[CFG]  {msg}` to standard error.
+- Ensures `self.exit_code >= EXIT_CONFIG_ERROR`.
+
+**Invariants**
+
+- `self.exit_code` is monotonic: this method never lowers it.
+
+**Side Effects**
+
+- Mutates `self.exit_code` when it is below `EXIT_CONFIG_ERROR`.
+- Performs console output to `sys.stderr`.
+
+---
+
+## `load_yaml_file`
+
+**Signature**
+
+```python
+def load_yaml_file(path: Path) -> dict
+```
+
+**Preconditions**
+
+- `path` identifies a readable UTF-8 text file.
+- File contents are expected to be valid YAML.
+- Parsed YAML is expected by callers to be a dictionary-compatible object.
+
+**Postconditions / Return Guarantees**
+
+- Opens `path` in read mode with UTF-8 encoding.
+- Returns the result of `yaml.safe_load(fh)`.
+
+**Invariants**
+
+- Does not mutate `path`.
+- Does not modify filesystem contents.
+
+**Side Effects**
+
+- Reads from the filesystem.
+- May propagate file I/O exceptions.
+- May propagate YAML parsing exceptions from `yaml.safe_load`.
+
+---
+
+## `load_json_file`
+
+**Signature**
+
+```python
+def load_json_file(path: Path) -> dict
+```
+
+**Preconditions**
+
+- `path` identifies a readable UTF-8 text file.
+- File contents are expected to be valid JSON.
+- Parsed JSON is expected by callers to be a dictionary-compatible object.
+
+**Postconditions / Return Guarantees**
+
+- Opens `path` in read mode with UTF-8 encoding.
+- Returns the result of `json.load(fh)`.
+
+**Invariants**
+
+- Does not mutate `path`.
+- Does not modify filesystem contents.
+
+**Side Effects**
+
+- Reads from the filesystem.
+- May propagate file I/O exceptions.
+- May propagate `json.JSONDecodeError`.
+
+---
+
+## `load_profile`
+
+**Signature**
+
+```python
+def load_profile(repo_root: Path, override: Path | None = None) -> dict | None
+```
+
+**Preconditions**
+
+- `repo_root` is a `Path`.
+- If supplied, `override` is a `Path`.
+- The selected profile path, when present, is expected to contain readable YAML.
+
+**Postconditions / Return Guarantees**
+
+- Uses `override` when provided; otherwise uses `repo_root / ".banking-profile"`.
+- Returns `None` if the selected path is not a file.
+- Otherwise returns the result of `load_yaml_file(path)`.
+
+**Invariants**
+
+- Does not mutate `repo_root` or `override`.
+- Does not modify filesystem contents.
+
+**Side Effects**
+
+- Checks filesystem metadata with `Path.is_file`.
+- Reads YAML from disk when the profile file exists.
+- May propagate exceptions from `load_yaml_file`.
+
+---
+
+## `file_matches_globs`
+
+**Signature**
+
+```python
+def file_matches_globs(rel_path: str, patterns: Iterable[str]) -> bool
+```
+
+**Preconditions**
+
+- `rel_path` is a string path.
+- `patterns` is an iterable of glob pattern strings accepted by `fnmatch.fnmatch`.
+
+**Postconditions / Return Guarantees**
+
+- Returns `True` if any pattern matches `rel_path`.
+- Returns `False` otherwise.
+- Always returns a `bool`.
+
+**Invariants**
+
+- Does not mutate `rel_path`.
+- Does not mutate `patterns`.
+
+**Side Effects**
+
+- Consumes the `patterns` iterable as needed.
+- No file I/O.
+
+---
+
+## `function_is_exempted`
+
+**Signature**
+
+```python
+def function_is_exempted(
+    rel_file: str,
+    func_name: str,
+    exemptions: list[dict],
+) -> tuple[bool, str]
+```
+
+**Preconditions**
+
+- `rel_file` is a relative file path string.
+- `func_name` is a function name string.
+- Each exemption considered by the function is expected to contain `"path"` and `"function_pattern"` keys.
+- Exemption `"reason"` is optional.
+
+**Postconditions / Return Guarantees**
+
+- Returns `(True, reason)` for the first exemption whose path glob matches `rel_file` and function glob matches `func_name`.
+- If the matching exemption has no `"reason"`, the returned reason is `""`.
+- Returns `(False, "")` when no exemption matches.
+- Always returns a 2-tuple of `(bool, str)`.
+
+**Invariants**
+
+- Does not mutate `rel_file`, `func_name`, or `exemptions`.
+
+**Side Effects**
+
+- No file I/O.
+- May raise lookup-related exceptions if an exemption lacks required keys.
+
+---
+
+## `iter_files_under_sensitive`
+
+**Signature**
+
+```python
+def iter_files_under_sensitive(
+    repo_root: Path,
+    sensitive_paths: list[str],
+) -> Iterable[Path]
+```
+
+**Preconditions**
+
+- `repo_root` is a `Path`.
+- `sensitive_paths` contains glob pattern strings.
+- Patterns ending in `"/**"` are treated as recursive directory roots.
+
+**Postconditions / Return Guarantees**
+
+- Yields each matching file path at most once.
+- For patterns ending in `"/**"`, recursively yields files under the corresponding directory.
+- For other patterns, yields files matched by `repo_root.glob(pattern)`.
+- Yields `Path` objects.
+
+**Invariants**
+
+- Does not mutate `repo_root` or `sensitive_paths`.
+- Maintains a per-iteration `seen` set to avoid duplicate yielded files.
+
+**Side Effects**
+
+- Reads filesystem metadata.
+- Traverses directories using `rglob` or `glob`.
+- Does not modify filesystem contents.
+
+---
+
+## `cmd_profile_validate`
+
+**Signature**
+
+```python
+def cmd_profile_validate(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.profile` is present and either falsey or path-like.
+- The profile file, when present, is expected to be YAML.
+- `PROFILE_SCHEMA_PATH` is expected to identify a JSON schema file.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Returns `EXIT_CONFIG_ERROR` if the profile file is absent, invalid YAML, or the schema cannot be loaded.
+- Returns `EXIT_OK` when the profile validates with no schema errors.
+- Returns `EXIT_FAIL` when schema validation reports errors.
+
+**Invariants**
+
+- Does not modify repository files.
+- Reporter exit code only increases in severity.
+
+**Side Effects**
+
+- Reads profile YAML and profile schema JSON.
+- Writes status lines to stdout or stderr.
+- Catches `yaml.YAMLError`, `FileNotFoundError`, and `json.JSONDecodeError` in the documented validation paths.
+
+---
+
+## `cmd_review_validate`
+
+**Signature**
+
+```python
+def cmd_review_validate(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.branch` is present as a branch or review-directory name.
+- Review JSON files are expected under `.claude/reviews/<branch>`, with `/` in branch names mapped to `__`.
+- Manifest and findings schema files are expected to be readable JSON schemas.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Uses the filesystem-safe branch directory, falling back to the literal branch directory when present.
+- Returns `EXIT_CONFIG_ERROR` if no review directory is found.
+- Returns `EXIT_FAIL` if no JSON files are present or validation errors are found.
+- Returns `EXIT_OK` when all discovered JSON files validate.
+
+**Invariants**
+
+- Does not modify review files.
+- Reporter exit code only increases in severity.
+
+**Side Effects**
+
+- Reads schema JSON files.
+- Reads review JSON files.
+- Writes validation status to stdout or stderr.
+- Catches `json.JSONDecodeError` for review files.
+
+---
+
+## `cmd_contract_presence`
+
+**Signature**
+
+```python
+def cmd_contract_presence(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.profile` is present and either falsey or path-like.
+- The loaded profile is expected to provide optional `sensitive_paths` and `contract_exemptions`.
+- Sensitive Python files are expected to be UTF-8 readable.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Returns `EXIT_CONFIG_ERROR` when no banking profile is found.
+- For Python files in sensitive paths, reports whether each discovered function has a matching contract name or exemption.
+- Reports non-Python sensitive files as skipped warnings.
+- Returns `EXIT_FAIL` if any checked function is missing a contract block or if a sensitive Python file cannot be read.
+
+**Invariants**
+
+- Does not modify source files or profile files.
+- Reporter exit code only increases in severity.
+- Each sensitive file yielded by `iter_files_under_sensitive` is processed at most once.
+
+**Side Effects**
+
+- Reads profile YAML.
+- Reads source files.
+- Writes status lines to stdout or stderr.
+- Catches `OSError` and `UnicodeDecodeError` while reading source files.
+
+---
+
+## `cmd_contract_validate`
+
+**Signature**
+
+```python
+def cmd_contract_validate(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.profile` is present and either falsey or path-like.
+- The loaded profile is expected to provide optional `sensitive_paths`.
+- `CONTRACT_SCHEMA_PATH` is expected to identify a readable JSON schema.
+- Contract blocks are expected to be YAML mappings.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Returns `EXIT_CONFIG_ERROR` when no banking profile is found.
+- Validates each extracted contract block against the contract schema.
+- Emits a warning when no contract blocks are found.
+- Returns `EXIT_FAIL` if any contract block has a parse error or schema validation error.
+- Returns `EXIT_OK` when all found contract blocks validate and no failures are recorded.
+
+**Invariants**
+
+- Does not modify source files, profile files, or schema files.
+- Reporter exit code only increases in severity.
+
+**Side Effects**
+
+- Reads profile YAML.
+- Reads contract schema JSON.
+- Reads sensitive-path files.
+- Writes status lines to stdout or stderr.
+- Catches `OSError` and `UnicodeDecodeError` while reading sensitive files.
+
+---
+
+## `cmd_floats_check`
+
+**Signature**
+
+```python
+def cmd_floats_check(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.profile` is present and either falsey or path-like.
+- The loaded profile is expected to provide optional `sensitive_paths`.
+- Files with extensions listed in `FLOAT_PATTERNS` are expected to be UTF-8 readable for scanning.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Returns `EXIT_CONFIG_ERROR` when no banking profile is found.
+- Scans sensitive files with known extensions for configured float-related regex patterns.
+- Returns `EXIT_FAIL` if any pattern match is reported.
+- Returns `EXIT_OK` when checked files contain no matches.
+- Emits warnings for skipped extensions and for no known-extension files.
+
+**Invariants**
+
+- Does not modify scanned files.
+- Reporter exit code only increases in severity.
+- `FLOAT_PATTERNS` is read but not mutated.
+
+**Side Effects**
+
+- Reads profile YAML.
+- Reads sensitive-path files.
+- Writes status lines to stdout or stderr.
+- Catches `OSError` and `UnicodeDecodeError` while reading scanned files.
+
+---
+
+## `cmd_review_gate`
+
+**Signature**
+
+```python
+def cmd_review_gate(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.branch` is present.
+- Review data is expected under `.claude/reviews/<branch>` or literal branch directory.
+- Round JSON documents are expected to contain review metadata such as `agent`, `round`, `verdict`, `findings`, and acknowledgements when applicable.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Returns `EXIT_CONFIG_ERROR` when the review directory is not found.
+- Returns `EXIT_FAIL` when required review gate conditions are not met.
+- Returns `EXIT_OK` when all gate checks pass.
+- Checks for:
+  - `manifest.json` presence.
+  - Latest round data for `code-reviewer`.
+  - Latest round data for `math-auditor`.
+  - Code reviewer latest verdict equal to `"approve"`.
+  - Non-empty math auditor `contract_only_summary`.
+  - Resolved acknowledgements for blocker and major findings.
+
+**Invariants**
+
+- Does not modify review files.
+- Reporter exit code only increases in severity.
+- Findings are deduplicated by `id`, with later files overwriting earlier entries in sorted filename order.
+
+**Side Effects**
+
+- Reads review JSON files.
+- Reads filesystem metadata.
+- Writes status lines to stdout or stderr.
+- Catches `json.JSONDecodeError` while reading round files.
+
+---
+
+## `cmd_all`
+
+**Signature**
+
+```python
+def cmd_all(args: argparse.Namespace) -> int
+```
+
+**Preconditions**
+
+- `args.repo_root` is present and path-like.
+- `args.branch` may be present.
+- If `.banking-profile` exists, all standalone checks expect their normal profile, schema, and source-file inputs.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Returns `EXIT_OK` immediately when `.banking-profile` is absent.
+- Otherwise runs:
+  - `cmd_profile_validate`
+  - `cmd_contract_validate`
+  - `cmd_contract_presence`
+  - `cmd_floats_check`
+- Also runs `cmd_review_validate` and `cmd_review_gate` when `args.branch` is provided.
+- Returns the maximum exit code produced by invoked checks.
+
+**Invariants**
+
+- Does not directly modify repository files.
+- Aggregated exit code is monotonic across invoked checks.
+
+**Side Effects**
+
+- Reads filesystem metadata.
+- Invokes other command functions, inheriting their read and output side effects.
+- Writes section headers and final aggregate status to stdout.
+
+---
+
+## `build_parser`
+
+**Signature**
+
+```python
+def build_parser() -> argparse.ArgumentParser
+```
+
+**Preconditions**
+
+- No input arguments.
+- `argparse` is available.
+
+**Postconditions / Return Guarantees**
+
+- Returns an `argparse.ArgumentParser`.
+- Parser program name is `"bankcheck"`.
+- Parser includes global `--repo-root`.
+- Parser defines required subcommands:
+  - `profile-validate`
+  - `review-validate`
+  - `contract-presence`
+  - `contract-validate`
+  - `floats-check`
+  - `review-gate`
+  - `all`
+- Each subcommand is configured with its corresponding handler through `set_defaults(func=...)`.
+
+**Invariants**
+
+- Does not mutate module constants.
+- Constructs a new parser on each call.
+
+**Side Effects**
+
+- Allocates parser and subparser objects.
+- No file I/O.
+
+---
+
+## `main`
+
+**Signature**
+
+```python
+def main(argv: list[str] | None = None) -> int
+```
+
+**Preconditions**
+
+- `argv`, when provided, is a list of command-line argument strings compatible with `argparse`.
+- When `argv` is `None`, command-line arguments are taken from process context by `argparse`.
+
+**Postconditions / Return Guarantees**
+
+- Returns an integer exit code.
+- Builds the CLI parser.
+- Parses arguments.
+- Invokes the selected subcommand handler through `args.func(args)`.
+- Returns `EXIT_CONFIG_ERROR` after printing help if no handler is present.
+
+**Invariants**
+
+- Does not mutate `argv`.
+- Delegates command behavior to the selected handler.
+
+**Side Effects**
+
+- May read process command-line context through `argparse`.
+- May write help text to stdout.
+- Invokes selected command function, inheriting its side effects.
+- May raise `SystemExit` from `argparse` argument parsing behavior.
+
+CODICE DA REVISIONARE:
+"""Parse (absolute and relative) URLs.
+
+urlparse module is based upon the following RFC specifications.
+
+RFC 3986 (STD66): "Uniform Resource Identifiers" by T. Berners-Lee, R. Fielding
+and L.  Masinter, January 2005.
+
+RFC 2732 : "Format for Literal IPv6 Addresses in URL's by R.Hinden, B.Carpenter
+and L.Masinter, December 1999.
+
+RFC 2396:  "Uniform Resource Identifiers (URI)": Generic Syntax by T.
+Berners-Lee, R. Fielding, and L. Masinter, August 1998.
+
+RFC 2368: "The mailto URL scheme", by P.Hoffman , L Masinter, J. Zawinski, July 1998.
+
+RFC 1808: "Relative Uniform Resource Locators", by R. Fielding, UC Irvine, June
+1995.
+
+RFC 1738: "Uniform Resource Locators (URL)" by T. Berners-Lee, L. Masinter, M.
+McCahill, December 1994
+
+RFC 3986 is considered the current standard and any future changes to
+urlparse module should conform with it.  The urlparse module is
+currently not entirely compliant with this RFC due to defacto
+scenarios for parsing, and for backward compatibility purposes, some
+parsing quirks from older RFCs are retained. The testcases in
+test_urlparse.py provides a good indicator of parsing behavior.
+
+The WHATWG URL Parser spec should also be considered.  We are not compliant with
+it either due to existing user code API behavior expectations (Hyrum's Law).
+It serves as a useful guide when making changes.
+"""
+from collections import namedtuple
+import functools
+import math
+import re
+import types
+import warnings
+import ipaddress
+__all__ = ['urlparse', 'urlunparse', 'urljoin', 'urldefrag', 'urlsplit', 'urlunsplit', 'urlencode', 'parse_qs', 'parse_qsl', 'quote', 'quote_plus', 'quote_from_bytes', 'unquote', 'unquote_plus', 'unquote_to_bytes', 'DefragResult', 'ParseResult', 'SplitResult', 'DefragResultBytes', 'ParseResultBytes', 'SplitResultBytes']
+uses_relative = ['', 'ftp', 'http', 'gopher', 'nntp', 'imap', 'wais', 'file', 'https', 'shttp', 'mms', 'prospero', 'rtsp', 'rtsps', 'rtspu', 'sftp', 'svn', 'svn+ssh', 'ws', 'wss']
+uses_netloc = ['', 'ftp', 'http', 'gopher', 'nntp', 'telnet', 'imap', 'wais', 'file', 'mms', 'https', 'shttp', 'snews', 'prospero', 'rtsp', 'rtsps', 'rtspu', 'rsync', 'svn', 'svn+ssh', 'sftp', 'nfs', 'git', 'git+ssh', 'ws', 'wss', 'itms-services']
+uses_params = ['', 'ftp', 'hdl', 'prospero', 'http', 'imap', 'https', 'shttp', 'rtsp', 'rtsps', 'rtspu', 'sip', 'sips', 'mms', 'sftp', 'tel']
+non_hierarchical = ['gopher', 'hdl', 'mailto', 'news', 'telnet', 'wais', 'imap', 'snews', 'sip', 'sips']
+uses_query = ['', 'http', 'wais', 'imap', 'https', 'shttp', 'mms', 'gopher', 'rtsp', 'rtsps', 'rtspu', 'sip', 'sips']
+uses_fragment = ['', 'ftp', 'hdl', 'http', 'gopher', 'news', 'nntp', 'wais', 'https', 'shttp', 'snews', 'file', 'prospero']
+scheme_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-.'
+_WHATWG_C0_CONTROL_OR_SPACE = '\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n\x0b\x0c\r\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f '
+_UNSAFE_URL_BYTES_TO_REMOVE = ['\t', '\r', '\n']
+
+def clear_cache():
+    """Clear internal performance caches. Undocumented; some tests want it."""
+    urlsplit.cache_clear()
+    _byte_quoter_factory.cache_clear()
+_implicit_encoding = 'ascii'
+_implicit_errors = 'strict'
+
+def _noop(obj):
+    return obj
+
+def _encode_result(obj, encoding=_implicit_encoding, errors=_implicit_errors):
+    return obj.encode(encoding, errors)
+
+def _decode_args(args, encoding=_implicit_encoding, errors=_implicit_errors):
+    return tuple((x.decode(encoding, errors) if x else '' for x in args))
+
+def _coerce_args(*args):
+    str_input = isinstance(args[0], str)
+    for arg in args[1:]:
+        if arg and isinstance(arg, str) != str_input:
+            raise TypeError('Cannot mix str and non-str arguments')
+    if str_input:
+        return args + (_noop,)
+    return _decode_args(args) + (_encode_result,)
+
+class _ResultMixinStr(object):
+    """Standard approach to encoding parsed results from str to bytes"""
+    __slots__ = ()
+
+    def encode(self, encoding='ascii', errors='strict'):
+        return self._encoded_counterpart(*(x.encode(encoding, errors) for x in self))
+
+class _ResultMixinBytes(object):
+    """Standard approach to decoding parsed results from bytes to str"""
+    __slots__ = ()
+
+    def decode(self, encoding='ascii', errors='strict'):
+        return self._decoded_counterpart(*(x.decode(encoding, errors) for x in self))
+
+class _NetlocResultMixinBase(object):
+    """Shared methods for the parsed result objects containing a netloc element"""
+    __slots__ = ()
+
+    @property
+    def username(self):
+        return self._userinfo[0]
+
+    @property
+    def password(self):
+        return self._userinfo[1]
+
+    @property
+    def hostname(self):
+        hostname = self._hostinfo[0]
+        if not hostname:
+            return None
+        separator = '%' if isinstance(hostname, str) else b'%'
+        hostname, percent, zone = hostname.partition(separator)
+        return hostname.lower() + percent + zone
+
+    @property
+    def port(self):
+        port = self._hostinfo[1]
+        if port is not None:
+            if port.isdigit() and port.isascii():
+                port = int(port)
+            else:
+                raise ValueError(f'Port could not be cast to integer value as {port!r}')
+            if not 0 <= port <= 65535:
+                raise ValueError('Port out of range 0-65535')
+        return port
+    __class_getitem__ = classmethod(types.GenericAlias)
+
+class _NetlocResultMixinStr(_NetlocResultMixinBase, _ResultMixinStr):
+    __slots__ = ()
+
+    @property
+    def _userinfo(self):
+        netloc = self.netloc
+        userinfo, have_info, hostinfo = netloc.rpartition('@')
+        if have_info:
+            username, have_password, password = userinfo.partition(':')
+            if not have_password:
+                password = None
+        else:
+            username = password = None
+        return (username, password)
+
+    @property
+    def _hostinfo(self):
+        netloc = self.netloc
+        _, _, hostinfo = netloc.rpartition('@')
+        _, have_open_br, bracketed = hostinfo.partition('[')
+        if have_open_br:
+            hostname, _, port = bracketed.partition(']')
+            _, _, port = port.partition(':')
+        else:
+            hostname, _, port = hostinfo.partition(':')
+        if not port:
+            port = None
+        return (hostname, port)
+
+class _NetlocResultMixinBytes(_NetlocResultMixinBase, _ResultMixinBytes):
+    __slots__ = ()
+
+    @property
+    def _userinfo(self):
+        netloc = self.netloc
+        userinfo, have_info, hostinfo = netloc.rpartition(b'@')
+        if have_info:
+            username, have_password, password = userinfo.partition(b':')
+            if not have_password:
+                password = None
+        else:
+            username = password = None
+        return (username, password)
+
+    @property
+    def _hostinfo(self):
+        netloc = self.netloc
+        _, _, hostinfo = netloc.rpartition(b'@')
+        _, have_open_br, bracketed = hostinfo.partition(b'[')
+        if have_open_br:
+            hostname, _, port = bracketed.partition(b']')
+            _, _, port = port.partition(b':')
+        else:
+            hostname, _, port = hostinfo.partition(b':')
+        if not port:
+            port = None
+        return (hostname, port)
+_DefragResultBase = namedtuple('DefragResult', 'url fragment')
+_SplitResultBase = namedtuple('SplitResult', 'scheme netloc path query fragment')
+_ParseResultBase = namedtuple('ParseResult', 'scheme netloc path params query fragment')
+_DefragResultBase.__doc__ = '\nDefragResult(url, fragment)\n\nA 2-tuple that contains the url without fragment identifier and the fragment\nidentifier as a separate argument.\n'
+_DefragResultBase.url.__doc__ = 'The URL with no fragment identifier.'
+_DefragResultBase.fragment.__doc__ = '\nFragment identifier separated from URL, that allows indirect identification of a\nsecondary resource by reference to a primary resource and additional identifying\ninformation.\n'
+_SplitResultBase.__doc__ = '\nSplitResult(scheme, netloc, path, query, fragment)\n\nA 5-tuple that contains the different components of a URL. Similar to\nParseResult, but does not split params.\n'
+_SplitResultBase.scheme.__doc__ = 'Specifies URL scheme for the request.'
+_SplitResultBase.netloc.__doc__ = '\nNetwork location where the request is made to.\n'
+_SplitResultBase.path.__doc__ = '\nThe hierarchical path, such as the path to a file to download.\n'
+_SplitResultBase.query.__doc__ = "\nThe query component, that contains non-hierarchical data, that along with data\nin path component, identifies a resource in the scope of URI's scheme and\nnetwork location.\n"
+_SplitResultBase.fragment.__doc__ = '\nFragment identifier, that allows indirect identification of a secondary resource\nby reference to a primary resource and additional identifying information.\n'
+_ParseResultBase.__doc__ = '\nParseResult(scheme, netloc, path, params, query, fragment)\n\nA 6-tuple that contains components of a parsed URL.\n'
+_ParseResultBase.scheme.__doc__ = _SplitResultBase.scheme.__doc__
+_ParseResultBase.netloc.__doc__ = _SplitResultBase.netloc.__doc__
+_ParseResultBase.path.__doc__ = _SplitResultBase.path.__doc__
+_ParseResultBase.params.__doc__ = '\nParameters for last path element used to dereference the URI in order to provide\naccess to perform some operation on the resource.\n'
+_ParseResultBase.query.__doc__ = _SplitResultBase.query.__doc__
+_ParseResultBase.fragment.__doc__ = _SplitResultBase.fragment.__doc__
+ResultBase = _NetlocResultMixinStr
+
+class DefragResult(_DefragResultBase, _ResultMixinStr):
+    __slots__ = ()
+
+    def geturl(self):
+        if self.fragment:
+            return self.url + '#' + self.fragment
+        else:
+            return self.url
+
+class SplitResult(_SplitResultBase, _NetlocResultMixinStr):
+    __slots__ = ()
+
+    def geturl(self):
+        return urlunsplit(self)
+
+class ParseResult(_ParseResultBase, _NetlocResultMixinStr):
+    __slots__ = ()
+
+    def geturl(self):
+        return urlunparse(self)
+
+class DefragResultBytes(_DefragResultBase, _ResultMixinBytes):
+    __slots__ = ()
+
+    def geturl(self):
+        if self.fragment:
+            return self.url + b'#' + self.fragment
+        else:
+            return self.url
+
+class SplitResultBytes(_SplitResultBase, _NetlocResultMixinBytes):
+    __slots__ = ()
+
+    def geturl(self):
+        return urlunsplit(self)
+
+class ParseResultBytes(_ParseResultBase, _NetlocResultMixinBytes):
+    __slots__ = ()
+
+    def geturl(self):
+        return urlunparse(self)
+
+def _fix_result_transcoding():
+    _result_pairs = ((DefragResult, DefragResultBytes), (SplitResult, SplitResultBytes), (ParseResult, ParseResultBytes))
+    for _decoded, _encoded in _result_pairs:
+        _decoded._encoded_counterpart = _encoded
+        _encoded._decoded_counterpart = _decoded
+_fix_result_transcoding()
+del _fix_result_transcoding
+
+def urlparse(url, scheme='', allow_fragments=True):
+    """Parse a URL into 6 components:
+    <scheme>://<netloc>/<path>;<params>?<query>#<fragment>
+
+    The result is a named 6-tuple with fields corresponding to the
+    above. It is either a ParseResult or ParseResultBytes object,
+    depending on the type of the url parameter.
+
+    The username, password, hostname, and port sub-components of netloc
+    can also be accessed as attributes of the returned object.
+
+    The scheme argument provides the default value of the scheme
+    component when no scheme is found in url.
+
+    If allow_fragments is False, no attempt is made to separate the
+    fragment component from the previous component, which can be either
+    path or query.
+
+    Note that % escapes are not expanded.
+    """
+    url, scheme, _coerce_result = _coerce_args(url, scheme)
+    splitresult = urlsplit(url, scheme, allow_fragments)
+    scheme, netloc, url, query, fragment = splitresult
+    if scheme in uses_params and ';' in url:
+        url, params = _splitparams(url)
+    else:
+        params = ''
+    result = ParseResult(scheme, netloc, url, params, query, fragment)
+    return _coerce_result(result)
+
+def _splitparams(url):
+    if '/' in url:
+        i = url.find(';', url.rfind('/'))
+        if i < 0:
+            return (url, '')
+    else:
+        i = url.find(';')
+    return (url[:i], url[i + 1:])
+
+def _splitnetloc(url, start=0):
+    delim = len(url)
+    for c in '/?#':
+        wdelim = url.find(c, start)
+        if wdelim >= 0:
+            delim = min(delim, wdelim)
+    return (url[start:delim], url[delim:])
+
+def _checknetloc(netloc):
+    if not netloc or netloc.isascii():
+        return
+    import unicodedata
+    n = netloc.replace('@', '')
+    n = n.replace(':', '')
+    n = n.replace('#', '')
+    n = n.replace('?', '')
+    netloc2 = unicodedata.normalize('NFKC', n)
+    if n == netloc2:
+        return
+    for c in '/?#@:':
+        if c in netloc2:
+            raise ValueError("netloc '" + netloc + "' contains invalid " + 'characters under NFKC normalization')
+
+def _check_bracketed_host(hostname):
+    if hostname.startswith('v'):
+        if not re.match('\\Av[a-fA-F0-9]+\\..+\\Z', hostname):
+            raise ValueError(f'IPvFuture address is invalid')
+    else:
+        ip = ipaddress.ip_address(hostname)
+        if isinstance(ip, ipaddress.IPv4Address):
+            raise ValueError(f'An IPv4 address cannot be in brackets')
+
+@functools.lru_cache(typed=True)
+def urlsplit(url, scheme='', allow_fragments=True):
+    """Parse a URL into 5 components:
+    <scheme>://<netloc>/<path>?<query>#<fragment>
+
+    The result is a named 5-tuple with fields corresponding to the
+    above. It is either a SplitResult or SplitResultBytes object,
+    depending on the type of the url parameter.
+
+    The username, password, hostname, and port sub-components of netloc
+    can also be accessed as attributes of the returned object.
+
+    The scheme argument provides the default value of the scheme
+    component when no scheme is found in url.
+
+    If allow_fragments is False, no attempt is made to separate the
+    fragment component from the previous component, which can be either
+    path or query.
+
+    Note that % escapes are not expanded.
+    """
+    url, scheme, _coerce_result = _coerce_args(url, scheme)
+    url = url.lstrip(_WHATWG_C0_CONTROL_OR_SPACE)
+    scheme = scheme.strip(_WHATWG_C0_CONTROL_OR_SPACE)
+    for b in _UNSAFE_URL_BYTES_TO_REMOVE:
+        url = url.replace(b, '')
+        scheme = scheme.replace(b, '')
+    allow_fragments = bool(allow_fragments)
+    netloc = query = fragment = ''
+    i = url.find(':')
+    if i > 0 and url[0].isascii() and url[0].isalpha():
+        for c in url[:i]:
+            if c not in scheme_chars:
+                break
+        else:
+            scheme, url = (url[:i].lower(), url[i + 1:])
+    if url[:2] == '//':
+        netloc, url = _splitnetloc(url, 2)
+        if '[' in netloc and ']' not in netloc or (']' in netloc and '[' not in netloc):
+            raise ValueError('Invalid IPv6 URL')
+        if '[' in netloc and ']' in netloc:
+            bracketed_host = netloc.partition('[')[2].partition(']')[0]
+            _check_bracketed_host(bracketed_host)
+    if allow_fragments and '#' in url:
+        url, fragment = url.split('#', 1)
+    if '?' in url:
+        url, query = url.split('?', 1)
+    _checknetloc(netloc)
+    v = SplitResult(scheme, netloc, url, query, fragment)
+    return _coerce_result(v)
+
+def urlunparse(components):
+    """Put a parsed URL back together again.  This may result in a
+    slightly different, but equivalent URL, if the URL that was parsed
+    originally had redundant delimiters, e.g. a ? with an empty query
+    (the draft states that these are equivalent)."""
+    scheme, netloc, url, params, query, fragment, _coerce_result = _coerce_args(*components)
+    if params:
+        url = '%s;%s' % (url, params)
+    return _coerce_result(urlunsplit((scheme, netloc, url, query, fragment)))
+
+def urlunsplit(components):
+    """Combine the elements of a tuple as returned by urlsplit() into a
+    complete URL as a string. The data argument can be any five-item iterable.
+    This may result in a slightly different, but equivalent URL, if the URL that
+    was parsed originally had unnecessary delimiters (for example, a ? with an
+    empty query; the RFC states that these are equivalent)."""
+    scheme, netloc, url, query, fragment, _coerce_result = _coerce_args(*components)
+    if netloc:
+        if url and url[:1] != '/':
+            url = '/' + url
+        url = '//' + netloc + url
+    elif url[:2] == '//':
+        url = '//' + url
+    elif scheme and scheme in uses_netloc and (not url or url[:1] == '/'):
+        url = '//' + url
+    if scheme:
+        url = scheme + ':' + url
+    if query:
+        url = url + '?' + query
+    if fragment:
+        url = url + '#' + fragment
+    return _coerce_result(url)
+
+def urljoin(base, url, allow_fragments=True):
+    """Join a base URL and a possibly relative URL to form an absolute
+    interpretation of the latter."""
+    if not base:
+        return url
+    if not url:
+        return base
+    base, url, _coerce_result = _coerce_args(base, url)
+    bscheme, bnetloc, bpath, bparams, bquery, bfragment = urlparse(base, '', allow_fragments)
+    scheme, netloc, path, params, query, fragment = urlparse(url, bscheme, allow_fragments)
+    if scheme != bscheme or scheme not in uses_relative:
+        return _coerce_result(url)
+    if scheme in uses_netloc:
+        if netloc:
+            return _coerce_result(urlunparse((scheme, netloc, path, params, query, fragment)))
+        netloc = bnetloc
+    if not path and (not params):
+        path = bpath
+        params = bparams
+        if not query:
+            query = bquery
+        return _coerce_result(urlunparse((scheme, netloc, path, params, query, fragment)))
+    base_parts = bpath.split('/')
+    if base_parts[-1] != '':
+        del base_parts[-1]
+    if path[:1] == '/':
+        segments = path.split('/')
+    else:
+        segments = base_parts + path.split('/')
+        segments[1:-1] = filter(None, segments[1:-1])
+    resolved_path = []
+    for seg in segments:
+        if seg == '..':
+            try:
+                resolved_path.pop()
+            except IndexError:
+                pass
+        elif seg == '.':
+            continue
+        else:
+            resolved_path.append(seg)
+    if segments[-1] in ('.', '..'):
+        resolved_path.append('')
+    return _coerce_result(urlunparse((scheme, netloc, '/'.join(resolved_path) or '/', params, query, fragment)))
+
+def urldefrag(url):
+    """Removes any existing fragment from URL.
+
+    Returns a tuple of the defragmented URL and the fragment.  If
+    the URL contained no fragments, the second element is the
+    empty string.
+    """
+    url, _coerce_result = _coerce_args(url)
+    if '#' in url:
+        s, n, p, a, q, frag = urlparse(url)
+        defrag = urlunparse((s, n, p, a, q, ''))
+    else:
+        frag = ''
+        defrag = url
+    return _coerce_result(DefragResult(defrag, frag))
+_hexdig = '0123456789ABCDEFabcdef'
+_hextobyte = None
+
+def unquote_to_bytes(string):
+    """unquote_to_bytes('abc%20def') -> b'abc def'."""
+    return bytes(_unquote_impl(string))
+
+def _unquote_impl(string: bytes | bytearray | str) -> bytes | bytearray:
+    if not string:
+        string.split
+        return b''
+    if isinstance(string, str):
+        string = string.encode('utf-8')
+    bits = string.split(b'%')
+    if len(bits) == 1:
+        return string
+    res = bytearray(bits[0])
+    append = res.extend
+    global _hextobyte
+    if _hextobyte is None:
+        _hextobyte = {(a + b).encode(): bytes.fromhex(a + b) for a in _hexdig for b in _hexdig}
+    for item in bits[1:]:
+        try:
+            append(_hextobyte[item[:2]])
+            append(item[2:])
+        except KeyError:
+            append(b'%')
+            append(item)
+    return res
+_asciire = re.compile('([\x00-\x7f]+)')
+
+def _generate_unquoted_parts(string, encoding, errors):
+    previous_match_end = 0
+    for ascii_match in _asciire.finditer(string):
+        start, end = ascii_match.span()
+        yield string[previous_match_end:start]
+        yield _unquote_impl(ascii_match[1]).decode(encoding, errors)
+        previous_match_end = end
+    yield string[previous_match_end:]
+
+def unquote(string, encoding='utf-8', errors='replace'):
+    """Replace %xx escapes by their single-character equivalent. The optional
+    encoding and errors parameters specify how to decode percent-encoded
+    sequences into Unicode characters, as accepted by the bytes.decode()
+    method.
+    By default, percent-encoded sequences are decoded with UTF-8, and invalid
+    sequences are replaced by a placeholder character.
+
+    unquote('abc%20def') -> 'abc def'.
+    """
+    if isinstance(string, bytes):
+        return _unquote_impl(string).decode(encoding, errors)
+    if '%' not in string:
+        string.split
+        return string
+    if encoding is None:
+        encoding = 'utf-8'
+    if errors is None:
+        errors = 'replace'
+    return ''.join(_generate_unquoted_parts(string, encoding, errors))
+
+def parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace', max_num_fields=None, separator='&'):
+    """Parse a query given as a string argument.
+
+        Arguments:
+
+        qs: percent-encoded query string to be parsed
+
+        keep_blank_values: flag indicating whether blank values in
+            percent-encoded queries should be treated as blank strings.
+            A true value indicates that blanks should be retained as
+            blank strings.  The default false value indicates that
+            blank values are to be ignored and treated as if they were
+            not included.
+
+        strict_parsing: flag indicating what to do with parsing errors.
+            If false (the default), errors are silently ignored.
+            If true, errors raise a ValueError exception.
+
+        encoding and errors: specify how to decode percent-encoded sequences
+            into Unicode characters, as accepted by the bytes.decode() method.
+
+        max_num_fields: int. If set, then throws a ValueError if there
+            are more than n fields read by parse_qsl().
+
+        separator: str. The symbol to use for separating the query arguments.
+            Defaults to &.
+
+        Returns a dictionary.
+    """
+    parsed_result = {}
+    pairs = parse_qsl(qs, keep_blank_values, strict_parsing, encoding=encoding, errors=errors, max_num_fields=max_num_fields, separator=separator)
+    for name, value in pairs:
+        if name in parsed_result:
+            parsed_result[name].append(value)
+        else:
+            parsed_result[name] = [value]
+    return parsed_result
+
+def parse_qsl(qs, keep_blank_values=False, strict_parsing=False, encoding='utf-8', errors='replace', max_num_fields=None, separator='&'):
+    """Parse a query given as a string argument.
+
+        Arguments:
+
+        qs: percent-encoded query string to be parsed
+
+        keep_blank_values: flag indicating whether blank values in
+            percent-encoded queries should be treated as blank strings.
+            A true value indicates that blanks should be retained as blank
+            strings.  The default false value indicates that blank values
+            are to be ignored and treated as if they were  not included.
+
+        strict_parsing: flag indicating what to do with parsing errors. If
+            false (the default), errors are silently ignored. If true,
+            errors raise a ValueError exception.
+
+        encoding and errors: specify how to decode percent-encoded sequences
+            into Unicode characters, as accepted by the bytes.decode() method.
+
+        max_num_fields: int. If set, then throws a ValueError
+            if there are more than n fields read by parse_qsl().
+
+        separator: str. The symbol to use for separating the query arguments.
+            Defaults to &.
+
+        Returns a list, as G-d intended.
+    """
+    if not separator or not isinstance(separator, (str, bytes)):
+        raise ValueError('Separator must be of type string or bytes.')
+    if isinstance(qs, str):
+        if not isinstance(separator, str):
+            separator = str(separator, 'ascii')
+        eq = '='
+
+        def _unquote(s):
+            return unquote_plus(s, encoding=encoding, errors=errors)
+    else:
+        if not qs:
+            return []
+        qs = bytes(memoryview(qs))
+        if isinstance(separator, str):
+            separator = bytes(separator, 'ascii')
+        eq = b'='
+
+        def _unquote(s):
+            return unquote_to_bytes(s.replace(b'+', b' '))
+    if not qs:
+        return []
+    if max_num_fields is not None:
+        num_fields = 1 + qs.count(separator)
+        if max_num_fields <= num_fields:
+            raise ValueError('Max number of fields exceeded')
+    r = []
+    for name_value in qs.split(separator):
+        if name_value or strict_parsing:
+            name, has_eq, value = name_value.partition(eq)
+            if not has_eq and strict_parsing:
+                raise ValueError('bad query field: %r' % (name_value,))
+            if value or keep_blank_values:
+                name = _unquote(name)
+                value = _unquote(value)
+                r.append((name, value))
+    return r
+
+def unquote_plus(string, encoding='utf-8', errors='replace'):
+    """Like unquote(), but also replace plus signs by spaces, as required for
+    unquoting HTML form values.
+
+    unquote_plus('%7e/abc+def') -> '~/abc def'
+    """
+    string = string.replace('+', ' ')
+    return unquote(string, encoding, errors)
+_ALWAYS_SAFE = frozenset(b'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-~')
+_ALWAYS_SAFE_BYTES = bytes(_ALWAYS_SAFE)
+
+def __getattr__(name):
+    if name == 'Quoter':
+        warnings.warn('Deprecated in 3.11. urllib.parse.Quoter will be removed in Python 3.14. It was not intended to be a public API.', DeprecationWarning, stacklevel=2)
+        return _Quoter
+    raise AttributeError(f'module {__name__!r} has no attribute {name!r}')
+
+class _Quoter(dict):
+    """A mapping from bytes numbers (in range(0,256)) to strings.
+
+    String values are percent-encoded byte values, unless the key < 128, and
+    in either of the specified safe set, or the always safe set.
+    """
+
+    def __init__(self, safe):
+        """safe: bytes object."""
+        self.safe = _ALWAYS_SAFE.union(safe)
+
+    def __repr__(self):
+        return f'<Quoter {dict(self)!r}>'
+
+    def __missing__(self, b):
+        res = chr(b) if b in self.safe else '%{:02X}'.format(b)
+        self[b] = res
+        return res
+
+def quote(string, safe='/', encoding=None, errors=None):
+    """quote('abc def') -> 'abc%20def'
+
+    Each part of a URL, e.g. the path info, the query, etc., has a
+    different set of reserved characters that must be quoted. The
+    quote function offers a cautious (not minimal) way to quote a
+    string for most of these parts.
+
+    RFC 3986 Uniform Resource Identifier (URI): Generic Syntax lists
+    the following (un)reserved characters.
+
+    unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
+    reserved      = gen-delims / sub-delims
+    gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
+    sub-delims    = "!" / "$" / "&" / "'" / "(" / ")"
+                  / "*" / "+" / "," / ";" / "="
+
+    Each of the reserved characters is reserved in some component of a URL,
+    but not necessarily in all of them.
+
+    The quote function %-escapes all characters that are neither in the
+    unreserved chars ("always safe") nor the additional chars set via the
+    safe arg.
+
+    The default for the safe arg is '/'. The character is reserved, but in
+    typical usage the quote function is being called on a path where the
+    existing slash characters are to be preserved.
+
+    Python 3.7 updates from using RFC 2396 to RFC 3986 to quote URL strings.
+    Now, "~" is included in the set of unreserved characters.
+
+    string and safe may be either str or bytes objects. encoding and errors
+    must not be specified if string is a bytes object.
+
+    The optional encoding and errors parameters specify how to deal with
+    non-ASCII characters, as accepted by the str.encode method.
+    By default, encoding='utf-8' (characters are encoded with UTF-8), and
+    errors='strict' (unsupported characters raise a UnicodeEncodeError).
+    """
+    if isinstance(string, str):
+        if not string:
+            return string
+        if encoding is None:
+            encoding = 'utf-8'
+        if errors is None:
+            errors = 'strict'
+        string = string.encode(encoding, errors)
+    else:
+        if encoding is not None:
+            raise TypeError("quote() doesn't support 'encoding' for bytes")
+        if errors is not None:
+            raise TypeError("quote() doesn't support 'errors' for bytes")
+    return quote_from_bytes(string, safe)
+
+def quote_plus(string, safe='', encoding=None, errors=None):
+    """Like quote(), but also replace ' ' with '+', as required for quoting
+    HTML form values. Plus signs in the original string are escaped unless
+    they are included in safe. It also does not have safe default to '/'.
+    """
+    if isinstance(string, str) and ' ' not in string or (isinstance(string, bytes) and b' ' not in string):
+        return quote(string, safe, encoding, errors)
+    if isinstance(safe, str):
+        space = ' '
+    else:
+        space = b' '
+    string = quote(string, safe + space, encoding, errors)
+    return string.replace(' ', '+')
+
+@functools.lru_cache
+def _byte_quoter_factory(safe):
+    return _Quoter(safe).__getitem__
+
+def quote_from_bytes(bs, safe='/'):
+    """Like quote(), but accepts a bytes object rather than a str, and does
+    not perform string-to-bytes encoding.  It always returns an ASCII string.
+    quote_from_bytes(b'abc def?') -> 'abc%20def%3f'
+    """
+    if not isinstance(bs, (bytes, bytearray)):
+        raise TypeError('quote_from_bytes() expected bytes')
+    if not bs:
+        return ''
+    if isinstance(safe, str):
+        safe = safe.encode('ascii', 'ignore')
+    else:
+        safe = bytes([c for c in safe if c < 128])
+    if not bs.rstrip(_ALWAYS_SAFE_BYTES + safe):
+        return bs.decode()
+    quoter = _byte_quoter_factory(safe)
+    if (bs_len := len(bs)) < 200000:
+        return ''.join(map(quoter, bs))
+    else:
+        chunk_size = math.isqrt(bs_len)
+        chunks = [''.join(map(quoter, bs[i:i + chunk_size])) for i in range(0, bs_len, chunk_size)]
+        return ''.join(chunks)
+
+def urlencode(query, doseq=False, safe='', encoding=None, errors=None, quote_via=quote_plus):
+    """Encode a dict or sequence of two-element tuples into a URL query string.
+
+    If any values in the query arg are sequences and doseq is true, each
+    sequence element is converted to a separate parameter.
+
+    If the query arg is a sequence of two-element tuples, the order of the
+    parameters in the output will match the order of parameters in the
+    input.
+
+    The components of a query arg may each be either a string or a bytes type.
+
+    The safe, encoding, and errors parameters are passed down to the function
+    specified by quote_via (encoding and errors only if a component is a str).
+    """
+    if hasattr(query, 'items'):
+        query = query.items()
+    else:
+        try:
+            if len(query) and (not isinstance(query[0], tuple)):
+                raise TypeError
+        except TypeError as err:
+            raise TypeError('not a valid non-string sequence or mapping object') from err
+    l = []
+    if not doseq:
+        for k, v in query:
+            if isinstance(k, bytes):
+                k = quote_via(k, safe)
+            else:
+                k = quote_via(str(k), safe, encoding, errors)
+            if isinstance(v, bytes):
+                v = quote_via(v, safe)
+            else:
+                v = quote_via(str(v), safe, encoding, errors)
+            l.append(k + '=' + v)
+    else:
+        for k, v in query:
+            if isinstance(k, bytes):
+                k = quote_via(k, safe)
+            else:
+                k = quote_via(str(k), safe, encoding, errors)
+            if isinstance(v, bytes):
+                v = quote_via(v, safe)
+                l.append(k + '=' + v)
+            elif isinstance(v, str):
+                v = quote_via(v, safe, encoding, errors)
+                l.append(k + '=' + v)
+            else:
+                try:
+                    x = len(v)
+                except TypeError:
+                    v = quote_via(str(v), safe, encoding, errors)
+                    l.append(k + '=' + v)
+                else:
+                    for elt in v:
+                        if isinstance(elt, bytes):
+                            elt = quote_via(elt, safe)
+                        else:
+                            elt = quote_via(str(elt), safe, encoding, errors)
+                        l.append(k + '=' + elt)
+    return '&'.join(l)
+
+def to_bytes(url):
+    warnings.warn('urllib.parse.to_bytes() is deprecated as of 3.8', DeprecationWarning, stacklevel=2)
+    return _to_bytes(url)
+
+def _to_bytes(url):
+    """to_bytes(u"URL") --> 'URL'."""
+    if isinstance(url, str):
+        try:
+            url = url.encode('ASCII').decode()
+        except UnicodeError:
+            raise UnicodeError('URL ' + repr(url) + ' contains non-ASCII characters')
+    return url
+
+def unwrap(url):
+    """Transform a string like '<URL:scheme://host/path>' into 'scheme://host/path'.
+
+    The string is returned unchanged if it's not a wrapped URL.
+    """
+    url = str(url).strip()
+    if url[:1] == '<' and url[-1:] == '>':
+        url = url[1:-1].strip()
+    if url[:4] == 'URL:':
+        url = url[4:].strip()
+    return url
+
+def splittype(url):
+    warnings.warn('urllib.parse.splittype() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splittype(url)
+_typeprog = None
+
+def _splittype(url):
+    """splittype('type:opaquestring') --> 'type', 'opaquestring'."""
+    global _typeprog
+    if _typeprog is None:
+        _typeprog = re.compile('([^/:]+):(.*)', re.DOTALL)
+    match = _typeprog.match(url)
+    if match:
+        scheme, data = match.groups()
+        return (scheme.lower(), data)
+    return (None, url)
+
+def splithost(url):
+    warnings.warn('urllib.parse.splithost() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splithost(url)
+_hostprog = None
+
+def _splithost(url):
+    """splithost('//host[:port]/path') --> 'host[:port]', '/path'."""
+    global _hostprog
+    if _hostprog is None:
+        _hostprog = re.compile('//([^/#?]*)(.*)', re.DOTALL)
+    match = _hostprog.match(url)
+    if match:
+        host_port, path = match.groups()
+        if path and path[0] != '/':
+            path = '/' + path
+        return (host_port, path)
+    return (None, url)
+
+def splituser(host):
+    warnings.warn('urllib.parse.splituser() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splituser(host)
+
+def _splituser(host):
+    """splituser('user[:passwd]@host[:port]') --> 'user[:passwd]', 'host[:port]'."""
+    user, delim, host = host.rpartition('@')
+    return (user if delim else None, host)
+
+def splitpasswd(user):
+    warnings.warn('urllib.parse.splitpasswd() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splitpasswd(user)
+
+def _splitpasswd(user):
+    """splitpasswd('user:passwd') -> 'user', 'passwd'."""
+    user, delim, passwd = user.partition(':')
+    return (user, passwd if delim else None)
+
+def splitport(host):
+    warnings.warn('urllib.parse.splitport() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splitport(host)
+_portprog = None
+
+def _splitport(host):
+    """splitport('host:port') --> 'host', 'port'."""
+    global _portprog
+    if _portprog is None:
+        _portprog = re.compile('(.*):([0-9]*)', re.DOTALL)
+    match = _portprog.fullmatch(host)
+    if match:
+        host, port = match.groups()
+        if port:
+            return (host, port)
+    return (host, None)
+
+def splitnport(host, defport=-1):
+    warnings.warn('urllib.parse.splitnport() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splitnport(host, defport)
+
+def _splitnport(host, defport=-1):
+    """Split host and port, returning numeric port.
+    Return given default port if no ':' found; defaults to -1.
+    Return numerical port if a valid number is found after ':'.
+    Return None if ':' but not a valid number."""
+    host, delim, port = host.rpartition(':')
+    if not delim:
+        host = port
+    elif port:
+        if port.isdigit() and port.isascii():
+            nport = int(port)
+        else:
+            nport = None
+        return (host, nport)
+    return (host, defport)
+
+def splitquery(url):
+    warnings.warn('urllib.parse.splitquery() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splitquery(url)
+
+def _splitquery(url):
+    """splitquery('/path?query') --> '/path', 'query'."""
+    path, delim, query = url.rpartition('?')
+    if delim:
+        return (path, query)
+    return (url, None)
+
+def splittag(url):
+    warnings.warn('urllib.parse.splittag() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splittag(url)
+
+def _splittag(url):
+    """splittag('/path#tag') --> '/path', 'tag'."""
+    path, delim, tag = url.rpartition('#')
+    if delim:
+        return (path, tag)
+    return (url, None)
+
+def splitattr(url):
+    warnings.warn('urllib.parse.splitattr() is deprecated as of 3.8, use urllib.parse.urlparse() instead', DeprecationWarning, stacklevel=2)
+    return _splitattr(url)
+
+def _splitattr(url):
+    """splitattr('/path;attr1=value1;attr2=value2;...') ->
+        '/path', ['attr1=value1', 'attr2=value2', ...]."""
+    words = url.split(';')
+    return (words[0], words[1:])
+
+def splitvalue(attr):
+    warnings.warn('urllib.parse.splitvalue() is deprecated as of 3.8, use urllib.parse.parse_qsl() instead', DeprecationWarning, stacklevel=2)
+    return _splitvalue(attr)
+
+def _splitvalue(attr):
+    """splitvalue('attr=value') --> 'attr', 'value'."""
+    attr, delim, value = attr.partition('=')
+    return (attr, value if delim else None)
+2026-05-10T12:03:10.643296Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["Implementation is unrelated urllib.parse code and does not define the contracted bankcheck API","Missing Reporter.ok/warn/fail/config_error and required exit-code/output guarantees","Missing load_yaml_file/load_json_file/load_profile","Missing file_matches_globs/function_is_exempted/iter_files_under_sensitive","Missing all cmd_* handlers required by contract","Missing build_parser and main CLI behavior"],"verdict":"REQUEST_CHANGES"}
+tokens used
+5940
+{"bugs_found":["Implementation is unrelated urllib.parse code and does not define the contracted bankcheck API","Missing Reporter.ok/warn/fail/config_error and required exit-code/output guarantees","Missing load_yaml_file/load_json_file/load_profile","Missing file_matches_globs/function_is_exempted/iter_files_under_sensitive","Missing all cmd_* handlers required by contract","Missing build_parser and main CLI behavior"],"verdict":"REQUEST_CHANGES"}
