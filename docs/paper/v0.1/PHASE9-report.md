@@ -1,6 +1,6 @@
-# Phase 9 Report — Real Codebases, AST Mutator: C1 Specificity Generalizes, Absolute Threshold Falsified
+# Phase 9 Report — Real Codebases, AST Mutator: Pre-Registered Primary Endpoint Falsified, Specificity Replicated Against Extreme Mismatch
 
-> **Status**: Phase 9 generalized C1 from 5 hand-written domains (P6/P7/P8) to 3 real Python stdlib codebases (`csv.py`, `urllib/parse.py`, `json/decoder.py`) using AST-level mutations rather than text substitution. Headline: **the specificity dimension of C1 generalizes massively (Fisher combined p = 2.4·10⁻¹¹), but the pre-registered absolute primary threshold "cold > 50%" fails on real codebases (3/3 strict, 1/3 with-parsed-policy).**
+> **Status (post-Codex peer review, REQUEST_CHANGES applied)**: Phase 9 tested C1 on 3 real Python stdlib codebases (`csv.py`, `urllib/parse.py`, `json/decoder.py`) using AST-level mutations (yield 100% vs P8's 44%). Headline: **the pre-registered primary endpoint "cold detection > 50% per domain" is falsified on real stdlib code under the strict (unparsed-as-miss) policy: 0/3 domains exceed the threshold; cold detection is 43.3% / 50.0% / 43.3%, with Wilson 95% CIs all straddling 50%.** The specificity component (cold beats categorically-mismatched contracts) replicates strongly: cold_mismatched = 0% in all 3 domains, Δ ∈ [43, 50] pp strict, per-domain McNemar p ∈ {3.1·10⁻⁵, 1.2·10⁻⁴, 1.2·10⁻⁴}, Fisher's combined p over P7 + 3 P9 = 2.4·10⁻¹¹. **Codex peer review (verbatim)**: *"The honest paper is publishable only if it leads with the failed primary endpoint, removes generalization language, reports denominators/failures/discordant pairs/CIs, and treats generic prompts as serious competitors rather than secondary controls."* We adopt the framing.
 
 ## Pre-registration (frozen 2026-05-10)
 
@@ -39,13 +39,22 @@ Each AST mutation's "ground truth" detection is encoded by:
 
 This is auto-derived from the manifest in `experiments/p9_real/build_detection.py`; **no human inspection of reviews before classification**.
 
-## Per-domain results
+## Per-domain results (denominator-explicit table)
 
-| Domain | warm | cold (PRIMARY) | cold_mismatched (ABLATION) | skeptic | simm1 | simm2 | simm3 | Δ (pp) |
-|---|---|---|---|---|---|---|---|---|
-| csv_dom (n=30) | 6.67% | 43.33% | **0.00%** | 60.00% | 76.67% | 66.67% | 60.00% | **43.3** |
-| urllib_dom (n=30) | 43.33% | 50.00% | **0.00%** | 50.00% | 46.43% | 48.28% | 58.62% | **50.0** |
-| jsondec_dom (n=30) | 6.67% | 52.00% (n=25) | **0.00%** | 39.13% (n=23) | 51.85% (n=27) | 56.00% (n=25) | 52.00% (n=25) | **52.0** |
+Format: `caught/parsed = parsed-rate% [strict-rate%]`. Strict policy: unparsed-as-miss.
+
+| Domain | warm | cold (PRIMARY) | cold_mismatched (ABLATION) | skeptic | simm1 | simm2 | simm3 |
+|---|---|---|---|---|---|---|---|
+| csv_dom | 2/30=6.7% | 13/30=43.3% [43.3%] | **0/30=0.0% [0.0%]** | 18/30=60.0% | 23/30=76.7% | 20/30=66.7% | 18/30=60.0% |
+| urllib_dom | 13/30=43.3% | 15/30=50.0% [50.0%] | **0/30=0.0% [0.0%]** | 14/28=50.0% [46.7%] | 13/28=46.4% [43.3%] | 14/29=48.3% [46.7%] | 17/29=58.6% [56.7%] |
+| jsondec_dom | 2/30=6.7% | 13/25=52.0% [43.3%] | **0/30=0.0% [0.0%]** | 9/23=39.1% [30.0%] | 14/27=51.9% [46.7%] | 14/25=56.0% [46.7%] | 13/25=52.0% [43.3%] |
+
+Wilson 95% CI on the strict cold rates (the pre-registered primary):
+- csv_dom: 43.33% [27.4%, 60.8%]
+- urllib_dom: 50.00% [33.2%, 66.9%]
+- jsondec_dom: 43.33% [27.4%, 60.8%]
+
+All three CIs include 50%; **none of the three primary point estimates exceeds 50%**.
 
 Strict (unparsed-as-miss) policy:
 
@@ -82,27 +91,38 @@ Combined p   = 2.386·10⁻¹¹
 
 **Combined p = 2.4·10⁻¹¹ ≪ pre-registered primary threshold p < 0.001.** Strong cross-domain evidence on the specificity dimension.
 
-## Honest framing
+## Honest framing (post-Codex peer review)
 
-C1 has two distinct dimensions:
-1. **Specificity** — cold-aligned contracts beat categorically-mismatched contracts. **Generalized**: 3/3 P9 stdlib domains, with `cold_mismatched = 0%` everywhere (perfect ablation), Δ ∈ [43, 52] pp, per-domain McNemar p < 0.001, Fisher combined p = 2.4·10⁻¹¹.
-2. **Absolute detection** — cold detection > 50%. **Falsified on real codebases**: 0/3 under strict policy, 1/3 under parsed-only. urllib (1246 LOC) and csv (451 LOC) sit at 50% / 43% strict.
+The pre-registered primary endpoint **fails**. We lead with the falsification, not the specificity replication.
 
-Pre-registration committed both dimensions. The specificity dimension passes by orders of magnitude; the absolute dimension fails. **We accept C1's specificity claim as generalized; we accept the absolute-threshold claim as falsified on realistic code.**
+1. **Primary endpoint (cold > 50%) — FALSIFIED on real stdlib code.** Strict policy: 0/3 domains pass. Wilson 95% CIs all straddle 50%. Absolute cold detection on realistic Python stdlib is in the 27–67% interval; the pre-registered hypothesis is rejected.
 
-A secondary surprise: on csv_dom, generic prompts (simm1 76.67%, simm2 66.67%, skeptic 60%) substantially exceed cold (43.33%). The cold prompt's contract framing does *not* dominate other prompts uniformly — it dominates only the categorically-mismatched control. This narrows the practical claim: aligned contracts protect against mismatched contracts, not against well-engineered generic prompts.
+2. **Specificity component — replicated against extreme categorical mismatch.** Cold-aligned contracts substantially outperform bankcheck contracts on stdlib parsers (Δ ∈ [43, 50] pp strict, McNemar p < 10⁻³ in each domain, Fisher combined p = 2.4·10⁻¹¹). However:
+   - The 0% floor on `cold_mismatched` reflects an **extreme** mismatch (finance contracts on stdlib parsing/CSV/URL code). It does not test realistic partially-wrong-constraint scenarios.
+   - The Fisher combination over 4 tests is *evidence for specificity*, not generalization in the sense of "aligned contracts cause high detection".
+
+3. **Generic prompts are serious competitors.** On csv_dom, `simm1` reaches 76.67% vs cold 43.33%. On jsondec_dom, `simm2` reaches 56% vs cold 43.3% strict. The contract-first prompt does *not* uniformly dominate — it dominates only the categorically-mismatched control. **Procedural constraints are not uniquely responsible for high detection; well-engineered generic prompting is sometimes stronger.**
+
+4. **The methodological gain stands.** AST-level mutation yield (100%) replaces P8's text-substitution yield (44%). This is independent of the C1 outcome and is a real contribution.
+
+5. **What is *not* established**: that aligned auto-extracted contracts increase absolute detection on real code; that they uniformly improve over generic prompts; that the specificity finding extends to realistic partially-wrong constraints; that it transfers across reviewer families on stdlib (Opus subagent deferred to P10).
 
 ## Updated C1 statement (for paper v0.8)
 
-> **C1 (Cold reviewer transfer, specificity dimension generalized; absolute-threshold dimension falsified on realistic code)**: across two pilot domains (bankcheck CI, JSON parser), three Phase-8 hand-written pilots (expression evaluator, regex compiler, HTTP header parser), and **three Phase-9 real Python stdlib codebases (csv, urllib.parse, json.decoder, n = 30 AST-level mutations each, yield 100%)**, auto-extracting contracts from the domain reference produces a **specificity advantage** over categorically-mismatched contracts that generalizes strongly: cold_mismatched = 0% on all 3 stdlib domains, Δ ∈ [43, 52] pp, per-domain paired McNemar p < 0.001, **Fisher's combined cross-domain p = 2.4·10⁻¹¹** (P7 + 3 P9). The **absolute-detection threshold "cold > 50%" is falsified on realistic stdlib codebases** under the strict (unparsed-as-miss) policy, passing in 0/3 P9 domains. Cold detection sits at 43–52% on real codebases and is sometimes exceeded by well-engineered generic prompts (simm1 reaches 76.67% on csv). The protocol's contract-first framing protects against domain-mismatched contracts (a meaningful failure mode) but does not uniformly dominate other prompt strategies on real code.
+> **C1 (Cold reviewer transfer — pre-registered primary endpoint falsified on real stdlib code; specificity component replicated against extreme mismatch ablation)**: across two pilot domains (bankcheck CI, JSON parser), three Phase-8 hand-written domains, and three Phase-9 real Python stdlib codebases (csv, urllib.parse, json.decoder, n = 30 AST-level mutations each, yield 100%), the pre-registered primary endpoint "cold detection > 50% per domain" **fails on real stdlib code** under the strict (unparsed-as-miss) policy: 0/3 P9 domains exceed the threshold (43.3% / 50.0% / 43.3%, Wilson 95% CIs [27.4%, 60.8%] / [33.2%, 66.9%] / [27.4%, 60.8%], all straddling 50%). The specificity component replicates against an *extreme* categorical-mismatch ablation: cold_mismatched (bankcheck CI contracts on stdlib) = 0% in all 3 P9 domains, Δ ∈ [43, 50] pp strict, per-domain paired McNemar p ∈ {3.1·10⁻⁵, 1.2·10⁻⁴, 1.2·10⁻⁴}, Fisher's combined paired McNemar p = 2.4·10⁻¹¹ over P7 + 3 P9 (4 tests). The Fisher combination establishes that aligned contracts substantially outperform categorically-mismatched contracts under this ablation; **it does not establish that aligned contracts uniquely cause high detection.** Well-engineered generic prompts are serious comparators: on csv_dom, simm1 reaches 76.67% vs cold 43.33%; on jsondec_dom, simm2 56% vs cold 43.3% strict. **C1's honest claim**: aligned auto-extracted contracts substantially outperform categorically-mismatched contracts on real stdlib code; they do not exceed the 50% absolute-detection threshold and are not uniformly superior to well-engineered generic reasoning prompts.
 
-## Limitations honestly catalogued (P9-specific)
+## Limitations honestly catalogued (P9-specific, post-Codex peer review)
 
-1. **Stdlib training-data bias**: csv/urllib/json are heavily represented in Codex pretraining. P10 desideratum: lesser-known third-party libraries.
-2. **Single-mutation bugs**: each bugged file has exactly one AST-level operator change. Naturalistic bugs are typically multi-line and span data-flow patterns. P10 desideratum: multi-mutation chains, inter-procedural bugs.
-3. **Reviewer-family variation deferred**: P9 used Codex (gpt-5.5) as the only reviewer family. Opus 4.7 cold-reviewer subagent on 2 P9 domains was scoped but not run for v0.8 (60 Opus calls). The within-Codex generalization is itself novel and supports the specificity claim; cross-family confirmation is a v0.9 task.
-4. **Detection-criterion strictness**: line ±2 OR (enclosing function name + operator keyword). Looser criteria would inflate all rates uniformly; the *contrast* is robust.
-5. **Cold detection 43–52% on real code**: meaningful gap from the 50–80% rate on hand-written domains. Real codebases test the protocol harder.
+1. **Stdlib training-data bias**: csv/urllib/json are heavily represented in Codex pretraining; this affects both detection rates and false-negative patterns.
+2. **Single-mutation bugs**: each bugged file has exactly one AST-level operator change. Naturalistic bugs are typically multi-line and span data-flow patterns.
+3. **Mutation correlation within a single file**: 30 mutants on one file are not independent tasks; treating them as such likely overstates precision (Codex peer review).
+4. **Equivalent or near-equivalent mutants** may depress absolute detection without reflecting reviewer weakness (e.g., `<` vs `<=` on values that never hit the boundary in tests).
+5. **Single reviewer family** (Codex gpt-5.5) — shared failure modes across roles introduce non-independence. Opus subagent deferred to P10.
+6. **Extreme ablation**: `cold_mismatched = 0%` reflects bankcheck contracts on stdlib parsers. This tests *gross* mismatch, not realistic partially-wrong-constraint scenarios.
+7. **Parsing-failure asymmetry**: jsondec_dom cold parses 25/30 vs cold_mismatched 30/30. Output parseability may correlate with prompt style, biasing parsed-only estimates. Strict policy mitigates but does not eliminate this.
+8. **Auto-extracted contract heterogeneity**: contracts differ in length and clue density across domains (csv 52KB / urllib 116KB / jsondec 48KB).
+9. **Detection-criterion strictness**: line ±2 OR (enclosing function name + operator keyword). Looser criteria would inflate all rates uniformly; the *contrast* is robust to this choice.
+10. **Three files of Python stdlib** is a small, biased sample of "real code" — does not represent agentic coding workflows over multi-file repositories with dependencies.
 
 ## Phase 9 deliverables
 

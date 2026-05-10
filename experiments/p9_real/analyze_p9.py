@@ -13,8 +13,19 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from math import comb, log
+from math import comb, log, sqrt
 from scipy.stats import chi2
+
+
+def wilson_ci(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """Wilson score 95% CI for a binomial proportion."""
+    if n == 0:
+        return (0.0, 0.0)
+    p = k / n
+    denom = 1 + z * z / n
+    centre = (p + z * z / (2 * n)) / denom
+    half = z * sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / denom
+    return (max(0.0, centre - half), min(1.0, centre + half))
 
 ROOT = Path(__file__).parent
 DOMAINS = ["csv_dom", "urllib_dom", "jsondec_dom"]
@@ -167,7 +178,11 @@ def main():
         vs.append("PRIMARY✓" if cold_strict > 0.50 else "PRIMARY✗")
         vs.append("ABLATION✓" if cold_m_strict < 0.30 else "ABLATION✗")
         vs.append("Δ≥20pp✓" if delta_strict >= 20 else "Δ≥20pp✗")
-        print(f"  STRICT (unparsed=miss): cold={cold_strict:.2%} mm={cold_m_strict:.2%} Δ={delta_strict:.1f}pp  {' '.join(vs)}")
+        # Wilson 95% CI on cold strict
+        cold_strict_caught = r["rates_strict_unparsed_as_miss"]["cold"]["caught"]
+        cold_strict_total = r["rates_strict_unparsed_as_miss"]["cold"]["n_total"]
+        ci_lo, ci_hi = wilson_ci(cold_strict_caught, cold_strict_total)
+        print(f"  STRICT (unparsed=miss): cold={cold_strict:.2%} [Wilson95% {ci_lo:.2%},{ci_hi:.2%}] mm={cold_m_strict:.2%} Δ={delta_strict:.1f}pp  {' '.join(vs)}")
         mc = r["mcnemar"]
         print(f"  McNemar paired: n={mc['n_paired']} b={mc['b']} c={mc['c']} p={mc['p']:.6f}")
         thr = 0.010
