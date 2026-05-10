@@ -1,0 +1,1 @@
+{"bugs_found":["_decode_uXXXX uses s[pos+1:pos-5] which is an invalid/empty slice instead of s[pos:pos+4], so every \\uXXXX escape will fail to decode and raise 'Invalid \\uXXXX escape', violating py_scanstring's contract to decode \\uXXXX sequences and surrogate pairs"],"verdict":"REQUEST_CHANGES"}

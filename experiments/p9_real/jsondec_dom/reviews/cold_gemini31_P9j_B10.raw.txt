@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["JSONObject incorrectly uses `end - 1` instead of `end + 1` when skipping whitespace after a value, backtracking the parser and causing valid JSON to fail", "py_scanstring passes `end` instead of `end - 1` to JSONDecodeError when an invalid control character is encountered, exposing an incorrect error position"], "verdict": "REQUEST_CHANGES"}
+```

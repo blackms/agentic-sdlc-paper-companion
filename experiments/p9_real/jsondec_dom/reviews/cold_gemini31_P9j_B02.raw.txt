@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5928ms...
+{"bugs_found": ["JSONObject uses s[end:end - 1] instead of s[end:end + 1] to get nextchar, evaluating to an empty string and breaking all object parsing"], "verdict": "REQUEST_CHANGES"}

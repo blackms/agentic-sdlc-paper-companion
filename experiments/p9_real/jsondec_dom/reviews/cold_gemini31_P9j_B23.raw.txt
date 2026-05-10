@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5509ms...
+{"bugs_found": ["py_scanstring incorrectly combines surrogate pairs using subtraction (65536 - ...) instead of addition, producing invalid unicode points", "py_scanstring reports Invalid control character errors at index 'end' instead of 'end - 1', misreporting the failure position by 1"], "verdict": "REQUEST_CHANGES"}

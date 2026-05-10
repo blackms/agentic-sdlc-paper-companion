@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictWriter._dict_to_list raises TypeError when extrasaction='raise' because it attempts to subtract self.fieldnames (a list) from rowdict.keys() (a dict_keys view), which is not supported in Python 3"], "verdict": "REQUEST_CHANGES"}
+```

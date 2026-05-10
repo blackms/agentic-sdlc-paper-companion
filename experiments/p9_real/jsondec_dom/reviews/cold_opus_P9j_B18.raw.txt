@@ -1,0 +1,1 @@
+{"bugs_found":["py_scanstring surrogate pair combination uses wrong arithmetic: '65536 + (uni + 55296 << 10 | uni2 - 56320)' adds 0xD800 instead of subtracting it, violating the contract that valid UTF-16 surrogate pairs are combined into a single code point"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictWriter._dict_to_list raises TypeError instead of ValueError because it attempts to subtract a list (self.fieldnames) from dict_keys", "DictReader.__next__ fails to update self.line_num when skipping empty rows, leaving it with the line number of the first skipped empty row"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,831 @@
+{
+  "n_rows": 101,
+  "primary": {
+    "n_paired": 92,
+    "baseline_rate": 0.75,
+    "v2_rate": 0.6630434782608695,
+    "delta": -0.08695652173913049,
+    "mcnemar_b": 15,
+    "mcnemar_c": 7,
+    "p": 0.9737606048583984
+  },
+  "secondary": {
+    "n_paired": 101,
+    "v1_rate": 0.693069306930693,
+    "v2_rate": 0.6633663366336634,
+    "delta": -0.02970297029702962,
+    "mcnemar_b": 12,
+    "mcnemar_c": 9,
+    "p": 0.808344841003418
+  },
+  "rows": [
+    {
+      "bid": "B01",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B02",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B03",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B07",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B09",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B10",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B101",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B104",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": null,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B106",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B108",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": null,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B11",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B110",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": null,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B112",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B113",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B119",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B121",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B123",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": null,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B124",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": null,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B125",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B126",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B129",
+      "category": "atomicity",
+      "in_top5": true,
+      "baseline": null,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B13",
+      "category": "atomicity",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B131",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B132",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": null,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B135",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": null,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B137",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B139",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B141",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B142",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B143",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B144",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B146",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B148",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B149",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": false,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B156",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B157",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B159",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B160",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B162",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B164",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B166",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": null,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B167",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B17",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B170",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B173",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B174",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B175",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B176",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B179",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B182",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B184",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B185",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B186",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": false,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B190",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B193",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B194",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B195",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B197",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B199",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B200",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B21",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B23",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B24",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B28",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B29",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B31",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B33",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B37",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B38",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B39",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B46",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B47",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B51",
+      "category": "atomicity",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B54",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B55",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B56",
+      "category": "atomicity",
+      "in_top5": true,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B57",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B58",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B60",
+      "category": "atomicity",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B62",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B64",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B65",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": false,
+      "v2": true
+    },
+    {
+      "bid": "B66",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B67",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B69",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B71",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B72",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B74",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B76",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": false
+    },
+    {
+      "bid": "B77",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B81",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B84",
+      "category": "precision",
+      "in_top5": false,
+      "baseline": true,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B85",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B88",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B92",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": false,
+      "v1": false,
+      "v2": false
+    },
+    {
+      "bid": "B93",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B94",
+      "category": "exception",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B95",
+      "category": "off-by-one",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B96",
+      "category": "logic",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B97",
+      "category": "contract",
+      "in_top5": false,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    },
+    {
+      "bid": "B98",
+      "category": "currency",
+      "in_top5": true,
+      "baseline": true,
+      "v1": true,
+      "v2": true
+    }
+  ]
+}

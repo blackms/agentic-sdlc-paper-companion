@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["py_scanstring raises JSONDecodeError for invalid control characters with pos=end instead of end-1 (violating the contract that pos is the index where parsing failed)", "JSONObject and JSONArray use _w(s, end + 1).end() instead of _w(s, end).end() for whitespace skipping, skipping the current character in the regex match"], "verdict": "REQUEST_CHANGES"}
+```

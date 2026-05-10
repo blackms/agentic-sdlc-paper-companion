@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5490ms...
+{"bugs_found": ["DictReader.__next__ updates self.line_num before skipping empty rows, causing it to reflect the line number of a skipped row instead of the returned row", "DictWriter._dict_to_list raises TypeError because it attempts a set difference (-) between dict_keys and self.fieldnames (a list)", "Sniffer._guess_quote_and_delimiter raises IndexError by using groupindex['space'] + 1 instead of - 1 to access the match tuple"], "verdict": "REQUEST_CHANGES"}

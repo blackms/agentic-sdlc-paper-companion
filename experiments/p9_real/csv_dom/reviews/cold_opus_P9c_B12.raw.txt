@@ -1,0 +1,1 @@
+{"bugs_found":["DictWriter._dict_to_list violates contract: uses 'rowdict.keys() + self.fieldnames' (TypeError on dict_keys + list) instead of 'rowdict.keys() - self.fieldnames'; also unconditionally raises if any keys exist, instead of only when extras are present"],"verdict":"REQUEST_CHANGES"}

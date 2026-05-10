@@ -1,0 +1,6 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+```json
+{"bugs_found": ["_decode_uXXXX incorrectly checks len(esc) != 4 instead of == 4, causing all valid unicode escapes to raise JSONDecodeError", "_decode_uXXXX accesses esc[1] without length validation, raising IndexError instead of JSONDecodeError for truncated escapes like '\\u'"], "verdict": "REQUEST_CHANGES"}
+```

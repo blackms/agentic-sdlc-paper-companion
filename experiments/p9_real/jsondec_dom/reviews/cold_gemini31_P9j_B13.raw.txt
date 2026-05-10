@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["In JSONDecoder.__init__, self.parse_float is assigned `parse_float and float` instead of `parse_float or float`, which causes it to ignore custom parse_float hooks and default to None instead of float."], "verdict": "REQUEST_CHANGES"}
+```

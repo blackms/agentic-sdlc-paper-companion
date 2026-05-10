@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["py_scanstring incorrectly adds 55296 instead of subtracting it when decoding UTF-16 surrogate pairs (uni + 55296 << 10), causing an out-of-bounds code point and a ValueError from chr()"], "verdict": "REQUEST_CHANGES"}

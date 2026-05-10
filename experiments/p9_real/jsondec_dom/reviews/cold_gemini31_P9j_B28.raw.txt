@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["In JSONObject, the condition `if nextchar == '\"':` incorrectly replaces `if nextchar != '\"':`, which prevents skipping leading whitespace and breaks parsing of empty objects `{}`."], "verdict": "REQUEST_CHANGES"}
+```

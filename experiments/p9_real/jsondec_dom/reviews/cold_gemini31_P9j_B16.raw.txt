@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5176ms...
+```json
+{"bugs_found": ["In py_scanstring, the check for control characters incorrectly uses `elif terminator == '\\\\':` instead of `!= '\\\\'`. This completely breaks string parsing by raising 'Invalid control character' on valid backslash escapes and incorrectly processing literal control characters as if they were escapes."], "verdict": "REQUEST_CHANGES"}
+```

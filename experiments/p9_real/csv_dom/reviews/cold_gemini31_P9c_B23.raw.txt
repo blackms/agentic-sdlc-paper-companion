@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5075ms...
+```json
+{"bugs_found": ["DictReader.__next__ fails to update self.line_num from self.reader.line_num after skipping empty rows"], "verdict": "REQUEST_CHANGES"}
+```

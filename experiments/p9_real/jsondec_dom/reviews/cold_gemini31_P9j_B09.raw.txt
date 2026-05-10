@@ -1,0 +1,7 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5259ms...
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+```json
+{"bugs_found": ["py_scanstring raises JSONDecodeError for invalid control characters using the incorrect position 'end' instead of 'end - 1'"], "verdict": "REQUEST_CHANGES"}
+```

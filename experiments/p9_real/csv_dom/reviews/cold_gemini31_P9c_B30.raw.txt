@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5488ms...
+```json
+{"bugs_found": ["DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction='raise' due to invalid set subtraction between dict_keys and list (self.fieldnames)"], "verdict": "REQUEST_CHANGES"}
+```

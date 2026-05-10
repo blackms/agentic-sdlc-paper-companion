@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictReader.__init__ raises TypeError when fieldnames is None due to using 'or' instead of 'and' before iter(fieldnames)", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction='raise' because it uses the '-' operator between dict_keys and a list", "DictReader.__next__ fails to update self.line_num after skipping empty rows, violating the line_num invariant"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["In Sniffer._guess_delimiter, the while loop condition uses len(delims) != 0 instead of == 0, preventing delimiter inference", "In DictWriter._dict_to_list, rowdict.keys() - self.fieldnames raises TypeError instead of ValueError when fieldnames is a list"], "verdict": "REQUEST_CHANGES"}
+```

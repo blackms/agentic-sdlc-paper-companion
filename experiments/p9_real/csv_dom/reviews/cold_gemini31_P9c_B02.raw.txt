@@ -1,0 +1,6 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+```json
+{"bugs_found": ["DictReader.__next__ fails to update self.line_num from self.reader.line_num when empty rows are skipped"], "verdict": "REQUEST_CHANGES"}
+```

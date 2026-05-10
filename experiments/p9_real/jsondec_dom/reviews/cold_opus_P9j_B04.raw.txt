@@ -1,0 +1,1 @@
+{"bugs_found":["JSONDecoder.__init__: parse_constant default violates contract — uses 'parse_constant and _CONSTANTS.__getitem__' which sets self.parse_constant to None when no parse_constant is supplied (instead of defaulting to _CONSTANTS.__getitem__), and discards any user-supplied callable replacing it with _CONSTANTS.__getitem__"],"verdict":"REQUEST_CHANGES"}

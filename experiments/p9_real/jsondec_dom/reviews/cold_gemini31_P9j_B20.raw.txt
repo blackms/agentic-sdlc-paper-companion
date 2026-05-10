@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["_decode_uXXXX uses 'or' instead of 'and' when validating escape sequences, causing an unhandled IndexError on truncated escapes and incorrectly accepting invalid hex sequences like \\u0x12"], "verdict": "REQUEST_CHANGES"}
+```

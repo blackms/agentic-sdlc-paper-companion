@@ -1,0 +1,1 @@
+{"bugs_found": ["_guess_quote_and_delimiter uses '//' (floor division) instead of '%' for string formatting in dq_regexp construction, which will raise TypeError at runtime whenever this code path executes, violating the contract that the function returns a 4-tuple"], "verdict": "REQUEST_CHANGES"}

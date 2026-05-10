@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictReader.__next__ updates self.line_num before skipping empty rows, leaving it with the incorrect line number if empty rows are encountered.", "Sniffer.has_header checks if 'thisType == columnTypes[col]' instead of '!=', breaking the characteristic tracking logic and leaving all column types as None."], "verdict": "REQUEST_CHANGES"}
+```

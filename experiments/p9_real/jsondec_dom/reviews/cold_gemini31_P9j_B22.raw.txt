@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5105ms...
+```json
+{"bugs_found": ["JSONObject inverted condition: 'if nextchar == \"\"' raises an error for valid double-quoted property names after a comma, breaking objects with multiple members"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,1 @@
+{"bugs_found":["JSONDecoder.__init__ sets self.parse_int = parse_int and int, which means when parse_int is None it becomes None instead of defaulting to int, and when a custom callable is supplied it is replaced by the builtin int, violating the contract that parse_int defaults to int and is used to parse JSON integers"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["Sniffer._guess_delimiter uses floor-division operator ('%c ' // delim) instead of string formatting ('%c ' % delim) when len(delims)==1, raising TypeError instead of returning the (delimiter, skipinitialspace) tuple required by the contract"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictReader.__next__ updates self.line_num before skipping empty rows, causing it to incorrectly reflect the line number of the first skipped empty row instead of the returned data row.", "Sniffer._guess_quote_and_delimiter uses 'if key or (delimiters is None or key in delimiters):', which bypasses the delimiters filter for any truthy key."], "verdict": "REQUEST_CHANGES"}
+```
