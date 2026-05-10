@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is a parsec-style parser library, not bankcheck — cannot validate against bankcheck contracts (no Reporter, load_yaml_file, cmd_* functions present)"],"verdict":"REQUEST_CHANGES"}

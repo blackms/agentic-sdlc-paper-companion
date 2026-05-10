@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided does not correspond to the bankcheck contracts; it is the chardet CharDistributionAnalysis module, none of the contracted symbols (Reporter, load_yaml_file, cmd_*, build_parser, main, etc.) are implemented"],"verdict":"REQUEST_CHANGES"}

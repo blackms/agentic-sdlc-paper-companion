@@ -1,0 +1,1 @@
+{"bugs_found":["_fix() hours carry uses divmod(self.hours / s, 24) instead of divmod(self.hours * s, 24); for negative hour overflow this divides by the sign producing wrong magnitude/sign of carry into days (operator-level invariant violated: should be * not /)"],"verdict":"REQUEST_CHANGES"}

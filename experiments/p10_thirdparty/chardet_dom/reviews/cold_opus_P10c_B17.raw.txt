@@ -1,0 +1,1 @@
+{"bugs_found": ["get_confidence uses strict `<` instead of `<=` for MINIMUM_DATA_THRESHOLD: with _freq_chars == 3 the code computes/returns a non-SURE_NO confidence, violating the contract's inclusive minimum-data invariant (`_freq_chars <= 3` must return SURE_NO)"], "verdict": "REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["Il codice fornito non corrisponde ai contratti: i contratti descrivono bankcheck (Reporter, load_yaml_file, cmd_*, ecc.) ma il codice è una libreria di parser combinator (parsy-like) — nessuna delle funzioni contrattualizzate è presente, quindi tutti i contratti sono violati per assenza totale di implementazione"],"verdict":"REQUEST_CHANGES"}

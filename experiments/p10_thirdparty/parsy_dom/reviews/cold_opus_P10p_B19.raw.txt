@@ -1,0 +1,1 @@
+{"bugs_found": ["char_from(bytes) uses subtraction instead of concatenation in description: `b'[' + string - b']'` raises TypeError on bytes; contract requires description `b'[' + string + b']'`"], "verdict": "REQUEST_CHANGES"}

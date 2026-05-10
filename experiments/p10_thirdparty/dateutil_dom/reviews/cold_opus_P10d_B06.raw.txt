@@ -1,0 +1,1 @@
+{"bugs_found":["__add__ on date/datetime computes month as 'self.month and other.month' instead of 'self.month or other.month', so when self.month is None/0 it falls back incorrectly (yields None/0 and breaks month arithmetic) violating the operator-level invariant 'Month is computed as self.month or other.month'"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["Codice fornito non corrisponde ai contratti di bankcheck: è chardet/CharDistributionAnalysis, non Reporter/load_yaml_file/cmd_* — impossibile validare alcuna postcondition contrattuale"],"verdict":"REQUEST_CHANGES"}

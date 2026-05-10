@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5275ms...
+```json
+{"bugs_found": ["seq() incorrectly raises ValueError whenever any arguments are passed due to checking 'parsers or kw_parsers' instead of 'parsers and kw_parsers'"], "verdict": "REQUEST_CHANGES"}
+```

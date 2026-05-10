@@ -1,0 +1,1 @@
+{"bugs_found":["CODE_NOT_BANKCHECK: the provided code is a parser combinator library (parsy-like), not bankcheck.py — none of the contracts (Reporter, load_yaml_file, cmd_* functions, build_parser for 'bankcheck', main) are implementable or verifiable against this source"],"verdict":"REQUEST_CHANGES"}

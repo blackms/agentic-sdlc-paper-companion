@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is from chardet library (CharDistributionAnalysis), not bankcheck — no contracts can be matched against this implementation"],"verdict":"REQUEST_CHANGES"}

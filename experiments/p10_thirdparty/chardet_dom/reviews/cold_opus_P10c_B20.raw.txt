@@ -1,0 +1,1 @@
+{"bugs_found": ["SJISDistributionAnalysis.get_order uses `first_char >= 129 or first_char <= 159` instead of `and`, so the condition is always true for any byte value, breaking the contract that the first range must be exactly 0x81..0x9F and that bytes outside both ranges return -1"], "verdict": "REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["Codice fornito (CharDistributionAnalysis e sottoclassi) non corrisponde ai contratti di bankcheck: nessuna funzione contrattualizzata (Reporter.*, load_yaml_file, cmd_*, build_parser, main, ecc.) è presente nel codice da revisionare, quindi i contratti non possono essere verificati"],"verdict":"REQUEST_CHANGES"}

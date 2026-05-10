@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["Code does not implement any of the functions defined in the bankcheck contract (Reporter, load_yaml_file, etc.).", "Code does not implement the parse and parse_strict functions required by the Minimal JSON Parser contract.", "ParseError class violates the contract: it inherits from RuntimeError instead of Exception, its constructor has the wrong signature, and it lacks the required .position attribute."], "verdict": "REQUEST_CHANGES"}

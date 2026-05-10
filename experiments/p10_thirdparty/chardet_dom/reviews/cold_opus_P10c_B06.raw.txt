@@ -1,0 +1,1 @@
+{"bugs_found":["get_confidence uses 'and' instead of 'or' between _total_chars<=0 and _freq_chars<=MINIMUM_DATA_THRESHOLD, so SURE_NO is only returned when BOTH conditions hold; contract requires either condition alone to short-circuit to SURE_NO, and the original code uses 'or' semantics via two separate checks"],"verdict":"REQUEST_CHANGES"}

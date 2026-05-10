@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The __eq__ method incorrectly compares hours using '!=' instead of '==' (self.hours != other.hours)"], "verdict": "REQUEST_CHANGES"}
+```

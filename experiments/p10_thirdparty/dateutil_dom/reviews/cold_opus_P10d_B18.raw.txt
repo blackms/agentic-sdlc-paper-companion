@@ -1,0 +1,1 @@
+{"bugs_found":["__add__ with relativedelta computes hours as other.hours - self.hours instead of other.hours + self.hours, violating the contract that adding two deltas sums all relative fields"],"verdict":"REQUEST_CHANGES"}

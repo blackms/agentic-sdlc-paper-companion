@@ -1,0 +1,535 @@
+{
+  "ref": "/Users/alessiorocchi/Projects/agentic-sdlc/experiments/p10_thirdparty/chardet_dom/ref/chardistribution_module.py",
+  "bugs": [
+    {
+      "bug_id": "P10c_B01",
+      "operator": "ROR",
+      "line": 145,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B02",
+      "operator": "AOR",
+      "line": 127,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10c_B03",
+      "operator": "AOR",
+      "line": 165,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B04",
+      "operator": "BOR",
+      "line": 207,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10c_B05",
+      "operator": "ROR",
+      "line": 91,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "get_confidence",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "equal",
+        "inequality",
+        "not equal",
+        "=="
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B06",
+      "operator": "BOR",
+      "line": 88,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "get_confidence",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P10c_B07",
+      "operator": "AOR",
+      "line": 165,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10c_B08",
+      "operator": "ROR",
+      "line": 88,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "get_confidence",
+      "op_keywords": [
+        " le ",
+        "less or equal",
+        "less than",
+        " lt ",
+        "<=",
+        "<"
+      ],
+      "description": "ROR LtE -> Lt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B09",
+      "operator": "AOR",
+      "line": 185,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10c_B10",
+      "operator": "AOR",
+      "line": 187,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B11",
+      "operator": "AOR",
+      "line": 185,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10c_B12",
+      "operator": "ROR",
+      "line": 183,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B13",
+      "operator": "BOR",
+      "line": 164,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10c_B14",
+      "operator": "ROR",
+      "line": 207,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        " le ",
+        "less or equal",
+        "less than",
+        " lt ",
+        "<=",
+        "<"
+      ],
+      "description": "ROR LtE -> Lt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B15",
+      "operator": "ROR",
+      "line": 205,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        " le ",
+        "less or equal",
+        "less than",
+        " lt ",
+        "<=",
+        "<"
+      ],
+      "description": "ROR LtE -> Lt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B16",
+      "operator": "ROR",
+      "line": 164,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B17",
+      "operator": "ROR",
+      "line": 88,
+      "old_op": "LtE",
+      "new_op": "Lt",
+      "enclosing": "get_confidence",
+      "op_keywords": [
+        " le ",
+        "less or equal",
+        "less than",
+        " lt ",
+        "<=",
+        "<"
+      ],
+      "description": "ROR LtE -> Lt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B18",
+      "operator": "AOR",
+      "line": 185,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B19",
+      "operator": "AOR",
+      "line": 231,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B20",
+      "operator": "BOR",
+      "line": 205,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10c_B21",
+      "operator": "AOR",
+      "line": 92,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_confidence",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B22",
+      "operator": "ROR",
+      "line": 126,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B23",
+      "operator": "AOR",
+      "line": 92,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "get_confidence",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10c_B24",
+      "operator": "ROR",
+      "line": 77,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "feed",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B25",
+      "operator": "AOR",
+      "line": 146,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B26",
+      "operator": "ROR",
+      "line": 164,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B27",
+      "operator": "ROR",
+      "line": 205,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B28",
+      "operator": "ROR",
+      "line": 81,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "feed",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P10c_B29",
+      "operator": "AOR",
+      "line": 146,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10c_B30",
+      "operator": "AOR",
+      "line": 211,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "get_order",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    }
+  ]
+}

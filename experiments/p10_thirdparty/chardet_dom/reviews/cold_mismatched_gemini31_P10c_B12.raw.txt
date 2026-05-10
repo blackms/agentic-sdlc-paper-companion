@@ -1,0 +1,2 @@
+Ripgrep is not available. Falling back to GrepTool.
+{"bugs_found": ["Code completely mismatches the contract: expected bankcheck module functions and classes (e.g., Reporter, load_yaml_file, cmd_all) but found unrelated chardet character distribution analysis classes."], "verdict": "REQUEST_CHANGES"}

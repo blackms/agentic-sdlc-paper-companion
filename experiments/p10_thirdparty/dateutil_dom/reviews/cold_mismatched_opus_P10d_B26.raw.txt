@@ -1,0 +1,1 @@
+{"bugs_found":["Code under review is dateutil.relativedelta, not bankcheck — none of the contracted symbols (Reporter, load_yaml_file, cmd_*, build_parser, main, etc.) are present, so the contract cannot be satisfied"],"verdict":"REQUEST_CHANGES"}

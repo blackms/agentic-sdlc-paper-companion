@@ -1,0 +1,1 @@
+{"bugs_found": ["get_confidence uses `_total_chars < 0` instead of contract-specified `_total_chars <= 0` for the SURE_NO short-circuit; functionally masked by the MINIMUM_DATA_THRESHOLD check (freq=0 ≤ 3 when total=0), but it is a literal contract deviation on the documented boundary check"], "verdict": "REQUEST_CHANGES"}

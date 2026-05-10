@@ -1,0 +1,2321 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e13a3-5e79-7b03-b9a3-b10b72cabfe0
+--------
+user
+Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
+
+Devi eseguire una review in 2 fasi:
+
+**FASE A — Solo contratti**: ricevi i contratti formali delle funzioni di bankcheck. Sulla base SOLO di questi contratti, deriva un set di "expected outcomes" / proprietà che il codice DEVE soddisfare. Genera mentalmente almeno 5 counter-example per funzione (input edge case che dovrebbero far rispettare le invarianti dichiarate).
+
+**FASE B — Confronto con codice**: dopo aver fatto la FASE A nella tua testa, ricevi anche il codice. Confronta le tue expectations con l'implementazione e identifica VIOLAZIONI del contratto.
+
+**Output STRETTAMENTE JSON, una riga**:
+
+```json
+{"bugs_found": ["short description 1", ...], "verdict": "ACCEPT" | "REQUEST_CHANGES"}
+```
+
+Niente preamboli, niente markdown, solo il JSON. Concentrati su violazioni del CONTRATTO, non su style.
+
+CONTRATTI FORMALI DI BANKCHECK:
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e138a-1c75-7f20-93d1-13d4eed88787
+--------
+user
+You are a senior Python engineer. Read the following module carefully and produce a self-contained CONTRACT specification document in Markdown.
+
+Format:
+# Contracts: parsy_dom
+
+## Module overview
+(2-3 sentences: what the module does at a high level)
+
+## Function/method contracts
+For each top-level function and class method, document:
+- **Signature**
+- **Pre-conditions** (what must be true before calling)
+- **Post-conditions** (what must be true after returning)
+- **Invariants** (properties preserved)
+- **Edge cases** (boundary conditions, exceptional inputs)
+- **Operator-level invariants** if any (off-by-one, sign, comparison direction)
+
+Be explicit and complete. The contract must be detailed enough that a reviewer who has NEVER seen the module could detect bugs by checking implementation against contracts.
+
+CODE TO ANALYZE:
+from __future__ import annotations
+
+import enum
+import operator
+import re
+from dataclasses import dataclass
+from functools import wraps
+from typing import Any, Callable, FrozenSet
+
+__version__ = "2.2"
+
+noop = lambda x: x
+
+
+def line_info_at(stream, index):
+    if index > len(stream):
+        raise ValueError("invalid index")
+    line = stream.count("\n", 0, index)
+    last_nl = stream.rfind("\n", 0, index)
+    col = index - (last_nl + 1)
+    return (line, col)
+
+
+class ParseError(RuntimeError):
+    def __init__(self, expected, stream, index):
+        self.expected = expected
+        self.stream = stream
+        self.index = index
+
+    def line_info(self) -> str:
+        try:
+            return "{}:{}".format(*line_info_at(self.stream, self.index))
+        except (TypeError, AttributeError):  # not a str
+            return str(self.index)
+
+    def __str__(self):
+        expected_list = sorted(repr(e) for e in self.expected)
+
+        if len(expected_list) == 1:
+            return f"expected {expected_list[0]} at {self.line_info()}"
+        else:
+            return f"expected one of {', '.join(expected_list)} at {self.line_info()}"
+
+
+@dataclass
+class Result:
+    status: bool
+    index: int
+    value: Any
+    furthest: int
+    expected: FrozenSet[str]
+
+    @staticmethod
+    def success(index, value) -> Result:
+        return Result(True, index, value, -1, frozenset())
+
+    @staticmethod
+    def failure(index, expected) -> Result:
+        return Result(False, -1, None, index, frozenset([expected]))
+
+    # collect the furthest failure from self and other
+    def aggregate(self, other) -> Result:
+        if not other:
+            return self
+
+        if self.furthest > other.furthest:
+            return self
+        elif self.furthest == other.furthest:
+            # if we both have the same failure index, we combine the expected messages.
+            return Result(self.status, self.index, self.value, self.furthest, self.expected | other.expected)
+        else:
+            return Result(self.status, self.index, self.value, other.furthest, other.expected)
+
+
+# Roughly, a stream is str|bytes|list, but in practice we are duck-typed
+# and could accept other things.
+# We should switch to this alias when all supported Python versions allow it:
+# type Stream = str | bytes | list
+
+
+class Parser:
+    """
+    A Parser is an object that wraps a function whose arguments are
+    a string to be parsed and the index on which to begin parsing.
+    The function should return either Result.success(next_index, value),
+    where the next index is where to continue the parse and the value is
+    the yielded value, or Result.failure(index, expected), where expected
+    is a string indicating what was expected, and the index is the index
+    of the failure.
+    """
+
+    def __init__(self, wrapped_fn: Callable[[str | bytes | list, int], Result]):
+        """
+        Creates a new Parser from a function that takes a stream
+        and returns a Result.
+        """
+        self.wrapped_fn = wrapped_fn
+
+    def __call__(self, stream: str | bytes | list, index: int) -> Any:
+        return self.wrapped_fn(stream, index)
+
+    def parse(self, stream: str | bytes | list) -> Any:
+        """Parses a string or list of tokens and returns the result or raise a ParseError."""
+        (result, _) = (self << eof).parse_partial(stream)
+        return result
+
+    def parse_partial(self, stream: str | bytes | list) -> tuple[Any, str | bytes | list]:
+        """
+        Parses the longest possible prefix of a given string.
+        Returns a tuple of the result and the unparsed remainder,
+        or raises ParseError
+        """
+        result = self(stream, 0)
+
+        if result.status:
+            return (result.value, stream[result.index :])
+        else:
+            raise ParseError(result.expected, stream, result.furthest)
+
+    def bind(self, bind_fn: Callable[[Any], Parser]) -> Parser:
+        @Parser
+        def bound_parser(stream: str | bytes | list, index: int) -> Result:
+            result = self(stream, index)
+
+            if result.status:
+                next_parser = bind_fn(result.value)
+                return next_parser(stream, result.index).aggregate(result)
+            else:
+                return result
+
+        return bound_parser
+
+    def map(self, map_function: Callable) -> Parser:
+        """
+        Returns a parser that transforms the produced value of the initial parser with map_function.
+        """
+        return self.bind(lambda res: success(map_function(res)))
+
+    def combine(self, combine_fn: Callable) -> Parser:
+        """
+        Returns a parser that transforms the produced values of the initial parser
+        with ``combine_fn``, passing the arguments using ``*args`` syntax.
+
+        The initial parser should return a list/sequence of parse results.
+        """
+        return self.bind(lambda res: success(combine_fn(*res)))
+
+    def combine_dict(self, combine_fn: Callable) -> Parser:
+        """
+        Returns a parser that transforms the value produced by the initial parser
+        using the supplied function/callable, passing the arguments using the
+        ``**kwargs`` syntax.
+
+        The value produced by the initial parser must be a mapping/dictionary from
+        names to values, or a list of two-tuples, or something else that can be
+        passed to the ``dict`` constructor.
+
+        If ``None`` is present as a key in the dictionary it will be removed
+        before passing to ``fn``, as will all keys starting with ``_``.
+        """
+        return self.bind(
+            lambda res: success(
+                combine_fn(
+                    **{
+                        k: v
+                        for k, v in dict(res).items()
+                        if k is not None and not (isinstance(k, str) and k.startswith("_"))
+                    }
+                )
+            )
+        )
+
+    def concat(self) -> Parser:
+        """
+        Returns a parser that concatenates together (as a string) the previously
+        produced values.
+        """
+        return self.map("".join)
+
+    def then(self, other: Parser) -> Parser:
+        """
+        Returns a parser which, if the initial parser succeeds, will
+        continue parsing with ``other``. This will produce the
+        value produced by ``other``.
+
+        """
+        return seq(self, other).combine(lambda left, right: right)
+
+    def skip(self, other: Parser) -> Parser:
+        """
+        Returns a parser which, if the initial parser succeeds, will
+        continue parsing with ``other``. It will produce the
+        value produced by the initial parser.
+        """
+        return seq(self, other).combine(lambda left, right: left)
+
+    def result(self, value: Any) -> Parser:
+        """
+        Returns a parser that, if the initial parser succeeds, always produces
+        the passed in ``value``.
+        """
+        return self >> success(value)
+
+    def many(self) -> Parser:
+        """
+        Returns a parser that expects the initial parser 0 or more times, and
+        produces a list of the results.
+        """
+        return self.times(0, float("inf"))
+
+    def times(self, min: int, max: int = None) -> Parser:
+        """
+        Returns a parser that expects the initial parser at least ``min`` times,
+        and at most ``max`` times, and produces a list of the results. If only one
+        argument is given, the parser is expected exactly that number of times.
+        """
+        if max is None:
+            max = min
+
+        @Parser
+        def times_parser(stream: str | bytes | list, index: int) -> Result:
+            values = []
+            times = 0
+            result = None
+
+            while times < max:
+                result = self(stream, index).aggregate(result)
+                if result.status:
+                    values.append(result.value)
+                    index = result.index
+                    times += 1
+                elif times >= min:
+                    break
+                else:
+                    return result
+
+            return Result.success(index, values).aggregate(result)
+
+        return times_parser
+
+    def at_most(self, n: int) -> Parser:
+        """
+        Returns a parser that expects the initial parser at most ``n`` times, and
+        produces a list of the results.
+        """
+        return self.times(0, n)
+
+    def at_least(self, n: int) -> Parser:
+        """
+        Returns a parser that expects the initial parser at least ``n`` times, and
+        produces a list of the results.
+        """
+        return self.times(n) + self.many()
+
+    def optional(self, default: Any = None) -> Parser:
+        """
+        Returns a parser that expects the initial parser zero or once, and maps
+        the result to a given default value in the case of no match. If no default
+        value is given, ``None`` is used.
+        """
+        return self.times(0, 1).map(lambda v: v[0] if v else default)
+
+    def until(self, other: Parser, min: int = 0, max: int = float("inf"), consume_other: bool = False) -> Parser:
+        """
+        Returns a parser that expects the initial parser followed by ``other``.
+        The initial parser is expected at least ``min`` times and at most ``max`` times.
+        By default, it does not consume ``other`` and it produces a list of the
+        results excluding ``other``. If ``consume_other`` is ``True`` then
+        ``other`` is consumed and its result is included in the list of results.
+        """
+
+        @Parser
+        def until_parser(stream: str | bytes | list, index: int) -> Result:
+            values = []
+            times = 0
+            while True:
+
+                # try parser first
+                res = other(stream, index)
+                if res.status and times >= min:
+                    if consume_other:
+                        # consume other
+                        values.append(res.value)
+                        index = res.index
+                    return Result.success(index, values)
+
+                # exceeded max?
+                if times >= max:
+                    # return failure, it matched parser more than max times
+                    return Result.failure(index, f"at most {max} items")
+
+                # failed, try parser
+                result = self(stream, index)
+                if result.status:
+                    # consume
+                    values.append(result.value)
+                    index = result.index
+                    times += 1
+                elif times >= min:
+                    # return failure, parser is not followed by other
+                    return Result.failure(index, "did not find other parser")
+                else:
+                    # return failure, it did not match parser at least min times
+                    return Result.failure(index, f"at least {min} items; got {times} item(s)")
+
+        return until_parser
+
+    def sep_by(self, sep: Parser, *, min: int = 0, max: int = float("inf")) -> Parser:
+        """
+        Returns a new parser that repeats the initial parser and
+        collects the results in a list. Between each item, the ``sep`` parser
+        is run (and its return value is discarded). By default it
+        repeats with no limit, but minimum and maximum values can be supplied.
+        """
+        zero_times = success([])
+        if max == 0:
+            return zero_times
+        res = self.times(1) + (sep >> self).times(min - 1, max - 1)
+        if min == 0:
+            res |= zero_times
+        return res
+
+    def desc(self, description: str) -> Parser:
+        """
+        Returns a new parser with a description added, which is used in the error message
+        if parsing fails.
+        """
+
+        @Parser
+        def desc_parser(stream: str | bytes | list, index: int) -> Result:
+            result = self(stream, index)
+            if result.status:
+                return result
+            else:
+                return Result.failure(index, description)
+
+        return desc_parser
+
+    def mark(self) -> Parser:
+        """
+        Returns a parser that wraps the initial parser's result in a value
+        containing column and line information of the match, as well as the
+        original value. The new value is a 3-tuple:
+
+        ((start_row, start_column),
+         original_value,
+         (end_row, end_column))
+        """
+
+        @generate
+        def marked():
+            start = yield line_info
+            body = yield self
+            end = yield line_info
+            return (start, body, end)
+
+        return marked
+
+    def tag(self, name: str) -> Parser:
+        """
+        Returns a parser that wraps the produced value of the initial parser in a
+        2 tuple containing ``(name, value)``. This provides a very simple way to
+        label parsed components
+        """
+        return self.map(lambda v: (name, v))
+
+    def should_fail(self, description: str) -> Parser:
+        """
+        Returns a parser that fails when the initial parser succeeds, and succeeds
+        when the initial parser fails (consuming no input). A description must
+        be passed which is used in parse failure messages.
+
+        This is essentially a negative lookahead
+        """
+
+        @Parser
+        def fail_parser(stream: str | bytes | list, index: int) -> Result:
+            res = self(stream, index)
+            if res.status:
+                return Result.failure(index, description)
+            return Result.success(index, res)
+
+        return fail_parser
+
+    def __add__(self, other: Parser) -> Parser:
+        return seq(self, other).combine(operator.add)
+
+    def __mul__(self, other: int | range) -> Parser:
+        if isinstance(other, range):
+            return self.times(other.start, other.stop - 1)
+        return self.times(other)
+
+    def __or__(self, other: Parser) -> Parser:
+        return alt(self, other)
+
+    # haskelley operators, for fun #
+
+    # >>
+    def __rshift__(self, other: Parser) -> Parser:
+        return self.then(other)
+
+    # <<
+    def __lshift__(self, other: Parser) -> Parser:
+        return self.skip(other)
+
+
+def alt(*parsers: Parser) -> Parser:
+    """
+    Creates a parser from the passed in argument list of alternative
+    parsers, which are tried in order, moving to the next one if the
+    current one fails.
+    """
+    if not parsers:
+        return fail("<empty alt>")
+
+    @Parser
+    def alt_parser(stream: str | bytes | list, index: int) -> Result:
+        result = None
+        for parser in parsers:
+            result = parser(stream, index).aggregate(result)
+            if result.status:
+                return result
+
+        return result
+
+    return alt_parser
+
+
+def seq(*parsers: Parser, **kw_parsers: Parser) -> Parser:
+    """
+    Takes a list of parsers, runs them in order,
+    and collects their individuals results in a list,
+    or in a dictionary if you pass them as keyword arguments.
+    """
+    if not parsers and not kw_parsers:
+        return success([])
+
+    if parsers and kw_parsers:
+        raise ValueError("Use either positional arguments or keyword arguments with seq, not both")
+
+    if parsers:
+
+        @Parser
+        def seq_parser(stream: str | bytes | list, index: int) -> Result:
+            result = None
+            values = []
+            for parser in parsers:
+                result = parser(stream, index).aggregate(result)
+                if not result.status:
+                    return result
+                index = result.index
+                values.append(result.value)
+            return Result.success(index, values).aggregate(result)
+
+        return seq_parser
+    else:
+
+        @Parser
+        def seq_kwarg_parser(stream: str | bytes | list, index: int) -> Result:
+            result = None
+            values = {}
+            for name, parser in kw_parsers.items():
+                result = parser(stream, index).aggregate(result)
+                if not result.status:
+                    return result
+                index = result.index
+                values[name] = result.value
+            return Result.success(index, values).aggregate(result)
+
+        return seq_kwarg_parser
+
+
+def generate(fn) -> Parser:
+    """
+    Creates a parser from a generator function
+    """
+    if isinstance(fn, str):
+        return lambda f: generate(f).desc(fn)
+
+    @Parser
+    @wraps(fn)
+    def generated(stream: str | bytes | list, index: int) -> Result:
+        # start up the generator
+        iterator = fn()
+
+        result = None
+        value = None
+        try:
+            while True:
+                next_parser = iterator.send(value)
+                result = next_parser(stream, index).aggregate(result)
+                if not result.status:
+                    return result
+                value = result.value
+                index = result.index
+        except StopIteration as stop:
+            returnVal = stop.value
+            if isinstance(returnVal, Parser):
+                return returnVal(stream, index).aggregate(result)
+
+            return Result.success(index, returnVal).aggregate(result)
+
+    return generated
+
+
+index = Parser(lambda _, index: Result.success(index, index))
+line_info = Parser(lambda stream, index: Result.success(index, line_info_at(stream, index)))
+
+
+def success(value: Any) -> Parser:
+    """
+    Returns a parser that does not consume any of the stream, but
+    produces ``value``.
+    """
+    return Parser(lambda _, index: Result.success(index, value))
+
+
+def fail(expected: str) -> Parser:
+    """
+    Returns a parser that always fails with the provided error message.
+    """
+    return Parser(lambda _, index: Result.failure(index, expected))
+
+
+def string(expected_string: str, transform: Callable[[str], str] = noop) -> Parser:
+    """
+    Returns a parser that expects the ``expected_string`` and produces
+    that string value.
+
+    Optionally, a transform function can be passed, which will be used on both
+    the expected string and tested string.
+    """
+
+    slen = len(expected_string)
+    transformed_s = transform(expected_string)
+
+    @Parser
+    def string_parser(stream: str, index: int) -> Result:
+        if transform(stream[index : index + slen]) == transformed_s:
+            return Result.success(index + slen, expected_string)
+        else:
+            return Result.failure(index, expected_string)
+
+    return string_parser
+
+
+def regex(exp: str, flags=0, group: int | str | tuple = 0) -> Parser:
+    """
+    Returns a parser that expects the given ``exp``, and produces the
+    matched string. ``exp`` can be a compiled regular expression, or a
+    string which will be compiled with the given ``flags``.
+
+    Optionally, accepts ``group``, which is passed to re.Match.group
+    https://docs.python.org/3/library/re.html#re.Match.group> to
+    return the text from a capturing group in the regex instead of the
+    entire match.
+    """
+
+    if isinstance(exp, (str, bytes)):
+        exp = re.compile(exp, flags)
+    if isinstance(group, (str, int)):
+        group = (group,)
+
+    @Parser
+    def regex_parser(stream: str | bytes | list, index: int) -> Result:
+        match = exp.match(stream, index)
+        if match:
+            return Result.success(match.end(), match.group(*group))
+        else:
+            return Result.failure(index, exp.pattern)
+
+    return regex_parser
+
+
+def test_item(func: Callable[..., bool], description: str) -> Parser:
+    """
+    Returns a parser that tests a single item from the list of items being
+    consumed, using the callable ``func``. If ``func`` returns ``True``, the
+    parse succeeds, otherwise the parse fails with the description
+    ``description``.
+    """
+
+    @Parser
+    def test_item_parser(stream: str | bytes | list, index: int) -> Result:
+        if index < len(stream):
+            if isinstance(stream, bytes):
+                # Subscripting bytes with `[index]` instead of
+                # `[index:index + 1]` returns an int
+                item = stream[index : index + 1]
+            else:
+                item = stream[index]
+            if func(item):
+                return Result.success(index + 1, item)
+        return Result.failure(index, description)
+
+    return test_item_parser
+
+
+def test_char(func: Callable[..., bool], description: str) -> Parser:
+    """
+    Returns a parser that tests a single character with the callable
+    ``func``. If ``func`` returns ``True``, the parse succeeds, otherwise
+    the parse fails with the description ``description``.
+    """
+    # Implementation is identical to test_item
+    return test_item(func, description)
+
+
+def match_item(item: Any, description: str = None) -> Parser:
+    """
+    Returns a parser that tests the next item (or character) from the stream (or
+    string) for equality against the provided item. Optionally a string
+    description can be passed.
+    """
+
+    if description is None:
+        description = str(item)
+    return test_item(lambda i: item == i, description)
+
+
+def string_from(*strings: str, transform: Callable[[str], str] = noop):
+    """
+    Accepts a sequence of strings as positional arguments, and returns a parser
+    that matches and returns one string from the list. The list is first sorted
+    in descending length order, so that overlapping strings are handled correctly
+    by checking the longest one first.
+    """
+    # Sort longest first, so that overlapping options work correctly
+    return alt(*(string(s, transform) for s in sorted(strings, key=len, reverse=True)))
+
+
+def char_from(string: str | bytes) -> Parser:
+    """
+    Accepts a string and returns a parser that matches and returns one character
+    from the string.
+    """
+    if isinstance(string, bytes):
+        return test_char(lambda c: c in string, b"[" + string + b"]")
+    else:
+        return test_char(lambda c: c in string, "[" + string + "]")
+
+
+def peek(parser: Parser) -> Parser:
+    """
+    Returns a lookahead parser that parses the input stream without consuming
+    chars.
+    """
+
+    @Parser
+    def peek_parser(stream: str | bytes | list, index: int) -> Result:
+        result = parser(stream, index)
+        if result.status:
+            return Result.success(index, result.value)
+        else:
+            return result
+
+    return peek_parser
+
+
+any_char = test_char(lambda c: True, "any character")
+
+whitespace = regex(r"\s+")
+
+letter = test_char(lambda c: c.isalpha(), "a letter")
+
+digit = test_char(lambda c: c.isdigit(), "a digit")
+
+decimal_digit = char_from("0123456789")
+
+
+@Parser
+def eof(stream: str | bytes | list, index: int) -> Result:
+    """
+    A parser that only succeeds if the end of the stream has been reached.
+    """
+
+    if index >= len(stream):
+        return Result.success(index, None)
+    else:
+        return Result.failure(index, "EOF")
+
+
+def from_enum(enum_cls: type[enum.Enum], transform=noop) -> Parser:
+    """
+    Given a class that is an enum.Enum class
+    https://docs.python.org/3/library/enum.html , returns a parser that
+    will parse the values (or the string representations of the values)
+    and return the corresponding enum item.
+    """
+
+    items = sorted(
+        ((str(enum_item.value), enum_item) for enum_item in enum_cls), key=lambda t: len(t[0]), reverse=True
+    )
+    return alt(*(string(value, transform=transform).result(enum_item) for value, enum_item in items))
+
+
+class forward_declaration(Parser):
+    """
+    An empty parser that can be used as a forward declaration,
+    especially for parsers that need to be defined recursively.
+
+    You must use `.become(parser)` before using.
+    """
+
+    def __init__(self):
+        pass
+
+    def _raise_error(self, *args, **kwargs):
+        raise ValueError("You must use 'become' before attempting to call `parse` or `parse_partial`")
+
+    parse = _raise_error
+    parse_partial = _raise_error
+
+    def become(self, other: Parser):
+        """
+        Take on the behavior of the given parser.
+        """
+        self.__dict__ = other.__dict__
+        self.__class__ = other.__class__
+2026-05-10T20:17:59.234688Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+# Contracts: parsy_dom
+
+## Module overview
+`parsy_dom` implements parser combinators: small `Parser` objects that consume a stream from an index and return structured `Result` values. It supports sequencing, alternatives, repetition, mapping, generator-style parsers, primitive string/regex/item parsers, lookahead, EOF checks, and error reporting with furthest-failure aggregation.
+
+## Core data contracts
+
+### `Result`
+A parse function must return a `Result`.
+
+- Successful result: `status=True`, `index` is the next input index, `value` is the produced value.
+- Failed result: `status=False`, `index=-1`, `value=None`, `furthest` is the failure index, and `expected` contains one or more expectation labels.
+- `furthest` records the farthest failure seen while parsing, including failures from discarded branches or later parser attempts.
+- `expected` must describe what was expected at `furthest`.
+
+### Stream contract
+Most parsers accept duck-typed streams supporting `len(stream)`, slicing, and/or indexing. Intended streams are `str`, `bytes`, and `list`.
+
+Indexes are zero-based positions between items. A parser consuming one item at `index` must return `index + 1`.
+
+## Function/method contracts
+
+### `line_info_at(stream, index)`
+**Signature:** `line_info_at(stream, index) -> tuple[int, int]`
+
+- **Pre-conditions:** `stream` must support `.count("\n", 0, index)`, `.rfind("\n", 0, index)`, and `len(stream)`. `index <= len(stream)`.
+- **Post-conditions:** Returns `(line, col)` where `line` is the number of newline characters before `index`, and `col` is the offset since the previous newline.
+- **Invariants:** Does not mutate `stream`. Line and column are zero-based.
+- **Edge cases:** `index == 0` returns `(0, 0)`. `index == len(stream)` is valid. `index > len(stream)` raises `ValueError("invalid index")`.
+- **Operator-level invariants:** `last_nl + 1` is the start index of the current line; `col == index - (last_nl + 1)`.
+
+### `ParseError.__init__(expected, stream, index)`
+**Signature:** `ParseError(expected, stream, index)`
+
+- **Pre-conditions:** `expected` must be iterable for string rendering. `index` identifies the failure location.
+- **Post-conditions:** Stores `expected`, `stream`, and `index` unchanged.
+- **Invariants:** Does not normalize or copy inputs.
+- **Edge cases:** Non-string streams are allowed; formatting falls back in `line_info`.
+
+### `ParseError.line_info()`
+**Signature:** `line_info(self) -> str`
+
+- **Pre-conditions:** `self.stream` and `self.index` were set by constructor.
+- **Post-conditions:** Returns `"line:column"` for string-like streams compatible with `line_info_at`; otherwise returns `str(index)`.
+- **Invariants:** Never mutates the error.
+- **Edge cases:** Catches `TypeError` and `AttributeError` from `line_info_at`.
+
+### `ParseError.__str__()`
+**Signature:** `str(error) -> str`
+
+- **Pre-conditions:** `expected` is iterable.
+- **Post-conditions:** Returns `"expected X at L:C"` for one expectation, or `"expected one of X, Y at L:C"` for multiple expectations.
+- **Invariants:** Expectations are rendered with `repr()` and sorted lexicographically.
+- **Edge cases:** Empty `expected` renders as `"expected one of  at ..."`.
+
+### `Result.success(index, value)`
+**Signature:** `Result.success(index, value) -> Result`
+
+- **Pre-conditions:** `index` is the next parse position.
+- **Post-conditions:** Returns `Result(True, index, value, -1, frozenset())`.
+- **Invariants:** Success has no direct expectation message.
+- **Edge cases:** `value` may be any object.
+
+### `Result.failure(index, expected)`
+**Signature:** `Result.failure(index, expected) -> Result`
+
+- **Pre-conditions:** `expected` is a single expectation label.
+- **Post-conditions:** Returns `Result(False, -1, None, index, frozenset([expected]))`.
+- **Invariants:** Failure never advances via `index`; failure position is stored in `furthest`.
+- **Edge cases:** `expected` may be any hashable object, though public APIs use strings/bytes.
+
+### `Result.aggregate(other)`
+**Signature:** `aggregate(self, other) -> Result`
+
+- **Pre-conditions:** `other` is either `None`/falsey or a `Result`.
+- **Post-conditions:** Returns a result preserving `self.status`, `self.index`, and `self.value`, but with furthest-failure metadata merged from `self` and `other`.
+- **Invariants:** The farthest `furthest` wins. If both failures are at the same `furthest`, expected sets are unioned.
+- **Edge cases:** If `other` is falsey, returns `self`.
+- **Operator-level invariants:** Comparison direction is `>` on `furthest`; larger index means later/farther failure.
+
+## `Parser` contracts
+
+### `Parser.__init__(wrapped_fn)`
+**Signature:** `Parser(wrapped_fn: Callable[[stream, int], Result])`
+
+- **Pre-conditions:** `wrapped_fn(stream, index)` must return a `Result`.
+- **Post-conditions:** Stores `wrapped_fn`.
+- **Invariants:** Parser behavior is exactly delegated to `wrapped_fn`.
+
+### `Parser.__call__(stream, index)`
+**Signature:** `parser(stream, index) -> Result`
+
+- **Pre-conditions:** `index` is a valid parser start index for the wrapped function.
+- **Post-conditions:** Returns `wrapped_fn(stream, index)`.
+- **Invariants:** Does not add validation or error handling.
+
+### `Parser.parse(stream)`
+**Signature:** `parse(self, stream) -> Any`
+
+- **Pre-conditions:** Parser must be callable on `stream` from index `0`.
+- **Post-conditions:** Returns parsed value only if parser consumes a prefix and `eof` succeeds afterward.
+- **Invariants:** Full-stream consumption is required.
+- **Edge cases:** Raises `ParseError` if parsing fails or leaves unconsumed input.
+
+### `Parser.parse_partial(stream)`
+**Signature:** `parse_partial(self, stream) -> tuple[Any, remainder]`
+
+- **Pre-conditions:** Parser must be callable on `stream` from index `0`.
+- **Post-conditions:** On success returns `(result.value, stream[result.index:])`.
+- **Invariants:** Does not require EOF.
+- **Edge cases:** On failure raises `ParseError(result.expected, stream, result.furthest)`.
+
+### `Parser.bind(bind_fn)`
+**Signature:** `bind(self, bind_fn: Callable[[Any], Parser]) -> Parser`
+
+- **Pre-conditions:** `bind_fn(value)` must return a `Parser`.
+- **Post-conditions:** New parser runs `self`; if successful, runs returned parser at `self`’s next index.
+- **Invariants:** Failure of `self` prevents `bind_fn` from being called. Furthest failure metadata from both parsers is aggregated.
+- **Edge cases:** Exceptions from `bind_fn` propagate.
+
+### `Parser.map(map_function)`
+**Signature:** `map(self, map_function: Callable) -> Parser`
+
+- **Pre-conditions:** `map_function(value)` must be valid for successful values.
+- **Post-conditions:** Success value becomes `map_function(original_value)` without consuming additional input.
+- **Invariants:** Failure behavior is unchanged except aggregated metadata.
+- **Edge cases:** Exceptions from `map_function` propagate.
+
+### `Parser.combine(combine_fn)`
+**Signature:** `combine(self, combine_fn: Callable) -> Parser`
+
+- **Pre-conditions:** Successful value from `self` must be iterable and suitable for `combine_fn(*value)`.
+- **Post-conditions:** Success value becomes the return value of `combine_fn`.
+- **Invariants:** Input consumption equals `self`.
+- **Edge cases:** Non-iterable values raise during argument expansion.
+
+### `Parser.combine_dict(combine_fn)`
+**Signature:** `combine_dict(self, combine_fn: Callable) -> Parser`
+
+- **Pre-conditions:** Successful value must be accepted by `dict(value)`.
+- **Post-conditions:** Calls `combine_fn(**filtered_dict)`.
+- **Invariants:** Keys equal to `None` and string keys starting with `"_"` are removed.
+- **Edge cases:** Invalid mappings, non-string keyword keys, or unexpected keyword names raise normally.
+
+### `Parser.concat()`
+**Signature:** `concat(self) -> Parser`
+
+- **Pre-conditions:** Successful value must be iterable of strings.
+- **Post-conditions:** Success value becomes `"".join(value)`.
+- **Invariants:** Consumption unchanged.
+- **Edge cases:** Non-string elements raise `TypeError`.
+
+### `Parser.then(other)` / `Parser.__rshift__(other)`
+**Signature:** `then(self, other: Parser) -> Parser`
+
+- **Pre-conditions:** `other` is a `Parser`.
+- **Post-conditions:** Runs `self`, then `other`; returns `other`’s value.
+- **Invariants:** `other` runs only if `self` succeeds.
+- **Edge cases:** If `other` fails, whole parser fails at `other`’s failure.
+
+### `Parser.skip(other)` / `Parser.__lshift__(other)`
+**Signature:** `skip(self, other: Parser) -> Parser`
+
+- **Pre-conditions:** `other` is a `Parser`.
+- **Post-conditions:** Runs `self`, then `other`; returns `self`’s value.
+- **Invariants:** Both parsers must succeed.
+- **Edge cases:** Failure of either parser fails the composed parser.
+
+### `Parser.result(value)`
+**Signature:** `result(self, value: Any) -> Parser`
+
+- **Pre-conditions:** None beyond `self`.
+- **Post-conditions:** If `self` succeeds, produced value is replaced with `value`.
+- **Invariants:** Consumption and failure behavior follow `self`.
+
+### `Parser.many()`
+**Signature:** `many(self) -> Parser`
+
+- **Pre-conditions:** `self` should consume input on success to avoid infinite loops.
+- **Post-conditions:** Parses zero or more occurrences and returns a list.
+- **Invariants:** Equivalent to `times(0, inf)`.
+- **Edge cases:** If `self` can succeed without advancing, this may loop forever.
+
+### `Parser.times(min, max=None)`
+**Signature:** `times(self, min: int, max: int | None = None) -> Parser`
+
+- **Pre-conditions:** `min >= 0`; if provided, `max >= min`; `self` should advance on success when repetition is unbounded.
+- **Post-conditions:** Parses between `min` and `max` occurrences. If `max is None`, parses exactly `min`.
+- **Invariants:** Returns list of matched values. Stops after first failure once `times >= min`.
+- **Edge cases:** `min == 0` permits empty success. `max == 0` returns empty list without running `self`. Unbounded repetition with non-consuming parser can loop forever.
+- **Operator-level invariants:** Loop condition is `times < max`; successful parse increments `times` by exactly `1`.
+
+### `Parser.at_most(n)`
+**Signature:** `at_most(self, n: int) -> Parser`
+
+- **Pre-conditions:** `n >= 0`.
+- **Post-conditions:** Parses zero to `n` occurrences.
+- **Invariants:** Equivalent to `times(0, n)`.
+
+### `Parser.at_least(n)`
+**Signature:** `at_least(self, n: int) -> Parser`
+
+- **Pre-conditions:** `n >= 0`; repeated parser should consume input.
+- **Post-conditions:** Parses at least `n` occurrences and returns concatenated list of values.
+- **Invariants:** Must fail if fewer than `n` occurrences are present.
+- **Edge cases:** Unbounded tail has same non-consuming-parser infinite-loop risk as `many()`.
+
+### `Parser.optional(default=None)`
+**Signature:** `optional(self, default: Any = None) -> Parser`
+
+- **Pre-conditions:** None beyond `self`.
+- **Post-conditions:** Parses zero or one occurrence. Returns matched value if present, otherwise `default`.
+- **Invariants:** Never fails solely because `self` is absent.
+- **Edge cases:** If `self` fails after recording furthest metadata, success may still carry aggregated expected data.
+
+### `Parser.until(other, min=0, max=inf, consume_other=False)`
+**Signature:** `until(self, other: Parser, min: int = 0, max: int = inf, consume_other: bool = False) -> Parser`
+
+- **Pre-conditions:** `min >= 0`, `max >= min`; `self` should consume input on success.
+- **Post-conditions:** Repeats `self` until `other` succeeds after at least `min` repetitions.
+- **Invariants:** Tests `other` before each attempt to consume `self`.
+- **Edge cases:** If `times >= max` before finding `other`, fails with `"at most {max} items"`. If `self` fails before `min`, fails with `"at least {min} items; got {times} item(s)"`. If `self` fails after `min` but `other` is absent, fails with `"did not find other parser"`.
+- **Operator-level invariants:** `other` success is accepted only when `times >= min`; max check uses `times >= max`.
+
+### `Parser.sep_by(sep, *, min=0, max=inf)`
+**Signature:** `sep_by(self, sep: Parser, *, min: int = 0, max: int = inf) -> Parser`
+
+- **Pre-conditions:** `sep` is a parser; `min >= 0`; `max >= min`.
+- **Post-conditions:** Parses items separated by `sep`, discarding separator values, returning item values.
+- **Invariants:** At most `max` items, at least `min` items.
+- **Edge cases:** `max == 0` always succeeds with `[]`. With `min == 0`, empty input is accepted.
+- **Operator-level invariants:** Tail repetition bounds are `min - 1` through `max - 1` because the first item is parsed separately.
+
+### `Parser.desc(description)`
+**Signature:** `desc(self, description: str) -> Parser`
+
+- **Pre-conditions:** `description` is an expectation label.
+- **Post-conditions:** On failure at the starting index, replaces expected set with `{description}`.
+- **Invariants:** Successful result is unchanged.
+- **Edge cases:** Furthest failure information inside `self` is discarded on failure.
+
+### `Parser.mark()`
+**Signature:** `mark(self) -> Parser`
+
+- **Pre-conditions:** Stream must support `line_info_at`.
+- **Post-conditions:** Returns `((start_line, start_col), value, (end_line, end_col))`.
+- **Invariants:** Start mark is taken before `self`; end mark is taken after `self`.
+- **Edge cases:** Non-string/list-compatible streams may fail in `line_info`.
+
+### `Parser.tag(name)`
+**Signature:** `tag(self, name: str) -> Parser`
+
+- **Pre-conditions:** None beyond `self`.
+- **Post-conditions:** Success value becomes `(name, original_value)`.
+- **Invariants:** Consumption unchanged.
+
+### `Parser.should_fail(description)`
+**Signature:** `should_fail(self, description: str) -> Parser`
+
+- **Pre-conditions:** `description` is an expectation label.
+- **Post-conditions:** Succeeds without consuming input if `self` fails; fails without consuming input if `self` succeeds.
+- **Invariants:** This is negative lookahead.
+- **Edge cases:** On success, value is the failed `Result` from `self`.
+
+### `Parser.__add__(other)`
+**Signature:** `self + other -> Parser`
+
+- **Pre-conditions:** Both parsers produce values compatible with `operator.add`.
+- **Post-conditions:** Runs both in sequence and returns `left_value + right_value`.
+- **Invariants:** Both parsers must succeed.
+
+### `Parser.__mul__(other)`
+**Signature:** `self * (int | range) -> Parser`
+
+- **Pre-conditions:** `other` is an `int` or `range`.
+- **Post-conditions:** For `int`, parses exactly that many occurrences. For `range`, parses from `range.start` through `range.stop - 1`.
+- **Invariants:** `range.step` is ignored.
+- **Operator-level invariants:** `range.stop` is exclusive in Python, so max becomes `stop - 1`.
+
+### `Parser.__or__(other)`
+**Signature:** `self | other -> Parser`
+
+- **Pre-conditions:** `other` is a parser.
+- **Post-conditions:** Returns ordered alternative parser.
+- **Invariants:** Left parser is tried before right parser.
+
+## Top-level parser constructors
+
+### `alt(*parsers)`
+**Signature:** `alt(*parsers: Parser) -> Parser`
+
+- **Pre-conditions:** Each argument is a parser.
+- **Post-conditions:** Tries parsers in order at the same starting index; returns first success.
+- **Invariants:** Failed alternatives do not consume input for later alternatives.
+- **Edge cases:** No parsers returns `fail("<empty alt>")`.
+- **Operator-level invariants:** First successful parser wins, even if later alternatives might consume more.
+
+### `seq(*parsers, **kw_parsers)`
+**Signature:** `seq(*parsers: Parser, **kw_parsers: Parser) -> Parser`
+
+- **Pre-conditions:** Use either positional or keyword parsers, not both.
+- **Post-conditions:** Runs parsers in order, threading the index. Positional form returns list; keyword form returns dict.
+- **Invariants:** Stops at first failure. Furthest failure metadata is aggregated.
+- **Edge cases:** No parsers returns `success([])`. Mixing positional and keyword parsers raises `ValueError`.
+
+### `generate(fn)`
+**Signature:** `generate(fn) -> Parser | decorator`
+
+- **Pre-conditions:** `fn` is a generator function yielding parsers, or a string description.
+- **Post-conditions:** Runs yielded parsers sequentially, sending each produced value back into the generator.
+- **Invariants:** Index advances after each yielded parser success. First yielded failure fails the generated parser.
+- **Edge cases:** If generator returns a `Parser`, that parser is run at the current index. If `fn` is a string, returns a decorator applying `.desc(fn)`.
+
+### `success(value)`
+**Signature:** `success(value: Any) -> Parser`
+
+- **Pre-conditions:** None.
+- **Post-conditions:** Always succeeds without consuming input and returns `value`.
+- **Invariants:** Returned index equals input index.
+
+### `fail(expected)`
+**Signature:** `fail(expected: str) -> Parser`
+
+- **Pre-conditions:** `expected` is an expectation label.
+- **Post-conditions:** Always fails at the input index.
+- **Invariants:** Never consumes input.
+
+### `string(expected_string, transform=noop)`
+**Signature:** `string(expected_string: str, transform: Callable[[str], str] = noop) -> Parser`
+
+- **Pre-conditions:** Stream supports slicing; `transform` accepts both `expected_string` and stream slices.
+- **Post-conditions:** Succeeds if transformed stream slice equals transformed expected string; returns original `expected_string`.
+- **Invariants:** Consumes exactly `len(expected_string)` items on success.
+- **Edge cases:** Empty expected string always succeeds without consuming input. Failure occurs at original index.
+- **Operator-level invariants:** Slice is `stream[index:index + len(expected_string)]`.
+
+### `regex(exp, flags=0, group=0)`
+**Signature:** `regex(exp: str | bytes | Pattern, flags=0, group: int | str | tuple = 0) -> Parser`
+
+- **Pre-conditions:** `exp.match(stream, index)` must be valid. `group` must be accepted by `Match.group`.
+- **Post-conditions:** Succeeds only on a match starting exactly at `index`; returns selected group value.
+- **Invariants:** Consumes through `match.end()`.
+- **Edge cases:** String/bytes patterns are compiled with `flags`. Single group identifiers are normalized to a tuple.
+
+### `test_item(func, description)`
+**Signature:** `test_item(func: Callable[[Any], bool], description: str) -> Parser`
+
+- **Pre-conditions:** Stream supports `len` and indexing/slicing.
+- **Post-conditions:** Tests one item at `index`; if predicate is true, consumes one item and returns it.
+- **Invariants:** Consumes exactly one item on success.
+- **Edge cases:** At EOF, fails. For `bytes`, the item is a one-byte `bytes` slice, not an integer.
+- **Operator-level invariants:** Success index is always `index + 1`.
+
+### `test_char(func, description)`
+**Signature:** `test_char(func, description) -> Parser`
+
+- **Pre-conditions:** Same as `test_item`.
+- **Post-conditions:** Identical to `test_item`.
+- **Invariants:** Alias-level behavior only; no extra character validation.
+
+### `match_item(item, description=None)`
+**Signature:** `match_item(item: Any, description: str | None = None) -> Parser`
+
+- **Pre-conditions:** Stream items are comparable to `item`.
+- **Post-conditions:** Consumes and returns the next item if `item == next_item`.
+- **Invariants:** Default description is `str(item)`.
+- **Edge cases:** Equality exceptions propagate.
+
+### `string_from(*strings, transform=noop)`
+**Signature:** `string_from(*strings: str, transform=noop) -> Parser`
+
+- **Pre-conditions:** Each string is valid for `string`.
+- **Post-conditions:** Matches one of the strings and returns the matched original string.
+- **Invariants:** Alternatives are tried longest-first to handle overlapping prefixes.
+- **Edge cases:** No strings produces empty `alt`, which always fails with `"<empty alt>"`.
+
+### `char_from(string)`
+**Signature:** `char_from(string: str | bytes) -> Parser`
+
+- **Pre-conditions:** `string` supports membership checks for one-character items.
+- **Post-conditions:** Consumes one character/byte if it is contained in `string`.
+- **Invariants:** Returns the consumed item, not the source collection.
+- **Edge cases:** Empty string/bytes always fails. For bytes, description is bytes like `b"[abc]"`.
+
+### `peek(parser)`
+**Signature:** `peek(parser: Parser) -> Parser`
+
+- **Pre-conditions:** `parser` is callable at the current index.
+- **Post-conditions:** If `parser` succeeds, returns its value without consuming input.
+- **Invariants:** Success index is the original index.
+- **Edge cases:** Failure result is returned unchanged, including its furthest metadata.
+
+### `eof`
+**Signature:** `eof(stream, index) -> Result`
+
+- **Pre-conditions:** Stream supports `len`.
+- **Post-conditions:** Succeeds with `None` if `index >= len(stream)`.
+- **Invariants:** Does not consume input.
+- **Edge cases:** Any index past end is accepted as EOF; otherwise fails with `"EOF"`.
+
+### `from_enum(enum_cls, transform=noop)`
+**Signature:** `from_enum(enum_cls: type[enum.Enum], transform=noop) -> Parser`
+
+- **Pre-conditions:** `enum_cls` is iterable as an `Enum` class; enum values have useful string representations.
+- **Post-conditions:** Parses the string form of an enum value and returns the enum member.
+- **Invariants:** Longer enum value strings are tried first.
+- **Edge cases:** Duplicate string values resolve to the first successful alternative in sorted order.
+
+## Predefined parser objects
+
+### `index`
+Always succeeds without consuming input and returns the current index.
+
+### `line_info`
+Always succeeds without consuming input and returns `line_info_at(stream, index)`.
+
+### `any_char`
+Consumes any single item if not at EOF.
+
+### `whitespace`
+Matches regex `r"\s+"`; requires at least one whitespace character.
+
+### `letter`
+Consumes one item where `.isalpha()` is true.
+
+### `digit`
+Consumes one item where `.isdigit()` is true.
+
+### `decimal_digit`
+Consumes one character from `"0123456789"`.
+
+## `forward_declaration` contracts
+
+### `forward_declaration.__init__()`
+**Signature:** `forward_declaration()`
+
+- **Pre-conditions:** None.
+- **Post-conditions:** Creates an unresolved parser placeholder.
+- **Invariants:** Placeholder must not be parsed before `become`.
+
+### `forward_declaration._raise_error(*args, **kwargs)`
+**Signature:** `_raise_error(self, *args, **kwargs)`
+
+- **Pre-conditions:** Called only while unresolved.
+- **Post-conditions:** Raises `ValueError`.
+- **Invariants:** Used as unresolved `parse` and `parse_partial`.
+
+### `forward_declaration.become(other)`
+**Signature:** `become(self, other: Parser) -> None`
+
+- **Pre-conditions:** `other` is a configured `Parser`.
+- **Post-conditions:** This object adopts `other.__dict__` and `other.__class__`.
+- **Invariants:** After `become`, parsing behavior is equivalent to `other`.
+- **Edge cases:** Calling `become` mutates the object’s class; future method resolution follows `other.__class__`.
+tokens used
+24.646
+# Contracts: parsy_dom
+
+## Module overview
+`parsy_dom` implements parser combinators: small `Parser` objects that consume a stream from an index and return structured `Result` values. It supports sequencing, alternatives, repetition, mapping, generator-style parsers, primitive string/regex/item parsers, lookahead, EOF checks, and error reporting with furthest-failure aggregation.
+
+## Core data contracts
+
+### `Result`
+A parse function must return a `Result`.
+
+- Successful result: `status=True`, `index` is the next input index, `value` is the produced value.
+- Failed result: `status=False`, `index=-1`, `value=None`, `furthest` is the failure index, and `expected` contains one or more expectation labels.
+- `furthest` records the farthest failure seen while parsing, including failures from discarded branches or later parser attempts.
+- `expected` must describe what was expected at `furthest`.
+
+### Stream contract
+Most parsers accept duck-typed streams supporting `len(stream)`, slicing, and/or indexing. Intended streams are `str`, `bytes`, and `list`.
+
+Indexes are zero-based positions between items. A parser consuming one item at `index` must return `index + 1`.
+
+## Function/method contracts
+
+### `line_info_at(stream, index)`
+**Signature:** `line_info_at(stream, index) -> tuple[int, int]`
+
+- **Pre-conditions:** `stream` must support `.count("\n", 0, index)`, `.rfind("\n", 0, index)`, and `len(stream)`. `index <= len(stream)`.
+- **Post-conditions:** Returns `(line, col)` where `line` is the number of newline characters before `index`, and `col` is the offset since the previous newline.
+- **Invariants:** Does not mutate `stream`. Line and column are zero-based.
+- **Edge cases:** `index == 0` returns `(0, 0)`. `index == len(stream)` is valid. `index > len(stream)` raises `ValueError("invalid index")`.
+- **Operator-level invariants:** `last_nl + 1` is the start index of the current line; `col == index - (last_nl + 1)`.
+
+### `ParseError.__init__(expected, stream, index)`
+**Signature:** `ParseError(expected, stream, index)`
+
+- **Pre-conditions:** `expected` must be iterable for string rendering. `index` identifies the failure location.
+- **Post-conditions:** Stores `expected`, `stream`, and `index` unchanged.
+- **Invariants:** Does not normalize or copy inputs.
+- **Edge cases:** Non-string streams are allowed; formatting falls back in `line_info`.
+
+### `ParseError.line_info()`
+**Signature:** `line_info(self) -> str`
+
+- **Pre-conditions:** `self.stream` and `self.index` were set by constructor.
+- **Post-conditions:** Returns `"line:column"` for string-like streams compatible with `line_info_at`; otherwise returns `str(index)`.
+- **Invariants:** Never mutates the error.
+- **Edge cases:** Catches `TypeError` and `AttributeError` from `line_info_at`.
+
+### `ParseError.__str__()`
+**Signature:** `str(error) -> str`
+
+- **Pre-conditions:** `expected` is iterable.
+- **Post-conditions:** Returns `"expected X at L:C"` for one expectation, or `"expected one of X, Y at L:C"` for multiple expectations.
+- **Invariants:** Expectations are rendered with `repr()` and sorted lexicographically.
+- **Edge cases:** Empty `expected` renders as `"expected one of  at ..."`.
+
+### `Result.success(index, value)`
+**Signature:** `Result.success(index, value) -> Result`
+
+- **Pre-conditions:** `index` is the next parse position.
+- **Post-conditions:** Returns `Result(True, index, value, -1, frozenset())`.
+- **Invariants:** Success has no direct expectation message.
+- **Edge cases:** `value` may be any object.
+
+### `Result.failure(index, expected)`
+**Signature:** `Result.failure(index, expected) -> Result`
+
+- **Pre-conditions:** `expected` is a single expectation label.
+- **Post-conditions:** Returns `Result(False, -1, None, index, frozenset([expected]))`.
+- **Invariants:** Failure never advances via `index`; failure position is stored in `furthest`.
+- **Edge cases:** `expected` may be any hashable object, though public APIs use strings/bytes.
+
+### `Result.aggregate(other)`
+**Signature:** `aggregate(self, other) -> Result`
+
+- **Pre-conditions:** `other` is either `None`/falsey or a `Result`.
+- **Post-conditions:** Returns a result preserving `self.status`, `self.index`, and `self.value`, but with furthest-failure metadata merged from `self` and `other`.
+- **Invariants:** The farthest `furthest` wins. If both failures are at the same `furthest`, expected sets are unioned.
+- **Edge cases:** If `other` is falsey, returns `self`.
+- **Operator-level invariants:** Comparison direction is `>` on `furthest`; larger index means later/farther failure.
+
+## `Parser` contracts
+
+### `Parser.__init__(wrapped_fn)`
+**Signature:** `Parser(wrapped_fn: Callable[[stream, int], Result])`
+
+- **Pre-conditions:** `wrapped_fn(stream, index)` must return a `Result`.
+- **Post-conditions:** Stores `wrapped_fn`.
+- **Invariants:** Parser behavior is exactly delegated to `wrapped_fn`.
+
+### `Parser.__call__(stream, index)`
+**Signature:** `parser(stream, index) -> Result`
+
+- **Pre-conditions:** `index` is a valid parser start index for the wrapped function.
+- **Post-conditions:** Returns `wrapped_fn(stream, index)`.
+- **Invariants:** Does not add validation or error handling.
+
+### `Parser.parse(stream)`
+**Signature:** `parse(self, stream) -> Any`
+
+- **Pre-conditions:** Parser must be callable on `stream` from index `0`.
+- **Post-conditions:** Returns parsed value only if parser consumes a prefix and `eof` succeeds afterward.
+- **Invariants:** Full-stream consumption is required.
+- **Edge cases:** Raises `ParseError` if parsing fails or leaves unconsumed input.
+
+### `Parser.parse_partial(stream)`
+**Signature:** `parse_partial(self, stream) -> tuple[Any, remainder]`
+
+- **Pre-conditions:** Parser must be callable on `stream` from index `0`.
+- **Post-conditions:** On success returns `(result.value, stream[result.index:])`.
+- **Invariants:** Does not require EOF.
+- **Edge cases:** On failure raises `ParseError(result.expected, stream, result.furthest)`.
+
+### `Parser.bind(bind_fn)`
+**Signature:** `bind(self, bind_fn: Callable[[Any], Parser]) -> Parser`
+
+- **Pre-conditions:** `bind_fn(value)` must return a `Parser`.
+- **Post-conditions:** New parser runs `self`; if successful, runs returned parser at `self`’s next index.
+- **Invariants:** Failure of `self` prevents `bind_fn` from being called. Furthest failure metadata from both parsers is aggregated.
+- **Edge cases:** Exceptions from `bind_fn` propagate.
+
+### `Parser.map(map_function)`
+**Signature:** `map(self, map_function: Callable) -> Parser`
+
+- **Pre-conditions:** `map_function(value)` must be valid for successful values.
+- **Post-conditions:** Success value becomes `map_function(original_value)` without consuming additional input.
+- **Invariants:** Failure behavior is unchanged except aggregated metadata.
+- **Edge cases:** Exceptions from `map_function` propagate.
+
+### `Parser.combine(combine_fn)`
+**Signature:** `combine(self, combine_fn: Callable) -> Parser`
+
+- **Pre-conditions:** Successful value from `self` must be iterable and suitable for `combine_fn(*value)`.
+- **Post-conditions:** Success value becomes the return value of `combine_fn`.
+- **Invariants:** Input consumption equals `self`.
+- **Edge cases:** Non-iterable values raise during argument expansion.
+
+### `Parser.combine_dict(combine_fn)`
+**Signature:** `combine_dict(self, combine_fn: Callable) -> Parser`
+
+- **Pre-conditions:** Successful value must be accepted by `dict(value)`.
+- **Post-conditions:** Calls `combine_fn(**filtered_dict)`.
+- **Invariants:** Keys equal to `None` and string keys starting with `"_"` are removed.
+- **Edge cases:** Invalid mappings, non-string keyword keys, or unexpected keyword names raise normally.
+
+### `Parser.concat()`
+**Signature:** `concat(self) -> Parser`
+
+- **Pre-conditions:** Successful value must be iterable of strings.
+- **Post-conditions:** Success value becomes `"".join(value)`.
+- **Invariants:** Consumption unchanged.
+- **Edge cases:** Non-string elements raise `TypeError`.
+
+### `Parser.then(other)` / `Parser.__rshift__(other)`
+**Signature:** `then(self, other: Parser) -> Parser`
+
+- **Pre-conditions:** `other` is a `Parser`.
+- **Post-conditions:** Runs `self`, then `other`; returns `other`’s value.
+- **Invariants:** `other` runs only if `self` succeeds.
+- **Edge cases:** If `other` fails, whole parser fails at `other`’s failure.
+
+### `Parser.skip(other)` / `Parser.__lshift__(other)`
+**Signature:** `skip(self, other: Parser) -> Parser`
+
+- **Pre-conditions:** `other` is a `Parser`.
+- **Post-conditions:** Runs `self`, then `other`; returns `self`’s value.
+- **Invariants:** Both parsers must succeed.
+- **Edge cases:** Failure of either parser fails the composed parser.
+
+### `Parser.result(value)`
+**Signature:** `result(self, value: Any) -> Parser`
+
+- **Pre-conditions:** None beyond `self`.
+- **Post-conditions:** If `self` succeeds, produced value is replaced with `value`.
+- **Invariants:** Consumption and failure behavior follow `self`.
+
+### `Parser.many()`
+**Signature:** `many(self) -> Parser`
+
+- **Pre-conditions:** `self` should consume input on success to avoid infinite loops.
+- **Post-conditions:** Parses zero or more occurrences and returns a list.
+- **Invariants:** Equivalent to `times(0, inf)`.
+- **Edge cases:** If `self` can succeed without advancing, this may loop forever.
+
+### `Parser.times(min, max=None)`
+**Signature:** `times(self, min: int, max: int | None = None) -> Parser`
+
+- **Pre-conditions:** `min >= 0`; if provided, `max >= min`; `self` should advance on success when repetition is unbounded.
+- **Post-conditions:** Parses between `min` and `max` occurrences. If `max is None`, parses exactly `min`.
+- **Invariants:** Returns list of matched values. Stops after first failure once `times >= min`.
+- **Edge cases:** `min == 0` permits empty success. `max == 0` returns empty list without running `self`. Unbounded repetition with non-consuming parser can loop forever.
+- **Operator-level invariants:** Loop condition is `times < max`; successful parse increments `times` by exactly `1`.
+
+### `Parser.at_most(n)`
+**Signature:** `at_most(self, n: int) -> Parser`
+
+- **Pre-conditions:** `n >= 0`.
+- **Post-conditions:** Parses zero to `n` occurrences.
+- **Invariants:** Equivalent to `times(0, n)`.
+
+### `Parser.at_least(n)`
+**Signature:** `at_least(self, n: int) -> Parser`
+
+- **Pre-conditions:** `n >= 0`; repeated parser should consume input.
+- **Post-conditions:** Parses at least `n` occurrences and returns concatenated list of values.
+- **Invariants:** Must fail if fewer than `n` occurrences are present.
+- **Edge cases:** Unbounded tail has same non-consuming-parser infinite-loop risk as `many()`.
+
+### `Parser.optional(default=None)`
+**Signature:** `optional(self, default: Any = None) -> Parser`
+
+- **Pre-conditions:** None beyond `self`.
+- **Post-conditions:** Parses zero or one occurrence. Returns matched value if present, otherwise `default`.
+- **Invariants:** Never fails solely because `self` is absent.
+- **Edge cases:** If `self` fails after recording furthest metadata, success may still carry aggregated expected data.
+
+### `Parser.until(other, min=0, max=inf, consume_other=False)`
+**Signature:** `until(self, other: Parser, min: int = 0, max: int = inf, consume_other: bool = False) -> Parser`
+
+- **Pre-conditions:** `min >= 0`, `max >= min`; `self` should consume input on success.
+- **Post-conditions:** Repeats `self` until `other` succeeds after at least `min` repetitions.
+- **Invariants:** Tests `other` before each attempt to consume `self`.
+- **Edge cases:** If `times >= max` before finding `other`, fails with `"at most {max} items"`. If `self` fails before `min`, fails with `"at least {min} items; got {times} item(s)"`. If `self` fails after `min` but `other` is absent, fails with `"did not find other parser"`.
+- **Operator-level invariants:** `other` success is accepted only when `times >= min`; max check uses `times >= max`.
+
+### `Parser.sep_by(sep, *, min=0, max=inf)`
+**Signature:** `sep_by(self, sep: Parser, *, min: int = 0, max: int = inf) -> Parser`
+
+- **Pre-conditions:** `sep` is a parser; `min >= 0`; `max >= min`.
+- **Post-conditions:** Parses items separated by `sep`, discarding separator values, returning item values.
+- **Invariants:** At most `max` items, at least `min` items.
+- **Edge cases:** `max == 0` always succeeds with `[]`. With `min == 0`, empty input is accepted.
+- **Operator-level invariants:** Tail repetition bounds are `min - 1` through `max - 1` because the first item is parsed separately.
+
+### `Parser.desc(description)`
+**Signature:** `desc(self, description: str) -> Parser`
+
+- **Pre-conditions:** `description` is an expectation label.
+- **Post-conditions:** On failure at the starting index, replaces expected set with `{description}`.
+- **Invariants:** Successful result is unchanged.
+- **Edge cases:** Furthest failure information inside `self` is discarded on failure.
+
+### `Parser.mark()`
+**Signature:** `mark(self) -> Parser`
+
+- **Pre-conditions:** Stream must support `line_info_at`.
+- **Post-conditions:** Returns `((start_line, start_col), value, (end_line, end_col))`.
+- **Invariants:** Start mark is taken before `self`; end mark is taken after `self`.
+- **Edge cases:** Non-string/list-compatible streams may fail in `line_info`.
+
+### `Parser.tag(name)`
+**Signature:** `tag(self, name: str) -> Parser`
+
+- **Pre-conditions:** None beyond `self`.
+- **Post-conditions:** Success value becomes `(name, original_value)`.
+- **Invariants:** Consumption unchanged.
+
+### `Parser.should_fail(description)`
+**Signature:** `should_fail(self, description: str) -> Parser`
+
+- **Pre-conditions:** `description` is an expectation label.
+- **Post-conditions:** Succeeds without consuming input if `self` fails; fails without consuming input if `self` succeeds.
+- **Invariants:** This is negative lookahead.
+- **Edge cases:** On success, value is the failed `Result` from `self`.
+
+### `Parser.__add__(other)`
+**Signature:** `self + other -> Parser`
+
+- **Pre-conditions:** Both parsers produce values compatible with `operator.add`.
+- **Post-conditions:** Runs both in sequence and returns `left_value + right_value`.
+- **Invariants:** Both parsers must succeed.
+
+### `Parser.__mul__(other)`
+**Signature:** `self * (int | range) -> Parser`
+
+- **Pre-conditions:** `other` is an `int` or `range`.
+- **Post-conditions:** For `int`, parses exactly that many occurrences. For `range`, parses from `range.start` through `range.stop - 1`.
+- **Invariants:** `range.step` is ignored.
+- **Operator-level invariants:** `range.stop` is exclusive in Python, so max becomes `stop - 1`.
+
+### `Parser.__or__(other)`
+**Signature:** `self | other -> Parser`
+
+- **Pre-conditions:** `other` is a parser.
+- **Post-conditions:** Returns ordered alternative parser.
+- **Invariants:** Left parser is tried before right parser.
+
+## Top-level parser constructors
+
+### `alt(*parsers)`
+**Signature:** `alt(*parsers: Parser) -> Parser`
+
+- **Pre-conditions:** Each argument is a parser.
+- **Post-conditions:** Tries parsers in order at the same starting index; returns first success.
+- **Invariants:** Failed alternatives do not consume input for later alternatives.
+- **Edge cases:** No parsers returns `fail("<empty alt>")`.
+- **Operator-level invariants:** First successful parser wins, even if later alternatives might consume more.
+
+### `seq(*parsers, **kw_parsers)`
+**Signature:** `seq(*parsers: Parser, **kw_parsers: Parser) -> Parser`
+
+- **Pre-conditions:** Use either positional or keyword parsers, not both.
+- **Post-conditions:** Runs parsers in order, threading the index. Positional form returns list; keyword form returns dict.
+- **Invariants:** Stops at first failure. Furthest failure metadata is aggregated.
+- **Edge cases:** No parsers returns `success([])`. Mixing positional and keyword parsers raises `ValueError`.
+
+### `generate(fn)`
+**Signature:** `generate(fn) -> Parser | decorator`
+
+- **Pre-conditions:** `fn` is a generator function yielding parsers, or a string description.
+- **Post-conditions:** Runs yielded parsers sequentially, sending each produced value back into the generator.
+- **Invariants:** Index advances after each yielded parser success. First yielded failure fails the generated parser.
+- **Edge cases:** If generator returns a `Parser`, that parser is run at the current index. If `fn` is a string, returns a decorator applying `.desc(fn)`.
+
+### `success(value)`
+**Signature:** `success(value: Any) -> Parser`
+
+- **Pre-conditions:** None.
+- **Post-conditions:** Always succeeds without consuming input and returns `value`.
+- **Invariants:** Returned index equals input index.
+
+### `fail(expected)`
+**Signature:** `fail(expected: str) -> Parser`
+
+- **Pre-conditions:** `expected` is an expectation label.
+- **Post-conditions:** Always fails at the input index.
+- **Invariants:** Never consumes input.
+
+### `string(expected_string, transform=noop)`
+**Signature:** `string(expected_string: str, transform: Callable[[str], str] = noop) -> Parser`
+
+- **Pre-conditions:** Stream supports slicing; `transform` accepts both `expected_string` and stream slices.
+- **Post-conditions:** Succeeds if transformed stream slice equals transformed expected string; returns original `expected_string`.
+- **Invariants:** Consumes exactly `len(expected_string)` items on success.
+- **Edge cases:** Empty expected string always succeeds without consuming input. Failure occurs at original index.
+- **Operator-level invariants:** Slice is `stream[index:index + len(expected_string)]`.
+
+### `regex(exp, flags=0, group=0)`
+**Signature:** `regex(exp: str | bytes | Pattern, flags=0, group: int | str | tuple = 0) -> Parser`
+
+- **Pre-conditions:** `exp.match(stream, index)` must be valid. `group` must be accepted by `Match.group`.
+- **Post-conditions:** Succeeds only on a match starting exactly at `index`; returns selected group value.
+- **Invariants:** Consumes through `match.end()`.
+- **Edge cases:** String/bytes patterns are compiled with `flags`. Single group identifiers are normalized to a tuple.
+
+### `test_item(func, description)`
+**Signature:** `test_item(func: Callable[[Any], bool], description: str) -> Parser`
+
+- **Pre-conditions:** Stream supports `len` and indexing/slicing.
+- **Post-conditions:** Tests one item at `index`; if predicate is true, consumes one item and returns it.
+- **Invariants:** Consumes exactly one item on success.
+- **Edge cases:** At EOF, fails. For `bytes`, the item is a one-byte `bytes` slice, not an integer.
+- **Operator-level invariants:** Success index is always `index + 1`.
+
+### `test_char(func, description)`
+**Signature:** `test_char(func, description) -> Parser`
+
+- **Pre-conditions:** Same as `test_item`.
+- **Post-conditions:** Identical to `test_item`.
+- **Invariants:** Alias-level behavior only; no extra character validation.
+
+### `match_item(item, description=None)`
+**Signature:** `match_item(item: Any, description: str | None = None) -> Parser`
+
+- **Pre-conditions:** Stream items are comparable to `item`.
+- **Post-conditions:** Consumes and returns the next item if `item == next_item`.
+- **Invariants:** Default description is `str(item)`.
+- **Edge cases:** Equality exceptions propagate.
+
+### `string_from(*strings, transform=noop)`
+**Signature:** `string_from(*strings: str, transform=noop) -> Parser`
+
+- **Pre-conditions:** Each string is valid for `string`.
+- **Post-conditions:** Matches one of the strings and returns the matched original string.
+- **Invariants:** Alternatives are tried longest-first to handle overlapping prefixes.
+- **Edge cases:** No strings produces empty `alt`, which always fails with `"<empty alt>"`.
+
+### `char_from(string)`
+**Signature:** `char_from(string: str | bytes) -> Parser`
+
+- **Pre-conditions:** `string` supports membership checks for one-character items.
+- **Post-conditions:** Consumes one character/byte if it is contained in `string`.
+- **Invariants:** Returns the consumed item, not the source collection.
+- **Edge cases:** Empty string/bytes always fails. For bytes, description is bytes like `b"[abc]"`.
+
+### `peek(parser)`
+**Signature:** `peek(parser: Parser) -> Parser`
+
+- **Pre-conditions:** `parser` is callable at the current index.
+- **Post-conditions:** If `parser` succeeds, returns its value without consuming input.
+- **Invariants:** Success index is the original index.
+- **Edge cases:** Failure result is returned unchanged, including its furthest metadata.
+
+### `eof`
+**Signature:** `eof(stream, index) -> Result`
+
+- **Pre-conditions:** Stream supports `len`.
+- **Post-conditions:** Succeeds with `None` if `index >= len(stream)`.
+- **Invariants:** Does not consume input.
+- **Edge cases:** Any index past end is accepted as EOF; otherwise fails with `"EOF"`.
+
+### `from_enum(enum_cls, transform=noop)`
+**Signature:** `from_enum(enum_cls: type[enum.Enum], transform=noop) -> Parser`
+
+- **Pre-conditions:** `enum_cls` is iterable as an `Enum` class; enum values have useful string representations.
+- **Post-conditions:** Parses the string form of an enum value and returns the enum member.
+- **Invariants:** Longer enum value strings are tried first.
+- **Edge cases:** Duplicate string values resolve to the first successful alternative in sorted order.
+
+## Predefined parser objects
+
+### `index`
+Always succeeds without consuming input and returns the current index.
+
+### `line_info`
+Always succeeds without consuming input and returns `line_info_at(stream, index)`.
+
+### `any_char`
+Consumes any single item if not at EOF.
+
+### `whitespace`
+Matches regex `r"\s+"`; requires at least one whitespace character.
+
+### `letter`
+Consumes one item where `.isalpha()` is true.
+
+### `digit`
+Consumes one item where `.isdigit()` is true.
+
+### `decimal_digit`
+Consumes one character from `"0123456789"`.
+
+## `forward_declaration` contracts
+
+### `forward_declaration.__init__()`
+**Signature:** `forward_declaration()`
+
+- **Pre-conditions:** None.
+- **Post-conditions:** Creates an unresolved parser placeholder.
+- **Invariants:** Placeholder must not be parsed before `become`.
+
+### `forward_declaration._raise_error(*args, **kwargs)`
+**Signature:** `_raise_error(self, *args, **kwargs)`
+
+- **Pre-conditions:** Called only while unresolved.
+- **Post-conditions:** Raises `ValueError`.
+- **Invariants:** Used as unresolved `parse` and `parse_partial`.
+
+### `forward_declaration.become(other)`
+**Signature:** `become(self, other: Parser) -> None`
+
+- **Pre-conditions:** `other` is a configured `Parser`.
+- **Post-conditions:** This object adopts `other.__dict__` and `other.__class__`.
+- **Invariants:** After `become`, parsing behavior is equivalent to `other`.
+- **Edge cases:** Calling `become` mutates the object’s class; future method resolution follows `other.__class__`.
+
+CODICE DA REVISIONARE:
+from __future__ import annotations
+import enum
+import operator
+import re
+from dataclasses import dataclass
+from functools import wraps
+from typing import Any, Callable, FrozenSet
+__version__ = '2.2'
+noop = lambda x: x
+
+def line_info_at(stream, index):
+    if index > len(stream):
+        raise ValueError('invalid index')
+    line = stream.count('\n', 0, index)
+    last_nl = stream.rfind('\n', 0, index)
+    col = index - (last_nl + 1)
+    return (line, col)
+
+class ParseError(RuntimeError):
+
+    def __init__(self, expected, stream, index):
+        self.expected = expected
+        self.stream = stream
+        self.index = index
+
+    def line_info(self) -> str:
+        try:
+            return '{}:{}'.format(*line_info_at(self.stream, self.index))
+        except (TypeError, AttributeError):
+            return str(self.index)
+
+    def __str__(self):
+        expected_list = sorted((repr(e) for e in self.expected))
+        if len(expected_list) == 1:
+            return f'expected {expected_list[0]} at {self.line_info()}'
+        else:
+            return f'expected one of {', '.join(expected_list)} at {self.line_info()}'
+
+@dataclass
+class Result:
+    status: bool
+    index: int
+    value: Any
+    furthest: int
+    expected: FrozenSet[str]
+
+    @staticmethod
+    def success(index, value) -> Result:
+        return Result(True, index, value, -1, frozenset())
+
+    @staticmethod
+    def failure(index, expected) -> Result:
+        return Result(False, -1, None, index, frozenset([expected]))
+
+    def aggregate(self, other) -> Result:
+        if not other:
+            return self
+        if self.furthest > other.furthest:
+            return self
+        elif self.furthest == other.furthest:
+            return Result(self.status, self.index, self.value, self.furthest, self.expected | other.expected)
+        else:
+            return Result(self.status, self.index, self.value, other.furthest, other.expected)
+
+class Parser:
+    """
+    A Parser is an object that wraps a function whose arguments are
+    a string to be parsed and the index on which to begin parsing.
+    The function should return either Result.success(next_index, value),
+    where the next index is where to continue the parse and the value is
+    the yielded value, or Result.failure(index, expected), where expected
+    is a string indicating what was expected, and the index is the index
+    of the failure.
+    """
+
+    def __init__(self, wrapped_fn: Callable[[str | bytes | list, int], Result]):
+        """
+        Creates a new Parser from a function that takes a stream
+        and returns a Result.
+        """
+        self.wrapped_fn = wrapped_fn
+
+    def __call__(self, stream: str | bytes | list, index: int) -> Any:
+        return self.wrapped_fn(stream, index)
+
+    def parse(self, stream: str | bytes | list) -> Any:
+        """Parses a string or list of tokens and returns the result or raise a ParseError."""
+        result, _ = (self << eof).parse_partial(stream)
+        return result
+
+    def parse_partial(self, stream: str | bytes | list) -> tuple[Any, str | bytes | list]:
+        """
+        Parses the longest possible prefix of a given string.
+        Returns a tuple of the result and the unparsed remainder,
+        or raises ParseError
+        """
+        result = self(stream, 0)
+        if result.status:
+            return (result.value, stream[result.index:])
+        else:
+            raise ParseError(result.expected, stream, result.furthest)
+
+    def bind(self, bind_fn: Callable[[Any], Parser]) -> Parser:
+
+        @Parser
+        def bound_parser(stream: str | bytes | list, index: int) -> Result:
+            result = self(stream, index)
+            if result.status:
+                next_parser = bind_fn(result.value)
+                return next_parser(stream, result.index).aggregate(result)
+            else:
+                return result
+        return bound_parser
+
+    def map(self, map_function: Callable) -> Parser:
+        """
+        Returns a parser that transforms the produced value of the initial parser with map_function.
+        """
+        return self.bind(lambda res: success(map_function(res)))
+
+    def combine(self, combine_fn: Callable) -> Parser:
+        """
+        Returns a parser that transforms the produced values of the initial parser
+        with ``combine_fn``, passing the arguments using ``*args`` syntax.
+
+        The initial parser should return a list/sequence of parse results.
+        """
+        return self.bind(lambda res: success(combine_fn(*res)))
+
+    def combine_dict(self, combine_fn: Callable) -> Parser:
+        """
+        Returns a parser that transforms the value produced by the initial parser
+        using the supplied function/callable, passing the arguments using the
+        ``**kwargs`` syntax.
+
+        The value produced by the initial parser must be a mapping/dictionary from
+        names to values, or a list of two-tuples, or something else that can be
+        passed to the ``dict`` constructor.
+
+        If ``None`` is present as a key in the dictionary it will be removed
+        before passing to ``fn``, as will all keys starting with ``_``.
+        """
+        return self.bind(lambda res: success(combine_fn(**{k: v for k, v in dict(res).items() if k is not None and (not (isinstance(k, str) and k.startswith('_')))})))
+
+    def concat(self) -> Parser:
+        """
+        Returns a parser that concatenates together (as a string) the previously
+        produced values.
+        """
+        return self.map(''.join)
+
+    def then(self, other: Parser) -> Parser:
+        """
+        Returns a parser which, if the initial parser succeeds, will
+        continue parsing with ``other``. This will produce the
+        value produced by ``other``.
+
+        """
+        return seq(self, other).combine(lambda left, right: right)
+
+    def skip(self, other: Parser) -> Parser:
+        """
+        Returns a parser which, if the initial parser succeeds, will
+        continue parsing with ``other``. It will produce the
+        value produced by the initial parser.
+        """
+        return seq(self, other).combine(lambda left, right: left)
+
+    def result(self, value: Any) -> Parser:
+        """
+        Returns a parser that, if the initial parser succeeds, always produces
+        the passed in ``value``.
+        """
+        return self >> success(value)
+
+    def many(self) -> Parser:
+        """
+        Returns a parser that expects the initial parser 0 or more times, and
+        produces a list of the results.
+        """
+        return self.times(0, float('inf'))
+
+    def times(self, min: int, max: int=None) -> Parser:
+        """
+        Returns a parser that expects the initial parser at least ``min`` times,
+        and at most ``max`` times, and produces a list of the results. If only one
+        argument is given, the parser is expected exactly that number of times.
+        """
+        if max is None:
+            max = min
+
+        @Parser
+        def times_parser(stream: str | bytes | list, index: int) -> Result:
+            values = []
+            times = 0
+            result = None
+            while times < max:
+                result = self(stream, index).aggregate(result)
+                if result.status:
+                    values.append(result.value)
+                    index = result.index
+                    times += 1
+                elif times >= min:
+                    break
+                else:
+                    return result
+            return Result.success(index, values).aggregate(result)
+        return times_parser
+
+    def at_most(self, n: int) -> Parser:
+        """
+        Returns a parser that expects the initial parser at most ``n`` times, and
+        produces a list of the results.
+        """
+        return self.times(0, n)
+
+    def at_least(self, n: int) -> Parser:
+        """
+        Returns a parser that expects the initial parser at least ``n`` times, and
+        produces a list of the results.
+        """
+        return self.times(n) + self.many()
+
+    def optional(self, default: Any=None) -> Parser:
+        """
+        Returns a parser that expects the initial parser zero or once, and maps
+        the result to a given default value in the case of no match. If no default
+        value is given, ``None`` is used.
+        """
+        return self.times(0, 1).map(lambda v: v[0] if v else default)
+
+    def until(self, other: Parser, min: int=0, max: int=float('inf'), consume_other: bool=False) -> Parser:
+        """
+        Returns a parser that expects the initial parser followed by ``other``.
+        The initial parser is expected at least ``min`` times and at most ``max`` times.
+        By default, it does not consume ``other`` and it produces a list of the
+        results excluding ``other``. If ``consume_other`` is ``True`` then
+        ``other`` is consumed and its result is included in the list of results.
+        """
+
+        @Parser
+        def until_parser(stream: str | bytes | list, index: int) -> Result:
+            values = []
+            times = 0
+            while True:
+                res = other(stream, index)
+                if res.status and times >= min:
+                    if consume_other:
+                        values.append(res.value)
+                        index = res.index
+                    return Result.success(index, values)
+                if times >= max:
+                    return Result.failure(index, f'at most {max} items')
+                result = self(stream, index)
+                if result.status:
+                    values.append(result.value)
+                    index = result.index
+                    times += 1
+                elif times >= min:
+                    return Result.failure(index, 'did not find other parser')
+                else:
+                    return Result.failure(index, f'at least {min} items; got {times} item(s)')
+        return until_parser
+
+    def sep_by(self, sep: Parser, *, min: int=0, max: int=float('inf')) -> Parser:
+        """
+        Returns a new parser that repeats the initial parser and
+        collects the results in a list. Between each item, the ``sep`` parser
+        is run (and its return value is discarded). By default it
+        repeats with no limit, but minimum and maximum values can be supplied.
+        """
+        zero_times = success([])
+        if max == 0:
+            return zero_times
+        res = self.times(1) + (sep >> self).times(min - 1, max - 1)
+        if min == 0:
+            res |= zero_times
+        return res
+
+    def desc(self, description: str) -> Parser:
+        """
+        Returns a new parser with a description added, which is used in the error message
+        if parsing fails.
+        """
+
+        @Parser
+        def desc_parser(stream: str | bytes | list, index: int) -> Result:
+            result = self(stream, index)
+            if result.status:
+                return result
+            else:
+                return Result.failure(index, description)
+        return desc_parser
+
+    def mark(self) -> Parser:
+        """
+        Returns a parser that wraps the initial parser's result in a value
+        containing column and line information of the match, as well as the
+        original value. The new value is a 3-tuple:
+
+        ((start_row, start_column),
+         original_value,
+         (end_row, end_column))
+        """
+
+        @generate
+        def marked():
+            start = (yield line_info)
+            body = (yield self)
+            end = (yield line_info)
+            return (start, body, end)
+        return marked
+
+    def tag(self, name: str) -> Parser:
+        """
+        Returns a parser that wraps the produced value of the initial parser in a
+        2 tuple containing ``(name, value)``. This provides a very simple way to
+        label parsed components
+        """
+        return self.map(lambda v: (name, v))
+
+    def should_fail(self, description: str) -> Parser:
+        """
+        Returns a parser that fails when the initial parser succeeds, and succeeds
+        when the initial parser fails (consuming no input). A description must
+        be passed which is used in parse failure messages.
+
+        This is essentially a negative lookahead
+        """
+
+        @Parser
+        def fail_parser(stream: str | bytes | list, index: int) -> Result:
+            res = self(stream, index)
+            if res.status:
+                return Result.failure(index, description)
+            return Result.success(index, res)
+        return fail_parser
+
+    def __add__(self, other: Parser) -> Parser:
+        return seq(self, other).combine(operator.add)
+
+    def __mul__(self, other: int | range) -> Parser:
+        if isinstance(other, range):
+            return self.times(other.start, other.stop - 1)
+        return self.times(other)
+
+    def __or__(self, other: Parser) -> Parser:
+        return alt(self, other)
+
+    def __rshift__(self, other: Parser) -> Parser:
+        return self.then(other)
+
+    def __lshift__(self, other: Parser) -> Parser:
+        return self.skip(other)
+
+def alt(*parsers: Parser) -> Parser:
+    """
+    Creates a parser from the passed in argument list of alternative
+    parsers, which are tried in order, moving to the next one if the
+    current one fails.
+    """
+    if not parsers:
+        return fail('<empty alt>')
+
+    @Parser
+    def alt_parser(stream: str | bytes | list, index: int) -> Result:
+        result = None
+        for parser in parsers:
+            result = parser(stream, index).aggregate(result)
+            if result.status:
+                return result
+        return result
+    return alt_parser
+
+def seq(*parsers: Parser, **kw_parsers: Parser) -> Parser:
+    """
+    Takes a list of parsers, runs them in order,
+    and collects their individuals results in a list,
+    or in a dictionary if you pass them as keyword arguments.
+    """
+    if not parsers and (not kw_parsers):
+        return success([])
+    if parsers and kw_parsers:
+        raise ValueError('Use either positional arguments or keyword arguments with seq, not both')
+    if parsers:
+
+        @Parser
+        def seq_parser(stream: str | bytes | list, index: int) -> Result:
+            result = None
+            values = []
+            for parser in parsers:
+                result = parser(stream, index).aggregate(result)
+                if not result.status:
+                    return result
+                index = result.index
+                values.append(result.value)
+            return Result.success(index, values).aggregate(result)
+        return seq_parser
+    else:
+
+        @Parser
+        def seq_kwarg_parser(stream: str | bytes | list, index: int) -> Result:
+            result = None
+            values = {}
+            for name, parser in kw_parsers.items():
+                result = parser(stream, index).aggregate(result)
+                if not result.status:
+                    return result
+                index = result.index
+                values[name] = result.value
+            return Result.success(index, values).aggregate(result)
+        return seq_kwarg_parser
+
+def generate(fn) -> Parser:
+    """
+    Creates a parser from a generator function
+    """
+    if isinstance(fn, str):
+        return lambda f: generate(f).desc(fn)
+
+    @Parser
+    @wraps(fn)
+    def generated(stream: str | bytes | list, index: int) -> Result:
+        iterator = fn()
+        result = None
+        value = None
+        try:
+            while True:
+                next_parser = iterator.send(value)
+                result = next_parser(stream, index).aggregate(result)
+                if not result.status:
+                    return result
+                value = result.value
+                index = result.index
+        except StopIteration as stop:
+            returnVal = stop.value
+            if isinstance(returnVal, Parser):
+                return returnVal(stream, index).aggregate(result)
+            return Result.success(index, returnVal).aggregate(result)
+    return generated
+index = Parser(lambda _, index: Result.success(index, index))
+line_info = Parser(lambda stream, index: Result.success(index, line_info_at(stream, index)))
+
+def success(value: Any) -> Parser:
+    """
+    Returns a parser that does not consume any of the stream, but
+    produces ``value``.
+    """
+    return Parser(lambda _, index: Result.success(index, value))
+
+def fail(expected: str) -> Parser:
+    """
+    Returns a parser that always fails with the provided error message.
+    """
+    return Parser(lambda _, index: Result.failure(index, expected))
+
+def string(expected_string: str, transform: Callable[[str], str]=noop) -> Parser:
+    """
+    Returns a parser that expects the ``expected_string`` and produces
+    that string value.
+
+    Optionally, a transform function can be passed, which will be used on both
+    the expected string and tested string.
+    """
+    slen = len(expected_string)
+    transformed_s = transform(expected_string)
+
+    @Parser
+    def string_parser(stream: str, index: int) -> Result:
+        if transform(stream[index:index + slen]) == transformed_s:
+            return Result.success(index + slen, expected_string)
+        else:
+            return Result.failure(index, expected_string)
+    return string_parser
+
+def regex(exp: str, flags=0, group: int | str | tuple=0) -> Parser:
+    """
+    Returns a parser that expects the given ``exp``, and produces the
+    matched string. ``exp`` can be a compiled regular expression, or a
+    string which will be compiled with the given ``flags``.
+
+    Optionally, accepts ``group``, which is passed to re.Match.group
+    https://docs.python.org/3/library/re.html#re.Match.group> to
+    return the text from a capturing group in the regex instead of the
+    entire match.
+    """
+    if isinstance(exp, (str, bytes)):
+        exp = re.compile(exp, flags)
+    if isinstance(group, (str, int)):
+        group = (group,)
+
+    @Parser
+    def regex_parser(stream: str | bytes | list, index: int) -> Result:
+        match = exp.match(stream, index)
+        if match:
+            return Result.success(match.end(), match.group(*group))
+        else:
+            return Result.failure(index, exp.pattern)
+    return regex_parser
+
+def test_item(func: Callable[..., bool], description: str) -> Parser:
+    """
+    Returns a parser that tests a single item from the list of items being
+    consumed, using the callable ``func``. If ``func`` returns ``True``, the
+    parse succeeds, otherwise the parse fails with the description
+    ``description``.
+    """
+
+    @Parser
+    def test_item_parser(stream: str | bytes | list, index: int) -> Result:
+        if index < len(stream):
+            if isinstance(stream, bytes):
+                item = stream[index:index + 1]
+            else:
+                item = stream[index]
+            if func(item):
+                return Result.success(index + 1, item)
+        return Result.failure(index, description)
+    return test_item_parser
+
+def test_char(func: Callable[..., bool], description: str) -> Parser:
+    """
+    Returns a parser that tests a single character with the callable
+    ``func``. If ``func`` returns ``True``, the parse succeeds, otherwise
+    the parse fails with the description ``description``.
+    """
+    return test_item(func, description)
+
+def match_item(item: Any, description: str=None) -> Parser:
+    """
+    Returns a parser that tests the next item (or character) from the stream (or
+    string) for equality against the provided item. Optionally a string
+    description can be passed.
+    """
+    if description is None:
+        description = str(item)
+    return test_item(lambda i: item == i, description)
+
+def string_from(*strings: str, transform: Callable[[str], str]=noop):
+    """
+    Accepts a sequence of strings as positional arguments, and returns a parser
+    that matches and returns one string from the list. The list is first sorted
+    in descending length order, so that overlapping strings are handled correctly
+    by checking the longest one first.
+    """
+    return alt(*(string(s, transform) for s in sorted(strings, key=len, reverse=True)))
+
+def char_from(string: str | bytes) -> Parser:
+    """
+    Accepts a string and returns a parser that matches and returns one character
+    from the string.
+    """
+    if isinstance(string, bytes):
+        return test_char(lambda c: c in string, b'[' + string + b']')
+    else:
+        return test_char(lambda c: c in string, '[' + string - ']')
+
+def peek(parser: Parser) -> Parser:
+    """
+    Returns a lookahead parser that parses the input stream without consuming
+    chars.
+    """
+
+    @Parser
+    def peek_parser(stream: str | bytes | list, index: int) -> Result:
+        result = parser(stream, index)
+        if result.status:
+            return Result.success(index, result.value)
+        else:
+            return result
+    return peek_parser
+any_char = test_char(lambda c: True, 'any character')
+whitespace = regex('\\s+')
+letter = test_char(lambda c: c.isalpha(), 'a letter')
+digit = test_char(lambda c: c.isdigit(), 'a digit')
+decimal_digit = char_from('0123456789')
+
+@Parser
+def eof(stream: str | bytes | list, index: int) -> Result:
+    """
+    A parser that only succeeds if the end of the stream has been reached.
+    """
+    if index >= len(stream):
+        return Result.success(index, None)
+    else:
+        return Result.failure(index, 'EOF')
+
+def from_enum(enum_cls: type[enum.Enum], transform=noop) -> Parser:
+    """
+    Given a class that is an enum.Enum class
+    https://docs.python.org/3/library/enum.html , returns a parser that
+    will parse the values (or the string representations of the values)
+    and return the corresponding enum item.
+    """
+    items = sorted(((str(enum_item.value), enum_item) for enum_item in enum_cls), key=lambda t: len(t[0]), reverse=True)
+    return alt(*(string(value, transform=transform).result(enum_item) for value, enum_item in items))
+
+class forward_declaration(Parser):
+    """
+    An empty parser that can be used as a forward declaration,
+    especially for parsers that need to be defined recursively.
+
+    You must use `.become(parser)` before using.
+    """
+
+    def __init__(self):
+        pass
+
+    def _raise_error(self, *args, **kwargs):
+        raise ValueError("You must use 'become' before attempting to call `parse` or `parse_partial`")
+    parse = _raise_error
+    parse_partial = _raise_error
+
+    def become(self, other: Parser):
+        """
+        Take on the behavior of the given parser.
+        """
+        self.__dict__ = other.__dict__
+        self.__class__ = other.__class__
+2026-05-10T20:45:34.561682Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["char_from(str) builds the description with '[' + string - ']', causing TypeError instead of returning a parser; this also prevents decimal_digit/module initialization","ParseError.__str__ contains quote-conflicting f-string syntax that can prevent the module from importing on Python versions without PEP 701 support"],"verdict":"REQUEST_CHANGES"}
+tokens used
+23.303
+{"bugs_found":["char_from(str) builds the description with '[' + string - ']', causing TypeError instead of returning a parser; this also prevents decimal_digit/module initialization","ParseError.__str__ contains quote-conflicting f-string syntax that can prevent the module from importing on Python versions without PEP 701 support"],"verdict":"REQUEST_CHANGES"}

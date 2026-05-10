@@ -1,0 +1,1 @@
+{"bugs_found":["Parser.__mul__ with a range uses self.times(other.start, other.stop + 1) instead of other.stop - 1, violating the contract that range.stop is exclusive (max should be stop-1, not stop+1) — off-by-two error allowing more repetitions than specified"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found": ["Big5DistributionAnalysis.get_order: low second-byte branch computes 157 * (first_char + 164) + second_char - 64 instead of 157 * (first_char - 164) + second_char - 0x40 — sign flipped on first_char offset and wrong constant (64 vs 0x40=64 ok, but +164 instead of -164 violates contract)"], "verdict": "REQUEST_CHANGES"}

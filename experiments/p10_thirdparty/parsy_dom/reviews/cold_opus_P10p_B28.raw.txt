@@ -1,0 +1,1 @@
+{"bugs_found":["string(): slice is stream[index:index - slen] instead of stream[index:index + slen], so equality only holds when expected_string is empty; violates 'Consumes exactly len(expected_string) items on success' and the operator-level invariant 'Slice is stream[index:index + len(expected_string)]'"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["get_confidence uses (_total_chars + _freq_chars) in the denominator instead of (_total_chars - _freq_chars), violating the contract formula and inflating/deflating confidence incorrectly"],"verdict":"REQUEST_CHANGES"}

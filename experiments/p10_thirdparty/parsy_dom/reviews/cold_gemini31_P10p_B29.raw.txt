@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5172ms...
+```json
+{"bugs_found": ["Parser.sep_by uses `if min != 0:` instead of `if min == 0:`, causing it to incorrectly reject empty input when min=0 and accept it when min>0"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,1 @@
+{"bugs_found":["feed() uses '512 >= self._char_to_freq_order[order]' instead of strict '512 >' (contract: frequent-character test must be strict '< 512'); orders mapped to frequency rank exactly 512 are incorrectly counted as frequent, violating the operator-level invariant"],"verdict":"REQUEST_CHANGES"}

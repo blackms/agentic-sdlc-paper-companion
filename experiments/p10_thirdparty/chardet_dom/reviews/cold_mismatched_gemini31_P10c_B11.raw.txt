@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5788ms...
+{"bugs_found": ["Code does not match the contract: expected 'bankcheck' functions but found 'CharDistributionAnalysis' classes."], "verdict": "REQUEST_CHANGES"}

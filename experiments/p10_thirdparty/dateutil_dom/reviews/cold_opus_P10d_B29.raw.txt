@@ -1,0 +1,1 @@
+{"bugs_found":["__add__ leapdays gating uses 'or' instead of 'and': `if self.leapdays or month > 2 or calendar.isleap(year)` adds leapdays whenever any condition is true, violating contract that leapdays apply only when target month > 2 AND year is leap"],"verdict":"REQUEST_CHANGES"}

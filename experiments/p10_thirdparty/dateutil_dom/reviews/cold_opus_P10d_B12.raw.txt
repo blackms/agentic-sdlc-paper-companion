@@ -1,0 +1,1 @@
+{"bugs_found":["__init__ diff mode: self.seconds = delta.seconds - delta.days * 86400 (should be +); sign-inverted residual sub-month difference violates the contract that applying the delta to dt2 reaches dt1"],"verdict":"REQUEST_CHANGES"}

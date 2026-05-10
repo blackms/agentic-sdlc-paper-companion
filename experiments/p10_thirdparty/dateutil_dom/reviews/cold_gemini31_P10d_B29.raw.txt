@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5841ms...
+```json
+{"bugs_found": ["In __add__, the condition for adding leapdays uses 'or' instead of 'and' (`if self.leapdays or month > 2 or calendar.isleap(year):`), causing leapdays to be applied incorrectly"], "verdict": "REQUEST_CHANGES"}
+```

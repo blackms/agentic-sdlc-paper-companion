@@ -1,0 +1,1 @@
+{"bugs_found": ["test_item uses 'index <= len(stream)' instead of 'index < len(stream)', violating the EOF contract: at index == len(stream) it indexes out of bounds (IndexError for str/list) or passes an empty bytes slice to func instead of cleanly failing with the description"], "verdict": "REQUEST_CHANGES"}

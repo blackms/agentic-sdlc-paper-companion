@@ -1,0 +1,1 @@
+{"bugs_found":["__eq__: weekday n comparison uses corrupted boolean expression `(not n1 or n1 != 1) and (not n2 or n2 == 1)` instead of contract's `(not n1 or n1 == 1) and (not n2 or n2 == 1)` — breaks equivalence between weekday n=None and n=1"],"verdict":"REQUEST_CHANGES"}

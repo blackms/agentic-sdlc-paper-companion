@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5425ms...
+```json
+{"bugs_found": ["_fix violates operator-level invariant: uses >= instead of > for minutes carry condition (abs(self.minutes) >= 59)"], "verdict": "REQUEST_CHANGES"}
+```

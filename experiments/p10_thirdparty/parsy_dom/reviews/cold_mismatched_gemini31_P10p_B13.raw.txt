@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["The implementation completely lacks all functions and classes defined in the bankcheck contract (e.g., Reporter, load_yaml_file, load_json_file, cmd_profile_validate)", "The provided code implements a parser combinator library rather than the expected banking validation logic, violating the entire scope of the contract", "ParseError.__init__ signature does not match the referenced parser_contracts.md (uses expected/stream/index instead of msg/position)", "Public functions 'parse' and 'parse_strict' defined in the referenced parser_contracts.md are entirely missing"], "verdict": "REQUEST_CHANGES"}

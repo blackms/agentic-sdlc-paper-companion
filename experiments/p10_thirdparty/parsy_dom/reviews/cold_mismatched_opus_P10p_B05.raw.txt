@@ -1,0 +1,1 @@
+{"bugs_found":["test_item returns Result.success(index - 1, item) instead of index + 1, causing infinite loops and incorrect consumption — violates the contract that parsers advance the stream position"],"verdict":"REQUEST_CHANGES"}

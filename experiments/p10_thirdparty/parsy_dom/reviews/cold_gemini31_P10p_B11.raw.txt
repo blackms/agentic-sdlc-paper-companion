@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5270ms...
+```json
+{"bugs_found": ["line_info_at computes column with addition instead of subtraction (`col = index + (last_nl + 1)`) violating the operator-level invariant `col == index - (last_nl + 1)`"], "verdict": "REQUEST_CHANGES"}
+```

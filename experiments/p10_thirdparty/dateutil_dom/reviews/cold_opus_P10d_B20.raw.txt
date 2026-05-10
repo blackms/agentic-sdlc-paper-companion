@@ -1,0 +1,1 @@
+{"bugs_found":["_fix uses divmod(self.months / s, 12) instead of divmod(self.months * s, 12); for negative months overflow this divides by sign producing wrong quotient/remainder and violates the months-to-years carry contract (sign preservation and abs(months)<=11)"],"verdict":"REQUEST_CHANGES"}

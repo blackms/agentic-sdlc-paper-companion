@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5258ms...
+```json
+{"bugs_found": ["SJISDistributionAnalysis.get_order uses 'or' instead of 'and' for the first_char bounds check (first_char >= 129 or first_char <= 159), making the condition always true and violating the contract"], "verdict": "REQUEST_CHANGES"}
+```

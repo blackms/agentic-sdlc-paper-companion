@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is from chardet (CharDistributionAnalysis), completely unrelated to bankcheck contracts — no Reporter, load_yaml_file, load_profile, cmd_* functions, build_parser, or main implementations present to verify against the contracts"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["__init__ uses 'if dt1 or dt2' instead of 'if dt1 and dt2': supplying only one datetime argument enters diff mode and raises TypeError, violating the contract that exactly one of dt1/dt2 triggers keyword mode"],"verdict":"REQUEST_CHANGES"}

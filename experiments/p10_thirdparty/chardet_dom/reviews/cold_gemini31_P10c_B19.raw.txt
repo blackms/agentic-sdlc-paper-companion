@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5091ms...
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["EUCJPDistributionAnalysis.get_order incorrectly adds 161 (+ 161) instead of subtracting 161 (- 0xA1) in the return formula."], "verdict": "REQUEST_CHANGES"}

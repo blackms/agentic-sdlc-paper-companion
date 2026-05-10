@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is a parsec/parsy-like parser combinator library, completely unrelated to the bankcheck contracts (no Reporter, load_yaml_file, cmd_*, build_parser CLI, etc.) — every contract is violated by absence of the implementation"],"verdict":"REQUEST_CHANGES"}

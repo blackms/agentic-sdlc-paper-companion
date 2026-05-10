@@ -1,0 +1,1 @@
+{"bugs_found":["EUCKRDistributionAnalysis.get_order uses 94*(first_char+176) instead of 94*(first_char-176), violating the contract's offset subtraction and producing wildly incorrect orders for all EUC-KR inputs"],"verdict":"REQUEST_CHANGES"}

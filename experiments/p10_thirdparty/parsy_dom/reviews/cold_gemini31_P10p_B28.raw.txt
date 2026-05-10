@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5838ms...
+```json
+{"bugs_found": ["In `string` parser, the stream slice uses `index - slen` instead of `index + slen`, violating the operator-level invariant for slicing."], "verdict": "REQUEST_CHANGES"}
+```

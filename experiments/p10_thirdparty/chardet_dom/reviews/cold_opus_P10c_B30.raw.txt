@@ -1,0 +1,1 @@
+{"bugs_found":["SJISDistributionAnalysis.get_order computes 'order = order - second_char - 64' instead of 'order = order + second_char - 0x40', violating the contract's post-condition that adds (second_char - 0x40) to the row base"],"verdict":"REQUEST_CHANGES"}

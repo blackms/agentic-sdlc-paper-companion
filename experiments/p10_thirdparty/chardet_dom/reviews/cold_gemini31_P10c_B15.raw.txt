@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["SJISDistributionAnalysis.get_order uses first_char < 159 instead of <= 159 for the first range upper bound"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,1 @@
+{"bugs_found": ["EUCKRDistributionAnalysis.get_order uses '+ 161' instead of '- 0xA1' for the second-byte offset, violating the contract formula 94*(first_char-0xB0) + byte_str[1] - 0xA1 and producing orders shifted by +322"], "verdict": "REQUEST_CHANGES"}

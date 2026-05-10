@@ -1,0 +1,1 @@
+{"bugs_found":["_fix uses abs(self.minutes) >= 59 instead of > 59, causing minutes=59 or minutes=-59 to be incorrectly carried into hours, violating the contract that boundary values exactly at the limit are not carried"],"verdict":"REQUEST_CHANGES"}

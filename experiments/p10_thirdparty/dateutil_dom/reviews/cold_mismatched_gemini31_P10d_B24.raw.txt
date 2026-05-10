@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The provided code implements dateutil.relativedelta and is completely missing all functions specified in the bankcheck contract (Reporter, load_yaml_file, cmd_all, main, etc.)."], "verdict": "REQUEST_CHANGES"}
+```

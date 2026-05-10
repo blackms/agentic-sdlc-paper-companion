@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5790ms...
+{"bugs_found": ["In `normalized()`, fractional days are subtracted from hours (`self.hours - 24 * ...`) instead of being added (`+`), violating the cascade direction invariant."], "verdict": "REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["__add__ weekday jump uses '(abs(nth) - 1) / 7' (true division) instead of '* 7', producing wrong jumpdays for nth with abs(nth) != 1 — violates operator-level invariant that positive jump is '(7 - ret.weekday() + weekday) % 7 + (nth - 1) * 7' and negative jump symmetric"],"verdict":"REQUEST_CHANGES"}

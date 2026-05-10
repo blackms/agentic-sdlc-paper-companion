@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis), so no contract can be verified"],"verdict":"REQUEST_CHANGES"}

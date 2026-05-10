@@ -1,0 +1,1 @@
+{"bugs_found":["__eq__ uses 'n1 != n2 or not (...)' instead of 'n1 != n2 and not (...)', which makes weekday n=None and n=1 compare as not-equal, violating the contract that treats n=None and n=1 as equivalent"],"verdict":"REQUEST_CHANGES"}

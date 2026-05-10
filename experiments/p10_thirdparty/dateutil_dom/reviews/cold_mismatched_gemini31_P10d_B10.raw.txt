@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5235ms...
+{"bugs_found": ["The provided code is entirely unrelated to the bankcheck contract and fails to implement any of the specified functions or classes (e.g., Reporter, load_yaml_file, cmd_profile_validate)."], "verdict": "REQUEST_CHANGES"}

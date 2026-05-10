@@ -1,0 +1,1 @@
+{"bugs_found":["Code under review is unrelated to the bankcheck contracts: it implements CharDistributionAnalysis classes (chardet) with no Reporter, load_yaml_file, load_profile, cmd_* or main functions, so none of the documented contracts can be validated against this implementation"],"verdict":"REQUEST_CHANGES"}

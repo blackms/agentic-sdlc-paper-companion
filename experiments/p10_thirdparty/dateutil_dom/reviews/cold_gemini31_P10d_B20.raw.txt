@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5418ms...
+```json
+{"bugs_found": ["In `_fix`, the months carry computation uses division `self.months / s` instead of multiplication `self.months * s`, violating the operator-level invariant for carry and producing float values."], "verdict": "REQUEST_CHANGES"}
+```

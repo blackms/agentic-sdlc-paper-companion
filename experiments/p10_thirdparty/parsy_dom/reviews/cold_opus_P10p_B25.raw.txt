@@ -1,0 +1,1 @@
+{"bugs_found":["line_info_at: col computed as index - (last_nl - 1) instead of index - (last_nl + 1); off-by-two for lines after first newline and wrong column at index 0 when no newline present (last_nl=-1 yields col=index+2 instead of index)"],"verdict":"REQUEST_CHANGES"}

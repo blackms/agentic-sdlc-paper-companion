@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5903ms...
+```json
+{"bugs_found": ["test_item_parser checks index <= len(stream) instead of index < len(stream), causing IndexError at EOF instead of returning Result.failure as required by the contract"], "verdict": "REQUEST_CHANGES"}
+```

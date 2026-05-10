@@ -1,0 +1,1 @@
+{"bugs_found": ["Parser.until uses 'if times > max' instead of 'if times >= max', violating the contract's operator-level invariant that the max check uses 'times >= max'; this allows one extra iteration beyond max before failing with 'at most {max} items'"], "verdict": "REQUEST_CHANGES"}

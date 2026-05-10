@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5555ms...
+```json
+{"bugs_found": ["CharDistributionAnalysis.get_confidence uses strict inequality `< self.MINIMUM_DATA_THRESHOLD` instead of inclusive `<=` as required by contract"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5949ms...
+```json
+{"bugs_found": ["The provided code implements dateutil.relativedelta instead of the expected bankcheck module, completely missing all contracted functions and classes (e.g., Reporter, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}
+```

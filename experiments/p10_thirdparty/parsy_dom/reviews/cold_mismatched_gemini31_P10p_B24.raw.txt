@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["The implementation entirely missing all contracted bankcheck functions and instead implements a parser combinator library.", "SyntaxError: Invalid decorator '@p7_parser/contracts/parser_contracts.md' used in multiple function definitions."], "verdict": "REQUEST_CHANGES"}

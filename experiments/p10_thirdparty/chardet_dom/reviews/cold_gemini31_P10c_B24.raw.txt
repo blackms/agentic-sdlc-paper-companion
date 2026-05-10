@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["CharDistributionAnalysis.feed incorrectly uses 'if order > 0:' instead of 'if order >= 0:', which fails to count order 0 characters."], "verdict": "REQUEST_CHANGES"}
+```

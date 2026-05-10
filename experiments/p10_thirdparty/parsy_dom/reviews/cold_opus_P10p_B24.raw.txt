@@ -1,0 +1,1 @@
+{"bugs_found": ["char_from non-bytes branch uses '[' + string - ']' (subtraction on strings) instead of concatenation; raises TypeError at parser construction time, violating the contract that char_from(str) returns a working Parser with description '[...]'"], "verdict": "REQUEST_CHANGES"}

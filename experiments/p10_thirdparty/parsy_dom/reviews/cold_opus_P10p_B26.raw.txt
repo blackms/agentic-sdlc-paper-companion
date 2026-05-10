@@ -1,0 +1,1 @@
+{"bugs_found": ["Parser.times: loop condition is `while times <= max:` instead of `while times < max:`, allowing up to max+1 successful matches and violating the operator-level invariant that `times` is strictly less than `max` per the contract"], "verdict": "REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found":["Parser.sep_by uses '-' operator instead of '+' to combine self.times(1) with the tail repetition; Parser has no __sub__ defined, so sep_by raises TypeError on construction, violating its contract of producing a list of separated items"],"verdict":"REQUEST_CHANGES"}

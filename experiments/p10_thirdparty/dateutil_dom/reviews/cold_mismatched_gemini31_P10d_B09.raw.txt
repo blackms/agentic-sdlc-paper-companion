@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["Code implements dateutil.relativedelta instead of the contracted bankcheck functions", "In relativedelta.__eq__, self.hour is compared using != instead of =="], "verdict": "REQUEST_CHANGES"}
+```

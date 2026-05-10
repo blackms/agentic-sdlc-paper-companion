@@ -1,0 +1,1 @@
+{"bugs_found":["EUCTWDistributionAnalysis.get_order uses division (94 / (first_char - 196)) instead of multiplication (94 * (first_char - 0xC4)), violating the row-width multiplier invariant and causing ZeroDivisionError when first_char == 0xC4"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["Missing all bankcheck contract implementations (Reporter, load_yaml_file, load_profile, cmd_* functions, etc.)", "Missing parse(text: str) and parse_strict(text: str) functions defined in the JSON Parser contract", "ParseError.__init__ signature is (expected, stream, index) instead of the contracted (msg, position)", "ParseError does not set the required self.position attribute", "ParseError inherits from RuntimeError instead of Exception", "SyntaxError: Invalid decorator @p7_parser/contracts/parser_contracts.md used throughout the code"], "verdict": "REQUEST_CHANGES"}
+```

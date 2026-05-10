@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis classes); no implementation of any contracted function is present, so all contracts are unfulfilled"],"verdict":"REQUEST_CHANGES"}

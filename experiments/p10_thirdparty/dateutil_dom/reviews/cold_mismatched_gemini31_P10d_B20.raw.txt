@@ -1,0 +1,2 @@
+Ripgrep is not available. Falling back to GrepTool.
+{"bugs_found": ["The provided code completely lacks the implementation of all contracted bankcheck functions and instead contains an unrelated dateutil.relativedelta implementation."], "verdict": "REQUEST_CHANGES"}

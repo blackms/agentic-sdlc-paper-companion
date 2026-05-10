@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The provided code does not implement any of the contracted bankcheck functions and instead contains unrelated character distribution analysis classes."], "verdict": "REQUEST_CHANGES"}
+```

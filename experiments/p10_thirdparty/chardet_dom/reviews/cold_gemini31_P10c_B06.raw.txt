@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5318ms...
+{"bugs_found": ["CharDistributionAnalysis.get_confidence uses 'and' instead of 'or' when checking if there is enough data, violating the contract that returns SURE_NO if _freq_chars <= MINIMUM_DATA_THRESHOLD."], "verdict": "REQUEST_CHANGES"}

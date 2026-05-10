@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5035ms...
+```json
+{"bugs_found": ["CharDistributionAnalysis.get_confidence computes ratio with (self._total_chars + self._freq_chars) instead of (self._total_chars - self._freq_chars) in the denominator"], "verdict": "REQUEST_CHANGES"}
+```

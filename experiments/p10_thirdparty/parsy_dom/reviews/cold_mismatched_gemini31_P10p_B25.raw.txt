@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["Il codice non implementa nessuna delle funzioni del contratto bankcheck (Reporter.ok, load_yaml_file, cmd_profile_validate, ecc.)", "Il codice non implementa le funzioni top-level parse e parse_strict previste dal contratto Minimal JSON Parser", "La classe ParseError non rispetta la signature __init__(self, msg: str, position: int) e non definisce l'attributo self.position richiesti dal contratto"], "verdict": "REQUEST_CHANGES"}
+```

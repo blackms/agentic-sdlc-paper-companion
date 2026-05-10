@@ -1,0 +1,1 @@
+{"bugs_found":["__add__ with datetime/date: 'year = (self.year and other.year) + self.years' uses 'and' instead of 'or'. When self.year is None/0, it yields 0 + self.years instead of other.year + self.years, producing wrong year (contract says absolute year REPLACES, otherwise use other.year)."],"verdict":"REQUEST_CHANGES"}

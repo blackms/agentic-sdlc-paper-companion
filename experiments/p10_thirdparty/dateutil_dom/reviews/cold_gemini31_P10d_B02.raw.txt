@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5589ms...
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["In `__add__` (for datetime/date), `year = (self.year or other.year) + self.years` was changed to `year = (self.year and other.year) + self.years`, which evaluates to None when `self.year` is None, causing a TypeError and violating the absolute value fallback contract."], "verdict": "REQUEST_CHANGES"}

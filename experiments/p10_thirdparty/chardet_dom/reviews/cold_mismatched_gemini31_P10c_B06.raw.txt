@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["Code and contract completely mismatch: contract specifies bankcheck functions, but chardet distribution analysis code was provided."], "verdict": "REQUEST_CHANGES"}
+```

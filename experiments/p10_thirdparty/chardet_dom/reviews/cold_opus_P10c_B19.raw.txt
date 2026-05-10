@@ -1,0 +1,1 @@
+{"bugs_found":["EUCJPDistributionAnalysis.get_order: byte_str[1] + 161 instead of byte_str[1] - 161 (sign flip on second-byte offset, violates contract formula 94*(char-0xA1)+byte_str[1]-0xA1)"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,1 @@
+{"bugs_found": ["SJISDistributionAnalysis.get_order: upper first-byte range uses `first_char < 239` (strict) instead of `<= 0xEF` inclusive — first_char == 0xEF wrongly returns -1, violating the contract's inclusive `0xE0..0xEF` bound"], "verdict": "REQUEST_CHANGES"}

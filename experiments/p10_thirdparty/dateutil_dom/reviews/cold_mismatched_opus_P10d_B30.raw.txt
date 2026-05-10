@@ -1,0 +1,1 @@
+{"bugs_found":["Code under review is dateutil.relativedelta, completely unrelated to bankcheck contracts; no functions from the contract document are present (Reporter, load_yaml_file, cmd_* etc. all missing)"],"verdict":"REQUEST_CHANGES"}

@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5813ms...
+```json
+{"bugs_found": ["EUCKRDistributionAnalysis.get_order uses strict greater-than '> 176' instead of inclusive '>= 176' (0xB0)"], "verdict": "REQUEST_CHANGES"}
+```

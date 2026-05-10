@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The provided code completely fails to implement the bankcheck contract, containing unrelated character distribution logic (chardet) instead of the required classes and functions like Reporter, load_yaml_file, cmd_all, and main."], "verdict": "REQUEST_CHANGES"}
+```

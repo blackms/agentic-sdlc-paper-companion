@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The provided code completely fails to implement the specified bankcheck contracts; none of the expected functions (e.g., Reporter methods, cmd_*, load_*) are present in the implementation."], "verdict": "REQUEST_CHANGES"}
+```

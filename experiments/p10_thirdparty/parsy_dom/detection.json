@@ -1,0 +1,539 @@
+{
+  "ref": "/Users/alessiorocchi/Projects/agentic-sdlc/experiments/p10_thirdparty/parsy_dom/ref/parsy_module.py",
+  "bugs": [
+    {
+      "bug_id": "P10p_B01",
+      "operator": "AOR",
+      "line": 318,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "sep_by",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10p_B02",
+      "operator": "BOR",
+      "line": 167,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "combine_dict",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10p_B03",
+      "operator": "ROR",
+      "line": 539,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "string_parser",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B04",
+      "operator": "ROR",
+      "line": 68,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "aggregate",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B05",
+      "operator": "AOR",
+      "line": 593,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "test_item_parser",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B06",
+      "operator": "BOR",
+      "line": 438,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "seq",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10p_B07",
+      "operator": "ROR",
+      "line": 66,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "aggregate",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B08",
+      "operator": "AOR",
+      "line": 589,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "test_item_parser",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B09",
+      "operator": "AOR",
+      "line": 640,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "char_from",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B10",
+      "operator": "AOR",
+      "line": 390,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "__mul__",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10p_B11",
+      "operator": "AOR",
+      "line": 20,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "line_info_at",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10p_B12",
+      "operator": "ROR",
+      "line": 288,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "until_parser",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B13",
+      "operator": "ROR",
+      "line": 16,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "line_info_at",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B14",
+      "operator": "ROR",
+      "line": 280,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "until_parser",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B15",
+      "operator": "AOR",
+      "line": 253,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "at_least",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B16",
+      "operator": "BOR",
+      "line": 280,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "until_parser",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10p_B17",
+      "operator": "ROR",
+      "line": 232,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "times_parser",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B18",
+      "operator": "BOR",
+      "line": 435,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "seq",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10p_B19",
+      "operator": "AOR",
+      "line": 638,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "char_from",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B20",
+      "operator": "BOR",
+      "line": 167,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "combine_dict",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10p_B21",
+      "operator": "ROR",
+      "line": 677,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "eof",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B22",
+      "operator": "ROR",
+      "line": 39,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__str__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B23",
+      "operator": "ROR",
+      "line": 299,
+      "old_op": "GtE",
+      "new_op": "Gt",
+      "enclosing": "until_parser",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR GtE -> Gt (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B24",
+      "operator": "AOR",
+      "line": 640,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "char_from",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B25",
+      "operator": "AOR",
+      "line": 20,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "line_info_at",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B26",
+      "operator": "ROR",
+      "line": 226,
+      "old_op": "Lt",
+      "new_op": "LtE",
+      "enclosing": "times_parser",
+      "op_keywords": [
+        " le ",
+        "less or equal",
+        "less than",
+        " lt ",
+        "<=",
+        "<"
+      ],
+      "description": "ROR Lt -> LtE (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B27",
+      "operator": "ROR",
+      "line": 585,
+      "old_op": "Lt",
+      "new_op": "LtE",
+      "enclosing": "test_item_parser",
+      "op_keywords": [
+        " le ",
+        "less or equal",
+        "less than",
+        " lt ",
+        "<=",
+        "<"
+      ],
+      "description": "ROR Lt -> LtE (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B28",
+      "operator": "AOR",
+      "line": 539,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "string_parser",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10p_B29",
+      "operator": "ROR",
+      "line": 319,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "sep_by",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10p_B30",
+      "operator": "AOR",
+      "line": 318,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "sep_by",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    }
+  ]
+}

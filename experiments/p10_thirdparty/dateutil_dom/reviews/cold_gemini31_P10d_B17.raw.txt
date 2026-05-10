@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["__init__ incorrectly emits DeprecationWarning when absolute values ARE integers instead of non-integers due to flipped condition (int(x) == x instead of int(x) != x)"], "verdict": "REQUEST_CHANGES"}
+```

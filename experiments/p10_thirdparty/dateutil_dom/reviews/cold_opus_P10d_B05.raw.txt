@@ -1,0 +1,1 @@
+{"bugs_found":["__eq__ uses self.hours != other.hours instead of == , inverting equality for the hours field and breaking the equality contract"],"verdict":"REQUEST_CHANGES"}

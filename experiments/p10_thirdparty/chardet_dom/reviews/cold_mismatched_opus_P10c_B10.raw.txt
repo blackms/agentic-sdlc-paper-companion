@@ -1,0 +1,1 @@
+{"bugs_found":["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis), so contract compliance cannot be assessed against the provided specifications"],"verdict":"REQUEST_CHANGES"}

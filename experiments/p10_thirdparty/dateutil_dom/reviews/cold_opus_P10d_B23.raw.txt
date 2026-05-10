@@ -1,0 +1,1 @@
+{"bugs_found":["_fix: seconds-to-minutes carry uses 'self.minutes += div / s' instead of 'div * s', violating the sign-preserving carry invariant and producing a float instead of integer minutes"],"verdict":"REQUEST_CHANGES"}

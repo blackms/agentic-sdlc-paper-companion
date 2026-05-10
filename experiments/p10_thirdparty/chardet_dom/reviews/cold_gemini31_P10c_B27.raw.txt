@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5599ms...
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+{"bugs_found": ["In SJISDistributionAnalysis.get_order, the condition 'first_char > 129' incorrectly uses a strict inequality, violating the contract's inclusive lower bound '>= 0x81' (129)"], "verdict": "REQUEST_CHANGES"}

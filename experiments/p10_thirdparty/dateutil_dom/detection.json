@@ -1,0 +1,525 @@
+{
+  "ref": "/Users/alessiorocchi/Projects/agentic-sdlc/experiments/p10_thirdparty/dateutil_dom/ref/relativedelta_module.py",
+  "bugs": [
+    {
+      "bug_id": "P10d_B01",
+      "operator": "BOR",
+      "line": 476,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__bool__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B02",
+      "operator": "BOR",
+      "line": 366,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P10d_B03",
+      "operator": "BOR",
+      "line": 529,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B04",
+      "operator": "ROR",
+      "line": 247,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "_fix",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B05",
+      "operator": "ROR",
+      "line": 534,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B06",
+      "operator": "BOR",
+      "line": 367,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P10d_B07",
+      "operator": "BOR",
+      "line": 529,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B08",
+      "operator": "AOR",
+      "line": 323,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10d_B09",
+      "operator": "ROR",
+      "line": 542,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B10",
+      "operator": "ROR",
+      "line": 539,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B11",
+      "operator": "AOR",
+      "line": 395,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10d_B12",
+      "operator": "AOR",
+      "line": 168,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10d_B13",
+      "operator": "ROR",
+      "line": 242,
+      "old_op": "Gt",
+      "new_op": "GtE",
+      "enclosing": "_fix",
+      "op_keywords": [
+        "greater than",
+        "greater or equal",
+        " gt ",
+        ">",
+        " ge ",
+        ">="
+      ],
+      "description": "ROR Gt -> GtE (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B14",
+      "operator": "AOR",
+      "line": 224,
+      "old_op": "Sub",
+      "new_op": "Add",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        "- ",
+        " + ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Sub -> Add"
+    },
+    {
+      "bug_id": "P10d_B15",
+      "operator": "BOR",
+      "line": 114,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B16",
+      "operator": "ROR",
+      "line": 120,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "equal",
+        "inequality",
+        "not equal",
+        "=="
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B17",
+      "operator": "ROR",
+      "line": 195,
+      "old_op": "NotEq",
+      "new_op": "Eq",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "equal",
+        "inequality",
+        "not equal",
+        "=="
+      ],
+      "description": "ROR NotEq -> Eq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B18",
+      "operator": "AOR",
+      "line": 322,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10d_B19",
+      "operator": "ROR",
+      "line": 541,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B20",
+      "operator": "AOR",
+      "line": 254,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "_fix",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10d_B21",
+      "operator": "ROR",
+      "line": 535,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B22",
+      "operator": "BOR",
+      "line": 364,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B23",
+      "operator": "AOR",
+      "line": 241,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "_fix",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10d_B24",
+      "operator": "AOR",
+      "line": 302,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "normalized",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    },
+    {
+      "bug_id": "P10d_B25",
+      "operator": "ROR",
+      "line": 529,
+      "old_op": "Eq",
+      "new_op": "NotEq",
+      "enclosing": "__eq__",
+      "op_keywords": [
+        "!=",
+        "equality",
+        "inequality",
+        "not equal",
+        "equal",
+        "=="
+      ],
+      "description": "ROR Eq -> NotEq (idx 0)"
+    },
+    {
+      "bug_id": "P10d_B26",
+      "operator": "BOR",
+      "line": 257,
+      "old_op": "Or",
+      "new_op": "And",
+      "enclosing": "_fix",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR Or -> And"
+    },
+    {
+      "bug_id": "P10d_B27",
+      "operator": "AOR",
+      "line": 296,
+      "old_op": "Add",
+      "new_op": "Sub",
+      "enclosing": "normalized",
+      "op_keywords": [
+        "plus",
+        "subtract",
+        "+ ",
+        " + ",
+        "- ",
+        " - ",
+        "minus",
+        "addition"
+      ],
+      "description": "AOR Add -> Sub"
+    },
+    {
+      "bug_id": "P10d_B28",
+      "operator": "BOR",
+      "line": 112,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__init__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B29",
+      "operator": "BOR",
+      "line": 385,
+      "old_op": "And",
+      "new_op": "Or",
+      "enclosing": "__add__",
+      "op_keywords": [
+        "&&",
+        "||",
+        "or ",
+        "logical or",
+        "logical and",
+        "and "
+      ],
+      "description": "BOR And -> Or"
+    },
+    {
+      "bug_id": "P10d_B30",
+      "operator": "AOR",
+      "line": 249,
+      "old_op": "Mult",
+      "new_op": "Div",
+      "enclosing": "_fix",
+      "op_keywords": [
+        "/",
+        "divide",
+        "multipl",
+        "divis",
+        "*",
+        "times"
+      ],
+      "description": "AOR Mult -> Div"
+    }
+  ]
+}

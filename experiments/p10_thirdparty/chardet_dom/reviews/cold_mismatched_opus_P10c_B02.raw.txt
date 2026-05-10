@@ -1,0 +1,1 @@
+{"bugs_found":["Codice fornito non corrisponde ai contratti di bankcheck: il codice è chardet CharDistributionAnalysis, nessuna funzione/classe del contratto (Reporter, load_yaml_file, cmd_*, build_parser, main) è presente — impossibile verificare alcun contratto"],"verdict":"REQUEST_CHANGES"}

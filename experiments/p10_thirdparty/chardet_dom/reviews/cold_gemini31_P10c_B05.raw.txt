@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5659ms...
+```json
+{"bugs_found": ["get_confidence uses '==' instead of '!=' when comparing _total_chars and _freq_chars, causing a ZeroDivisionError"], "verdict": "REQUEST_CHANGES"}
+```

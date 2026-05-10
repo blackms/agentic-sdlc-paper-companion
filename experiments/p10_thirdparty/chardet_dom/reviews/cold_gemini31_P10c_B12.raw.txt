@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5598ms...
+```json
+{"bugs_found": ["In Big5DistributionAnalysis.get_order, the check 'if first_char > 164:' uses a strict inequality, which violates the contract's inclusive lower-bound invariant (first_char >= 0xA4)."], "verdict": "REQUEST_CHANGES"}
+```

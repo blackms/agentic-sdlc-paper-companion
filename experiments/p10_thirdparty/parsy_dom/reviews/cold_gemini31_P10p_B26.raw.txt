@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5444ms...
+{"bugs_found": ["Parser.times uses 'times <= max' instead of 'times < max', violating the contract and parsing up to max + 1 occurrences"], "verdict": "REQUEST_CHANGES"}

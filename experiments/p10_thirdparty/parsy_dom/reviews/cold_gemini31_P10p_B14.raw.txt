@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5989ms...
+```json
+{"bugs_found": ["Parser.until uses 'times > min' instead of 'times >= min' when checking if 'other' success is accepted, violating operator-level invariant"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5277ms...
+```json
+{"bugs_found": ["The provided source code is entirely unrelated to the bankcheck contract. It implements 'CharDistributionAnalysis' (likely from chardet) and completely lacks all contracted functions and classes (Reporter, load_yaml_file, cmd_profile_validate, cmd_all, etc.)."], "verdict": "REQUEST_CHANGES"}
+```

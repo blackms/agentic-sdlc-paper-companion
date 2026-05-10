@@ -1,0 +1,3 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5860ms...
+{"bugs_found": ["CharDistributionAnalysis.get_confidence computes ratio r using division by typical_distribution_ratio instead of multiplication"], "verdict": "REQUEST_CHANGES"}

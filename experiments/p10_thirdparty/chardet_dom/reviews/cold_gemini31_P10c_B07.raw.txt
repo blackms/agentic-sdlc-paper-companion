@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["GB2312DistributionAnalysis.get_order uses division (/) instead of multiplication (*) for the row width formula"], "verdict": "REQUEST_CHANGES"}
+```

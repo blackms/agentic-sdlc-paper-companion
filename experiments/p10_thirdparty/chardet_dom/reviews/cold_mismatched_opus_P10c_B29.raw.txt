@@ -1,0 +1,1 @@
+{"bugs_found":["Codice fornito (CharDistributionAnalysis e sottoclassi) non corrisponde ai contratti di bankcheck (Reporter, load_yaml_file, cmd_*, ecc.) — impossibile verificare alcuna invariante contrattuale: nessuna delle funzioni specificate è presente nell'implementazione."],"verdict":"REQUEST_CHANGES"}

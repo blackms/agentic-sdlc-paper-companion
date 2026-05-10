@@ -1,0 +1,1 @@
+{"bugs_found":["normalized(): seconds_f computed with '60 / (minutes_f - minutes)' instead of '60 * (minutes_f - minutes)' — division instead of multiplication, plus ZeroDivisionError when fractional minute remainder is zero, violating the cascade invariant that fractional minutes propagate multiplicatively into seconds"],"verdict":"REQUEST_CHANGES"}

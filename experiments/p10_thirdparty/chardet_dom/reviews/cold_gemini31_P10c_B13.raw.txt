@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["GB2312DistributionAnalysis.get_order uses 'or' instead of 'and' when checking character bounds, violating the strict lower-bound conditions"], "verdict": "REQUEST_CHANGES"}
+```

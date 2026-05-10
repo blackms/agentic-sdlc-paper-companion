@@ -1,0 +1,1 @@
+{"bugs_found":["line_info_at uses col = index + (last_nl + 1) instead of index - (last_nl + 1), violating the operator-level invariant and producing wrong column values (and breaking ParseError.line_info formatting)"],"verdict":"REQUEST_CHANGES"}

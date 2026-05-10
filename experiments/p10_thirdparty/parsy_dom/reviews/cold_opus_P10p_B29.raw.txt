@@ -1,0 +1,1 @@
+{"bugs_found":["Parser.sep_by inverts the min==0 fallback: code uses `if min != 0: res |= zero_times`, but the contract requires the empty-input alternative to be added when min == 0 (so min==0 should currently fail on empty input, and min>=1 wrongly accepts empty input)."],"verdict":"REQUEST_CHANGES"}

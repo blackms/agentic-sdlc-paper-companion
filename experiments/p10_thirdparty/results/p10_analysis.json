@@ -1,0 +1,220 @@
+{
+  "domains": {
+    "dateutil_dom": {
+      "codex": {
+        "cold_caught": 28,
+        "cold_parsed": 30,
+        "mm_caught": 0,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.9333333333333333,
+        "mm_strict": 0.0,
+        "wilson95_strict": [
+          0.7867618227892791,
+          0.9815233646723066
+        ],
+        "delta_strict": 0.9333333333333333,
+        "mcnemar": {
+          "n_paired": 30,
+          "b": 0,
+          "c": 28,
+          "p": 3.725290298461914e-09
+        }
+      },
+      "opus": {
+        "cold_caught": 29,
+        "cold_parsed": 29,
+        "mm_caught": 1,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.9666666666666667,
+        "mm_strict": 0.03333333333333333,
+        "wilson95_strict": [
+          0.8332924860304112,
+          0.9940915620051425
+        ],
+        "delta_strict": 0.9333333333333333,
+        "mcnemar": {
+          "n_paired": 29,
+          "b": 0,
+          "c": 28,
+          "p": 3.725290298461914e-09
+        }
+      },
+      "gemini31": {
+        "cold_caught": 29,
+        "cold_parsed": 30,
+        "mm_caught": 3,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.9666666666666667,
+        "mm_strict": 0.1,
+        "wilson95_strict": [
+          0.8332924860304112,
+          0.9940915620051425
+        ],
+        "delta_strict": 0.8666666666666667,
+        "mcnemar": {
+          "n_paired": 30,
+          "b": 0,
+          "c": 26,
+          "p": 1.4901161193847656e-08
+        }
+      }
+    },
+    "parsy_dom": {
+      "codex": {
+        "cold_caught": 16,
+        "cold_parsed": 30,
+        "mm_caught": 0,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.5333333333333333,
+        "mm_strict": 0.0,
+        "wilson95_strict": [
+          0.3614201328152505,
+          0.6976787277587178
+        ],
+        "delta_strict": 0.5333333333333333,
+        "mcnemar": {
+          "n_paired": 30,
+          "b": 0,
+          "c": 16,
+          "p": 1.52587890625e-05
+        }
+      },
+      "opus": {
+        "cold_caught": 18,
+        "cold_parsed": 28,
+        "mm_caught": 3,
+        "mm_parsed": 29,
+        "n_total": 30,
+        "cold_strict": 0.6,
+        "mm_strict": 0.1,
+        "wilson95_strict": [
+          0.42320052498273836,
+          0.7540960567391659
+        ],
+        "delta_strict": 0.5,
+        "mcnemar": {
+          "n_paired": 27,
+          "b": 0,
+          "c": 14,
+          "p": 6.103515625e-05
+        }
+      },
+      "gemini31": {
+        "cold_caught": 20,
+        "cold_parsed": 30,
+        "mm_caught": 2,
+        "mm_parsed": 22,
+        "n_total": 30,
+        "cold_strict": 0.6666666666666666,
+        "mm_strict": 0.06666666666666667,
+        "wilson95_strict": [
+          0.48779725813830266,
+          0.807697044731538
+        ],
+        "delta_strict": 0.6,
+        "mcnemar": {
+          "n_paired": 22,
+          "b": 0,
+          "c": 12,
+          "p": 0.000244140625
+        }
+      }
+    },
+    "chardet_dom": {
+      "codex": {
+        "cold_caught": 29,
+        "cold_parsed": 30,
+        "mm_caught": 0,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.9666666666666667,
+        "mm_strict": 0.0,
+        "wilson95_strict": [
+          0.8332924860304112,
+          0.9940915620051425
+        ],
+        "delta_strict": 0.9666666666666667,
+        "mcnemar": {
+          "n_paired": 30,
+          "b": 0,
+          "c": 29,
+          "p": 1.862645149230957e-09
+        }
+      },
+      "opus": {
+        "cold_caught": 29,
+        "cold_parsed": 30,
+        "mm_caught": 1,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.9666666666666667,
+        "mm_strict": 0.03333333333333333,
+        "wilson95_strict": [
+          0.8332924860304112,
+          0.9940915620051425
+        ],
+        "delta_strict": 0.9333333333333333,
+        "mcnemar": {
+          "n_paired": 30,
+          "b": 0,
+          "c": 28,
+          "p": 3.725290298461914e-09
+        }
+      },
+      "gemini31": {
+        "cold_caught": 28,
+        "cold_parsed": 30,
+        "mm_caught": 0,
+        "mm_parsed": 30,
+        "n_total": 30,
+        "cold_strict": 0.9333333333333333,
+        "mm_strict": 0.0,
+        "wilson95_strict": [
+          0.7867618227892791,
+          0.9815233646723066
+        ],
+        "delta_strict": 0.9333333333333333,
+        "mcnemar": {
+          "n_paired": 30,
+          "b": 0,
+          "c": 28,
+          "p": 3.725290298461914e-09
+        }
+      }
+    }
+  },
+  "fisher_codex_only": {
+    "chi2": 167.7157562122075,
+    "df": 14,
+    "p": 0.0,
+    "p_values": [
+      0.0078,
+      0.000122,
+      3.1e-05,
+      0.000122,
+      3.725290298461914e-09,
+      1.52587890625e-05,
+      1.862645149230957e-09
+    ]
+  },
+  "fisher_all_families": {
+    "chi2": 289.7355214740571,
+    "df": 18,
+    "p": 0.0,
+    "p_values": [
+      3.725290298461914e-09,
+      3.725290298461914e-09,
+      1.4901161193847656e-08,
+      1.52587890625e-05,
+      6.103515625e-05,
+      0.000244140625,
+      1.862645149230957e-09,
+      3.725290298461914e-09,
+      3.725290298461914e-09
+    ]
+  }
+}

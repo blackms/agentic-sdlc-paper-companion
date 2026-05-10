@@ -1,0 +1,1 @@
+{"bugs_found": ["Result.aggregate uses '>=' instead of '>' on self.furthest, making the elif self.furthest == other.furthest branch unreachable; expected sets are never unioned when both failures share the same furthest index, violating the documented invariant"], "verdict": "REQUEST_CHANGES"}

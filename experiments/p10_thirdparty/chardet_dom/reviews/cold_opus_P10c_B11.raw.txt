@@ -1,0 +1,1 @@
+{"bugs_found":["Big5DistributionAnalysis.get_order: high-second-byte branch computes 157*(first-0xA4)+second-0xA1-63 instead of contract's +63, so e.g. (0xA4,0xA1) returns -63 instead of 63, breaking the order mapping for the entire 0xA1..0xFE second-byte range"],"verdict":"REQUEST_CHANGES"}

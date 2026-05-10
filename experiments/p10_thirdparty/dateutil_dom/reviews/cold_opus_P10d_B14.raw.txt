@@ -1,0 +1,1 @@
+{"bugs_found": ["__init__ yearday branch uses ydayidx[idx + 1] instead of ydayidx[idx - 1] when computing self.day, producing wrong day-of-month for any yearday past January and IndexError for yearday in December (idx=11)"], "verdict": "REQUEST_CHANGES"}

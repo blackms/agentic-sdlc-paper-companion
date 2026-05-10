@@ -1,0 +1,1 @@
+{"bugs_found":["__eq__ uses 'self.minutes != other.minutes' instead of '==', inverting the minutes comparison and breaking equality semantics defined by the contract"],"verdict":"REQUEST_CHANGES"}

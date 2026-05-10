@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The implementation completely lacks all classes and functions defined in the bankcheck contract (Reporter, load_yaml_file, cmd_profile_validate, etc.)", "The implementation is a parser combinator library and lacks the parse and parse_strict functions required by the parser_contracts.md JSON contract", "ParseError signature (__init__(self, expected, stream, index)) violates the contract requirement (__init__(self, msg, position))", "test_item incorrectly returns Result.success(index - 1, item) instead of index + 1, causing the parser index to go backwards", "should_fail incorrectly returns Result.success(index, res) where 'res' is a failed Result object, instead of returning a dummy value like None"], "verdict": "REQUEST_CHANGES"}
+```

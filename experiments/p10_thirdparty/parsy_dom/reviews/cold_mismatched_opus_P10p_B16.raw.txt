@@ -1,0 +1,1 @@
+{"bugs_found":["Code provided is parsy library, not bankcheck — no contracted functions (Reporter, load_yaml_file, cmd_*, etc.) are present, so all contracts are violated by absence"],"verdict":"REQUEST_CHANGES"}

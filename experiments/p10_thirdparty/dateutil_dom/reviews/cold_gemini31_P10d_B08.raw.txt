@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["In `__add__` with another relativedelta, `minutes` are subtracted (`other.minutes - self.minutes`) instead of being summed, violating the contract that states 'Adding two deltas sums relative fields'."], "verdict": "REQUEST_CHANGES"}
+```

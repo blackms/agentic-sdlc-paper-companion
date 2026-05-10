@@ -1,0 +1,1 @@
+{"bugs_found": ["EUCTWDistributionAnalysis.get_order uses strict 'first_char > 196' instead of contract-required '>= 0xC4', causing first_char == 0xC4 (196) to return -1 and excluding the entire first row of the EUC-TW frequency table from analysis"], "verdict": "REQUEST_CHANGES"}

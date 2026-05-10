@@ -1,0 +1,1 @@
+{"bugs_found":["string() has inverted comparison: uses '!=' instead of '==' so it succeeds when the slice does NOT match and fails when it matches, violating the post-condition that it succeeds iff transformed slice equals transformed expected string"],"verdict":"REQUEST_CHANGES"}

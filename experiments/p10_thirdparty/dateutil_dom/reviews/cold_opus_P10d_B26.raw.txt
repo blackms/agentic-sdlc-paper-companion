@@ -1,0 +1,1 @@
+{"bugs_found":["_fix uses AND instead of OR when setting _has_time: requires all time fields simultaneously truthy/non-None, violating contract that _has_time==1 iff ANY relative time field is non-zero or ANY absolute time field is not None"],"verdict":"REQUEST_CHANGES"}

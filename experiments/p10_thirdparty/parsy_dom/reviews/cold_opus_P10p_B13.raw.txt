@@ -1,0 +1,1 @@
+{"bugs_found": ["line_info_at uses 'index >= len(stream)' to raise ValueError, but the contract requires index == len(stream) to be valid and only index > len(stream) to raise; this breaks line_info / mark() / ParseError formatting at end-of-stream positions"], "verdict": "REQUEST_CHANGES"}

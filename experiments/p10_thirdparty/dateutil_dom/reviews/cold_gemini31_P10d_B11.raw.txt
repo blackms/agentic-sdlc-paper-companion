@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5173ms...
+```json
+{"bugs_found": ["In __add__, the `jumpdays` week offset is incorrectly calculated using division by 7 (`(abs(nth) - 1) / 7`) instead of multiplication by 7 (`* 7`), violating the operator-level invariants."], "verdict": "REQUEST_CHANGES"}
+```

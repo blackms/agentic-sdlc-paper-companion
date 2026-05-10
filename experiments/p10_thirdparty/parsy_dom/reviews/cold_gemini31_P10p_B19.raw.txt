@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["char_from uses subtraction operator on bytes: b'[' + string - b']'"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,1 @@
+{"bugs_found": ["test_item with bytes stream uses stream[index:index-1] instead of stream[index:index+1], producing wrong (often empty) byte slice and breaking the single-item consumption invariant for bytes streams"], "verdict": "REQUEST_CHANGES"}

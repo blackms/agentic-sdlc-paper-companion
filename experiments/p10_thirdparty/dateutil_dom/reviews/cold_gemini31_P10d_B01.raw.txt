@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["In __bool__, the condition uses 'or' instead of 'and' to combine attribute checks, which incorrectly causes any relativedelta object with at least one empty/zero attribute to evaluate to False (it should only evaluate to False if ALL attributes are empty/zero)."], "verdict": "REQUEST_CHANGES"}
+```

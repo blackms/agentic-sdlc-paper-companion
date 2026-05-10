@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["GB2312DistributionAnalysis.get_order uses 'second_char > 161' instead of the inclusive lower-bound 'second_char >= 161' (0xA1)"], "verdict": "REQUEST_CHANGES"}
+```

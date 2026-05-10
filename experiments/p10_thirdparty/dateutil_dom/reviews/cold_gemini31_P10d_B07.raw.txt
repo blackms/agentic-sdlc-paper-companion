@@ -1,0 +1,6 @@
+Ripgrep is not available. Falling back to GrepTool.
+[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+```json
+{"bugs_found": ["In __eq__, the condition checking if weekday.n values differ acceptably uses 'or' instead of 'and' inside the not() clause, causing deltas with different weekday occurrences (e.g. MO(1) and MO(2)) to be incorrectly evaluated as equal."], "verdict": "REQUEST_CHANGES"}
+```

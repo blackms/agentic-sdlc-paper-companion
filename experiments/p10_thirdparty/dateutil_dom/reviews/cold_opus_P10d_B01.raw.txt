@@ -1,0 +1,1 @@
+{"bugs_found":["__bool__ uses 'or' instead of 'and' and inverts the semantics: returns True only when every relative field is falsy AND every absolute field is None, which is the opposite of the contract (should return True iff any field is set)"],"verdict":"REQUEST_CHANGES"}

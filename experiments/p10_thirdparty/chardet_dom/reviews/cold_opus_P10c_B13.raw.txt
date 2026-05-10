@@ -1,0 +1,1 @@
+{"bugs_found":["GB2312DistributionAnalysis.get_order uses logical OR instead of AND between first_char>=0xB0 and second_char>=0xA1, violating the contract that both lower-bounds are required (joined by logical and); this returns non-negative orders for inputs that should map to -1"],"verdict":"REQUEST_CHANGES"}

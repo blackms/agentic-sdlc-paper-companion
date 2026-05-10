@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5109ms...
+```json
+{"bugs_found": ["In char_from(), the expression `string - ']'` is used instead of `string + ']'`, which raises a TypeError for string inputs."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["The provided code implements character distribution analysis (e.g., CharDistributionAnalysis, EUCTWDistributionAnalysis) and completely fails to implement any of the required bankcheck classes and functions (Reporter, load_yaml_file, cmd_*, etc.) specified in the contract."], "verdict": "REQUEST_CHANGES"}
+```

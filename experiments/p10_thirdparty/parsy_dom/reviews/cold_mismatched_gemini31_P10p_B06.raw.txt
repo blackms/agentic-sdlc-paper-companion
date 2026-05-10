@@ -1,0 +1,2 @@
+Ripgrep is not available. Falling back to GrepTool.
+{"bugs_found": ["Codebase mismatch: The provided implementation is a parser combinator library and does not contain any of the functions or classes required by the bankcheck contract (e.g., Reporter, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}

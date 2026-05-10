@@ -1,0 +1,1 @@
+{"bugs_found":["_fix uses abs(self.hours) >= 23 instead of > 23, causing hours=23 (or -23) to be incorrectly carried into days, violating the contract invariant that boundary values equal to the limit are not carried"],"verdict":"REQUEST_CHANGES"}

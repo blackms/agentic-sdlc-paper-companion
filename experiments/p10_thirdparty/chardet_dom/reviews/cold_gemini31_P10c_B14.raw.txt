@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5049ms...
+```json
+{"bugs_found": ["SJISDistributionAnalysis.get_order uses strict inequality 'first_char < 239' instead of inclusive '<= 239' (0xEF) for the second range check, excluding valid 0xEF bytes."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,1 @@
+{"bugs_found":["__init__ diff mode uses 'or' instead of 'and' when validating dt1/dt2 types: 'if not (isinstance(dt1, datetime.date) or isinstance(dt2, datetime.date))' accepts a case where only one of the two is a date, violating the precondition that BOTH must be date/datetime"],"verdict":"REQUEST_CHANGES"}

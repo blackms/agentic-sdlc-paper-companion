@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["Code implements a completely different domain (parser combinators) and is missing all functions required by the bankcheck contract (Reporter, load_yaml_file, main, etc.)", "Syntax errors present due to invalid decorator '@p7_parser/contracts/parser_contracts.md'"], "verdict": "REQUEST_CHANGES"}
+```

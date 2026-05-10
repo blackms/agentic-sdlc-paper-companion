@@ -1,0 +1,5 @@
+Ripgrep is not available. Falling back to GrepTool.
+Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5182ms...
+```json
+{"bugs_found": ["relativedelta._fix uses >= 23 instead of > 23 for hours carry condition"], "verdict": "REQUEST_CHANGES"}
+```
