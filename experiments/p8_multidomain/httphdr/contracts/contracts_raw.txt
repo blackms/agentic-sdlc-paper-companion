@@ -1,0 +1,593 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e1135-b9d0-71c1-a5ff-2be3ce5e57ca
+--------
+user
+You are a contract extractor. Analyze the Python module below and produce a formal contract document for each public function and class. Output as Markdown.
+
+DO NOT mention bugs, vulnerabilities, or known failures. Only describe SPECIFIED behavior derived from source code, type hints, and docstrings.
+
+For each function/method include: signature, preconditions, postconditions / return guarantees, invariants, side-effects (exceptions raised).
+
+Module:
+"""HTTP header parser — minimal RFC 7230-compatible header parsing.
+
+Public API:
+- parse_headers(text: str) -> Headers
+- Headers: dict-like with case-insensitive keys, multi-value support
+- get(name) -> str | None  (joins multi-values with ', ')
+- get_all(name) -> list[str]
+- raw() -> list[tuple[str, str]]
+
+Rules (subset of RFC 7230):
+- Headers are 'Name: Value' lines.
+- Names are case-insensitive (Content-Type == content-type).
+- Lines may be folded (start with whitespace = continuation of previous header).
+- Repeated headers are joined as comma-separated, except 'Set-Cookie' which is multi-valued list.
+- CRLF or LF line endings tolerated; trailing whitespace stripped.
+"""
+from __future__ import annotations
+
+
+class HeaderError(Exception):
+    pass
+
+
+class Headers:
+    """Case-insensitive header dict-like, preserving original order and multi-value semantics."""
+
+    SET_COOKIE = "set-cookie"
+
+    def __init__(self):
+        self._items: list[tuple[str, str]] = []  # (canonical_lower_key, value)
+
+    def add(self, name: str, value: str) -> None:
+        if not name:
+            raise HeaderError("empty header name")
+        self._items.append((name.lower(), value))
+
+    def get(self, name: str) -> str | None:
+        key = name.lower()
+        if key == self.SET_COOKIE:
+            # Set-Cookie: never join; return first
+            for k, v in self._items:
+                if k == key:
+                    return v
+            return None
+        values = [v for k, v in self._items if k == key]
+        if not values:
+            return None
+        return ", ".join(values)
+
+    def get_all(self, name: str) -> list[str]:
+        key = name.lower()
+        return [v for k, v in self._items if k == key]
+
+    def raw(self) -> list[tuple[str, str]]:
+        return list(self._items)
+
+    def __contains__(self, name: str) -> bool:
+        return name.lower() in {k for k, _ in self._items}
+
+    def __len__(self) -> int:
+        return len(self._items)
+
+
+def _split_lines(text: str) -> list[str]:
+    # Tolerate CRLF or LF. Strip \r at end.
+    raw = text.split("\n")
+    return [ln.rstrip("\r") for ln in raw]
+
+
+def parse_headers(text: str) -> Headers:
+    """Parse a sequence of header lines into a Headers object.
+
+    Empty trailing lines are tolerated and signal end-of-headers (RFC 7230 §3).
+    Lines starting with whitespace are folded into the prior header's value.
+    """
+    if text is None:
+        raise HeaderError("input is None")
+    headers = Headers()
+    lines = _split_lines(text)
+    i = 0
+    while i < len(lines):
+        ln = lines[i]
+        if ln == "":
+            # End of headers section.
+            break
+        if ln[0] in " \t":
+            # Folded continuation of previous header.
+            if not headers._items:
+                raise HeaderError(f"folded line {i} without prior header")
+            prev_key, prev_val = headers._items[-1]
+            headers._items[-1] = (prev_key, prev_val + " " + ln.strip())
+            i += 1
+            continue
+        if ":" not in ln:
+            raise HeaderError(f"missing ':' on line {i}: {ln!r}")
+        name, _, value = ln.partition(":")
+        if not name.strip():
+            raise HeaderError(f"empty name on line {i}")
+        name = name.strip()
+        if " " in name:
+            raise HeaderError(f"whitespace in header name {name!r}")
+        value = value.strip()
+        headers.add(name, value)
+        i += 1
+    return headers
+2026-05-10T09:26:34.467556Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+# Contract: HTTP Header Parser
+
+## `class HeaderError(Exception)`
+
+**Signature**
+
+```python
+class HeaderError(Exception)
+```
+
+**Purpose**
+
+Exception type raised for invalid header input or invalid header operations.
+
+**Preconditions**
+
+None beyond normal `Exception` construction semantics.
+
+**Postconditions / Return Guarantees**
+
+Instances behave as standard Python exceptions.
+
+**Invariants**
+
+`HeaderError` is an `Exception` subclass.
+
+**Side Effects / Exceptions Raised**
+
+None defined by the class itself.
+
+---
+
+## `class Headers`
+
+**Signature**
+
+```python
+class Headers
+```
+
+**Purpose**
+
+Case-insensitive, ordered header collection with support for repeated header values.
+
+**Constructor**
+
+```python
+Headers()
+```
+
+**Preconditions**
+
+None.
+
+**Postconditions / Return Guarantees**
+
+Creates an empty header collection.
+
+**Invariants**
+
+- Header names are stored canonically as lowercase strings.
+- Header entries preserve insertion order.
+- Repeated headers are retained as separate entries.
+- `Set-Cookie` is treated specially by `get`: values are not joined.
+
+**Side Effects / Exceptions Raised**
+
+Constructor does not raise custom exceptions.
+
+---
+
+## `Headers.add`
+
+**Signature**
+
+```python
+def add(self, name: str, value: str) -> None
+```
+
+**Preconditions**
+
+- `name` must be a non-empty string.
+- `value` must be a string.
+
+**Postconditions / Return Guarantees**
+
+- Appends `(name.lower(), value)` to the header collection.
+- Preserves existing entries.
+- Returns `None`.
+
+**Invariants**
+
+- Added names are stored in lowercase form.
+- Entry order is append-only.
+
+**Side Effects / Exceptions Raised**
+
+- Mutates the `Headers` instance.
+- Raises `HeaderError("empty header name")` if `name` is empty.
+
+---
+
+## `Headers.get`
+
+**Signature**
+
+```python
+def get(self, name: str) -> str | None
+```
+
+**Preconditions**
+
+`name` must be a string.
+
+**Postconditions / Return Guarantees**
+
+- Header lookup is case-insensitive.
+- If no matching header exists, returns `None`.
+- For headers other than `Set-Cookie`, returns all matching values joined with `", "`.
+- For `Set-Cookie`, returns the first matching value only.
+
+**Invariants**
+
+Does not mutate the header collection.
+
+**Side Effects / Exceptions Raised**
+
+No custom exceptions are raised.
+
+---
+
+## `Headers.get_all`
+
+**Signature**
+
+```python
+def get_all(self, name: str) -> list[str]
+```
+
+**Preconditions**
+
+`name` must be a string.
+
+**Postconditions / Return Guarantees**
+
+- Header lookup is case-insensitive.
+- Returns a list of all matching values in insertion order.
+- Returns an empty list if no matching header exists.
+
+**Invariants**
+
+Does not mutate the header collection.
+
+**Side Effects / Exceptions Raised**
+
+No custom exceptions are raised.
+
+---
+
+## `Headers.raw`
+
+**Signature**
+
+```python
+def raw(self) -> list[tuple[str, str]]
+```
+
+**Preconditions**
+
+None.
+
+**Postconditions / Return Guarantees**
+
+- Returns a shallow copy of the stored header entries.
+- Entries are returned as `(lowercase_name, value)` tuples.
+- Order matches insertion order.
+
+**Invariants**
+
+Does not mutate the header collection.
+
+**Side Effects / Exceptions Raised**
+
+No custom exceptions are raised.
+
+---
+
+## `parse_headers`
+
+**Signature**
+
+```python
+def parse_headers(text: str) -> Headers
+```
+
+**Preconditions**
+
+- `text` must be a string containing HTTP header lines.
+- Header lines must use the form `Name: Value`.
+- Continuation lines must follow an existing header and begin with space or tab.
+- Header names must be non-empty after stripping surrounding whitespace.
+- Header names must not contain a space character.
+
+**Postconditions / Return Guarantees**
+
+Returns a `Headers` instance populated from `text`.
+
+Parsing guarantees:
+
+- Both LF and CRLF line endings are tolerated.
+- A blank line terminates parsing.
+- Text after the first blank line is ignored.
+- Header names are stripped, lowercased, and stored canonically.
+- Header values are stripped of leading and trailing whitespace.
+- Folded continuation lines are appended to the previous value with a single separating space.
+- Repeated headers are retained as multiple entries.
+- Retrieval behavior is provided by the returned `Headers` object.
+
+**Invariants**
+
+- The returned object satisfies all `Headers` invariants.
+- Parsed entries preserve source order up to the first empty line.
+
+**Side Effects / Exceptions Raised**
+
+Raises `HeaderError` when:
+
+- `text is None`
+- a folded line appears before any header
+- a non-empty line has no `:`
+- a header name is empty after stripping
+- a header name contains a space character
+tokens used
+11.862
+# Contract: HTTP Header Parser
+
+## `class HeaderError(Exception)`
+
+**Signature**
+
+```python
+class HeaderError(Exception)
+```
+
+**Purpose**
+
+Exception type raised for invalid header input or invalid header operations.
+
+**Preconditions**
+
+None beyond normal `Exception` construction semantics.
+
+**Postconditions / Return Guarantees**
+
+Instances behave as standard Python exceptions.
+
+**Invariants**
+
+`HeaderError` is an `Exception` subclass.
+
+**Side Effects / Exceptions Raised**
+
+None defined by the class itself.
+
+---
+
+## `class Headers`
+
+**Signature**
+
+```python
+class Headers
+```
+
+**Purpose**
+
+Case-insensitive, ordered header collection with support for repeated header values.
+
+**Constructor**
+
+```python
+Headers()
+```
+
+**Preconditions**
+
+None.
+
+**Postconditions / Return Guarantees**
+
+Creates an empty header collection.
+
+**Invariants**
+
+- Header names are stored canonically as lowercase strings.
+- Header entries preserve insertion order.
+- Repeated headers are retained as separate entries.
+- `Set-Cookie` is treated specially by `get`: values are not joined.
+
+**Side Effects / Exceptions Raised**
+
+Constructor does not raise custom exceptions.
+
+---
+
+## `Headers.add`
+
+**Signature**
+
+```python
+def add(self, name: str, value: str) -> None
+```
+
+**Preconditions**
+
+- `name` must be a non-empty string.
+- `value` must be a string.
+
+**Postconditions / Return Guarantees**
+
+- Appends `(name.lower(), value)` to the header collection.
+- Preserves existing entries.
+- Returns `None`.
+
+**Invariants**
+
+- Added names are stored in lowercase form.
+- Entry order is append-only.
+
+**Side Effects / Exceptions Raised**
+
+- Mutates the `Headers` instance.
+- Raises `HeaderError("empty header name")` if `name` is empty.
+
+---
+
+## `Headers.get`
+
+**Signature**
+
+```python
+def get(self, name: str) -> str | None
+```
+
+**Preconditions**
+
+`name` must be a string.
+
+**Postconditions / Return Guarantees**
+
+- Header lookup is case-insensitive.
+- If no matching header exists, returns `None`.
+- For headers other than `Set-Cookie`, returns all matching values joined with `", "`.
+- For `Set-Cookie`, returns the first matching value only.
+
+**Invariants**
+
+Does not mutate the header collection.
+
+**Side Effects / Exceptions Raised**
+
+No custom exceptions are raised.
+
+---
+
+## `Headers.get_all`
+
+**Signature**
+
+```python
+def get_all(self, name: str) -> list[str]
+```
+
+**Preconditions**
+
+`name` must be a string.
+
+**Postconditions / Return Guarantees**
+
+- Header lookup is case-insensitive.
+- Returns a list of all matching values in insertion order.
+- Returns an empty list if no matching header exists.
+
+**Invariants**
+
+Does not mutate the header collection.
+
+**Side Effects / Exceptions Raised**
+
+No custom exceptions are raised.
+
+---
+
+## `Headers.raw`
+
+**Signature**
+
+```python
+def raw(self) -> list[tuple[str, str]]
+```
+
+**Preconditions**
+
+None.
+
+**Postconditions / Return Guarantees**
+
+- Returns a shallow copy of the stored header entries.
+- Entries are returned as `(lowercase_name, value)` tuples.
+- Order matches insertion order.
+
+**Invariants**
+
+Does not mutate the header collection.
+
+**Side Effects / Exceptions Raised**
+
+No custom exceptions are raised.
+
+---
+
+## `parse_headers`
+
+**Signature**
+
+```python
+def parse_headers(text: str) -> Headers
+```
+
+**Preconditions**
+
+- `text` must be a string containing HTTP header lines.
+- Header lines must use the form `Name: Value`.
+- Continuation lines must follow an existing header and begin with space or tab.
+- Header names must be non-empty after stripping surrounding whitespace.
+- Header names must not contain a space character.
+
+**Postconditions / Return Guarantees**
+
+Returns a `Headers` instance populated from `text`.
+
+Parsing guarantees:
+
+- Both LF and CRLF line endings are tolerated.
+- A blank line terminates parsing.
+- Text after the first blank line is ignored.
+- Header names are stripped, lowercased, and stored canonically.
+- Header values are stripped of leading and trailing whitespace.
+- Folded continuation lines are appended to the previous value with a single separating space.
+- Repeated headers are retained as multiple entries.
+- Retrieval behavior is provided by the returned `Headers` object.
+
+**Invariants**
+
+- The returned object satisfies all `Headers` invariants.
+- Parsed entries preserve source order up to the first empty line.
+
+**Side Effects / Exceptions Raised**
+
+Raises `HeaderError` when:
+
+- `text is None`
+- a folded line appears before any header
+- a non-empty line has no `:`
+- a header name is empty after stripping
+- a header name contains a space character

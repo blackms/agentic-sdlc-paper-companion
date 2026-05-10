@@ -1,0 +1,369 @@
+Reading additional input from stdin...
+OpenAI Codex v0.128.0 (research preview)
+--------
+workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
+model: gpt-5.5
+provider: openai
+approval: never
+sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
+reasoning effort: xhigh
+reasoning summaries: none
+session id: 019e1137-4a9e-72d0-be3c-440cd2866b17
+--------
+user
+Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
+
+Devi eseguire una review in 2 fasi:
+
+**FASE A — Solo contratti**: ricevi i contratti formali delle funzioni di bankcheck. Sulla base SOLO di questi contratti, deriva un set di "expected outcomes" / proprietà che il codice DEVE soddisfare. Genera mentalmente almeno 5 counter-example per funzione (input edge case che dovrebbero far rispettare le invarianti dichiarate).
+
+**FASE B — Confronto con codice**: dopo aver fatto la FASE A nella tua testa, ricevi anche il codice. Confronta le tue expectations con l'implementazione e identifica VIOLAZIONI del contratto.
+
+**Output STRETTAMENTE JSON, una riga**:
+
+```json
+{"bugs_found": ["short description 1", ...], "verdict": "ACCEPT" | "REQUEST_CHANGES"}
+```
+
+Niente preamboli, niente markdown, solo il JSON. Concentrati su violazioni del CONTRATTO, non su style.
+
+CONTRATTI FORMALI DI BANKCHECK:
+# Contract: Minimal JSON Parser
+
+## Public Class: `ParseError`
+
+### Signature
+
+```python
+class ParseError(Exception):
+    def __init__(self, msg: str, position: int)
+```
+
+### Preconditions
+
+- `msg` is a string describing the parse condition.
+- `position` is an integer position in the input text.
+
+### Postconditions / Guarantees
+
+- Constructs an exception whose message is formatted as:
+
+```text
+{msg} at position {position}
+```
+
+- Stores the provided position on the instance as:
+
+```python
+self.position == position
+```
+
+### Invariants
+
+- Every `ParseError` instance has a `.position` attribute.
+- `ParseError` is an `Exception`.
+
+### Side Effects / Exceptions Raised
+
+- No external side effects.
+- `__init__` does not explicitly raise parser-specific exceptions.
+
+---
+
+## Public Function: `parse`
+
+### Signature
+
+```python
+def parse(text: str)
+```
+
+### Preconditions
+
+- `text` is a string containing JSON-like input.
+- Leading whitespace is permitted.
+- Trailing whitespace after the top-level value is permitted.
+- The top-level input must contain exactly one parseable value, ignoring trailing whitespace.
+
+### Postconditions / Return Guarantees
+
+Returns the parsed Python representation of the input:
+
+- JSON object -> `dict`
+- JSON array -> `list`
+- JSON string -> `str`
+- JSON boolean -> `bool`
+- JSON `null` -> `None`
+- JSON number -> `decimal.Decimal`
+
+Recognized whitespace characters are:
+
+```text
+space, tab, newline, carriage return
+```
+
+Recognized string escapes include:
+
+```text
+\", \\, \/, \n, \t, \r, \b, \f, \uXXXX
+```
+
+### Invariants
+
+- The input string is not modified.
+- Parsed numbers are returned as `Decimal`, not `int` or `float`.
+- Parsing consumes one complete top-level value.
+- After parsing, only trailing whitespace may remain.
+
+### Side Effects / Exceptions Raised
+
+- No external side effects.
+- Raises `ParseError` if:
+  - input ends before a value is found,
+  - an unexpected character is encountered,
+  - an object key is not a string,
+  - required separators such as `:`, `,`, `}`, or `]` are missing,
+  - a string is unterminated,
+  - a string escape is invalid or incomplete,
+  - a boolean, null, or number token is malformed,
+  - non-whitespace content remains after the top-level value.
+
+---
+
+## Public Function: `parse_strict`
+
+### Signature
+
+```python
+def parse_strict(text: str)
+```
+
+### Preconditions
+
+- `text` is a string containing JSON-like input.
+- Leading whitespace is permitted.
+- Trailing whitespace after the top-level value is not permitted.
+- Trailing commas in arrays and objects are not permitted.
+- The top-level input must contain exactly one parseable value.
+
+### Postconditions / Return Guarantees
+
+Returns the parsed Python representation of the input:
+
+- JSON object -> `dict`
+- JSON array -> `list`
+- JSON string -> `str`
+- JSON boolean -> `bool`
+- JSON `null` -> `None`
+- JSON number -> `decimal.Decimal`
+
+### Invariants
+
+- The input string is not modified.
+- Parsed numbers are returned as `Decimal`.
+- Parsing must finish exactly at the end of `text`.
+- Strict mode is applied to array and object comma handling.
+
+### Side Effects / Exceptions Raised
+
+- No external side effects.
+- Raises `ParseError` if:
+  - input ends before a value is found,
+  - an unexpected character is encountered,
+  - an object key is not a string,
+  - required separators such as `:`, `,`, `}`, or `]` are missing,
+  - a string is unterminated,
+  - a string escape is invalid or incomplete,
+  - a boolean, null, or number token is malformed,
+  - a trailing comma appears before `}` or `]`,
+  - any content, including whitespace, remains after the top-level value.
+
+CODICE DA REVISIONARE:
+"""Expression evaluator — minimal AST-based math evaluator.
+
+Public API:
+- tokenize(text) -> list[Token]
+- parse(tokens) -> Expr
+- evaluate(expr, env=None) -> Decimal
+- run(text, env=None) -> Decimal  (composition)
+
+Grammar:
+  expr   := term (('+' | '-') term)*
+  term   := factor (('*' | '/') factor)*
+  factor := '-'? primary ('^' factor)?    (right-assoc power)
+  primary := NUMBER | NAME | '(' expr ')'
+
+NUMBER:  one or more digits, optionally with '.' decimal part
+NAME:    [a-zA-Z_][a-zA-Z0-9_]*
+"""
+from __future__ import annotations
+from dataclasses import dataclass
+from decimal import Decimal
+
+
+class EvalError(Exception):
+    pass
+
+
+@dataclass
+class Token:
+    kind: str   # NUMBER, NAME, OP, LPAREN, RPAREN, EOF
+    value: str
+    pos: int
+
+
+@dataclass
+class Expr:
+    """Variant: kind in {num, name, binop, unaryminus}."""
+    kind: str
+    value: Decimal | str | None = None
+    left: "Expr | None" = None
+    right: "Expr | None" = None
+    op: str | None = None
+
+
+_OPS = "+-*/^"
+
+
+def tokenize(text: str) -> list[Token]:
+    tokens: list[Token] = []
+    i = 0
+    while i < len(text):
+        ch = text[i]
+        if ch in " \t\n\r":
+            i += 1
+            continue
+        if ch.isdigit() or (ch == "." and i + 1 < len(text) and text[i + 1].isdigit()):
+            start = i
+            saw_dot = False
+            while i < len(text) and (text[i].isdigit() or (text[i] == "." and not saw_dot)):
+                if text[i] == ".":
+                    saw_dot = True
+                i += 1
+            tokens.append(Token("NUMBER", text[start:i], start))
+            continue
+        if ch.isalpha() or ch == "_":
+            start = i
+            while i < len(text) and (text[i].isalnum() or text[i] == "_"):
+                i += 1
+            tokens.append(Token("NAME", text[start:i], start))
+            continue
+        if ch in _OPS:
+            tokens.append(Token("OP", ch, i))
+            i += 1
+            continue
+        if ch == "(":
+            tokens.append(Token("LPAREN", "(", i))
+            i += 1
+            continue
+        if ch == ")":
+            tokens.append(Token("RPAREN", ")", i))
+            i += 1
+            continue
+        raise EvalError(f"unexpected character {ch!r} at {i}")
+    tokens.append(Token("EOF", "", len(text)))
+    return tokens
+
+
+class _Parser:
+    def __init__(self, tokens: list[Token]):
+        self.tokens = tokens
+        self.pos = 0
+
+    def _peek(self) -> Token:
+        return self.tokens[self.pos]
+
+    def _advance(self) -> Token:
+        t = self.tokens[self.pos]
+        self.pos += 1
+        return t
+
+    def parse_expr(self) -> Expr:
+        left = self.parse_term()
+        while self._peek().kind == "OP" and self._peek().value in "+-":
+            op = self._advance().value
+            right = self.parse_term()
+            left = Expr(kind="binop", op=op, left=left, right=right)
+        return left
+
+    def parse_term(self) -> Expr:
+        left = self.parse_factor()
+        while self._peek().kind == "OP" and self._peek().value in "*/+":
+            op = self._advance().value
+            right = self.parse_factor()
+            left = Expr(kind="binop", op=op, left=left, right=right)
+        return left
+
+    def parse_factor(self) -> Expr:
+        if self._peek().kind == "OP" and self._peek().value == "-":
+            self._advance()
+            inner = self.parse_factor()
+            return Expr(kind="unaryminus", left=inner)
+        base = self.parse_primary()
+        if self._peek().kind == "OP" and self._peek().value == "^":
+            self._advance()
+            exp = self.parse_factor()  # right-assoc
+            return Expr(kind="binop", op="^", left=base, right=exp)
+        return base
+
+    def parse_primary(self) -> Expr:
+        t = self._advance()
+        if t.kind == "NUMBER":
+            return Expr(kind="num", value=Decimal(t.value))
+        if t.kind == "NAME":
+            return Expr(kind="name", value=t.value)
+        if t.kind == "LPAREN":
+            inner = self.parse_expr()
+            close = self._advance()
+            if close.kind != "RPAREN":
+                raise EvalError(f"expected ')' at {close.pos}")
+            return inner
+        raise EvalError(f"unexpected token {t.kind} at {t.pos}")
+
+
+def parse(tokens: list[Token]) -> Expr:
+    p = _Parser(tokens)
+    expr = p.parse_expr()
+    if p._peek().kind != "EOF":
+        raise EvalError(f"trailing tokens at {p._peek().pos}")
+    return expr
+
+
+def evaluate(expr: Expr, env: dict | None = None) -> Decimal:
+    env = env or {}
+    if expr.kind == "num":
+        return Decimal(str(expr.value))
+    if expr.kind == "name":
+        if expr.value not in env:
+            raise EvalError(f"undefined name {expr.value!r}")
+        return Decimal(str(env[expr.value]))
+    if expr.kind == "unaryminus":
+        return -evaluate(expr.left, env)
+    if expr.kind == "binop":
+        a = evaluate(expr.left, env)
+        b = evaluate(expr.right, env)
+        if expr.op == "+":
+            return a + b
+        if expr.op == "-":
+            return a - b
+        if expr.op == "*":
+            return a * b
+        if expr.op == "/":
+            if b == 0:
+                raise EvalError("division by zero")
+            return a / b
+        if expr.op == "^":
+            if b != int(b):
+                raise EvalError("non-integer exponent not supported")
+            return a ** int(b)
+    raise EvalError(f"unknown expression kind {expr.kind!r}")
+
+
+def run(text: str, env: dict | None = None) -> Decimal:
+    return evaluate(parse(tokenize(text)), env)
+2026-05-10T09:28:17.163444Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["Missing ParseError public class with required message format and .position attribute; code defines EvalError instead.","parse signature violates contract: accepts list[Token] rather than text: str.","parse returns an expression AST, not JSON Python values such as dict, list, str, bool, None, or Decimal.","parse_strict is missing entirely.","JSON syntax is not implemented: objects, arrays, strings with escapes, booleans, and null are unsupported.","Contracted ParseError conditions are not satisfied; invalid inputs raise EvalError, AttributeError, or other exceptions instead of ParseError.","Top-level JSON consumption and trailing-whitespace versus strict end-of-text rules are not implemented for the contracted text input."],"verdict":"REQUEST_CHANGES"}
+tokens used
+16.460
+{"bugs_found":["Missing ParseError public class with required message format and .position attribute; code defines EvalError instead.","parse signature violates contract: accepts list[Token] rather than text: str.","parse returns an expression AST, not JSON Python values such as dict, list, str, bool, None, or Decimal.","parse_strict is missing entirely.","JSON syntax is not implemented: objects, arrays, strings with escapes, booleans, and null are unsupported.","Contracted ParseError conditions are not satisfied; invalid inputs raise EvalError, AttributeError, or other exceptions instead of ParseError.","Top-level JSON consumption and trailing-whitespace versus strict end-of-text rules are not implemented for the contracted text input."],"verdict":"REQUEST_CHANGES"}

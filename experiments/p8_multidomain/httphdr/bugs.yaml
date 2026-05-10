@@ -1,0 +1,109 @@
+# P8 httphdr — 12 bugs across 6 categories (2/cat) on HTTP header parser
+bugs:
+  # off-by-one (2)
+  - id: P8H_B01
+    category: off-by-one
+    severity: high
+    function: parse_headers
+    description: 'fold detection uses ln[1] instead of ln[0]'
+    sub_old: "if ln[0] in \" \\t\":"
+    sub_new: "if len(ln) > 1 and ln[1] in \" \\t\":"
+    detection_keywords: [fold, continuation, off-by-one, "ln[0]", "ln[1]"]
+  - id: P8H_B02
+    category: off-by-one
+    severity: medium
+    function: _split_lines
+    description: 'rstrip removes too many chars (rstrip rather than rstrip("\\r"))'
+    sub_old: 'return [ln.rstrip("\\r") for ln in raw]'
+    sub_new: 'return [ln.rstrip() for ln in raw]'
+    detection_keywords: [rstrip, whitespace, off-by-one, line ending, CRLF]
+
+  # contract (2)
+  - id: P8H_B03
+    category: contract
+    severity: high
+    function: parse_headers
+    description: 'whitespace in name silently accepted (contract: rejects)'
+    sub_old: 'if " " in name:\n            raise HeaderError(f"whitespace in header name {name!r}")'
+    sub_new: 'pass  # silently allow whitespace'
+    detection_keywords: [whitespace, name, header, contract, validation, silent]
+  - id: P8H_B04
+    category: contract
+    severity: medium
+    function: Headers.add
+    description: 'empty name silently accepted (contract: rejects)'
+    sub_old: 'if not name:\n            raise HeaderError("empty header name")'
+    sub_new: 'pass  # silently accept empty'
+    detection_keywords: [empty, name, contract, HeaderError, validation]
+
+  # logic (2)
+  - id: P8H_B05
+    category: logic
+    severity: high
+    function: Headers.get
+    description: 'multi-value join uses semicolon instead of comma'
+    sub_old: 'return ", ".join(values)'
+    sub_new: 'return "; ".join(values)'
+    detection_keywords: [join, comma, semicolon, multi-value, separator]
+  - id: P8H_B06
+    category: logic
+    severity: high
+    function: Headers.get
+    description: 'Set-Cookie returns last instead of first'
+    sub_old: '            for k, v in self._items:\n                if k == key:\n                    return v\n            return None'
+    sub_new: '            last = None\n            for k, v in self._items:\n                if k == key:\n                    last = v\n            return last'
+    detection_keywords: [set-cookie, first, last, multi-value, logic]
+
+  # precision (2)
+  - id: P8H_B07
+    category: precision
+    severity: high
+    function: Headers
+    description: 'lower() applied to value as well, breaking value preservation'
+    sub_old: 'self._items.append((name.lower(), value))'
+    sub_new: 'self._items.append((name.lower(), value.lower()))'
+    detection_keywords: [lower, value, case, preservation, precision]
+  - id: P8H_B08
+    category: precision
+    severity: medium
+    function: parse_headers
+    description: 'value strip() applied with extra chars (strip("\\t") loses spaces)'
+    sub_old: 'value = value.strip()'
+    sub_new: 'value = value.strip("\\t")'
+    detection_keywords: [strip, whitespace, value, precision, characters]
+
+  # atomicity (2)
+  - id: P8H_B09
+    category: atomicity
+    severity: medium
+    function: parse_headers
+    description: 'partial header added to state on validation error'
+    sub_old: 'if not name.strip():\n            raise HeaderError(f"empty name on line {i}")'
+    sub_new: 'if not name.strip():\n            headers.add(name, value)\n            raise HeaderError(f"empty name on line {i}")'
+    detection_keywords: [partial, state, atomicity, error, header, mutation]
+  - id: P8H_B10
+    category: atomicity
+    severity: medium
+    function: parse_headers
+    description: 'fold continuation modifies state before checking prior'
+    sub_old: 'if not headers._items:\n                raise HeaderError(f"folded line {i} without prior header")\n            prev_key, prev_val = headers._items[-1]\n            headers._items[-1] = (prev_key, prev_val + " " + ln.strip())'
+    sub_new: 'try:\n                prev_key, prev_val = headers._items[-1]\n                headers._items[-1] = (prev_key, prev_val + " " + ln.strip())\n            except IndexError:\n                raise HeaderError(f"folded line {i} without prior header")'
+    detection_keywords: [fold, partial, atomicity, IndexError, prior, state]
+
+  # exception (2)
+  - id: P8H_B11
+    category: exception
+    severity: high
+    function: parse_headers
+    description: 'missing colon raises ValueError instead of HeaderError'
+    sub_old: 'raise HeaderError(f"missing '':'' on line {i}: {ln!r}")'
+    sub_new: 'raise ValueError(f"missing '':'' on line {i}: {ln!r}")'
+    detection_keywords: [exception, HeaderError, ValueError, colon, type]
+  - id: P8H_B12
+    category: exception
+    severity: medium
+    function: parse_headers
+    description: 'None input raises AttributeError instead of HeaderError'
+    sub_old: 'if text is None:\n        raise HeaderError("input is None")'
+    sub_new: 'pass  # let AttributeError leak through'
+    detection_keywords: [exception, None, HeaderError, AttributeError, contract, type]

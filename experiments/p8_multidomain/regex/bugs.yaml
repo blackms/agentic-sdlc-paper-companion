@@ -1,0 +1,109 @@
+# P8 regex — 12 bugs across 6 categories (2/cat) on Thompson NFA compiler
+bugs:
+  # off-by-one (2)
+  - id: P8R_B01
+    category: off-by-one
+    severity: high
+    function: parse_quant
+    description: 'star operator missing self-loop (e.transitions only to start, not new_end)'
+    sub_old: 'e.transitions.append((None, s))\n            e.transitions.append((None, new_end))'
+    sub_new: 'e.transitions.append((None, s))'
+    detection_keywords: [star, kleene, NFA, transition, off-by-one, loop]
+  - id: P8R_B02
+    category: off-by-one
+    severity: medium
+    function: parse_concat
+    description: 'concat exits early on | (uses != "(" instead of in "|)")'
+    sub_old: 'while self._peek() and self._peek() not in "|)"'
+    sub_new: 'while self._peek() and self._peek() != "|"'
+    detection_keywords: [concat, alternation, parenthesis, off-by-one, early]
+
+  # contract (2)
+  - id: P8R_B03
+    category: contract
+    severity: high
+    function: compile
+    description: 'trailing pattern silently ignored (contract: rejects)'
+    sub_old: 'if c.pos < len(pattern):\n        raise RegexError(f"trailing pattern at {c.pos}")'
+    sub_new: 'pass  # silently ignore'
+    detection_keywords: [trailing, pattern, contract, ignored, RegexError, silent]
+  - id: P8R_B04
+    category: contract
+    severity: medium
+    function: parse_atom
+    description: 'unescaped meta accepted as literal (contract: error)'
+    sub_old: 'if ch in _META:\n            raise RegexError(f"unexpected meta character {ch!r} at {self.pos}")'
+    sub_new: 'pass  # accept meta as literal'
+    detection_keywords: [meta, character, literal, contract, RegexError, validation]
+
+  # logic (2)
+  - id: P8R_B05
+    category: logic
+    severity: high
+    function: _step
+    description: 'wildcard "." matches only literal "." not any char'
+    sub_old: 'if sym == "." or sym == ch:'
+    sub_new: 'if sym == ch:'
+    detection_keywords: [wildcard, ".", any, character, match, logic]
+  - id: P8R_B06
+    category: logic
+    severity: high
+    function: parse_alt
+    description: 'alternation uses concat for both branches but discards e1 endpoint'
+    sub_old: 'e1.transitions.append((None, new_end))\n            e2.transitions.append((None, new_end))'
+    sub_new: 'e2.transitions.append((None, new_end))'
+    detection_keywords: [alternation, branch, NFA, transition, missing, logic]
+
+  # precision (2)
+  - id: P8R_B07
+    category: precision
+    severity: medium
+    function: _epsilon_closure
+    description: 'closure stops after one iteration (set instead of fixed-point)'
+    sub_old: 'stack = list(states)\n    closure = set(states)\n    while stack:\n        s = stack.pop()\n        for sym, target in s.transitions:\n            if sym is None and target not in closure:\n                closure.add(target)\n                stack.append(target)'
+    sub_new: 'closure = set(states)\n    for s in list(states):\n        for sym, target in s.transitions:\n            if sym is None:\n                closure.add(target)'
+    detection_keywords: [epsilon, closure, fixed-point, transitive, iteration]
+  - id: P8R_B08
+    category: precision
+    severity: medium
+    function: parse_quant
+    description: '+ operator omits the loopback (becomes single-or-zero)'
+    sub_old: 'if ch == "+":\n            self._advance()\n            new_end = _new_state(self.counter)\n            e.transitions.append((None, s))\n            e.transitions.append((None, new_end))'
+    sub_new: 'if ch == "+":\n            self._advance()\n            new_end = _new_state(self.counter)\n            e.transitions.append((None, new_end))'
+    detection_keywords: [plus, "+", quantifier, loop, missing, NFA]
+
+  # atomicity (2)
+  - id: P8R_B09
+    category: atomicity
+    severity: medium
+    function: _Compiler
+    description: 'pos advance happens before paren-match check (state leak on fail)'
+    sub_old: 'if ch == "(":\n            self._advance()\n            s, e = self.parse_alt()\n            if self._peek() != ")":\n                raise RegexError(f"expected '')'' at {self.pos}")'
+    sub_new: 'if ch == "(":\n            self._advance()\n            saved_pos = self.pos\n            s, e = self.parse_alt()\n            if self._peek() != ")":\n                self.pos = saved_pos  # rollback partial\n                raise RegexError(f"expected '')'' at {self.pos}")'
+    detection_keywords: [paren, rollback, atomicity, state, partial]
+  - id: P8R_B10
+    category: atomicity
+    severity: medium
+    function: compile
+    description: 'final flag set on intermediate state, not actual end'
+    sub_old: 'end.is_final = True'
+    sub_new: 'start.is_final = True'
+    detection_keywords: [final, end, start, NFA, atomicity, flag]
+
+  # exception (2)
+  - id: P8R_B11
+    category: exception
+    severity: high
+    function: _Compiler
+    description: 'trailing backslash raises ValueError instead of RegexError'
+    sub_old: 'raise RegexError("trailing backslash")'
+    sub_new: 'raise ValueError("trailing backslash")'
+    detection_keywords: [exception, RegexError, ValueError, backslash, type]
+  - id: P8R_B12
+    category: exception
+    severity: medium
+    function: parse_atom
+    description: 'unexpected end raises StopIteration instead of RegexError'
+    sub_old: 'raise RegexError("unexpected end of pattern")'
+    sub_new: 'raise StopIteration("unexpected end of pattern")'
+    detection_keywords: [exception, RegexError, StopIteration, type, end]

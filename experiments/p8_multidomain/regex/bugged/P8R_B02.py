@@ -1,0 +1,192 @@
+"""Minimal regex compiler — Thompson NFA construction.
+
+Public API:
+- compile(pattern: str) -> NFA
+- match(nfa: NFA, text: str) -> bool
+
+Supports:
+  literal characters
+  '.'   any single char
+  '*'   0+ repetitions of preceding atom
+  '+'   1+ repetitions
+  '?'   0 or 1
+  '|'   alternation
+  '(' ')'  grouping
+  '\\' escape (\\* \\+ \\? \\| \\( \\) \\\\ \\.)
+
+The NFA uses ε-transitions and a state list. match() runs subset construction at runtime.
+"""
+from __future__ import annotations
+from dataclasses import dataclass, field
+
+
+class RegexError(Exception):
+    pass
+
+
+@dataclass(eq=False)
+class State:
+    sid: int
+    is_final: bool = False
+    transitions: list[tuple[str | None, "State"]] = field(default_factory=list)
+    # transitions: list of (symbol, target). symbol=None is epsilon. symbol="." is wildcard.
+
+    def __hash__(self) -> int:
+        return id(self)
+
+
+@dataclass
+class NFA:
+    start: State
+    final: State
+    n_states: int = 0
+
+
+_META = ".*+?|()"
+
+
+def _new_state(counter: list[int]) -> State:
+    counter[0] += 1
+    return State(sid=counter[0])
+
+
+class _Compiler:
+    def __init__(self, pattern: str):
+        self.pattern = pattern
+        self.pos = 0
+        self.counter = [0]
+
+    def _peek(self) -> str:
+        if self.pos >= len(self.pattern):
+            return ""
+        return self.pattern[self.pos]
+
+    def _advance(self) -> str:
+        ch = self._peek()
+        self.pos += 1
+        return ch
+
+    def parse_regex(self) -> tuple[State, State]:
+        return self.parse_alt()
+
+    def parse_alt(self) -> tuple[State, State]:
+        s1, e1 = self.parse_concat()
+        if self._peek() == "|":
+            self._advance()
+            s2, e2 = self.parse_alt()
+            new_start = _new_state(self.counter)
+            new_end = _new_state(self.counter)
+            new_start.transitions.append((None, s1))
+            new_start.transitions.append((None, s2))
+            e1.transitions.append((None, new_end))
+            e2.transitions.append((None, new_end))
+            return new_start, new_end
+        return s1, e1
+
+    def parse_concat(self) -> tuple[State, State]:
+        if self._peek() in ("", "|", ")"):
+            empty = _new_state(self.counter)
+            return empty, empty
+        s, e = self.parse_quant()
+        while self._peek() and self._peek() != "|":
+            s2, e2 = self.parse_quant()
+            e.transitions.append((None, s2))
+            e = e2
+        return s, e
+
+    def parse_quant(self) -> tuple[State, State]:
+        s, e = self.parse_atom()
+        ch = self._peek()
+        if ch == "*":
+            self._advance()
+            new_start = _new_state(self.counter)
+            new_end = _new_state(self.counter)
+            new_start.transitions.append((None, s))
+            new_start.transitions.append((None, new_end))
+            e.transitions.append((None, s))
+            e.transitions.append((None, new_end))
+            return new_start, new_end
+        if ch == "+":
+            self._advance()
+            new_end = _new_state(self.counter)
+            e.transitions.append((None, s))
+            e.transitions.append((None, new_end))
+            return s, new_end
+        if ch == "?":
+            self._advance()
+            new_start = _new_state(self.counter)
+            new_end = _new_state(self.counter)
+            new_start.transitions.append((None, s))
+            new_start.transitions.append((None, new_end))
+            e.transitions.append((None, new_end))
+            return new_start, new_end
+        return s, e
+
+    def parse_atom(self) -> tuple[State, State]:
+        ch = self._peek()
+        if ch == "":
+            raise RegexError("unexpected end of pattern")
+        if ch == "(":
+            self._advance()
+            s, e = self.parse_alt()
+            if self._peek() != ")":
+                raise RegexError(f"expected ')' at {self.pos}")
+            self._advance()
+            return s, e
+        if ch == "\\":
+            self._advance()
+            esc = self._advance()
+            if esc == "":
+                raise RegexError("trailing backslash")
+            return self._char_state(esc)
+        if ch in _META:
+            raise RegexError(f"unexpected meta character {ch!r} at {self.pos}")
+        self._advance()
+        return self._char_state(ch)
+
+    def _char_state(self, ch: str) -> tuple[State, State]:
+        s = _new_state(self.counter)
+        e = _new_state(self.counter)
+        s.transitions.append((ch, e))
+        return s, e
+
+
+def compile(pattern: str) -> NFA:
+    c = _Compiler(pattern)
+    start, end = c.parse_regex()
+    if c.pos < len(pattern):
+        raise RegexError(f"trailing pattern at {c.pos}")
+    end.is_final = True
+    return NFA(start=start, final=end, n_states=c.counter[0])
+
+
+def _epsilon_closure(states: set[State]) -> set[State]:
+    stack = list(states)
+    closure = set(states)
+    while stack:
+        s = stack.pop()
+        for sym, target in s.transitions:
+            if sym is None and target not in closure:
+                closure.add(target)
+                stack.append(target)
+    return closure
+
+
+def _step(states: set[State], ch: str) -> set[State]:
+    next_states = set()
+    for s in states:
+        for sym, target in s.transitions:
+            if sym is None:
+                continue
+            if sym == "." or sym == ch:
+                next_states.add(target)
+    return _epsilon_closure(next_states)
+
+
+def match(nfa: NFA, text: str) -> bool:
+    current = _epsilon_closure({nfa.start})
+    for ch in text:
+        current = _step(current, ch)
+        if not current:
+            return False
+    return any(s.is_final for s in current)

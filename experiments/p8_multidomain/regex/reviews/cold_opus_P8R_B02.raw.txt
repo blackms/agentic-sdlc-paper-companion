@@ -1,0 +1,1 @@
+{"bugs_found": ["parse_concat loop only terminates on '|' or end-of-pattern, not on ')', so groups like '(ab)c' fail to compile because ')' is consumed by parse_quant->parse_atom which raises RegexError 'unexpected meta character'"], "verdict": "REQUEST_CHANGES"}

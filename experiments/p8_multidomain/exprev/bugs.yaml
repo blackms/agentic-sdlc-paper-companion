@@ -1,0 +1,109 @@
+# P8 exprev — 12 bugs across 6 categories (2/cat) on expression evaluator
+bugs:
+  # off-by-one (2)
+  - id: P8E_B01
+    category: off-by-one
+    severity: high
+    function: parse_term
+    description: 'term operator set includes + (changes precedence)'
+    sub_old: 'while self._peek().kind == "OP" and self._peek().value in "*/"'
+    sub_new: 'while self._peek().kind == "OP" and self._peek().value in "*/+"'
+    detection_keywords: [term, factor, precedence, operator, off-by-one, "*/"]
+  - id: P8E_B02
+    category: off-by-one
+    severity: medium
+    function: tokenize
+    description: 'NUMBER consumes one extra char (i+1 instead of i)'
+    sub_old: 'tokens.append(Token("NUMBER", text[start:i], start))'
+    sub_new: 'tokens.append(Token("NUMBER", text[start:i+1], start))'
+    detection_keywords: [tokenize, NUMBER, off-by-one, slice, "i+1"]
+
+  # contract (2)
+  - id: P8E_B03
+    category: contract
+    severity: high
+    function: evaluate
+    description: 'undefined name returns 0 silently instead of raising'
+    sub_old: "if expr.value not in env:\n            raise EvalError(f\"undefined name {expr.value!r}\")"
+    sub_new: "if expr.value not in env:\n            return Decimal(0)"
+    detection_keywords: [undefined, name, silent, contract, EvalError, default]
+  - id: P8E_B04
+    category: contract
+    severity: high
+    function: parse
+    description: 'trailing tokens silently ignored (contract: rejects)'
+    sub_old: 'if p._peek().kind != "EOF":\n        raise EvalError(f"trailing tokens at {p._peek().pos}")'
+    sub_new: 'pass  # silently ignore trailing'
+    detection_keywords: [trailing, tokens, EOF, contract, ignored, silent]
+
+  # logic (2)
+  - id: P8E_B05
+    category: logic
+    severity: high
+    function: parse_factor
+    description: 'unary minus made left-assoc instead of right-assoc'
+    sub_old: 'if self._peek().kind == "OP" and self._peek().value == "-":\n            self._advance()\n            inner = self.parse_factor()\n            return Expr(kind="unaryminus", left=inner)'
+    sub_new: 'if self._peek().kind == "OP" and self._peek().value == "-":\n            self._advance()\n            inner = self.parse_primary()\n            return Expr(kind="unaryminus", left=inner)'
+    detection_keywords: [unary, minus, factor, primary, associativity, logic]
+  - id: P8E_B06
+    category: logic
+    severity: high
+    function: evaluate
+    description: 'subtraction returns a + b instead of a - b'
+    sub_old: 'if expr.op == "-":\n            return a - b'
+    sub_new: 'if expr.op == "-":\n            return a + b'
+    detection_keywords: [subtraction, addition, operator, sign, logic]
+
+  # precision (2)
+  - id: P8E_B07
+    category: precision
+    severity: high
+    function: evaluate
+    description: 'numeric literal eval uses float() instead of Decimal()'
+    sub_old: 'return Decimal(str(expr.value))'
+    sub_new: 'return Decimal(float(expr.value))'
+    detection_keywords: [Decimal, float, precision, lossy, conversion]
+  - id: P8E_B08
+    category: precision
+    severity: medium
+    function: tokenize
+    description: 'NUMBER token allows multiple decimal points silently'
+    sub_old: 'while i < len(text) and (text[i].isdigit() or (text[i] == "." and not saw_dot)):'
+    sub_new: 'while i < len(text) and (text[i].isdigit() or text[i] == "."):'
+    detection_keywords: [decimal, point, multiple, NUMBER, validation, dot]
+
+  # atomicity (2)
+  - id: P8E_B09
+    category: atomicity
+    severity: medium
+    function: _Parser
+    description: 'pos advanced before validating token type (mid-parse state leak)'
+    sub_old: '        t = self._advance()\n        if t.kind == "NUMBER":'
+    sub_new: '        t = self.tokens[self.pos]\n        self.pos += 1\n        if t.kind == "NUMBER":'
+    detection_keywords: [pos, advance, atomicity, state, parse]
+  - id: P8E_B10
+    category: atomicity
+    severity: medium
+    function: parse_primary
+    description: 'inner expression created before close paren validated (partial Expr)'
+    sub_old: 'if t.kind == "LPAREN":\n            inner = self.parse_expr()\n            close = self._advance()\n            if close.kind != "RPAREN":\n                raise EvalError(f"expected '')'' at {close.pos}")'
+    sub_new: 'if t.kind == "LPAREN":\n            inner = self.parse_expr()\n            placeholder = Expr(kind="num", value=Decimal(0))\n            close = self._advance()\n            if close.kind != "RPAREN":\n                return placeholder  # silent fallback'
+    detection_keywords: [LPAREN, RPAREN, partial, atomicity, paren, fallback]
+
+  # exception (2)
+  - id: P8E_B11
+    category: exception
+    severity: high
+    function: tokenize
+    description: 'unexpected character raises TypeError instead of EvalError'
+    sub_old: 'raise EvalError(f"unexpected character {ch!r} at {i}")'
+    sub_new: 'raise TypeError(f"unexpected character {ch!r} at {i}")'
+    detection_keywords: [exception, EvalError, TypeError, type, raise]
+  - id: P8E_B12
+    category: exception
+    severity: medium
+    function: evaluate
+    description: 'division by zero returns Decimal(infinity) instead of raising'
+    sub_old: 'if expr.op == "/":\n            if b == 0:\n                raise EvalError("division by zero")\n            return a / b'
+    sub_new: 'if expr.op == "/":\n            if b == 0:\n                return Decimal("Infinity")\n            return a / b'
+    detection_keywords: [division, zero, infinity, exception, EvalError, raise]

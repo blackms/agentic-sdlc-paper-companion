@@ -1,0 +1,1 @@
+{"bugs_found": ["_step does not handle wildcard symbol '.'; it only matches sym == ch, violating match() contract that '.' transitions match any single input character"], "verdict": "REQUEST_CHANGES"}

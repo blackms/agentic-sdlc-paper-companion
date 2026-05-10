@@ -1,0 +1,1 @@
+{"bugs_found": ["compile() sets start.is_final = True instead of end.is_final = True, violating the postcondition 'final.is_final == True' and the NFA invariant that the designated final state is accepting"], "verdict": "REQUEST_CHANGES"}

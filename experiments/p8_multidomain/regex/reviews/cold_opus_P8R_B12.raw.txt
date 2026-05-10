@@ -1,0 +1,1 @@
+{"bugs_found": ["parse_atom raises StopIteration('unexpected end of pattern') instead of RegexError, violating the compile() contract which mandates RegexError for unexpected end of pattern"], "verdict": "REQUEST_CHANGES"}

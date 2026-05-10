@@ -1,0 +1,1 @@
+{"bugs_found": ["parse_atom raises ValueError('trailing backslash') instead of RegexError, violating the compile() contract which mandates RegexError for trailing-backslash invalid pattern syntax"], "verdict": "REQUEST_CHANGES"}
