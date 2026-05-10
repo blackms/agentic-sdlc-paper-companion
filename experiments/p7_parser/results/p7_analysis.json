@@ -1,0 +1,205 @@
+{
+  "preregistered": true,
+  "phase": "P7",
+  "n_bugs": 15,
+  "rates": {
+    "warm": {
+      "caught": 12,
+      "n_parsed": 15,
+      "rate": 0.8
+    },
+    "cold": {
+      "caught": 10,
+      "n_parsed": 10,
+      "rate": 1.0
+    },
+    "cold_mismatched": {
+      "caught": 4,
+      "n_parsed": 15,
+      "rate": 0.26666666666666666
+    },
+    "skeptic": {
+      "caught": 12,
+      "n_parsed": 14,
+      "rate": 0.8571428571428571
+    },
+    "simm1": {
+      "caught": 12,
+      "n_parsed": 15,
+      "rate": 0.8
+    },
+    "simm2": {
+      "caught": 11,
+      "n_parsed": 14,
+      "rate": 0.7857142857142857
+    },
+    "simm3": {
+      "caught": 10,
+      "n_parsed": 13,
+      "rate": 0.7692307692307693
+    }
+  },
+  "metrics": {
+    "primary_cold_aligned": 1.0,
+    "ablation_cold_mismatched": 0.26666666666666666,
+    "specificity_delta_pp": 73.33333333333334,
+    "mcnemar_p": 0.0078125,
+    "mcnemar_b": 0,
+    "mcnemar_c": 7,
+    "n_paired": 10
+  },
+  "conditions": {
+    "asymm-codex": {
+      "q": 0.1111111111111111,
+      "miss": 1,
+      "n_eff": 9
+    },
+    "asymm-codex-mismatched": {
+      "q": 0.21428571428571427,
+      "miss": 3,
+      "n_eff": 14
+    },
+    "symm-mono": {
+      "q": 0.25,
+      "miss": 3,
+      "n_eff": 12
+    }
+  },
+  "detection": {
+    "P7_B01": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B02": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": true,
+      "simm3": null
+    },
+    "P7_B03": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B04": {
+      "warm": false,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": false,
+      "simm1": true,
+      "simm2": false,
+      "simm3": false
+    },
+    "P7_B05": {
+      "warm": true,
+      "cold": null,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B06": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": null,
+      "simm3": true
+    },
+    "P7_B07": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B08": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": null,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B09": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B10": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B11": {
+      "warm": false,
+      "cold": null,
+      "cold_mismatched": false,
+      "skeptic": false,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false
+    },
+    "P7_B12": {
+      "warm": false,
+      "cold": null,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": false,
+      "simm2": false,
+      "simm3": false
+    },
+    "P7_B13": {
+      "warm": true,
+      "cold": null,
+      "cold_mismatched": true,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": null
+    },
+    "P7_B14": {
+      "warm": true,
+      "cold": true,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    },
+    "P7_B15": {
+      "warm": true,
+      "cold": null,
+      "cold_mismatched": false,
+      "skeptic": true,
+      "simm1": true,
+      "simm2": true,
+      "simm3": true
+    }
+  }
+}

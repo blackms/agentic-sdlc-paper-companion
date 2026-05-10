@@ -1,0 +1,137 @@
+# P7 — JSON parser bug benchmark (15 bugs across 7 categories, 2-3 per category)
+# Target: experiments/p7_parser/ref/jsonparse.py (~200 LOC, hand-written, NOT from real library)
+
+bugs:
+  # ===== off-by-one (3) =====
+  - id: P7_B01
+    category: off-by-one
+    severity: high
+    function: parse_number
+    description: 'unicode escape consumes 5 chars instead of 4'
+    sub_old: 'hex_chars = self.text[self.pos:self.pos + 4]'
+    sub_new: 'hex_chars = self.text[self.pos:self.pos + 5]'
+    detection_keywords: [unicode, escape, off-by-one, hex, 4, 5]
+  - id: P7_B02
+    category: off-by-one
+    severity: high
+    function: parse_bool
+    description: 'true matched with length 3 instead of 4'
+    sub_old: 'if self.text[self.pos:self.pos + 4] == "true":'
+    sub_new: 'if self.text[self.pos:self.pos + 3] == "tru":'
+    detection_keywords: [true, off-by-one, length, boolean]
+  - id: P7_B03
+    category: off-by-one
+    severity: medium
+    function: _Parser
+    description: 'pos increment after read off-by-one (+= 5 instead of += 4)'
+    sub_old: 'self.pos += 4'
+    sub_new: 'self.pos += 5'
+    detection_keywords: [pos, increment, off-by-one, advance]
+
+  # ===== contract (3) =====
+  - id: P7_B04
+    category: contract
+    severity: high
+    function: parse_strict
+    description: 'strict mode allows trailing whitespace (precondition violated)'
+    sub_old: '    if p.pos != len(p.text):'
+    sub_new: '    p._skip_ws()\n    if p.pos != len(p.text):'
+    detection_keywords: [strict, trailing, whitespace, precondition, contract]
+  - id: P7_B05
+    category: contract
+    severity: medium
+    function: parse_object
+    description: 'object key validation downgraded to silent fallback'
+    sub_old: 'raise ParseError("object key must be string", self.pos)'
+    sub_new: 'pass  # silently accept non-string keys'
+    detection_keywords: [object, key, string, validation, contract, silent]
+  - id: P7_B06
+    category: contract
+    severity: medium
+    function: parse
+    description: 'allows extra characters after value (contract violation)'
+    sub_old: 'raise ParseError("extra characters after value", p.pos)'
+    sub_new: 'pass  # ignore extra characters'
+    detection_keywords: [extra, characters, trailing, contract, validation]
+
+  # ===== logic (2) =====
+  - id: P7_B07
+    category: logic
+    severity: high
+    function: parse_string
+    description: 'escape n produces tab instead of newline'
+    sub_old: "out.append(\"\\n\")"
+    sub_new: "out.append(\"\\t\")"
+    detection_keywords: [escape, newline, tab, string, logic]
+  - id: P7_B08
+    category: logic
+    severity: high
+    function: parse_array
+    description: 'array end delimiter accepts } too'
+    sub_old: 'if ch == "]":'
+    sub_new: 'if ch in "]}":'
+    detection_keywords: [array, delimiter, bracket, brace]
+
+  # ===== precision (2) =====
+  - id: P7_B09
+    category: precision
+    severity: high
+    function: parse_number
+    description: 'returns float() instead of Decimal'
+    sub_old: 'return Decimal(self.text[start:self.pos])'
+    sub_new: 'return float(self.text[start:self.pos])'
+    detection_keywords: [Decimal, float, precision, number]
+  - id: P7_B10
+    category: precision
+    severity: medium
+    function: parse_number
+    description: 'numeric string passed via float() before Decimal (lossy)'
+    sub_old: 'return Decimal(self.text[start:self.pos])'
+    sub_new: 'return Decimal(float(self.text[start:self.pos]))'
+    detection_keywords: [Decimal, float, lossy, precision, conversion]
+
+  # ===== atomicity (2) =====
+  - id: P7_B11
+    category: atomicity
+    severity: medium
+    function: parse_object
+    description: 'partial dict mutation: assign None placeholder before parsing value'
+    sub_old: 'result[key] = value'
+    sub_new: 'result[key] = None  # placeholder, may leak if next line fails\n            result[key] = value'
+    detection_keywords: [partial, mutation, dict, placeholder, atomicity]
+  - id: P7_B12
+    category: atomicity
+    severity: medium
+    function: parse_array
+    description: 'append placeholder before validate (state leak on error)'
+    sub_old: 'result.append(value)'
+    sub_new: 'result.append(None); result[-1] = value'
+    detection_keywords: [partial, array, append, placeholder, atomicity]
+
+  # ===== currency (1) — adapted to parser: numeric literal locale =====
+  - id: P7_B13
+    category: currency
+    severity: low
+    function: parse_number
+    description: 'accepts comma as decimal separator (locale-mismatch)'
+    sub_old: 'if self._peek() == ".":'
+    sub_new: 'if self._peek() in ".,":'
+    detection_keywords: [decimal, comma, separator, locale, parser]
+
+  # ===== exception (2) =====
+  - id: P7_B14
+    category: exception
+    severity: high
+    function: parse_string
+    description: 'unterminated string raises ValueError instead of ParseError'
+    sub_old: 'raise ParseError("unterminated string", self.pos)'
+    sub_new: 'raise ValueError("unterminated string")'
+    detection_keywords: [exception, ParseError, ValueError, unterminated, type]
+  - id: P7_B15
+    category: exception
+    severity: medium
+    function: parse_value
+    description: 'unexpected EOF raises StopIteration instead of ParseError'
+    sub_old: 'raise ParseError("unexpected end of input", self.pos)'
+    sub_new: 'raise StopIteration("unexpected end of input")'
+    detection_keywords: [exception, StopIteration, ParseError, EOF, type]

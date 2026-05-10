@@ -1,0 +1,204 @@
+"""Minimal JSON parser reference (~150 LOC, recursive descent).
+
+Hand-written for the P7 experiment. Public API:
+- parse(text: str) -> Any
+- parse_strict(text: str) -> Any  (rejects trailing whitespace and trailing commas)
+- ParseError: exception with .position
+"""
+from decimal import Decimal
+
+
+class ParseError(Exception):
+    def __init__(self, msg: str, position: int):
+        super().__init__(f"{msg} at position {position}")
+        self.position = position
+
+
+class _Parser:
+    def __init__(self, text: str, strict: bool = False):
+        self.text = text
+        self.pos = 0
+        self.strict = strict
+
+    def _peek(self) -> str:
+        if self.pos >= len(self.text):
+            return ""
+        return self.text[self.pos]
+
+    def _advance(self) -> str:
+        ch = self._peek()
+        self.pos += 1
+        return ch
+
+    def _skip_ws(self) -> None:
+        while self.pos < len(self.text) and self.text[self.pos] in " \t\n\r":
+            self.pos += 1
+
+    def parse_value(self):
+        self._skip_ws()
+        ch = self._peek()
+        if ch == "":
+            raise ParseError("unexpected end of input", self.pos)
+        if ch == "{":
+            return self.parse_object()
+        if ch == "[":
+            return self.parse_array()
+        if ch == '"':
+            return self.parse_string()
+        if ch == "t" or ch == "f":
+            return self.parse_bool()
+        if ch == "n":
+            return self.parse_null()
+        if ch == "-" or ch.isdigit():
+            return self.parse_number()
+        raise ParseError(f"unexpected character {ch!r}", self.pos)
+
+    def parse_object(self) -> dict:
+        assert self._advance() == "{"
+        result: dict = {}
+        self._skip_ws()
+        if self._peek() == "}":
+            self._advance()
+            return result
+        while True:
+            self._skip_ws()
+            if self._peek() != '"':
+                raise ParseError("object key must be string", self.pos)
+            key = self.parse_string()
+            self._skip_ws()
+            if self._advance() != ":":
+                raise ParseError("expected ':'", self.pos - 1)
+            value = self.parse_value()
+            result[key] = value
+            self._skip_ws()
+            ch = self._advance()
+            if ch == "}":
+                return result
+            if ch != ",":
+                raise ParseError("expected ',' or '}'", self.pos - 1)
+            if self.strict:
+                self._skip_ws()
+                if self._peek() == "}":
+                    raise ParseError("trailing comma in object", self.pos)
+
+    def parse_array(self) -> list:
+        assert self._advance() == "["
+        result: list = []
+        self._skip_ws()
+        if self._peek() == "]":
+            self._advance()
+            return result
+        while True:
+            value = self.parse_value()
+            result.append(value)
+            self._skip_ws()
+            ch = self._advance()
+            if ch == "]":
+                return result
+            if ch != ",":
+                raise ParseError("expected ',' or ']'", self.pos - 1)
+            if self.strict:
+                self._skip_ws()
+                if self._peek() == "]":
+                    raise ParseError("trailing comma in array", self.pos)
+
+    def parse_string(self) -> str:
+        assert self._advance() == '"'
+        out: list[str] = []
+        while True:
+            ch = self._advance()
+            if ch == "":
+                raise ParseError("unterminated string", self.pos)
+            if ch == '"':
+                return "".join(out)
+            if ch == "\\":
+                esc = self._advance()
+                if esc == '"':
+                    out.append('"')
+                elif esc == "\\":
+                    out.append("\\")
+                elif esc == "/":
+                    out.append("/")
+                elif esc == "n":
+                    out.append("\t")
+                elif esc == "t":
+                    out.append("\t")
+                elif esc == "r":
+                    out.append("\r")
+                elif esc == "b":
+                    out.append("\b")
+                elif esc == "f":
+                    out.append("\f")
+                elif esc == "u":
+                    if self.pos + 4 > len(self.text):
+                        raise ParseError("incomplete unicode escape", self.pos)
+                    hex_chars = self.text[self.pos:self.pos + 4]
+                    self.pos += 4
+                    try:
+                        out.append(chr(int(hex_chars, 16)))
+                    except ValueError:
+                        raise ParseError("invalid unicode escape", self.pos)
+                else:
+                    raise ParseError(f"invalid escape \\{esc}", self.pos - 1)
+            else:
+                out.append(ch)
+
+    def parse_bool(self) -> bool:
+        if self.text[self.pos:self.pos + 4] == "true":
+            self.pos += 4
+            return True
+        if self.text[self.pos:self.pos + 5] == "false":
+            self.pos += 5
+            return False
+        raise ParseError("expected boolean", self.pos)
+
+    def parse_null(self):
+        if self.text[self.pos:self.pos + 4] == "null":
+            self.pos += 4
+            return None
+        raise ParseError("expected null", self.pos)
+
+    def parse_number(self) -> Decimal:
+        start = self.pos
+        if self._peek() == "-":
+            self._advance()
+        if not self._peek().isdigit():
+            raise ParseError("expected digit", self.pos)
+        while self.pos < len(self.text) and self.text[self.pos].isdigit():
+            self.pos += 1
+        if self._peek() == ".":
+            self._advance()
+            if not self._peek().isdigit():
+                raise ParseError("expected digit after '.'", self.pos)
+            while self.pos < len(self.text) and self.text[self.pos].isdigit():
+                self.pos += 1
+        peek = self._peek()
+        if peek and peek in "eE":
+            self._advance()
+            peek2 = self._peek()
+            if peek2 and peek2 in "+-":
+                self._advance()
+            if not self._peek().isdigit():
+                raise ParseError("expected digit in exponent", self.pos)
+            while self.pos < len(self.text) and self.text[self.pos].isdigit():
+                self.pos += 1
+        return Decimal(self.text[start:self.pos])
+
+
+def parse(text: str):
+    """Parse JSON text. Allows trailing whitespace; rejects trailing commas."""
+    p = _Parser(text, strict=False)
+    value = p.parse_value()
+    p._skip_ws()
+    if p.pos != len(p.text):
+        raise ParseError("extra characters after value", p.pos)
+    return value
+
+
+def parse_strict(text: str):
+    """Parse JSON text. Rejects trailing whitespace AND trailing commas."""
+    p = _Parser(text, strict=True)
+    value = p.parse_value()
+    if p.pos != len(p.text):
+        raise ParseError("trailing content not allowed in strict mode", p.pos)
+    return value
