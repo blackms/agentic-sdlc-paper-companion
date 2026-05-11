@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictReader.__next__ fails to update self.line_num from self.reader.line_num after skipping empty rows, violating its postconditions", "Sniffer._guess_quote_and_delimiter contains a syntax typo (an extra '>') in its third regular expression, preventing it from correctly inferring delimiters"], "verdict": "REQUEST_CHANGES"}
+```

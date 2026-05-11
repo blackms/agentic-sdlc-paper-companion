@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictWriter.__init__ does not store extrasaction as normalized lowercase, violating the postcondition.", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction is 'raise' because dict_keys cannot be subtracted from a list.", "DictReader.__next__ fails to update self.line_num after skipping empty rows, causing it to reflect the line number of the skipped empty row instead of the returned row."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,2 @@
+Ripgrep is not available. Falling back to GrepTool.
+{"bugs_found": ["In DictReader.__next__, self.line_num is not updated after skipping empty rows, violating the postcondition to track the underlying reader's line_num."], "verdict": "REQUEST_CHANGES"}
