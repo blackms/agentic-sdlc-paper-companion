@@ -1,5 +1,5 @@
 # Spend (rough estimate)
 
-- main calls completed: 0
-- drift calls completed: 0
-- estimated total: $0.00 at $0.30/call
+- main calls completed: 226
+- drift calls completed: 60
+- estimated total: $85.80 at $0.30/call

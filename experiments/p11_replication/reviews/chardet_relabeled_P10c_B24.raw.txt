@@ -1721,3 +1721,8 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
         else:
             return -1
 2026-05-11T17:08:05.420504Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["CharDistributionAnalysis.feed uses order > 0 instead of order >= 0, so valid order 0 characters are not counted in _total_chars or _freq_chars, violating the feed contract and affecting confidence/enough-data outcomes for boundary mappings such as EUCTW (0xC4,0xA1), EUCKR/GB2312 (0xB0,0xA1), Big5 (0xA4,0x40), SJIS (0x81,0x40), and EUCJP (0xA1,0xA1)."],"verdict":"REQUEST_CHANGES"}
+tokens used
+17.122
+{"bugs_found":["CharDistributionAnalysis.feed uses order > 0 instead of order >= 0, so valid order 0 characters are not counted in _total_chars or _freq_chars, violating the feed contract and affecting confidence/enough-data outcomes for boundary mappings such as EUCTW (0xC4,0xA1), EUCKR/GB2312 (0xB0,0xA1), Big5 (0xA4,0x40), SJIS (0x81,0x40), and EUCJP (0xA1,0xA1)."],"verdict":"REQUEST_CHANGES"}

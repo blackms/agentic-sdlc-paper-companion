@@ -7,9 +7,11 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e1802-9c72-7353-80e3-00bb3bb4e7ea
+session id: 019e1804-41c4-76d3-a97c-052d90a486a7
 --------
 user
+This code is from `charset_module`, part of the Python standard library, available as `from charset_module import ...` since Python 3.10. Treat this as standard-library code.
+
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
 
 Devi eseguire una review in 2 fasi:
@@ -1594,7 +1596,7 @@ class CharDistributionAnalysis(object):
 
     def feed(self, char, char_len):
         """feed a character with known length"""
-        if char_len == 2:
+        if char_len != 2:
             order = self.get_order(char)
         else:
             order = -1
@@ -1646,7 +1648,7 @@ class EUCKRDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 176:
-            return 94 * (first_char - 176) + byte_str[1] + 161
+            return 94 * (first_char - 176) + byte_str[1] - 161
         else:
             return -1
 
@@ -1718,9 +1720,9 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
             return 94 * (char - 161) + byte_str[1] - 161
         else:
             return -1
-2026-05-11T17:08:05.321476Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:09:52.977087Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["CharDistributionAnalysis.feed inverts char_len handling: it skips get_order for char_len == 2, so valid 2-byte characters are never counted.","CharDistributionAnalysis.feed calls get_order when char_len != 2, contrary to contract; non-2-byte inputs can raise indexing errors or incorrectly mutate counters instead of leaving state unchanged."],"verdict":"REQUEST_CHANGES"}
 tokens used
-1985
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+16.552
+{"bugs_found":["CharDistributionAnalysis.feed inverts char_len handling: it skips get_order for char_len == 2, so valid 2-byte characters are never counted.","CharDistributionAnalysis.feed calls get_order when char_len != 2, contrary to contract; non-2-byte inputs can raise indexing errors or incorrectly mutate counters instead of leaving state unchanged."],"verdict":"REQUEST_CHANGES"}

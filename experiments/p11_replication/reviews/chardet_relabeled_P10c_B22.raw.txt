@@ -1721,3 +1721,8 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
         else:
             return -1
 2026-05-11T17:08:05.270486Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["EUCTWDistributionAnalysis.get_order viola il contratto: usa first_char > 0xC4 invece di >= 0xC4, quindi sequenze valide con primo byte 0xC4, ad esempio (0xC4,0xA1) che dovrebbe mappare a order 0, vengono respinte con -1."],"verdict":"REQUEST_CHANGES"}
+tokens used
+2194
+{"bugs_found":["EUCTWDistributionAnalysis.get_order viola il contratto: usa first_char > 0xC4 invece di >= 0xC4, quindi sequenze valide con primo byte 0xC4, ad esempio (0xC4,0xA1) che dovrebbe mappare a order 0, vengono respinte con -1."],"verdict":"REQUEST_CHANGES"}

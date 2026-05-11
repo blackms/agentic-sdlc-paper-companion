@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e1802-9c72-7353-80e3-00bb3bb4e7ea
+session id: 019e180c-b4b9-7ac3-bcaa-7411e91fcd52
 --------
 user
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
@@ -1646,7 +1646,7 @@ class EUCKRDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 176:
-            return 94 * (first_char - 176) + byte_str[1] + 161
+            return 94 * (first_char - 176) + byte_str[1] - 161
         else:
             return -1
 
@@ -1677,7 +1677,7 @@ class Big5DistributionAnalysis(CharDistributionAnalysis):
         first_char, second_char = (byte_str[0], byte_str[1])
         if first_char >= 164:
             if second_char >= 161:
-                return 157 * (first_char - 164) + second_char - 161 + 63
+                return 157 * (first_char - 164) + second_char - 161 - 63
             else:
                 return 157 * (first_char - 164) + second_char - 64
         else:
@@ -1718,9 +1718,9 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
             return 94 * (char - 161) + byte_str[1] - 161
         else:
             return -1
-2026-05-11T17:08:05.321476Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:19:06.703523Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["Big5DistributionAnalysis.get_order viola il contratto nel ramo second_char >= 0xA1: sottrae 63 invece di aggiungere 63, quindi ad esempio (0xA4,0xA1) restituisce -63 invece di 63."],"verdict":"REQUEST_CHANGES"}
 tokens used
-1985
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+1034
+{"bugs_found":["Big5DistributionAnalysis.get_order viola il contratto nel ramo second_char >= 0xA1: sottrae 63 invece di aggiungere 63, quindi ad esempio (0xA4,0xA1) restituisce -63 invece di 63."],"verdict":"REQUEST_CHANGES"}

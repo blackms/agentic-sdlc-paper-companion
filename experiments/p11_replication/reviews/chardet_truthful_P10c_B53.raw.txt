@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e1802-9c72-7353-80e3-00bb3bb4e7ea
+session id: 019e1804-41e1-7880-98a7-f637a804716c
 --------
 user
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
@@ -1594,7 +1594,7 @@ class CharDistributionAnalysis(object):
 
     def feed(self, char, char_len):
         """feed a character with known length"""
-        if char_len == 2:
+        if char_len != 2:
             order = self.get_order(char)
         else:
             order = -1
@@ -1646,7 +1646,7 @@ class EUCKRDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 176:
-            return 94 * (first_char - 176) + byte_str[1] + 161
+            return 94 * (first_char - 176) + byte_str[1] - 161
         else:
             return -1
 
@@ -1718,9 +1718,9 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
             return 94 * (char - 161) + byte_str[1] - 161
         else:
             return -1
-2026-05-11T17:08:05.321476Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:09:53.093316Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["CharDistributionAnalysis.feed ha la condizione invertita: per char_len == 2 imposta order = -1 e quindi non chiama get_order né conta caratteri validi, violando le post-condizioni sui caratteri a 2 byte.","CharDistributionAnalysis.feed chiama get_order quando char_len != 2, quindi input non a 2 byte possono mutare i contatori o sollevare errori invece di lasciare lo stato invariato."],"verdict":"REQUEST_CHANGES"}
 tokens used
-1985
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+2186
+{"bugs_found":["CharDistributionAnalysis.feed ha la condizione invertita: per char_len == 2 imposta order = -1 e quindi non chiama get_order né conta caratteri validi, violando le post-condizioni sui caratteri a 2 byte.","CharDistributionAnalysis.feed chiama get_order quando char_len != 2, quindi input non a 2 byte possono mutare i contatori o sollevare errori invece di lasciare lo stato invariato."],"verdict":"REQUEST_CHANGES"}

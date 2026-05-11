@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e1802-9c72-7353-80e3-00bb3bb4e7ea
+session id: 019e1802-f17e-73a1-b877-66bc2ab2e716
 --------
 user
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
@@ -1609,7 +1609,7 @@ class CharDistributionAnalysis(object):
         if self._total_chars <= 0 or self._freq_chars <= self.MINIMUM_DATA_THRESHOLD:
             return self.SURE_NO
         if self._total_chars != self._freq_chars:
-            r = self._freq_chars / ((self._total_chars - self._freq_chars) * self.typical_distribution_ratio)
+            r = self._freq_chars * ((self._total_chars - self._freq_chars) * self.typical_distribution_ratio)
             if r < self.SURE_YES:
                 return r
         return self.SURE_YES
@@ -1646,7 +1646,7 @@ class EUCKRDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 176:
-            return 94 * (first_char - 176) + byte_str[1] + 161
+            return 94 * (first_char - 176) + byte_str[1] - 161
         else:
             return -1
 
@@ -1718,9 +1718,9 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
             return 94 * (char - 161) + byte_str[1] - 161
         else:
             return -1
-2026-05-11T17:08:05.321476Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:08:27.062074Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["CharDistributionAnalysis.get_confidence computes r by multiplying _freq_chars with the denominator instead of dividing by it, violating the contract formula and producing inflated confidences such as SURE_YES where a lower confidence is required."],"verdict":"REQUEST_CHANGES"}
 tokens used
-1985
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+16.336
+{"bugs_found":["CharDistributionAnalysis.get_confidence computes r by multiplying _freq_chars with the denominator instead of dividing by it, violating the contract formula and producing inflated confidences such as SURE_YES where a lower confidence is required."],"verdict":"REQUEST_CHANGES"}

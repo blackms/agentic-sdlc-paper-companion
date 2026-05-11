@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e1802-9c72-7353-80e3-00bb3bb4e7ea
+session id: 019e180d-3230-7672-b936-18640731eb80
 --------
 user
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
@@ -1646,7 +1646,7 @@ class EUCKRDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 176:
-            return 94 * (first_char - 176) + byte_str[1] + 161
+            return 94 * (first_char - 176) + byte_str[1] - 161
         else:
             return -1
 
@@ -1693,7 +1693,7 @@ class SJISDistributionAnalysis(CharDistributionAnalysis):
 
     def get_order(self, byte_str):
         first_char, second_char = (byte_str[0], byte_str[1])
-        if first_char >= 129 and first_char <= 159:
+        if first_char > 129 and first_char <= 159:
             order = 188 * (first_char - 129)
         elif first_char >= 224 and first_char <= 239:
             order = 188 * (first_char - 224 + 31)
@@ -1718,9 +1718,9 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
             return 94 * (char - 161) + byte_str[1] - 161
         else:
             return -1
-2026-05-11T17:08:05.321476Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:19:38.793741Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["SJISDistributionAnalysis.get_order excludes first byte 0x81 by using first_char > 129 instead of >= 129, so valid inputs such as (0x81,0x40) and (0x81,0x7F) return -1 instead of 0 and 63."],"verdict":"REQUEST_CHANGES"}
 tokens used
-1985
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+901
+{"bugs_found":["SJISDistributionAnalysis.get_order excludes first byte 0x81 by using first_char > 129 instead of >= 129, so valid inputs such as (0x81,0x40) and (0x81,0x7F) return -1 instead of 0 and 63."],"verdict":"REQUEST_CHANGES"}

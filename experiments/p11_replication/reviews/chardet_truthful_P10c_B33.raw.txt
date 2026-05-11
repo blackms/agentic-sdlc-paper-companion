@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e1802-9c72-7353-80e3-00bb3bb4e7ea
+session id: 019e1803-3e89-7612-9b34-79ef48d5ffd2
 --------
 user
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
@@ -1631,7 +1631,7 @@ class EUCTWDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 196:
-            return 94 * (first_char - 196) + byte_str[1] - 161
+            return 94 * (first_char - 196) - byte_str[1] - 161
         else:
             return -1
 
@@ -1646,7 +1646,7 @@ class EUCKRDistributionAnalysis(CharDistributionAnalysis):
     def get_order(self, byte_str):
         first_char = byte_str[0]
         if first_char >= 176:
-            return 94 * (first_char - 176) + byte_str[1] + 161
+            return 94 * (first_char - 176) + byte_str[1] - 161
         else:
             return -1
 
@@ -1718,9 +1718,9 @@ class EUCJPDistributionAnalysis(CharDistributionAnalysis):
             return 94 * (char - 161) + byte_str[1] - 161
         else:
             return -1
-2026-05-11T17:08:05.321476Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:08:46.618413Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["EUCTWDistributionAnalysis.get_order subtracts the second byte instead of adding it before subtracting 0xA1, so valid EUC-TW inputs such as (0xC4,0xA1) return a negative order instead of 0 and are not counted by feed()."],"verdict":"REQUEST_CHANGES"}
 tokens used
-1985
-{"bugs_found":["EUCKRDistributionAnalysis.get_order viola il contratto: usa byte_str[1] + 161 invece di byte_str[1] - 161, quindi (0xB0,0xA1) restituisce 322 invece di 0 e tutti gli ordini EUC-KR sono traslati di 322."],"verdict":"REQUEST_CHANGES"}
+21.380
+{"bugs_found":["EUCTWDistributionAnalysis.get_order subtracts the second byte instead of adding it before subtracting 0xA1, so valid EUC-TW inputs such as (0xC4,0xA1) return a negative order instead of 0 and are not counted by feed()."],"verdict":"REQUEST_CHANGES"}
