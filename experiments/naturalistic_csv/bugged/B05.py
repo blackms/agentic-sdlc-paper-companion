@@ -313,7 +313,7 @@ class Sniffer:
         charFrequency = {}
         modes = {}
         delims = {}
-        start, end = 0, chunkLength
+        start, end = 0, min(chunkLength, len(data))
         while start < len(data):
             iteration += 1
             for line in data[start:end]:
@@ -342,7 +342,7 @@ class Sniffer:
 
             # build a list of possible delimiters
             modeList = modes.items()
-            total = float(min(chunkLength * iteration, len(data)))
+            total = float(chunkLength * iteration)
             # (rows of consistent data) / (number of rows) = 100%
             consistency = 1.0
             # minimum consistency threshold

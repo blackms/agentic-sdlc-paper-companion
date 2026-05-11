@@ -320,7 +320,7 @@ class Sniffer:
                 for char in ascii:
                     metaFrequency = charFrequency.get(char, {})
                     # must count even if frequency is 0
-                    freq = line.count(char)
+                    freq = line.strip().count(char)
                     # value is the mode
                     metaFrequency[freq] = metaFrequency.get(freq, 0) + 1
                     charFrequency[char] = metaFrequency

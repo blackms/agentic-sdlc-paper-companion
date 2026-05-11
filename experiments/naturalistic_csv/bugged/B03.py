@@ -150,7 +150,7 @@ class DictWriter:
 
     def writeheader(self):
         header = dict(zip(self.fieldnames, self.fieldnames))
-        return self.writerow(header)
+        self.writerow(header)
 
     def _dict_to_list(self, rowdict):
         if self.extrasaction == "raise":

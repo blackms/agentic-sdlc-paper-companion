@@ -32,6 +32,31 @@ EOF
   fi
 }
 
+# Completeness check: does $1 (output file) contain a real model verdict?
+# Codex echoes the entire prompt then emits a line "codex" followed by the
+# response. The prompt itself contains the schema example
+# '"verdict": "ACCEPT" | "REQUEST_CHANGES"' (a literal string with the pipe
+# character), so the right test is: the file contains a "bugs_found" JSON
+# AFTER a line matching ^codex$ (for codex) or anywhere (for opus/gemini
+# whose output is just the model reply).
+_verdict_present() {
+  local F=$1
+  [ -s "$F" ] || return 1
+  if [ "$FAM" = "codex" ]; then
+    # Find the byte offset of the "codex" marker line. If absent, fail.
+    local OFFSET
+    OFFSET=$(grep -n '^codex$' "$F" 2>/dev/null | head -1 | cut -d: -f1)
+    [ -z "$OFFSET" ] && return 1
+    # Read from that line on; require a "bugs_found" with array.
+    tail -n +"$OFFSET" "$F" | grep -qE '"bugs_found"\s*:\s*\['
+    return $?
+  else
+    # opus/gemini: just check the file body for a "bugs_found" array.
+    grep -qE '"bugs_found"\s*:\s*\[' "$F"
+    return $?
+  fi
+}
+
 run_one() {
   local BID=$1
   local SUFFIX=$FAM
@@ -39,9 +64,9 @@ run_one() {
   local OUT="naturalistic_csv/reviews/${COND}/${SUFFIX}_${BID}.raw.txt"
   if [ -s "$OUT" ]; then
     sz=$(wc -c < "$OUT")
-    # For probe, accept smaller outputs (one-line answer)
+    # For probe, accept short outputs (one-line answer).
     if [ "$COND" = "probe" ] && [ "$sz" -ge 5 ]; then return 0; fi
-    if [ "$COND" != "probe" ] && tail -c 2500 "$OUT" 2>/dev/null | grep -qE '"verdict"\s*:'; then return 0; fi
+    if [ "$COND" != "probe" ] && _verdict_present "$OUT"; then return 0; fi
     rm -f "$OUT"
   fi
   mkdir -p "$(dirname "$OUT")"
@@ -60,11 +85,10 @@ run_one() {
         ;;
     esac
     sz=$(wc -c < "$OUT")
-    # Acceptance: probe OK if >=5 bytes; review OK if has bugs_found JSON.
     if [ "$COND" = "probe" ]; then
       if [ "$sz" -ge 5 ]; then break; fi
     else
-      if tail -c 2500 "$OUT" 2>/dev/null | grep -qE '"verdict"\s*:'; then break; fi
+      if _verdict_present "$OUT"; then break; fi
     fi
     echo "RETRY_${FAM} $COND $BID attempt=$attempt size=$sz" >> $LOG
     sleep $((5 * attempt))
@@ -84,7 +108,7 @@ for B in naturalistic_csv/bugged/B*.py; do
     if [ "$COND" = "probe" ]; then
       [ "$(wc -c < "$OUT")" -ge 5 ] && COMPLETE="yes"
     else
-      tail -c 2500 "$OUT" 2>/dev/null | grep -qE '"verdict"\s*:' && COMPLETE="yes"
+      _verdict_present "$OUT" && COMPLETE="yes"
     fi
   fi
   if [ "$COMPLETE" = "no" ]; then BIDS+=("$BID"); fi
