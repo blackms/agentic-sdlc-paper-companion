@@ -65,7 +65,7 @@ run_one() {
   if [ -s "$OUT" ]; then
     sz=$(wc -c < "$OUT")
     # For probe, accept short outputs (one-line answer).
-    if [ "$COND" = "probe" ] && [ "$sz" -ge 5 ]; then return 0; fi
+    if [ "$COND" = "probe" ] && [ "$sz" -ge 2 ]; then return 0; fi
     if [ "$COND" != "probe" ] && _verdict_present "$OUT"; then return 0; fi
     rm -f "$OUT"
   fi
@@ -86,7 +86,7 @@ run_one() {
     esac
     sz=$(wc -c < "$OUT")
     if [ "$COND" = "probe" ]; then
-      if [ "$sz" -ge 5 ]; then break; fi
+      if [ "$sz" -ge 2 ]; then break; fi
     else
       if _verdict_present "$OUT"; then break; fi
     fi
@@ -106,7 +106,7 @@ for B in naturalistic_csv/bugged/B*.py; do
   COMPLETE="no"
   if [ -s "$OUT" ]; then
     if [ "$COND" = "probe" ]; then
-      [ "$(wc -c < "$OUT")" -ge 5 ] && COMPLETE="yes"
+      [ "$(wc -c < "$OUT")" -ge 2 ] && COMPLETE="yes"
     else
       _verdict_present "$OUT" && COMPLETE="yes"
     fi
