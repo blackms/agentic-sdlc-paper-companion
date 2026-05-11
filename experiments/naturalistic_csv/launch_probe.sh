@@ -29,7 +29,7 @@ run_codex() {
   mkdir -p "$(dirname "$OUT")"
   local TMP="/tmp/_nat_cx_${COND}_${BID}.txt"
   build_prompt "$BID" > "$TMP"
-  codex exec --skip-git-repo-check "$(cat "$TMP")" > "$OUT" 2>&1 || true
+  codex exec --skip-git-repo-check "$(cat "$TMP")" > "$OUT" 2>&1 < /dev/null || true
   echo "DONE_CX $COND $BID" >> $LOG
 }
 
