@@ -1,0 +1,526 @@
+{
+  "table1_per_cell": [
+    {
+      "cell": "P9 csv (Codex)",
+      "domain": "csv_dom",
+      "family": "codex",
+      "library_class": "stdlib",
+      "n": 30,
+      "mcnemar": {
+        "b": 13,
+        "c": 0,
+        "p_one": 0.0001220703125,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.43333333333333335,
+        "p_one": 0.00024998750062496874,
+        "ci95": [
+          0.26666666666666666,
+          0.6
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 38.56278805541078,
+        "ci95_pp": [
+          31.073729175749083,
+          46.53496381543367
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.3952896026373663,
+        "p_mismatched_hat": 0.009661722083258491,
+        "u_module_blup": -0.3249350506704093,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P9 urllib (Codex)",
+      "domain": "urllib_dom",
+      "family": "codex",
+      "library_class": "stdlib",
+      "n": 30,
+      "mcnemar": {
+        "b": 15,
+        "c": 0,
+        "p_one": 3.0517578125e-05,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.5,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 46.49405509432379,
+        "ci95_pp": [
+          38.50191860159686,
+          54.52316869316234
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.47844672366650415,
+        "p_mismatched_hat": 0.013506172723266287,
+        "u_module_blup": 0.013929378589831948,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P9 jsondec (Codex)",
+      "domain": "jsondec_dom",
+      "family": "codex",
+      "library_class": "stdlib",
+      "n": 30,
+      "mcnemar": {
+        "b": 13,
+        "c": 0,
+        "p_one": 0.0001220703125,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.43333333333333335,
+        "p_one": 0.00014999250037498125,
+        "ci95": [
+          0.26666666666666666,
+          0.6
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 41.35276021097114,
+        "ci95_pp": [
+          33.63735949482333,
+          49.390048466903785
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.42441255981375686,
+        "p_mismatched_hat": 0.010884957704045488,
+        "u_module_blup": -0.20448921059068978,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P9 csv (Opus)",
+      "domain": "csv_dom",
+      "family": "opus",
+      "library_class": "stdlib",
+      "n": 30,
+      "mcnemar": {
+        "b": 8,
+        "c": 0,
+        "p_one": 0.00390625,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.26666666666666666,
+        "p_one": 0.004349782510874456,
+        "ci95": [
+          0.13333333333333333,
+          0.43333333333333335
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 37.05943646288915,
+        "ci95_pp": [
+          22.545153629456884,
+          53.625913256621295
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.3975706853348468,
+        "p_mismatched_hat": 0.026976320705955258,
+        "u_module_blup": -0.3249350506704093,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P9 csv (Gemini 3.1)",
+      "domain": "csv_dom",
+      "family": "gemini31",
+      "library_class": "stdlib",
+      "n": 30,
+      "mcnemar": {
+        "b": 18,
+        "c": 0,
+        "p_one": 3.814697265625e-06,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.6,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.43333333333333335,
+          0.7666666666666667
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 53.712787140423245,
+        "ci95_pp": [
+          35.922918502391724,
+          69.54098924491288
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.5647566254970694,
+        "p_mismatched_hat": 0.027628754092836917,
+        "u_module_blup": -0.3249350506704093,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 dateutil (Codex)",
+      "domain": "dateutil_dom",
+      "family": "codex",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 28,
+        "c": 0,
+        "p_one": 3.725290298461914e-09,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.9333333333333333,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.8333333333333334,
+          1.0
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 91.00622673140701,
+        "ci95_pp": [
+          86.60982172181569,
+          93.41453807540861
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.9312600033494771,
+        "p_mismatched_hat": 0.021197736035406985,
+        "u_module_blup": 0.7222504870815567,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 dateutil (Opus)",
+      "domain": "dateutil_dom",
+      "family": "opus",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 28,
+        "c": 0,
+        "p_one": 3.725290298461914e-09,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.9333333333333333,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.8333333333333334,
+          1.0
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 87.38922106101614,
+        "ci95_pp": [
+          80.9994869623041,
+          90.31016242826495
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.9318677786432543,
+        "p_mismatched_hat": 0.057975568033092874,
+        "u_module_blup": 0.7222504870815567,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 dateutil (Gemini 3.1)",
+      "domain": "dateutil_dom",
+      "family": "gemini31",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 26,
+        "c": 0,
+        "p_one": 1.4901161193847656e-08,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.8666666666666667,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.7333333333333333,
+          0.9666666666666667
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 90.48153754206182,
+        "ci95_pp": [
+          86.43407557846466,
+          92.5420122868573
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.9641473901405763,
+        "p_mismatched_hat": 0.05933201471995805,
+        "u_module_blup": 0.7222504870815567,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 parsy (Codex)",
+      "domain": "parsy_dom",
+      "family": "codex",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 16,
+        "c": 0,
+        "p_one": 1.52587890625e-05,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.5333333333333333,
+        "p_one": 9.99950002499875e-05,
+        "ci95": [
+          0.36666666666666664,
+          0.7
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 65.21616857609158,
+        "ci95_pp": [
+          51.22462903484231,
+          76.9532825189365
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.6551900166564856,
+        "p_mismatched_hat": 0.0030283308955697075,
+        "u_module_blup": -1.2420249987647667,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 parsy (Opus)",
+      "domain": "parsy_dom",
+      "family": "opus",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 15,
+        "c": 0,
+        "p_one": 3.0517578125e-05,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.5,
+        "p_one": 9.99950002499875e-05,
+        "ci95": [
+          0.3333333333333333,
+          0.6666666666666666
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 64.87824908204112,
+        "ci95_pp": [
+          44.400582372282074,
+          80.56901322067795
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.6573405664679979,
+        "p_mismatched_hat": 0.008558075647586592,
+        "u_module_blup": -1.2420249987647667,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 parsy (Gemini 3.1)",
+      "domain": "parsy_dom",
+      "family": "gemini31",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 18,
+        "c": 0,
+        "p_one": 3.814697265625e-06,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.6,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.43333333333333335,
+          0.7666666666666667
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 78.16664021228415,
+        "ci95_pp": [
+          60.25321483897892,
+          88.81483449401802
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.7904354728458313,
+        "p_mismatched_hat": 0.008769070722989667,
+        "u_module_blup": -1.2420249987647667,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 chardet (Codex)",
+      "domain": "chardet_dom",
+      "family": "codex",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 29,
+        "c": 0,
+        "p_one": 1.862645149230957e-09,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.9666666666666667,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.9,
+          1.0
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 89.78199070729048,
+        "ci95_pp": [
+          84.33120749616289,
+          92.9203094142986
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.9146657976590881,
+        "p_mismatched_hat": 0.0168458905861833,
+        "u_module_blup": 0.4880266089425071,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 chardet (Opus)",
+      "domain": "chardet_dom",
+      "family": "opus",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 28,
+        "c": 0,
+        "p_one": 3.725290298461914e-09,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.9333333333333333,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.8333333333333334,
+          1.0
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 86.89754767259508,
+        "ci95_pp": [
+          78.78601478664329,
+          90.48093467612698
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.9154069655322045,
+        "p_mismatched_hat": 0.046431488806253564,
+        "u_module_blup": 0.4880266089425071,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    },
+    {
+      "cell": "P10 chardet (Gemini 3.1)",
+      "domain": "chardet_dom",
+      "family": "gemini31",
+      "library_class": "third_party",
+      "n": 30,
+      "mcnemar": {
+        "b": 28,
+        "c": 0,
+        "p_one": 3.725290298461914e-09,
+        "sig": true
+      },
+      "permutation": {
+        "delta_obs": 0.9333333333333333,
+        "p_one": 4.999750012499375e-05,
+        "ci95": [
+          0.8333333333333334,
+          1.0
+        ],
+        "sig": true
+      },
+      "mixed_effects": {
+        "delta_hat_pp": 90.7578208869373,
+        "ci95_pp": [
+          86.08776591271283,
+          92.87431286108169
+        ],
+        "ci_excludes_zero": true,
+        "p_cold_hat": 0.9551096771938303,
+        "p_mismatched_hat": 0.047531468324457316,
+        "u_module_blup": 0.4880266089425071,
+        "sig": true
+      },
+      "qualitative_agreement_alpha_0p025": true
+    }
+  ],
+  "table2_cross_phase": {
+    "block_bootstrap_pooled": {
+      "delta": 0.6738095238095239,
+      "ci95": [
+        0.5523809523809524,
+        0.7952380952380952
+      ],
+      "n_domains": 14
+    },
+    "mixed_effects_beta_cond": {
+      "mean_logit": 4.204743683920315,
+      "sd_logit": 0.1260756571202878,
+      "ci95_logit": [
+        3.9576353959645507,
+        4.451851971876079
+      ],
+      "wald_z": 33.35095592568359,
+      "wald_p_two": 0.0
+    },
+    "mixed_effects_mean_predicted_delta": 0.6869694495969592,
+    "approx_lrt_condition_block": {
+      "elbo_full": -502.1951860294903,
+      "elbo_reduced": -764.5077511632837,
+      "D_approx": 524.6251302675869,
+      "df": 4,
+      "p_lrt_approx": 3.1591628406076815e-112,
+      "note": "ELBO-based; lower bound on log marginal likelihood"
+    }
+  },
+  "alpha_one_sided": 0.025,
+  "n_cells_qualitative_agree": 14,
+  "n_cells_total": 14
+}
