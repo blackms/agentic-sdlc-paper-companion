@@ -1141,3 +1141,8 @@ class Sniffer:
                     hasHeader -= 1
         return hasHeader > 0
 2026-05-11T16:42:10.683680Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["Sniffer._guess_delimiter scarta i caratteri con una sola frequenza osservata anche quando positiva; quindi non rileva delimitatori perfettamente consistenti, ad esempio `a,b\\nc,d`, violando l'inferenza richiesta dal contratto."],"verdict":"REQUEST_CHANGES"}
+tokens used
+36.275
+{"bugs_found":["Sniffer._guess_delimiter scarta i caratteri con una sola frequenza osservata anche quando positiva; quindi non rileva delimitatori perfettamente consistenti, ad esempio `a,b\\nc,d`, violando l'inferenza richiesta dal contratto."],"verdict":"REQUEST_CHANGES"}

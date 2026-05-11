@@ -1141,3 +1141,8 @@ class Sniffer:
                     hasHeader -= 1
         return hasHeader > 0
 2026-05-11T16:42:10.674170Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["Sniffer._guess_quote_and_delimiter indicizza il gruppo quote con groupindex['quote'] + 1, causando IndexError o quotechar errato su campioni quotati validi invece di restituire la tupla inferita.","DictReader.__next__ non aggiorna self.line_num dopo aver saltato righe vuote, quindi non traccia il line_num reale del reader dopo tutte le letture."],"verdict":"REQUEST_CHANGES"}
+tokens used
+23.916
+{"bugs_found":["Sniffer._guess_quote_and_delimiter indicizza il gruppo quote con groupindex['quote'] + 1, causando IndexError o quotechar errato su campioni quotati validi invece di restituire la tupla inferita.","DictReader.__next__ non aggiorna self.line_num dopo aver saltato righe vuote, quindi non traccia il line_num reale del reader dopo tutte le letture."],"verdict":"REQUEST_CHANGES"}
