@@ -41,7 +41,7 @@ run_one() {
     sz=$(wc -c < "$OUT")
     # For probe, accept smaller outputs (one-line answer)
     if [ "$COND" = "probe" ] && [ "$sz" -ge 5 ]; then return 0; fi
-    if [ "$COND" != "probe" ] && tail -c 1500 "$OUT" 2>/dev/null | grep -qE '"verdict"|tokens used'; then return 0; fi
+    if [ "$COND" != "probe" ] && tail -c 2500 "$OUT" 2>/dev/null | grep -qE '"verdict"\s*:'; then return 0; fi
     rm -f "$OUT"
   fi
   mkdir -p "$(dirname "$OUT")"
@@ -64,7 +64,7 @@ run_one() {
     if [ "$COND" = "probe" ]; then
       if [ "$sz" -ge 5 ]; then break; fi
     else
-      if tail -c 1500 "$OUT" 2>/dev/null | grep -qE '"verdict"|tokens used'; then break; fi
+      if tail -c 2500 "$OUT" 2>/dev/null | grep -qE '"verdict"\s*:'; then break; fi
     fi
     echo "RETRY_${FAM} $COND $BID attempt=$attempt size=$sz" >> $LOG
     sleep $((5 * attempt))
@@ -84,7 +84,7 @@ for B in naturalistic_csv/bugged/B*.py; do
     if [ "$COND" = "probe" ]; then
       [ "$(wc -c < "$OUT")" -ge 5 ] && COMPLETE="yes"
     else
-      tail -c 1500 "$OUT" 2>/dev/null | grep -qE '"verdict"|tokens used' && COMPLETE="yes"
+      tail -c 2500 "$OUT" 2>/dev/null | grep -qE '"verdict"\s*:' && COMPLETE="yes"
     fi
   fi
   if [ "$COMPLETE" = "no" ]; then BIDS+=("$BID"); fi
