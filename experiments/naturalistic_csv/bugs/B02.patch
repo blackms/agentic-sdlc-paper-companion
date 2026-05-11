@@ -1,0 +1,29 @@
+commit ceea579ccc51791f3e115155d6f27905bc7544a9
+Author: andrei kulakov <andrei.avk@gmail.com>
+Date:   Fri Jul 30 13:10:37 2021 -0400
+
+    bpo-43625: Enhance csv sniffer has_headers() to be more accurate (GH-26939)
+
+diff --git a/csv_module.py b/csv_module.py
+index dc85077f3e..bb3ee269ae 100644
+--- a/csv_module.py
++++ b/csv_module.py
+@@ -409,14 +409,10 @@ class Sniffer:
+                 continue # skip rows that have irregular number of columns
+ 
+             for col in list(columnTypes.keys()):
+-
+-                for thisType in [int, float, complex]:
+-                    try:
+-                        thisType(row[col])
+-                        break
+-                    except (ValueError, OverflowError):
+-                        pass
+-                else:
++                thisType = complex
++                try:
++                    thisType(row[col])
++                except (ValueError, OverflowError):
+                     # fallback to length of string
+                     thisType = len(row[col])
+ 

@@ -1,0 +1,21 @@
+commit 2411292ba8155327125d8a1da8a4c9fa003d5909
+Author: Serhiy Storchaka <storchaka@gmail.com>
+Date:   Fri Feb 9 20:00:49 2018 +0200
+
+    bpo-30157: Fix csv.Sniffer.sniff() regex pattern. (GH-5601)
+    
+    Co-authored-by: Jake Davis <jcdavis@awedge.net>
+
+diff --git a/csv_module.py b/csv_module.py
+index 6a8587674f..58624af905 100644
+--- a/csv_module.py
++++ b/csv_module.py
+@@ -217,7 +217,7 @@ class Sniffer:
+         matches = []
+         for restr in (r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?P=delim)', # ,".*?",
+                       r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?P<delim>[^\w\n"\'])(?P<space> ?)',   #  ".*?",
+-                      r'(?P<delim>>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',  # ,".*?"
++                      r'(?P<delim>[^\w\n"\'])(?P<space> ?)(?P<quote>["\']).*?(?P=quote)(?:$|\n)',   # ,".*?"
+                       r'(?:^|\n)(?P<quote>["\']).*?(?P=quote)(?:$|\n)'):                            #  ".*?" (no delim, no space)
+             regexp = re.compile(restr, re.DOTALL | re.MULTILINE)
+             matches = regexp.findall(data)

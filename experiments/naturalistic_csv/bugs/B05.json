@@ -1,0 +1,18 @@
+{
+  "bug_id": "B05",
+  "merge_commit_sha": "6aee6fbce8f3d7b8c8eae5d8f88fc2282698a6dc",
+  "issue_url": "https://bugs.python.org/issue29405",
+  "pr_url": "https://github.com/python/cpython/pull/49",
+  "affected_function": "Sniffer._guess_delimiter",
+  "brief_bug_summary_human_paraphrase": "In _guess_delimiter, the `total` used for consistency scoring is computed as `float(chunkLength * iteration)` (the bugged version) which over-counts when chunkLength exceeds the data length, and the initial `end` is computed as `min(chunkLength, len(data))` rather than `chunkLength`, mis-aligning iteration accounting. The net effect is that delimiter scores become inaccurate, especially for short inputs.",
+  "expected_detection_keywords": [
+    "_guess_delimiter",
+    "total",
+    "chunkLength",
+    "iteration",
+    "len(data)",
+    "consistency",
+    "Sniffer",
+    "delimiter"
+  ]
+}

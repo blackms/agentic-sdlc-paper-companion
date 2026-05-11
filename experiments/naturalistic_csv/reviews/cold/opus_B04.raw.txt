@@ -1,0 +1,1 @@
+{"bugs_found":["_guess_quote_and_delimiter third regex contains stray '>' in delim character class (r'(?P<delim>>[^\\w\\n\"\\'])') — violates contract that delimiter candidates are non-word/non-quote characters; this pattern will never match the intended ',\".*?\"' at end-of-data case"],"verdict":"REQUEST_CHANGES"}

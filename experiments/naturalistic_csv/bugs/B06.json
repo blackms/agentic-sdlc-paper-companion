@@ -1,0 +1,20 @@
+{
+  "bug_id": "B06",
+  "merge_commit_sha": "925a3225708c40c8cd58a7475c5a6d3bd89db01d",
+  "issue_url": "https://bugs.python.org/issue18155",
+  "pr_url": "https://github.com/python/cpython/pull/4",
+  "affected_function": "Sniffer._guess_quote_and_delimiter",
+  "brief_bug_summary_human_paraphrase": "In _guess_quote_and_delimiter, the dq_regexp template interpolates the candidate delimiter directly into a regex without escaping regex meta-characters. If the delimiter happens to be a regex special character (e.g. '.', '|', '+', '*', '?'), the resulting regex is malformed or matches the wrong thing, breaking sniffing.",
+  "expected_detection_keywords": [
+    "re.escape",
+    "escape",
+    "regex",
+    "regexp",
+    "delim",
+    "delimiter",
+    "_guess_quote_and_delimiter",
+    "Sniffer",
+    "metacharacter",
+    "special character"
+  ]
+}

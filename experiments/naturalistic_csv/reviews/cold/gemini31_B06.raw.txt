@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictReader.__next__ fails to update self.line_num from self.reader.line_num after skipping empty rows, leaving it out of sync with the underlying reader."], "verdict": "REQUEST_CHANGES"}
+```

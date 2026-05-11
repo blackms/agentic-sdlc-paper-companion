@@ -1,0 +1,19 @@
+{
+  "bug_id": "B07",
+  "merge_commit_sha": "91bb70c5c07c2e73535638df2baadb302d9d71d2",
+  "issue_url": "https://mail.python.org/pipermail/python-list/2005-December/355394.html",
+  "pr_url": "https://github.com/python/cpython/commit/91bb70c5c07c2e73535638df2baadb302d9d71d2",
+  "affected_function": "Sniffer._guess_delimiter",
+  "brief_bug_summary_human_paraphrase": "In _guess_delimiter's character-frequency loop, the bugged version uses `line.strip().count(char)` instead of `line.count(char)`. When the delimiter is whitespace and the last field of a line is empty, strip() removes the trailing whitespace delimiter, so the frequency table for that column is undercounted and the sniffer may falsely return '' as the delimiter.",
+  "expected_detection_keywords": [
+    "_guess_delimiter",
+    "line.strip",
+    "strip()",
+    "count",
+    "Sniffer",
+    "whitespace",
+    "delimiter",
+    "trailing",
+    "empty field"
+  ]
+}

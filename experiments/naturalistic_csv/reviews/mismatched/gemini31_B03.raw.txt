@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["Contract/Code mismatch: the provided code implements the 'csv' module and is completely missing all the functions defined in the 'bankcheck' contract (Reporter, load_yaml_file, cmd_all, etc.)."], "verdict": "REQUEST_CHANGES"}
+```

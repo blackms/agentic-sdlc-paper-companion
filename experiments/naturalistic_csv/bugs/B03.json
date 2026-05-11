@@ -1,0 +1,15 @@
+{
+  "bug_id": "B03",
+  "merge_commit_sha": "fce5ff1e18b522cf52379934a6560583d840e7f9",
+  "issue_url": "https://bugs.python.org/issue27497",
+  "pr_url": "https://github.com/python/cpython/pull/12306",
+  "affected_function": "DictWriter.writeheader",
+  "brief_bug_summary_human_paraphrase": "DictWriter.writeheader does not return the value of the underlying writer.writerow call, contrary to the documented contract that it propagates the underlying writer's return value.",
+  "expected_detection_keywords": [
+    "writeheader",
+    "return",
+    "return value",
+    "writerow",
+    "DictWriter"
+  ]
+}

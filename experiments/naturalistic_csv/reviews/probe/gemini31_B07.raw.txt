@@ -1,0 +1,2 @@
+Ripgrep is not available. Falling back to GrepTool.
+Error executing tool invoke_agent: Tool execution denied by policy. You are in Plan Mode with access to read-only tools. Execution of scripts (including those from skills) is blocked.

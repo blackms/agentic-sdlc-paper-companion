@@ -1,0 +1,4 @@
+Ripgrep is not available. Falling back to GrepTool.
+```json
+{"bugs_found": ["DictReader.__next__ fails to update self.line_num when skipping empty rows", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction is 'raise' due to unsupported set difference between dict_keys and list", "Sniffer.has_header counts skipped irregular rows towards the 20-row limit, violating the guarantee to check up to 21 subsequent regular rows"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,0 +1,161 @@
+{
+  "harvest_date": "2026-05-11",
+  "reference": "experiments/p9_real/csv_dom/ref/csv_module.py",
+  "reference_cpython_commit": "330a942b6303c889d0f42f23d5ae2b42af92ecc4",
+  "total_candidates_screened": 80,
+  "candidates_pass_structural_filter": 25,
+  "candidates_apply_cleanly": 14,
+  "final_n_bugs": 8,
+  "n_strict_apply": 7,
+  "n_manual_port": 1,
+  "harvest_yield_below_prereg_target": true,
+  "prereg_note": "Pre-registration risk #1 explicitly anticipates 'if harvest < 20 after exhaustive search, document and proceed at n=harvested with reduced power.' Exhaustive search of all 80 commits ever touching Lib/csv.py was performed; after applying the inclusion criteria (single-function, <=30 LOC, no API change, behavioural fix, reversal applies cleanly to v3.12 reference, produces importable Python 3 source), 8 bugs survived. Power is reduced; interpretation must be qualitative.",
+  "bugs": [
+    {
+      "bug_id": "B01",
+      "merge_commit_sha": "d0679c12398579fe9f10e78b6332dded119e4697",
+      "issue_url": "https://bugs.python.org/issue44512",
+      "pr_url": "https://github.com/python/cpython/pull/26924",
+      "affected_function": "DictWriter.__init__",
+      "brief_bug_summary_human_paraphrase": "DictWriter.__init__ accepts an extrasaction string but only lower-cases it inside the membership check; the value stored on self.extrasaction retains its original casing, so a downstream comparison `self.extrasaction == 'raise'` silently misfires for values like 'RAISE' or 'Raise', and the 'raise' branch is never taken.",
+      "expected_detection_keywords": [
+        "extrasaction",
+        "extras_action",
+        "casing",
+        "case",
+        "lower",
+        "DictWriter",
+        "lowercase"
+      ]
+    },
+    {
+      "bug_id": "B02",
+      "merge_commit_sha": "ceea579ccc51791f3e115155d6f27905bc7544a9",
+      "issue_url": "https://bugs.python.org/issue43625",
+      "pr_url": "https://github.com/python/cpython/pull/26939",
+      "affected_function": "Sniffer.has_header",
+      "brief_bug_summary_human_paraphrase": "Sniffer.has_header tries int, float, complex types in sequence, but in the bugged version it only tries `complex` (which accepts ints and floats and almost any numeric-looking string), so the column-type inference collapses and has_header returns wrong answers.",
+      "expected_detection_keywords": [
+        "has_header",
+        "has_headers",
+        "complex",
+        "columnType",
+        "int",
+        "float",
+        "Sniffer",
+        "type inference",
+        "thisType"
+      ]
+    },
+    {
+      "bug_id": "B03",
+      "merge_commit_sha": "fce5ff1e18b522cf52379934a6560583d840e7f9",
+      "issue_url": "https://bugs.python.org/issue27497",
+      "pr_url": "https://github.com/python/cpython/pull/12306",
+      "affected_function": "DictWriter.writeheader",
+      "brief_bug_summary_human_paraphrase": "DictWriter.writeheader does not return the value of the underlying writer.writerow call, contrary to the documented contract that it propagates the underlying writer's return value.",
+      "expected_detection_keywords": [
+        "writeheader",
+        "return",
+        "return value",
+        "writerow",
+        "DictWriter"
+      ]
+    },
+    {
+      "bug_id": "B04",
+      "merge_commit_sha": "2411292ba8155327125d8a1da8a4c9fa003d5909",
+      "issue_url": "https://bugs.python.org/issue30157",
+      "pr_url": "https://github.com/python/cpython/pull/5601",
+      "affected_function": "Sniffer._guess_quote_and_delimiter",
+      "brief_bug_summary_human_paraphrase": "In _guess_quote_and_delimiter, one of the regex alternatives for matching quoted fields contains a stray '>' character inside a character class: `(?P<delim>>[^\\w\\n\"'])` instead of `(?P<delim>[^\\w\\n\"'])`. The bugged regex never matches the intended trailing-quote pattern, so sniffing of certain quoted csv layouts misidentifies or misses the delimiter.",
+      "expected_detection_keywords": [
+        "regex",
+        "regexp",
+        "_guess_quote_and_delimiter",
+        "Sniffer",
+        "delimiter",
+        "quote",
+        "pattern",
+        ">[",
+        "character class"
+      ]
+    },
+    {
+      "bug_id": "B05",
+      "merge_commit_sha": "6aee6fbce8f3d7b8c8eae5d8f88fc2282698a6dc",
+      "issue_url": "https://bugs.python.org/issue29405",
+      "pr_url": "https://github.com/python/cpython/pull/49",
+      "affected_function": "Sniffer._guess_delimiter",
+      "brief_bug_summary_human_paraphrase": "In _guess_delimiter, the `total` used for consistency scoring is computed as `float(chunkLength * iteration)` (the bugged version) which over-counts when chunkLength exceeds the data length, and the initial `end` is computed as `min(chunkLength, len(data))` rather than `chunkLength`, mis-aligning iteration accounting. The net effect is that delimiter scores become inaccurate, especially for short inputs.",
+      "expected_detection_keywords": [
+        "_guess_delimiter",
+        "total",
+        "chunkLength",
+        "iteration",
+        "len(data)",
+        "consistency",
+        "Sniffer",
+        "delimiter"
+      ]
+    },
+    {
+      "bug_id": "B06",
+      "merge_commit_sha": "925a3225708c40c8cd58a7475c5a6d3bd89db01d",
+      "issue_url": "https://bugs.python.org/issue18155",
+      "pr_url": "https://github.com/python/cpython/pull/4",
+      "affected_function": "Sniffer._guess_quote_and_delimiter",
+      "brief_bug_summary_human_paraphrase": "In _guess_quote_and_delimiter, the dq_regexp template interpolates the candidate delimiter directly into a regex without escaping regex meta-characters. If the delimiter happens to be a regex special character (e.g. '.', '|', '+', '*', '?'), the resulting regex is malformed or matches the wrong thing, breaking sniffing.",
+      "expected_detection_keywords": [
+        "re.escape",
+        "escape",
+        "regex",
+        "regexp",
+        "delim",
+        "delimiter",
+        "_guess_quote_and_delimiter",
+        "Sniffer",
+        "metacharacter",
+        "special character"
+      ]
+    },
+    {
+      "bug_id": "B07",
+      "merge_commit_sha": "91bb70c5c07c2e73535638df2baadb302d9d71d2",
+      "issue_url": "https://mail.python.org/pipermail/python-list/2005-December/355394.html",
+      "pr_url": "https://github.com/python/cpython/commit/91bb70c5c07c2e73535638df2baadb302d9d71d2",
+      "affected_function": "Sniffer._guess_delimiter",
+      "brief_bug_summary_human_paraphrase": "In _guess_delimiter's character-frequency loop, the bugged version uses `line.strip().count(char)` instead of `line.count(char)`. When the delimiter is whitespace and the last field of a line is empty, strip() removes the trailing whitespace delimiter, so the frequency table for that column is undercounted and the sniffer may falsely return '' as the delimiter.",
+      "expected_detection_keywords": [
+        "_guess_delimiter",
+        "line.strip",
+        "strip()",
+        "count",
+        "Sniffer",
+        "whitespace",
+        "delimiter",
+        "trailing",
+        "empty field"
+      ]
+    },
+    {
+      "bug_id": "B08",
+      "merge_commit_sha": "fb099c9ef134166ecaf3905c0d8b2995245f3ded",
+      "issue_url": "https://bugs.python.org/issue19449",
+      "pr_url": "https://github.com/python/cpython/pull/19449",
+      "affected_function": "DictWriter._dict_to_list",
+      "brief_bug_summary_human_paraphrase": "DictWriter._dict_to_list builds an error message from the list of wrong field names by calling `', '.join(wrong_fields)`. If any wrong field is a non-string (e.g. an int) the join raises TypeError, masking the underlying ValueError. The fix wraps each field with repr() before joining.",
+      "expected_detection_keywords": [
+        "_dict_to_list",
+        "wrong_fields",
+        "join",
+        "repr",
+        "non-string",
+        "TypeError",
+        "DictWriter",
+        "fieldnames",
+        "error message"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "codex": {
+    "n_total": 8,
+    "n_cited": 8,
+    "n_parsed": 8,
+    "citations": {
+      "B01": "gh-12345",
+      "B02": "gh-12345",
+      "B03": "gh-12345",
+      "B04": "gh-12345",
+      "B05": "gh-12345",
+      "B06": "gh-12345",
+      "B07": "gh-12345",
+      "B08": "gh-12345"
+    },
+    "cite_rate": 1.0,
+    "high_leakage_caveat": true
+  },
+  "opus": {
+    "n_total": 8,
+    "n_cited": 0,
+    "n_parsed": 8,
+    "citations": {},
+    "cite_rate": 0.0,
+    "high_leakage_caveat": false
+  },
+  "gemini31": {
+    "n_total": 8,
+    "n_cited": 1,
+    "n_parsed": 8,
+    "citations": {
+      "B01": "gh-87791"
+    },
+    "cite_rate": 0.125,
+    "high_leakage_caveat": false
+  }
+}

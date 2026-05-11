@@ -1,0 +1,28 @@
+commit 6aee6fbce8f3d7b8c8eae5d8f88fc2282698a6dc
+Author: Xiang Zhang <angwerzx@126.com>
+Date:   Mon Feb 6 10:50:09 2017 +0800
+
+    Issue #29405: Make total calculation in _guess_delimiter more accurate.
+
+diff --git a/csv_module.py b/csv_module.py
+index 0349e0bd11..6a8587674f 100644
+--- a/csv_module.py
++++ b/csv_module.py
+@@ -307,7 +307,7 @@ class Sniffer:
+         charFrequency = {}
+         modes = {}
+         delims = {}
+-        start, end = 0, min(chunkLength, len(data))
++        start, end = 0, chunkLength
+         while start < len(data):
+             iteration += 1
+             for line in data[start:end]:
+@@ -336,7 +336,7 @@ class Sniffer:
+ 
+             # build a list of possible delimiters
+             modeList = modes.items()
+-            total = float(chunkLength * iteration)
++            total = float(min(chunkLength * iteration, len(data)))
+             # (rows of consistent data) / (number of rows) = 100%
+             consistency = 1.0
+             # minimum consistency threshold
