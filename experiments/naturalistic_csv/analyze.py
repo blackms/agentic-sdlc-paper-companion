@@ -43,28 +43,77 @@ FAMILIES = ["codex", "opus", "gemini31"]
 CONDITIONS = ["cold", "mismatched"]
 
 
+_PROMPT_TEMPLATE_FRAGMENTS = (
+    '"short description 1"',  # the prompt schema example contains this
+    '"ACCEPT" | "REQUEST_CHANGES"',  # the schema example uses | which is not valid JSON
+)
+
+
+def _find_balanced_json_objects(text):
+    """Yield substrings that look like balanced JSON objects, top-level only.
+    Naive but works on flat-ish reviewer outputs."""
+    n = len(text)
+    i = 0
+    while i < n:
+        if text[i] == "{":
+            depth = 1
+            j = i + 1
+            in_str = False
+            esc = False
+            while j < n and depth > 0:
+                c = text[j]
+                if in_str:
+                    if esc:
+                        esc = False
+                    elif c == "\\":
+                        esc = True
+                    elif c == '"':
+                        in_str = False
+                elif c == '"':
+                    in_str = True
+                elif c == "{":
+                    depth += 1
+                elif c == "}":
+                    depth -= 1
+                j += 1
+            if depth == 0:
+                yield text[i:j]
+                i = j
+                continue
+        i += 1
+
+
 def extract_json(p: Path):
-    """Recover a bugs_found list from a raw reviewer output file."""
+    """Recover a bugs_found list from a raw reviewer output file.
+
+    Codex echoes the prompt (which contains the JSON schema TEMPLATE — not
+    valid JSON) before emitting the actual response after a 'codex' marker
+    line. We:
+      1. Find all balanced JSON-object substrings.
+      2. Skip any candidate that looks like the prompt template.
+      3. Return the last successfully parsed candidate's bugs_found list.
+    """
     if not p.exists() or p.stat().st_size == 0:
         return None
     text = p.read_text(errors="replace")
+    # First, try fenced ```json``` blocks (gemini/opus often use these).
     cands = re.findall(r"```(?:json)?\s*(\{.*?\})\s*```", text, re.DOTALL)
-    for m in re.finditer(r"\{[^{}]*\"bugs_found\"[^{}]*\}", text, re.DOTALL):
-        cands.append(m.group(0))
-    last = text.rfind("}")
-    first = text.rfind("{", 0, last) if last >= 0 else -1
-    if first >= 0:
-        cands.append(text[first:last + 1])
+    # Then all balanced top-level JSON objects in the file.
+    cands.extend(_find_balanced_json_objects(text))
+    best = None
     for c in cands:
+        s = c.strip()
+        if any(frag in s for frag in _PROMPT_TEMPLATE_FRAGMENTS):
+            continue
         try:
-            d = json.loads(c.strip())
-            if isinstance(d, dict) and "bugs_found" in d:
-                bugs = d["bugs_found"]
-                if isinstance(bugs, list):
-                    return [str(b) for b in bugs]
+            d = json.loads(s)
         except (json.JSONDecodeError, TypeError):
             continue
-    return None
+        if isinstance(d, dict) and "bugs_found" in d:
+            bugs = d["bugs_found"]
+            if isinstance(bugs, list):
+                best = [str(b) for b in bugs]  # keep the LAST one
+    return best
 
 
 def detect_naturalistic(bug, found):
