@@ -1,0 +1,38 @@
+{
+  "amendment": "A1",
+  "description": "v1.3 truthful (Codex output on disk) vs v1.4 truthful re-run on the same 30 v1.3-reused bugs per side.",
+  "csv": {
+    "side": "csv",
+    "n_pairs": 30,
+    "parse_failures": 0,
+    "v13_truthful_rate": 0.43333333333333335,
+    "v14_truthful_rate": 0.5333333333333333,
+    "delta_pp_v14_minus_v13": 9.999999999999998,
+    "contingency": {
+      "a_v13y_v14y": 12,
+      "b_v13n_v14y": 4,
+      "c_v13y_v14n": 1,
+      "d_v13n_v14n": 13
+    },
+    "mcnemar_p_v14_gt_v13": 0.1875,
+    "mcnemar_p_v14_lt_v13": 0.96875,
+    "magnitude_abs_pp": 9.999999999999998
+  },
+  "chardet": {
+    "side": "chardet",
+    "n_pairs": 30,
+    "parse_failures": 0,
+    "v13_truthful_rate": 0.9666666666666667,
+    "v14_truthful_rate": 0.9,
+    "delta_pp_v14_minus_v13": -6.666666666666665,
+    "contingency": {
+      "a_v13y_v14y": 27,
+      "b_v13n_v14y": 0,
+      "c_v13y_v14n": 2,
+      "d_v13n_v14n": 1
+    },
+    "mcnemar_p_v14_gt_v13": 1.0,
+    "mcnemar_p_v14_lt_v13": 0.25,
+    "magnitude_abs_pp": 6.666666666666665
+  }
+}

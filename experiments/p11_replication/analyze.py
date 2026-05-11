@@ -34,6 +34,29 @@ EXP = ROOT / "experiments" / "p11_replication"
 
 CSV_V13_REV = ROOT / "experiments/p9_real/csv_dom/reviews"
 CHARDET_V13_REV = ROOT / "experiments/p10_thirdparty/chardet_dom/reviews"
+
+# v1.3 op-keyword map (copied verbatim from experiments/p9_real/build_detection.py)
+OP_KEYWORDS = {
+    "Add": ["addition", "plus", "+ ", " + "],
+    "Sub": ["subtract", "minus", "- ", " - "],
+    "Mult": ["multipl", "*", "times"],
+    "Div": ["divis", "/", "divide"],
+    "FloorDiv": ["floor division", "//", "floordiv"],
+    "Mod": ["modulo", "%", "mod "],
+    "Eq": ["equal", "==", "equality"],
+    "NotEq": ["not equal", "!=", "inequality"],
+    "Lt": ["less than", "<", " lt "],
+    "LtE": ["less or equal", "<=", " le "],
+    "Gt": ["greater than", ">", " gt "],
+    "GtE": ["greater or equal", ">=", " ge "],
+    "And": ["and ", "logical and", "&&"],
+    "Or": ["or ", "logical or", "||"],
+}
+
+
+def _parse_op_change(description: str) -> tuple[str, str]:
+    parts = description.split()
+    return parts[1], parts[3]
 CSV_DETECTION = ROOT / "experiments/p9_real/csv_dom/detection.json"
 CHARDET_DETECTION = ROOT / "experiments/p10_thirdparty/chardet_dom/detection.json"
 CSV_REF = ROOT / "experiments/p9_real/csv_dom/ref/csv_module.py"
@@ -88,13 +111,12 @@ def build_detection_index(side: str, manifest_side: dict) -> dict:
     else:
         det_v13 = json.loads(CHARDET_DETECTION.read_text())
         line_fn = line_function_map(CHARDET_REF)
-    # v1.3 detection.json shape: list of {bug_id, line, function?}
+    # v1.3 detection.json shape: {"ref": "...", "bugs": [{bug_id, line, enclosing, op_keywords, ...}]}
     by_bid = {}
     if isinstance(det_v13, list):
         for entry in det_v13:
             by_bid[entry["bug_id"]] = entry
     elif isinstance(det_v13, dict):
-        # may already be keyed by bug_id
         if "bugs" in det_v13:
             for entry in det_v13["bugs"]:
                 by_bid[entry["bug_id"]] = entry
@@ -107,15 +129,69 @@ def build_detection_index(side: str, manifest_side: dict) -> dict:
             continue
         if row["source"] == "v13_reused" and bid in by_bid:
             ent = by_bid[bid]
-            out[bid] = {"line": int(ent["line"]), "function": ent.get("function")}
+            out[bid] = {
+                "line": int(ent["line"]),
+                "function": ent.get("enclosing") or ent.get("function"),
+                "op_keywords": ent.get("op_keywords", []),
+            }
         else:
             ln = int(row["ast_location"][0])
-            out[bid] = {"line": ln, "function": line_fn.get(ln)}
+            new_op = row.get("new_op_cls", "")
+            old_op = _infer_original_op(
+                CSV_REF if side == "csv" else CHARDET_REF,
+                row["operator"], row["ast_location"], new_op,
+            )
+            kw = sorted(set(OP_KEYWORDS.get(old_op, []) + OP_KEYWORDS.get(new_op, [])))
+            out[bid] = {
+                "line": ln,
+                "function": line_fn.get(ln),
+                "op_keywords": kw,
+            }
     return out
 
 
+def _infer_original_op(ref_path: Path, op_cat: str, location, new_op_name: str) -> str:
+    """Re-parse the ref module and find the original operator at the given AST
+    location. AOR/BOR live on .op; ROR is in .ops list — we cannot uniquely pick
+    an index from (line, col) alone (same Compare node can have multiple ops),
+    so we fall back to the unique pair whose forward mutation lands on new_op_name.
+    """
+    try:
+        src = ref_path.read_text()
+        tree = ast.parse(src)
+    except Exception:
+        return ""
+    target = tuple(location)
+    if op_cat == "AOR":
+        AOR_PAIRS_FWD = {"Add": "Sub", "Sub": "Add", "Mult": "Div", "Div": "Mult",
+                          "FloorDiv": "Mod", "Mod": "FloorDiv"}
+        for n in ast.walk(tree):
+            if isinstance(n, ast.BinOp) and (n.lineno, n.col_offset) == target:
+                old = type(n.op).__name__
+                if AOR_PAIRS_FWD.get(old) == new_op_name:
+                    return old
+        return ""
+    if op_cat == "BOR":
+        for n in ast.walk(tree):
+            if isinstance(n, ast.BoolOp) and (n.lineno, n.col_offset) == target:
+                return type(n.op).__name__
+        return ""
+    if op_cat == "ROR":
+        ROR_PAIRS_FWD = {"Eq": "NotEq", "NotEq": "Eq", "Lt": "LtE", "LtE": "Lt",
+                          "Gt": "GtE", "GtE": "Gt"}
+        for n in ast.walk(tree):
+            if isinstance(n, ast.Compare) and (n.lineno, n.col_offset) == target:
+                for op in n.ops:
+                    old = type(op).__name__
+                    if ROR_PAIRS_FWD.get(old) == new_op_name:
+                        return old
+        return ""
+    return ""
+
+
 def detects(bug_info: dict, found: list[str] | None) -> bool | None:
-    """Same line-window + function-name detection as v1.3 analyze_p11.py.
+    """Detection criterion identical to v1.3 analyze_p11.py:
+      hit if (line ± 2 numeric match) OR (enclosing-function AND op_keyword).
 
     Returns True/False, or None if the response was unparseable.
     """
@@ -125,12 +201,13 @@ def detects(bug_info: dict, found: list[str] | None) -> bool | None:
     text_l = text.lower()
     line = bug_info["line"]
     line_set = {line, line - 1, line + 1, line - 2, line + 2}
-    line_match = any(
-        re.search(rf"\b(?:line\s*)?{ln}\b", text_l) for ln in line_set
-    )
-    fn = bug_info.get("function")
-    fn_match = bool(fn) and fn.lower() in text_l
-    return bool(line_match or fn_match)
+    if any(re.search(rf"\b{n}\b", text) for n in line_set):
+        return True
+    enc = (bug_info.get("function") or "").lower()
+    op_keywords = bug_info.get("op_keywords") or []
+    enc_hit = bool(enc) and enc in text_l
+    op_hit = any(kw.lower() in text_l for kw in op_keywords)
+    return enc_hit and op_hit
 
 
 # ---- Stats ----
@@ -227,6 +304,8 @@ def ks_two_sample(a: list[float], b: list[float]) -> tuple[float, float]:
                 hi = mid
         return lo / len(arr)
     D = max(abs(cdf(a, x) - cdf(b, x)) for x in data_all)
+    if D == 0.0:
+        return (0.0, 1.0)
     en = math.sqrt(na * nb / (na + nb))
     # Asymptotic two-sided p
     lam = (en + 0.12 + 0.11 / en) * D

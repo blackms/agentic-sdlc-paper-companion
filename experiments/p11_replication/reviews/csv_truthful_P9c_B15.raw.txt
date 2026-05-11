@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e17ef-8ca7-7813-856f-292a19cd8680
+session id: 019e1812-a0d4-7510-a7db-dfe1c68ec669
 --------
 user
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
@@ -1140,4 +1140,9 @@ class Sniffer:
                 else:
                     hasHeader -= 1
         return hasHeader > 0
-2026-05-11T16:47:16.080302Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T17:25:34.727941Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+codex
+{"bugs_found":["Sniffer.has_header updates columnTypes only when the observed type equals the current stored type, instead of when it differs; columns remain None or are deleted on consistent data, so header voting is inverted and returns True for many non-header samples, violating the contract for per-column characteristic tracking and header inference."],"verdict":"REQUEST_CHANGES"}
+tokens used
+21.265
+{"bugs_found":["Sniffer.has_header updates columnTypes only when the observed type equals the current stored type, instead of when it differs; columns remain None or are deleted on consistent data, so header voting is inverted and returns True for many non-header samples, violating the contract for per-column characteristic tracking and header inference."],"verdict":"REQUEST_CHANGES"}
