@@ -24,9 +24,11 @@ target 25-30, dramatically reducing the call count.
 
 | Batch | Date | Calls | Notes |
 |---|---|---|---|
-| cold (initial) | 2026-05-11 | 24 + retries | ~$8 |
-| mismatched | 2026-05-11 | 24 | (pending) |
-| probe | 2026-05-11 | 24 | (pending) |
+| cold v1 (invalidated by bug-injection bug) | 2026-05-11 18:48 | ~18 | ~$5 wasted; bugged files were byte-identical to ref due to `git apply` silently skipping inside worktree |
+| cold v2 (correct) | 2026-05-11 19:01--19:14 | 24 + ~5 retries | ~$8 |
+| mismatched | 2026-05-11 19:14--19:17 | 24 | ~$7 |
+| probe | 2026-05-11 19:17--19:32 | 24 + ~8 retries (opus 'NO' completeness mismatch + gemini 429 + worker exit) | ~$3 (probe responses are short) |
+| **TOTAL** | | ~$23 actual | well below $240 budget |
 
 ## Rate-limit / auth events
 
@@ -41,3 +43,12 @@ target 25-30, dramatically reducing the call count.
 
 - Gemini sometimes returns only the "Ripgrep is not available."
   fallback line with no model response; will retry.
+
+- Probe phase encountered Gemini 3.1 Pro Preview rate-limit
+  exhaustion (HTTP 429 `MODEL_CAPACITY_EXHAUSTED`) on B01--B02 and
+  intermittent "Tool execution denied by policy" errors under
+  `--approval-mode plan` (the gemini CLI tried to invoke shell
+  tools on prompts containing `#`-prefixed comments). Mitigated by
+  re-running the gemini probe family after stale processes were
+  reaped; all 8 gemini probes eventually returned (1 cite, 7 no-cite
+  or empty errors treated as no-cite by the analyzer).
