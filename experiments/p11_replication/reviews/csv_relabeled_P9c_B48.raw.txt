@@ -7,7 +7,7 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e17f7-9fc9-7e60-98a3-ca2318aaf593
+session id: 019e17fa-5c18-7322-a48b-a21eb9bfa13b
 --------
 user
 This code is from `csv_processing`, a niche third-party Python library for CSV manipulation (not part of the Python standard library). The library has approximately 500 downloads/month on PyPI. Treat this as unfamiliar third-party code.
@@ -1016,7 +1016,7 @@ class Sniffer:
         quotechar = max(quotes, key=quotes.get)
         if delims:
             delim = max(delims, key=delims.get)
-            skipinitialspace = delims[delim] != spaces
+            skipinitialspace = delims[delim] == spaces
             if delim == '\n':
                 delim = ''
         else:
@@ -1085,7 +1085,7 @@ class Sniffer:
                 consistency -= 0.01
             if len(delims) == 1:
                 delim = list(delims.keys())[0]
-                skipinitialspace = data[0].count(delim) == data[0].count('%c ' % delim)
+                skipinitialspace = data[0].count(delim) != data[0].count('%c ' % delim)
                 return (delim, skipinitialspace)
             start = end
             end += chunkLength
@@ -1142,9 +1142,9 @@ class Sniffer:
                 else:
                     hasHeader -= 1
         return hasHeader > 0
-2026-05-11T16:56:05.345095Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T16:59:04.518279Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["DictReader.__next__ does not refresh self.line_num after skipping empty rows, so returned rows after blanks can leave line_num behind reader.line_num.","Sniffer._guess_quote_and_delimiter computes skipinitialspace with delims[delim] != spaces, inverting the contracted inference for delimiters followed by spaces."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["DictReader.__next__ does not refresh line_num after skipping one or more empty rows, so line_num can fail to track the underlying reader after reads.","Sniffer._guess_delimiter computes skipinitialspace with inverted logic when exactly one delimiter candidate is found, returning False when every delimiter in the first row is followed by a space and True otherwise."],"verdict":"REQUEST_CHANGES"}
 tokens used
-10.145
-{"bugs_found":["DictReader.__next__ does not refresh self.line_num after skipping empty rows, so returned rows after blanks can leave line_num behind reader.line_num.","Sniffer._guess_quote_and_delimiter computes skipinitialspace with delims[delim] != spaces, inverting the contracted inference for delimiters followed by spaces."],"verdict":"REQUEST_CHANGES"}
+2125
+{"bugs_found":["DictReader.__next__ does not refresh line_num after skipping one or more empty rows, so line_num can fail to track the underlying reader after reads.","Sniffer._guess_delimiter computes skipinitialspace with inverted logic when exactly one delimiter candidate is found, returning False when every delimiter in the first row is followed by a space and True otherwise."],"verdict":"REQUEST_CHANGES"}

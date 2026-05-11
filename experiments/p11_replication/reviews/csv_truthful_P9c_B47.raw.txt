@@ -7,11 +7,9 @@ approval: never
 sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
 reasoning effort: xhigh
 reasoning summaries: none
-session id: 019e17f7-9fc9-7e60-98a3-ca2318aaf593
+session id: 019e17fa-5c18-74f2-8cdd-9ebdd343173b
 --------
 user
-This code is from `csv_processing`, a niche third-party Python library for CSV manipulation (not part of the Python standard library). The library has approximately 500 downloads/month on PyPI. Treat this as unfamiliar third-party code.
-
 Sei un revisore tecnico **cold contract-first**, estremamente rigoroso e formale.
 
 Devi eseguire una review in 2 fasi:
@@ -1016,7 +1014,7 @@ class Sniffer:
         quotechar = max(quotes, key=quotes.get)
         if delims:
             delim = max(delims, key=delims.get)
-            skipinitialspace = delims[delim] != spaces
+            skipinitialspace = delims[delim] == spaces
             if delim == '\n':
                 delim = ''
         else:
@@ -1083,7 +1081,7 @@ class Sniffer:
                         if v[1] / total >= consistency and (delimiters is None or k in delimiters):
                             delims[k] = v
                 consistency -= 0.01
-            if len(delims) == 1:
+            if len(delims) != 1:
                 delim = list(delims.keys())[0]
                 skipinitialspace = data[0].count(delim) == data[0].count('%c ' % delim)
                 return (delim, skipinitialspace)
@@ -1142,9 +1140,9 @@ class Sniffer:
                 else:
                     hasHeader -= 1
         return hasHeader > 0
-2026-05-11T16:56:05.345095Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
+2026-05-11T16:59:04.458938Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when Auth(TokenRefreshFailed("Server returned error response: invalid_grant: Invalid refresh token"))
 codex
-{"bugs_found":["DictReader.__next__ does not refresh self.line_num after skipping empty rows, so returned rows after blanks can leave line_num behind reader.line_num.","Sniffer._guess_quote_and_delimiter computes skipinitialspace with delims[delim] != spaces, inverting the contracted inference for delimiters followed by spaces."],"verdict":"REQUEST_CHANGES"}
+{"bugs_found":["Sniffer._guess_delimiter returns from the multi-candidate path when len(delims) != 1, so an empty candidate set raises IndexError instead of returning (\"\", 0).","Sniffer._guess_delimiter does not apply self.preferred when multiple delimiter candidates are found; it returns the first dict key from delims, violating the specified preference order.","Sniffer._guess_delimiter fails the contract's exactly-one-candidate behavior during chunk analysis because it continues instead of returning the sole delimiter immediately."],"verdict":"REQUEST_CHANGES"}
 tokens used
-10.145
-{"bugs_found":["DictReader.__next__ does not refresh self.line_num after skipping empty rows, so returned rows after blanks can leave line_num behind reader.line_num.","Sniffer._guess_quote_and_delimiter computes skipinitialspace with delims[delim] != spaces, inverting the contracted inference for delimiters followed by spaces."],"verdict":"REQUEST_CHANGES"}
+2113
+{"bugs_found":["Sniffer._guess_delimiter returns from the multi-candidate path when len(delims) != 1, so an empty candidate set raises IndexError instead of returning (\"\", 0).","Sniffer._guess_delimiter does not apply self.preferred when multiple delimiter candidates are found; it returns the first dict key from delims, violating the specified preference order.","Sniffer._guess_delimiter fails the contract's exactly-one-candidate behavior during chunk analysis because it continues instead of returning the sole delimiter immediately."],"verdict":"REQUEST_CHANGES"}
