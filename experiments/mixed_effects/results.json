@@ -1,0 +1,290 @@
+{
+  "model": {
+    "formula": "detected ~ cond + fam_opus + fam_gemini + libclass_tp + cond_x_opus + cond_x_gemini + cond_x_libclass",
+    "random_effects": {
+      "bug": "0 + C(bug_uid)",
+      "module": "0 + C(module)"
+    },
+    "fit_method": "variational_bayes (BinomialBayesMixedGLM.fit_vb)",
+    "n_rows": 840,
+    "n_bug_clusters": 420,
+    "n_module_clusters": 6,
+    "seed": 20260511
+  },
+  "fixed_effects": [
+    {
+      "name": "Intercept",
+      "mean": -4.30493962713446,
+      "sd": 0.1148053786620714,
+      "ci95_low": -4.52995816931212,
+      "ci95_high": -4.0799210849568,
+      "z": -37.497717243771405,
+      "p_wald_two": 0.0
+    },
+    {
+      "name": "cond",
+      "mean": 4.204743683920315,
+      "sd": 0.1260756571202878,
+      "ci95_low": 3.9576353959645507,
+      "ci95_high": 4.451851971876079,
+      "z": 33.35095592568359,
+      "p_wald_two": 0.0
+    },
+    {
+      "name": "fam_opus",
+      "mean": 1.04442572985352,
+      "sd": 0.21060223171641534,
+      "ci95_low": 0.631645355689346,
+      "ci95_high": 1.457206104017694,
+      "z": 4.959233913816653,
+      "p_wald_two": 7.077171058078591e-07
+    },
+    {
+      "name": "fam_gemini",
+      "mean": 1.0689940513997145,
+      "sd": 0.22488231581643991,
+      "ci95_low": 0.6282247123994922,
+      "ci95_high": 1.5097633903999368,
+      "z": 4.753570984533441,
+      "p_wald_two": 1.99854890547968e-06
+    },
+    {
+      "name": "libclass_tp",
+      "mean": -0.24974611932039972,
+      "sd": 0.1582699636158712,
+      "ci95_low": -0.5599552480075073,
+      "ci95_high": 0.060463009366707815,
+      "z": -1.577975464293058,
+      "p_wald_two": 0.11457124659781992
+    },
+    {
+      "name": "cond_x_opus",
+      "mean": -1.034892331366208,
+      "sd": 0.23847445448823062,
+      "ci95_low": -1.50230226216314,
+      "ci95_high": -0.567482400569276,
+      "z": -4.339636015048659,
+      "p_wald_two": 1.427189095504211e-05
+    },
+    {
+      "name": "cond_x_gemini",
+      "mean": -0.38337352675447395,
+      "sd": 0.26093369576713515,
+      "ci95_low": -0.8948035704580588,
+      "ci95_high": 0.12805651694911097,
+      "z": -1.469237331067459,
+      "p_wald_two": 0.1417684280922109
+    },
+    {
+      "name": "cond_x_libclass",
+      "mean": 2.2338988642459183,
+      "sd": 0.18164184686577525,
+      "ci95_low": 1.877880844388999,
+      "ci95_high": 2.5899168841028377,
+      "z": 12.29837123323605,
+      "p_wald_two": 0.0
+    }
+  ],
+  "random_effect_variances": [
+    {
+      "name": "bug",
+      "log_sd_mean": -0.33048254615951617,
+      "log_sd_sd": 0.034496315585866764,
+      "sd_mean": 0.7185769032328938,
+      "sd_ci95_low": 0.6715980047270047,
+      "sd_ci95_high": 0.7688420189242015,
+      "var_mean": 0.5163527658597756,
+      "var_ci95_low": 0.4510438799532938,
+      "var_ci95_high": 0.5911180500634421
+    },
+    {
+      "name": "module",
+      "log_sd_mean": -0.2580618596323088,
+      "log_sd_sd": 0.2830252905339372,
+      "sd_mean": 0.7725474411281278,
+      "sd_ci95_low": 0.44361800805337204,
+      "sd_ci95_high": 1.345368172524261,
+      "var_mean": 0.596829548793618,
+      "var_ci95_low": 0.19679693706924165,
+      "var_ci95_high": 1.8100155196412697
+    }
+  ],
+  "approx_lrt_condition_block": {
+    "elbo_full": -502.1951860294903,
+    "elbo_reduced": -764.5077511632837,
+    "D_approx": 524.6251302675869,
+    "df": 4,
+    "p_lrt_approx": 3.1591628406076815e-112,
+    "note": "ELBO-based; lower bound on log marginal likelihood"
+  },
+  "per_cell_contrasts": [
+    {
+      "label": "P9 csv (Codex)",
+      "domain": "csv_dom",
+      "family": "codex",
+      "library_class": "stdlib",
+      "u_module_blup": -0.3249350506704093,
+      "delta_hat": 0.3856278805541078,
+      "ci95_low": 0.3107372917574908,
+      "ci95_high": 0.4653496381543367,
+      "p_cold_hat": 0.3952896026373663,
+      "p_mismatched_hat": 0.009661722083258491
+    },
+    {
+      "label": "P9 urllib (Codex)",
+      "domain": "urllib_dom",
+      "family": "codex",
+      "library_class": "stdlib",
+      "u_module_blup": 0.013929378589831948,
+      "delta_hat": 0.4649405509432379,
+      "ci95_low": 0.38501918601596863,
+      "ci95_high": 0.5452316869316234,
+      "p_cold_hat": 0.47844672366650415,
+      "p_mismatched_hat": 0.013506172723266287
+    },
+    {
+      "label": "P9 jsondec (Codex)",
+      "domain": "jsondec_dom",
+      "family": "codex",
+      "library_class": "stdlib",
+      "u_module_blup": -0.20448921059068978,
+      "delta_hat": 0.4135276021097114,
+      "ci95_low": 0.3363735949482333,
+      "ci95_high": 0.49390048466903785,
+      "p_cold_hat": 0.42441255981375686,
+      "p_mismatched_hat": 0.010884957704045488
+    },
+    {
+      "label": "P9 csv (Opus)",
+      "domain": "csv_dom",
+      "family": "opus",
+      "library_class": "stdlib",
+      "u_module_blup": -0.3249350506704093,
+      "delta_hat": 0.37059436462889156,
+      "ci95_low": 0.22545153629456882,
+      "ci95_high": 0.5362591325662129,
+      "p_cold_hat": 0.3975706853348468,
+      "p_mismatched_hat": 0.026976320705955258
+    },
+    {
+      "label": "P9 csv (Gemini 3.1)",
+      "domain": "csv_dom",
+      "family": "gemini31",
+      "library_class": "stdlib",
+      "u_module_blup": -0.3249350506704093,
+      "delta_hat": 0.5371278714042325,
+      "ci95_low": 0.35922918502391726,
+      "ci95_high": 0.6954098924491288,
+      "p_cold_hat": 0.5647566254970694,
+      "p_mismatched_hat": 0.027628754092836917
+    },
+    {
+      "label": "P10 dateutil (Codex)",
+      "domain": "dateutil_dom",
+      "family": "codex",
+      "library_class": "third_party",
+      "u_module_blup": 0.7222504870815567,
+      "delta_hat": 0.9100622673140701,
+      "ci95_low": 0.8660982172181569,
+      "ci95_high": 0.9341453807540862,
+      "p_cold_hat": 0.9312600033494771,
+      "p_mismatched_hat": 0.021197736035406985
+    },
+    {
+      "label": "P10 dateutil (Opus)",
+      "domain": "dateutil_dom",
+      "family": "opus",
+      "library_class": "third_party",
+      "u_module_blup": 0.7222504870815567,
+      "delta_hat": 0.8738922106101614,
+      "ci95_low": 0.809994869623041,
+      "ci95_high": 0.9031016242826495,
+      "p_cold_hat": 0.9318677786432543,
+      "p_mismatched_hat": 0.057975568033092874
+    },
+    {
+      "label": "P10 dateutil (Gemini 3.1)",
+      "domain": "dateutil_dom",
+      "family": "gemini31",
+      "library_class": "third_party",
+      "u_module_blup": 0.7222504870815567,
+      "delta_hat": 0.9048153754206182,
+      "ci95_low": 0.8643407557846465,
+      "ci95_high": 0.925420122868573,
+      "p_cold_hat": 0.9641473901405763,
+      "p_mismatched_hat": 0.05933201471995805
+    },
+    {
+      "label": "P10 parsy (Codex)",
+      "domain": "parsy_dom",
+      "family": "codex",
+      "library_class": "third_party",
+      "u_module_blup": -1.2420249987647667,
+      "delta_hat": 0.6521616857609158,
+      "ci95_low": 0.5122462903484231,
+      "ci95_high": 0.769532825189365,
+      "p_cold_hat": 0.6551900166564856,
+      "p_mismatched_hat": 0.0030283308955697075
+    },
+    {
+      "label": "P10 parsy (Opus)",
+      "domain": "parsy_dom",
+      "family": "opus",
+      "library_class": "third_party",
+      "u_module_blup": -1.2420249987647667,
+      "delta_hat": 0.6487824908204113,
+      "ci95_low": 0.44400582372282077,
+      "ci95_high": 0.8056901322067794,
+      "p_cold_hat": 0.6573405664679979,
+      "p_mismatched_hat": 0.008558075647586592
+    },
+    {
+      "label": "P10 parsy (Gemini 3.1)",
+      "domain": "parsy_dom",
+      "family": "gemini31",
+      "library_class": "third_party",
+      "u_module_blup": -1.2420249987647667,
+      "delta_hat": 0.7816664021228416,
+      "ci95_low": 0.6025321483897892,
+      "ci95_high": 0.8881483449401801,
+      "p_cold_hat": 0.7904354728458313,
+      "p_mismatched_hat": 0.008769070722989667
+    },
+    {
+      "label": "P10 chardet (Codex)",
+      "domain": "chardet_dom",
+      "family": "codex",
+      "library_class": "third_party",
+      "u_module_blup": 0.4880266089425071,
+      "delta_hat": 0.8978199070729047,
+      "ci95_low": 0.8433120749616289,
+      "ci95_high": 0.929203094142986,
+      "p_cold_hat": 0.9146657976590881,
+      "p_mismatched_hat": 0.0168458905861833
+    },
+    {
+      "label": "P10 chardet (Opus)",
+      "domain": "chardet_dom",
+      "family": "opus",
+      "library_class": "third_party",
+      "u_module_blup": 0.4880266089425071,
+      "delta_hat": 0.8689754767259509,
+      "ci95_low": 0.7878601478664329,
+      "ci95_high": 0.9048093467612698,
+      "p_cold_hat": 0.9154069655322045,
+      "p_mismatched_hat": 0.046431488806253564
+    },
+    {
+      "label": "P10 chardet (Gemini 3.1)",
+      "domain": "chardet_dom",
+      "family": "gemini31",
+      "library_class": "third_party",
+      "u_module_blup": 0.4880266089425071,
+      "delta_hat": 0.907578208869373,
+      "ci95_low": 0.8608776591271282,
+      "ci95_high": 0.9287431286108169,
+      "p_cold_hat": 0.9551096771938303,
+      "p_mismatched_hat": 0.047531468324457316
+    }
+  ]
+}
