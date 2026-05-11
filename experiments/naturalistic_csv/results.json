@@ -1,0 +1,332 @@
+{
+  "n_bugs": 8,
+  "families": {
+    "codex": {
+      "n_bugs": 8,
+      "cold": {
+        "n_detected": 6,
+        "rate": 0.75,
+        "wilson_ci95": [
+          0.40926987910258916,
+          0.9285223111419724
+        ],
+        "parse_failures": 0
+      },
+      "mismatched": {
+        "n_detected": 1,
+        "rate": 0.125,
+        "wilson_ci95": [
+          0.02241690886329617,
+          0.4708948057698615
+        ],
+        "parse_failures": 0
+      },
+      "delta_pp": 62.5,
+      "permutation": {
+        "delta_obs": 0.625,
+        "p_one_sided": 0.02864856757162142,
+        "p_two_sided": 0.06014699265036748,
+        "ci95": [
+          25.0,
+          87.5
+        ],
+        "n_perm": 20000
+      },
+      "mcnemar": {
+        "discordant_cold_wins": 5,
+        "discordant_mm_wins": 0,
+        "p_one_sided": 0.03125
+      },
+      "h1_significant_at_0_025": false,
+      "raw_paired": [
+        {
+          "bug_id": "B01",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B02",
+          "cold": true,
+          "mm": true,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B03",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B04",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B05",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B06",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B07",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B08",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        }
+      ]
+    },
+    "opus": {
+      "n_bugs": 8,
+      "cold": {
+        "n_detected": 1,
+        "rate": 0.125,
+        "wilson_ci95": [
+          0.02241690886329617,
+          0.4708948057698615
+        ],
+        "parse_failures": 0
+      },
+      "mismatched": {
+        "n_detected": 0,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.3244156195108769
+        ],
+        "parse_failures": 0
+      },
+      "delta_pp": 12.5,
+      "permutation": {
+        "delta_obs": 0.125,
+        "p_one_sided": 0.4974251287435628,
+        "p_two_sided": 1.0,
+        "ci95": [
+          0.0,
+          37.5
+        ],
+        "n_perm": 20000
+      },
+      "mcnemar": {
+        "discordant_cold_wins": 1,
+        "discordant_mm_wins": 0,
+        "p_one_sided": 0.5
+      },
+      "h1_significant_at_0_025": false,
+      "raw_paired": [
+        {
+          "bug_id": "B01",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B02",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B03",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B04",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B05",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B06",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B07",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B08",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        }
+      ]
+    },
+    "gemini31": {
+      "n_bugs": 8,
+      "cold": {
+        "n_detected": 5,
+        "rate": 0.625,
+        "wilson_ci95": [
+          0.30573785458380187,
+          0.863158240538479
+        ],
+        "parse_failures": 0
+      },
+      "mismatched": {
+        "n_detected": 0,
+        "rate": 0.0,
+        "wilson_ci95": [
+          0.0,
+          0.3244156195108769
+        ],
+        "parse_failures": 0
+      },
+      "delta_pp": 62.5,
+      "permutation": {
+        "delta_obs": 0.625,
+        "p_one_sided": 0.030848457577121145,
+        "p_two_sided": 0.06204689765511724,
+        "ci95": [
+          25.0,
+          87.5
+        ],
+        "n_perm": 20000
+      },
+      "mcnemar": {
+        "discordant_cold_wins": 5,
+        "discordant_mm_wins": 0,
+        "p_one_sided": 0.03125
+      },
+      "h1_significant_at_0_025": false,
+      "raw_paired": [
+        {
+          "bug_id": "B01",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B02",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B03",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B04",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B05",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B06",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B07",
+          "cold": false,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        },
+        {
+          "bug_id": "B08",
+          "cold": true,
+          "mm": false,
+          "cold_parsed": true,
+          "mm_parsed": true
+        }
+      ]
+    }
+  },
+  "manifest_ref": "manifest.json",
+  "alpha_per_family": 0.025,
+  "n_perm": 20000,
+  "naturalistic_vs_ast_csv": {
+    "codex": {
+      "n_ast": 30,
+      "n_naturalistic": 8,
+      "ast_cold_rate": 0.43333333333333335,
+      "naturalistic_cold_rate": 0.75,
+      "delta_ast_minus_naturalistic_pp": -31.666666666666664,
+      "mann_whitney_u": 82.0,
+      "p_one_sided_ast_geq_natural": 0.9418578506059574
+    },
+    "opus": {
+      "n_ast": 30,
+      "n_naturalistic": 8,
+      "ast_cold_rate": 0.3,
+      "naturalistic_cold_rate": 0.125,
+      "delta_ast_minus_naturalistic_pp": 17.5,
+      "mann_whitney_u": 141.0,
+      "p_one_sided_ast_geq_natural": 0.16218431513426523
+    },
+    "gemini31": {
+      "n_ast": 30,
+      "n_naturalistic": 8,
+      "ast_cold_rate": 0.6333333333333333,
+      "naturalistic_cold_rate": 0.625,
+      "delta_ast_minus_naturalistic_pp": 0.8333333333333304,
+      "mann_whitney_u": 121.0,
+      "p_one_sided_ast_geq_natural": 0.4829142976789511
+    }
+  },
+  "FLOOR_EFFECT_HALT": {
+    "triggered": false
+  },
+  "family_wise_summary": {
+    "n_families_h1_significant": 0,
+    "interpretation": "C1 specificity does NOT replicate on naturalistic bugs (0/3 families)."
+  }
+}
