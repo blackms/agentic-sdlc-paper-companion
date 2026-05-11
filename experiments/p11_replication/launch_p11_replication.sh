@@ -17,7 +17,6 @@
 #   experiments/p11_replication/drift_diagnostic/<side>_truthful_v14_<bid>.raw.txt
 #   experiments/p11_replication/_launch.log
 
-set -u
 cd "$(dirname "$0")/../.." || exit 1
 ROOT="$(pwd)"
 EXPDIR="experiments/p11_replication"
@@ -93,8 +92,9 @@ run_one() {
   # Retry up to 3 times on auth-refresh / transient failure.
   local TRY
   for TRY in 1 2 3; do
-    if codex exec --skip-git-repo-check "$(cat "$TMP")" > "$OUT" 2>&1; then
-      if [ -s "$OUT" ]; then
+    if cat "$TMP" | codex exec --skip-git-repo-check - > "$OUT" 2>&1; then
+      # Require a JSON verdict to consider it a success.
+      if grep -q '"verdict"' "$OUT" 2>/dev/null; then
         rm -f "$TMP"
         echo "DONE $SIDE $COND $BID try=$TRY" >> "$LOG"
         return 0
@@ -110,30 +110,11 @@ run_one() {
 # Build the work queue from manifest.json (interleave truthful then
 # relabeled per bug to absorb reviewer drift symmetrically).
 read_queue() {
-  python3 - <<'PY'
-import json, sys
-m = json.load(open("experiments/p11_replication/manifest.json"))
-for side_key, side_label in (("csv", "csv"), ("chardet", "chardet")):
-    side = m[side_key]
-    for row in side["rows"]:
-        bid = row["bug_id"]
-        src = row["source"]
-        for cond in ("truthful", "relabeled"):
-            print(f"{side_label}|{cond}|{bid}|{src}|{row['bugged_path']}")
-PY
+  python3 experiments/p11_replication/_emit_queue.py main
 }
 
 read_drift_queue() {
-  # Re-run truthful on the 30 v13_reused bugs per side (output to drift_diagnostic/).
-  python3 - <<'PY'
-import json
-m = json.load(open("experiments/p11_replication/manifest.json"))
-for side_key, side_label in (("csv", "csv"), ("chardet", "chardet")):
-    side = m[side_key]
-    for row in side["rows"]:
-        if row["source"] == "v13_reused":
-            print(f"{side_label}|truthful_v14|{row['bug_id']}|v13_reused|{row['bugged_path']}")
-PY
+  python3 experiments/p11_replication/_emit_queue.py drift
 }
 
 DRIFT_ONLY=0
@@ -145,8 +126,13 @@ CHUNK=12
 
 echo "=== launch $(date -u +%FT%TZ) ===" >> "$LOG"
 
+QUEUE=()
+DRIFT_QUEUE=()
+
 if [ "$DRIFT_ONLY" -eq 0 ]; then
-  mapfile -t QUEUE < <(read_queue)
+  while IFS= read -r LINE; do
+    QUEUE+=("$LINE")
+  done < <(read_queue)
   echo "MAIN_QUEUE_SIZE=${#QUEUE[@]}" >> "$LOG"
   i=0
   while [ $i -lt ${#QUEUE[@]} ]; do
@@ -167,7 +153,9 @@ if [ "$DRIFT_ONLY" -eq 0 ]; then
 fi
 
 # Drift diagnostic: re-run truthful on the 30 v13_reused bugs per side.
-mapfile -t DRIFT_QUEUE < <(read_drift_queue)
+while IFS= read -r LINE; do
+  DRIFT_QUEUE+=("$LINE")
+done < <(read_drift_queue)
 echo "DRIFT_QUEUE_SIZE=${#DRIFT_QUEUE[@]}" >> "$LOG"
 i=0
 while [ $i -lt ${#DRIFT_QUEUE[@]} ]; do
