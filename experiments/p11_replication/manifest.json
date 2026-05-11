@@ -1,0 +1,1697 @@
+{
+  "amendment": "A1",
+  "amendment_doc": "docs/paper/v1.4/preregistration-p11-replication-amendment-A1.md",
+  "preregistration": "docs/paper/v1.4/preregistration-p11-replication.md",
+  "header": {
+    "csv": {
+      "n_unique_bugs": 53,
+      "per_operator_counts": {
+        "v13_reused": {
+          "AOR": 10,
+          "ROR": 10,
+          "BOR": 10
+        },
+        "v14_new_amendment_A1": {
+          "AOR": 6,
+          "ROR": 17
+        },
+        "total": {
+          "AOR": 16,
+          "ROR": 27,
+          "BOR": 10
+        }
+      }
+    },
+    "chardet": {
+      "n_unique_bugs": 60,
+      "per_operator_counts": {
+        "v13_reused": {
+          "ROR": 13,
+          "AOR": 13,
+          "BOR": 4
+        },
+        "v14_new_amendment_A1": {
+          "AOR": 22,
+          "ROR": 8
+        },
+        "total": {
+          "ROR": 21,
+          "AOR": 35,
+          "BOR": 4
+        }
+      }
+    },
+    "total_paired_codex_calls": 226,
+    "drift_diagnostic_extra_calls": 120
+  },
+  "csv": {
+    "side": "csv",
+    "ref_module": "experiments/p9_real/csv_dom/ref/csv_module.py",
+    "ref_sha256": "46004923196e98a67f87d30da64d070027c81f144f5ac91242fbfae33507dda8",
+    "contracts_path": "experiments/p9_real/csv_dom/contracts/contracts.md",
+    "contracts_sha256": "fa28fb23b50fa6e7a083e796ee592be97d60de885c97a0645c58ba7c0769b32d",
+    "ast_mutator_sha256": "50131bbc40334e274e2a7fd81ed2a0394d4b4089853f1904c8557f29d54ce9bf",
+    "loose_validate": false,
+    "v13_seed": 20260510,
+    "amendment_seed": 20260511,
+    "total_valid_mutations": 53,
+    "v13_reused": 30,
+    "v14_new": 23,
+    "n_unique_bugs": 53,
+    "per_operator_counts": {
+      "v13_reused": {
+        "AOR": 10,
+        "ROR": 10,
+        "BOR": 10
+      },
+      "v14_new_amendment_A1": {
+        "AOR": 6,
+        "ROR": 17
+      },
+      "total": {
+        "AOR": 16,
+        "ROR": 27,
+        "BOR": 10
+      }
+    },
+    "selection_rule": "v13 bugs reused verbatim (same B-IDs, byte-identical bugged files). v14_new = mutations in enumerate_mutations(ref) NOT in v13 manifest, sorted by (operator, lineno, col, new_op_cls), all retained (saturation). v13: strict importable validate. chardet: compile-only validate (matches v1.3 inject_all.py).",
+    "rows": [
+      {
+        "bug_id": "P9c_B01",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          361,
+          50
+        ],
+        "new_op_cls": "FloorDiv",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B01.py",
+        "sha256_bugged_file": "66fd04a389e15cf38dc186550e4737b65c08137059eb238a95b278c22ae70d1f"
+      },
+      {
+        "bug_id": "P9c_B02",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          338,
+          51
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B02.py",
+        "sha256_bugged_file": "96199f550198719f5e7f2e394d40e3e96c86bdb2e0640841cdf7436d7495d6d9"
+      },
+      {
+        "bug_id": "P9c_B03",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          46,
+          11
+        ],
+        "new_op_cls": "Eq",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B03.py",
+        "sha256_bugged_file": "93f3c87941be2e67db8a3667b2032e46c34aea329ac2caa5566c4e40fe9fb122"
+      },
+      {
+        "bug_id": "P9c_B04",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          250,
+          15
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B04.py",
+        "sha256_bugged_file": "12a56be3fe9cefb61a2f37f63009783fc529f33108499760dbf5da9eb3bc56d6"
+      },
+      {
+        "bug_id": "P9c_B05",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          127,
+          11
+        ],
+        "new_op_cls": "LtE",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B05.py",
+        "sha256_bugged_file": "b81441b6dea3b3e6b4257cd71d80e19ceefcc48e04382553d07f48d15d13c38f"
+      },
+      {
+        "bug_id": "P9c_B06",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          274,
+          31
+        ],
+        "new_op_cls": "FloorDiv",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B06.py",
+        "sha256_bugged_file": "bed23db5fe576b13578d97c7156edfc1aa41818962ee8ecb20310e02f1f8270e"
+      },
+      {
+        "bug_id": "P9c_B07",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          241,
+          16
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B07.py",
+        "sha256_bugged_file": "0789dc9c4d97eef55fe8d304ea3da423e2f317a0748e04d4ca5e252f248da0ba"
+      },
+      {
+        "bug_id": "P9c_B08",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          353,
+          28
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B08.py",
+        "sha256_bugged_file": "9fdfe7e5408edb0f48df3013394a7a8085a657aed84c0a87c06fd7c5d4732405"
+      },
+      {
+        "bug_id": "P9c_B09",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          330,
+          19
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B09.py",
+        "sha256_bugged_file": "e62c8721d1f536ec63732888c8f4d49628bda84667133aafad91de74235697cf"
+      },
+      {
+        "bug_id": "P9c_B10",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          350,
+          18
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B10.py",
+        "sha256_bugged_file": "444ca60bf1efc7faf04d92e0dfe303e0dc1a67340a819f0f151913894cf11280"
+      },
+      {
+        "bug_id": "P9c_B11",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          253,
+          20
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B11.py",
+        "sha256_bugged_file": "1d4c5757f14c0ca3fd239206a5f1a850ce8618e0d36688be853e3fc32b919458"
+      },
+      {
+        "bug_id": "P9c_B12",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          157,
+          27
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B12.py",
+        "sha256_bugged_file": "e7c84af927de687f7d2bbf86f7d34cdf9bf764a5cc8fc80f02fb5e17cc7ddd0a"
+      },
+      {
+        "bug_id": "P9c_B13",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          250,
+          24
+        ],
+        "new_op_cls": "And",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B13.py",
+        "sha256_bugged_file": "717293e4fee25462d9f51e4ab505fe150a107d46e52ec37dbb06874bed66f15d"
+      },
+      {
+        "bug_id": "P9c_B14",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          325,
+          42
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B14.py",
+        "sha256_bugged_file": "f98ad55a44afb8ed48b4810f611f08c101f7cd762f8721b36509fabfe04f2c55"
+      },
+      {
+        "bug_id": "P9c_B15",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          426,
+          19
+        ],
+        "new_op_cls": "Eq",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B15.py",
+        "sha256_bugged_file": "8093b52dc37827d5376dd93fe2c9fe2966cf3f0d12b2489e1a322ebdefd84271"
+      },
+      {
+        "bug_id": "P9c_B16",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          352,
+          36
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B16.py",
+        "sha256_bugged_file": "aaf652124d83785c6c8ccf1bd46bb97138a11109e4e1e6920c14c557ce9d38d9"
+      },
+      {
+        "bug_id": "P9c_B17",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          140,
+          11
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B17.py",
+        "sha256_bugged_file": "555b526ff4d772670b3c93e985ab3b5a1f87f97242decaff28ec7daf377f7374"
+      },
+      {
+        "bug_id": "P9c_B18",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          205,
+          28
+        ],
+        "new_op_cls": "And",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B18.py",
+        "sha256_bugged_file": "7e534cdea86d5ea124e8fe885352c6326ded52cde1c4a656352d2ad15849687f"
+      },
+      {
+        "bug_id": "P9c_B19",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          350,
+          39
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B19.py",
+        "sha256_bugged_file": "4eb6ceeeb400c4a17d5c10d535f60280c3a64b5bd146fcef21dd444a510170db"
+      },
+      {
+        "bug_id": "P9c_B20",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          317,
+          14
+        ],
+        "new_op_cls": "LtE",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B20.py",
+        "sha256_bugged_file": "8507265b36e818f6411cf22f3b7af079bc667fcdc20d33297f7e12978a5ab53e"
+      },
+      {
+        "bug_id": "P9c_B21",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          354,
+          29
+        ],
+        "new_op_cls": "And",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B21.py",
+        "sha256_bugged_file": "7473f337428818173ba47fd75ec5056d553a0d7cda7ab4fe7571fc64e060685c"
+      },
+      {
+        "bug_id": "P9c_B22",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          353,
+          29
+        ],
+        "new_op_cls": "Mult",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B22.py",
+        "sha256_bugged_file": "948ff6e87a20edd1fff5170634520f40273c8fc2f5e72f9236d0e2277b6986f6"
+      },
+      {
+        "bug_id": "P9c_B23",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          350,
+          18
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B23.py",
+        "sha256_bugged_file": "a1f42378cd97f4288f1576513f0847305460b1514913a5c784dcfbb5fa5a332f"
+      },
+      {
+        "bug_id": "P9c_B24",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          352,
+          23
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B24.py",
+        "sha256_bugged_file": "7263bd5d03a1a90449a862df86df356e7f0652cf1e18e93c877ba034005af310"
+      },
+      {
+        "bug_id": "P9c_B25",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          439,
+          19
+        ],
+        "new_op_cls": "Eq",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B25.py",
+        "sha256_bugged_file": "5b6f8e3d360bd35866e9f430ec60e0e0468d8fca8c1540cb1368ed301ed398bc"
+      },
+      {
+        "bug_id": "P9c_B26",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          352,
+          23
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B26.py",
+        "sha256_bugged_file": "855d0f938f0f1cabc146acca339cabc5042ecc622f2e2a9b429af1c232445284"
+      },
+      {
+        "bug_id": "P9c_B27",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          345,
+          30
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B27.py",
+        "sha256_bugged_file": "2ad5efe82dfb2d70d5c5ccbe21f798dfd48024c339871618c250dbba602095e1"
+      },
+      {
+        "bug_id": "P9c_B28",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          86,
+          11
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B28.py",
+        "sha256_bugged_file": "588a048fc91d284a5f82c77068d5b211a2d625394bc3361d6cf1e04263af4ada"
+      },
+      {
+        "bug_id": "P9c_B29",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          244,
+          30
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B29.py",
+        "sha256_bugged_file": "3a6d3e74dea3b4cb69fe03df6c2fe276432de85921a46cf69cf64dc8b5171d7b"
+      },
+      {
+        "bug_id": "P9c_B30",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          451,
+          15
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p9_real/csv_dom/bugged/P9c_B30.py",
+        "sha256_bugged_file": "df69b3416a3dee4a66e32d9e0e6e3f7e8b3c1208e9384bbb9dfe324856378b7f"
+      },
+      {
+        "bug_id": "P9c_B31",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          146,
+          29
+        ],
+        "new_op_cls": "FloorDiv",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B31.py",
+        "sha256_bugged_file": "b92378bbba0c908056623a0905212fca09608f4cbecc9ea05d3c3758b201957e"
+      },
+      {
+        "bug_id": "P9c_B32",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          159,
+          33
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B32.py",
+        "sha256_bugged_file": "68c8c315bd23e4982f91114df624c0efb4aaa8298cdda94e1e55900c3cf85ee1"
+      },
+      {
+        "bug_id": "P9c_B33",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          246,
+          20
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B33.py",
+        "sha256_bugged_file": "fde350b567ff6375387c546d913de5aaaa8c7a92ae75f043d2261114895b618d"
+      },
+      {
+        "bug_id": "P9c_B34",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          251,
+          30
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B34.py",
+        "sha256_bugged_file": "9f01f6fb378520cdc2631e859767a062b288195a4eeef55fbaf8d1e4e476f940"
+      },
+      {
+        "bug_id": "P9c_B35",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          376,
+          54
+        ],
+        "new_op_cls": "FloorDiv",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B35.py",
+        "sha256_bugged_file": "33ec6a26442a57981403121773f799512abb06d3142bd59f85ecdb2db3978b06"
+      },
+      {
+        "bug_id": "P9c_B36",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          386,
+          42
+        ],
+        "new_op_cls": "FloorDiv",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B36.py",
+        "sha256_bugged_file": "8326d3637cf2c02b8a6d5243dcfe573480dfc611b0a36180376d4ef1398790ad"
+      },
+      {
+        "bug_id": "P9c_B37",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          113,
+          11
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B37.py",
+        "sha256_bugged_file": "a3e7f4d37e65a729141bd0a72540ae6ed8fde883f875b43693b9148961b7d8d1"
+      },
+      {
+        "bug_id": "P9c_B38",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          122,
+          14
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B38.py",
+        "sha256_bugged_file": "8c82daa73d54c47d75b097c90d926fcb5cbd9230114a214d3ee2d59ae11b1bac"
+      },
+      {
+        "bug_id": "P9c_B39",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          129,
+          13
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B39.py",
+        "sha256_bugged_file": "b2f93f778d871ee708eba331c4f923f5cda0ca30eb815bac61a28a3889c179f0"
+      },
+      {
+        "bug_id": "P9c_B40",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          156,
+          11
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B40.py",
+        "sha256_bugged_file": "7ed3230a28d31866acc521c64a141b77743c9df31c0c5354e198a518ce75fdae"
+      },
+      {
+        "bug_id": "P9c_B41",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          263,
+          31
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B41.py",
+        "sha256_bugged_file": "907ec80ae3d690f47ef82bf62f39cadfae59cb7c9cf3784cc840b3a50a8980ac"
+      },
+      {
+        "bug_id": "P9c_B42",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          264,
+          15
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B42.py",
+        "sha256_bugged_file": "d1dd5d6fc72f26263be810dd4443c2c4ec94d96de6f36b9624acdc05340e1cc2"
+      },
+      {
+        "bug_id": "P9c_B43",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          330,
+          19
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B43.py",
+        "sha256_bugged_file": "5e331610d36288b67200fc8ecba2244037f2ea23529369537f82f8ae5ead5766"
+      },
+      {
+        "bug_id": "P9c_B44",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          330,
+          39
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B44.py",
+        "sha256_bugged_file": "fd18ff97867c9b7a860d57fef3afd4662d52cb6577e6267daf6aaa8f57276081"
+      },
+      {
+        "bug_id": "P9c_B45",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          333,
+          19
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B45.py",
+        "sha256_bugged_file": "45e2265325b68d5c589a8fa0856847aeae75e0fa5a9a275e6446749fa4b35a82"
+      },
+      {
+        "bug_id": "P9c_B46",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          353,
+          28
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B46.py",
+        "sha256_bugged_file": "e4f0802478755b3467c810f6e84bdfd46237f591ac257d1157bf6e1cf321fca5"
+      },
+      {
+        "bug_id": "P9c_B47",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          358,
+          15
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B47.py",
+        "sha256_bugged_file": "7765a8882568b1e062b859776c1027ecb3b4f8cb12f18ff557f6dea164e647e9"
+      },
+      {
+        "bug_id": "P9c_B48",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          360,
+          36
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B48.py",
+        "sha256_bugged_file": "a60b9f6454c3b13b88487b3d376e626e9d0a312b7f41f1d3c15f0f6c80508bf3"
+      },
+      {
+        "bug_id": "P9c_B49",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          372,
+          11
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B49.py",
+        "sha256_bugged_file": "c31a8e72955c079c6b5c8d77f523e60b5331191621c1bb7fab8c8716c7588b7a"
+      },
+      {
+        "bug_id": "P9c_B50",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          375,
+          40
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B50.py",
+        "sha256_bugged_file": "5f13114444f2c788a83b5deaf2eef7b95ad2842974642013aab1c123b3929fce"
+      },
+      {
+        "bug_id": "P9c_B51",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          385,
+          28
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B51.py",
+        "sha256_bugged_file": "f6e74e8eb43ff4c1724bd583616d25cd470e1b9f122f1fc69499997f7238e190"
+      },
+      {
+        "bug_id": "P9c_B52",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          411,
+          15
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B52.py",
+        "sha256_bugged_file": "69293de4d2a737f9d6bcbbdc6b715f0d5eca2d57a107ea92bb5f00c900e85220"
+      },
+      {
+        "bug_id": "P9c_B53",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          415,
+          15
+        ],
+        "new_op_cls": "Eq",
+        "bugged_path": "experiments/p11_replication/bugged_csv/P9c_B53.py",
+        "sha256_bugged_file": "c0898e345cd74df2c8f770e199ffa74e53d095ca90e5013b38026b41b1806557"
+      }
+    ]
+  },
+  "chardet": {
+    "side": "chardet",
+    "ref_module": "experiments/p10_thirdparty/chardet_dom/ref/chardistribution_module.py",
+    "ref_sha256": "df0a164bad8aac6a282b2ab3e334129e315b2696ba57b834d9d68089b4f0725f",
+    "contracts_path": "experiments/p10_thirdparty/chardet_dom/contracts/contracts.md",
+    "contracts_sha256": "70228fa4cc6309928a5434de16788cf18354a6c31e5dc221fd16017d60db3105",
+    "ast_mutator_sha256": "50131bbc40334e274e2a7fd81ed2a0394d4b4089853f1904c8557f29d54ce9bf",
+    "loose_validate": true,
+    "v13_seed": 20260510,
+    "amendment_seed": 20260511,
+    "total_valid_mutations": 60,
+    "v13_reused": 30,
+    "v14_new": 30,
+    "n_unique_bugs": 60,
+    "per_operator_counts": {
+      "v13_reused": {
+        "ROR": 13,
+        "AOR": 13,
+        "BOR": 4
+      },
+      "v14_new_amendment_A1": {
+        "AOR": 22,
+        "ROR": 8
+      },
+      "total": {
+        "ROR": 21,
+        "AOR": 35,
+        "BOR": 4
+      }
+    },
+    "selection_rule": "v13 bugs reused verbatim (same B-IDs, byte-identical bugged files). v14_new = mutations in enumerate_mutations(ref) NOT in v13 manifest, sorted by (operator, lineno, col, new_op_cls), all retained (saturation). v13: strict importable validate. chardet: compile-only validate (matches v1.3 inject_all.py).",
+    "rows": [
+      {
+        "bug_id": "P10c_B01",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          145,
+          11
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B01.py",
+        "sha256_bugged_file": "20b7b6439329f53c45196a32bc31d48575ca1a357e5b9c7e3c45a50f59ea5b43"
+      },
+      {
+        "bug_id": "P10c_B02",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          127,
+          19
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B02.py",
+        "sha256_bugged_file": "3f67cad921344009fb4d84af0db51273b1befe973acdaa37c4fdaa13790c54b4"
+      },
+      {
+        "bug_id": "P10c_B03",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          165,
+          25
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B03.py",
+        "sha256_bugged_file": "e2005812f744915a5bae8222b49cbf0861898d3671a54d1ce402a1431a0fd664"
+      },
+      {
+        "bug_id": "P10c_B04",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          207,
+          13
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B04.py",
+        "sha256_bugged_file": "53b8a602c72df5b50379afa9b5939ca34501100a870fec32e46af657d7e988e8"
+      },
+      {
+        "bug_id": "P10c_B05",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          91,
+          11
+        ],
+        "new_op_cls": "Eq",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B05.py",
+        "sha256_bugged_file": "2eee491d8d28ee79496459f5d99af5d294e4168043221a51ef3eed5617b92e11"
+      },
+      {
+        "bug_id": "P10c_B06",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          88,
+          11
+        ],
+        "new_op_cls": "And",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B06.py",
+        "sha256_bugged_file": "dcf1253e36d591eac0e2a2d8f0cf89aaac031fb826261d04f58c8164668fb343"
+      },
+      {
+        "bug_id": "P10c_B07",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          165,
+          19
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B07.py",
+        "sha256_bugged_file": "bb1e9d64bdba928055223e840391d173c05b124cfa3daa596e4cc8e5efd87116"
+      },
+      {
+        "bug_id": "P10c_B08",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          88,
+          11
+        ],
+        "new_op_cls": "Lt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B08.py",
+        "sha256_bugged_file": "04ea846786d85be54addf8d757e49691a0f3644a44245b0b75e883442912898a"
+      },
+      {
+        "bug_id": "P10c_B09",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          185,
+          23
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B09.py",
+        "sha256_bugged_file": "0e29504208998d2a57141cf4078b32de6bb077fbcfc9dfb215a7cef95a1d7756"
+      },
+      {
+        "bug_id": "P10c_B10",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          187,
+          30
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B10.py",
+        "sha256_bugged_file": "3282bdc7a7eb33a300af89fccce96745f4c8a95af3bcd01daecf0f5cd9607391"
+      },
+      {
+        "bug_id": "P10c_B11",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          185,
+          23
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B11.py",
+        "sha256_bugged_file": "0e29504208998d2a57141cf4078b32de6bb077fbcfc9dfb215a7cef95a1d7756"
+      },
+      {
+        "bug_id": "P10c_B12",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          183,
+          11
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B12.py",
+        "sha256_bugged_file": "9df09139ca2c1c9b48353d3f8e1e3fbf2493c04527877c5071d224237d33ec4b"
+      },
+      {
+        "bug_id": "P10c_B13",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          164,
+          11
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B13.py",
+        "sha256_bugged_file": "7021b2cb82d63c6e1bb4fa168e06e665e51b4924ade57245578ec4f79f4cfb47"
+      },
+      {
+        "bug_id": "P10c_B14",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          207,
+          39
+        ],
+        "new_op_cls": "Lt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B14.py",
+        "sha256_bugged_file": "8212e7b404712cb4e26915c574dca97c68975d8a8c84801a1e85835248861c46"
+      },
+      {
+        "bug_id": "P10c_B15",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          205,
+          37
+        ],
+        "new_op_cls": "Lt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B15.py",
+        "sha256_bugged_file": "9137bd467d55ae54cca9009a6dcd7fd5c4fd0843c0341a9d2e8ffb97a8ffbd41"
+      },
+      {
+        "bug_id": "P10c_B16",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          164,
+          12
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B16.py",
+        "sha256_bugged_file": "9e4a118c656e221185d37ed762764840d767d168663ac8ee4603ff86e201eb46"
+      },
+      {
+        "bug_id": "P10c_B17",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          88,
+          37
+        ],
+        "new_op_cls": "Lt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B17.py",
+        "sha256_bugged_file": "40b2db1092bc303bc46cd992afa483a382f60be3961fea4a9af460d27d6c94bb"
+      },
+      {
+        "bug_id": "P10c_B18",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          185,
+          30
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B18.py",
+        "sha256_bugged_file": "1d930ecf6c2d0538eb2f317d0e65ed97bbe1eddca0bc7f8815dd7e20d309686b"
+      },
+      {
+        "bug_id": "P10c_B19",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          231,
+          19
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B19.py",
+        "sha256_bugged_file": "659383a9c592b5da4318360f4cbbec8daa5c3686b62f5b02ae8036fb025ef8a0"
+      },
+      {
+        "bug_id": "P10c_B20",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "BOR",
+        "ast_location": [
+          205,
+          11
+        ],
+        "new_op_cls": "Or",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B20.py",
+        "sha256_bugged_file": "5fbce3877c4df12e026069dc4d456726153d3aa11e06f9466025d0500ebb9024"
+      },
+      {
+        "bug_id": "P10c_B21",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          92,
+          38
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B21.py",
+        "sha256_bugged_file": "35b4edba8bf90695daa249b7d3d441c3c7ed19498260397e9ccfcc24927a7927"
+      },
+      {
+        "bug_id": "P10c_B22",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          126,
+          11
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B22.py",
+        "sha256_bugged_file": "99568049c5b8b261de3f4c845687f2e36f35d40b8333e1545bd8f6570337122a"
+      },
+      {
+        "bug_id": "P10c_B23",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          92,
+          37
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B23.py",
+        "sha256_bugged_file": "0a845efc5b4ff7d8c994866e7e8ef28c337a08bf99f0483bbbbf21ff7efd513c"
+      },
+      {
+        "bug_id": "P10c_B24",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          77,
+          11
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B24.py",
+        "sha256_bugged_file": "ca03deb80a25d77ce78d02cf5730caef26e2fecb25939f00fde2346425020c36"
+      },
+      {
+        "bug_id": "P10c_B25",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          146,
+          19
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B25.py",
+        "sha256_bugged_file": "72b324a8230cac6918f1fb77d3109fd76ec68213af2410a84db16b528215a163"
+      },
+      {
+        "bug_id": "P10c_B26",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          164,
+          37
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B26.py",
+        "sha256_bugged_file": "488a5a3e1d60ae0cb8fdef05d707afa8b4c647b46c21d7826183fadf4d817379"
+      },
+      {
+        "bug_id": "P10c_B27",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          205,
+          12
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B27.py",
+        "sha256_bugged_file": "01f4a8ddad9d8cb07cc7233832fbf2f59f75975bcb02540ae3b601b857458fe1"
+      },
+      {
+        "bug_id": "P10c_B28",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          81,
+          19
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B28.py",
+        "sha256_bugged_file": "58be3c47a218b4e8fed9f2053b4f34c6cdc4bc3c152b04e0e4a23a3d829716af"
+      },
+      {
+        "bug_id": "P10c_B29",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          146,
+          25
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B29.py",
+        "sha256_bugged_file": "f883aa4df4718666ad14d0db1db6e55deef4495a661dd2394b4c9f572410dd01"
+      },
+      {
+        "bug_id": "P10c_B30",
+        "source": "v13_reused",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          211,
+          16
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p10_thirdparty/chardet_dom/bugged/P10c_B30.py",
+        "sha256_bugged_file": "fe18776a913db5e1f1b30792d45acf9d73752f4a798d689280f4063d44abf700"
+      },
+      {
+        "bug_id": "P10c_B31",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          92,
+          17
+        ],
+        "new_op_cls": "Mult",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B31.py",
+        "sha256_bugged_file": "94b3e25c498113f1e3224d6c0c44e6af137fe1e7208addd593b2ca7c7a84997b"
+      },
+      {
+        "bug_id": "P10c_B32",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          127,
+          19
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B32.py",
+        "sha256_bugged_file": "b49121498db8a0ff67505c864e25884110a5c9abd74f5be3e7f93df7451f55a0"
+      },
+      {
+        "bug_id": "P10c_B33",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          127,
+          19
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B33.py",
+        "sha256_bugged_file": "2e1bd14bc66c0c5f8c3a9b7ce57d1b4930102b3712af2108f37ed7ad67fcc5cc"
+      },
+      {
+        "bug_id": "P10c_B34",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          127,
+          25
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B34.py",
+        "sha256_bugged_file": "9192fbbb26daa090ce6cb19bb7f431af3014284b244c633139f62d21b5ec09ca"
+      },
+      {
+        "bug_id": "P10c_B35",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          146,
+          19
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B35.py",
+        "sha256_bugged_file": "3c0944ac1847b2919ab1d09c70b3be8b05ff494aed5ffe58224cc1b8b45b0cae"
+      },
+      {
+        "bug_id": "P10c_B36",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          146,
+          19
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B36.py",
+        "sha256_bugged_file": "c36888781303550fa8c598d28fee4fc4bd9411c69e2221bf886be7a7fa3c485c"
+      },
+      {
+        "bug_id": "P10c_B37",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          165,
+          19
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B37.py",
+        "sha256_bugged_file": "e7b5383995c8b906bb102025db7146c14d7b20d3b45702192cf11d69e404e3ad"
+      },
+      {
+        "bug_id": "P10c_B38",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          165,
+          19
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B38.py",
+        "sha256_bugged_file": "ffa04d24c01078955a48ee87e8bd46c2139561935ec3929cd204b5788cba09d8"
+      },
+      {
+        "bug_id": "P10c_B39",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          185,
+          23
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B39.py",
+        "sha256_bugged_file": "8d56ba1be33c118854a6519538cdc485a595394d4ec1711a07dfaa1807763aa3"
+      },
+      {
+        "bug_id": "P10c_B40",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          185,
+          23
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B40.py",
+        "sha256_bugged_file": "9593455366eee923cc26b1496b0b2af5acb6885bc9d042539ecae353a0c14ef6"
+      },
+      {
+        "bug_id": "P10c_B41",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          187,
+          23
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B41.py",
+        "sha256_bugged_file": "dfd01ff869b4dedf18194186c91a2df8d9f7b2e1de221fb0201d73b86d3dcde1"
+      },
+      {
+        "bug_id": "P10c_B42",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          187,
+          23
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B42.py",
+        "sha256_bugged_file": "99b717779bdf287ecdf29758ac36ad36a8a1a20f0a680d78915292b83526e4dd"
+      },
+      {
+        "bug_id": "P10c_B43",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          187,
+          23
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B43.py",
+        "sha256_bugged_file": "ebc995fd3d77db86d13aac0f9b43de573aff53aeebed387fc0c1813b7e1e8bee"
+      },
+      {
+        "bug_id": "P10c_B44",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          206,
+          20
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B44.py",
+        "sha256_bugged_file": "d47718c7818c0da031cc17088fb098f6a652acf8f5b47a49d04e82a7c17e0c11"
+      },
+      {
+        "bug_id": "P10c_B45",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          206,
+          27
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B45.py",
+        "sha256_bugged_file": "d2fc0341984eda29f88063bd778e9079187ea8d9ea43473a800a6629ee0d2268"
+      },
+      {
+        "bug_id": "P10c_B46",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          208,
+          20
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B46.py",
+        "sha256_bugged_file": "8a2d99326c2466f3f593d475f5780c6542aaf8bc5ef76623b2e94bd71951fbde"
+      },
+      {
+        "bug_id": "P10c_B47",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          208,
+          27
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B47.py",
+        "sha256_bugged_file": "5d073ff177e077c9bc0afae956691dddd0865b9ae080b3dad52b8e061e53490c"
+      },
+      {
+        "bug_id": "P10c_B48",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          208,
+          27
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B48.py",
+        "sha256_bugged_file": "145a19ffcf9fc1c89c938d4947ff2d74359c9768690863ecd2a00ebee18d61e4"
+      },
+      {
+        "bug_id": "P10c_B49",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          211,
+          16
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B49.py",
+        "sha256_bugged_file": "ff0fce3c6d70e9ae21c0e9b56e546041165d970fa9cce5d60cc67e6d80eca762"
+      },
+      {
+        "bug_id": "P10c_B50",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          231,
+          19
+        ],
+        "new_op_cls": "Div",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B50.py",
+        "sha256_bugged_file": "0eb19c0ff6f910fb8514ffaa91445eb4886af9d2ba98d4d6718b35389a655dc3"
+      },
+      {
+        "bug_id": "P10c_B51",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          231,
+          19
+        ],
+        "new_op_cls": "Sub",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B51.py",
+        "sha256_bugged_file": "82b4fccea2feb6e470f6f1dcef2b5f81b42b571c905941d428e3fbc455a8cc06"
+      },
+      {
+        "bug_id": "P10c_B52",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "AOR",
+        "ast_location": [
+          231,
+          25
+        ],
+        "new_op_cls": "Add",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B52.py",
+        "sha256_bugged_file": "b322305e5ddef4d5aeb1067ee5fd49451a1f70c5eb42425edd1970e5a91defd2"
+      },
+      {
+        "bug_id": "P10c_B53",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          72,
+          11
+        ],
+        "new_op_cls": "NotEq",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B53.py",
+        "sha256_bugged_file": "417a95853858420ba8434b9efc6b41f7d48f0a80c3cbcbbf7b5df7d8bef0b9b3"
+      },
+      {
+        "bug_id": "P10c_B54",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          80,
+          15
+        ],
+        "new_op_cls": "LtE",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B54.py",
+        "sha256_bugged_file": "be2450584ac2ed1fb288b094309e5486723fbbc098b00d8d900060c5b4fcf2e3"
+      },
+      {
+        "bug_id": "P10c_B55",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          94,
+          15
+        ],
+        "new_op_cls": "LtE",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B55.py",
+        "sha256_bugged_file": "8a6c347928515b09c916647d1f835536ee32ca3fccbe41be60fa0c4735ad57a4"
+      },
+      {
+        "bug_id": "P10c_B56",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          103,
+          15
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B56.py",
+        "sha256_bugged_file": "bc2bb2fd0125161bffd82afb02f58e713cab27d4c2650cfbda9b809eadc8cd21"
+      },
+      {
+        "bug_id": "P10c_B57",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          184,
+          15
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B57.py",
+        "sha256_bugged_file": "23e4906fbcdc86813cf80d05a3c3297c900a6cf6137e236af94a3783a5e285b0"
+      },
+      {
+        "bug_id": "P10c_B58",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          207,
+          14
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B58.py",
+        "sha256_bugged_file": "de947f43b806290a1c14cd0731f70cb2cb43011911e41e1514c903a37753d753"
+      },
+      {
+        "bug_id": "P10c_B59",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          212,
+          11
+        ],
+        "new_op_cls": "GtE",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B59.py",
+        "sha256_bugged_file": "a65f14f6691f90df831cd26ff9217f2e044e242b164b89670b202ad60c39cce9"
+      },
+      {
+        "bug_id": "P10c_B60",
+        "source": "v14_new_amendment_A1",
+        "condition_left": "truthful",
+        "condition_right": "relabeled",
+        "operator": "ROR",
+        "ast_location": [
+          230,
+          11
+        ],
+        "new_op_cls": "Gt",
+        "bugged_path": "experiments/p11_replication/bugged_chardet/P10c_B60.py",
+        "sha256_bugged_file": "eef3ce18c0da5416cd48fca450abe81462f17bbbec2deb805a9ebdef43db7f62"
+      }
+    ]
+  }
+}
