@@ -1,0 +1,22 @@
+commit 91bb70c5c07c2e73535638df2baadb302d9d71d2
+Author: Skip Montanaro <skip@pobox.com>
+Date:   Wed Dec 28 15:37:25 2005 +0000
+
+    Fix for problem with Sniffer class.  If your delimiter is whitespace and the
+    last field was empty it would strip the delimiter and incorrectly guess that
+    "" was the delimiter.  Reported in c.l.py by Laurent Laporte.  Will
+    backport.
+
+diff --git a/csv_module.py b/csv_module.py
+index 14b4d17c23..7516380083 100644
+--- a/csv_module.py
++++ b/csv_module.py
+@@ -271,7 +271,7 @@ class Sniffer:
+                 for char in ascii:
+                     metaFrequency = charFrequency.get(char, {})
+                     # must count even if frequency is 0
+-                    freq = line.strip().count(char)
++                    freq = line.count(char)
+                     # value is the mode
+                     metaFrequency[freq] = metaFrequency.get(freq, 0) + 1
+                     charFrequency[char] = metaFrequency

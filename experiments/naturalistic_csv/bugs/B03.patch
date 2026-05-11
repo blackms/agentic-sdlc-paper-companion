@@ -1,0 +1,24 @@
+commit fce5ff1e18b522cf52379934a6560583d840e7f9
+Author: Rémi Lapeyre <remi.lapeyre@henki.fr>
+Date:   Fri May 10 03:50:11 2019 +0200
+
+    bpo-27497: Add return value to csv.DictWriter.writeheader (GH-12306)
+    
+    csv.DictWriter.writeheader() now returns the return value of the
+    underlying csv.Writer.writerow() method.
+    
+    Patch contributed by Ashish Nitin Patil.
+
+diff --git a/csv_module.py b/csv_module.py
+index eeeedabc6b..dc85077f3e 100644
+--- a/csv_module.py
++++ b/csv_module.py
+@@ -140,7 +140,7 @@ class DictWriter:
+ 
+     def writeheader(self):
+         header = dict(zip(self.fieldnames, self.fieldnames))
+-        self.writerow(header)
++        return self.writerow(header)
+ 
+     def _dict_to_list(self, rowdict):
+         if self.extrasaction == "raise":

@@ -1,0 +1,19 @@
+{
+  "bug_id": "B08",
+  "merge_commit_sha": "fb099c9ef134166ecaf3905c0d8b2995245f3ded",
+  "issue_url": "https://bugs.python.org/issue19449",
+  "pr_url": "https://github.com/python/cpython/pull/19449",
+  "affected_function": "DictWriter._dict_to_list",
+  "brief_bug_summary_human_paraphrase": "DictWriter._dict_to_list builds an error message from the list of wrong field names by calling `', '.join(wrong_fields)`. If any wrong field is a non-string (e.g. an int) the join raises TypeError, masking the underlying ValueError. The fix wraps each field with repr() before joining.",
+  "expected_detection_keywords": [
+    "_dict_to_list",
+    "wrong_fields",
+    "join",
+    "repr",
+    "non-string",
+    "TypeError",
+    "DictWriter",
+    "fieldnames",
+    "error message"
+  ]
+}

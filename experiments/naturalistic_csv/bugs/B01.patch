@@ -1,0 +1,20 @@
+commit d0679c12398579fe9f10e78b6332dded119e4697
+Author: andrei kulakov <andrei.avk@gmail.com>
+Date:   Fri Dec 9 11:14:33 2022 -0500
+
+    bpo-44512: Fix handling of extrasactions arg to csv.DictWriter with mixed or upper case (#26924)
+
+diff --git a/csv_module.py b/csv_module.py
+index 309a8f3f48..4ef8be45ca 100644
+--- a/csv_module.py
++++ b/csv_module.py
+@@ -139,7 +139,8 @@ class DictWriter:
+             fieldnames = list(fieldnames)
+         self.fieldnames = fieldnames    # list of keys for the dict
+         self.restval = restval          # for writing short dicts
+-        if extrasaction.lower() not in ("raise", "ignore"):
++        extrasaction = extrasaction.lower()
++        if extrasaction not in ("raise", "ignore"):
+             raise ValueError("extrasaction (%s) must be 'raise' or 'ignore'"
+                              % extrasaction)
+         self.extrasaction = extrasaction

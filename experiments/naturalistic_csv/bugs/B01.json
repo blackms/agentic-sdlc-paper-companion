@@ -1,0 +1,17 @@
+{
+  "bug_id": "B01",
+  "merge_commit_sha": "d0679c12398579fe9f10e78b6332dded119e4697",
+  "issue_url": "https://bugs.python.org/issue44512",
+  "pr_url": "https://github.com/python/cpython/pull/26924",
+  "affected_function": "DictWriter.__init__",
+  "brief_bug_summary_human_paraphrase": "DictWriter.__init__ accepts an extrasaction string but only lower-cases it inside the membership check; the value stored on self.extrasaction retains its original casing, so a downstream comparison `self.extrasaction == 'raise'` silently misfires for values like 'RAISE' or 'Raise', and the 'raise' branch is never taken.",
+  "expected_detection_keywords": [
+    "extrasaction",
+    "extras_action",
+    "casing",
+    "case",
+    "lower",
+    "DictWriter",
+    "lowercase"
+  ]
+}

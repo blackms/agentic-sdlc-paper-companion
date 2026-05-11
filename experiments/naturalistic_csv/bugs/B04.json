@@ -1,0 +1,19 @@
+{
+  "bug_id": "B04",
+  "merge_commit_sha": "2411292ba8155327125d8a1da8a4c9fa003d5909",
+  "issue_url": "https://bugs.python.org/issue30157",
+  "pr_url": "https://github.com/python/cpython/pull/5601",
+  "affected_function": "Sniffer._guess_quote_and_delimiter",
+  "brief_bug_summary_human_paraphrase": "In _guess_quote_and_delimiter, one of the regex alternatives for matching quoted fields contains a stray '>' character inside a character class: `(?P<delim>>[^\\w\\n\"'])` instead of `(?P<delim>[^\\w\\n\"'])`. The bugged regex never matches the intended trailing-quote pattern, so sniffing of certain quoted csv layouts misidentifies or misses the delimiter.",
+  "expected_detection_keywords": [
+    "regex",
+    "regexp",
+    "_guess_quote_and_delimiter",
+    "Sniffer",
+    "delimiter",
+    "quote",
+    "pattern",
+    ">[",
+    "character class"
+  ]
+}

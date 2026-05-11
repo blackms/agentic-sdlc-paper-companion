@@ -1,0 +1,19 @@
+{
+  "bug_id": "B02",
+  "merge_commit_sha": "ceea579ccc51791f3e115155d6f27905bc7544a9",
+  "issue_url": "https://bugs.python.org/issue43625",
+  "pr_url": "https://github.com/python/cpython/pull/26939",
+  "affected_function": "Sniffer.has_header",
+  "brief_bug_summary_human_paraphrase": "Sniffer.has_header tries int, float, complex types in sequence, but in the bugged version it only tries `complex` (which accepts ints and floats and almost any numeric-looking string), so the column-type inference collapses and has_header returns wrong answers.",
+  "expected_detection_keywords": [
+    "has_header",
+    "has_headers",
+    "complex",
+    "columnType",
+    "int",
+    "float",
+    "Sniffer",
+    "type inference",
+    "thisType"
+  ]
+}
