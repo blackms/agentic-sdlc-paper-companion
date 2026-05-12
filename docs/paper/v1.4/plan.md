@@ -1,13 +1,13 @@
 # Paper v1.4 Plan (planner output, frozen 2026-05-11)
 
 ## Inputs
-- Frozen v1.3.2 manuscript at `docs/paper/v1.0_latex/main.tex` (28 pages, 513 KB PDF)
+- Frozen v1.3.2 manuscript at `docs/paper/paper-latex/main.tex` (28 pages, 513 KB PDF)
 - Raw experimental artefacts: `experiments/p{1..11}_*/`, `experiments/p5_e3v2/`, `experiments/p9_real/`, `experiments/p10_thirdparty/`, `experiments/p11_provenance/`
 - Validation scripts: `experiments/cluster_robust.py`, `cluster_robust_c1.py`, per-phase `analyze_*.py`
 - v1.3 → v1.4 protocol document
 
 ## Path adjustment
-The protocol references `docs/paper/main.tex`; actual path is `docs/paper/v1.0_latex/main.tex`. All streams operate against that path. v1.4 work continues in the same directory; integrator may rename to `docs/paper/v1.4_latex/` at the end if preferred.
+The protocol references `docs/paper/main.tex`; actual path is `docs/paper/paper-latex/main.tex`. All streams operate against that path. v1.4 work continues in the same directory; integrator may rename to `docs/paper/v1.4_latex/` at the end if preferred.
 
 ## DAG
 

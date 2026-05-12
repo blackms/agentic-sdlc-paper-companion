@@ -1,0 +1,146 @@
+\section{Statistical Methods Appendix}
+\label{app:stats}
+
+\subsection{Paired McNemar exact one-sided test~\cite{mcnemar1947note}}
+
+Given a paired contingency table on $n$ matched bug instances:
+\begin{center}
+\begin{tabular}{c|cc}
+ & B catches & B misses \\
+\hline
+A catches & both & A-only $= c$ \\
+A misses & B-only $= b$ & both \\
+\end{tabular}
+\end{center}
+
+We test $H_1: P_A > P_B$ against $H_0: P_A = P_B$ using the exact binomial:
+\begin{equation}
+  p_{\text{one-sided}} \;=\; \frac{1}{2^{b+c}} \sum_{k=0}^{b} \binom{b+c}{k},
+  \label{eq:mcnemar-one-sided}
+\end{equation}
+which is the probability under $H_0$ of observing $b$ or fewer ``A-only'' outcomes out of $b+c$ discordant pairs. Discordant pairs with $b = c = 0$ are treated as $p = 1$ (no evidence).
+
+For multiple comparisons we use Bonferroni: family-wise $\alpha = 0.05$ across the $5$ original P4 contrasts gives per-test $\alpha_{\mathrm{Bonf}} = 0.010$. We carry this stricter threshold forward to Phases 9--11 as the per-domain significance criterion.
+
+\subsection{Wilson score 95\% confidence interval~\cite{wilson1927probable}}
+
+For an empirical proportion $p = k/n$ we report the Wilson score CI:
+\begin{equation}
+  p_{\pm} \;=\; \frac{1}{1 + z^2/n} \left[\, p + \frac{z^2}{2n} \;\pm\; z\sqrt{\frac{p(1-p)}{n} + \frac{z^2}{4n^2}}\, \right],
+  \label{eq:wilson-ci}
+\end{equation}
+with $z = 1.96$ for the $95\%$ level. Wilson is preferred over Wald-normal at small $n$ and at boundary proportions because it does not collapse at $p \in \{0, 1\}$.
+
+\subsection{Fisher's combined $p$-value~\cite{fisher1925statistical}}
+
+For $K$ independent $p$-values $p_1, \ldots, p_K$ from independent tests of the same null,
+\begin{equation}
+  \chi^2_{\mathrm{Fisher}} \;=\; -2 \sum_{k=1}^{K} \log p_k \;\;\sim\;\; \chi^2_{2K} \text{ under } H_0.
+  \label{eq:fisher-combined}
+\end{equation}
+We use this to combine the per-domain McNemar $p$-values from P7 + 3 P9 + 3 P10 = $7$ tests (Codex-only). At-cell independence holds because each test is on a disjoint bug set with a disjoint reviewer ensemble.
+
+\textbf{Caveat (cross-phase model-version):} the cross-phase combination is \emph{not} strictly between independent identically-conditioned tests, because the supporting model lineup changes between Phase 5 / 7 (Gemini 2.5 Flash) and Phase 9 cross-family / Phase 10 (Gemini 3.1 Pro Preview). See \Cref{sec:cross-phase-confounder} for the discussion: within-Codex tests are unaffected (Codex \texttt{gpt-5.5} is stable), but the Fisher's combined headline reported in \Cref{sec:phase10} is not strictly homogeneous across phases. We retain it as a comparator with prior reporting practice, not as the primary inference; the primary cross-phase summary in v1.3 is the block-bootstrap over cells (\Cref{sec:phase10}).
+
+\subsection{DKW concentration for eFOSD}
+
+The Dvoretzky--Kiefer--Wolfowitz inequality~\cite{dvoretzky1956asymptotic} gives a finite-sample bound:
+\begin{equation}
+  \Prob\!\left[\, \sup_t \big|\widehat{F}_n(t) - F(t)\big| > \epsilon\, \right] \;\le\; 2 e^{-2 n \epsilon^2}.
+  \label{eq:dkw}
+\end{equation}
+By a union bound over a finite grid of $K$ thresholds, eFOSD certified at slack $\epsilon$ on the grid certifies population FOSD on those thresholds with confidence $1 - 4 K e^{-2 n \epsilon^2}$. We use this as a sanity check only; eFOSD is reported on the empirical grid without claiming the population extension.
+
+\subsection{Mixed-effects logistic model (primary) and comparators}
+\label{sec:mixed-effects}
+
+Within a single bug-injection campaign, mutations on the same reference module are not independent: they share the module's structural features (common idioms, operator distributions, function boundaries). The same bug instance is also re-presented to multiple reviewer families in the cross-family cells. McNemar exact treats every paired observation as independent and a cluster-robust paired permutation accounts for within-cell dependence but not for the cross-cell bug-level / module-level dependence structure. From v1.4 onwards we therefore promote a \emph{mixed-effects logistic regression} to primary inference on C1 cells, retain the cluster-robust paired permutation as the matched comparator, and keep McNemar exact only as a legacy comparator with prior reporting practice.
+
+\paragraph{Model specification (frozen, pre-analysis).}
+Let $y_{i} \in \{0,1\}$ denote the strict-policy detection outcome of the $i$-th bug-level row in the long-format export of $N = 840$ rows ($14$ cells $\times$ $30$ bugs $\times$ $2$ conditions). With $\mathrm{cond}_i \in \{0,1\}$ for mismatched/cold, $\mathrm{fam}_i \in \{\text{codex, opus, gemini31}\}$, $\mathrm{libclass}_i \in \{\text{stdlib, third\_party}\}$,
+\begin{align}
+  \mathrm{logit}\, \Prob(y_i = 1)
+    \;=\;& \beta_0
+       + \beta_{\text{cond}}\,\mathrm{cond}_i
+       + \beta_{\text{opus}}\,\mathbf{1}[\text{fam}_i = \text{opus}]
+       + \beta_{\text{gem}}\,\mathbf{1}[\text{fam}_i = \text{gemini}] \nonumber\\
+   &  + \beta_{\text{lib}}\,\mathbf{1}[\text{libclass}_i = \text{tp}]
+       + \beta_{\text{c$\times$opus}}\,(\mathrm{cond}_i \cdot \mathbf{1}[\text{opus}])
+       + \beta_{\text{c$\times$gem}}\,(\mathrm{cond}_i \cdot \mathbf{1}[\text{gem}]) \nonumber\\
+   &  + \beta_{\text{c$\times$lib}}\,(\mathrm{cond}_i \cdot \mathbf{1}[\text{tp}])
+       + u_{\text{bug}[i]} + u_{\text{module}[i]},
+  \label{eq:me-spec}
+\end{align}
+with $u_{\text{bug}} \sim \mathcal{N}(0, \sigma_{\text{bug}}^2)$ over the $420$ per-cell bug clusters, $u_{\text{module}} \sim \mathcal{N}(0, \sigma_{\text{module}}^2)$ over the $6$ modules, and reference levels $\text{cond} = \text{mismatched}$, $\text{fam} = \text{codex}$, $\text{libclass} = \text{stdlib}$. The DKW / strict-separation assumption invoked elsewhere in the paper for the C-T3 simulation is \emph{not} required for this model.
+
+\paragraph{Estimation.} The model is fit by mean-field variational Bayes via \texttt{statsmodels.\allowbreak genmod.\allowbreak bayes\_mixed\_glm.\allowbreak BinomialBayesMixedGLM.fit\_vb}~\cite{seabold2010statsmodels} on the long-format CSV \texttt{experiments/mixed\_effects/long\_format.csv}; fixed-effect posterior summaries are reported as $\beta \pm 1.96 \cdot \mathrm{SD}$ (approximate Wald-style $95\%$ interval) with two-sided $p = 2(1 - \Phi(|\beta/\mathrm{SD}|))$. Per-cell predicted marginal contrasts $\widehat{\Delta} = \widehat{p}_{\text{cold}} - \widehat{p}_{\text{mm}}$ are computed on the response scale with the module random-effect BLUP plugged in and uncertainty propagated by $20{,}000$ Monte-Carlo draws from the factored fixed-effects posterior. Fit converged on the first attempt; no fallback (GEE; drop $u_{\text{module}}$; cluster-robust GLM) was triggered.
+
+\paragraph{Results.}
+The condition main effect is $\widehat{\beta}_{\text{cond}} = +4.20$ (SE $0.13$, $z=+33.4$, two-sided $p < 10^{-200}$). The condition $\times$ third-party interaction is $\widehat{\beta}_{\text{c$\times$lib}} = +2.23$ (SE $0.18$, $z=+12.3$): the cold-vs-mismatched gap is markedly larger on third-party modules than on stdlib, consistent with the observed per-cell deltas. Random-effect SDs: $\widehat{\sigma}_{\text{bug}} = 0.72$ ($95\%$ $[0.67, 0.77]$), $\widehat{\sigma}_{\text{module}} = 0.77$ ($95\%$ $[0.44, 1.35]$). All $14/14$ cells yield a strictly-positive predicted marginal contrast $\widehat{\Delta}_{\text{cell}}$ with $95\%$ MC interval excluding $0$ (range $+37\,\text{pp}$ to $+91\,\text{pp}$). Per-cell Wald/permutation/McNemar comparison is in Table~\ref{tab:me-per-cell}; cross-phase pooled comparison is in Table~\ref{tab:me-pooled}. The $14$-cell qualitative finding of v1.3 (cold $>$ cold\_mismatched) thus survives the change of primary inferential procedure.
+
+\paragraph{Comparators.}
+The cluster-robust paired permutation test of v1.3 is retained as the \emph{matched comparator}. For each cell with $n = 30$ paired outcomes $(c_i, m_i)$ we use the same statistic $T = \tfrac{1}{n}\sum_i(c_i - m_i)$, sample $n_{\text{perm}} = 20{,}000$ within-pair permutations under the null of label exchangeability, and report the one-sided $p$. Across $K = 14$ cells a block bootstrap over cells~\cite{efron1994bootstrap} provides a cross-phase $95\%$ percentile CI for the pooled $\Delta$. The legacy McNemar exact one-sided test (\Cref{eq:mcnemar-one-sided}) is reported in Table~\ref{tab:me-per-cell} as a literature-comparator only; it inflates significance under within-cell dependence and is not relied on for any v1.4 claim.
+
+\paragraph{Pre-registered acceptance criterion.} A v1.4 acceptance criterion was that the $14/14$ cells previously significant under the permutation comparator must remain qualitatively significant under the mixed-effects per-cell marginal contrast at $\alpha = 0.025$ (one-sided) --- equivalently, the $95\%$ MC interval on $\widehat{\Delta}_{\text{cell}}$ must exclude $0$. The criterion is satisfied with no discrepancies (\texttt{experiments/mixed\_effects/discrepancies.md}). The reproduction artefacts are \texttt{experiments/mixed\_effects/\{export\_longformat.py,fit.py,comparison\_tables.py\}} writing to \texttt{long\_format.csv}, \texttt{results.json}, and \texttt{tables.json}. The permutation comparator is unchanged at \texttt{experiments/cluster\_robust.py} and \texttt{cluster\_robust\_c1.py} writing to \texttt{results\_cluster\_robust.json}.
+
+\subsection{Parse-failure policies}
+
+For each reviewer call, the output may fail to parse (no valid JSON with \texttt{bugs\_found} field). We report three policies:
+\begin{itemize}[leftmargin=2em]
+\item \textbf{Strict (default in Phases 9--11)}: unparsed counts as a miss.
+\item \textbf{Lenient}: unparsed dropped from the denominator (per-parsed rate).
+\item \textbf{Mid}: unparsed counts as $0.5$ catch.
+\end{itemize}
+The Phase-4 finding ``paired McNemar significant'' is robust to all three policies under Bonferroni.
+
+\subsection{Detection-criterion specification}
+
+A reviewer's output ``detects'' a bug iff the \texttt{bugs\_found} array contains a string that satisfies at least one of:
+\begin{itemize}[leftmargin=2em]
+\item the bug's reference line number, or its $\pm 2$ neighbours, appear as a number in the string;
+\item the enclosing function/class name (extracted from the AST) appears in the string AND at least one operator-keyword (from the manifest's category-keyword list) appears in the string.
+\end{itemize}
+This criterion is computed by \texttt{analyze\_p\{N\}.py} from frozen detection manifests built by \texttt{build\_detection.py}. The same criterion is used across all P9--P11 phases.
+
+\subsection{Pre-registration discipline}
+
+Every phase's pre-registration document is committed to the repository before any reviewer call, with:
+\begin{itemize}[leftmargin=2em]
+\item the frozen hypotheses ($H_1$, $H_0$);
+\item the frozen primary and secondary metrics;
+\item the frozen $\alpha$ thresholds (Bonferroni-corrected where applicable);
+\item the frozen decision rules (what would constitute confirmation / rejection / inconclusive);
+\item the frozen sample sizes and inclusion criteria;
+\item the explicit acknowledgement of risks (training-data bias, ablation incoherence, single-family limitation, etc.).
+\end{itemize}
+After observing results, we do not iterate prompts, contracts, or sampling. Reframings are applied only to claim language, not to the experimental setup.
+
+\subsection{C1 per-cell three-way comparison (full table)}
+\label{app:me-per-cell-full}
+
+\begin{table}[h]
+\centering
+\caption{C1 per-cell three-way comparison referenced from \Cref{sec:phase10}: legacy McNemar exact (one-sided), cluster-robust paired permutation (one-sided, $n_{\text{perm}}=20{,}000$, comparator), and the mixed-effects predicted marginal contrast $\widehat{\Delta}_{\text{cell}}$ from \Cref{sec:mixed-effects} (primary). All $p$-values rounded; permutation $p \le 5 \cdot 10^{-5}$ indicates the minimum achievable under $20{,}000$ permutations. The mixed-effects $95\%$ MC interval is on the response scale (percentage points), with the per-module random-effect BLUP plugged in.}
+\label{tab:me-per-cell}
+\small
+\begin{tabular}{@{}lrrrrr@{}}
+\toprule
+Cell & $n$ & McNemar $p$ & Perm.\ $p$ & ME $\widehat{\Delta}$ (pp) & ME $95\%$ CI (pp) \\
+\midrule
+P9 csv (Codex)            & $30$ & $1.2 \cdot 10^{-4}$ & $2.5 \cdot 10^{-4}$ & $+38.6$ & $[+31.1, +46.5]$ \\
+P9 urllib (Codex)         & $30$ & $3.1 \cdot 10^{-5}$ & $5.0 \cdot 10^{-5}$ & $+46.5$ & $[+38.5, +54.5]$ \\
+P9 jsondec (Codex)        & $30$ & $1.2 \cdot 10^{-4}$ & $1.5 \cdot 10^{-4}$ & $+41.4$ & $[+33.6, +49.4]$ \\
+P9 csv (Opus)             & $30$ & $3.9 \cdot 10^{-3}$ & $4.4 \cdot 10^{-3}$ & $+37.1$ & $[+22.5, +53.6]$ \\
+P9 csv (Gemini 3.1)       & $30$ & $3.8 \cdot 10^{-6}$ & $5.0 \cdot 10^{-5}$ & $+53.7$ & $[+35.9, +69.5]$ \\
+P10 dateutil (Codex)      & $30$ & $3.7 \cdot 10^{-9}$ & $5.0 \cdot 10^{-5}$ & $+91.0$ & $[+86.6, +93.4]$ \\
+P10 dateutil (Opus)       & $30$ & $3.7 \cdot 10^{-9}$ & $5.0 \cdot 10^{-5}$ & $+87.4$ & $[+81.0, +90.3]$ \\
+P10 dateutil (Gemini 3.1) & $30$ & $1.5 \cdot 10^{-8}$ & $5.0 \cdot 10^{-5}$ & $+90.5$ & $[+86.4, +92.5]$ \\
+P10 parsy (Codex)         & $30$ & $1.5 \cdot 10^{-5}$ & $1.0 \cdot 10^{-4}$ & $+65.2$ & $[+51.2, +77.0]$ \\
+P10 parsy (Opus)          & $30$ & $3.1 \cdot 10^{-5}$ & $1.0 \cdot 10^{-4}$ & $+64.9$ & $[+44.4, +80.6]$ \\
+P10 parsy (Gemini 3.1)    & $30$ & $3.8 \cdot 10^{-6}$ & $5.0 \cdot 10^{-5}$ & $+78.2$ & $[+60.3, +88.8]$ \\
+P10 chardet (Codex)       & $30$ & $1.9 \cdot 10^{-9}$ & $5.0 \cdot 10^{-5}$ & $+89.8$ & $[+84.3, +92.9]$ \\
+P10 chardet (Opus)        & $30$ & $3.7 \cdot 10^{-9}$ & $5.0 \cdot 10^{-5}$ & $+86.9$ & $[+78.8, +90.5]$ \\
+P10 chardet (Gemini 3.1)  & $30$ & $3.7 \cdot 10^{-9}$ & $5.0 \cdot 10^{-5}$ & $+90.8$ & $[+86.1, +92.9]$ \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -7,8 +7,8 @@ recompute the numerical claims in the v1.4 manuscript from scratch.
 
 | Class | Path |
 |---|---|
-| Manuscript LaTeX | `docs/paper/v1.0_latex/main.tex` (entry point) + included `.tex` files |
-| Compiled PDF | `docs/paper/v1.0_latex/main.pdf` |
+| Manuscript LaTeX | `docs/paper/paper-latex/main.tex` (entry point) + included `.tex` files |
+| Compiled PDF | `docs/paper/paper-latex/rocchi-2026-measuring-llm-agents.pdf` |
 | arXiv tarball | `docs/paper/v1.4/arxiv-package.tar.gz` |
 | EMSE submission package | `docs/paper/v1.4/emse-submission/` |
 | Per-phase raw artefacts | `experiments/<phase>/` |
@@ -140,7 +140,7 @@ involving Gemini introduces the version-skew confounder described in §8.4
 RERUN=1 ./docs/paper/validations/validate_all.sh
 
 # 3. Recompile the manuscript
-cd docs/paper/v1.0_latex && make
+cd docs/paper/paper-latex && make
 ```
 
 To recompute reviewer outputs from scratch, the launcher scripts inside each

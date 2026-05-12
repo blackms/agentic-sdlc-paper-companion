@@ -1,0 +1,47 @@
+\section{Related Work}
+\label{sec:related-work}
+
+\subsection{LLM coding agents and procedural protocols}
+
+The transition from one-shot completion to multi-step agentic workflows has produced a body of work on \emph{prompting protocols} (chain-of-thought~\cite{wei2022chainofthought}, ReAct~\cite{yao2023react}, Reflexion~\cite{shinn2023reflexion}, Self-Refine~\cite{madaan2023selfrefine}), \emph{multi-agent debate and review}~\cite{wu2023autogen,du2023debate}, and \emph{verifier-guided generation}~\cite{xia2024agentless}. Most existing work measures \emph{task success rate} on benchmark suites (HumanEval~\cite{chen2021humaneval}, MBPP~\cite{austin2021mbpp}, SWE-bench~\cite{jimenez2024swebench}, BigCodeBench~\cite{zhuo2024bigcodebench}, EvalPlus~\cite{liu2024evalplus}) and reports point estimates. Our framework differs in three respects: (i) the behavior signature $B = \varphi(\tau)$ separates conformance, target-correctness, robustness, and token cost as orthogonal axes; (ii) we use \emph{empirical first-order stochastic dominance} (\Cref{def:efosd}) following the classical FOSD literature~\cite{hadar1969stochastic,levy1992stochastic} rather than mean comparison, which is more conservative and finer-grained; (iii) we explicitly formalize held-out oracles (\Cref{eq:holdout-condition}) to avoid the data-contamination problem that compromises many existing benchmarks~\cite{magar2022data,sainz2023nlp,zhou2023contamination}.
+
+\subsection{Mutation testing and AST-level operators}
+
+The AST-level mutation operators we use in Phases 9--11 (\Cref{def:ast-mutators} below) follow the standard mutation-testing literature~\cite{demillo1978hints,offutt1996experimental,andrews2006mutation,jia2010survey}, and the broader controlled-bug benchmark tradition exemplified by Defects4J~\cite{just2014defects4j}.
+
+\begin{definition}[AST mutation operators (PRIORITY 1)]
+\label{def:ast-mutators}
+Let $T$ be the AST of a Python module. The three mutation-operator families are:
+\begin{description}[leftmargin=1.5em]
+\item[AOR (Arithmetic Operator Replacement)] for each \texttt{BinOp} node with $\mathrm{op} \in \{+, -, *, /, //, \%\}$, swap $+ \leftrightarrow -$, $* \leftrightarrow /$, $// \leftrightarrow \%$.
+\item[ROR (Relational Operator Replacement)] for each \texttt{Compare} node with $\mathrm{op} \in \{==, \ne, <, \le, >, \ge\}$, swap $== \leftrightarrow \ne$, $< \leftrightarrow \le$, $> \leftrightarrow \ge$.
+\item[BOR (Boolean Operator Replacement)] for each \texttt{BoolOp} node, swap $\text{and} \leftrightarrow \text{or}$.
+\end{description}
+A mutation is \emph{valid} iff the mutated source AST is parseable, and (under Phase-9 strict validation) importable as a standalone module; under Phase-10 loose validation (third-party with package imports), parseable and compilable.
+\end{definition}
+
+ Most prior LLM-code-review work uses \emph{text-substitution} bugs (find/replace strings in source) which we found in Phase 8 to have only $44\%$ yield (16/36 attempted injections compiled). The AST-mutator approach achieves $100\%$ yield by validating each mutant at the AST/compile level. We do not claim novelty for the mutators themselves; the contribution is applying them as a frozen, pre-registered bug-injection benchmark for cold-reviewer evaluation.
+
+\subsection{Asymmetric multi-agent review and error decorrelation}
+
+The asymmetric-quorum joint-miss bound (\Cref{eq:p2-bound}) builds on classical work on error correlation in ensembles. The novelty is the operational reduction: we show empirically that prompt asymmetry (\emph{warm} + \emph{skeptic} + \emph{cold contract-first}) reduces pairwise reviewer correlations from $\bar{\rho} = 0.62$ to $0.29$ on a fixed bug suite, and that model diversity (4 frontier models with one cold reviewer per role) is required to obtain the second-largest correlation drop. The Phase-5 falsification on \texttt{bankcheck.py} demonstrates that the mechanism is \emph{contract-domain-bound}: when the cold reviewer's contracts are misaligned with the test domain, decorrelation collapses.
+
+\subsection{Stochastic dominance in software measurement}
+
+First-order stochastic dominance has been used in software measurement primarily for reliability comparisons. We adapt it to LLM-agent measurement by defining eFOSD on a held-out utility threshold grid (\Cref{def:efosd}) and verifying it on $10$ thresholds per cell across $8$ cells (Phase 4). This is conservative: a single threshold violation falsifies the empirical claim, but no such violation occurred in our data.
+
+\subsection{Specification-first and contract-driven review}
+
+Contract-driven code review has roots in Design-by-Contract~\cite{meyer1997oosc}. Our cold contract-first reviewer is a re-instantiation in the LLM setting, with one twist: the contract document is \emph{auto-extracted} from the reference implementation by an LLM call (Phases 6--11), removing the manual-contract bottleneck that prevented prior empirical replication. The Phase-9 / Phase-10 results suggest the technique is most effective when (a) contracts are domain-aligned and (b) the codebase is unfamiliar to the reviewer (Phase 10 third-party libs vs Phase 9 stdlib).
+
+\subsection{Where this paper sits}
+
+This paper is positioned as a \emph{measurement framework} rather than a benchmark or a new prompting technique. The contributions are:
+\begin{itemize}
+\item the formal model and decisional metric (\Cref{sec:formal-model,sec:decisional-metric});
+\item the empirically-validated L1 bound \emph{within its declared domain} (\Cref{sec:asymmetric-verification});
+\item the C-T3 conjecture and the absence of detected LLM-grounded improvement under two pre-registered injection formats at $n = 92$ paired (\Cref{sec:learning-loop});
+\item the four-phase replication of C1 contract-aligned specificity (\Cref{sec:phase6,sec:phase7,sec:phase8,sec:phase9,sec:phase10}) with explicit reviewer-family $\times$ library-class factorial design;
+\item the Phase-11 provenance-label experiment (\Cref{sec:phase11}) that disentangles label vs code-intrinsic causal contributions;
+\item the ten-mode failure taxonomy (\Cref{sec:failure-modes}).
+\end{itemize}

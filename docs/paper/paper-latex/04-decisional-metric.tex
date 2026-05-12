@@ -1,0 +1,105 @@
+\section{The Decisional Metric \texorpdfstring{$\Vmetric$}{V}}
+\label{sec:decisional-metric}
+
+The decisional cost-aware metric weighs the expected-utility gain of a protocol $\proto$ over free prompting $\protoZero$ against the log token-cost ratio:
+\begin{equation}
+  \boxed{\;
+  \Vmetric(\proto;\, \protoZero;\, \lambda)
+  \;=\;
+  \Delta \E[u]
+  \;-\;
+  \lambda\, \log\!\frac{K_{\proto}}{K_{\protoZero}}
+  \;}
+  \label{eq:decisional-metric}
+\end{equation}
+where $K_{\proto} := \E_{\BehDist{\proto}{x}}[c_{\mathrm{tok}}]$ is the expected token cost under protocol $\proto$ on task $x$, and $\Delta\E[u] := \E_{\BehDist{\proto}{x}}[u(B)] - \E_{\BehDist{\protoZero}{x}}[u(B)]$.
+
+The cost weight $\lambda \in [0, \infty)$ encodes how much the decision-maker is willing to pay (in log-token units) for a unit of expected utility gain. The structure is Lagrangian: $\Vmetric > 0$ certifies that the protocol pays.
+
+\subsection{Break-even \texorpdfstring{$\lambda$}{lambda}}
+
+The break-even cost weight is the unique $\lambda$ at which $\Vmetric = 0$:
+\begin{equation}
+  \lambda_{\mathrm{breakeven}}(\proto; \protoZero; x) \;=\; \frac{\Delta \E[u]}{\log\!\big(K_{\proto} / K_{\protoZero}\big)}
+  \qquad \text{whenever } K_{\proto} > K_{\protoZero}.
+  \label{eq:lambda-breakeven}
+\end{equation}
+Below $\lambda_{\mathrm{breakeven}}$ the protocol pays; above it free prompting pays. This is a one-dimensional summary of the cost-utility trade-off, computable from any matched pair of trajectory samples.
+
+We define the cost-efficiency ratio
+\begin{equation}
+  G(\proto; \protoZero; x) \;=\; \lambda_{\mathrm{breakeven}}(\proto; \protoZero; x)
+  \label{eq:cost-efficiency}
+\end{equation}
+to keep $\lambda$ reserved for the decision-maker's actual weight.
+
+\subsection{Empirical first-order stochastic dominance (eFOSD)}
+
+Mean comparison is one-dimensional and can be misleading. We use a stronger sample-level condition:
+
+\begin{definition}[eFOSD]
+\label{def:efosd}
+Let $\BehDistN{\proto}{x}{n}$, $\BehDistN{\protoZero}{x}{n}$ be empirical distributions of $u(B)$ under $\proto$ and $\protoZero$, each with $n$ Monte-Carlo replicas. Let $\mathcal{T} = \{t_1, \ldots, t_K\} \subset [0,1]$ be a held-out utility threshold grid. We say $\BehDistN{\proto}{x}{n}$ \emph{empirically first-order stochastically dominates} $\BehDistN{\protoZero}{x}{n}$ on $\mathcal{T}$ iff
+\begin{equation}
+  \Prob_{\BehDistN{\proto}{x}{n}}\!\big[\, u(B) \ge t \,\big]
+  \;\ge\;
+  \Prob_{\BehDistN{\protoZero}{x}{n}}\!\big[\, u(B) \ge t \,\big]
+  \qquad \forall\, t \in \mathcal{T}.
+  \label{eq:efosd-condition}
+\end{equation}
+We write $\BehDist{\proto}{x} \succeq_{\mathrm{eFOSD},\mathcal{T}} \BehDist{\protoZero}{x}$.
+\end{definition}
+
+\begin{remark}
+eFOSD is strictly stronger than mean comparison: if it holds on a dense enough $\mathcal{T}$, expected utility under $\proto$ dominates under $\protoZero$ for any non-decreasing utility transformation. It is strictly weaker than population FOSD: we do not assert dominance on thresholds \emph{outside} $\mathcal{T}$. A single threshold violation falsifies the empirical claim, so the definition is self-falsifiable.
+\end{remark}
+
+In our experiments, $\mathcal{T}$ is a $10$-point grid uniformly spaced in $[0.1, 1.0]$, applied to $8$ cells ($2$ tasks $\times\,4$ models). eFOSD is verified on $80/80$ thresholds in Phase 4 (\Cref{sec:phase4}).
+
+\subsection{Sample-level inequality and its empirical certification}
+
+\begin{lemma}[Sample-level eFOSD certification]
+\label{lemma:efosd-cert}
+Given $n$ matched-task replicas $(\tau^{(i)}_{\proto}, \tau^{(i)}_{\protoZero})_{i=1}^{n}$, the empirical exceedance probability
+\begin{equation}
+  \widehat{F}_{\proto}(t) := \frac{1}{n} \sum_{i=1}^{n} \ind\!\big[\, u(\varphi(\tau^{(i)}_{\proto})) \ge t \,\big]
+  \label{eq:empirical-exceedance}
+\end{equation}
+admits the Dvoretzky--Kiefer--Wolfowitz inequality $\Prob\big[\sup_t |\widehat{F}_{\proto}(t) - F_{\proto}(t)| > \epsilon\big] \le 2 e^{-2 n \epsilon^2}$, so the $n$-sample eFOSD condition certifies the population condition with confidence $1 - 4 K e^{-2 n \epsilon^2}$ on a grid of size $K$ at slack $\epsilon$, by a union bound over the $K$ thresholds.
+\end{lemma}
+
+We use this only as a sanity check: we report the empirical condition on the tested grid without claiming the population statement.
+
+\subsection{Empirical Claim E1 (Expected-Utility Dominance + eFOSD)}
+\label{sec:claim-e1}
+
+We do not state E1 as a proposition. The condition for the dominance to hold---that the protocol-allowed action sequences include at least one producing an artefact passing held-out tests---is nearly tautological for $\Delta\E[u] > 0$ on a task the protocol can in fact solve. The substantive content of E1 is the \emph{empirical observation} on $n = 120$ trajectories:
+
+\paragraph{Empirical Claim E1.} On $n = 120$ matched-task trajectories across $2$ tasks and $4$ frontier models (Codex \texttt{gpt-5.5}, Claude Sonnet 4.6, Claude Opus 4.7, Gemini 2.5 Flash), with the protocol vs free-prompting conditions defined in \Cref{sec:formal-model}:
+\begin{enumerate}[leftmargin=2em]
+\item $\Delta\E[u] \in [+0.59, +0.78]$ across all $8$ cells.
+\item $\BehDistN{\proto}{x}{n} \succeq_{\mathrm{eFOSD}, \mathcal{T}} \BehDistN{\protoZero}{x}{n}$ on a $10$-point grid $\mathcal{T}$ uniformly spaced in $[0.1, 1.0]$, verified on $80/80$ thresholds.
+\item $\log K_{\proto}/K_{\protoZero} \in [0.70, 3.28]$ (token ratios $[2.0\times, 26.6\times]$); $G \in [0.21, 1.11]$.
+\end{enumerate}
+
+\paragraph{Status.} \emph{Empirically measured} on the stated sample. We do not assert population FOSD; we do not assert generalization beyond the tested cells. eFOSD is self-falsifiable: a single threshold violation would falsify the empirical claim, and we report no such violation.
+
+\subsection{Reading the metric: three regimes}
+
+We distinguish three operational regimes for $(\Delta\E[u], K_{\proto}/K_{\protoZero})$:
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Dominant utility, modest cost} ($\Delta\E[u] > 0$, $K_{\proto}/K_{\protoZero} \in [1, 5]$): protocol pays for $\lambda < G \in [\Delta\E[u] / \log 5, \infty)$. Typical regime in Phase 4.
+\item \textbf{Dominant utility, heavy cost} ($\Delta\E[u] > 0$, $K_{\proto}/K_{\protoZero} > 10$): protocol pays only at low $\lambda$. $G$ is small. Phase-4 high-cost cells fall here.
+\item \textbf{No utility gain or token-cost regression} ($\Delta\E[u] \le 0$): $\Vmetric < 0$ for any $\lambda > 0$. Protocol does not pay; this is what we observe under uniform-failure collapse (\Cref{sec:failure-modes}).
+\end{enumerate}
+
+The Phase-4 empirical findings (\Cref{sec:phase4}) place all $8$ tested cells in regimes 1--2 with $\Delta\E[u] \in [+0.59, +0.78]$ and $\log K_{\proto}/K_{\protoZero} \in [0.70, 3.28]$, giving $G \in [0.21, 1.11]$.
+
+\subsection{What $\Vmetric$ does \emph{not} capture}
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{Latency / wall-clock cost.} $\Vmetric$ is in log-token units; latency is a separate dimension.
+  \item \textbf{Engineering complexity.} The setup cost of writing the protocol is amortized across runs and not captured.
+  \item \textbf{Risk preferences beyond linear utility.} The risk-neutral $\E[u]$ is the simplest aggregation; risk-averse decision-makers may prefer CVaR or VaR formulations, which we do not present.
+  \item \textbf{Distributional aspects of $c_{\mathrm{tok}}$.} We use $K = \E[c_{\mathrm{tok}}]$. Heavy tails in token cost may matter; we report empirical quantiles in \Cref{sec:phase4} but do not integrate them into $\Vmetric$.
+\end{itemize}

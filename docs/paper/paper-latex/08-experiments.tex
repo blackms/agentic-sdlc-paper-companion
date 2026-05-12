@@ -1,0 +1,199 @@
+\section{Experiments}
+\label{sec:experiments}
+
+We report the eleven experimental phases in chronological order. Each phase has a pre-registered protocol (frozen before any reviewer call) and computational validation. Raw artefacts are committed at the paths indicated.
+
+\subsection{Phase 1--3: pilot ($n = 120$ trajectories, 4 frontier models)}
+\label{sec:phase1-3}
+
+\textbf{Models}: OpenAI Codex \texttt{gpt-5.5}, Claude Sonnet 4.6, Claude Opus 4.7, Gemini 2.5 Flash. \textbf{Tasks}: T1 (compound-interest with overflow handling) and T2 (200 single-line injected bugs across $7$ categories in a finance domain). $n = 15$ trajectories per cell, $8$ cells. Conditions: free ($\protoZero$) vs constrained ($\proto$, with spec-first + TDD + asymmetric reviewer).
+
+\textbf{Pilot finding} (negative): the Shannon-entropy formulation of $\Vmetric$ used in v0.1 of the framework returns $\eta < 0$ under uniform-failure collapse, because $H(\protoZero) < H(\proto)$ when both distributions concentrate on failure outcomes but $\proto$ has more variability in compliance components. Switched to expected utility $\E[u]$ plus eFOSD, validated in Phase 4.
+
+\subsection{Phase 4 ($n = 120$): E1 validation, expected utility + eFOSD}
+\label{sec:phase4}
+
+\textbf{Result}: $\Delta\E[u] \in [+0.59, +0.78]$ across the $8$ cells; eFOSD verified on $80/80$ thresholds; $G \in [0.21, 1.11]$. Phase-4 also runs the $2 \times 2$ factorial (prompt-asymmetry $\times$ model-diversity) on $n = 200$ bugs $\times\, 7$ reviewer roles $= 1{,}400$ LLM reviews:
+
+\begin{center}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & Single model (Codex) & 4 models with cold-per-role \\
+\midrule
+Symmetric prompts & symm-mono $q = 22.91\%$ & symm-multi $q = 18.74\%$ \\
+Asymmetric prompts & asymm-codex $q = 16.55\%$ & \textbf{asymm-multi $q = 12.28\%$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Paired McNemar (symm-mono vs asymm-multi): $p = 0.0013$, Bonferroni-significant under all three parse-failure policies (strict, lenient, mid). Mechanism: $\bar{\rho}\!: 0.62 \to 0.29$ (\Cref{sec:asymmetric-verification}).
+
+\subsection{Phase 5 ($n = 27$ + $n = 92$): L1 cross-domain falsification and C-T3 LLM-grounded falsification}
+\label{sec:phase5}
+
+\textbf{L1 cross-domain falsification.} The cold contract-first reviewer is re-deployed on \texttt{bankcheck.py} ($n = 27$ multi-line bugs across $10$ categories) but with \emph{finance contracts} (not domain-aligned). All $5$ pre-registered contrasts return paired McNemar $p \ge 0.5$. Cold reviewer detection collapses to $11\%$ on bankcheck. \textbf{Verdict:} the empirical mechanism of L1 is domain-bound; the mathematical bound continues to hold.
+
+\textbf{C-T3 LLM-grounded falsification.} TRAIN/TEST split ($99 / 101$), top-5 categories injected via pattern names + 1-line descriptions, $n = 92$ paired. Result: $\Delta = -6.5\,\mathrm{pp}$, paired McNemar $p = 0.95$ against $H_1$ ``injected $>$ baseline''. \textbf{Verdict:} simulation-derived injection strategy does not improve LLM detection at the tested sample size.
+
+\subsection{Phase 6: Cold reviewer recovery via auto-extracted contracts}
+\label{sec:phase6}
+
+To recover from the Phase-5 cross-domain collapse, contracts are \emph{auto-extracted} from the bankcheck reference module via a single Codex call. Cold reviewer detection rises from $11\%$ (misaligned) to $73\%$ (auto-aligned) on the same bug suite. Component-level transfer recovered.
+
+\subsection{Phase 7: Second domain (JSON parser)}
+\label{sec:phase7}
+
+Cold reviewer with auto-extracted JSON-parser contracts vs cold reviewer with bankcheck (categorically mismatched) contracts: $n = 15$ bugs, paired McNemar $p = 0.0078$, $\Delta = +73\,\mathrm{pp}$. Bonferroni-significant. Recovery is robust to domain change.
+
+\subsection{Phase 8: Three hand-written domains (multi-domain pilot)}
+\label{sec:phase8}
+
+Expression evaluator, regex compiler, HTTP header parser. Bug-injection yield $44\%$ (16/36 attempted via text-substitution), per-domain $n \in \{5, 6\}$, individually non-significant; Fisher's combined over P7 + P8 = $4$ tests: $p = 0.021$ (below $\alpha = 0.05$, but \emph{not} below pre-registered primary $p < 0.001$). Recorded as \emph{partial multi-domain generalization, underpowered}.
+
+\subsection{Phase 9: Real Python stdlib codebases}
+\label{sec:phase9}
+
+Three stdlib codebases via AST mutator (\Cref{def:ast-mutators}, yield $100\%$): \texttt{csv.py} ($451$ LOC), \texttt{urllib/parse.py} ($1246$ LOC), \texttt{json/decoder.py} ($356$ LOC). $30$ AST mutations per domain, $7$ reviewer roles, $630$ Codex review calls.
+
+\textbf{Pre-registered metric results} (Codex-only, strict unparsed-as-miss). \emph{Primary test}: cluster-robust paired permutation on the within-domain bug list (treats bugs within a single module as a cluster, $n_{\text{perm}} = 20{,}000$); \emph{secondary}: McNemar exact for comparability.
+
+\begin{center}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Domain & Cold & Cold-mm & $\Delta$ & Perm 95\% CI on $\Delta$ & Perm $p$ (1-sided) \\
+\midrule
+csv\_dom & $43.3\%$ & $0.0\%$ & $+43.3$ pp & $[+26.7, +60.0]$ pp & $2 \cdot 10^{-4}$ \\
+urllib\_dom & $50.0\%$ & $0.0\%$ & $+50.0$ pp & $[+33.3, +66.7]$ pp & $< 5\cdot 10^{-5}$ \\
+jsondec\_dom & $43.3\%$ & $0.0\%$ & $+43.3$ pp & $[+26.7, +60.0]$ pp & $1 \cdot 10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+McNemar exact (secondary, $\alpha = 0.010$): $1.2\cdot 10^{-4}$ / $3.1\cdot 10^{-5}$ / $1.2\cdot 10^{-4}$. The permutation $p$ is more conservative by $\sim 2$--$3\times$, reflecting within-module clustering that McNemar ignores. The qualitative finding is robust: $3/3$ domains pass at $\alpha = 0.010$ under both tests. The pre-registered absolute threshold ``cold $>$ 50\%'' fails on stdlib ($0/3$ strict, Wilson CIs all straddle $50\%$).
+
+\textbf{Cross-family on csv\_dom (60 additional mismatched calls)}: all $3$ families pass cluster-robust permutation at $\alpha = 0.010$:
+Codex $\Delta\!+\!43.3$ pp ($\text{CI}_{95}\!:[+26.7, +60.0]$, perm $p = 2\cdot 10^{-4}$);
+Opus $\Delta\!+\!26.7$ pp ($\text{CI}_{95}\!:[+13.3, +43.3]$, perm $p = 4\cdot 10^{-3}$);
+Gemini 3.1 Pro $\Delta\!+\!60.0$ pp ($\text{CI}_{95}\!:[+43.3, +76.7]$, perm $p < 5\cdot 10^{-5}$).
+Even the smallest $\Delta$ (Opus) has a $95\%$ CI strictly above zero.
+
+\textbf{Cross-family absolute detection on csv and jsondec (Codex / Opus / Gemini 3.1 Pro)}: csv 43\% / 30\% / 63\%, jsondec 43\% / 40\% / 87\%. Cross-family spread $33$--$47\,\mathrm{pp}$.
+
+\subsection{Phase 10: Third-party Python libraries (3 domains $\times$ 3 families $\times$ 2 conditions $\times$ 30 bugs)}
+\label{sec:phase10}
+
+Three third-party Python modules selected for varying training-data presence: \texttt{dateutil/relativedelta.py} ($599$ LOC, high pop.), \texttt{parsy/\_\_init\_\_.py} ($719$ LOC, low pop.), \texttt{chardet/chardistribution.py} ($233$ LOC, medium pop.). AST mutator with compile-only validation (third-party modules require their own package context). $90$ AST mutations, $540$ reviewer calls.
+
+\textbf{Pre-registered cells ($9 = 3 \times 3$):}
+
+\begin{center}
+\small
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+Domain & Family & Cold strict & Wilson 95\% & Cold-mismatched & McNemar $p$ \\
+\midrule
+\multirow{3}{*}{dateutil} & Codex & $93.33\%$ & $[78.7, 98.2]$ & $0.00\%$ & $< 10^{-6}$ \\
+ & Opus 4.7 & $96.67\%$ & $[83.3, 99.4]$ & $3.33\%$ & $< 10^{-6}$ \\
+ & Gemini 3.1 Pro & $96.67\%$ & $[83.3, 99.4]$ & $10.00\%$ & $< 10^{-6}$ \\
+\addlinespace
+\multirow{3}{*}{parsy} & Codex & $53.33\%$ & $[36.1, 69.8]$ & $0.00\%$ & $1.5\cdot 10^{-5}$ \\
+ & Opus 4.7 & $60.00\%$ & $[42.3, 75.4]$ & $10.00\%$ & $6.1\cdot 10^{-5}$ \\
+ & Gemini 3.1 Pro & $66.67\%$ & $[48.8, 80.8]$ & $6.67\%$ & $2.4\cdot 10^{-4}$ \\
+\addlinespace
+\multirow{3}{*}{chardet} & Codex & $96.67\%$ & $[83.3, 99.4]$ & $0.00\%$ & $< 10^{-6}$ \\
+ & Opus 4.7 & $96.67\%$ & $[83.3, 99.4]$ & $3.33\%$ & $< 10^{-6}$ \\
+ & Gemini 3.1 Pro & $93.33\%$ & $[78.7, 98.2]$ & $0.00\%$ & $< 10^{-6}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Verdict}: $9/9$ cells pass cluster-robust permutation at $\alpha = 0.010$ (range $p \in [10^{-4}, < 5\!\cdot\!10^{-5}]$, all $95\%$ CIs on $\Delta$ strictly above zero, smallest CI lower bound $+13.3$ pp for P9 csv Opus); $9/9$ cells pass the point-estimate absolute threshold (range $53$--$97\%$); $6/9$ cells pass the threshold under interval evidence (parsy 3 cells straddle $50\%$).
+
+\paragraph{Cross-phase pooled re-analysis (v1.4 primary).} From v1.4 onwards the primary cross-phase inference is the bug-level mixed-effects logistic regression of \Cref{sec:mixed-effects}, fit on the $14$-cell long-format export ($N=840$ bug-level rows, $420$ within-cell bug clusters, $6$ module clusters). The condition main effect is $\widehat{\beta}_{\text{cond}} = +4.20$ on the logit scale ($95\%$ Wald CI $[+3.96, +4.45]$; $z = +33.4$; two-sided Wald $p < 10^{-200}$); the approximate ELBO-based likelihood-ratio test on the joint $\{\text{cond}, \text{cond}\!\times\!\text{opus}, \text{cond}\!\times\!\text{gemini}, \text{cond}\!\times\!\text{libclass}\}$ block (4 df) yields $D \approx 525$ and $p \approx 3 \cdot 10^{-112}$. The cluster-robust block bootstrap over the $14$ cells is retained as the matched comparator and gives observed pooled $\Delta = +67.4$ pp with $95\%$ CI $[+55.2, +79.5]$ pp; the mean predicted marginal $\widehat{\Delta}$ across the $14$ cells under the mixed-effects model is $+68.7$ pp (Table~\ref{tab:me-pooled}). Fisher's combined Codex-only over P7 + 3 P9 + 3 P10 = $7$ McNemar tests ($\chi^2(14) = 167.72$, $p \approx 0$) is reported as a legacy comparator only: it both treats within-cell observations as independent (inflating significance) and assumes between-test independence that is partially compromised by cross-phase model-version changes (see \Cref{sec:cross-phase-confounder}).
+
+\paragraph{Per-cell three-way comparison.} All $14/14$ cells qualitatively agree at $\alpha = 0.025$ (one-sided): McNemar exact, cluster-robust paired permutation, and the mixed-effects predicted marginal contrast all flag cold $>$ mismatched with intervals excluding $0$. The full per-cell table is reported in the appendix (Table~\ref{tab:me-per-cell}).
+
+\begin{table}[t]
+\centering
+\caption{C1 cross-phase pooled estimates. The mixed-effects $\widehat{\beta}_{\text{cond}}$ is the primary v1.4 estimate; the block-bootstrap pooled $\Delta$ is the matched comparator; the legacy Fisher's combined McNemar $\chi^2$ is reported with the cross-phase model-version caveat of \Cref{sec:cross-phase-confounder}.}
+\label{tab:me-pooled}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+Estimator & Point estimate & $95\%$ interval / $p$ \\
+\midrule
+Mixed-effects $\widehat{\beta}_{\text{cond}}$ (logit, primary) & $+4.20$ & $[+3.96, +4.45]$; $z=+33.4$; $p_{\text{Wald},2} < 10^{-200}$ \\
+ME mean predicted $\widehat{\Delta}$ across $14$ cells & $+68.7$ pp & --- \\
+Approx.\ ELBO-LRT on joint cond block, $\mathrm{df}=4$ & $D \approx 525$ & $p \approx 3 \cdot 10^{-112}$ \\
+Block-bootstrap pooled $\Delta$ (comparator) & $+67.4$ pp & $[+55.2, +79.5]$ pp \\
+Fisher's combined McNemar $\chi^2(14)$ (legacy) & $167.72$ & $p \approx 0$ (caveat: \Cref{sec:cross-phase-confounder}) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Cross-family spread on third-party}: $3.3$--$13.3\,\mathrm{pp}$ (vs $33$--$47\,\mathrm{pp}$ in P9 stdlib sample).
+
+\subsection{Phase 11: Provenance-label experiment}
+\label{sec:phase11}
+
+Phase 11 ran in two passes. The v1.3 pilot used $30$ paired Codex calls per side ($60$ total); the v1.4 saturation replication extended this to all available AST mutations on the same two frozen reference modules: $53$ paired pairs for csv (\texttt{csv\_module.py}) and $60$ for chardet (\texttt{chardistribution\_module.py}). The v1.4 replication is pre-registered in \texttt{docs/paper/v1.4/preregistration-p11-replication.md} (frozen 2026-05-11 17:00) with Amendment A1 (\texttt{preregistration-p11-replication-amendment-A1.md}, frozen 2026-05-11 21:00) authorising a saturation variant after pre-flight enumeration established that $n=100$ per cell was infeasible on the frozen modules (csv: $53$ valid PRIORITY-1 mutations; chardet: $60$). Amendment A1 also relaxes the operator-mix-proportion match (BOR is exhausted in v1.3 on both modules); per-operator counts are reported in the manifest. The 1-line cover stories and the contract+prompt splices are byte-identical to v1.3 across all conditions; only the leading provenance statement changes between truthful and relabeled. Power for $\Delta=10\,\mathrm{pp}$ at $\alpha=0.025$ (one-sided Bonferroni-per-cell) under the saturation $n$ is $0.55$--$0.65$, an improvement over v1.3's $\sim 0.30$--$0.35$ but below the parent pre-reg's planned $0.80$.
+
+\textbf{Result (v1.3 pilot vs v1.4 saturation replication):}
+
+\begin{center}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Cell & v1.3 $n=30$, $\Delta$ \& McNemar $p$ & v1.4 $n=53/60$, $\Delta$ \& McNemar $p$ & v1.4 perm $p$ \\
+\midrule
+csv (stdlib $\to$ 3p label) H1a: rel $>$ truth & $+6.7\,\mathrm{pp}$, $p=0.3438$ & $+0.0\,\mathrm{pp}$, $p=0.6128$ & $0.6107$ \\
+chardet (3p $\to$ stdlib label) H1b: rel $<$ truth & $-10.0\,\mathrm{pp}$, $p=0.1250$ & $-3.3\,\mathrm{pp}$, $p=0.3125$ & $0.3128$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+At the pre-registered Bonferroni-per-cell $\alpha=0.025$, neither v1.4 cell rejects the null (csv McNemar $p=0.6128$; chardet $p=0.3125$). Bootstrap $95\%$ CIs on $\Delta$ are $[-13.2, +13.2]\,\mathrm{pp}$ for csv and $[-10.0, +3.3]\,\mathrm{pp}$ for chardet. \textbf{Decision rule: v1.3 conclusion stands at higher power.} The residual label-only effect is bounded by the v1.4 CI upper edges, i.e.\ at most $\sim 13\,\mathrm{pp}$ on csv (relabel-as-third-party direction) and $\sim 3\,\mathrm{pp}$ on chardet (relabel-as-stdlib direction), tighter than v1.3's $\pm 18\,\mathrm{pp}$. The same data broken into the $30$ v1.3-reused bugs and the new bugs gives consistent point estimates ($\Delta=0.0\,\mathrm{pp}$ on csv subgroups; chardet v1.3-reused $\Delta=-6.7\,\mathrm{pp}$, new $\Delta=0.0\,\mathrm{pp}$); see \texttt{experiments/p11\_replication/results.json}.
+
+\textbf{Halt~\#6 (pre-registered)}: a v1.4 result that significantly reverses the v1.3 directional trend would force a §7.9 reframing. Neither cell is significant in v1.4 and the point estimates do not flip past zero on csv ($\Delta = 0.0$) or on chardet ($\Delta$ remains negative); halt~\#6 is \emph{not} triggered.
+
+\textbf{Drift diagnostic}: the 30 v1.3-reused bugs were re-run truthful concurrently with v1.4 (separate output subdirectory). csv truthful detection rate moved from $43.3\%$ (v1.3, on disk) to $53.3\%$ (v1.4 re-run; McNemar $p=0.19$, NS) — a $+10\,\mathrm{pp}$ mid-strength Codex drift on csv. chardet rates were stable ($96.7\%$ both runs). The contemporaneous v1.4 main run on the same 30 reused csv bugs gave $60.0\%$ truthful $=$ relabeled — within the drift envelope. A KS two-sample test on per-bug truthful detection (v1.3-reused vs v1.4-new) reports $D=0.165$ and $p=0.835$ on csv (same-distribution sanity passes; the v1.4-new bugs are not measurably harder than the reused ones) and $D=0$ on chardet (identical means; the chardet baseline is saturated).
+
+\textbf{Anti-stdlib carelessness as the dominant mechanism: not supported (at $n=53/60$ per side).} Label-only effects within roughly $\pm 13\,\mathrm{pp}$ on csv and $\pm 10\,\mathrm{pp}$ on chardet are below the saturation-$n$ power threshold and cannot be ruled out by this experiment; only the much larger ``label as dominant cause of the $\sim 53\,\mathrm{pp}$ sample gap'' interpretation is rejected. Operator-mix deviation under Amendment A1 (BOR exhausted) is documented; the same-distribution KS sanity is consistent with the deviation not introducing a measurable difficulty shift on csv. Methods, raw outputs, and the analyzer that produced these numbers are in \texttt{experiments/p11\_replication/} on branch \texttt{v1.4/exp-p11-rep}.
+
+\subsection{Phase 12: Naturalistic bug benchmark on csv.py ($n = 8$)}
+\label{sec:phase12}
+
+\textbf{Motivation.} Phases 5--11 establish the C1 specificity finding on AST single-mutation bugs (AOR/ROR/BOR). Peer reviewers in successive rounds asked whether the contract-aligned advantage transfers to \emph{naturalistic} bugs harvested from real issue history. Phase 12 tests this on \texttt{Lib/csv.py}, the stdlib module with the lowest cold-detection rate in Phase 9 and therefore the most informative comparator. The pre-registration is at \path{docs/paper/v1.4/preregistration-extend.md} (frozen 2026-05-11).
+
+\textbf{Harvest.} We enumerated all $80$ commits ever touching \texttt{Lib/csv.py}, applied the inclusion criteria (single-function-scoped, $\le 30$ LOC net change, no API change, behavioural fix, reversal patch applies cleanly to the v3.12 reference and produces an importable Python 3 source), and excluded documentation-only, refactor-only, perf-only, and Python-2-syntax-only fixes. Eight bugs survived (seven via direct \texttt{patch -R} on the merge commit, one via line-level manual port). This is below the pre-registered target of $25$--$30$; pre-registration risk \#1 anticipates this case and mandates ``proceed at $n$ harvested with reduced power''. Power at $n = 8$ for $\Delta = 30\,\mathrm{pp}$, $\alpha = 0.025$ paired one-sided is approximately $0.30$; the test is severely under-powered and the per-family significance read is qualitative.
+
+\textbf{Method.} Three reviewer families (Codex \texttt{gpt-5.5}, Claude Opus 4.7, Gemini 3.1 Pro Preview) review each bugged source under \emph{cold} (auto-extracted \texttt{csv.py} contracts, byte-identical to the Phase 9 artefact) and \emph{cold\_mismatched} (the bankcheck contracts from Phase 6, byte-identical, deliberately wrong). Detection criterion is frozen at harvest: per bug, $5$--$9$ \texttt{expected\_detection\_keywords} (function name + bug summary terms + cited error type); a reviewer detects iff any keyword (case-insensitive) appears in \texttt{bugs\_found}. An out-of-band probe asks each reviewer whether they have seen this bug in the CPython issue tracker; cite-rate is reported as a leakage diagnostic and does \emph{not} enter the detection metric.
+
+\textbf{Per-family result.}
+
+\begin{center}
+\small
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+Family & cold & mm & $\Delta$ & cluster-robust perm $p$ & McNemar $p$ \\
+\midrule
+Codex \texttt{gpt-5.5} & $75.0\%$ & $12.5\%$ & $+62.5\,\mathrm{pp}$ & $0.0286$ & $0.0312$ \\
+Claude Opus 4.7 & $12.5\%$ & $0.0\%$ & $+12.5\,\mathrm{pp}$ & $0.4974$ & $0.5000$ \\
+Gemini 3.1 Pro Preview & $62.5\%$ & $0.0\%$ & $+62.5\,\mathrm{pp}$ & $0.0308$ & $0.0312$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Per-family Bonferroni-corrected $\alpha = 0.025$. None of the three families crosses the threshold; Codex and Gemini sit just above it ($p \approx 0.03$). Under the looser family-wise envelope $\alpha = 0.075$, no family is significant either. \textbf{0/3 H1 replicates at the pre-registered threshold}, with the strong caveat that $n = 8$ paired permutations cannot reach $p < 0.025$ unless the entire effect is concentrated in one direction (here $5/8$ discordants for Codex and Gemini in the cold-wins direction, $0/8$ in the mm-wins direction).
+
+\textbf{Leakage diagnostic.} CPython-issue-number cite-rate from the out-of-band probe: Codex $100.0\%$ (\textbf{above pre-registered $30\%$ caveat threshold}); Opus $0.0\%$; Gemini 3.1 Pro $12.5\%$. \textbf{Codex cites a CPython issue number on every bug:} its $75\%$ cold-detection rate cannot be cleanly attributed to contract reasoning---training-set memorization fully explains it. Per pre-reg decision rule, the Codex result is reported with strong caveat. Opus probes always answer ``NO''. Gemini cites $1/8 = 12.5\%$ (below threshold but non-zero).
+
+\textbf{Naturalistic vs AST cold-rate on the same module} (Mann-Whitney U, unpaired because bug sets differ; secondary H1 predicts naturalistic $\le$ AST). Codex: $43.3\%$ AST vs $75.0\%$ naturalistic, $\Delta = -31.7\,\mathrm{pp}$, $p = 0.942$ (inversion aligns with the $100\%$ leakage signal). Opus: $30.0\%$ vs $12.5\%$, $\Delta = +17.5\,\mathrm{pp}$, $p = 0.162$ (direction as predicted, not significant). Gemini 3.1 Pro: $63.3\%$ vs $62.5\%$, $\Delta = +0.8\,\mathrm{pp}$, $p = 0.483$ (indistinguishable).
+
+\textbf{Conclusion and interpretation.} At $\alpha = 0.025$, C1 specificity does \emph{not} replicate on naturalistic \texttt{csv.py} bugs in any of the three families ($0/3$). The Codex and Gemini point-estimates ($\Delta = +62.5\,\mathrm{pp}$) are large and in the predicted direction but cannot clear the Bonferroni threshold at $n = 8$ paired even when the effect is concentrated; the Codex signal is further confounded by $100\%$ training-set leakage of CPython issue numbers, and the Opus signal is consistent with no specificity transfer at this $n$. The secondary H1 (naturalistic $\le$ AST) is directionally supported only for Opus. The benchmark therefore reveals two residual concerns about the broader C1 result---small-$n$ underpower and leakage on widely-discussed stdlib code---and motivates a Phase-13 desideratum: a leakage-controlled naturalistic benchmark on post-cutoff or non-CPython libraries.
+
+\subsection{Empirical summary}
+
+Eighteen-plus cells across four phases (P7 + 3 P9 + 9 P10 + provenance) confirm the C1 specificity component. The absolute-detection moderator(s) are code-intrinsic and unidentified (Phase-12 desiderata: contract informativeness audit, matched-LOC stdlib/third-party experiments, operator-mix balancing, no-contract baseline).

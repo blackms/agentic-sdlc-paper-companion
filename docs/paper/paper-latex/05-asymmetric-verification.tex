@@ -1,0 +1,83 @@
+\section{Asymmetric Verification and the Joint-Miss Bound}
+\label{sec:asymmetric-verification}
+
+We formalize the multi-reviewer verifier subsystem and state the joint-miss bound that motivates asymmetric prompt design.
+
+\subsection{Reviewer ensemble}
+
+Fix an ensemble of $R$ stochastic reviewers $V_1, \ldots, V_R$ in the protocol-internal verifier set $\VerC$. On a bug-injection task with ground-truth oracle (whether the bug exists), each reviewer either \emph{catches} the bug (verdict $\mathrm{reject}$) or \emph{misses} it (verdict $\mathrm{accept}$). Let $M_i \in \{0, 1\}$ be the miss-indicator of reviewer $i$ on a single bug instance,
+\begin{equation}
+  M_i = \ind\!\big[\, V_i \text{ verdict} = \mathrm{accept}\, \big].
+\end{equation}
+Reviewer marginal miss probabilities are $p_i := \E[M_i]$ and pairwise correlations are $\rho_{ij} := \mathrm{Corr}(M_i, M_j)$. We assume the joint distribution of $(M_1, \ldots, M_R)$ is well-defined over the bug-instance distribution; we do not assume independence.
+
+\subsection{The 2-of-3 quorum decision rule}
+
+Throughout we use the \emph{2-of-3 quorum}: a bug is declared \emph{caught} by the ensemble iff at least two of the three reviewers vote $\mathrm{reject}$. The ensemble \emph{misses} the bug iff at most one reviewer rejects, i.e., at least two reviewers miss:
+\begin{equation}
+  Q_{2/3} := \ind\!\big[\, M_1 + M_2 + M_3 \ge 2 \,\big].
+  \label{eq:quorum-2-of-3}
+\end{equation}
+The \emph{joint-miss probability} is
+\begin{equation}
+  q := \E[\, Q_{2/3} \,] = \Prob[\, M_1 + M_2 + M_3 \ge 2 \,].
+  \label{eq:joint-miss}
+\end{equation}
+
+\subsection{Joint-miss bound (Lemma L1)}
+
+The bound below is mathematically routine---inclusion--exclusion plus the standard binary-indicator joint. We state it as a lemma, not a proposition, because the contribution of this section is the \emph{empirical mechanism} that follows from monotonicity in the pairwise correlations (\Cref{sec:p2-mechanism}), not the inequality itself.
+
+For any joint distribution of binary miss-indicators $(M_1, M_2, M_3)$ with marginals $p_i$ and pairwise correlations $\rho_{ij}$,
+\begin{equation}
+  q \;\le\; \sum_{1 \le i < j \le 3}\!\Big[\, p_i\, p_j \;+\; \rho_{ij}\,\sqrt{p_i (1 - p_i)\, p_j (1 - p_j)}\,\Big],\quad
+  \text{monotone-increasing in each $\rho_{ij}$.}
+  \label{eq:p2-bound}
+\end{equation}
+\footnote{Equation~(\ref{eq:p2-bound}) is the standard joint-probability bound for binary indicators; the inclusion--exclusion proof is one line and is omitted.}
+
+\subsection{Mechanism: prompt asymmetry reduces \texorpdfstring{$\rho_{ij}$}{rho\_ij}}
+\label{sec:p2-mechanism}
+
+The right-hand side of \Cref{eq:p2-bound} is monotone in each pairwise correlation $\rho_{ij}$, so $q$ is reduced by any intervention that reduces the $\rho_{ij}$. Symmetric prompts (three identical \emph{warm} reviewers, or three identical \emph{skeptic} reviewers) anchor on shared interpretation modes and exhibit high $\bar{\rho}$. Asymmetric prompts (\emph{warm} + \emph{skeptic} + \emph{cold contract-first}) diversify failure modes:
+\begin{itemize}[leftmargin=2em]
+  \item \emph{warm} optimizes for stakeholder-business intent;
+  \item \emph{skeptic} optimizes for adversarial trust assumptions;
+  \item \emph{cold} reads only the formal contract, ignoring style and stakeholder concerns.
+\end{itemize}
+A bug missed by \emph{warm} (because it appears business-acceptable) may be caught by \emph{cold} (because it violates the formal contract), and vice versa.
+
+\textbf{Empirical validation (within the finance contract domain, Phase 4):} on $n = 200$ injected bugs across $7$ categories with $1{,}400$ LLM reviews,
+\[
+\bar{\rho}_{\mathrm{symm\text{-}mono}} \,=\, 0.62
+\qquad
+\bar{\rho}_{\mathrm{asymm\text{-}multi}} \,=\, 0.29
+\qquad
+\Delta\bar{\rho} = -0.33
+\]
+and the joint-miss probability is reduced from $q_{\mathrm{symm\text{-}mono}} = 22.91\%$ to $q_{\mathrm{asymm\text{-}multi}} = 12.28\%$, paired McNemar $p = 0.0013$ (Bonferroni-significant under all three parse-failure policies tested).
+
+\subsection{Model diversity vs prompt asymmetry: a $2 \times 2$ factorial}
+
+The $2 \times 2$ factorial in Phase 4 decomposes the prompt-asymmetry effect from the model-diversity effect:
+\begin{center}
+\small
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & \textbf{Single model (Codex)} & \textbf{4 models with cold-per-role} \\
+\midrule
+\textbf{Symmetric prompts} & symm-mono $q = 22.91\%$ & symm-multi $q = 18.74\%$ \\
+\textbf{Asymmetric prompts} & asymm-codex $q = 16.55\%$ & \textbf{asymm-multi $q = 12.28\%$} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both prompt asymmetry and model diversity contribute independently to $\bar{\rho}$ reduction; the combination achieves the lowest $q$.
+
+\subsection{Domain restriction: Phase 5 falsification}
+
+L1's bound holds mathematically without domain restriction; \emph{the empirical reduction mechanism is contract-domain-bound}. In Phase 5, the cold contract-first reviewer is given \emph{finance contracts} but the bugs are injected in a non-finance code-pipeline target (\texttt{bankcheck.py}). The cold reviewer's detection collapses from $\sim\!90\%$ to $11\%$ because the contract document is misaligned with the target domain, so the reviewer cannot derive the right expectations.
+
+The pre-registered Phase-5 contrasts on \texttt{bankcheck.py} ($n = 27$ multi-line bugs across $10$ categories) all return $p \ge 0.5$ on paired McNemar against the baseline. \textbf{We accept this as a falsification of cross-domain transfer for L1's empirical mechanism}, while the mathematical inequality of \Cref{eq:p2-bound} continues to hold; only its empirical relevance (the magnitude of $\bar{\rho}$ reduction) is domain-bound.
+
+\textbf{Recovery (Phase 6+):} auto-extracted aligned contracts from the target domain restore cold reviewer detection. Validated in $4+$ phases across stdlib and third-party libraries (\Cref{sec:phase6,sec:phase7,sec:phase8,sec:phase9,sec:phase10}).

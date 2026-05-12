@@ -1,0 +1,50 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We presented a measurement framework---not a general theory---for LLM coding agents under procedural constraints. Three formal statements anchor the framework: E1 (Expected-Utility Dominance + eFOSD), L1 (Asymmetric-Quorum Joint-Miss Bound), and C-T3 (Learning-Loop Convergence). A fourth empirical claim, C1 (Cold reviewer transfer), replicates contract-aligned specificity across $4$ phases, $18^+$ cells, $3$ reviewer families, and $8$ domains (2 hand-written, 3 stdlib, 3 third-party).
+
+The honest empirical record is:
+
+\begin{itemize}[leftmargin=2em]
+\item \textbf{E1} validated on $n=120$: $\Delta\E[u] \in [+0.59, +0.78]$, eFOSD on $80/80$ thresholds, $G \in [0.21, 1.11]$.
+\item \textbf{L1} validated within finance ($n=200$, paired McNemar $p = 0.0013$); cross-domain transfer \emph{falsified} (Phase 5, $\texttt{bankcheck.py}$, $p \ge 0.5$ in all $5$ contrasts); \emph{recoverable} via auto-extracted aligned contracts (Phase 6+).
+\item \textbf{C-T3} simulation converges $30/30$; LLM-grounded \emph{falsified} under two injection formats ($p = 0.95$ and $0.97$).
+\item \textbf{C1} specificity replicates in all $18^+$ tested cells. Absolute-detection moderator(s) are code-intrinsic and unidentified; \emph{anti-stdlib carelessness not supported as the dominant mechanism} by Phase-11 provenance-label experiment (effects within $\pm 10$ pp residual undetectable at the tested $n$).
+\end{itemize}
+
+Ten failure modes are operationally defined and (where possible) quantified.
+
+\subsection{Phase-12 desiderata}
+
+We name what we cannot answer with the present data:
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Contract informativeness audit.} A blinded human-rater audit of auto-extracted contracts across the $8$ domains, scored on completeness, specificity, and operator-level invariant clarity. Tests whether contract quality varies systematically across library classes.
+
+\item \textbf{Matched-LOC stdlib/third-party experiment.} Pair stdlib and third-party modules at fixed LOC (e.g., $300\,\mathrm{LOC}$ from each), with operator-mix balancing of AST mutations. Tests whether the P9-P10 sample gap survives strict matching.
+
+\item \textbf{No-contract baseline.} Cold reviewer prompt without any contract document, only the cover-story preamble. Tests whether contracts add information or only re-format the bug-detection task. Currently we have warm/skeptic/generic comparators but no pure no-contract control.
+
+\item \textbf{Shuffled-within-domain contracts.} Cold reviewer with contracts shuffled at function level (function $A$'s contract attached to function $B$ in the same module). Tests whether contracts are useful as \emph{structure} or only as \emph{aligned content}.
+
+\item \textbf{Naturalistic bug benchmark.} Replace AST single-mutation bugs with naturalistic bugs harvested from real GitHub commit histories. Most likely outcome: substantial detection drop across all conditions; relative effects may be preserved.
+
+\item \textbf{Cross-language generalization.} Replicate AST mutator on TypeScript, Rust, and Go reference modules. Tests whether C1 specificity is Python-bound.
+
+\item \textbf{Multi-call self-consistency.} $5\times$ sampling per reviewer per bug, majority vote. Tests stability of the $93$--$97\%$ Gemini 3.1 Pro detection rates and whether quorum-style aggregation within a single family approaches the asymm-multi performance.
+
+\item \textbf{Reviewer-family ensemble on third-party (L1 cross-family).} Asymm-multi $\{$Codex + Opus + Gemini 3.1 Pro$\}$ on the P10 dataset. Tests whether L1's joint-miss reduction holds across families on real third-party code. Data is already collected; the analysis is an exercise.
+
+\item \textbf{Provenance-label power analysis.} Phase 11 was underpowered ($n = 30$ per cell; power to detect $\ge 20\,\mathrm{pp}$ label effect was high but $\le 10\,\mathrm{pp}$ effects would not be detected). Re-run at $n = 100$ per cell to bound the residual label effect.
+
+\item \textbf{Mixed-effects modeling.} Replace cell-wise marginal McNemar with a hierarchical logistic model on the bug-level binary outcomes: $\mathrm{logit}\,P(\text{detect}) = \beta_0 + \beta_{\text{cond}} + \beta_{\text{family}} + \beta_{\text{domain}} + \mathrm{bug}_i$. Tests cross-condition / cross-family / cross-domain interactions with correct uncertainty quantification.
+\end{enumerate}
+
+\subsection{Final stance}
+
+We provide a measurement methodology with explicit boundaries of validity, explicit recovery mechanisms, and a ten-mode failure taxonomy. We deliberately distinguish what is proved, what is measured, what is conjectured, what is empirically falsified, and what is partially recovered under explicit conditions. Where claims overreached in earlier drafts, we report the verbatim adversarial-review critique and the applied reframing, so the trail of revisions is itself reproducible.
+
+The contribution is not a new prompting technique or a benchmark; it is a discipline of separation between proved, measured, conjectured, and falsified.
+
+\vspace{1em}
+\noindent\textbf{Reproducibility statement.} All numerical claims are recomputed from raw artefacts by validation scripts in the companion repository (\texttt{experiments/p\{N\}\_*/analyze\_*.py}). Pre-registration documents are committed before any reviewer call. Reviewer raw outputs, AST mutator code, auto-extracted contracts, and reference modules are committed at indicated paths.

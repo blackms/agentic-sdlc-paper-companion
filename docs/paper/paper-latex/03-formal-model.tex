@@ -1,0 +1,99 @@
+\section{Notation and Load-Bearing Primitives}
+\label{sec:formal-model}
+
+This section defines the minimal set of primitives used in \Cref{sec:decisional-metric,sec:asymmetric-verification,sec:learning-loop}. The full CMDP construction (state augmentation with regime modes, escalation map, mode-conditioned action sets) is published as a standalone technical report (\Cref{sec:cmdp-pointer}); it is an extension that this paper does not require for any empirical result.
+
+\subsection{Agent as a stochastic transducer}
+
+Let $x \in \mathcal{X}$ be the task specification and $\mathcal{Y}$ the model response space (token strings). The LLM is a parametric stochastic kernel
+\begin{equation}
+  \Mker(y_t \mid x, h_t), \qquad y_t \in \mathcal{Y},
+  \label{eq:llm-kernel}
+\end{equation}
+where $h_t$ is the observable history $((a_1, o_1), \ldots, (a_{t-1}, o_{t-1}))$. A deterministic parser maps responses to actions: $\pi_{\mathrm{act}}: \mathcal{Y} \to \acts \cup \{\bot\}$. We treat $\Mker$ as a black box.
+
+A trajectory is the sequence $\tau = ((a_1, o_1), \ldots, (a_T, o_T))$. The \emph{final artefact bag} $\artbag(\tau)$ is the multiset of files, test results, and decision-trace records produced during the run.
+
+\subsection{Protocol}
+
+A protocol is a tuple $\proto = (\acts, V)$ at the level of generality we need, where $\acts$ is the action set and $V = (V_1, \ldots, V_K)$ is a finite list of \emph{verifier kernels}. Each $V_k$ is a stochastic kernel
+\begin{equation}
+  V_k(v_k = \cdot \mid \tau_{1:t-1}, a_t, \mathrm{env}_t), \qquad v_k \in \{\mathrm{accept}, \mathrm{reject}, \mathrm{escalate}\}.
+  \label{eq:verifier-kernel}
+\end{equation}
+The kernel form (i.e., $V_k$ is a random variable, not a function) accommodates noisy verifiers (LLM-based reviewers, flaky test runners). \textbf{This is load-bearing for \Cref{eq:p2-bound}}: the miss-indicators $M_i$ of \Cref{sec:asymmetric-verification} are well-defined as binary random variables only because $V_k$ is a kernel.
+
+Verifiers split into protocol-internal $\VerC \subset V$ and held-out oracles $\VerS \subset V$. \emph{Free prompting} $\protoZero$ is the degenerate protocol with $\acts = \acts_{\mathrm{free}}$ and $V = \emptyset$.
+
+\subsection{Held-out condition (information constraint)}
+
+Let $Y_S(\tau)$ denote the random vector of $\VerS$ verdicts on $\tau$. The held-out condition is
+\begin{equation}
+  Y_S(\tau) \;\perp\; h_t \quad \text{for all } t \le T,
+  \label{eq:holdout-condition}
+\end{equation}
+i.e., the held-out verdicts are conditionally independent of the agent's observable history given the task $x$. Operationally: no $\VerS$ verdict appears in any $o_t$ and no proxy of $\VerS$ (test outputs, traces, hints) appears in $o_t$ either. \textbf{This is load-bearing} for the $\PredC$ vs $\PredS$ distinction (\Cref{eq:predC,eq:predS}) and for ruling out oracle leakage as a failure mode (\Cref{sec:failure-modes}).
+
+\subsection{Behavior signature, utility, and the conformance/semantics split}
+
+The behavior signature is the deterministic projection
+\begin{equation}
+  B \;=\; \varphi(\tau) \;=\; \big(\, c_{\mathrm{form}}(\tau),\; c_{\mathrm{corr}}(\tau),\; c_{\mathrm{rob}}(\tau),\; c_{\mathrm{tok}}(\tau)\, \big),
+  \label{eq:behavior-signature}
+\end{equation}
+with $c_{\mathrm{form}}(\tau) \in [0,1]$ the fraction of $\VerC$ verdicts accepted along $\tau$, $c_{\mathrm{corr}}(\tau) \in [0,1]$ the fraction of $\VerS$ held-out tests passed by $\artbag(\tau)$, $c_{\mathrm{rob}}(\tau) \in [0,1]$ the mutation-killing rate of agent-produced tests against a fixed mutant set, and $c_{\mathrm{tok}}(\tau) \in \N$ the total token cost.
+
+The target utility is
+\begin{equation}
+  u(B) \;=\; \alpha\, c_{\mathrm{corr}} \;+\; \beta\, c_{\mathrm{rob}} \;+\; \gamma\, c_{\mathrm{form}}, \qquad \alpha + \beta + \gamma = 1, \quad \alpha + \beta > \gamma.
+  \label{eq:utility}
+\end{equation}
+The choice $\alpha + \beta > \gamma$ ensures the utility is dominated by held-out components, avoiding the conformance-without-semantics trap.
+
+The \emph{conformance / semantics split} is operationalized by
+\begin{align}
+  \PredC(\tau; \proto) &:= \ind\!\big[\text{all $\VerC$ verdicts on $\tau$ are \emph{accept}}\big], \label{eq:predC} \\
+  \PredS(\tau; \proto) &:= \ind\!\big[\text{all $\VerS$ verdicts on $\artbag(\tau)$ are \emph{accept}}\big]. \label{eq:predS}
+\end{align}
+Two regimes are pathological: \emph{conformance without semantics} ($\E_\proto[\PredC] \gg \E_\proto[\PredS]$, quantified at $33$--$68\%$ in our $\proto$-condition data, see \Cref{sec:phase4}) and \emph{semantics without conformance} (rare, $\le 7\%$).
+
+\subsection{Distributions induced by the protocol}
+
+A protocol $\proto$, a fixed model $\Mker$, and a fixed task $x$ induce a distribution over trajectories and hence over signatures:
+\begin{equation}
+  \BehDist{\proto}{x} \;:=\; \text{law of } \varphi(\tau) \text{ under } \Mker, \pi_{\mathrm{act}}, V, \text{ given } x.
+  \label{eq:protocol-distributions}
+\end{equation}
+We compare $\protoZero$ and $\proto$ by comparing $\BehDist{\protoZero}{x}$ and $\BehDist{\proto}{x}$ through $u$, stochastic dominance, and $\Vmetric$.
+
+\begin{remark}[Notation: $V$ vs $\Vmetric$]
+The symbol $V$ denotes verifier kernels (\Cref{eq:verifier-kernel}). The decisional cost-aware metric defined in \Cref{eq:decisional-metric} is denoted $\Vmetric$ (script V) to avoid notational collision.
+\end{remark}
+
+\subsection{Notation summary (load-bearing primitives)}
+
+\begin{center}
+\small
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Symbol} & \textbf{Meaning} & \textbf{Used in} \\
+\midrule
+$\Mker(y_t \mid x, h_t)$ & LLM stochastic kernel & E1, L1, C-T3, C1 \\
+$\tau$, $\artbag(\tau)$ & Trajectory; final artefact bag & all \\
+$V_k$ kernels; $\VerC, \VerS$ & Verifier kernels; internal/held-out & L1 (kernel form is load-bearing) \\
+$Y_S \perp h_t$ & Held-out information constraint & failure mode \#2 \\
+$B = \varphi(\tau)$ & Behavior signature & all \\
+$u(B), \alpha,\beta,\gamma$ & Target utility, $\alpha+\beta+\gamma=1$, $\alpha+\beta>\gamma$ & E1, $\Vmetric$ \\
+$\PredC, \PredS$ & Conformance / semantics predicates & failure mode \#5 \\
+$\BehDist{\proto}{x}$ & Behavior-signature distribution & E1 \\
+$\Vmetric$ (script V) & Decisional cost-aware metric & \Cref{eq:decisional-metric} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Primitives used in the CMDP extension technical report (\Cref{sec:cmdp-pointer}) but \emph{not} in the main paper: the full CMDP state $\sigma_t$, the artefact-bag accumulator $\artbag_t$, the regime-mode set $\Mset$, the escalation map $\Omega$, and the mode-conditioned action sets $\acts_m$.
+
+\subsection{Pointer to the CMDP extension technical report}
+\label{sec:cmdp-pointer}
+
+The full CMDP extension (state augmentation with regime modes, escalation map, mode-conditioned action sets) is published as a standalone technical report (see \texttt{docs/paper/v1.4/cmdp-extension-techreport.md} in the companion repository). It is offered as an interface for future work that requires policy-space dynamics; no empirical result of this paper depends on it.

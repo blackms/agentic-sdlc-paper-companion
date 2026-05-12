@@ -76,6 +76,6 @@ In each case the user should specify the per-mode action sets *A_m*, the escalat
 
 ## References
 
-The construction here extends and depends only on the load-bearing primitives fixed in §3 of the main paper. For all citations to the LLM-coding-agent, mutation-testing, stochastic-dominance, and CMDP literatures, see the reference list of the main paper (Rocchi, 2026, `docs/paper/v1.0_latex/references.bib`).
+The construction here extends and depends only on the load-bearing primitives fixed in §3 of the main paper. For all citations to the LLM-coding-agent, mutation-testing, stochastic-dominance, and CMDP literatures, see the reference list of the main paper (Rocchi, 2026, `docs/paper/paper-latex/references.bib`).
 
-- Rocchi, A. (2026). *A Measurement Framework for Constrained LLM Coding Agents: An Empirical Study of Conformance, Cost, and Cross-Domain Replication.* Manuscript v1.4. `docs/paper/v1.0_latex/main.tex` in the companion repository.
+- Rocchi, A. (2026). *A Measurement Framework for Constrained LLM Coding Agents: An Empirical Study of Conformance, Cost, and Cross-Domain Replication.* Manuscript v1.4. `docs/paper/paper-latex/main.tex` in the companion repository.

@@ -1,0 +1,116 @@
+\section{Threats to Validity and Discussion}
+\label{sec:discussion}
+\label{sec:failure-modes}
+
+We organize the discussion of validity threats following the Wohlin et al.\ template~\cite{wohlin2012experimentation} (construct, internal, external, conclusion), and close with an explicit accounting of what this paper has and has not established. The ten failure modes named throughout the paper are listed under internal validity; the cross-phase model-version confounder is listed under conclusion validity.
+
+\subsection{Construct validity}
+\label{sec:construct-validity}
+
+The constructs measured in this paper are: (i) target utility $u(B) = \alpha\, c_{\mathrm{corr}} + \beta\, c_{\mathrm{rob}} + \gamma\, c_{\mathrm{form}}$ with $\alpha + \beta + \gamma = 1$ and $\alpha + \beta > \gamma$ (the latter constraint ensures held-out components dominate over conformance, avoiding the conformance-without-semantics trap); (ii) the conformance/semantics split $(\PredC, \PredS)$ operationalized by indicator predicates on $\VerC$ and $\VerS$ verdicts respectively (\Cref{eq:predC,eq:predS}); (iii) the bug-detection criterion (line $\pm 2$ \emph{or} enclosing function plus operator keyword) used uniformly across Phases 4--11. Each of these is a measurement choice: a different utility weight scheme, a different held-out split, or a different detection-localization tolerance would produce different numerical values for the same trajectory data. The qualitative findings (eFOSD on $80/80$ thresholds, $\bar{\rho}$ collapse from $0.62$ to $0.29$, Phase-5 cross-domain falsification, Phase-11 provenance falsification) are robust to the specific weight choices reported here; we have not, however, systematically explored the sensitivity to alternative construct operationalizations.
+
+\subsection{Internal validity: ten failure modes (operationally defined)}
+\label{sec:internal-validity}
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Uniform-failure collapse.} $\E[u(B)] \approx 0$ under both $\protoZero$ and $\proto$ on a task neither can solve. Shannon-entropy formulation of $\Vmetric$ returns $\eta < 0$. \emph{First observed in pilot Phase 1--3}; resolved by switching to $\E[u]$ + eFOSD.
+
+\item \textbf{Oracle leakage.} Failure of \Cref{eq:holdout-condition}: $Y_S(\tau) \not\perp h_t$. Operationally: $\PredS$ verdicts (test outputs, traces, hints) appear in observations $o_t$. \emph{No explicit measurement} (would require auditing each $o_t$); flagged as the most dangerous failure mode and prevented by held-out splits.
+
+\item \textbf{Symmetric-reviewer anchoring.} Three reviewers with identical prompts have high $\bar{\rho}_{ij}$. Operationally: $\bar{\rho}_{ij} > 0.5$ in the symm-mono condition. \emph{Quantified Phase 4}: $\bar{\rho}_{\text{symm-mono}} = 0.62$.
+
+\item \textbf{Model-strength ceiling.} Claude or Gemini may dominate Codex on a fixed task; a multi-model ensemble's joint-miss reduction may be confounded with model-strength differences rather than error decorrelation. \emph{Phase 4 controls this via the asymm-codex cell (single-model asymmetric prompts)}: $q_{\text{asymm-codex}} = 16.55\%$ already substantially below symm-mono $22.91\%$, confirming prompt asymmetry contributes independently of model diversity.
+
+\item \textbf{Conformance without semantics.} $\E_\proto[\PredC] \gg \E_\proto[\PredS]$. The protocol is followed but artefacts fail held-out tests. \emph{Quantified Phase 4}: $33$--$68\%$ of $\proto$-condition runs depending on the chosen $\PredS$ robustness threshold.
+
+\item \textbf{Off-by-one boundary blind spots.} A category-specific blind spot: reviewers preferentially miss boundary errors ($>$ vs $\ge$, $<$ vs $\le$, index $\pm 1$). Operationally identified by per-category detection rates. \emph{Quantified Phase 4--5}: off-by-one bugs have the highest miss rate ($25\%$) among the seven tested categories.
+
+\item \textbf{Out-of-domain prompt collapse.} The cold contract-first reviewer drops from $\sim\!90\%$ to $11\%$ when given misaligned contracts. \emph{Quantified Phase 5}; \emph{recovered Phase 6+} via auto-extracted aligned contracts.
+
+\item \textbf{Simulation-to-LLM gap.} Theoretical convergence in simulation does not transfer to LLM detection improvement. \emph{Quantified Phase 5 (abstract-name injection, $p = 0.95$) and E3v2 (concrete-example injection, $p = 0.97$)}. Both injection formats fail at $n = 92$ paired.
+
+\item \textbf{Sample-dependent reviewer-choice sensitivity.} Cross-family absolute-detection spread varies by sample: $33$--$47\,\mathrm{pp}$ on the P9 stdlib sample vs $3.3$--$13.3\,\mathrm{pp}$ on the P10 third-party sample. \emph{Mechanism unknown}: Phase 11 rules out the label/familiarity-prior candidate; code-intrinsic factors remain.
+
+\item \textbf{Descriptive injection-anchoring effects (exploratory).} Concrete-example injection underperforms baseline on $2/5$ top categories (atomicity $-50\,\mathrm{pp}$, $n=4$; logic $-22\,\mathrm{pp}$, $n=23$) in E3v2. \emph{Underpowered for inferential claims}; consistent with reviewer-anchoring on shown shapes.
+\end{enumerate}
+
+\subsection{External validity}
+\label{sec:external-validity}
+
+We deliberately do not claim general applicability:
+\begin{itemize}[leftmargin=2em]
+\item \textbf{Tasks}: E1 validated on 2 tasks; L1 on 1 finance domain; C1 on 8 domains (2 hand-written $+$ 3 stdlib $+$ 3 third-party). \textbf{All Python.} No claim is made about transfer to other languages.
+\item \textbf{Models}: E1 on 4 models (Codex \texttt{gpt-5.5}, Claude Sonnet 4.6, Claude Opus 4.7, Gemini 2.5 Flash); L1 within the same set; C1 with $3$ frontier families on Phase-10 (Codex \texttt{gpt-5.5}, Claude Opus 4.7, Gemini 3.1 Pro Preview). See \Cref{sec:conclusion-validity} for the model-version confounder.
+\item \textbf{Sample sizes}: $n \in \{27, 30, 60, 92, 200\}$ bugs across phases. Per-domain power analyses are reported in the respective phase reports.
+\item \textbf{Bug-generation procedure}: Phases 4--11 use \textbf{AST-mutator-only} single-mutation edits produced by a deterministic mutator. \Cref{sec:phase12} reports a naturalistic replication on $n = 8$ harvested CPython \texttt{csv.py} bugs (multi-line, inter-procedural): $0/3$ families reach the Bonferroni-corrected threshold (Codex $p = 0.029$, Gemini $p = 0.031$, Opus $p = 0.50$); the Codex result is contaminated by $100\%$ training-set leakage of CPython issue numbers in the out-of-band probe. Point-estimate $\Delta$s (Codex $+62.5\,\mathrm{pp}$, Opus $+12.5\,\mathrm{pp}$, Gemini $+62.5\,\mathrm{pp}$) are large and in the predicted direction, but the harvest yield ($n = 8$, below the pre-registered target of $25$--$30$) gives each per-family test very low power. Naturalistic C1 transfer at low $n$ with the leakage caveat is \emph{reported but not claimed}; it remains a Phase-13 desideratum (leakage-controlled, post-training-cutoff bugs, or non-CPython libraries).
+\item \textbf{$\Vmetric$ is a Lagrangian one-shot summary, not a full optimal-control problem.} Real cost curves have cliff effects (context window limits, batching effects, API pricing changes) that the one-dimensional $\lambda$ does not capture; the break-even $\lambda$ is computed in expected log-token units, not in real-dollar latency-weighted budgets.
+\end{itemize}
+
+\subsection{Conclusion validity}
+\label{sec:conclusion-validity}
+\label{sec:cross-phase-confounder}
+
+\paragraph{Statistical methodology.} In v1.4 we promote the mixed-effects logistic model (\Cref{sec:mixed-effects}, BinomialBayesMixedGLM with per-bug and per-module random effects and a library-class moderator on the $\mathrm{cond}\times\mathrm{libclass}$ interaction) to the primary cross-phase estimator over the 14 cells (P9 + P9 cross-family + P10), reporting $\beta_{\mathrm{cond}} = +4.20$ ($z = +33.4$), $\sigma_{\mathrm{bug}} = 0.72$, $\sigma_{\mathrm{module}} = 0.77$, and a mean predicted $\widehat{\Delta} = +68.7\,\mathrm{pp}$. The cluster-robust paired permutation ($n_{\text{perm}} = 20{,}000$) with percentile-bootstrap CIs is retained as the matched per-cell comparator and the block-bootstrap over cells (cross-phase pooled $\widehat{\Delta} = +67.4\,\mathrm{pp}$, $95\%\,\mathrm{CI}\,[+55.2,+79.5]$) as the matched aggregate comparator; McNemar exact is kept as a legacy comparator with the prior literature. All 14 cells agree qualitatively across the three procedures at $\alpha = 0.025$ (\Cref{tab:me-per-cell}, \Cref{tab:me-pooled}). Full implementation and per-cell numbers are in \Cref{app:stats} (\texttt{experiments/cluster\_robust.py}, \texttt{cluster\_robust\_c1.py}, and \texttt{experiments/mixed\_effects/fit.py}).
+
+\paragraph{Cross-phase model-version confounder.} The model lineup is not constant across phases. Phases 1--5 use Gemini 2.5 Flash; Phase 9 cross-family extension and Phase 10 introduce Gemini 3.1 Pro Preview. Codex \texttt{gpt-5.5} and Claude Opus 4.7 are stable across all phases that use them. This is a real confounder for any cross-phase aggregation:
+\begin{itemize}[leftmargin=2em]
+\item \textbf{Fisher's combined statistic} over P7 $+$ 3 P9 $+$ 3 P10 (\Cref{sec:phase10}) combines per-test $p$-values that are not strictly comparable: Phase 7--9 use older model snapshots in the supporting ensemble; Phase 10 uses Gemini 3.1 Pro. The headline $\chi^2(14) = 167.72$, $p \approx 0$ is therefore an aggregate of tests with slightly different underlying populations.
+\item \textbf{Within-Codex tests} are not affected (the Codex \texttt{gpt-5.5} family is stable across phases).
+\item \textbf{Cross-family comparisons within a single phase} (P9, P10) are not affected.
+\end{itemize}
+We do not rerun Phases 1--5 with Gemini 3.1 Pro because the central claims of those phases (E1 expected utility on $\protoZero$ vs $\proto$, L1 within-finance reduction in joint-miss) are within-condition contrasts that do not require model parity across phases. The confounder is real but bounded; the central claims survive. We flag this explicitly and request that re-analyses by future authors recompute the cross-phase Fisher statistic using only Codex-stable data or only single-phase data.
+
+\paragraph{Phase-12 power and leakage caveats.} The naturalistic Phase-12 replication (\Cref{sec:phase12}) is conclusion-validity-limited on two fronts: (i) the strict-inclusion harvest yielded $n = 8$ bugs against a pre-registered target of $25$--$30$, so the per-family paired permutation test is severely underpowered---even the largest observed point estimates ($\Delta = +62.5\,\mathrm{pp}$ for Codex and Gemini) do not clear the Bonferroni-corrected $\alpha = 0.025$ threshold ($p = 0.029$ and $p = 0.031$ respectively); (ii) the Codex cold reviewer's out-of-band probe shows $100\%$ leakage of CPython issue numbers, indicating that its naturalistic detection is contaminated by training-set memorization and the corresponding $\Delta$ cannot be attributed to contract reasoning. Opus shows $0\%$ leakage and Gemini $12.5\%$; both nonetheless fail the primary threshold for the underpowered-$n$ reason. We treat Phase 12 as a strong invitation to replicate on leakage-controlled, post-training-cutoff naturalistic bugs and do not draw inferential conclusions from its point estimates.
+
+\subsection{What this paper has and has not established}
+\label{sec:what-established}
+
+\textbf{Proven (mathematically):} the joint-miss bound \Cref{eq:p2-bound} (routine; inclusion--exclusion), the eFOSD certification \Cref{lemma:efosd-cert} (DKW), the simulation convergence of \Cref{conj:ct3}.
+
+\textbf{Measured empirically within explicit scope:} E1 ($n=120$, $2$ tasks, $4$ models, eFOSD on $80/80$ thresholds); L1 mechanism within the finance domain ($n=200$ bugs, $\bar{\rho}\!: 0.62 \to 0.29$, paired McNemar $p = 0.0013$); C1 contract-aligned specificity in $18^+$ cells across $3$ reviewer families.
+
+\textbf{Empirically falsified or non-corroborated:}
+\begin{itemize}[leftmargin=2em]
+\item L1 mechanism transfer to a non-finance domain \emph{without re-tooled contracts} \textbf{(falsified)}, Phase 5.
+\item C-T3 LLM-grounded improvement at $n = 92$ paired \textbf{(no improvement detected; we report absence of detected improvement, not evidence of absence of any effect smaller than our power threshold)} under abstract-name injection (Phase 5) and concrete-example injection (E3v2).
+\item ``Anti-stdlib carelessness'' as the dominant mechanism behind the P9--P10 sample gap \textbf{(rejected)}, Phase 11.
+\end{itemize}
+
+\paragraph{Note on C-T3.} Two pre-registered injection formats failed to detect improvement at $n = 92$. This does \emph{not} establish that no injection format works; the design space (example selection, retrieval matching, abstraction level, placement, prompt-budget rebalancing) is large and a single format cannot rule out all alternatives. The defensible statement is: \emph{at this sample size and under the two formats tested, the simulation-derived injection strategy did not improve LLM detection}. Phase 12 desideratum: power analysis to bound the residual undetectable effect size.
+
+\textbf{Open:}
+\begin{itemize}[leftmargin=2em]
+\item The simulation-to-LLM gap mechanism.
+\item The dominant code-intrinsic moderator(s) of absolute cold-reviewer detection.
+\item Generalization to non-Python languages, naturalistic bugs, and lower-popularity libraries.
+\end{itemize}
+
+\subsection{Internal-review trail and frozen-pre-registration discipline}
+\label{sec:internal-review-trail}
+\label{sec:peer-review-trail}
+
+We adopted a methodological scaffold of \emph{frozen pre-registrations followed by adversarial internal review at each major version}, with all critique documents and applied reframings committed in the companion repository under \texttt{docs/paper/v0.1/} and \texttt{docs/paper/v1.4/}. The discipline has three components: (i) every experimental phase has a pre-registration committed before any reviewer call (verifiable via git-log timestamp); (ii) every major manuscript version was passed through an adversarial-review round whose verbatim critique was committed before the applied reframing; (iii) when a reviewing round produced a REJECT or REQUEST\_CHANGES, the claim language was softened rather than the data being re-examined. The most consequential reframings produced by this trail are summarized in \Cref{tab:peer-review-trail}; we record them not as anecdote but as evidence that the framework's claims have already survived an honest first-pass adversarial round.
+
+\begin{table}[h]
+\centering
+\small
+\caption{Most consequential reframings produced by the iterative adversarial-review trail.}
+\label{tab:peer-review-trail}
+\begin{tabularx}{\linewidth}{@{}llX@{}}
+\toprule
+\textbf{Round} & \textbf{Claim modified} & \textbf{Before $\to$ After} \\
+\midrule
+v0.7 $\to$ v0.8 & Phase-9 cold threshold & ``cold $>$ 50\% threshold PASSES'' $\to$ ``absolute threshold falsified on real stdlib'' (lead with falsification). \\
+\addlinespace
+v1.0 $\to$ v1.0.5 & Stdlib-bias direction & ``stdlib-bias hypothesis REVERSED, anti-stdlib carelessness'' $\to$ ``sample-level difference; library class is a candidate moderator''. \\
+\addlinespace
+v1.0.5 $\to$ v1.1 & Anti-stdlib carelessness mechanism & ``REJECTED'' $\to$ ``not supported as dominant mechanism (post-P11 provenance falsification)''. \\
+\addlinespace
+v1.1 $\to$ v1.2 & P1/P2 status, title, abstract, \S7, C-T3 framing & P1 Proposition $\to$ Empirical Claim E1; P2 Proposition $\to$ Lemma L1 (now Eq.~\ref{eq:p2-bound}); title reordered to lead with ``Measurement Framework''; abstract trimmed $\sim 50\%$; \S7 status chapter deleted; C-T3 reframed from ``robust to two tested formats'' to absence-of-detected-improvement at $n=92$. \\
+\addlinespace
+v1.2 $\to$ v1.3 & CMDP scope, primary statistical test & \S3 CMDP reduced to load-bearing primitives (full construction moved to Appendix A.2; \emph{math washing} explicitly acknowledged); primary inference changed from per-cell McNemar exact to cluster-robust paired permutation ($n_{\text{perm}} = 20{,}000$) with percentile-bootstrap CI for $\Delta$; cross-phase pooled $\Delta = +67.4$ pp, $95\%$ CI $[+55.2, +79.5]$ pp. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+File-path and reproducibility details are consolidated in the conclusion's reproducibility section (\Cref{sec:conclusion}) rather than duplicated here.

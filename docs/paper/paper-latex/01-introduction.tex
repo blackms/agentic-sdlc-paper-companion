@@ -1,0 +1,49 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Motivation: what does a constrained agent actually buy?}
+
+LLM-based coding agents have moved from one-shot autocomplete to multi-step autonomous workflows: spec-first design, test-driven implementation, multi-role code review, persistent decision traces. Each procedural constraint exchanges a degree of model freedom for a presumed gain in output predictability or downstream correctness. The exchange is not free: every additional verifier call, every spec-then-test cycle, every persisted artefact adds tokens, latency, and engineering complexity. The empirical question is sharp:
+\begin{quote}
+\emph{Given a coding task, a model, and an inference budget, does adding procedural structure measurably improve the distribution of outcomes, and at what cost?}
+\end{quote}
+
+This paper proposes a measurement methodology---not a general theory---that answers this question on operationally well-defined components: target-correctness, robustness, conformance, and token cost. We deliberately separate \emph{what we can prove formally}, \emph{what we can measure}, \emph{what we conjecture}, and \emph{what we can empirically falsify}. Every numerical claim is reproducible from artefacts in the companion repository.
+
+\subsection{Contributions}
+
+We make four contributions, three positive and one negative.
+
+\begin{enumerate}[leftmargin=2em]
+\item A \textbf{minimal formal model} (\Cref{sec:formal-model}) of a procedurally-constrained LLM coding agent at the level of \emph{load-bearing primitives only}: stochastic transducer, verifier kernels (stochastic, accommodating LLM-based reviewers), held-out information constraint $Y_S \perp h_t$ (\Cref{eq:holdout-condition}), behavior signature $B = \varphi(\tau)$, conformance/semantics predicates $\PredC, \PredS$ (\Cref{eq:predC,eq:predS}), and the decisional cost-aware metric $\Vmetric$ with explicit notational disambiguation from $V$. The full CMDP extension (state augmentation, regime modes, escalation map, mode-conditioned action sets) is published as a standalone technical report (\Cref{sec:cmdp-pointer}; \texttt{docs/paper/v1.4/cmdp-extension-techreport.md}) for future work requiring policy-space dynamics; it is \emph{not used} by any empirical result of this paper.
+
+\item A \textbf{decisional metric} $\Vmetric$ (\Cref{sec:decisional-metric}) and an \textbf{eFOSD} validation protocol (\Cref{def:efosd}) that admit a closed-form break-even cost weight $\lambda_{\mathrm{breakeven}}$ below which the protocol pays. Validated on $n=120$ trajectories across $2$ tasks $\times\,4$ frontier models with explicit Wilson confidence intervals and parse-failure sensitivity analyses.
+
+\item Two \textbf{empirical claims with explicit domain restrictions}:
+  \begin{itemize}
+    \item \textbf{L1 (Asymmetric-Quorum Joint-Miss Bound, finance-restricted)}: validated in $1{,}400$ LLM reviews ($n = 200$ injected bugs), error decorrelation $\bar{\rho}\!: 0.62 \to 0.29$, joint-miss $22.91\% \to 12.28\%$, paired McNemar $p = 0.0013$. \emph{Falsified across domains} in Phase 5 (\texttt{bankcheck.py}, $p \ge 0.5$ in all $5$ contrasts); the cold contract-first reviewer collapses to $11\%$ when contracts are misaligned with the domain.
+    \item \textbf{C1 (Cold reviewer transfer)}: contract-aligned specificity replicates across $3$ reviewer families on a $3$-library third-party sample (\Cref{sec:phase10}); library-class is a candidate but unconfirmed moderator (provenance-label experiment in \Cref{sec:phase11} tests this directly). A naturalistic replication on CPython \texttt{csv.py} bugs (\Cref{sec:phase12}, $n = 8$ after strict inclusion) is underpowered at the harvested sample size: $0/3$ families reach the Bonferroni-corrected primary threshold and the Codex result is contaminated by $100\%$ training-set leakage of CPython issue numbers. Naturalistic C1 transfer at low $n$ with the leakage caveat is \emph{reported but not claimed}; a leakage-controlled benchmark is a Phase-13 desideratum.
+  \end{itemize}
+
+\item A \textbf{negative result with theoretical and empirical components}: \textbf{C-T3 (Learning-Loop Convergence)} \emph{converges almost surely} in simulation under conservative trigger, bounded injection, and weak suppression, but the LLM-grounded counterpart \emph{shows no improvement} under two pre-registered injection formats (abstract-name and concrete-example, both at $p \in [0.95, 0.97]$ against $H_1$ ``injected $>$ baseline''). This documents a \emph{simulation-to-LLM gap}: convergence properties of pattern-extraction loops do not transfer to measurable detection improvements at realistic $n$.
+\end{enumerate}
+
+A consolidated \textbf{ten-mode failure taxonomy} (\Cref{sec:failure-modes}) classifies the regimes under which the framework breaks: uniform-failure collapse (the regime that broke our pilot's Shannon-entropy formulation), oracle leakage, symmetric-reviewer anchoring, model-strength ceiling (Claude-vs-Codex confounder), conformance-without-semantics, off-by-one blind spots, out-of-domain prompt collapse, simulation-to-LLM gap, sample-dependent reviewer-choice sensitivity, and descriptive injection-anchoring effects.
+
+\subsection{Scope and what we do not claim}
+
+We are explicit about scope:
+\begin{itemize}[leftmargin=2em]
+\item We do not claim that constrained protocols are universally beneficial; the break-even $\lambda_{\mathrm{breakeven}}$ is task- and model-specific.
+\item We do not claim L1 generalizes outside the finance contract domain; Phase 5 shows transfer requires re-tooled contracts.
+\item We do not claim C1 establishes a general property of cold-reviewer prompts; the absolute-detection rate varies across reviewer families and library classes in ways that are not yet causally attributed.
+\item We do not propose new theorems in stochastic dominance, mutation testing, or CMDP theory; we apply established tools as measurement instruments.
+\end{itemize}
+
+\subsection{Reproducibility}
+
+Every numerical claim in this paper is recomputed from raw artefacts by a validation script in \texttt{docs/paper/validations/} (Phases 4--6) or in each phase's experiment directory (Phases 7--11). Raw reviewer outputs, AST mutator code, pre-registration documents, and Codex peer-review reports are committed to the repository at the indicated paths. Reviewer prompts, contracts (auto-extracted and mismatched-bankcheck), and reference modules are bit-identical to those used at runtime.
+
+\subsection{Paper structure}
+
+\Cref{sec:related-work} surveys related work on LLM agents, mutation testing, and stochastic dominance applied to code-generation systems. \Cref{sec:formal-model} fixes the load-bearing primitives (stochastic transducer, verifier kernels, held-out condition, behavior signature); the full CMDP extension is deferred to a standalone technical report (\Cref{sec:cmdp-pointer}). \Cref{sec:decisional-metric} introduces $\Vmetric$, defines empirical FOSD, and states Empirical Claim E1. \Cref{sec:asymmetric-verification} states the joint-miss bound (Lemma L1) and reports its empirical mechanism within the finance domain. \Cref{sec:learning-loop} formalizes C-T3 and reports the simulation-to-LLM gap. \Cref{sec:experiments} reports the experimental phases 1--11 with pre-registered metrics and computational validation. \Cref{sec:discussion} catalogues the ten failure modes and discusses external validity, including the cross-phase model-version confounder. \Cref{sec:conclusion} closes with explicit Phase-12 desiderata.

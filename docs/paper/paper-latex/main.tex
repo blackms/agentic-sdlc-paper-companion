@@ -1,0 +1,129 @@
+\documentclass[11pt,a4paper]{article}
+
+% ===== Packages =====
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{amsmath,amssymb,amsthm,amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{xcolor}
+\usepackage[hidelinks,colorlinks=true,linkcolor=blue!50!black,citecolor=blue!50!black,urlcolor=blue!50!black]{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\usepackage{listings}
+\usepackage{authblk}
+
+% ===== Theorem environments =====
+\newtheorem{proposition}{Proposition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+\theoremstyle{plain}
+\newtheorem*{claim*}{Claim}
+
+% ===== Math macros =====
+\newcommand{\ind}{\mathbbm{1}} % indicator (requires bbm package; fallback below)
+\providecommand{\ind}{\mathds{1}}
+\usepackage{dsfont}
+\renewcommand{\ind}{\mathds{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Prob}{\mathbb{P}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Vmetric}{\mathcal{V}}
+\newcommand{\proto}{\mathcal{P}}
+\newcommand{\protoZero}{\mathcal{P}_0}
+\newcommand{\artbag}{\alpha}
+\newcommand{\stsp}{\Sigma}
+\newcommand{\acts}{\mathcal{A}}
+\newcommand{\Mset}{\mathcal{M}}
+\newcommand{\Ver}{V}
+\newcommand{\VerC}{\Ver_{\!C}}
+\newcommand{\VerS}{\Ver_{\!S}}
+\newcommand{\Mker}{M_\theta}
+\newcommand{\PredC}{\mathrm{Pred}_C}
+\newcommand{\PredS}{\mathrm{Pred}_S}
+\newcommand{\BehDist}[2]{P_B^{#1,\,#2}}
+\newcommand{\BehDistN}[3]{P_B^{#1,\,#2,\,(#3)}}
+\newcommand{\TrajDist}[2]{P_\tau^{#1,\,#2}}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+% ===== Listings =====
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  framesep=4pt,
+  framerule=0.4pt,
+  rulecolor=\color{gray!50},
+  backgroundcolor=\color{gray!5},
+  showstringspaces=false
+}
+
+% ===== Metadata =====
+\title{Conformance, Cost, and Replication \\
+in Constrained LLM Coding Agents}
+
+\author[1]{Alessio Rocchi}
+\affil[1]{AIGEN Solutions}
+
+\date{Version 1.4.3 --- \today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+\noindent\textbf{Keywords:} LLM code generation; procedural constraints; stochastic dominance; asymmetric review; error decorrelation; predictability--cost trade-off; AST-level mutation testing; reviewer-family variation.
+
+\vspace{0.5em}
+
+\noindent\textbf{Status:} v1 manuscript with frozen pre-registrations preceding every reviewer call, computational validation of every numerical claim, and an iterative internal-review trail summarized in \Cref{sec:internal-review-trail}. Reproduction artefacts in the companion repository \texttt{agentic-sdlc/experiments/}.
+
+\tableofcontents
+
+\clearpage
+
+% ============================================
+\input{01-introduction}
+\input{02-related-work}
+\input{03-formal-model}
+\input{04-decisional-metric}
+\input{05-asymmetric-verification}
+\input{06-learning-loop}
+\input{08-experiments}
+\input{09-discussion}
+\input{10-conclusion}
+
+% ============================================
+\appendix
+\input{A1-statistical-methods}
+
+% ============================================
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

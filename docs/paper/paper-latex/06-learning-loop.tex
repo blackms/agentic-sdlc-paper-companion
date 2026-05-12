@@ -1,0 +1,99 @@
+\section{Learning Loop: Conjecture C-T3 and the Simulation-to-LLM Gap}
+\label{sec:learning-loop}
+
+We formalize the conservative pattern-extraction loop and state its convergence conjecture, then report the LLM-grounded counter-evidence from Phase 5 and the E3v2 follow-up.
+
+\subsection{Pattern-extraction loop}
+
+Let $\mathcal{C}$ denote a finite set of \emph{bug categories} (\texttt{off-by-one}, \texttt{logic}, \texttt{currency}, \texttt{atomicity}, \texttt{exception}, \ldots). Each review cycle $k \in \N$ produces, for each category $c \in \mathcal{C}$:
+\begin{itemize}[leftmargin=2em]
+  \item a count of bugs encountered $n_c^{(k)}$;
+  \item a count of bugs \emph{missed} (verdict $\mathrm{accept}$ when the ground truth is $\mathrm{reject}$) $m_c^{(k)}$;
+  \item the miss rate $r_c^{(k)} := m_c^{(k)} / \max(1, n_c^{(k)})$.
+\end{itemize}
+
+The loop maintains a top-$K$ \emph{injection set} $\mathcal{I}^{(k)} \subseteq \mathcal{C}$ of size $|\mathcal{I}^{(k)}| \le M$. At each cycle, $\mathcal{I}^{(k+1)}$ is updated by:
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Trigger} (conservative, $\theta \ge 2$): a category $c$ is eligible for injection only if $n_c^{(k)} \ge \theta$ (at least $\theta$ instances observed).
+\item \textbf{Selection}: among triggered categories, the top-$K$ by miss rate $r_c^{(k)}$ are kept.
+\item \textbf{Bounded injection} ($M < \infty$): $|\mathcal{I}^{(k+1)}| \le M$ to prevent unbounded prompt growth.
+\item \textbf{Weak suppression} ($\varepsilon \in (0,1)$): a category's injection effect on subsequent miss rate is bounded; concretely, miss rate after injection satisfies $r_c^{(k+1)} \ge (1 - \varepsilon)\, r_c^{(k)}$, preventing total elimination of the category from future review.
+\end{enumerate}
+
+The state of the loop at cycle $k$ is the tuple $S^{(k)} := (\mathcal{I}^{(k)}, (r_c^{(k)})_{c \in \mathcal{C}}, (n_c^{(k)})_{c \in \mathcal{C}})$.
+
+\subsection{Conjecture C-T3 (Learning-Loop Convergence)}
+
+\begin{conjecture}[Learning-Loop Convergence]
+\label{conj:ct3}
+Assume:
+\begin{enumerate}[leftmargin=2em,label=(\roman*)]
+\item \emph{Stationary task distribution}: the bug-instance distribution per cycle is i.i.d.\ over a stationary law.
+\item \emph{Conservative trigger}: $\theta \ge 2$.
+\item \emph{Bounded injection}: $M < \infty$.
+\item \emph{Weak suppression}: $\varepsilon \in (0, 1)$.
+\end{enumerate}
+Then the state process $(S^{(k)})_{k \in \N}$ converges almost surely as $k \to \infty$ to a finite stationary set $\mathcal{S}^\ast$, in the sense that
+\[ \exists\, k^\ast,\; \forall\, k \ge k^\ast: \; S^{(k)} \in \mathcal{S}^\ast. \]
+\end{conjecture}
+
+\begin{proof}[Proof sketch]
+The conservative trigger ($\theta \ge 2$) ensures that each category accumulates at least $\theta$ observations before injection; under stationary law, $r_c^{(k)}$ converges to a population miss rate $r_c^\ast$ as $k \to \infty$ by SLLN. Bounded injection ($M < \infty$) caps the size of $\mathcal{I}^{(k)}$. Weak suppression ($\varepsilon < 1$) prevents miss-rate collapse to $0$, so categories remain comparable in subsequent cycles. The selection rule (top-$M$ by $r_c$) stabilizes once $r_c^{(k)}$ are close enough to $r_c^\ast$, \emph{provided} that the population miss rates of the categories at the top-$M$ boundary are strictly separated (formal assumption: $\min_{c \in \text{boundary}(\mathcal{I}^\ast)}\,|\,r_c^\ast - r_{c'}^\ast\,| \ge \eta > 0$ for some fixed gap $\eta$, otherwise top-$M$ ranking among tied categories oscillates indefinitely). Convergence to a finite $\mathcal{S}^\ast$ then follows from the finiteness of $\mathcal{C}$ and $M$.
+\end{proof}
+
+\paragraph{Strict-separation assumption.} The proof sketch assumes that no two categories at the top-$M$ boundary have identical population miss rates. Without this gap, the loop would still converge in distribution but not point-wise; we adopt the stronger assumption because it matches the intended operational setting (categories with distinct semantic types).
+
+\textbf{Monte-Carlo simulation:} on $30$ Monte-Carlo runs with $|\mathcal{C}| = 7$, $M = 5$, $\theta = 2$, $\varepsilon = 0.3$, and i.i.d.\ stationary task distribution, the loop converges within $k^\ast \le 8$ cycles in $30/30$ runs (Phase 4 simulation).
+
+\subsection{LLM-grounded counterpart}
+
+The conjecture is about a simulation; the operationally interesting question is whether \emph{LLM detection improves} when the loop's output $\mathcal{I}^{(k)}$ is injected into the reviewer prompt. We formalize:
+
+Let $\hat{r}_c^{\text{LLM}}(\mathcal{I})$ denote the empirical miss rate of an LLM warm reviewer on TEST-set bugs in category $c$, when the prompt is augmented with the injection set $\mathcal{I}$. The LLM-grounded version of C-T3 predicts
+\begin{equation}
+  \hat{r}_c^{\text{LLM}}(\mathcal{I}^\ast) < \hat{r}_c^{\text{LLM}}(\emptyset) \qquad \text{for } c \in \mathcal{I}^\ast,
+  \label{eq:ct3-llm}
+\end{equation}
+i.e., injection of the converged set reduces miss rate on categories in the set.
+
+\subsection{Phase-5 falsification: abstract-name injection}
+
+We test \Cref{eq:ct3-llm} with a TRAIN/TEST split ($n_{\text{TRAIN}} = 99$, $n_{\text{TEST}} = 101$ bugs). Top-5 categories by TRAIN miss rate are extracted: $\mathcal{I}^\ast_{\text{P5}} = \{\text{off-by-one}, \text{logic}, \text{currency}, \text{atomicity}, \text{exception}\}$. The warm-Codex prompt is augmented with the $5$ category names plus a 1-line description each. Reviewer runs on the TEST set ($n = 92$ paired with baseline).
+
+\textbf{Result:} baseline rate $75.0\%$, injected rate $68.5\%$, $\Delta = -6.5\,\mathrm{pp}$, paired McNemar one-sided $p = 0.95$ against $H_1$: ``injected $>$ baseline''. \textbf{Falsifies} \Cref{eq:ct3-llm}.
+
+\subsection{Phase-5 E3v2: concrete-example injection}
+
+To rule out the format-quality alternative (``pattern names are too abstract''), we replace category names with \emph{concrete missed-bug summaries} drawn from TRAIN. Per category, $2$--$3$ concrete examples (e.g., for \texttt{logic}: ``$(1 + r/n)$ replaced with $(1 - r/n)$ in compound-interest formula''). 101 codex review calls on the same TEST set; $n = 92$ paired with baseline.
+
+\textbf{Result:} baseline rate $75.0\%$, v2 injected rate $66.3\%$, $\Delta = -8.7\,\mathrm{pp}$, paired McNemar one-sided $p = 0.97$. Concrete examples \emph{do not rescue} the injection effect.
+
+\textbf{Per-category descriptive deltas} (exploratory, underpowered):
+\begin{center}
+\small
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Category & $n$ & baseline & v2 & $\Delta$ \\
+\midrule
+atomicity & 4 & 75.00\% & 25.00\% & $-50\,\mathrm{pp}$ \\
+currency & 8 & 62.50\% & 100.00\% & $+37.5\,\mathrm{pp}$ \\
+exception & 9 & 88.89\% & 88.89\% & $0\,\mathrm{pp}$ \\
+logic & 23 & 73.91\% & 52.17\% & $-22\,\mathrm{pp}$ \\
+off-by-one & 12 & 83.33\% & 75.00\% & $-8\,\mathrm{pp}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+We are explicit that atomicity ($n=4$) is far too small for a reliable $-50\,\mathrm{pp}$ interpretation; this is descriptive, not inferential. Per-category Wilson CIs are wide on all rows.
+
+\subsection{Simulation-to-LLM gap}
+
+The conjunction of:
+\begin{itemize}[leftmargin=2em]
+\item C-T3 converges almost surely in simulation ($30/30$ runs);
+\item Two pre-registered LLM-grounded injection formats both fail to improve detection at $n = 92$ paired, $p \in [0.95, 0.97]$;
+\item Concrete-example injection actively under-performs on $2/5$ top categories (exploratory);
+\end{itemize}
+documents what we call the \emph{simulation-to-LLM gap}: theoretical convergence properties of pattern-extraction loops do not transfer to measurable detection improvements in real LLM workflows at the tested $n$ under either tested format. One concrete-example design does not rule out all format-quality alternatives (better example selection, quantity, placement, retrieval matching, abstraction level) and the negative finding may reflect prompt-budget dilution, attention competition, or anchoring on shown shapes.
+
+\textbf{C-T3 status}: the simulation result stands (\Cref{conj:ct3} is unfalsified at the simulation level). The LLM-grounded version is robustly falsified under the two tested formats at the tested sample size; broader injection-format exploration is a Phase-12 desideratum.
