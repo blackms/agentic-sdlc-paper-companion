@@ -148,6 +148,27 @@ def sha256(data: bytes) -> str:
     return h.hexdigest()
 
 
+# Citation patterns the Phase-12 leakage probe analyzer scans for
+# (mirrors experiments/naturalistic_csv/analyze.py::PROBE_CITE_RE).
+# These tokens MUST survive redaction in naturalistic probe files,
+# otherwise the leakage diagnostic regenerates to 0% and the paper's
+# 100% Codex leakage caveat in §8.11 becomes unverifiable.
+_PROBE_CITE_RE = re.compile(
+    r"(gh-?\d{4,7}|bpo-?\d{4,7}|#\s?\d{4,7})", re.IGNORECASE
+)
+
+
+def _extract_probe_citations(text: str) -> list[str]:
+    """All CPython issue citations (gh-NNNNN, bpo-NNNNN, #NNNNN) found in
+    the probe transcript text, in order of first appearance."""
+    seen: list[str] = []
+    for m in _PROBE_CITE_RE.finditer(text):
+        tok = m.group(0)
+        if tok not in seen:
+            seen.append(tok)
+    return seen
+
+
 def parse_filename(name: str) -> dict:
     """Extract role/condition/family/bug_id from `<role>(_<cond>)?(_<family>)?_<bug_id>.raw.txt`.
 
@@ -193,6 +214,8 @@ def redact_one(raw_path: Path, *, dry_run: bool) -> dict:
     text = original.decode("utf-8", errors="replace")
     meta = parse_filename(raw_path.name)
     resp = extract_response(text, raw_path=raw_path)
+    is_probe = "naturalistic_csv" in raw_path.parts and "probe" in raw_path.parts
+    citations = _extract_probe_citations(text) if is_probe else []
     record = {
         "file": raw_path.name,
         "role": meta["role"],
@@ -209,18 +232,28 @@ def redact_one(raw_path: Path, *, dry_run: bool) -> dict:
     else:
         record["verdict"] = resp.get("verdict")
         record["bugs_found_len"] = len(resp.get("bugs_found", []))
+    if is_probe:
+        record["probe_citations"] = citations
     if not dry_run:
+        header = (
+            f"// raw_sha256={record['raw_sha256']}\n"
+            f"// raw_bytes={record['raw_bytes']}\n"
+        )
+        # Probe transcripts MUST keep their CPython issue citations so the
+        # leakage-diagnostic analyzer can find them. We preserve every
+        # distinct citation token in a comment line scanned by
+        # naturalistic_csv/analyze.py::parse_probe.
+        if is_probe and citations:
+            header += "// probe_citations: " + " ".join(citations) + "\n"
         if resp is None:
             new_content = (
                 "// REDACTED — no JSON response with bugs_found could be extracted.\n"
-                f"// raw_sha256={record['raw_sha256']}\n"
-                f"// raw_bytes={record['raw_bytes']}\n"
+                + header
             )
         else:
             new_content = (
-                f"// raw_sha256={record['raw_sha256']}\n"
-                f"// raw_bytes={record['raw_bytes']}\n"
-                "```json\n"
+                header
+                + "```json\n"
                 + json.dumps(resp, ensure_ascii=False)
                 + "\n```\n"
             )

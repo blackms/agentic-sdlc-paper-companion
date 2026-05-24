@@ -1,3 +1,4 @@
 // REDACTED — no JSON response with bugs_found could be extracted.
 // raw_sha256=0aab2a8c65544d3f0bddfef937fe0feace4ebc0c8b25e2587efc26d46ed9c520
 // raw_bytes=18210
+// probe_citations: gh-12345 bpo-44512 gh-62355
