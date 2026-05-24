@@ -147,7 +147,7 @@ to the frozen baseline reported in the manuscript.
 Reviewers needing the full original transcripts under NDA — e.g., to
 inspect the cold reviewer prompt body or the auto-extracted contract
 text — can contact the corresponding author
-(`rocchi.b.a@gmail.com`).
+(`a.rocchi@aigensolutions.it`).
 
 ## Pre-registration audit
 
@@ -172,4 +172,4 @@ licensed under Apache-2.0 (`LICENSE`).
 
 ## Contact
 
-Alessio Rocchi — `rocchi.b.a@gmail.com` — AIGEN Solutions.
+Alessio Rocchi — `a.rocchi@aigensolutions.it` — AIGEN Solutions.
