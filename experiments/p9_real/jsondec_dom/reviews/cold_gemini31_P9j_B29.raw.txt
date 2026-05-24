@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=029279eddc0735bc9f19ad9cf4732cf9ec76f496a9b39f873dbc1301e587af60
+// raw_bytes=300
 ```json
 {"bugs_found": ["py_scanstring fails to combine UTF-16 surrogate pairs when the high surrogate is U+DBFF (56319) because the condition 'uni < 56319' incorrectly excludes the maximum high surrogate value"], "verdict": "REQUEST_CHANGES"}
 ```

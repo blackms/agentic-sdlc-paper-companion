@@ -1,1 +1,5 @@
-{"bugs_found":["JSONDecoder.__init__: parse_constant default violates contract — uses 'parse_constant and _CONSTANTS.__getitem__' which sets self.parse_constant to None when no parse_constant is supplied (instead of defaulting to _CONSTANTS.__getitem__), and discards any user-supplied callable replacing it with _CONSTANTS.__getitem__"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=21d4a05b50fcf4238b881f2a5d1b8309b8bb83691aacc4050ad9f15fc3366e13
+// raw_bytes=369
+```json
+{"bugs_found": ["JSONDecoder.__init__: parse_constant default violates contract — uses 'parse_constant and _CONSTANTS.__getitem__' which sets self.parse_constant to None when no parse_constant is supplied (instead of defaulting to _CONSTANTS.__getitem__), and discards any user-supplied callable replacing it with _CONSTANTS.__getitem__"], "verdict": "REQUEST_CHANGES"}
+```

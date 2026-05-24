@@ -1,1 +1,5 @@
+// raw_sha256=5157c346f6f9d5461da6873bd10d79c38e45e00e4ea6e170f488e24e436fd58b
+// raw_bytes=207
+```json
 {"bugs_found": ["apply_fee rejects fee_pct > 100 with a misleading 'negative' error message; if fee_pct is a ratio (e.g. 0.02) the upper bound 100 is also semantically wrong"], "verdict": "REQUEST_CHANGES"}
+```

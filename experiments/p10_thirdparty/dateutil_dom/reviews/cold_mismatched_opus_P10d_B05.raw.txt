@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is dateutil.relativedelta, completely unrelated to the bankcheck contracts provided — no contract functions (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) are implemented in this module","__eq__ violates equality semantics: uses 'self.hours != other.hours' instead of '==', so equal relativedeltas with matching hours are reported as not equal (unrelated to bankcheck contracts but a clear contract violation in the supplied code)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=b4289290f2131a9754f7fc9939f2535ef0eb1ecfc5066249fb24c7534dc9774a
+// raw_bytes=631
+```json
+{"bugs_found": ["Code under review is dateutil.relativedelta, completely unrelated to the bankcheck contracts provided — no contract functions (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) are implemented in this module", "__eq__ violates equality semantics: uses 'self.hours != other.hours' instead of '==', so equal relativedeltas with matching hours are reported as not equal (unrelated to bankcheck contracts but a clear contract violation in the supplied code)"], "verdict": "REQUEST_CHANGES"}
+```

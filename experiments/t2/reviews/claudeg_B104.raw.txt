@@ -1,1 +1,5 @@
+// raw_sha256=e78f592938b02e97b94dd65f1dd3b72aca864085e9da7574ab366960d50f9a3e
+// raw_bytes=542
+```json
 {"bugs_found": ["compound_interest: rate is negated ('r = -Decimal(str(annual_rate))'); this both makes the negative-rate validation unreachable for positive inputs and inverts the sign of the computed interest — completely wrong result", "compound_interest: any positive annual_rate now triggers 'rate negative' ValueError, breaking the API", "transfer: not atomic — no rollback after partial update", "apply_fee: result can become negative when fee_min > amount", "fx_convert: missing rate>0 validation"], "verdict": "REQUEST_CHANGES"}
+```

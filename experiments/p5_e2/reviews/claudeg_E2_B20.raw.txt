@@ -1,1 +1,3 @@
-{"bugs_found": ["module-level '_profile_cache = {}' is declared but never read or written; dead code that suggests an unfinished caching feature and is misleading to maintainers", "round-*.json lexicographic sort misorders round 10+", "FLOAT_PATTERNS false positives in comments/strings", "load_yaml_file may return None for empty files"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=5c6727780a931d5665ef26f6c3f61d0c1442050819f36e465e5de3ca88c63444
+// raw_bytes=370

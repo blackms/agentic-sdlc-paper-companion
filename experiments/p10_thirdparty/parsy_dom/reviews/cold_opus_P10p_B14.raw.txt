@@ -1,1 +1,5 @@
-{"bugs_found":["Parser.until uses 'times > min' instead of 'times >= min' when accepting success of other; violates contract that other is accepted when times >= min, causing off-by-one (e.g. min=0 requires at least 1 iteration before other can match, and min=N requires N+1 iterations)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=8b8bb3388d8b7fd3374bd52b7a810f29d94bd50c4b3de412af40223809e679f9
+// raw_bytes=318
+```json
+{"bugs_found": ["Parser.until uses 'times > min' instead of 'times >= min' when accepting success of other; violates contract that other is accepted when times >= min, causing off-by-one (e.g. min=0 requires at least 1 iteration before other can match, and min=N requires N+1 iterations)"], "verdict": "REQUEST_CHANGES"}
+```

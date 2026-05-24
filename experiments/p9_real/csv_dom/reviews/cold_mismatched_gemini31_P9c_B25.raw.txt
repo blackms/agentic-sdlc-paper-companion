@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5422ms...
+// raw_sha256=43ced8ed690ee47ae1d404f29d75cd2b8a1ca35afbf4e0e6f008aef1234e04fd
+// raw_bytes=887
+```json
 {"bugs_found": ["Completely mismatched implementation: code provides CSV parsing functionality instead of the expected bankcheck contract.", "Missing implementation for Reporter class and its methods (ok, warn, fail, config_error).", "Missing implementation for all file I/O and utility functions (load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive).", "Missing implementation for all CLI command handlers (cmd_profile_validate, cmd_review_validate, cmd_contract_presence, cmd_contract_validate, cmd_floats_check, cmd_review_gate, cmd_all).", "Missing implementation for entrypoint functions (build_parser, main)."], "verdict": "REQUEST_CHANGES"}
+```

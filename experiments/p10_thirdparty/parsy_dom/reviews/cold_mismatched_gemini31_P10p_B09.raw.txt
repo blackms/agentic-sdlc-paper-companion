@@ -1,4 +1,3 @@
-Ripgrep is not available. Falling back to GrepTool.
-```json
-{"bugs_found": ["Complete mismatch: the code implements parser combinators instead of the required bankcheck functions.", "TypeError in char_from: 'string - \']\'' is an invalid operation.", "Invalid Python syntax: '@p7_parser/contracts/parser_contracts.md' used as a decorator."], "verdict": "REQUEST_CHANGES"}
-```
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=435dc91a6fa45b9b2663baf17f4d06013fed80a346d171a1b26f528915ea5eba
+// raw_bytes=376

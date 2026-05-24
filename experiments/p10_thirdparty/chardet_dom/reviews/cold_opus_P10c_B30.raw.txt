@@ -1,1 +1,5 @@
-{"bugs_found":["SJISDistributionAnalysis.get_order computes 'order = order - second_char - 64' instead of 'order = order + second_char - 0x40', violating the contract's post-condition that adds (second_char - 0x40) to the row base"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=6f014983475261279fa9961a8152f8262cc02b0aaf72991b7ab6c1f6d1ee14a4
+// raw_bytes=262
+```json
+{"bugs_found": ["SJISDistributionAnalysis.get_order computes 'order = order - second_char - 64' instead of 'order = order + second_char - 0x40', violating the contract's post-condition that adds (second_char - 0x40) to the row base"], "verdict": "REQUEST_CHANGES"}
+```

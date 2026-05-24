@@ -1,1 +1,5 @@
+// raw_sha256=2aa8dbd88c7e01852a1c3e277dff1366e3ec8682d63ecc546eeaa0c83debdba6
+// raw_bytes=495
+```json
 {"bugs_found": ["compound_interest mutates the caller's principal argument via 'principal *= 0', a side effect that corrupts mutable inputs (e.g. Decimal/int are immutable but numpy arrays would be zeroed) and is dead/confusing code", "two statements on one line (semicolon) reduces readability and hides the side effect", "transfer is not atomic and lacks rollback on failure between debit and credit", "fx_convert accepts non-positive rates without validation"], "verdict": "REQUEST_CHANGES"}
+```

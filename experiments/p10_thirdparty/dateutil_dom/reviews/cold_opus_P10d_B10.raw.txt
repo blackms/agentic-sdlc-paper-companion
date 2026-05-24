@@ -1,1 +1,5 @@
-{"bugs_found":["__eq__ uses self.year != other.year instead of == when comparing the absolute year field, inverting equality semantics for that field"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=1b3ba7855cf2640e20e97e463596d046124f824d022f20e378e2fe55cb99e6d7
+// raw_bytes=181
+```json
+{"bugs_found": ["__eq__ uses self.year != other.year instead of == when comparing the absolute year field, inverting equality semantics for that field"], "verdict": "REQUEST_CHANGES"}
+```

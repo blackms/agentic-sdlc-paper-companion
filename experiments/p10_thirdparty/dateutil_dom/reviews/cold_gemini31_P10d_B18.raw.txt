@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5532ms...
+// raw_sha256=32d612d89232a6b7f6bf8bd16cf9098ec58e2b3f910925d35a565f1fd3a32436
+// raw_bytes=610
 ```json
 {"bugs_found": ["In `__add__` with `relativedelta`, `hours` are subtracted (`other.hours - self.hours`) instead of summed, violating the contract that adding two deltas sums relative fields"], "verdict": "REQUEST_CHANGES"}
 ```

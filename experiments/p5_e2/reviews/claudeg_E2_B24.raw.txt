@@ -1,1 +1,5 @@
+// raw_sha256=04df6e01ab07c96a6d104e1e17b4cf9eb745f6899d57078b61c554b81057b713
+// raw_bytes=520
+```json
 {"bugs_found": ["cmd_contract_presence performs an extra fp.read_text() probe with a bare `except Exception: continue` before the suffix check; this swallows OSError/UnicodeDecodeError silently and skips the file without any [FAIL]/[WARN] report, hiding genuine read failures", "the same probe also reads sensitive files twice (once unencoded, once as utf-8), wasting IO and changing behaviour for non-utf8 binary files", "file_matches_globs helper is defined but never used (dead code)"], "verdict": "REQUEST_CHANGES"}
+```

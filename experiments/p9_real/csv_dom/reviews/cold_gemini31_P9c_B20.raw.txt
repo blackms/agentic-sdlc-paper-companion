@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=10e824fd2004276040812575391fd75781ba2964222006ceb0904433c6c1b144
+// raw_bytes=315
+```json
 {"bugs_found": ["DictReader.__next__ does not update self.line_num after skipping empty rows", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction is 'raise' due to subtracting a list from dict_keys"], "verdict": "REQUEST_CHANGES"}
+```

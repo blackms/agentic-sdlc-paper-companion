@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis), so contract compliance cannot be assessed against the provided specifications"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=d7eebb7a6566593cd1c7f94f2e06cd2e93e840bf4158fca99625b859c45d42e4
+// raw_bytes=215
+```json
+{"bugs_found": ["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis), so contract compliance cannot be assessed against the provided specifications"], "verdict": "REQUEST_CHANGES"}
+```

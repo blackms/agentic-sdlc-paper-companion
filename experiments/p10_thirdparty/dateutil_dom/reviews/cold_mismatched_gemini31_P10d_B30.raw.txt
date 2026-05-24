@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=33b367b304088feaed5126b0241b238068af911cdc4857fd4e3d247709f5afdf
+// raw_bytes=712
+```json
 {"bugs_found": ["The implementation entirely omits all contracted bankcheck functions and instead provides an unrelated dateutil.relativedelta module.", "Reporter class and its contracted methods (ok, warn, fail, config_error) are missing.", "Utility functions (load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive) are not implemented.", "Command handlers (cmd_profile_validate, cmd_review_validate, cmd_contract_presence, cmd_contract_validate, cmd_floats_check, cmd_review_gate, cmd_all) are not implemented.", "CLI entrypoints (build_parser, main) are missing."], "verdict": "REQUEST_CHANGES"}
+```

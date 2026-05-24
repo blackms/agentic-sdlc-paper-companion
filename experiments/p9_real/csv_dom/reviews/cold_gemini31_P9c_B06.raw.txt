@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=5c16192be95f7fa36e1f82cf27ad664237d1477259c95b6f2e08bd290f1c9d10
+// raw_bytes=558
 ```json
 {"bugs_found": ["Sniffer._guess_quote_and_delimiter uses // instead of % for string formatting with a dict, causing a TypeError", "DictReader.__next__ does not update self.line_num inside the while row == [] loop, leaving it out of sync when skipping empty rows"], "verdict": "REQUEST_CHANGES"}
 ```

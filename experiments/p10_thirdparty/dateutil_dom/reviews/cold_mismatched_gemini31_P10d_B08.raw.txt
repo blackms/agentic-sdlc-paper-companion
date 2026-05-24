@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5965ms...
+// raw_sha256=0a60b26e63ff7b4d06167ea7a9ba58d7943dc142573695a5831175de01ddc08c
+// raw_bytes=677
+```json
 {"bugs_found": ["The provided code implements dateutil.relativedelta instead of the required bankcheck module, entirely omitting all contracted functions and classes.", "Missing Reporter class and its methods (ok, warn, fail, config_error).", "Missing all utility functions (load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive).", "Missing all command and CLI entry functions (cmd_*, build_parser, main)."], "verdict": "REQUEST_CHANGES"}
+```

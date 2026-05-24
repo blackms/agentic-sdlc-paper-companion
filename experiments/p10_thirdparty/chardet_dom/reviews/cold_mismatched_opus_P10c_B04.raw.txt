@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis classes); no implementation of any contracted function is present, so all contracts are unfulfilled"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=ddb7ff86575046711346123f304b0df179fea0e6d958883bbea3ac390fc49915
+// raw_bytes=235
+```json
+{"bugs_found": ["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis classes); no implementation of any contracted function is present, so all contracts are unfulfilled"], "verdict": "REQUEST_CHANGES"}
+```

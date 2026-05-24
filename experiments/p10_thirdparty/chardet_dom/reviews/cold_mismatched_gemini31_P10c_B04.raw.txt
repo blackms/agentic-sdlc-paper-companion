@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5438ms...
+// raw_sha256=39e21e6218c7ec5642f1881050cdbce566096e33ed6f85c3aafb305ec9595870
+// raw_bytes=216
+```json
 {"bugs_found": [], "verdict": "ACCEPT"}
+```

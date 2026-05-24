@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=15031d5f9d622d00be030db09a2561cc045e9dcf5f311706031a50b53e4b5033
+// raw_bytes=511
+```json
 {"bugs_found": ["In SJISDistributionAnalysis.get_order, the second first_char range check incorrectly uses 'or' instead of 'and' (first_char >= 224 or first_char <= 239), which violates the contract 0xE0 <= first_char <= 0xEF."], "verdict": "REQUEST_CHANGES"}
+```

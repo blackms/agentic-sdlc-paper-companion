@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5931ms...
+// raw_sha256=b573bfae24f096645eddc1d950415f84c10539c2fd1d2808b890435aed1b15b0
+// raw_bytes=364
 ```json
 {"bugs_found": ["In __eq__, absolute day comparison uses '!=' instead of '==', violating the invariant that all absolute fields must be equal."], "verdict": "REQUEST_CHANGES"}
 ```

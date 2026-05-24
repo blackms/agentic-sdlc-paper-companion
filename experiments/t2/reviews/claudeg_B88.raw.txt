@@ -1,1 +1,5 @@
+// raw_sha256=265072e4f84c315589782d6121d97062492241a519ff80e3ade8aeaa3583150f
+// raw_bytes=169
+```json
 {"bugs_found": ["compound_interest raises NotImplementedError instead of ValueError for negative rate, breaking expected error contract"], "verdict": "REQUEST_CHANGES"}
+```

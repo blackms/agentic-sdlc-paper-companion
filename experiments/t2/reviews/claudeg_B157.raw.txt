@@ -1,1 +1,5 @@
+// raw_sha256=c710103514ab4292d6e5d8c1f47c67f3e47339c21fe0cb9e2b40f7145a9d204a
+// raw_bytes=334
+```json
 {"bugs_found": ["apply_fee raises RuntimeError instead of ValueError for negative amount, inconsistent with all other validation errors and breaking caller exception handling", "transfer is not atomic against exceptions between the two balance updates", "fx_convert does not validate rate is positive"], "verdict": "REQUEST_CHANGES"}
+```

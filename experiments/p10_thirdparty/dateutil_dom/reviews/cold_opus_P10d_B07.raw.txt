@@ -1,1 +1,3 @@
-{"bugs_found": ["__eq__: weekday n-equivalence uses 'or' instead of 'and' between the two default-checks ((not n1 or n1==1) or (not n2 or n2==1)), so it treats weekday n=None vs n=2 (or any non-default vs default) as equal, violating the contract that requires both sides to be in {None,1}"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=9988f15dd4b921e374fb3636e1bda0d39a97a208dda6745b144f5f7ce224b7c2
+// raw_bytes=323

@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=067bf87f5e264479a05f821b59946e53efde9607fbaac9c562619b376ed8e74a
+// raw_bytes=214
 ```json
 {"bugs_found": ["The __eq__ method incorrectly compares hours using '!=' instead of '==' (self.hours != other.hours)"], "verdict": "REQUEST_CHANGES"}
 ```

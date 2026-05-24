@@ -1,1 +1,5 @@
+// raw_sha256=e08553319b1a31a7524e9f045a4cc618f4422a3bae19c8b328be0e9f28df2f73
+// raw_bytes=316
+```json
 {"bugs_found": ["apply_fee computes fee as a + (a * pct) instead of a * pct, producing an enormously inflated fee that then gets clamped or makes return a - fee strongly negative", "transfer not atomic across the two balance mutations", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=93147d6825d987e7a686c44bf53d32f50b28a6def5645ca4481d8134d99b0cae
+// raw_bytes=256
+```json
 {"bugs_found": ["Receipt.amount is set to amount/2 instead of the actual transferred amount, producing a wrong audit trail", "balances are debited/credited by full amount but receipt records half - reconciliation will fail"], "verdict": "REQUEST_CHANGES"}
+```

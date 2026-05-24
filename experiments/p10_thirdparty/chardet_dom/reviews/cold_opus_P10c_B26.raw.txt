@@ -1,1 +1,5 @@
+// raw_sha256=f6c5e2a5d9b8c3b15e73e5e2f2f9efa26887c2ccf751ffd8f38eb33ddbb27986
+// raw_bytes=298
+```json
 {"bugs_found": ["GB2312DistributionAnalysis.get_order uses strict 'second_char > 161' instead of contract's '>= 0xA1', so the boundary input (0xB0, 0xA1) returns -1 instead of order 0, violating the post-condition and inclusive lower-bound operator-level invariant"], "verdict": "REQUEST_CHANGES"}
+```

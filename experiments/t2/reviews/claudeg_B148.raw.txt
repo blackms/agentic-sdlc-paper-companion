@@ -1,1 +1,5 @@
+// raw_sha256=37318dc18824baf823dd976f188375822665d122c9c185d351da165bc35c4c1c
+// raw_bytes=200
+```json
 {"bugs_found": ["transfer currency comparison applies .replace('EUR','eur') on sender side only, causing same-currency EUR-to-EUR transfers to be rejected as mismatch"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=1a7b252f2fc0b4c14de299406ee385e31505dbc6f5b38ff088e81d2ac3cb1d20
+// raw_bytes=311
+```json
 {"bugs_found": ["Codebase mismatch: The provided implementation is a parser combinator library and does not contain any of the functions or classes required by the bankcheck contract (e.g., Reporter, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}
+```

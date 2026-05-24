@@ -1,1 +1,5 @@
+// raw_sha256=a82007ba719b1cc3a23174a8e3bb3eaa406234b0875f96381eb6a37621399dcd
+// raw_bytes=315
+```json
 {"bugs_found": ["combine_dict filter predicate uses `isinstance(k, str) or k.startswith('_')` instead of `and`, so every string key is removed (not just keys starting with '_'), violating the documented invariant that only None keys and underscore-prefixed string keys are filtered"], "verdict": "REQUEST_CHANGES"}
+```

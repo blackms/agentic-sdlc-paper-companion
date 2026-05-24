@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is a parsing combinator library (parsy-like), not bankcheck — cannot validate against bankcheck contracts","No Reporter class, load_yaml_file, load_json_file, cmd_* functions, build_parser CLI, or main present in the supplied code","Complete contract/implementation mismatch: 100% of documented bankcheck symbols are absent from the reviewed source"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=b43989182e80ac01eaa0c1c6f246e5958be48f3d5ebea016d54373c69a636938
+// raw_bytes=412
+```json
+{"bugs_found": ["Code provided is a parsing combinator library (parsy-like), not bankcheck — cannot validate against bankcheck contracts", "No Reporter class, load_yaml_file, load_json_file, cmd_* functions, build_parser CLI, or main present in the supplied code", "Complete contract/implementation mismatch: 100% of documented bankcheck symbols are absent from the reviewed source"], "verdict": "REQUEST_CHANGES"}
+```

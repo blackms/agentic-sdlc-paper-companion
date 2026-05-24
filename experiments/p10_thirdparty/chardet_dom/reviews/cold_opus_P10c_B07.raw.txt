@@ -1,1 +1,5 @@
-{"bugs_found":["GB2312DistributionAnalysis.get_order uses division (94 / (first_char - 176)) instead of multiplication (94 * (first_char - 176)), violating the contracted row-width multiplier and causing ZeroDivisionError when first_char == 176"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=17274f69fa362bee72e28fd0a7ee01975cc6ce81a2b71a664e6d8af26c36fdbe
+// raw_bytes=276
+```json
+{"bugs_found": ["GB2312DistributionAnalysis.get_order uses division (94 / (first_char - 176)) instead of multiplication (94 * (first_char - 176)), violating the contracted row-width multiplier and causing ZeroDivisionError when first_char == 176"], "verdict": "REQUEST_CHANGES"}
+```

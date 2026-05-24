@@ -1,1 +1,5 @@
+// raw_sha256=0baea618df5073b4a590a06e23f93cf02c47c7b0e37454a0350d6ed352691949
+// raw_bytes=557
+```json
 {"bugs_found": ["loan_payment uses incorrect amortization formula: numerator (one_plus_r - 1) equals r instead of (1+r)**m, producing wrong payment values", "transfer is not atomic: if the credit to account_to fails after the debit, account_from is left short with no rollback", "loan_payment with r==0 returns p/m without quantization while the non-zero branch returns higher precision, inconsistent rounding behavior", "fx_convert does not check that the resolved rate is positive, allowing zero/negative FX rates to pass"], "verdict": "REQUEST_CHANGES"}
+```

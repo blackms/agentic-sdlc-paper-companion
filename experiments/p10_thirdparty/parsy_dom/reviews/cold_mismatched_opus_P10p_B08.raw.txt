@@ -1,1 +1,5 @@
-{"bugs_found":["CODE_NOT_BANKCHECK: the provided code is a parser combinator library (parsy-like), not bankcheck.py — none of the contracts (Reporter, load_yaml_file, cmd_* functions, build_parser for 'bankcheck', main) are implementable or verifiable against this source"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=90265547a02e5d9684d0572984b4aa3616f7d7a7ca08a97ece1501e1c6f0db42
+// raw_bytes=305
+```json
+{"bugs_found": ["CODE_NOT_BANKCHECK: the provided code is a parser combinator library (parsy-like), not bankcheck.py — none of the contracts (Reporter, load_yaml_file, cmd_* functions, build_parser for 'bankcheck', main) are implementable or verifiable against this source"], "verdict": "REQUEST_CHANGES"}
+```

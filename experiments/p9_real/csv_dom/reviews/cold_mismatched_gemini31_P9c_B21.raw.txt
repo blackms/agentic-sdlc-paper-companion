@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=1d8bf8dac47fe2364be87084176070f3876f8f26aea7964f22bf3fa912b78df6
+// raw_bytes=1018
+```json
 {"bugs_found": ["Implementation of Reporter is entirely missing", "Implementation of load_yaml_file is entirely missing", "Implementation of load_json_file is entirely missing", "Implementation of load_profile is entirely missing", "Implementation of file_matches_globs is entirely missing", "Implementation of function_is_exempted is entirely missing", "Implementation of iter_files_under_sensitive is entirely missing", "Implementation of cmd_profile_validate is entirely missing", "Implementation of cmd_review_validate is entirely missing", "Implementation of cmd_contract_presence is entirely missing", "Implementation of cmd_contract_validate is entirely missing", "Implementation of cmd_floats_check is entirely missing", "Implementation of cmd_review_gate is entirely missing", "Implementation of cmd_all is entirely missing", "Implementation of build_parser is entirely missing", "Implementation of main is entirely missing"], "verdict": "REQUEST_CHANGES"}
+```

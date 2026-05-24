@@ -1,1 +1,5 @@
-{"bugs_found":["__eq__ uses 'self.minutes != other.minutes' instead of '==', inverting the minutes comparison and breaking equality semantics defined by the contract"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=bdb23ef891c4beeabb9f773179021bdaf7ce289b9a177b4374e4404d3fc9ca52
+// raw_bytes=197
+```json
+{"bugs_found": ["__eq__ uses 'self.minutes != other.minutes' instead of '==', inverting the minutes comparison and breaking equality semantics defined by the contract"], "verdict": "REQUEST_CHANGES"}
+```

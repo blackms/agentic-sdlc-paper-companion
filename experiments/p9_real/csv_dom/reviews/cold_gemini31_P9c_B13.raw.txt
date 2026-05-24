@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5732ms...
+// raw_sha256=401768e3116d2c62c794fb1f6cd26249b3ba4e9c48bd0020e0054399c55c3790
+// raw_bytes=860
 ```json
 {"bugs_found": ["Sniffer._guess_quote_and_delimiter incorrectly uses 'delimiters is None and key in delimiters' which raises TypeError or fails to filter instead of 'or'", "DictReader.__next__ fails to update self.line_num after skipping empty rows, leaving it stale", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction is 'raise' because dict_keys does not support subtraction with a list (self.fieldnames)"], "verdict": "REQUEST_CHANGES"}
 ```

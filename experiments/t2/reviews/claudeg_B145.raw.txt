@@ -1,1 +1,5 @@
+// raw_sha256=533e9cb013326279fd849ce950252276fb1616d6b01ee810466972c195f0b9d9
+// raw_bytes=462
+```json
 {"bugs_found": ["Receipt is constructed before balances are mutated; if a balance update raises, the receipt object exists but the transfer is partial - audit and state can diverge", "leftover/garbled trailing text on the return line ('# OK except creation order...amount=amount)') indicates an unfinished edit and is a maintainability/readability issue", "no atomic transaction wrapper or rollback for the two balance mutations"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=7e78ba12e75d8aa2798ad66cb9ab209ecc8d1bb52b735d3a318af737abb0cf0c
+// raw_bytes=897
+```json
 {"bugs_found": ["fx_convert lacks same-currency shortcut: passing equal from/to without an explicit (X,X) rate raises ValueError instead of returning the amount unchanged", "compound_interest does not validate that principal is non-negative, silently accepting negative principals", "apply_fee can return a negative result when fee_min exceeds the amount (no clamp ensuring fee <= amount)", "transfer mutation is not atomic: no try/rollback around the two balance updates, so a failure between the two assignments would leave inconsistent state", "loan_payment zero-rate branch returns p/m using Decimal/int division which produces a non-quantized Decimal, with no rounding policy applied to monetary output", "no explicit Decimal quantization/rounding policy is applied to any monetary return value, risking long-tail precision artifacts in downstream comparisons"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5572ms...
+// raw_sha256=7423b4d20d258128a1e629d6596ae18f9a5d21d4490f01f45370addf7ba17fbd
+// raw_bytes=1220
+```json
 {"bugs_found": ["Missing implementation for Reporter.ok", "Missing implementation for Reporter.warn", "Missing implementation for Reporter.fail", "Missing implementation for Reporter.config_error", "Missing implementation for load_yaml_file", "Missing implementation for load_json_file", "Missing implementation for load_profile", "Missing implementation for file_matches_globs", "Missing implementation for function_is_exempted", "Missing implementation for iter_files_under_sensitive", "Missing implementation for cmd_profile_validate", "Missing implementation for cmd_review_validate", "Missing implementation for cmd_contract_presence", "Missing implementation for cmd_contract_validate", "Missing implementation for cmd_floats_check", "Missing implementation for cmd_review_gate", "Missing implementation for cmd_all", "Missing implementation for build_parser", "Missing implementation for main", "Provided code incorrectly implements the standard 'csv' module instead of the contracted 'bankcheck' domain"], "verdict": "REQUEST_CHANGES"}
+```

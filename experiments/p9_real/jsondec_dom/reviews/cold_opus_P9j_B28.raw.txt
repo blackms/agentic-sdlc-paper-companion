@@ -1,1 +1,3 @@
-{"bugs_found":["JSONObject inverts the property-name check: `if nextchar == '\"'` should be `if nextchar != '\"'`. As written, the whitespace-skipping and empty-object (`}`) branch is only entered when the next char is already a quote, so inputs like `{ }`, `{\\n}`, or `{ \"k\": 1}` (any object with whitespace after `{`) bypass the skip-and-check block, fall through to `end += 1`, and call scanstring on a non-quote character — violating the postconditions 'Empty objects decode to {}' and 'Whitespace is skipped where permitted', and yielding a wrong/misleading JSONDecodeError instead of correct parsing."],"verdict":"REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=245278d837f7bb6ef50212d765b72f961baf35dd90cac3c379c1267e2b8c6241
+// raw_bytes=643

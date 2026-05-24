@@ -1,1 +1,5 @@
-{"bugs_found":["line_info_at uses col = index + (last_nl + 1) instead of index - (last_nl + 1), violating the operator-level invariant and producing wrong column values (and breaking ParseError.line_info formatting)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=4b6c923caa3bea8e1045f61d07716f1f313b62f8eadaf70ed62afe4d67433bc2
+// raw_bytes=247
+```json
+{"bugs_found": ["line_info_at uses col = index + (last_nl + 1) instead of index - (last_nl + 1), violating the operator-level invariant and producing wrong column values (and breaking ParseError.line_info formatting)"], "verdict": "REQUEST_CHANGES"}
+```

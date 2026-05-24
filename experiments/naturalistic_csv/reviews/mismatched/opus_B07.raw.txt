@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is Python stdlib csv.py, not bankcheck — no functions from the contract (Reporter, load_yaml_file, cmd_*, etc.) are present, so contract compliance cannot be assessed and is effectively violated by absence"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=d8661ad425d608f759cb9580ec5bec997a4f4df688ef6bf710cb229808410099
+// raw_bytes=273
+```json
+{"bugs_found": ["Code under review is Python stdlib csv.py, not bankcheck — no functions from the contract (Reporter, load_yaml_file, cmd_*, etc.) are present, so contract compliance cannot be assessed and is effectively violated by absence"], "verdict": "REQUEST_CHANGES"}
+```

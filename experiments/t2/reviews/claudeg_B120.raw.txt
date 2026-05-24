@@ -1,1 +1,5 @@
+// raw_sha256=3df75f45055a647ad67157b9007c1af6743881bcf70b89726fb9b2e4591d5b3a
+// raw_bytes=350
+```json
 {"bugs_found": ["loan_payment multiplies monthly_rate by 12, treating the input as an annual rate and producing payments roughly 12x too high; contradicts the parameter name 'monthly_rate'", "transfer is not atomic: no rollback between debit and credit", "fx_convert accepts zero or negative rates without validation"], "verdict": "REQUEST_CHANGES"}
+```

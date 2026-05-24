@@ -1,1 +1,5 @@
+// raw_sha256=ff4c1687a4ea56076537383806d940e5fbf2328a2ea61da9fb8c5fe962293668
+// raw_bytes=276
+```json
 {"bugs_found": ["loan_payment computes r = Decimal(monthly_rate / 12), unexpectedly dividing by 12 (so callers passing a true monthly rate get it divided again) and performing the division in float before wrapping in Decimal, losing precision"], "verdict": "REQUEST_CHANGES"}
+```

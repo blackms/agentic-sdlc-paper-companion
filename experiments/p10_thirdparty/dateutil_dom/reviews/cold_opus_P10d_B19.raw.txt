@@ -1,1 +1,5 @@
-{"bugs_found":["__eq__ uses self.day != other.day instead of self.day == other.day, inverting equality on the day field and violating the equality contract"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=2856d574888f686a976af0497719e4f63d188efa2fd713856dc3b3da74489dde
+// raw_bytes=187
+```json
+{"bugs_found": ["__eq__ uses self.day != other.day instead of self.day == other.day, inverting equality on the day field and violating the equality contract"], "verdict": "REQUEST_CHANGES"}
+```

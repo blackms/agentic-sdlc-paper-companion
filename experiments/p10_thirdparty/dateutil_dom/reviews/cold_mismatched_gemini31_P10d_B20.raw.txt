@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=0554b1532d2b2e53c83d355b74b9debe114145372afa1b30ee9015b6588694b7
+// raw_bytes=267
+```json
 {"bugs_found": ["The provided code completely lacks the implementation of all contracted bankcheck functions and instead contains an unrelated dateutil.relativedelta implementation."], "verdict": "REQUEST_CHANGES"}
+```

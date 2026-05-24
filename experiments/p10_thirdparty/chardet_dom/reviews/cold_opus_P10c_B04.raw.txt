@@ -1,1 +1,5 @@
+// raw_sha256=a13b68a0d817800e4c851dcf44322699d8818d43044fd0e617cef58cfbee2e5f
+// raw_bytes=435
+```json
 {"bugs_found": ["SJISDistributionAnalysis.get_order: second branch uses `first_char >= 224 or first_char <= 239` instead of `and`; the condition is tautologically true, so any first byte not in 0x81..0x9F (e.g., 0xA0..0xDF, 0xF0..0xFF) is wrongly accepted and produces an order via the 0xE0-offset formula, violating the contract that recognized first-byte ranges are exactly 0x81..0x9F and 0xE0..0xEF"], "verdict": "REQUEST_CHANGES"}
+```

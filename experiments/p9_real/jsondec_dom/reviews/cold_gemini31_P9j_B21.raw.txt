@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=58938eb8167e06892b6e143a3191dbf31b07e4649c4ef163ef0539ada0d39306
+// raw_bytes=436
 ```json
 {"bugs_found": ["py_scanstring raises JSONDecodeError for invalid control characters with pos=end instead of end-1 (violating the contract that pos is the index where parsing failed)", "JSONObject and JSONArray use _w(s, end + 1).end() instead of _w(s, end).end() for whitespace skipping, skipping the current character in the regex match"], "verdict": "REQUEST_CHANGES"}
 ```

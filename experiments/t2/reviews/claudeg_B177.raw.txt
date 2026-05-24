@@ -1,1 +1,5 @@
+// raw_sha256=924e740175346f22e34f46443d2b7aaef1e37f66ac64b54402b3db7695d165fd
+// raw_bytes=434
+```json
 {"bugs_found": ["fx_convert squares the exchange rate (a * Decimal(str(rate)) ** 2) producing grossly incorrect conversions", "transfer() not atomic: partial failure could lose funds", "compound_interest silently truncates fractional years via int(years)", "fx_convert does not validate rate is positive (zero or negative rate not rejected)", "no thread-safety guarantees on Account.balance mutations"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5527ms...
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=2ae03c50976cc223e5a7018616f4879b11c130d7260fa13444762a090f8c3c77
+// raw_bytes=595
 ```json
 {"bugs_found": ["seq() incorrectly returns success([]) when provided with either only positional or only keyword arguments due to 'if not parsers or not kw_parsers' condition"], "verdict": "REQUEST_CHANGES"}
 ```

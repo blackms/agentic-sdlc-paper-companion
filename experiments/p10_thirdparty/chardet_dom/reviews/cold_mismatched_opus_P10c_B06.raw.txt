@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis), so no contract can be verified"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=6dfb8c23fdbedd7f05a418f793a942d3cfd6f86167c210a3cacca3fecfc02e27
+// raw_bytes=168
+```json
+{"bugs_found": ["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis), so no contract can be verified"], "verdict": "REQUEST_CHANGES"}
+```

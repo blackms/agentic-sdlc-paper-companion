@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=3690a42c95bfec721b77ef9c992b68306aa7b300a2f6fa100f9c500df3a50eab
+// raw_bytes=280
 ```json
 {"bugs_found": ["__init__ incorrectly emits DeprecationWarning when absolute values ARE integers instead of non-integers due to flipped condition (int(x) == x instead of int(x) != x)"], "verdict": "REQUEST_CHANGES"}
 ```

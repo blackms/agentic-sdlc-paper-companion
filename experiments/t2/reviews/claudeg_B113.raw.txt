@@ -1,1 +1,5 @@
+// raw_sha256=493c465c4bc19be14ba9553edb41dc20a19142a673488b3c02c6458210f512ef
+// raw_bytes=165
+```json
 {"bugs_found": ["loan_payment defines one_plus_r = (r + 1) / 2 instead of (1 + r), producing a completely wrong amortization result"], "verdict": "REQUEST_CHANGES"}
+```

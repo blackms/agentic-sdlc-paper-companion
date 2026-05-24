@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5298ms...
+// raw_sha256=3df2bc15851a6c29f902dfd49275cf6fc23aea63ff5882f64f47969a9d54d6a0
+// raw_bytes=650
+```json
 {"bugs_found": ["In `compound_interest`, missing validation for `compounds_per_year (n)` less than 1, which can lead to `DivisionByZero` error if `n` is 0.", "In `transfer`, a critical race condition exists during the balance check and update. In a concurrent environment, this can lead to an account going into overdraft as the balance might change between the `if account_from.balance < amount` check and the subsequent balance deduction."], "verdict": "REQUEST_CHANGES"}
+```

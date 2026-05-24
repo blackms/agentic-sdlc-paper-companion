@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5548ms...
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=bf5f46a445a808c55a11de5d67e7ea4074153d8b64395e4c877b5896ca9a8782
+// raw_bytes=556
+```json
 {"bugs_found": ["The provided code (csv.py) does not implement any of the contracted bankcheck functions (Reporter, load_yaml_file, cmd_all, etc.)."], "verdict": "REQUEST_CHANGES"}
+```

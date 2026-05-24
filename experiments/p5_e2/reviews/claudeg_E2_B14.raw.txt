@@ -1,1 +1,5 @@
+// raw_sha256=3288807fea9a1d254bf45eebc4ecf0b1947e7e28c40faab089475b2746144bd4
+// raw_bytes=465
+```json
 {"bugs_found": ["cmd_review_gate iterates 'all_round_files[-1:]' instead of 'all_round_files', so findings dedup only inspects the last round file; blocker/major findings from earlier rounds are silently ignored, breaking the merge gate", "round-*.json files sorted lexicographically misorder round 10+", "FLOAT_PATTERNS false positives in comments/strings", "load_yaml_file may return None for empty file causing downstream errors"], "verdict": "REQUEST_CHANGES"}
+```

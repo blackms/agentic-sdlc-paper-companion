@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5709ms...
+// raw_sha256=0dbab470c9ae01f5d580cb8452dee73d91490ffeeac3d2a11354f00881d5831f
+// raw_bytes=446
+```json
 {"bugs_found": ["scanstring assignment uses 'and' instead of 'or', resulting in None if C extension is missing", "_decode_uXXXX permits invalid hex sequences like \\u+123 or \\u 123 due to int() flexibility allowing signs and whitespace"], "verdict": "REQUEST_CHANGES"}
+```

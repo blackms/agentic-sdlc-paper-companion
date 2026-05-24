@@ -1,1 +1,5 @@
-{"bugs_found":["Parser.sep_by inverts the min==0 fallback: code uses `if min != 0: res |= zero_times`, but the contract requires the empty-input alternative to be added when min == 0 (so min==0 should currently fail on empty input, and min>=1 wrongly accepts empty input)."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=16e503879b89f0ce4a9779e2b60b2f764c5510af28e26fe2802eb52bd8c270c9
+// raw_bytes=304
+```json
+{"bugs_found": ["Parser.sep_by inverts the min==0 fallback: code uses `if min != 0: res |= zero_times`, but the contract requires the empty-input alternative to be added when min == 0 (so min==0 should currently fail on empty input, and min>=1 wrongly accepts empty input)."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
-{"bugs_found":["__init__ DeprecationWarning condition inverted: uses `int(x) == x` instead of `int(x) != x`, so the warning fires for valid integer absolute values and is suppressed for non-integer ones, violating the contract that non-integer absolute values must emit DeprecationWarning"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=0c3067dcaaa2e459e5cf8b8f3b5ea65c9fecbe15441f586d39660b6f1ad71379
+// raw_bytes=320
+```json
+{"bugs_found": ["__init__ DeprecationWarning condition inverted: uses `int(x) == x` instead of `int(x) != x`, so the warning fires for valid integer absolute values and is suppressed for non-integer ones, violating the contract that non-integer absolute values must emit DeprecationWarning"], "verdict": "REQUEST_CHANGES"}
+```

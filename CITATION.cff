@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+message: "If you use this paper or its companion artefacts, please cite it as below."
+type: article
+title: "Conformance, Cost, and Replication in Constrained LLM Coding Agents"
+authors:
+  - family-names: Rocchi
+    given-names: Alessio
+    affiliation: AIGEN Solutions
+    email: rocchi.b.a@gmail.com
+year: 2026
+version: "1.4.3"
+abstract: >
+  Procedural protocols deliver +0.59 to +0.78 expected-utility gain over
+  free prompting at log-token ratios 0.70–3.28 on 8 cells × 4 frontier
+  models. However, 33–68% of procedurally-compliant runs still fail
+  held-out semantic tests, exposing a conformance-without-semantics
+  regime invisible to compliance-only metrics. We present a measurement
+  framework that projects agent trajectories onto a behavior signature
+  over conformance, target-correctness, robustness, and token cost,
+  with a decisional cost-aware metric admitting a closed-form
+  break-even threshold below which the protocol pays.
+keywords:
+  - LLM code generation
+  - procedural constraints
+  - stochastic dominance
+  - asymmetric review
+  - error decorrelation
+  - predictability--cost trade-off
+  - AST-level mutation testing
+  - reviewer-family variation
+license: CC-BY-4.0
+license-url: "https://creativecommons.org/licenses/by/4.0/"
+repository: "https://github.com/blackms/agentic-sdlc-paper-companion"

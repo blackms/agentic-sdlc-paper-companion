@@ -1,1 +1,5 @@
+// raw_sha256=96da222ab19d50d1634102257d5778ba2f173d45e82e8135e940b2b5bb72452e
+// raw_bytes=489
+```json
 {"bugs_found": ["cmd_review_gate has a side-effect-laden list comprehension that 'dedupes' all_round_files by name using 'not _seen.add(fp.name)'; relying on side-effects in comprehensions is anti-pattern and the dedup is redundant since glob already yields unique paths — confusing dead/odd code that obscures intent and could mask future bugs", "round-*.json lexicographic sort misorders round 10+", "FLOAT_PATTERNS false positives in comments/strings"], "verdict": "REQUEST_CHANGES"}
+```

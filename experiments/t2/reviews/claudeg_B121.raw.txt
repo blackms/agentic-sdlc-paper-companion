@@ -1,1 +1,5 @@
+// raw_sha256=05760d3f3500a594b7fc39c3eb03220bf5951417401182e1588fa13213389ebe
+// raw_bytes=366
+```json
 {"bugs_found": ["loan_payment error message 'months <= 0' is raised even when the failure is m > 1000000, misleading the caller", "the 1_000_000 month upper bound is a magic number with no justification or documentation", "transfer is not atomic and lacks rollback if credit step fails", "fx_convert does not enforce a positive rate"], "verdict": "REQUEST_CHANGES"}
+```

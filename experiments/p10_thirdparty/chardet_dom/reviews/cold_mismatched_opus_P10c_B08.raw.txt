@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided (chardet CharDistributionAnalysis) is completely unrelated to the bankcheck contracts; none of the contracted functions/classes (Reporter, load_yaml_file, cmd_* handlers, build_parser, main, etc.) are implemented, so every contract is violated by absence"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=1d86148be75d1abd172e473dce1f1dde3ba1df2dc33c6dd957d79884d180d04d
+// raw_bytes=316
+```json
+{"bugs_found": ["Code provided (chardet CharDistributionAnalysis) is completely unrelated to the bankcheck contracts; none of the contracted functions/classes (Reporter, load_yaml_file, cmd_* handlers, build_parser, main, etc.) are implemented, so every contract is violated by absence"], "verdict": "REQUEST_CHANGES"}
+```

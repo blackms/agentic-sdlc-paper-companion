@@ -1,1 +1,5 @@
-{"bugs_found":["Parser.sep_by uses '-' operator instead of '+' to combine self.times(1) with the tail repetition; Parser has no __sub__ defined, so sep_by raises TypeError on construction, violating its contract of producing a list of separated items"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=37992f8e80535d73418afd13395a17fa65fd91f051f059a3fe1cd6e44cc13713
+// raw_bytes=282
+```json
+{"bugs_found": ["Parser.sep_by uses '-' operator instead of '+' to combine self.times(1) with the tail repetition; Parser has no __sub__ defined, so sep_by raises TypeError on construction, violating its contract of producing a list of separated items"], "verdict": "REQUEST_CHANGES"}
+```

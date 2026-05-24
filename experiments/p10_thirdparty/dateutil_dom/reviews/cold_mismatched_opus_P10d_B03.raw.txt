@@ -1,1 +1,5 @@
-{"bugs_found":[],"verdict":"ACCEPT"}
+// raw_sha256=98ff9da022035556419f1410c972ada70a485744aca33634b64c34ac16aea68c
+// raw_bytes=37
+```json
+{"bugs_found": [], "verdict": "ACCEPT"}
+```

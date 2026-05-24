@@ -1,1 +1,5 @@
+// raw_sha256=7250f2d73493d30dade10507adffb592edd25b529df71eb1ebf1bbbb63e43e44
+// raw_bytes=49
+```json
 {"bugs_found": [], "verdict": "REQUEST_CHANGES"}
+```

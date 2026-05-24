@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=7e77df3ec0cccd10657ef44610c9af08b26573a40d645afdd487af768d07c7e9
+// raw_bytes=464
+```json
 {"bugs_found": ["Complete mismatch between contract and code: none of the contracted functions or classes (Reporter, load_yaml_file, cmd_*, etc.) are present in the provided code."], "verdict": "REQUEST_CHANGES"}
+```

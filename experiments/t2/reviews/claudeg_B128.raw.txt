@@ -1,1 +1,3 @@
-{"bugs_found": ["loan_payment returns a formatted string 'f\"{p/m} EUR\"' instead of a Decimal when monthly_rate is 0, violating the return-type contract"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=291486f8599a8aa4110933beee732c4a745fb2b4a4024861d3fc05f4db1713bb
+// raw_bytes=187

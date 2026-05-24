@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=e89328f95f6ce9f9d5538b7644917462d13d5f1ce2be223194ae7111ae413d10
+// raw_bytes=368
 ```json
 {"bugs_found": ["In Sniffer._guess_delimiter, the while loop condition uses len(delims) != 0 instead of == 0, preventing delimiter inference", "In DictWriter._dict_to_list, rowdict.keys() - self.fieldnames raises TypeError instead of ValueError when fieldnames is a list"], "verdict": "REQUEST_CHANGES"}
 ```

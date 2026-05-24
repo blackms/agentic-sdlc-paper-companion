@@ -1,1 +1,5 @@
+// raw_sha256=3e38ee6a7ed6f33b0987bae4e7c335c9ffa8eba231859803ca8c96eee885f4f3
+// raw_bytes=271
+```json
 {"bugs_found": ["fx_convert divides converted amount by Decimal(2), halving every result and producing systematically wrong FX conversions", "no rounding/quantization on monetary results", "transfer lacks transactional atomicity/rollback"], "verdict": "REQUEST_CHANGES"}
+```

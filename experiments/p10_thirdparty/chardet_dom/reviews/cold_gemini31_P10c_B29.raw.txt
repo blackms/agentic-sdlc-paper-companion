@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=e014dc1a6e71deba83283a3209d34f2b6f5d9cd31253312bbc4d4f40b8c1e68a
+// raw_bytes=253
+```json
 {"bugs_found": ["EUCKRDistributionAnalysis.get_order uses `first_char + 176` instead of `first_char - 176`, violating the `94 * (first_char - 0xB0)` formula invariant."], "verdict": "REQUEST_CHANGES"}
+```

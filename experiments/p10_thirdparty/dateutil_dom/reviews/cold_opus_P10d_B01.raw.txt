@@ -1,1 +1,5 @@
-{"bugs_found":["__bool__ uses 'or' instead of 'and' and inverts the semantics: returns True only when every relative field is falsy AND every absolute field is None, which is the opposite of the contract (should return True iff any field is set)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=fa9aa3c5f92967f1b14c3d6d02b5a7e3b663e092b3274253156bd655ae8880cf
+// raw_bytes=277
+```json
+{"bugs_found": ["__bool__ uses 'or' instead of 'and' and inverts the semantics: returns True only when every relative field is falsy AND every absolute field is None, which is the opposite of the contract (should return True iff any field is set)"], "verdict": "REQUEST_CHANGES"}
+```

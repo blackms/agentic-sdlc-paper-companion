@@ -1,1 +1,5 @@
+// raw_sha256=40d36f133823cca67fcd941422a3bcf263a855f4a56c8ad97ca03b2699108957
+// raw_bytes=200
+```json
 {"bugs_found": ["loan_payment uses (1+r)^(m-1) in both numerator and denominator instead of standard (1+r)^m amortization formula, producing incorrect payment amounts"], "verdict": "REQUEST_CHANGES"}
+```

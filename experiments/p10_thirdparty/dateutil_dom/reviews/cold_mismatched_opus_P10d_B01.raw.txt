@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is dateutil.relativedelta, completely unrelated to bankcheck contracts; no functions from the contract document (Reporter, load_yaml_file, cmd_*, etc.) are present, so every contract is vacuously unimplemented"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=a767583436e42099e69a0c38a4fc42f9531bd9b42f6438feae743a57235baa61
+// raw_bytes=275
+```json
+{"bugs_found": ["Code under review is dateutil.relativedelta, completely unrelated to bankcheck contracts; no functions from the contract document (Reporter, load_yaml_file, cmd_*, etc.) are present, so every contract is vacuously unimplemented"], "verdict": "REQUEST_CHANGES"}
+```

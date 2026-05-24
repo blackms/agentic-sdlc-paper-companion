@@ -1,1 +1,5 @@
-{"bugs_found":["__eq__ uses self.hours != other.hours instead of == , inverting equality for the hours field and breaking the equality contract"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=4e70d28d8245ef2540b4ff71b81722cc019dfcf65d9515b56a25b2da1b6d10f6
+// raw_bytes=175
+```json
+{"bugs_found": ["__eq__ uses self.hours != other.hours instead of == , inverting equality for the hours field and breaking the equality contract"], "verdict": "REQUEST_CHANGES"}
+```

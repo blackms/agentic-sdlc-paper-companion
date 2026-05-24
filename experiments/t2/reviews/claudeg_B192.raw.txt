@@ -1,1 +1,5 @@
+// raw_sha256=82f6ee6085378e5aa2ac536772172920974cd83185897f3dd6aa4156b581a5cd
+// raw_bytes=323
+```json
 {"bugs_found": ["fx_convert raises rate to the power 1.0001 instead of multiplying by it, producing systematically wrong conversions", "incorrect mathematical formula silently corrupts every FX conversion", "no rounding/quantization on monetary results", "transfer lacks atomicity/rollback"], "verdict": "REQUEST_CHANGES"}
+```

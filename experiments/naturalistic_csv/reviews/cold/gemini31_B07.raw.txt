@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=f538b83a2e3e823ab2934983dc63e44c5eeca823b34bdb227f67189654e405a2
+// raw_bytes=424
+```json
 {"bugs_found": ["DictReader.__next__ fails to update self.line_num from self.reader.line_num after skipping empty rows, violating the line_num tracking invariant.", "DictWriter._dict_to_list raises a TypeError instead of ValueError when extrasaction is 'raise' because it attempts to subtract a list (self.fieldnames) from rowdict.keys()."], "verdict": "REQUEST_CHANGES"}
+```

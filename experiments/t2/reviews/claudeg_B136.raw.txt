@@ -1,1 +1,5 @@
+// raw_sha256=f6a8050d093d29e94cd85069d9a0b0c0f4d46a92f3060b6d87e488415204f70e
+// raw_bytes=378
+```json
 {"bugs_found": ["transfer credits destination before overflow check, so when amount > 10^9 the receiver is credited but sender is not debited (money creation)", "OverflowError raised after partial state mutation breaks atomicity of transfer", "no rollback if exception is raised mid-transfer", "magic number 10^9 hardcoded with no justification"], "verdict": "REQUEST_CHANGES"}
+```

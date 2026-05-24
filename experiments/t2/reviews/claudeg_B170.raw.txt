@@ -1,1 +1,5 @@
+// raw_sha256=5ec0cbddea62557857924807d9aa39013b6d87a621e18c198924e7b9c9f0798c
+// raw_bytes=400
+```json
 {"bugs_found": ["apply_fee: validation 'if a <= 0' rejects amount==0 with the message 'amount negative', which is incorrect — zero is not negative and should either be allowed or rejected with an accurate error message", "apply_fee: error message 'amount negative' does not match the actual condition (a <= 0), making debugging harder for callers who pass amount=0"], "verdict": "REQUEST_CHANGES"}
+```

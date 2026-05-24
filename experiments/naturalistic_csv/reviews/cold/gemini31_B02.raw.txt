@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=3027d2a3a132bf3d24b82d5b168c6e78a547360139dcadb531327407798c1204
+// raw_bytes=501
+```json
 {"bugs_found": ["DictReader.__next__ updates self.line_num before skipping empty rows, causing the line number to reflect a skipped blank row rather than the actual returned data row.", "Sniffer._guess_delimiter fails to reset the 'delims' dictionary inside the chunk processing loop, causing it to incorrectly skip evaluating candidate consistencies in all subsequent chunks if any candidates were found initially."], "verdict": "REQUEST_CHANGES"}
+```

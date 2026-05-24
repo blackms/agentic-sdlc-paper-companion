@@ -1,1 +1,5 @@
+// raw_sha256=8c1862c6d86d74318557dccea6a06fd9ec8bb66fa180d0ac942a0c7f387c872f
+// raw_bytes=359
+```json
 {"bugs_found": ["compound_interest raises OverflowError instead of ValueError for a negative rate, breaking exception-type contract and surprising callers expecting ValueError as in the rest of the module", "transfer is not atomic: no rollback if credit fails after debit", "fx_convert does not validate that rate is positive"], "verdict": "REQUEST_CHANGES"}
+```

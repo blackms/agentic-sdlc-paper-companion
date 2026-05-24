@@ -1,1 +1,5 @@
+// raw_sha256=0015245420b3a220e8e33cd61be50a52765c3e8003ab8dd38f12ad677cad5a8b
+// raw_bytes=415
+```json
 {"bugs_found": ["fx_convert uppercases currency codes for lookup but rates dict keys are not normalized, so lowercase or mixed-case keys yield missing-rate errors", "asymmetric normalization between equality check (from_currency == to_currency) and dict lookup leads to inconsistent behavior", "no rounding/quantization on monetary results", "transfer lacks transactional atomicity"], "verdict": "REQUEST_CHANGES"}
+```

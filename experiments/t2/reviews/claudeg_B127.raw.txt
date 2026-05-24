@@ -1,1 +1,5 @@
+// raw_sha256=4a59f06f06f88f2b056a74ff4a5e591ffe8360bccbd6190ff7be58038434e0f3
+// raw_bytes=164
+```json
 {"bugs_found": ["loan_payment raises generic Exception instead of ValueError when months <= 0, breaking error-handling consistency"], "verdict": "REQUEST_CHANGES"}
+```

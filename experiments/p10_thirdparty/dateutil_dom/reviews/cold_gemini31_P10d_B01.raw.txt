@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=2ab5f35fb4213f7bafd95d8afd5d4353ec6667ac008548fd4fb6a5e0ded58070
+// raw_bytes=376
 ```json
 {"bugs_found": ["In __bool__, the condition uses 'or' instead of 'and' to combine attribute checks, which incorrectly causes any relativedelta object with at least one empty/zero attribute to evaluate to False (it should only evaluate to False if ALL attributes are empty/zero)."], "verdict": "REQUEST_CHANGES"}
 ```

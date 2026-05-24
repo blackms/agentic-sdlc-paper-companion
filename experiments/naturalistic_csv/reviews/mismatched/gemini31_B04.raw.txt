@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=447154d4812d4ded8c9848922c25190d379e900e21a483fdf42d21e3a6652736
+// raw_bytes=277
+```json
 {"bugs_found": ["Expected bankcheck functions and classes (e.g., Reporter, load_yaml_file, cmd_all) are completely missing from the provided code, which appears to be the standard csv module."], "verdict": "REQUEST_CHANGES"}
+```

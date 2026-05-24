@@ -1,1 +1,5 @@
-{"bugs_found":["EUCKRDistributionAnalysis.get_order uses strict 'first_char > 176' instead of inclusive '>= 0xB0' (176), so byte 0xB0 is incorrectly rejected, violating the contract's inclusive lower-bound invariant and missing an entire row of valid EUC-KR first bytes"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=11d698a50eaaeea672a0ee348e1f3c5d83fee03804f6d36dfb073fef6d3e89b3
+// raw_bytes=301
+```json
+{"bugs_found": ["EUCKRDistributionAnalysis.get_order uses strict 'first_char > 176' instead of inclusive '>= 0xB0' (176), so byte 0xB0 is incorrectly rejected, violating the contract's inclusive lower-bound invariant and missing an entire row of valid EUC-KR first bytes"], "verdict": "REQUEST_CHANGES"}
+```

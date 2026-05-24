@@ -1,1 +1,3 @@
-{"bugs_found": ["JSONObject colon-delimiter check is inverted: condition is `if s[end:end+1] == ':'` instead of `!= ':'`, so whitespace before the `:` is never skipped (e.g. `{\"a\" : 1}` raises 'Expecting value' instead of parsing). Violates the contract guarantee that whitespace is skipped where permitted and that a missing `:` should raise the specific 'Expecting ':' delimiter' error."], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=22a395b9da878dfecf224026c46be2028931715cd70e93c6fdd1d352b0e0d15a
+// raw_bytes=424

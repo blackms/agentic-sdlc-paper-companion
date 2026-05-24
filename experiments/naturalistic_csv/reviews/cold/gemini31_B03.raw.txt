@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=36489a2090149bafc6eddc637a8e8edad81d557894a453ca3159f3103803870b
+// raw_bytes=206
+```json
 {"bugs_found": ["DictWriter.writeheader implicitly returns None instead of returning the result of self.writerow(header)"], "verdict": "REQUEST_CHANGES"}
+```

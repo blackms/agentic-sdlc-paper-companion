@@ -1,1 +1,5 @@
+// raw_sha256=b476484c4a3427c6a364c85d973223561a000be887ffc09070fac57411959ee8
+// raw_bytes=278
+```json
 {"bugs_found": ["Parser.times: loop condition is `while times <= max:` instead of `while times < max:`, allowing up to max+1 successful matches and violating the operator-level invariant that `times` is strictly less than `max` per the contract"], "verdict": "REQUEST_CHANGES"}
+```

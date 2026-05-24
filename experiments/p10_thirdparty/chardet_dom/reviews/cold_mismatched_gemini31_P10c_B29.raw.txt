@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=6e2127b7a908d9eed4f4aa30f7a1a90d19d82d04fdd2a3ef7aa2f61f8128c4a8
+// raw_bytes=303
 ```json
 {"bugs_found": ["The provided code completely fails to implement the specified bankcheck contracts; none of the expected functions (e.g., Reporter methods, cmd_*, load_*) are present in the implementation."], "verdict": "REQUEST_CHANGES"}
 ```

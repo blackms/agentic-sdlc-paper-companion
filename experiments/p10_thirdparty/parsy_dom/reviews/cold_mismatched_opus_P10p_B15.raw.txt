@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is a parser combinator library (parsy-like), not bankcheck. None of the contracts (Reporter, load_yaml_file, cmd_*, build_parser, main, etc.) are implemented in the supplied code."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=e90b670dd020348c79567b33f86a32f767aacad137cf12cebbc94c8d3f543c80
+// raw_bytes=241
+```json
+{"bugs_found": ["Code provided is a parser combinator library (parsy-like), not bankcheck. None of the contracts (Reporter, load_yaml_file, cmd_*, build_parser, main, etc.) are implemented in the supplied code."], "verdict": "REQUEST_CHANGES"}
+```

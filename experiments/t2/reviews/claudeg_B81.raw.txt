@@ -1,1 +1,5 @@
+// raw_sha256=1074707b2c11b849d1f01b4f359157078e823d382f6a90ab136bd9d78eefa17d
+// raw_bytes=152
+```json
 {"bugs_found": ["compound_interest uses r/(n+1) instead of r/n in the compounding formula, producing incorrect results"], "verdict": "REQUEST_CHANGES"}
+```

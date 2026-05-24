@@ -1,1 +1,5 @@
+// raw_sha256=020e97639327cbb16ab4dfec9e8854063b5651d723f340f126ec1f8a5033264c
+// raw_bytes=169
+```json
 {"bugs_found": ["apply_fee uses 'fee <= fmin - 0.001' instead of 'fee < fmin', so fees just below fmin are not bumped up to the minimum"], "verdict": "REQUEST_CHANGES"}
+```

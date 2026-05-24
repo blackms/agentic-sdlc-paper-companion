@@ -1,1 +1,5 @@
+// raw_sha256=7f8289ba4860723fa87a56c35a930fb5035334c26fcbb9c2af24ad5eb2d7b117
+// raw_bytes=586
+```json
 {"bugs_found": ["apply_fee: returns 'abs(a - fee)' instead of 'a - fee' — when fee exceeds amount (e.g. fmin > amount * pct and fmin > a) the function returns a positive value where it should return a negative/zero net, silently masking under-water transactions", "apply_fee: abs() hides the sign so callers cannot detect that the fee fully consumed the amount, which is a financial correctness bug (could produce phantom credits)", "apply_fee: behavior diverges from the natural mathematical model 'net = amount - fee' and is not documented anywhere"], "verdict": "REQUEST_CHANGES"}
+```

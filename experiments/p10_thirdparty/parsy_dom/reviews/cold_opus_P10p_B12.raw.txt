@@ -1,1 +1,3 @@
-{"bugs_found": ["Parser.until uses 'if times > max' instead of 'if times >= max', violating the contract's operator-level invariant that the max check uses 'times >= max'; this allows one extra iteration beyond max before failing with 'at most {max} items'"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=6eb568844fd992efd912e778d6ded0e1f817581616df787548d6e8b2159e62ad
+// raw_bytes=290

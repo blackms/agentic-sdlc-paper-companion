@@ -1,1 +1,5 @@
+// raw_sha256=52f15cf7d2dc2195140b2bad73b94b51daa92df6b79b0ce634824b36218d8626
+// raw_bytes=160
+```json
 {"bugs_found": ["compound_interest computes (p + r) * (1 + r/n)^(n*t), incorrectly adding rate to principal before compounding"], "verdict": "REQUEST_CHANGES"}
+```

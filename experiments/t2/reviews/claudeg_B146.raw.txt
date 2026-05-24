@@ -1,1 +1,5 @@
+// raw_sha256=e6bf29c8c4066199f711793968a839586ef254f056fb641ee33d16e875deb1c8
+// raw_bytes=164
+```json
 {"bugs_found": ["transfer credits account_to with sender's post-debit balance instead of amount, causing wrong destination balance"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5468ms...
+// raw_sha256=488bec16c8552e222667e0ac9eb2351790e686425688a307ad0dfb3a38aaab08
+// raw_bytes=438
 ```json
 {"bugs_found": ["The provided code is 'dateutil.relativedelta' and does not implement or contain any of the functions specified in the 'bankcheck' contracts (e.g., Reporter methods, load_yaml_file, command handlers)."], "verdict": "REQUEST_CHANGES"}
 ```

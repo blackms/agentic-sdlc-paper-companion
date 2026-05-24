@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is Python stdlib csv.py, completely unrelated to the bankcheck contracts; no bankcheck functions present to validate against contract"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=12e7d22071ff1f865334cde399de67bed6b25583fe541112f6e5daa0ac290215
+// raw_bytes=195
+```json
+{"bugs_found": ["Code provided is Python stdlib csv.py, completely unrelated to the bankcheck contracts; no bankcheck functions present to validate against contract"], "verdict": "REQUEST_CHANGES"}
+```

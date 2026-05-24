@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is Python stdlib csv module, completely unrelated to bankcheck contracts; no bankcheck functions present to evaluate against contracts"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=ccbd7b7cd66a437c94eeca935ad5279c9e72f6ade6378da499896c5cbc6c08ee
+// raw_bytes=200
+```json
+{"bugs_found": ["Code under review is Python stdlib csv module, completely unrelated to bankcheck contracts; no bankcheck functions present to evaluate against contracts"], "verdict": "REQUEST_CHANGES"}
+```

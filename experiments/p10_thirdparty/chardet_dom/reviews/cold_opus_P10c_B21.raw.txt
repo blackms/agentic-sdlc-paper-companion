@@ -1,1 +1,5 @@
-{"bugs_found":["get_confidence uses (_total_chars + _freq_chars) in the denominator instead of (_total_chars - _freq_chars), violating the contract formula and inflating/deflating confidence incorrectly"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=85487925976c72548a0d38017b2845bf778e1ca73bbddb7e367049973e7eb5f6
+// raw_bytes=234
+```json
+{"bugs_found": ["get_confidence uses (_total_chars + _freq_chars) in the denominator instead of (_total_chars - _freq_chars), violating the contract formula and inflating/deflating confidence incorrectly"], "verdict": "REQUEST_CHANGES"}
+```

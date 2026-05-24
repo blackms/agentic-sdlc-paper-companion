@@ -1,1 +1,5 @@
+// raw_sha256=14ee7b8923beef78e8023c14c2ac7aba0d510920e20cfe8a2d57839f8503f3b7
+// raw_bytes=282
+```json
 {"bugs_found": ["char_from str branch uses '[' + string - ']' (subtraction) instead of concatenation, raising TypeError at parser construction for any str input — violates the contract that char_from(str) returns a parser with description '[...]'"], "verdict": "REQUEST_CHANGES"}
+```

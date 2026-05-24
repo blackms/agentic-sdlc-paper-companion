@@ -1,1 +1,5 @@
+// raw_sha256=8f0cb207a5bffe656a067183ee1ec9978eb1c039ab236ff2f888c0c43265c2ca
+// raw_bytes=203
+```json
 {"bugs_found": ["transfer self-transfer guard combined with currency mismatch via 'and' makes it unreachable in practice; same-account same-currency transfers go through"], "verdict": "REQUEST_CHANGES"}
+```

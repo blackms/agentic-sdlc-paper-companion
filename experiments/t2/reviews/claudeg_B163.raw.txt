@@ -1,1 +1,5 @@
+// raw_sha256=85ac8e76464e88c4a8eea9a3f537a97fe3a7f16c529167ac464eedecd0be7846
+// raw_bytes=273
+```json
 {"bugs_found": ["apply_fee uses Decimal(str(fee_pct or 0)) which silently coerces None/False/0 to 0 instead of raising, hiding caller bugs and producing zero-fee result", "transfer not atomic", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}
+```

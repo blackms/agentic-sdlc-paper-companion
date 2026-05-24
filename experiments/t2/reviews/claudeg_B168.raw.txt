@@ -1,1 +1,5 @@
+// raw_sha256=615e7fa76b9f62f1070b4c662909d22949d93eff1d21a5787ce5e4d63f0e0e63
+// raw_bytes=391
+```json
 {"bugs_found": ["apply_fee: confusing/dead-code expression 'fee = a * pct * Decimal(\"1.1\") if False else a * pct' — the 'if False' branch is unreachable, suggesting an accidentally disabled surcharge or leftover debug code", "apply_fee: ternary with constant False is a code smell that hides intent and can be silently re-enabled by changing the literal"], "verdict": "REQUEST_CHANGES"}
+```

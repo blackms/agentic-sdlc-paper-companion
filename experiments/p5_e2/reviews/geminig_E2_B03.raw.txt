@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=e2ae8648f956ba4c7f7ed470c2b02adf02652c31053f7f74dadb16710919517a
+// raw_bytes=465
 ```json
 {"bugs_found": ["Incorrect exit code aggregation in cmd_all: Using 'min' instead of 'max' for cmd_profile_validate can mask failures.", "Potential path traversal vulnerability in cmd_review_validate and cmd_review_gate: The fallback logic for 'branch_dir' uses the unsanitized 'args.branch' directly, allowing access to directories outside the intended review folder."], "verdict": "REQUEST_CHANGES"}
 ```

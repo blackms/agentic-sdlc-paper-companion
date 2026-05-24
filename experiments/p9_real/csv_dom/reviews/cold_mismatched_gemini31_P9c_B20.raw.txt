@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=7c4ae7c6c6d1cbbc48ffe9d8e1713bd0a7263e462cdacd047a69e23af7f89b5c
+// raw_bytes=334
+```json
 {"bugs_found": ["Reporter class is completely missing from the implementation", "load_yaml_file function is missing", "load_json_file function is missing", "load_profile function is missing", "cmd_all and all other CLI command functions are missing"], "verdict": "REQUEST_CHANGES"}
+```

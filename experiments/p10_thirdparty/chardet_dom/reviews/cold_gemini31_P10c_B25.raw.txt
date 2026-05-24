@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5218ms...
+// raw_sha256=1c2b36bc29a8e0a0d8a73a81e95e90c9575c292fe9a781d687b8aad3e6ceba54
+// raw_bytes=334
 ```json
 {"bugs_found": ["EUCKRDistributionAnalysis.get_order uses `+ 161` instead of `- 161` for the second byte offset."], "verdict": "REQUEST_CHANGES"}
 ```

@@ -1,1 +1,5 @@
+// raw_sha256=992e72cebf915ff6202414d85b933055ceca034103496c2d09084af7fcd4c36f
+// raw_bytes=424
+```json
 {"bugs_found": ["Result.aggregate has swapped branches: when self.furthest != other.furthest (other is farther) it unions expected sets keeping self.furthest, and when they are equal it returns only other.expected. Per contract, equal furthest must union expected, and farther other must take other.furthest with other.expected only — violating the furthest-failure aggregation invariant."], "verdict": "REQUEST_CHANGES"}
+```

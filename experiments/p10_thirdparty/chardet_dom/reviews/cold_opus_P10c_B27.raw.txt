@@ -1,1 +1,5 @@
-{"bugs_found":["SJISDistributionAnalysis.get_order uses strict 'first_char > 129' instead of inclusive '>= 0x81', so the legal Shift-JIS lead byte 0x81 is rejected and returns -1, violating the contract's inclusive lower bound 0x81 <= first_char <= 0x9F"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=88089365f5e758a3889f395646e61836aa53af4bb718878844e669a846b733b3
+// raw_bytes=285
+```json
+{"bugs_found": ["SJISDistributionAnalysis.get_order uses strict 'first_char > 129' instead of inclusive '>= 0x81', so the legal Shift-JIS lead byte 0x81 is rejected and returns -1, violating the contract's inclusive lower bound 0x81 <= first_char <= 0x9F"], "verdict": "REQUEST_CHANGES"}
+```

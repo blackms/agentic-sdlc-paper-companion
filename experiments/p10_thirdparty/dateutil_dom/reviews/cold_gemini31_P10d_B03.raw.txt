@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5602ms...
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=106d79c01843186982af063ae3499575d1094a244bd70c351e18520bd2afbfc3
+// raw_bytes=627
 ```json
 {"bugs_found": ["In `__eq__`, the boolean logic for comparing `weekday.n` attributes uses `or` instead of `and`, causing it to incorrectly return `False` when comparing equivalent `n=None` and `n=1` values."], "verdict": "REQUEST_CHANGES"}
 ```

@@ -1,1 +1,5 @@
+// raw_sha256=6c3353ce80a1de614fd4ab4504e7001580720a7db3aaf4902ec32b5ea18c9421
+// raw_bytes=487
+```json
 {"bugs_found": ["Big5DistributionAnalysis.get_order: high second-byte branch returns 157*(first-0xA4) + second - 0xA1 - 63 instead of contract-required 157*(first-0xA4) + second - 0xA1 + 63; sign of the +63 offset is inverted, so all Big5 second_char >= 0xA1 cases yield order 126 lower than specified (e.g. (0xA4,0xA1) returns -126 instead of 63), violating the post-condition and the operator-level invariant 'High second-byte branch must include +63'"], "verdict": "REQUEST_CHANGES"}
+```

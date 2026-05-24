@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is dateutil.relativedelta, not bankcheck — none of the contracted functions/classes (Reporter, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) are present, so every contract is violated by absence of implementation"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=2ebc337083b317e138f706c599638ae3bcdaae3966134b67c9525d0db2c015dc
+// raw_bytes=377
+```json
+{"bugs_found": ["Code under review is dateutil.relativedelta, not bankcheck — none of the contracted functions/classes (Reporter, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) are present, so every contract is violated by absence of implementation"], "verdict": "REQUEST_CHANGES"}
+```

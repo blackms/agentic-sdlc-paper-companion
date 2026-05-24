@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis classes), so no contract from the document applies; cannot verify any bankcheck contract."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=a283ed63714cdadfd3f9dffb8ad6647d90440be362fac61b37a5f27838cd690a
+// raw_bytes=229
+```json
+{"bugs_found": ["Code under review is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis classes), so no contract from the document applies; cannot verify any bankcheck contract."], "verdict": "REQUEST_CHANGES"}
+```

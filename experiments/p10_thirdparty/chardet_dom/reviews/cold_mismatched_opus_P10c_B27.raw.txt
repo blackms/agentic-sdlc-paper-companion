@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is from chardet library (CharDistributionAnalysis), not bankcheck — no contracts can be matched against this implementation"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=86c6f5d49fccbfb091d1e52453b81efe88af2b821f71ac61b0901da749be5256
+// raw_bytes=187
+```json
+{"bugs_found": ["Code provided is from chardet library (CharDistributionAnalysis), not bankcheck — no contracts can be matched against this implementation"], "verdict": "REQUEST_CHANGES"}
+```

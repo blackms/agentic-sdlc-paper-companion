@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=7ef56773892fa920b9fe743e8be1d3aff20349d4c5aedc50b709e2c235471dd3
+// raw_bytes=657
 ```json
 {"bugs_found": ["Missing all bankcheck contract implementations (Reporter, load_yaml_file, load_profile, cmd_* functions, etc.)", "Missing parse(text: str) and parse_strict(text: str) functions defined in the JSON Parser contract", "ParseError.__init__ signature is (expected, stream, index) instead of the contracted (msg, position)", "ParseError does not set the required self.position attribute", "ParseError inherits from RuntimeError instead of Exception", "SyntaxError: Invalid decorator @p7_parser/contracts/parser_contracts.md used throughout the code"], "verdict": "REQUEST_CHANGES"}
 ```

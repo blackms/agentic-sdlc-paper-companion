@@ -1,1 +1,5 @@
+// raw_sha256=7e893b67724db5184211877417e05b941fc6b79954fbada8334dd5c773117dfc
+// raw_bytes=500
+```json
 {"bugs_found": ["apply_fee: undocumented hard cap 'fmax > 10**9' rejects legitimate large fee_max values with a misleading error message 'fee bounds negative' — message does not describe the actual failure", "apply_fee: arbitrary magic number 10**9 has no business justification in code or docstring; should be a named constant or removed", "apply_fee: combining the upper-bound check with the negativity check in one branch makes diagnostics ambiguous for callers"], "verdict": "REQUEST_CHANGES"}
+```

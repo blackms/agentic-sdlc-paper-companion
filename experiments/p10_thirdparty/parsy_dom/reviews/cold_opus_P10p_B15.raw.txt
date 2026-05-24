@@ -1,1 +1,5 @@
+// raw_sha256=090846ce464e8ab62eff4d5d5d8c964cc01f7bc3d77ad63f47add8507696ba38
+// raw_bytes=280
+```json
 {"bugs_found": ["Parser.at_least(n) uses 'self.times(n) - self.many()' but Parser has no __sub__ operator; contract requires concatenation via '+', so at_least raises TypeError at construction/use instead of returning a list of at-least-n results"], "verdict": "REQUEST_CHANGES"}
+```

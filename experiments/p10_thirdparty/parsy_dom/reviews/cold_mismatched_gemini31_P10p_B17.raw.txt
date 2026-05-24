@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=1977c43fb6932337707d3244176f7d6bd1e0ac790fce999d6d0b77f29c1c7454
+// raw_bytes=610
+```json
 {"bugs_found": ["The implementation completely omits the required Reporter class and its methods.", "All required file and configuration loading functions (load_yaml_file, load_json_file, load_profile) are missing.", "All CLI command handlers (cmd_profile_validate, cmd_review_validate, cmd_contract_presence, etc.) are missing.", "The required entrypoint functions build_parser and main are completely absent.", "The provided code implements an unrelated parser combinator library instead of the requested bankcheck module."], "verdict": "REQUEST_CHANGES"}
+```

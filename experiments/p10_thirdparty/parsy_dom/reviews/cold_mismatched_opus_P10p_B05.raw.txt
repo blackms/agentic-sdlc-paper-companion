@@ -1,1 +1,5 @@
-{"bugs_found":["test_item returns Result.success(index - 1, item) instead of index + 1, causing infinite loops and incorrect consumption — violates the contract that parsers advance the stream position"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=78a3559d6a7ccdf310084ccd3f9077c831d57faa4684283b7f5c125d4507f671
+// raw_bytes=235
+```json
+{"bugs_found": ["test_item returns Result.success(index - 1, item) instead of index + 1, causing infinite loops and incorrect consumption — violates the contract that parsers advance the stream position"], "verdict": "REQUEST_CHANGES"}
+```

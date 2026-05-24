@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5105ms...
+// raw_sha256=87c05be523a4b936099f5167a41fefdb437c4a0ee59a9eb39afb0028509e7b46
+// raw_bytes=400
 ```json
 {"bugs_found": ["JSONObject inverted condition: 'if nextchar == \"\"' raises an error for valid double-quoted property names after a comma, breaking objects with multiple members"], "verdict": "REQUEST_CHANGES"}
 ```

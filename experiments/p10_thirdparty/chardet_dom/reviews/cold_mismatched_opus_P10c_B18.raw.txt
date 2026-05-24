@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis); none of the contracted functions/classes are present, so contract conformance cannot be established"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=fdda16da06b554c1080ea45d5dfb0aa7e29e881befc28f6b494dde261be74f49
+// raw_bytes=237
+```json
+{"bugs_found": ["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis); none of the contracted functions/classes are present, so contract conformance cannot be established"], "verdict": "REQUEST_CHANGES"}
+```

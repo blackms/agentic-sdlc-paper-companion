@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is dateutil.relativedelta, not bankcheck — contracts do not match the code at all"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=909638a9ccca7672e40233742c4b43b72b0f35ccb54bd1a98d7db87e69a9179c
+// raw_bytes=149
+```json
+{"bugs_found": ["Code under review is dateutil.relativedelta, not bankcheck — contracts do not match the code at all"], "verdict": "REQUEST_CHANGES"}
+```

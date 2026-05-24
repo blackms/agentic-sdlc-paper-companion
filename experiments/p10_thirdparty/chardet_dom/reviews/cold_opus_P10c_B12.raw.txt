@@ -1,1 +1,5 @@
+// raw_sha256=cf431a4305686eb4cdb762eac355988a02e626d45c87d667a2fc3e69a7ff587b
+// raw_bytes=379
+```json
 {"bugs_found": ["Big5DistributionAnalysis.get_order uses 'first_char > 164' instead of 'first_char >= 0xA4 (164)', causing the entire 0xA4 row (157 valid characters starting with order 0) to be incorrectly mapped to -1, violating the contract's inclusive lower-bound invariant and the edge case (0xA4, 0x40) -> order 0 / (0xA4, 0xA1) -> order 63"], "verdict": "REQUEST_CHANGES"}
+```

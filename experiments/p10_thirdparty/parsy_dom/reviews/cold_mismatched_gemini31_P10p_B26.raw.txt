@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=d62ce8ee9a91c7b02f583c2fef1c2d330f646bc2af4633e8b546a9a28a8d04ac
+// raw_bytes=651
+```json
 {"bugs_found": ["The implementation is missing the Reporter class and all its methods (ok, warn, fail, config_error).", "The implementation is missing all required utility functions such as load_yaml_file, load_json_file, and load_profile.", "The implementation is missing all CLI command handlers like cmd_profile_validate, cmd_all, and cmd_review_gate.", "The implementation is missing the build_parser and main entrypoint functions.", "The provided code contains invalid Python syntax due to the unresolvable decorator '@p7_parser/contracts/parser_contracts.md'."], "verdict": "REQUEST_CHANGES"}
+```

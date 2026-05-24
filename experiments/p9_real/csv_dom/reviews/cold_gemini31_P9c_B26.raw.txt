@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=bba0d0d549ad69eafac11eb3b76e6fcb089b6e026f618e5f131d5681279a4fbc
+// raw_bytes=314
 ```json
 {"bugs_found": ["DictWriter._dict_to_list raises TypeError when extrasaction='raise' because it attempts to subtract self.fieldnames (a list) from rowdict.keys() (a dict_keys view), which is not supported in Python 3"], "verdict": "REQUEST_CHANGES"}
 ```

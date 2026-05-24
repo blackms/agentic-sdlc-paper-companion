@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=f8fe1d65265d9c3ac1ddeabaf32d845d55503304586dd2fcf69a91be9d8e02d5
+// raw_bytes=611
+```json
 {"bugs_found": ["The implementation is completely missing all classes and functions defined in the bankcheck contract (e.g., Reporter, load_yaml_file, cmd_all).", "The required top-level functions parse(text: str) and parse_strict(text: str) from parser_contracts.md are not implemented.", "ParseError __init__ signature takes (expected, stream, index) which violates the parser_contracts.md requirement of (msg: str, position: int).", "ParseError instances lack the mandatory '.position' attribute specified in the contract."], "verdict": "REQUEST_CHANGES"}
+```

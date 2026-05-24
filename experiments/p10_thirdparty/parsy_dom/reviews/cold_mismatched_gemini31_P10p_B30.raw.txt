@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=9f89d5c2b9672c3a66c5d87b080967f631c631199e375eb0e537779fce1689d3
+// raw_bytes=501
+```json
 {"bugs_found": ["The codebase completely lacks implementations for all bankcheck contract functions (Reporter, load_yaml_file, cmd_profile_validate, etc.).", "ParseError fails to initialize with (msg, position) and does not expose a .position attribute as required by the parser contract.", "The required top-level functions parse(text: str) and parse_strict(text: str) from the parser contract are not implemented."], "verdict": "REQUEST_CHANGES"}
+```

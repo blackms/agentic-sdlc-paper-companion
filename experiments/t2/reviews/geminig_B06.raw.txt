@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=f024a30ba12252acb77d2fb8bd591cc1298fcd068309ec3efbce2bd033f35ef1
+// raw_bytes=271
+```json
 {"bugs_found": ["In `compound_interest`, the formula uses multiplication `(n * t)` instead of exponentiation `**(n * t)` for the compounding factor, leading to an incorrect calculation."], "verdict": "REQUEST_CHANGES"}
+```

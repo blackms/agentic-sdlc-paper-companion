@@ -1,1 +1,5 @@
+// raw_sha256=977741a37bfc31039e577abb2152bfcefbea9782cbecee38f3fbc178c8f8caa2
+// raw_bytes=140
+```json
 {"bugs_found": ["transfer accepts negative amounts: validation uses 'amount == 0' instead of 'amount <= 0'"], "verdict": "REQUEST_CHANGES"}
+```

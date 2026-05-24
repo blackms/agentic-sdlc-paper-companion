@@ -1,1 +1,5 @@
+// raw_sha256=a5c9c0f1fbd805af0ee8dffd4f43ff6fcb46d0826fad8b6a0ffc424838f49624
+// raw_bytes=189
+```json
 {"bugs_found": ["loan_payment returns Decimal(0) when monthly_rate==0 instead of principal/months, so a zero-interest loan is reported as having no payment"], "verdict": "REQUEST_CHANGES"}
+```

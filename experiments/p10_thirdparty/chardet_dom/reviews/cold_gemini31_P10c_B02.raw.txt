@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5118ms...
+// raw_sha256=6d4a7bd7aa0da0bd901cad49c8a525296ba641a4f696c4f56dc0ce2e05c444a1
+// raw_bytes=474
 ```json
 {"bugs_found": ["In EUCTWDistributionAnalysis.get_order, row width calculation incorrectly uses division (94 / (first_char - 196)) instead of multiplication, which violates the formula contract and will cause a ZeroDivisionError when first_char == 196."], "verdict": "REQUEST_CHANGES"}
 ```

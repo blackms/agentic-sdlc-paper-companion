@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is parsy library, not bankcheck — no contracted functions (Reporter, load_yaml_file, cmd_*, etc.) are present, so all contracts are violated by absence"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=cd5b808f6a6695a4aaa033b183355b9784ae07165dc0818997b9d718c6f0d8f3
+// raw_bytes=215
+```json
+{"bugs_found": ["Code provided is parsy library, not bankcheck — no contracted functions (Reporter, load_yaml_file, cmd_*, etc.) are present, so all contracts are violated by absence"], "verdict": "REQUEST_CHANGES"}
+```

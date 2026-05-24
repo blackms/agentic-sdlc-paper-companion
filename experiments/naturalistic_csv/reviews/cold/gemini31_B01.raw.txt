@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=1fa96d2800375abf9d5a4233b865878f87856eb8f30d748a0bfebb5d7143b866
+// raw_bytes=536
 ```json
 {"bugs_found": ["DictWriter.__init__ does not store extrasaction as normalized lowercase, violating the postcondition.", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction is 'raise' because dict_keys cannot be subtracted from a list.", "DictReader.__next__ fails to update self.line_num after skipping empty rows, causing it to reflect the line number of the skipped empty row instead of the returned row."], "verdict": "REQUEST_CHANGES"}
 ```

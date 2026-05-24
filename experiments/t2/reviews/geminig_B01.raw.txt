@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=d1555c7f32fc3dfc7573e906a8fdf2c7271b0562140a3dfa38a690b1b24b6df2
+// raw_bytes=230
+```json
 {"bugs_found": ["In `compound_interest`, the exponent should be `n * t` for the standard compound interest formula, but it is currently `n + t`."], "verdict": "REQUEST_CHANGES"}
+```

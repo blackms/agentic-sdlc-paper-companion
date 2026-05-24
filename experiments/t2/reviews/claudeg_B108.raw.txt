@@ -1,1 +1,5 @@
+// raw_sha256=93eedb003816b20b4707916a02428cd9d17ff9fd6ca3bd9275131afd3bba2a8a
+// raw_bytes=179
+```json
 {"bugs_found": ["compound_interest casts principal via Decimal(str(int(principal))) which silently truncates the fractional part of the principal"], "verdict": "REQUEST_CHANGES"}
+```

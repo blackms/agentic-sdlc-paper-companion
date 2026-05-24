@@ -1,1 +1,5 @@
-{"bugs_found":["py_scanstring surrogate-pair guard uses `55296 <= uni < 56319` which excludes the valid high-surrogate code unit 0xDBFF (55295... actually 56319); valid UTF-16 surrogate pairs starting with \\uDBFF (e.g. \\uDBFF\\uDFFF -> U+10FFFF) are NOT combined into a single code point, violating the contract guarantee 'Valid UTF-16 surrogate pairs are combined into a single code point' (upper bound should be `<= 56319` / `< 56320`)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=1fa0c500de0b8009de132f5895901e7f2c83cf78a2ff510db91250e4f113b84a
+// raw_bytes=471
+```json
+{"bugs_found": ["py_scanstring surrogate-pair guard uses `55296 <= uni < 56319` which excludes the valid high-surrogate code unit 0xDBFF (55295... actually 56319); valid UTF-16 surrogate pairs starting with \\uDBFF (e.g. \\uDBFF\\uDFFF -> U+10FFFF) are NOT combined into a single code point, violating the contract guarantee 'Valid UTF-16 surrogate pairs are combined into a single code point' (upper bound should be `<= 56319` / `< 56320`)"], "verdict": "REQUEST_CHANGES"}
+```

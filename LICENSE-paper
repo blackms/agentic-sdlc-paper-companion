@@ -1,0 +1,32 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+This license applies to the contents of `docs/paper/`, including the
+LaTeX source files, the compiled PDF
+(`docs/paper/paper-latex/rocchi-2026-measuring-llm-agents.pdf`), the
+pre-registrations, the phase reports, the reproducibility statement,
+the CMDP extension tech report, and the framework excerpts in
+`framework-excerpts/`.
+
+The full legal text is available at:
+    https://creativecommons.org/licenses/by/4.0/legalcode
+
+Summary of permissions:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material for any
+    purpose, even commercially
+
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to
+    the license, and indicate if changes were made. You may do so in
+    any reasonable manner, but not in any way that suggests the
+    licensor endorses you or your use.
+
+To cite this work, see CITATION.cff.
+
+The code in this repository (everything outside `docs/paper/` and
+`framework-excerpts/`) is licensed under Apache-2.0; see LICENSE.
+
+The framework excerpts in `framework-excerpts/` describe components of
+a separate, proprietary work (the agentic-sdlc protocol library). The
+excerpts themselves are licensed under CC BY 4.0; the full protocol
+bodies they summarize are not published.

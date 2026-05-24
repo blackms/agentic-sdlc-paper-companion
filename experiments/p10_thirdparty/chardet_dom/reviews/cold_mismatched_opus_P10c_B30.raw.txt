@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is from chardet (CharDistributionAnalysis), completely unrelated to bankcheck contracts — no bankcheck functions present to evaluate against the contracts"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=27c0e801a75ea07c4b900edf0dff566cc2b28a14748a2373ce88316c5a61efd1
+// raw_bytes=218
+```json
+{"bugs_found": ["Code provided is from chardet (CharDistributionAnalysis), completely unrelated to bankcheck contracts — no bankcheck functions present to evaluate against the contracts"], "verdict": "REQUEST_CHANGES"}
+```

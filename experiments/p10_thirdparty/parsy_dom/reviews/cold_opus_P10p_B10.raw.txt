@@ -1,1 +1,5 @@
-{"bugs_found":["Parser.__mul__ with a range uses self.times(other.start, other.stop + 1) instead of other.stop - 1, violating the contract that range.stop is exclusive (max should be stop-1, not stop+1) — off-by-two error allowing more repetitions than specified"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=9726bee1274e2ce0e5271af928ccaf69925ced9b26dc0de5f57bf8749af93a7d
+// raw_bytes=296
+```json
+{"bugs_found": ["Parser.__mul__ with a range uses self.times(other.start, other.stop + 1) instead of other.stop - 1, violating the contract that range.stop is exclusive (max should be stop-1, not stop+1) — off-by-two error allowing more repetitions than specified"], "verdict": "REQUEST_CHANGES"}
+```

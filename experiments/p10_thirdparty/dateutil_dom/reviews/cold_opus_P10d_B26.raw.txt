@@ -1,1 +1,5 @@
-{"bugs_found":["_fix uses AND instead of OR when setting _has_time: requires all time fields simultaneously truthy/non-None, violating contract that _has_time==1 iff ANY relative time field is non-zero or ANY absolute time field is not None"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=b79e1a15bba29467f7fcc0b7c42307bd8572fc198f90f1d4290eb0294ccef763
+// raw_bytes=272
+```json
+{"bugs_found": ["_fix uses AND instead of OR when setting _has_time: requires all time fields simultaneously truthy/non-None, violating contract that _has_time==1 iff ANY relative time field is non-zero or ANY absolute time field is not None"], "verdict": "REQUEST_CHANGES"}
+```

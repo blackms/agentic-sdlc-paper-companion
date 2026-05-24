@@ -1,1 +1,5 @@
-{"bugs_found":["Codice fornito (CharDistributionAnalysis e sottoclassi) non corrisponde ai contratti di bankcheck: nessuna funzione contrattualizzata (Reporter.*, load_yaml_file, cmd_*, build_parser, main, ecc.) è presente nel codice da revisionare, quindi i contratti non possono essere verificati"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=30e12374bbb70049625c64c0b5f8228d77ce8439912220308ee171b6729f9e4f
+// raw_bytes=331
+```json
+{"bugs_found": ["Codice fornito (CharDistributionAnalysis e sottoclassi) non corrisponde ai contratti di bankcheck: nessuna funzione contrattualizzata (Reporter.*, load_yaml_file, cmd_*, build_parser, main, ecc.) è presente nel codice da revisionare, quindi i contratti non possono essere verificati"], "verdict": "REQUEST_CHANGES"}
+```

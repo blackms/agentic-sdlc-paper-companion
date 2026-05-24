@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5109ms...
+// raw_sha256=c3d418fa8c5915fcfad6d7943b809613e8c49448ccad63a21885a26b0866f223
+// raw_bytes=363
 ```json
 {"bugs_found": ["In char_from(), the expression `string - ']'` is used instead of `string + ']'`, which raises a TypeError for string inputs."], "verdict": "REQUEST_CHANGES"}
 ```

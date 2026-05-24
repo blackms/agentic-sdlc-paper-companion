@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5103ms...
+// raw_sha256=caadb485d668e95bb12726fcc28242cf2c4a5c158ce2b4faa9a571db10f0678c
+// raw_bytes=641
 ```json
 {"bugs_found": ["In DictReader.__next__, self.line_num is updated before skipping empty rows, leaving it out of sync with self.reader.line_num", "In DictWriter._dict_to_list, rowdict.keys() - self.fieldnames raises TypeError instead of ValueError when fieldnames is a list", "In Sniffer._guess_delimiter, total is calculated with chunkLength / iteration instead of chunkLength * iteration, corrupting frequency analysis"], "verdict": "REQUEST_CHANGES"}
 ```

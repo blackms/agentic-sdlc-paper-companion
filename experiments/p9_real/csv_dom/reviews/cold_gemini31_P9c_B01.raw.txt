@@ -1,1 +1,5 @@
+// raw_sha256=3897733a3d96f5095b2f4ca2d1c7b8c728d432b05a8625cf1eebd43b4ec0686e
+// raw_bytes=316
+```json
 {"bugs_found": ["In Sniffer._guess_delimiter, skipinitialspace assignment uses floor division '//' instead of modulo '%' for string formatting, raising a TypeError", "In DictReader.__next__, self.line_num is not updated after skipping empty rows, leading to an incorrect line number"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=02e50c68409fc960a2ef8439a48a1e3f9388fccc005cc77eec29eedea2842a19
+// raw_bytes=467
+```json
 {"bugs_found": ["cmd_all returns `aggregated if aggregated <= 1 else 0`, which silently downgrades EXIT_CONFIG_ERROR (2) to 0 — a configuration error (missing schema, malformed profile YAML) will exit 0 and CI will incorrectly pass, defeating the entire gate's purpose", "this also contradicts the module docstring which documents exit code 2 = configuration error", "file_matches_globs helper is defined but never used (dead code)"], "verdict": "REQUEST_CHANGES"}
+```

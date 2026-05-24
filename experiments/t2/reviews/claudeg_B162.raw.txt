@@ -1,1 +1,5 @@
+// raw_sha256=d7fd750896359531ab9b2feb4eb755807ae9b1989a861c3f2118cb35de91b963
+// raw_bytes=264
+```json
 {"bugs_found": ["apply_fee returns a - fee - fee, double-subtracting the fee from the amount and producing a result that can be negative or grossly understated", "transfer not atomic", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}
+```

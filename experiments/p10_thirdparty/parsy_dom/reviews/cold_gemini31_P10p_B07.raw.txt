@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5903ms...
+// raw_sha256=02b61c65839b6dcb47fafb04a38568613033166dfb2c9aeb5ef9dcaae8461708
+// raw_bytes=376
 ```json
 {"bugs_found": ["Result.aggregate uses >= instead of > for furthest comparison, preventing the union of expected sets when self.furthest == other.furthest"], "verdict": "REQUEST_CHANGES"}
 ```

@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=0b8fbeb54130aba54c03770796fc80e72f5f02093de4f4f5083ffff2363157d3
+// raw_bytes=429
+```json
 {"bugs_found": ["GB2312DistributionAnalysis.get_order checks first_char > 176 instead of >= 176 (violates inclusive lower-bound 0xB0 constraint)"], "verdict": "REQUEST_CHANGES"}
+```

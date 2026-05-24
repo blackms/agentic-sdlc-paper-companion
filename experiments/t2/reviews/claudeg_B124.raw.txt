@@ -1,1 +1,5 @@
+// raw_sha256=241035f5abcbbbb9d0828b2e5d6dda89ba5d75e8c7822904b484e33c7ea67804
+// raw_bytes=303
+```json
 {"bugs_found": ["loan_payment with r==0 returns p/(m+1) instead of p/m, producing a payment that under-collects principal by one period (off-by-one)", "transfer is not atomic: no rollback if credit fails after debit", "fx_convert does not validate that rate is positive"], "verdict": "REQUEST_CHANGES"}
+```

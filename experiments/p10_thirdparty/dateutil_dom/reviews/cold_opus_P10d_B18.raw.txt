@@ -1,1 +1,5 @@
-{"bugs_found":["__add__ with relativedelta computes hours as other.hours - self.hours instead of other.hours + self.hours, violating the contract that adding two deltas sums all relative fields"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=4c3ba2215034612e0f81a4673c07bee63d7de99b3412be062db6e4992cc39919
+// raw_bytes=225
+```json
+{"bugs_found": ["__add__ with relativedelta computes hours as other.hours - self.hours instead of other.hours + self.hours, violating the contract that adding two deltas sums all relative fields"], "verdict": "REQUEST_CHANGES"}
+```

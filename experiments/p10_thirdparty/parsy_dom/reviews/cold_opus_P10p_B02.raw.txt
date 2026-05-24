@@ -1,1 +1,5 @@
+// raw_sha256=1585db38768d75ab7fb3f2653d8e8f353651bd96b4c471989dbc053b2832f9df
+// raw_bytes=332
+```json
 {"bugs_found": ["combine_dict filter uses 'or' instead of 'and': condition `k is not None or not (isinstance(k, str) and k.startswith('_'))` fails to remove None keys and underscore-prefixed string keys, violating the documented invariant that both must be filtered out before passing to combine_fn"], "verdict": "REQUEST_CHANGES"}
+```

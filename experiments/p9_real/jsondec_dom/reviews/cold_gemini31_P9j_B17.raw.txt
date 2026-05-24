@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5682ms...
+// raw_sha256=bbcfb187e2e089572bca042e2b0dc9c2802458128144871679e73795415a7ab6
+// raw_bytes=725
+```json
 {"bugs_found": ["py_scanstring surrogate pair decoding uses '< 57343' instead of '<= 57343' (0xDFFF), failing to combine pairs with the highest valid low surrogate", "py_scanstring strict mode raises JSONDecodeError at 'pos=end' instead of 'pos=end - 1', pointing to the character after the invalid control character"], "verdict": "REQUEST_CHANGES"}
+```

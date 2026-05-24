@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5003ms...
+// raw_sha256=370cf99ed16fe1fec123e25a6c17885aa7ba4f2064d731fcfd6136988e41c5db
+// raw_bytes=427
+```json
 {"bugs_found": ["In JSONObject, the comma check is inverted (`elif nextchar == ',':`) which raises an error when a comma is correctly present and fails to raise an error when a comma is missing between object members."], "verdict": "REQUEST_CHANGES"}
+```

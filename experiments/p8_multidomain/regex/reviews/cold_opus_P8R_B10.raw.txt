@@ -1,1 +1,5 @@
+// raw_sha256=f23feb6ea7bf4427a26d16331f6b8321f894ac37bcd0a0a2e31d8e15a7c18aa3
+// raw_bytes=239
+```json
 {"bugs_found": ["compile() sets start.is_final = True instead of end.is_final = True, violating the postcondition 'final.is_final == True' and the NFA invariant that the designated final state is accepting"], "verdict": "REQUEST_CHANGES"}
+```

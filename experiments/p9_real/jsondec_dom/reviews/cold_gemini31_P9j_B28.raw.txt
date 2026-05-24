@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=ae2ea74f9a7f15e48c984fb433147533595a42fe9e01d06cdcce7a6ed14dfe23
+// raw_bytes=296
 ```json
 {"bugs_found": ["In JSONObject, the condition `if nextchar == '\"':` incorrectly replaces `if nextchar != '\"':`, which prevents skipping leading whitespace and breaks parsing of empty objects `{}`."], "verdict": "REQUEST_CHANGES"}
 ```

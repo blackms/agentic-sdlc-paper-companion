@@ -1,1 +1,5 @@
+// raw_sha256=f8fa9d57bcf987da3d16f41267b3d01ca6d0e2e406463975209334c03db33d65
+// raw_bytes=201
+```json
 {"bugs_found": ["_step does not handle wildcard symbol '.'; it only matches sym == ch, violating match() contract that '.' transitions match any single input character"], "verdict": "REQUEST_CHANGES"}
+```

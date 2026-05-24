@@ -1,1 +1,3 @@
-{"bugs_found": ["load_yaml_file silently swallows YAMLError and returns {}, so cmd_profile_validate's except yaml.YAMLError branch is unreachable and malformed YAML is never reported as a config error", "load_yaml_file masking of all exceptions also affects load_profile, which can return {} for an invalid profile and then iterate sensitive_paths=[] without surfacing the error", "file_matches_globs helper is defined but never used (dead code)"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=89a08125519b58bafa008b47e28d78c7da157afae9146d768456b74cfc80e136
+// raw_bytes=479

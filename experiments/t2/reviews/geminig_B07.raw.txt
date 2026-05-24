@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5988ms...
-Attempt 2 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 10330ms...
+// raw_sha256=8eacfe0ae00c93cd1bfe275e574abd9415b0145e5665b7230b3de3a561c6edb2
+// raw_bytes=530
+```json
 {"bugs_found": ["The 'loan_payment' function uses an incorrect formula for calculating the loan payment. The exponent in the annuity payment formula should be 'm' (number of months), not 'm + 1'."], "verdict": "REQUEST_CHANGES"}
+```

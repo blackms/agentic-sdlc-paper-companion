@@ -1,1 +1,5 @@
+// raw_sha256=79729302e206095866a8878c54440d50817705810bb9d23686bb71a889ac5156
+// raw_bytes=196
+```json
 {"bugs_found": ["compound_interest raises OverflowError instead of ValueError for compounds_per_year < 1; subsequent ValueError statement is unreachable dead code"], "verdict": "REQUEST_CHANGES"}
+```

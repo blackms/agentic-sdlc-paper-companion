@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=70cc6f5ed7ffe3c6cbbebe7f2884628b57012cb0daba0c560a07447e3cbdb756
+// raw_bytes=181
 ```json
 {"bugs_found": ["char_from uses subtraction operator on bytes: b'[' + string - b']'"], "verdict": "REQUEST_CHANGES"}
 ```

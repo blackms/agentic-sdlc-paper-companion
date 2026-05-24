@@ -1,1 +1,5 @@
-{"bugs_found":["Codice ricevuto è una libreria di parser combinator (parsy-like), NON l'implementazione di bankcheck specificata nei contratti. Nessuna delle funzioni contrattualizzate (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_profile_validate, cmd_review_validate, cmd_contract_presence, cmd_contract_validate, cmd_floats_check, cmd_review_gate, cmd_all, build_parser, main) è presente nel codice fornito — impossibile verificare alcun contratto."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=892fa7837c04b1019b87e6b1d520994c1ad4b30aa0fa676b4f51bf1271c20b71
+// raw_bytes=598
+```json
+{"bugs_found": ["Codice ricevuto è una libreria di parser combinator (parsy-like), NON l'implementazione di bankcheck specificata nei contratti. Nessuna delle funzioni contrattualizzate (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_profile_validate, cmd_review_validate, cmd_contract_presence, cmd_contract_validate, cmd_floats_check, cmd_review_gate, cmd_all, build_parser, main) è presente nel codice fornito — impossibile verificare alcun contratto."], "verdict": "REQUEST_CHANGES"}
+```

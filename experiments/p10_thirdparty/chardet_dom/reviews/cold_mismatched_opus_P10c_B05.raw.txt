@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is from chardet (CharDistributionAnalysis), completely unrelated to bankcheck contracts — no Reporter, load_yaml_file, load_profile, cmd_* functions, build_parser, or main implementations present to verify against the contracts"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=9f7fa164d41629e1a7ad075afd59c046464bbea96cd450fd944421e80560a681
+// raw_bytes=291
+```json
+{"bugs_found": ["Code provided is from chardet (CharDistributionAnalysis), completely unrelated to bankcheck contracts — no Reporter, load_yaml_file, load_profile, cmd_* functions, build_parser, or main implementations present to verify against the contracts"], "verdict": "REQUEST_CHANGES"}
+```

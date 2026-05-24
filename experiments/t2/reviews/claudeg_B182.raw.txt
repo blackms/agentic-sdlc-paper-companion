@@ -1,1 +1,5 @@
+// raw_sha256=4a186092f047e77e4f1d9300134c200bfa60b8643b375dbfd73ad34546731610
+// raw_bytes=501
+```json
 {"bugs_found": ["fx_convert divides by the rate (a / Decimal(str(rate))) instead of multiplying, producing the inverse conversion: e.g. 100 USD * 0.85 EUR/USD should be 85 EUR but returns ~117", "fx_convert does not validate rate is positive (and division would raise on zero rate but with a misleading message)", "transfer() not atomic, no rollback on partial failure", "compound_interest truncates fractional years via int()", "no thread-safety on Account mutations"], "verdict": "REQUEST_CHANGES"}
+```

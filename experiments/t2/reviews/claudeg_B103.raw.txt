@@ -1,1 +1,5 @@
+// raw_sha256=41f40a8cc888b0e07eeb05943be8cd74cfd7f54c890a5f36f90d02fe80e79b93
+// raw_bytes=402
+```json
 {"bugs_found": ["compound_interest: WRONG FORMULA — exponent is (n + t) instead of (n * t); completely incorrect compounding result", "transfer: not atomic — partial-failure leaves balances inconsistent", "transfer: balances not quantized to currency precision", "apply_fee: can return negative result when fee_min > amount", "fx_convert: missing rate>0 validation"], "verdict": "REQUEST_CHANGES"}
+```

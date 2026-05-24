@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=84d8c240ecd25938eee23d7a4e8a36210f7e01c11b057eb529fc1b4e12e275f4
+// raw_bytes=560
 ```json
 {"bugs_found": ["In `__add__`, `month` is computed as `self.month and other.month` instead of `self.month or other.month`, violating the operator-level invariant and causing `month` to incorrectly evaluate to `None` or `other.month` in opposition to the contract."], "verdict": "REQUEST_CHANGES"}
 ```

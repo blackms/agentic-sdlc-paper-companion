@@ -1,1 +1,5 @@
+// raw_sha256=2676e0b5b926abcc1073634f9e24bec7a6c12496f0504f5f2756f2f2c0be5c4d
+// raw_bytes=255
+```json
 {"bugs_found": ["__init__ yearday branch uses ydayidx[idx + 1] instead of ydayidx[idx - 1] when computing self.day, producing wrong day-of-month for any yearday past January and IndexError for yearday in December (idx=11)"], "verdict": "REQUEST_CHANGES"}
+```

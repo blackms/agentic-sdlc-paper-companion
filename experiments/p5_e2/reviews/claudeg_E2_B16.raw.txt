@@ -1,1 +1,5 @@
+// raw_sha256=259bdd09e711a14a804a04b708dd99ff1f3bd08983b94818e1e053ec2b4e7b5c
+// raw_bytes=400
+```json
 {"bugs_found": ["cmd_contract_validate sets 'rel = fp.name' instead of the path relative to repo_root; reports lose directory context and collide for files with the same basename in different sensitive paths", "round-*.json lexicographic sort misorders round 10+", "FLOAT_PATTERNS false positives in comments/strings", "load_yaml_file may return None for empty files"], "verdict": "REQUEST_CHANGES"}
+```

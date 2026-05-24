@@ -1,1 +1,5 @@
-{"bugs_found":["normalized(): hours cascade uses subtraction instead of addition (hours_f = round(self.hours - 24 * (self.days - days), 11)) — sign of fractional-days carry is inverted, violating the cascade-down contract"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=ca4725d870da60089337f586cd89c0852808dfd9d96a409479c0391362ec6173
+// raw_bytes=255
+```json
+{"bugs_found": ["normalized(): hours cascade uses subtraction instead of addition (hours_f = round(self.hours - 24 * (self.days - days), 11)) — sign of fractional-days carry is inverted, violating the cascade-down contract"], "verdict": "REQUEST_CHANGES"}
+```

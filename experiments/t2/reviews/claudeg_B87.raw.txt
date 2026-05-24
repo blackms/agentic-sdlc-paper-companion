@@ -1,1 +1,5 @@
+// raw_sha256=fec86590facbdd7b79867c82e795e8d3118b4b37d5624e7185a5a1c0d35d850e
+// raw_bytes=134
+```json
 {"bugs_found": ["compound_interest uses exponent (n+1)*t instead of n*t, producing incorrect results"], "verdict": "REQUEST_CHANGES"}
+```

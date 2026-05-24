@@ -1,1 +1,5 @@
+// raw_sha256=d8678061f4e05f1625e57d07a7d551a9c0e5782dae2e7e6eab98b1a0b8579959
+// raw_bytes=228
+```json
 {"bugs_found": ["char_from(bytes) uses subtraction instead of concatenation in description: `b'[' + string - b']'` raises TypeError on bytes; contract requires description `b'[' + string + b']'`"], "verdict": "REQUEST_CHANGES"}
+```

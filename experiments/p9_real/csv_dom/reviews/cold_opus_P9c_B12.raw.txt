@@ -1,1 +1,5 @@
-{"bugs_found":["DictWriter._dict_to_list violates contract: uses 'rowdict.keys() + self.fieldnames' (TypeError on dict_keys + list) instead of 'rowdict.keys() - self.fieldnames'; also unconditionally raises if any keys exist, instead of only when extras are present"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=66e22ca1399bf42dd74eb8e5b32ae4dda6c65048bcf59cd6dd71b359c37a899b
+// raw_bytes=297
+```json
+{"bugs_found": ["DictWriter._dict_to_list violates contract: uses 'rowdict.keys() + self.fieldnames' (TypeError on dict_keys + list) instead of 'rowdict.keys() - self.fieldnames'; also unconditionally raises if any keys exist, instead of only when extras are present"], "verdict": "REQUEST_CHANGES"}
+```

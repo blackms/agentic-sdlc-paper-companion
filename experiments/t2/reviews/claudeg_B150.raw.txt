@@ -1,1 +1,5 @@
+// raw_sha256=d31412155a9081304e8aa79828ded7f88cead0a6cb99d6d86b5eb0f29552268b
+// raw_bytes=158
+```json
 {"bugs_found": ["transfer debits sender twice (2*amount) while crediting receiver only amount, breaking balance conservation"], "verdict": "REQUEST_CHANGES"}
+```

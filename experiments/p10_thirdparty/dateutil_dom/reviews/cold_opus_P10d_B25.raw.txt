@@ -1,1 +1,5 @@
-{"bugs_found":["__eq__: weekday n comparison uses corrupted boolean expression `(not n1 or n1 != 1) and (not n2 or n2 == 1)` instead of contract's `(not n1 or n1 == 1) and (not n2 or n2 == 1)` — breaks equivalence between weekday n=None and n=1"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=0c2c050d4ffa38d3ce1ddb2425faa4e34cf6711d462016277d55179669e93a10
+// raw_bytes=278
+```json
+{"bugs_found": ["__eq__: weekday n comparison uses corrupted boolean expression `(not n1 or n1 != 1) and (not n2 or n2 == 1)` instead of contract's `(not n1 or n1 == 1) and (not n2 or n2 == 1)` — breaks equivalence between weekday n=None and n=1"], "verdict": "REQUEST_CHANGES"}
+```

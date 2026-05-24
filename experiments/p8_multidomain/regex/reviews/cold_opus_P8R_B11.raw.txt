@@ -1,1 +1,5 @@
+// raw_sha256=f61f821b5845f60c91b6290a42f6b3f421835ba5f15dcd5410487dc21f785e34
+// raw_bytes=229
+```json
 {"bugs_found": ["parse_atom raises ValueError('trailing backslash') instead of RegexError, violating the compile() contract which mandates RegexError for trailing-backslash invalid pattern syntax"], "verdict": "REQUEST_CHANGES"}
+```

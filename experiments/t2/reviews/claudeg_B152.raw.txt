@@ -1,1 +1,5 @@
+// raw_sha256=fbdaa9a3bdfdd026bbe3e2853feced08cf78d744eeaedc7908f63ac105d225d0
+// raw_bytes=172
+```json
 {"bugs_found": ["transfer only emits a warning on currency mismatch instead of raising, allowing cross-currency debits/credits at 1:1 rate"], "verdict": "REQUEST_CHANGES"}
+```

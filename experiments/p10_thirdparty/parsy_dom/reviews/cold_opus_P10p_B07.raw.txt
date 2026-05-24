@@ -1,1 +1,5 @@
+// raw_sha256=15de278470bad21b9d300815f85bbed560beedaf8e067af35fb17b20c527af4c
+// raw_bytes=295
+```json
 {"bugs_found": ["Result.aggregate uses '>=' instead of '>' on self.furthest, making the elif self.furthest == other.furthest branch unreachable; expected sets are never unioned when both failures share the same furthest index, violating the documented invariant"], "verdict": "REQUEST_CHANGES"}
+```

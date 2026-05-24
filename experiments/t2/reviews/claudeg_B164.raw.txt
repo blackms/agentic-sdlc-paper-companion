@@ -1,1 +1,5 @@
+// raw_sha256=88377fa90bdb0eb8f471940c6b1ea4322b99ef0f53b97d878f13d7d0bb0af4fc
+// raw_bytes=368
+```json
 {"bugs_found": ["apply_fee quantizes return value to Decimal('1') (integer precision), discarding all decimal places and producing wrong monetary results", "default rounding mode used by quantize is bankers rounding which may not match expected financial rounding", "transfer not atomic", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}
+```

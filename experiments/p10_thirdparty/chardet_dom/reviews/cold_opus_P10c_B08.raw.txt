@@ -1,1 +1,5 @@
+// raw_sha256=a0a9529721ff26ee854cb5d39ad61b531c7b4b9e9505d56fa273ccab0b25e024
+// raw_bytes=327
+```json
 {"bugs_found": ["get_confidence uses `_total_chars < 0` instead of contract-specified `_total_chars <= 0` for the SURE_NO short-circuit; functionally masked by the MINIMUM_DATA_THRESHOLD check (freq=0 ≤ 3 when total=0), but it is a literal contract deviation on the documented boundary check"], "verdict": "REQUEST_CHANGES"}
+```

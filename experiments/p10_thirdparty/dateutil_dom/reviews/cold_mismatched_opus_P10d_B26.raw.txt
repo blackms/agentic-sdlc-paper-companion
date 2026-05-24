@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is dateutil.relativedelta, not bankcheck — none of the contracted symbols (Reporter, load_yaml_file, cmd_*, build_parser, main, etc.) are present, so the contract cannot be satisfied"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=ca8505696c6dad6fd1782a49aa7cfdd86d931cf1b452a6bcbe287d341d8f34b8
+// raw_bytes=250
+```json
+{"bugs_found": ["Code under review is dateutil.relativedelta, not bankcheck — none of the contracted symbols (Reporter, load_yaml_file, cmd_*, build_parser, main, etc.) are present, so the contract cannot be satisfied"], "verdict": "REQUEST_CHANGES"}
+```

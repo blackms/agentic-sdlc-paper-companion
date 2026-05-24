@@ -1,1 +1,5 @@
+// raw_sha256=628c63c27404332137b06b890a2da52fa0120dd2b6dde6e9c2e2c9d4bf74ebee
+// raw_bytes=417
+```json
 {"bugs_found": ["compound_interest: 'currency' parameter is accepted but never used — dead/misleading API", "transfer: not atomic — failure between debit and credit corrupts state, no rollback", "transfer: no Decimal quantization on balances, sub-cent drift possible", "apply_fee: amount - fee can go negative when fee_min > amount", "fx_convert: no sanity check that rate is > 0"], "verdict": "REQUEST_CHANGES"}
+```

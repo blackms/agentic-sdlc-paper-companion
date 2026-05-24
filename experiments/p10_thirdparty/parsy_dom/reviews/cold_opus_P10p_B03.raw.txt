@@ -1,1 +1,5 @@
-{"bugs_found":["string() has inverted comparison: uses '!=' instead of '==' so it succeeds when the slice does NOT match and fails when it matches, violating the post-condition that it succeeds iff transformed slice equals transformed expected string"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=74ae07854be808bff71e9ee3362c3675ead0db508e60618c0affb82c76bf80a9
+// raw_bytes=282
+```json
+{"bugs_found": ["string() has inverted comparison: uses '!=' instead of '==' so it succeeds when the slice does NOT match and fails when it matches, violating the post-condition that it succeeds iff transformed slice equals transformed expected string"], "verdict": "REQUEST_CHANGES"}
+```

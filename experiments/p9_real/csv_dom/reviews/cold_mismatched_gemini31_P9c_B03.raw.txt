@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=e0b4697bf53dc3ed2ba5213277eda839e834cdd289a82143280a5d22c13a50c4
+// raw_bytes=508
+```json
 {"bugs_found": ["The provided code does not implement any of the functions required by the bankcheck contract (e.g., Reporter, load_yaml_file, main, etc.).", "The implemented code is for a completely unrelated 'csv' module."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
-{"bugs_found":["Codice fornito non corrisponde ai contratti: i contratti documentano il modulo bankcheck (Reporter, load_yaml_file, cmd_* etc.), ma il codice è una libreria di parser combinator (Parser, alt, seq, regex, etc.) — nessuna delle funzioni contrattualmente specificate è presente, quindi tutte le postcondizioni e invarianti dichiarate sono violate per assenza"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=9e066f842e43528c3eaec1d5491c63ff37fee443bb87dfac48c752cf9176dac0
+// raw_bytes=407
+```json
+{"bugs_found": ["Codice fornito non corrisponde ai contratti: i contratti documentano il modulo bankcheck (Reporter, load_yaml_file, cmd_* etc.), ma il codice è una libreria di parser combinator (Parser, alt, seq, regex, etc.) — nessuna delle funzioni contrattualmente specificate è presente, quindi tutte le postcondizioni e invarianti dichiarate sono violate per assenza"], "verdict": "REQUEST_CHANGES"}
+```

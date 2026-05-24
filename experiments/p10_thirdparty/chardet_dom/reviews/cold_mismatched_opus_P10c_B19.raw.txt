@@ -1,1 +1,5 @@
-{"bugs_found":["Codice fornito non corrisponde ai contratti di bankcheck: è chardet/CharDistributionAnalysis, non Reporter/load_yaml_file/cmd_* — impossibile validare alcuna postcondition contrattuale"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=580774ed902a09bbec8c27d27a861661c6a90dffbe1359a7e8f41cc844c6bcb0
+// raw_bytes=235
+```json
+{"bugs_found": ["Codice fornito non corrisponde ai contratti di bankcheck: è chardet/CharDistributionAnalysis, non Reporter/load_yaml_file/cmd_* — impossibile validare alcuna postcondition contrattuale"], "verdict": "REQUEST_CHANGES"}
+```

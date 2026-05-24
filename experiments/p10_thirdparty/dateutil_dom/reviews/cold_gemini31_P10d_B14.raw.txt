@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=00c11ae010f483f018645dbe58beba1d173a34ef8168a8a74e42d7e46bd30e8a
+// raw_bytes=569
 ```json
 {"bugs_found": ["In relativedelta.__init__, yearday parsing incorrectly subtracts ydayidx[idx + 1] instead of ydayidx[idx - 1], causing an IndexError or calculating a negative day, which violates the contract for correctly converting yearday into a valid day of the month."], "verdict": "REQUEST_CHANGES"}
 ```

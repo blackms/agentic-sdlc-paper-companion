@@ -1,1 +1,5 @@
+// raw_sha256=6936371c100f988a110d6a4b7930380847dc02785702eb8f5ea200b8cff76e3a
+// raw_bytes=245
+```json
 {"bugs_found": ["transfer accepts amount == 0 (uses 'amount < 0' instead of '<= 0'), allowing zero-value transfers and zero-amount receipts", "error message 'amount must be positive' contradicts the actual check"], "verdict": "REQUEST_CHANGES"}
+```

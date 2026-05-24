@@ -1,1 +1,5 @@
+// raw_sha256=0916c54cdbdfa1ba9a69222e106312e382496111a25249d7c71df08d0a222067
+// raw_bytes=179
+```json
 {"bugs_found": ["transfer applies a 0.01 tolerance to the insufficient-balance check (balance < amount - 0.01), allowing overdraft up to one cent"], "verdict": "REQUEST_CHANGES"}
+```

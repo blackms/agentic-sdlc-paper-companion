@@ -1,1 +1,5 @@
+// raw_sha256=cda2a901902039914196898d45031c9efabc5495a6cc514fe52bfe704c07d715
+// raw_bytes=266
+```json
 {"bugs_found": ["transfer casts amount to float, destroying Decimal precision and corrupting balances/Receipt amounts (forbidden in financial code)", "mixing float amount with Decimal balances can also raise TypeError on subtraction"], "verdict": "REQUEST_CHANGES"}
+```

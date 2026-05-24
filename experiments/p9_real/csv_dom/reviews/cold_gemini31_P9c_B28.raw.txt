@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=521190ae5bd9f092680a6d79c0fbd6b31ed689e45f740a00bc6d33eafbe54001
+// raw_bytes=502
 ```json
 {"bugs_found": ["DictReader.__init__ raises TypeError when fieldnames is None due to using 'or' instead of 'and' before iter(fieldnames)", "DictWriter._dict_to_list raises TypeError instead of ValueError when extrasaction='raise' because it uses the '-' operator between dict_keys and a list", "DictReader.__next__ fails to update self.line_num after skipping empty rows, violating the line_num invariant"], "verdict": "REQUEST_CHANGES"}
 ```

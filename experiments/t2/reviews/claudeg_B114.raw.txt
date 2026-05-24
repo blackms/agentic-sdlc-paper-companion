@@ -1,1 +1,5 @@
+// raw_sha256=8d8267a1bfdcd00dc2c2c062410e9b1953ad845670b9e2c23fcec931d449c85e
+// raw_bytes=188
+```json
 {"bugs_found": ["loan_payment uses m = int(months) + 2, an off-by-two error that inflates the number of periods used in both the numerator and denominator"], "verdict": "REQUEST_CHANGES"}
+```

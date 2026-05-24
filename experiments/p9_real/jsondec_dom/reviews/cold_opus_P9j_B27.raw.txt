@@ -1,1 +1,5 @@
-{"bugs_found":["JSONDecodeError.__init__ uses '//' (integer division) instead of '%' for string formatting the error message, which raises TypeError on construction and breaks every error path in the module"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=a751c0e863804b84273b08bd195d72021bcf7e3a92332dfd7998c674f6743a9a
+// raw_bytes=238
+```json
+{"bugs_found": ["JSONDecodeError.__init__ uses '//' (integer division) instead of '%' for string formatting the error message, which raises TypeError on construction and breaks every error path in the module"], "verdict": "REQUEST_CHANGES"}
+```

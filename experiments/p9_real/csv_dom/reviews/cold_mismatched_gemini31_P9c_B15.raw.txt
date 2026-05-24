@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=f7152416116e4d802e8170da00de27893b364aaf69e5e84789a896f6ba8cf7f5
+// raw_bytes=293
 ```json
 {"bugs_found": ["The provided code is a CSV module and completely lacks the implementation for all the functions defined in the bankcheck contract (e.g., Reporter, load_yaml_file, cmd_all, etc.)."], "verdict": "REQUEST_CHANGES"}
 ```

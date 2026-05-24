@@ -1,1 +1,5 @@
+// raw_sha256=3cabe871c45fad6ffdd16ed7f94e6c2065794449b3b7e57a6a391b2c054b58d3
+// raw_bytes=312
+```json
 {"bugs_found": ["test_item uses 'index <= len(stream)' instead of 'index < len(stream)', violating the EOF contract: at index == len(stream) it indexes out of bounds (IndexError for str/list) or passes an empty bytes slice to func instead of cleanly failing with the description"], "verdict": "REQUEST_CHANGES"}
+```

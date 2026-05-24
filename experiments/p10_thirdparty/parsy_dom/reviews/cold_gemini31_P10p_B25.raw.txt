@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5250ms...
+// raw_sha256=bfaff7e3f0e5d188383eb003ac21a9a02c87ce39c8114b5424f2a41b17a78392
+// raw_bytes=316
 ```json
 {"bugs_found": ["line_info_at computes col offset using 'last_nl - 1' instead of 'last_nl + 1'"], "verdict": "REQUEST_CHANGES"}
 ```

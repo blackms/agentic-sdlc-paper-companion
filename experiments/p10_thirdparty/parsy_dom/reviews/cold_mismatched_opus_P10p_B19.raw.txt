@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is a parsec/parser-combinator library, not the bankcheck module described in the contracts; no contract functions (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) are present, so every contract is violated by absence of implementation"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=14b218a09ebccd2f4895291e17d33f324440dd79ef84ae26d0322e13e9a504cb
+// raw_bytes=427
+```json
+{"bugs_found": ["Code provided is a parsec/parser-combinator library, not the bankcheck module described in the contracts; no contract functions (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) are present, so every contract is violated by absence of implementation"], "verdict": "REQUEST_CHANGES"}
+```

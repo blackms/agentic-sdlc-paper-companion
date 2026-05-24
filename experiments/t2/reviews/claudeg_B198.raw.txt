@@ -1,1 +1,5 @@
+// raw_sha256=561bd49041f58d085fade2bd169f8a2db75c020ddadcb874b01e7882bf56ff6e
+// raw_bytes=407
+```json
 {"bugs_found": ["fx_convert quantizes only the rate (Decimal(str(rate)).quantize('0.0001')) instead of the final result, producing wrong/truncated rates and inconsistent precision", "transfer mutation is not atomic and not thread-safe", "compound_interest does not validate principal >= 0", "Hard-coded quantization granularity hides currency-specific rounding requirements"], "verdict": "REQUEST_CHANGES"}
+```

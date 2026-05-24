@@ -1,1 +1,5 @@
+// raw_sha256=8006d80f4e8d515b2669c13afef0ec550f5bae702850bf005929e64e7f60b8bc
+// raw_bytes=141
+```json
 {"bugs_found": ["transfer introduces an unused amt_snap local that adds noise without functional purpose (dead code)"], "verdict": "ACCEPT"}
+```

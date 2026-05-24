@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=e4d8a6b6a8e390464553e5750ee630777318ab69b4e57fe0a711ad38ca93df14
+// raw_bytes=92
+```json
 {"bugs_found": [], "verdict": "ACCEPT"}
+```

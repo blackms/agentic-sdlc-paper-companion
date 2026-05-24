@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=f3303fa65b198efbe01c5d5e0cf1ecff90f84a7f653bb2e476e83768b6be9f4c
+// raw_bytes=455
+```json
 {"bugs_found": ["Missing implementation for the Reporter class and all its methods (ok, warn, fail, config_error)", "Missing implementation for all required functions including load_yaml_file, load_profile, build_parser, main, and all cmd_* commands", "Provided code contains an unrelated dateutil.relativedelta implementation instead of the contracted bankcheck module"], "verdict": "REQUEST_CHANGES"}
+```

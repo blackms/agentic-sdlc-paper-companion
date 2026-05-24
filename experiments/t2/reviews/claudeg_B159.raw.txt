@@ -1,1 +1,5 @@
+// raw_sha256=dd5a287cbbd837b066e7c57773af19191308f100a6bdbb6fdda475cc17159bbd
+// raw_bytes=324
+```json
 {"bugs_found": ["apply_fee returns a tuple (Decimal, 'USD') instead of a Decimal, breaking the function contract and any caller doing arithmetic on the result", "hardcoded 'USD' currency in apply_fee return is unrelated to inputs", "transfer not atomic", "fx_convert lacks rate>0 validation"], "verdict": "REQUEST_CHANGES"}
+```

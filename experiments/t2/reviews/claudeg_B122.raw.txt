@@ -1,1 +1,5 @@
+// raw_sha256=3cde1abc481e67c3cd183cfd484fde8a99f9ffb171b06775e5b20e0e82af80e3
+// raw_bytes=482
+```json
 {"bugs_found": ["loan_payment quantizes the result to Decimal('1'), truncating to whole units and losing cents precision; financial outputs should preserve at least 2 decimal places and rounding mode should be explicit", "inconsistent rounding: the r==0 branch returns p/m without quantization while the r!=0 branch quantizes to integer", "transfer is not atomic: no rollback if credit fails after debit", "fx_convert accepts zero or negative rates"], "verdict": "REQUEST_CHANGES"}
+```

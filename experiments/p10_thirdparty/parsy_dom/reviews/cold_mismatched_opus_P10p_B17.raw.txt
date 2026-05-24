@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is a parsec-style parser library, not bankcheck — cannot validate against bankcheck contracts (no Reporter, load_yaml_file, cmd_* functions present)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=385cfc3a77b56db0540a5adea2bae79e6094428e7271c144ad8056044c1b1a1f
+// raw_bytes=212
+```json
+{"bugs_found": ["Code provided is a parsec-style parser library, not bankcheck — cannot validate against bankcheck contracts (no Reporter, load_yaml_file, cmd_* functions present)"], "verdict": "REQUEST_CHANGES"}
+```

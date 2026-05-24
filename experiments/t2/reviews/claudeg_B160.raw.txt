@@ -1,1 +1,5 @@
+// raw_sha256=61429c7829700a3dfc4a11dfd17dad5b9ccf4b64ff8f970f94c370b98099d5fb
+// raw_bytes=296
+```json
 {"bugs_found": ["apply_fee silently returns Decimal(0) when amount==0, bypassing fee_min floor logic and producing inconsistent behavior with non-zero amounts", "transfer not atomic between the two balance updates", "fx_convert does not validate rate is positive"], "verdict": "REQUEST_CHANGES"}
+```

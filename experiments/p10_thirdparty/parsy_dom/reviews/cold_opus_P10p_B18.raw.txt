@@ -1,1 +1,5 @@
+// raw_sha256=f5daae35bbf1a6b9faf84ac271bc3de83383629ea34555f543c28d1140b04dfc
+// raw_bytes=407
+```json
 {"bugs_found": ["seq() uses 'if not parsers or not kw_parsers: return success([])' instead of 'and'; this short-circuits any call with only positional parsers (kw_parsers empty) to success([]), making seq(p1, p2, ...) always return [] without running the parsers — violates seq post-condition of running parsers in order and the 'No parsers returns success([])' edge case"], "verdict": "REQUEST_CHANGES"}
+```

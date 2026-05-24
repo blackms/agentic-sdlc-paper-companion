@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=892eb009d18fae5d025ed6822911907da3f48c77169d2767f988d396f1dff225
+// raw_bytes=202
+```json
 {"bugs_found": ["Big5DistributionAnalysis.get_order subtracts 63 instead of adding 63 when second_char >= 0xA1 (161)"], "verdict": "REQUEST_CHANGES"}
+```

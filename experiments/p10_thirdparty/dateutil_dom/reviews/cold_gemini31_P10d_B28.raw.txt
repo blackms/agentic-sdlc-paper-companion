@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5727ms...
+// raw_sha256=202ff98a13ad8be8b3d14163311d859ecc7be48d5bccbda40adc6c959d7f3e28
+// raw_bytes=371
 ```json
 {"bugs_found": ["__init__ raises TypeError when exactly one of dt1 or dt2 is supplied, violating the contract that requires keyword mode in this case"], "verdict": "REQUEST_CHANGES"}
 ```

@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5553ms...
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=7a6a8aa1cda3f62a9a7fc82cba002fe44181b06995076f3d8758c0e52e5f3978
+// raw_bytes=642
 ```json
 {"bugs_found": ["In relativedelta.normalized(), the calculation for seconds_f uses division `60 / (minutes_f - minutes)` instead of multiplication, violating the fractional cascade invariant and risking ZeroDivisionError."], "verdict": "REQUEST_CHANGES"}
 ```

@@ -1,1 +1,5 @@
+// raw_sha256=d5384520f5b240370c6dbd30c030fafeff54a6894291d4624006d86c5c86f0f1
+// raw_bytes=139
+```json
 {"bugs_found": ["apply_fee computes fee = pct * pct instead of amount * pct, ignoring the amount entirely"], "verdict": "REQUEST_CHANGES"}
+```

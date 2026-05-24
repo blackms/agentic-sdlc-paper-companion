@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=34ec0b47f52f7062452b0b8b268104cfedf9992d89deff63dd89cd55c03177fa
+// raw_bytes=225
 ```json
 {"bugs_found": ["GB2312DistributionAnalysis.get_order uses division (/) instead of multiplication (*) for the row width formula"], "verdict": "REQUEST_CHANGES"}
 ```

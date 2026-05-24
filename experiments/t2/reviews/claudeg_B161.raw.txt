@@ -1,1 +1,5 @@
+// raw_sha256=ed3abbad1bb6b8faf006c6b2ffffbb8b9fe043509eb66e2cdb84e22d3a9df3dd
+// raw_bytes=242
+```json
 {"bugs_found": ["apply_fee adds Decimal('0.01') to fmax when capping at fee_max, so the fee actually exceeds the documented maximum bound", "transfer not atomic", "fx_convert does not validate rate positivity"], "verdict": "REQUEST_CHANGES"}
+```

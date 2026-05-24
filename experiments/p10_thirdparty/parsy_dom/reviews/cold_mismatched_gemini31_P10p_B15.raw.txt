@@ -1,2 +1,3 @@
-Ripgrep is not available. Falling back to GrepTool.
-{"bugs_found": ["ParseError signature expects (expected, stream, index) instead of (msg, position)", "ParseError does not set self.position attribute", "ParseError message does not follow '{msg} at position {position}' format", "Missing parse and parse_strict functions required by parser_contracts", "Missing all bankcheck functions defined in the contract"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=20513d66fa93f5e1ce42958758a7c67455c62bb2767669adbb7ae99c271200c4
+// raw_bytes=443

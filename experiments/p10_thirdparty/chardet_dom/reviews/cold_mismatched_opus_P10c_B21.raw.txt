@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to the bankcheck contracts provided; no bankcheck functions present to validate against the contract specifications"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=2665626f2eaedf092222b6da87f3ed4f89e5e6b52eca6d7c01dead1bb3340790
+// raw_bytes=194
+```json
+{"bugs_found": ["Code under review is unrelated to the bankcheck contracts provided; no bankcheck functions present to validate against the contract specifications"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=4835979f2ba27c52d6f9cc661c9ae8a31eb4d74fd8b28c2ea61fc7434e51fa41
+// raw_bytes=388
+```json
 {"bugs_found": ["transfer is not atomic: if the credit to account_to fails after the debit, account_from is already mutated with no rollback", "no post-condition invariant check (balance non-negative, sum conserved)", "misleading comment 'no post-check' acknowledges the gap without fixing it", "missing type validation on Account.balance / amount inputs"], "verdict": "REQUEST_CHANGES"}
+```

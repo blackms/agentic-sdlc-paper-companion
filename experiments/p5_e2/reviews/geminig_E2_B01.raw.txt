@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5536ms...
-Attempt 2 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 10217ms...
+// raw_sha256=9108e834437f7d89b9afad530f124e1e8b445ddf4b78c808c6b46bd2225a51e8
+// raw_bytes=706
+```json
 {"bugs_found": ["In cmd_review_gate, the success message for resolved findings incorrectly counts only 'blocker' severity when it should count both 'blocker' and 'major' for consistency with the check logic.", "The SCHEMAS_BASE path is hardcoded relative to the script's location, making the script brittle to directory structure changes. Consider making it configurable."], "verdict": "REQUEST_CHANGES"}
+```

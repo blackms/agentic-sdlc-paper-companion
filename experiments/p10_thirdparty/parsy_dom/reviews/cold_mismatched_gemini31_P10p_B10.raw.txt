@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=b1de7b056a1b3ddfb7c873881dbf885cc8695e5330156897749893c9a77bb697
+// raw_bytes=851
+```json
 {"bugs_found": ["Implementation is entirely missing the Reporter class and its methods required by the bankcheck contract", "Implementation is missing all bankcheck CLI commands and utility functions (cmd_all, load_yaml_file, etc.)", "Implementation is missing module-level parse and parse_strict functions required by the Minimal JSON Parser contract", "ParseError inherits from RuntimeError instead of Exception as required by the Minimal JSON Parser contract", "Parser.desc method incorrectly discards result.furthest and resets the error index to the start index"], "verdict": "REQUEST_CHANGES"}
+```

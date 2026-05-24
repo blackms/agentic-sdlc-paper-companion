@@ -1,1 +1,5 @@
-{"bugs_found":["DictWriter.__init__ uses 'if fieldnames is not None or iter(fieldnames) is fieldnames' which always evaluates True when fieldnames is not None, calling list(fieldnames) on every input including already-materialized lists; contract requires conversion only when fieldnames is an iterator object","DictWriter.__init__ will raise TypeError when fieldnames is None because iter(None) fails, but contract preconditions imply fieldnames must be iterable; however the condition's short-circuit logic with 'or' is semantically wrong vs DictReader's 'and'-based check"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=b2e0c394c6ff15380c3d15d84c6e420ad1a0613fffa1ce0214caf7b78518ec56
+// raw_bytes=606
+```json
+{"bugs_found": ["DictWriter.__init__ uses 'if fieldnames is not None or iter(fieldnames) is fieldnames' which always evaluates True when fieldnames is not None, calling list(fieldnames) on every input including already-materialized lists; contract requires conversion only when fieldnames is an iterator object", "DictWriter.__init__ will raise TypeError when fieldnames is None because iter(None) fails, but contract preconditions imply fieldnames must be iterable; however the condition's short-circuit logic with 'or' is semantically wrong vs DictReader's 'and'-based check"], "verdict": "REQUEST_CHANGES"}
+```

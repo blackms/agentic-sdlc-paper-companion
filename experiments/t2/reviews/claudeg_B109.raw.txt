@@ -1,1 +1,5 @@
+// raw_sha256=28b5e12dc084ebc2c117af8fbd03faa019b6ac1d8e645e23fc02e1406aa631fd
+// raw_bytes=223
+```json
 {"bugs_found": ["loan_payment raises ZeroDivisionError instead of ValueError for months==0 and accepts negative months without validation, breaking the input-contract pattern used elsewhere"], "verdict": "REQUEST_CHANGES"}
+```

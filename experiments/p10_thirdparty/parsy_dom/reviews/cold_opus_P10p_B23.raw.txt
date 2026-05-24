@@ -1,1 +1,3 @@
-{"bugs_found": ["Parser.until uses `elif times > min` instead of `elif times >= min`: when `self` fails exactly at `times == min` and `other` is absent, the contract requires failure with 'did not find other parser', but the implementation falls through to the else branch and reports 'at least {min} items; got {times} item(s)' — violating the documented edge-case contract"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=93302da3260e346201f3feb6a3a1e0900214d0f19ca7aef0ec515380acfd1e84
+// raw_bytes=410

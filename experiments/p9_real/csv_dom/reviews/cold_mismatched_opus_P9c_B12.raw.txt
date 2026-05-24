@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is Python stdlib csv.py, not bankcheck — no contracts apply"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=04c3f6e8737725377275517b868714eecfb5b89a0f2749a52cc17e99c813f7aa
+// raw_bytes=127
+```json
+{"bugs_found": ["Code under review is Python stdlib csv.py, not bankcheck — no contracts apply"], "verdict": "REQUEST_CHANGES"}
+```

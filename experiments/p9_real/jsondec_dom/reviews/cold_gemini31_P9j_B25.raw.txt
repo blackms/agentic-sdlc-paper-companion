@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=c5eca20adbc757d4b97cd117873722828b20b8ae15d67b7a5f59dac90904cc44
+// raw_bytes=454
 ```json
 {"bugs_found": ["JSONObject fails to enforce the ':' delimiter between keys and values due to an inverted condition (s[end:end + 1] == ':' instead of != ':')"], "verdict": "REQUEST_CHANGES"}
 ```

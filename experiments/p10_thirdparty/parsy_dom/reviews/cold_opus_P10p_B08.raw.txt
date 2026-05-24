@@ -1,1 +1,5 @@
+// raw_sha256=cd78010bf10ec375c7c55b0276d430377bf2e13eb2cd965a6406a20d01a801a9
+// raw_bytes=249
+```json
 {"bugs_found": ["test_item with bytes stream uses stream[index:index-1] instead of stream[index:index+1], producing wrong (often empty) byte slice and breaking the single-item consumption invariant for bytes streams"], "verdict": "REQUEST_CHANGES"}
+```

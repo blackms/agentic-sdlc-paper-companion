@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-Attempt 1 failed: You have exhausted your capacity on this model.. Retrying after 11365ms...
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=ee886611537cf27d6f1b47ffec8e9bc9bb6c79b6713bfbb140d8549ee2e89405
+// raw_bytes=552
 ```json
 {"bugs_found": ["Parser.until incorrectly uses `elif times > min` instead of `elif times >= min`, causing it to yield the wrong error message when `times == min`."], "verdict": "REQUEST_CHANGES"}
 ```

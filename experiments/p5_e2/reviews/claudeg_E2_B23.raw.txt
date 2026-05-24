@@ -1,1 +1,5 @@
+// raw_sha256=0ee96cd056935742f5b9c692a2623437cab00eeee4330deb0a658cc9fc7c443d
+// raw_bytes=481
+```json
 {"bugs_found": ["cmd_contract_validate else-branch reports reporter.ok('schema OK') and then iterates an empty list `for e in []` instead of `errors`, silently swallowing real schema validation failures and turning REQUEST_CHANGES into ACCEPT — a critical gate bypass", "the bogus 'schema OK' message is also misleading because it is printed even when validation actually failed", "file_matches_globs helper is defined but never used (dead code)"], "verdict": "REQUEST_CHANGES"}
+```

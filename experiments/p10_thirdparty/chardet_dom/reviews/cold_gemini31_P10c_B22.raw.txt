@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=b21b1946ba997b1e79806d2560ac83adbf4a374d015c95a30c9eb71f02fd9cdf
+// raw_bytes=264
 ```json
 {"bugs_found": ["EUCTWDistributionAnalysis.get_order uses 'first_char > 196' instead of the inclusive lower-bound 'first_char >= 196' (0xC4) specified in the contract"], "verdict": "REQUEST_CHANGES"}
 ```

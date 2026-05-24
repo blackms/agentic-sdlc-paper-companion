@@ -1,1 +1,5 @@
+// raw_sha256=79f7c35bd3f59a887bce216f628c89f113cd4f33175a03ba21b5aa6e3187ff56
+// raw_bytes=468
+```json
 {"bugs_found": ["cmd_all uses 'aggregated = max(aggregated, EXIT_OK) if 'aggregated' in globals() else EXIT_OK' which is nonsensical; 'aggregated' is a local, never globally defined, so the check is misleading and the expression always evaluates to EXIT_OK — dead/confusing code that should simply be 'aggregated = EXIT_OK'", "round-*.json lexicographic sort misorders round 10+", "FLOAT_PATTERNS false positives in comments/strings"], "verdict": "REQUEST_CHANGES"}
+```

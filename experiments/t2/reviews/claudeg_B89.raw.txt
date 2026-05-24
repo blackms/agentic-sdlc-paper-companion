@@ -1,1 +1,5 @@
+// raw_sha256=490404d904d92de1ef82a640d2c0ccbbc096bb9e43d9eb69dcafcbb2ead7142b
+// raw_bytes=173
+```json
 {"bugs_found": ["compound_interest uses 'principal or 0' which silently coerces falsy values (None, 0, '') to 0 instead of validating input"], "verdict": "REQUEST_CHANGES"}
+```

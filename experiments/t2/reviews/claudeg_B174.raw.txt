@@ -1,1 +1,5 @@
+// raw_sha256=53f0b39e79a0b2c0d091616fb270839c99434cfefbe99d511183f51303729271
+// raw_bytes=589
+```json
 {"bugs_found": ["apply_fee: uses 'assert False, \"fee_pct negative\"' for input validation — assertions are stripped when Python runs with -O/-OO, so negative fee_pct will silently pass validation in optimized builds, allowing nonsensical/negative fees", "apply_fee: inconsistent error type — other validations raise ValueError, but this one raises AssertionError, breaking caller exception-handling contracts", "apply_fee: assertions for input validation is a documented anti-pattern (CWE-617) and should be replaced with an explicit raise ValueError"], "verdict": "REQUEST_CHANGES"}
+```

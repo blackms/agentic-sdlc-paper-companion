@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=1ab273cd74191930018f34d3a43052dc563ce0cf0f2b0021e9306db8392951ef
+// raw_bytes=334
+```json
 {"bugs_found": ["JSONObject incorrectly uses 'if nextchar != '}':' instead of '==', which causes it to reject valid empty objects (raising JSONDecodeError) and incorrectly return an empty dict for invalid objects starting with a non-quote character"], "verdict": "REQUEST_CHANGES"}
+```

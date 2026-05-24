@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=56e2aaab2360e232155d4f7baf19e2bd0efff31beff27b0e0de2f31ebcde47cc
+// raw_bytes=283
 ```json
 {"bugs_found": ["Source code implements 'dateutil.relativedelta' and completely fails to implement any of the contracted 'bankcheck' functions (e.g., Reporter, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}
 ```

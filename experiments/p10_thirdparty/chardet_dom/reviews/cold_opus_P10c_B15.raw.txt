@@ -1,1 +1,5 @@
+// raw_sha256=b879e14213da0477162c45dd4b7fdee80abe82742d7912fc164ee5e59cfd2688
+// raw_bytes=290
+```json
 {"bugs_found": ["SJISDistributionAnalysis.get_order uses 'first_char < 159' (exclusive) instead of '<= 159 / <= 0x9F' (inclusive), so first byte 0x9F is wrongly rejected and returns -1, violating the contract's inclusive upper bound on the 0x81..0x9F range"], "verdict": "REQUEST_CHANGES"}
+```

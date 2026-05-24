@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5523ms...
+// raw_sha256=b65391f4cfce075774aab2048e30b394e104435034dea53ba987d7c8b603a9e6
+// raw_bytes=601
 ```json
 {"bugs_found": ["In __init__, the condition for coercing mixed date/datetime types uses `==` instead of `!=`, failing to coerce mixed types to datetime as required by the contract."], "verdict": "REQUEST_CHANGES"}
 ```

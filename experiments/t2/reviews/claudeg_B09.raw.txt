@@ -1,1 +1,5 @@
+// raw_sha256=c6d2e39c7d9bc447f15242bbb979aca7d3751953737543007c419940695d79c8
+// raw_bytes=921
+```json
 {"bugs_found": ["loan_payment: missing validation for negative principal (acknowledged by inline comment)", "transfer: amount is not coerced to Decimal, mixing float amount with Decimal balance raises TypeError", "transfer: balance update is not atomic/transactional - no rollback if second assignment fails", "transfer: 'is' identity check misses distinct Account objects with the same id (logical self-transfer not blocked)", "apply_fee: no upper bound check on fee_pct (>1 yields negative net amount, no sanity check)", "fx_convert: no support for inverse rate lookup; from/to currencies are not validated as non-empty strings", "compound_interest: no upper sanity bound on annual_rate; very large rate values could produce overflow-like Decimal values silently", "Module-level: no rounding/quantization to monetary precision (e.g., 2 decimals) in any function returning money amounts"], "verdict": "REQUEST_CHANGES"}
+```

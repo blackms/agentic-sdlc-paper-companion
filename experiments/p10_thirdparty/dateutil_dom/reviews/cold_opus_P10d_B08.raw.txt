@@ -1,1 +1,5 @@
-{"bugs_found":["__add__ with another relativedelta computes minutes as other.minutes - self.minutes instead of summing them, violating the contract that adding two deltas sums all relative fields"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=1e3c9179ba4b9a93c2e1a2e38971fbd242d672d35f55ad6aba17ea10d2478824
+// raw_bytes=227
+```json
+{"bugs_found": ["__add__ with another relativedelta computes minutes as other.minutes - self.minutes instead of summing them, violating the contract that adding two deltas sums all relative fields"], "verdict": "REQUEST_CHANGES"}
+```

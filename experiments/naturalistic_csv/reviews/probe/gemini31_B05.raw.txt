@@ -1,3 +1,3 @@
-Ripgrep is not available. Falling back to GrepTool.
-Error executing tool invoke_agent: Tool execution denied by policy. You are in Plan Mode with access to read-only tools. Execution of scripts (including those from skills) is blocked.
-Error executing tool grep_search: Path not in workspace: Attempted path "/opt/homebrew/anaconda3/lib/python3.12" resolves outside the allowed workspace directories: /Users/alessiorocchi/Projects/agentic-sdlc/.worktrees/exp-extend/experiments or the project temp directory: /Users/alessiorocchi/.gemini/tmp/experiments-1
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=d48fdb83a72426644cbfa5bd10a723f8b09f96668803c2a20e95d21dde8a5f00
+// raw_bytes=556

@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis instead of Reporter/load_yaml_file/cmd_* functions); no bankcheck implementation present to verify against the documented contracts"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=2450cc6e2f0e2a3782a6667a1039d1785a2c73f10106bc39910792a299e7d5c0
+// raw_bytes=267
+```json
+{"bugs_found": ["Code provided is unrelated to the bankcheck contracts (chardet CharDistributionAnalysis instead of Reporter/load_yaml_file/cmd_* functions); no bankcheck implementation present to verify against the documented contracts"], "verdict": "REQUEST_CHANGES"}
+```

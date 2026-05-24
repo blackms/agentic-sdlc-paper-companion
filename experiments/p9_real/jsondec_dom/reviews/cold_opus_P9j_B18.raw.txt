@@ -1,1 +1,5 @@
-{"bugs_found":["py_scanstring surrogate pair combination uses wrong arithmetic: '65536 + (uni + 55296 << 10 | uni2 - 56320)' adds 0xD800 instead of subtracting it, violating the contract that valid UTF-16 surrogate pairs are combined into a single code point"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=ef18c0fa9f50774d3a8f31370f0a74fb632b62569cb8c60c86d74b01dd91f1cf
+// raw_bytes=290
+```json
+{"bugs_found": ["py_scanstring surrogate pair combination uses wrong arithmetic: '65536 + (uni + 55296 << 10 | uni2 - 56320)' adds 0xD800 instead of subtracting it, violating the contract that valid UTF-16 surrogate pairs are combined into a single code point"], "verdict": "REQUEST_CHANGES"}
+```

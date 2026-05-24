@@ -1,1 +1,5 @@
+// raw_sha256=2ea4969c17a40346520a80a2f444d4dffabd8dd394d24c0d46459aa80e018f36
+// raw_bytes=202
+```json
 {"bugs_found": ["loan_payment silently coerces a negative principal to 0 instead of raising ValueError, hiding caller errors and inconsistent with the other validations"], "verdict": "REQUEST_CHANGES"}
+```

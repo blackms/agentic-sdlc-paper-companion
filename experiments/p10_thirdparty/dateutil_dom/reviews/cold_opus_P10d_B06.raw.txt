@@ -1,1 +1,5 @@
-{"bugs_found":["__add__ on date/datetime computes month as 'self.month and other.month' instead of 'self.month or other.month', so when self.month is None/0 it falls back incorrectly (yields None/0 and breaks month arithmetic) violating the operator-level invariant 'Month is computed as self.month or other.month'"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=7e5e0dda5aa9e735c3e8e1eff0243616b9054b2a624d33dea2d2c97702813ff8
+// raw_bytes=346
+```json
+{"bugs_found": ["__add__ on date/datetime computes month as 'self.month and other.month' instead of 'self.month or other.month', so when self.month is None/0 it falls back incorrectly (yields None/0 and breaks month arithmetic) violating the operator-level invariant 'Month is computed as self.month or other.month'"], "verdict": "REQUEST_CHANGES"}
+```

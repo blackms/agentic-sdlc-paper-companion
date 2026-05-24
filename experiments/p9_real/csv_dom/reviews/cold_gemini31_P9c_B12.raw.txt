@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=fad911240eb378816707d0ae35514de237095c63152ff7d80dccb57efc310d88
+// raw_bytes=266
+```json
 {"bugs_found": ["DictWriter._dict_to_list uses '+' instead of '-' to compute wrong_fields (rowdict.keys() + self.fieldnames), causing a TypeError or incorrect ValueError validation"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=0661bd70e76ef5793f484ea53b43c976a750b5da57780075880d6dcc32dd2f11
+// raw_bytes=377
 ```json
 {"bugs_found": ["Code implements a completely different domain (parser combinators) and is missing all functions required by the bankcheck contract (Reporter, load_yaml_file, main, etc.)", "Syntax errors present due to invalid decorator '@p7_parser/contracts/parser_contracts.md'"], "verdict": "REQUEST_CHANGES"}
 ```

@@ -1,1 +1,5 @@
+// raw_sha256=a52cff64bcb90edc7d5c2f5807cff1f1a0ce1f570402e5b8d737c7de0110036a
+// raw_bytes=492
+```json
 {"bugs_found": ["_decode_uXXXX uses inverted condition `len(esc) != 4 and esc[1] not in 'xX'` instead of `len(esc) == 4 and esc[1] not in 'xX'`, so any valid `\\uXXXX` escape (where esc is exactly 4 hex chars) skips the int(esc,16) branch and raises 'Invalid \\uXXXX escape' — violates py_scanstring postcondition that `\\uXXXX` Unicode escapes are decoded, and by extension breaks surrogate-pair handling and any JSON document containing a Unicode escape."], "verdict": "REQUEST_CHANGES"}
+```

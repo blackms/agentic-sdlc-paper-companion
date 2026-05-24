@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5318ms...
+// raw_sha256=cdb05387e8c1ab0424e43cedccafc1c6225d86e08b1f8d460eeb9c1dbc788892
+// raw_bytes=418
+```json
 {"bugs_found": ["CharDistributionAnalysis.get_confidence uses 'and' instead of 'or' when checking if there is enough data, violating the contract that returns SURE_NO if _freq_chars <= MINIMUM_DATA_THRESHOLD."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
-{"bugs_found":["get_confidence uses division by typical_distribution_ratio instead of multiplication, violating the contract formula r = freq / ((total - freq) * typical_distribution_ratio)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=6af139c00efd97499afd876c1aef1c556fe2249ea3c319fb6fad8d558db42ed8
+// raw_bytes=221
+```json
+{"bugs_found": ["get_confidence uses division by typical_distribution_ratio instead of multiplication, violating the contract formula r = freq / ((total - freq) * typical_distribution_ratio)"], "verdict": "REQUEST_CHANGES"}
+```

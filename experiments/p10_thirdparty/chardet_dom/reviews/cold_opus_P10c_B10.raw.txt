@@ -1,1 +1,5 @@
+// raw_sha256=a7295ffdf02c6c93ff63d1977bca24c4fc4df4664421d5fdf2876f9cd40ead9a
+// raw_bytes=339
+```json
 {"bugs_found": ["Big5DistributionAnalysis.get_order: low second-byte branch computes 157 * (first_char + 164) + second_char - 64 instead of 157 * (first_char - 164) + second_char - 0x40 — sign flipped on first_char offset and wrong constant (64 vs 0x40=64 ok, but +164 instead of -164 violates contract)"], "verdict": "REQUEST_CHANGES"}
+```

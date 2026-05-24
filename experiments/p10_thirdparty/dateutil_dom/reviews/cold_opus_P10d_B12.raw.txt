@@ -1,1 +1,5 @@
-{"bugs_found":["__init__ diff mode: self.seconds = delta.seconds - delta.days * 86400 (should be +); sign-inverted residual sub-month difference violates the contract that applying the delta to dt2 reaches dt1"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=0ff80b919281de35c4f4749fa84659d29698bcd2b3899728a4ceaef9e5536af7
+// raw_bytes=241
+```json
+{"bugs_found": ["__init__ diff mode: self.seconds = delta.seconds - delta.days * 86400 (should be +); sign-inverted residual sub-month difference violates the contract that applying the delta to dt2 reaches dt1"], "verdict": "REQUEST_CHANGES"}
+```

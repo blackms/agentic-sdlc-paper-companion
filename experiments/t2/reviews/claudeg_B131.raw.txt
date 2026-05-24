@@ -1,1 +1,5 @@
+// raw_sha256=849d85ffe2329e41c427ac79248f1c832c7d23b510d8671aeda401afa665fdd2
+// raw_bytes=255
+```json
 {"bugs_found": ["transfer debits account_from BEFORE validating sufficient balance, so on insufficient funds the source is left with a negative balance and the exception leaves state corrupted (no atomicity / no rollback)"], "verdict": "REQUEST_CHANGES"}
+```

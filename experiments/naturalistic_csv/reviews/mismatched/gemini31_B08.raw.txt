@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=2f303e3352b5e0e94a8e1845c5d6b2e4d76e12e5c9d5f080b06f308dcf4268c5
+// raw_bytes=197
+```json
 {"bugs_found": ["Implementation completely missing for all contracted functions; provided code is a CSV module."], "verdict": "REQUEST_CHANGES"}
+```

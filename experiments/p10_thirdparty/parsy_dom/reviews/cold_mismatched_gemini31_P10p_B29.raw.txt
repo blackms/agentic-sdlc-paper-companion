@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=9efdaea9a7b01eb894c6e443afb685a30094cfc6b924015e76dc3d24b94f68df
+// raw_bytes=917
 ```json
 {"bugs_found": ["ParseError.__init__ signature is (self, expected, stream, index) instead of (self, msg: str, position: int)", "ParseError does not store the 'position' attribute (uses 'index' instead)", "ParseError string representation does not match the format '{msg} at position {position}'", "ParseError inherits from RuntimeError instead of Exception", "Missing required top-level function parse(text: str)", "Missing required top-level function parse_strict(text: str)", "Missing implementations for all bankcheck contract functions (Reporter, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_profile_validate, cmd_review_validate, cmd_contract_presence, cmd_contract_validate, cmd_floats_check, cmd_review_gate, cmd_all, build_parser, main)"], "verdict": "REQUEST_CHANGES"}
 ```

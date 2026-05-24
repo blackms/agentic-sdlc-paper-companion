@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=ab5712602166b47a14661301fd3341f8e446f12dab7809fd8b0e3a5919c35b45
+// raw_bytes=610
 ```json
 {"bugs_found": ["JSONObject returns end - 1 instead of end + 1 for empty objects when object_pairs_hook is provided, violating the return index postcondition", "py_scanstring raises JSONDecodeError for invalid control characters at the index after the character rather than at the exact index where parsing failed"], "verdict": "REQUEST_CHANGES"}
 ```

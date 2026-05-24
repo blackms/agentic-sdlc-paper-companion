@@ -1,1 +1,3 @@
-{"bugs_found": ["cmd_contract_validate dedupes validator errors by message ({e.message: e}.values()); distinct schema violations sharing the same message at different paths are collapsed, hiding real findings and underreporting failures", "round-*.json lexicographic sort misorders round 10+", "FLOAT_PATTERNS false positives in comments/strings"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=ded95822f458b4857df706018242c402ada7760a0d52073ac77771699f88eb21
+// raw_bytes=379

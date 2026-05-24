@@ -1,1 +1,5 @@
-{"bugs_found":["Codice fornito non corrisponde ai contratti di bankcheck: il codice è chardet CharDistributionAnalysis, nessuna funzione/classe del contratto (Reporter, load_yaml_file, cmd_*, build_parser, main) è presente — impossibile verificare alcun contratto"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=ac17268c72b7ff4f7bf9cd63b18213ad2d21332636f96347b2f9d78b1ee43203
+// raw_bytes=299
+```json
+{"bugs_found": ["Codice fornito non corrisponde ai contratti di bankcheck: il codice è chardet CharDistributionAnalysis, nessuna funzione/classe del contratto (Reporter, load_yaml_file, cmd_*, build_parser, main) è presente — impossibile verificare alcun contratto"], "verdict": "REQUEST_CHANGES"}
+```

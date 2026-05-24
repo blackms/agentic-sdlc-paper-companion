@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5875ms...
-Attempt 2 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 11516ms...
+// raw_sha256=356f4bff9a3cef495a3f6678e3b4d1ea3d38d74a50ee7621473b34d9bcfbfc7e
+// raw_bytes=741
+```json
 {"bugs_found": ["In `compound_interest`, the `principal` is converted to `float`, which can lead to precision errors in financial calculations. It should be converted to `Decimal` like other monetary values."], "verdict": "REQUEST_CHANGES"}
+```

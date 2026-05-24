@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=ac8b16f32ddbd5aef38f06084b64e14c948e920cff3415560105b472aa444afb
+// raw_bytes=223
 ```json
 {"bugs_found": ["GB2312DistributionAnalysis.get_order calculates order using `first_char + 176` instead of `first_char - 176`"], "verdict": "REQUEST_CHANGES"}
 ```

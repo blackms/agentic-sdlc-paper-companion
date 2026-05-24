@@ -1,1 +1,5 @@
-{"bugs_found":["JSONDecoder.decode raises 'Extra data' when end == len(s) instead of when extra non-whitespace data remains; the condition is inverted, so valid full-document inputs are rejected and inputs with trailing data are accepted, violating the postcondition that the full input must be consumed"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=4ffe37116bb9beeeb5b4c4f2feda94c74718ae424eef5f7c0abc8798c3dca821
+// raw_bytes=335
+```json
+{"bugs_found": ["JSONDecoder.decode raises 'Extra data' when end == len(s) instead of when extra non-whitespace data remains; the condition is inverted, so valid full-document inputs are rejected and inputs with trailing data are accepted, violating the postcondition that the full input must be consumed"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=98973f67f81c196f033cac365f2e7533f46af54563f27240a12643fbcf5129d5
+// raw_bytes=247
 ```json
 {"bugs_found": ["CharDistributionAnalysis.feed incorrectly uses 'if order > 0:' instead of 'if order >= 0:', which fails to count order 0 characters."], "verdict": "REQUEST_CHANGES"}
 ```

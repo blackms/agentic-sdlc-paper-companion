@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5971ms...
+// raw_sha256=01c07ca7dee788f82df83eab57fcdcb35c81f8234fa429e21ea72c714944d46d
+// raw_bytes=660
 ```json
 {"bugs_found": ["In Sniffer._guess_quote_and_delimiter, quote frequencies are counted with negative increments (quotes[key] = quotes.get(key, 0) - 1), causing max() to select the least frequent quote character instead of the most frequent."], "verdict": "REQUEST_CHANGES"}
 ```

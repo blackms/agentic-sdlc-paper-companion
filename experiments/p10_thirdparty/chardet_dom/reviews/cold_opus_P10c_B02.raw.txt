@@ -1,1 +1,5 @@
-{"bugs_found":["EUCTWDistributionAnalysis.get_order uses division (94 / (first_char - 196)) instead of multiplication (94 * (first_char - 0xC4)), violating the row-width multiplier invariant and causing ZeroDivisionError when first_char == 0xC4"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=8472db781a053f591bad979ebafc8eca282bf3d05d33869ae2a7fe4d13f146ce
+// raw_bytes=276
+```json
+{"bugs_found": ["EUCTWDistributionAnalysis.get_order uses division (94 / (first_char - 196)) instead of multiplication (94 * (first_char - 0xC4)), violating the row-width multiplier invariant and causing ZeroDivisionError when first_char == 0xC4"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,7 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5367ms...
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=a8891238753649301548ebb2b232f726868f3245ab56f2e929103d997471b637
+// raw_bytes=550
 ```json
 {"bugs_found": ["char_from raises TypeError in string branch due to subtraction `[' + string - ']'` instead of concatenation `+`]"], "verdict": "REQUEST_CHANGES"}
 ```

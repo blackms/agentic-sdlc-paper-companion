@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=b9fc8109906395c310049e807fc66a3f82a95f49a24b15f411903a9c329b3573
+// raw_bytes=336
+```json
 {"bugs_found": ["In JSONDecoder.decode, the condition `if end == len(s):` incorrectly raises an 'Extra data' error when parsing successfully consumes the entire string, instead of raising it when `end != len(s)` (when extra data is actually present)."], "verdict": "REQUEST_CHANGES"}
+```

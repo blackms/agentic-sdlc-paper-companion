@@ -1,1 +1,5 @@
+// raw_sha256=1a2cd54f9a946be368f8ddaa553311ca816a24d3a8d45634a61c91218fbe0581
+// raw_bytes=357
+```json
 {"bugs_found": ["misleading inline comment 'currency mismatch unchecked' on compound_interest where currency is not even a parameter", "transfer is not atomic: no try/except or rollback if the credit step fails after the debit", "fx_convert does not validate that rate is positive, accepting zero or negative rates silently"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=adcd1a4ad0e40216ad37760350ae477f8ac1e6f7c7cbbe21054f13ec14b4c982
+// raw_bytes=141
+```json
 {"bugs_found": ["transfer debits sender by amount + 0.01 extra (hidden fee), breaking conservation of funds"], "verdict": "REQUEST_CHANGES"}
+```

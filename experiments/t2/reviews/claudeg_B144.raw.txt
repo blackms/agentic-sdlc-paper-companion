@@ -1,1 +1,5 @@
+// raw_sha256=48f48adff06d6c2534a547555ab6a73c06bb4527cb710542c8987d820e7102cf
+// raw_bytes=273
+```json
 {"bugs_found": ["self-transfer raises AttributeError instead of ValueError, breaking exception contract and confusing callers that catch ValueError for validation", "inconsistent error semantics across validation paths in the same function"], "verdict": "REQUEST_CHANGES"}
+```

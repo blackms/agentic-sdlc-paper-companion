@@ -1,1 +1,5 @@
-{"bugs_found":["GB2312DistributionAnalysis.get_order uses `94 * (first_char + 176)` instead of `94 * (first_char - 176)`, violating the contract formula and producing wildly wrong (and out-of-table) orders for all GB2312 inputs"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=88c35a4790a4f5e8875b35158be26eb119227e133eb649902cd7cc70d40a18da
+// raw_bytes=259
+```json
+{"bugs_found": ["GB2312DistributionAnalysis.get_order uses `94 * (first_char + 176)` instead of `94 * (first_char - 176)`, violating the contract formula and producing wildly wrong (and out-of-table) orders for all GB2312 inputs"], "verdict": "REQUEST_CHANGES"}
+```

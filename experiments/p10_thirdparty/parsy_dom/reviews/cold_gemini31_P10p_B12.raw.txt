@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5269ms...
+// raw_sha256=7f642d5a27924e38659b2b714a5d2dad511e26cd755ed6629abb61a1d18107c6
+// raw_bytes=443
 ```json
 {"bugs_found": ["In Parser.until, the check for maximum iterations uses `times > max` instead of `times >= max`, violating the operator-level invariant and allowing parsing of more than `max` items if followed by `other`."], "verdict": "REQUEST_CHANGES"}
 ```

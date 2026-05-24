@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=819dc8cf4595e505bdcf87c601ce2c85b25f35cdf48e2e98e23801af6d9d37cf
+// raw_bytes=280
+```json
 {"bugs_found": ["The provided code implements 'CharDistributionAnalysis' and completely lacks all functions defined in the 'bankcheck' contract (e.g., Reporter methods, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}
+```

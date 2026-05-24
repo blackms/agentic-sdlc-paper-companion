@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=8f6a6a587ce40ec80e1a7ac272aa832cfc42292b803ac5b123c16cacdfdc4f2a
+// raw_bytes=541
 ```json
 {"bugs_found": ["Entire implementation is missing: the provided code is the 'csv' module, completely unrelated to the 'bankcheck' contract", "Class 'Reporter' and its methods are not implemented", "File loading functions like load_yaml_file and load_json_file are not implemented", "All CLI command handlers (cmd_profile_validate, cmd_review_validate, etc.) are not implemented", "Entrypoint functions build_parser and main are not implemented"], "verdict": "REQUEST_CHANGES"}
 ```

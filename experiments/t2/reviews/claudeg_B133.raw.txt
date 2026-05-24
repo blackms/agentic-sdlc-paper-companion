@@ -1,1 +1,5 @@
+// raw_sha256=71d12750fceee4d076c88846d806e2d42ed209ccfcb18878457732cec30f1aa9
+// raw_bytes=261
+```json
 {"bugs_found": ["transfer uses == instead of is to detect self-transfer; because Account is a dataclass with generated __eq__, two distinct accounts that happen to share id/balance/currency are wrongly rejected as self-transfer"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
-{"bugs_found":["get_confidence uses 'if self._total_chars == self._freq_chars' instead of '!=', inverting the branch: when total != freq the ratio formula is skipped and SURE_YES is returned, and when total == freq it attempts division by zero","Big5 get_order low-range branch subtracts 64 instead of 0x40 (still 64, equivalent) — OK; but the contract requires the high-branch to add +63, which is preserved"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=9cd6516084f19c4383231be643c93e55b1badc8ed084f2af1e4e2fd49873d50c
+// raw_bytes=442
+```json
+{"bugs_found": ["get_confidence uses 'if self._total_chars == self._freq_chars' instead of '!=', inverting the branch: when total != freq the ratio formula is skipped and SURE_YES is returned, and when total == freq it attempts division by zero", "Big5 get_order low-range branch subtracts 64 instead of 0x40 (still 64, equivalent) — OK; but the contract requires the high-branch to add +63, which is preserved"], "verdict": "REQUEST_CHANGES"}
+```

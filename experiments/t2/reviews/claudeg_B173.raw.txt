@@ -1,1 +1,5 @@
+// raw_sha256=145db6a0c2dfe38d0430e409a9d0a19502696cca79fa3b2046f455e03baa7b09
+// raw_bytes=702
+```json
 {"bugs_found": ["apply_fee: 'fmin = Decimal(float(fee_min))' converts via float, introducing binary-float rounding errors (e.g. Decimal(float('0.1')) == 0.10000000000000000555...) — inconsistent with the str-based conversion used for all other inputs and unsafe for monetary values", "apply_fee: inconsistent conversion strategy between fmin (via float) and fmax/amount/pct (via str) makes results non-deterministic across inputs and violates Decimal best practices for finance code", "apply_fee: float-conversion path will fail loudly if fee_min is a non-numeric string but silently corrupt precision when it is a numeric string — both are wrong for monetary code"], "verdict": "REQUEST_CHANGES"}
+```

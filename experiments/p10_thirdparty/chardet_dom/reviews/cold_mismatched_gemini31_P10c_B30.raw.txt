@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5638ms...
+// raw_sha256=1af66a8c26d70a42110a98fcb7a112b0101e9e0b10deb0133b2b11876cd0582b
+// raw_bytes=431
+```json
 {"bugs_found": ["Code and contract completely mismatch: the provided code implements chardet distribution analysis classes, whereas the contract specifies bankcheck CLI functions (e.g., Reporter, load_yaml_file, cmd_all)."], "verdict": "REQUEST_CHANGES"}
+```

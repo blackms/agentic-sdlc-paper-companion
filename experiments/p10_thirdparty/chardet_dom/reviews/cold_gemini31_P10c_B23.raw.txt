@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5860ms...
+// raw_sha256=e646abd6d0023cd205b12ac3b15b0896420dacc00a5ed4014799bc36b9ed2b4f
+// raw_bytes=354
+```json
 {"bugs_found": ["CharDistributionAnalysis.get_confidence computes ratio r using division by typical_distribution_ratio instead of multiplication"], "verdict": "REQUEST_CHANGES"}
+```

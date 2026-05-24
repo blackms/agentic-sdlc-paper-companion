@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis); none of the contracted functions/classes are present, so all contract postconditions are vacuously violated"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=a55ee911a89a867f09569a20d103836092a9009decb7a7f08c00c89128617809
+// raw_bytes=245
+```json
+{"bugs_found": ["Code under review is unrelated to bankcheck contracts (chardet CharDistributionAnalysis); none of the contracted functions/classes are present, so all contract postconditions are vacuously violated"], "verdict": "REQUEST_CHANGES"}
+```

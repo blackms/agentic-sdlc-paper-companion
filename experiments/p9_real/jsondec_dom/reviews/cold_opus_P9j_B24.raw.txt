@@ -1,1 +1,5 @@
-{"bugs_found":["`scanstring = c_scanstring and py_scanstring` uses `and` instead of `or`: when `c_scanstring` import fails (None), `scanstring` becomes None, so `JSONDecoder.parse_string` is None and `JSONObject`'s mandated call `scanstring(s, end, strict)` raises TypeError, violating JSONObject's invariant 'Each property name is parsed using scanstring' and the postcondition that valid JSON objects with string keys can be decoded; even when `c_scanstring` is available, the expression returns `py_scanstring`, so the C accelerator is never bound."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=be4021408fe9b0a37185062da19f3cdb69665682e676f4f89ad26cc8760fd239
+// raw_bytes=583
+```json
+{"bugs_found": ["`scanstring = c_scanstring and py_scanstring` uses `and` instead of `or`: when `c_scanstring` import fails (None), `scanstring` becomes None, so `JSONDecoder.parse_string` is None and `JSONObject`'s mandated call `scanstring(s, end, strict)` raises TypeError, violating JSONObject's invariant 'Each property name is parsed using scanstring' and the postcondition that valid JSON objects with string keys can be decoded; even when `c_scanstring` is available, the expression returns `py_scanstring`, so the C accelerator is never bound."], "verdict": "REQUEST_CHANGES"}
+```

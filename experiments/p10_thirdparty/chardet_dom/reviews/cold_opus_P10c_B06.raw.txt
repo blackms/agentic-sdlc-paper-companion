@@ -1,1 +1,5 @@
-{"bugs_found":["get_confidence uses 'and' instead of 'or' between _total_chars<=0 and _freq_chars<=MINIMUM_DATA_THRESHOLD, so SURE_NO is only returned when BOTH conditions hold; contract requires either condition alone to short-circuit to SURE_NO, and the original code uses 'or' semantics via two separate checks"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=3c83bb0a039c953b6caa6e7d8b70f12a0361082b0565caa5e8b4604714c2e9d5
+// raw_bytes=345
+```json
+{"bugs_found": ["get_confidence uses 'and' instead of 'or' between _total_chars<=0 and _freq_chars<=MINIMUM_DATA_THRESHOLD, so SURE_NO is only returned when BOTH conditions hold; contract requires either condition alone to short-circuit to SURE_NO, and the original code uses 'or' semantics via two separate checks"], "verdict": "REQUEST_CHANGES"}
+```

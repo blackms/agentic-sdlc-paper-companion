@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5715ms...
+// raw_sha256=46ff939c13adddfe03501550639d423a2f1379cf97d03de4c38a40fb391eb71c
+// raw_bytes=359
 ```json
 {"bugs_found": ["Missing implementation for all functions and classes specified in the contract (Reporter, load_yaml_file, cmd_all, etc.)"], "verdict": "REQUEST_CHANGES"}
 ```

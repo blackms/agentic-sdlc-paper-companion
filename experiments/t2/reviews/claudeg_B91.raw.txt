@@ -1,1 +1,5 @@
+// raw_sha256=0eb1c3ad7784c8f4d90aab637d1e4b214311cae6e09575785dd9271c9ae13177
+// raw_bytes=126
+```json
 {"bugs_found": ["redundant int(n) cast in compound_interest (n is already int); minor code smell only"], "verdict": "ACCEPT"}
+```

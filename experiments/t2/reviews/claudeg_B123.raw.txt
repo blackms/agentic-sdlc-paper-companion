@@ -1,1 +1,5 @@
+// raw_sha256=603ae759e85a8827cc633d1587a1c01f6891e88d02f63be22b9c197973a254ef
+// raw_bytes=382
+```json
 {"bugs_found": ["loan_payment negates monthly_rate ('r = -Decimal(...)'), so any positive rate immediately fails the 'r < 0' validation, and a zero rate works only by coincidence; the function is effectively broken for all valid inputs", "transfer is not atomic; no rollback if credit step fails", "fx_convert does not validate the rate is positive"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=f8e1769b1529102dfb21a831c474f5b1380babb4210346dd280d2df9b7d06348
+// raw_bytes=377
+```json
 {"bugs_found": ["loan_payment uses 'monthly_rate or 0' which silently coerces None (and any falsy value) to 0, masking caller bugs that pass None instead of raising TypeError; explicit None-check is preferable", "transfer is not atomic: no rollback if credit fails after debit", "fx_convert does not validate that the resolved rate is positive"], "verdict": "REQUEST_CHANGES"}
+```

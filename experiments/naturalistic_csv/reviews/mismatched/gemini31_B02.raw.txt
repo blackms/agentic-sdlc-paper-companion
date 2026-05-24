@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=d10e0214c5af9ef1719faf30654d90dc779a5ee9818ca8b1502c36f3d430e455
+// raw_bytes=303
+```json
 {"bugs_found": ["The provided source code (csv.py) completely mismatches the expected 'bankcheck' contracts. None of the contracted functions or classes (Reporter, load_yaml_file, cmd_*, etc.) are present in the code."], "verdict": "REQUEST_CHANGES"}
+```

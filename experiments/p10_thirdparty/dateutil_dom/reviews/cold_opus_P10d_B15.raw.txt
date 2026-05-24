@@ -1,1 +1,5 @@
-{"bugs_found":["__init__ diff mode uses 'or' instead of 'and' when validating dt1/dt2 types: 'if not (isinstance(dt1, datetime.date) or isinstance(dt2, datetime.date))' accepts a case where only one of the two is a date, violating the precondition that BOTH must be date/datetime"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=8008af14c97921ac397247db516aa2105572a7178fbd63b236d11d570a4dee42
+// raw_bytes=311
+```json
+{"bugs_found": ["__init__ diff mode uses 'or' instead of 'and' when validating dt1/dt2 types: 'if not (isinstance(dt1, datetime.date) or isinstance(dt2, datetime.date))' accepts a case where only one of the two is a date, violating the precondition that BOTH must be date/datetime"], "verdict": "REQUEST_CHANGES"}
+```

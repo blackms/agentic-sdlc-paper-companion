@@ -1,1 +1,5 @@
-{"bugs_found":["__eq__ uses 'n1 != n2 or not (...)' instead of 'n1 != n2 and not (...)', which makes weekday n=None and n=1 compare as not-equal, violating the contract that treats n=None and n=1 as equivalent"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=f3d2bab31d8ebdd7b3a2ccc6b5bb421c61ad1c2d231bcd2979a60fb851e22f38
+// raw_bytes=241
+```json
+{"bugs_found": ["__eq__ uses 'n1 != n2 or not (...)' instead of 'n1 != n2 and not (...)', which makes weekday n=None and n=1 compare as not-equal, violating the contract that treats n=None and n=1 as equivalent"], "verdict": "REQUEST_CHANGES"}
+```

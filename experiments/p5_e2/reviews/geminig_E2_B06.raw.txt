@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5466ms...
+// raw_sha256=784f0457b27cc4dff9a665aac5ceed74f3131876c730353e5c703afdc6c11859
+// raw_bytes=631
 ```json
 {"bugs_found": ["The 'iter_files_under_sensitive' function does not correctly handle recursive glob patterns (e.g., 'src/**/*.py') unless they explicitly end with '/**'. It should use 'Path.rglob(pattern)' directly.", "The 'cmd_all' function contains a conditional 'if False and sub_args.branch:', which unconditionally disables the 'review-validate' and 'review-gate' commands even when a branch is provided."], "verdict": "REQUEST_CHANGES"}
 ```

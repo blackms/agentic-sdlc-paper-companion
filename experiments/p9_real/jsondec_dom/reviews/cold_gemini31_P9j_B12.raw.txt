@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5253ms...
+// raw_sha256=8c16055fdb0486ad45ac6fcf5665cb2829ba5c1d8bc34d4d91e278b88734d0cf
+// raw_bytes=465
 ```json
 {"bugs_found": ["In `py_scanstring`, the check for combining surrogate pairs incorrectly uses `s[end:end + 2] != '\\u'` instead of `== '\\u'`, violating the postcondition that valid UTF-16 surrogate pairs are combined into a single code point."], "verdict": "REQUEST_CHANGES"}
 ```

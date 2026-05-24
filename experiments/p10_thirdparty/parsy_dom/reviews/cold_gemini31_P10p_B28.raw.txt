@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5838ms...
+// raw_sha256=f91cd9b2af3f453b593e2e69fce248edff5986c75a39c0a5b1c1b1068fb24347
+// raw_bytes=374
 ```json
 {"bugs_found": ["In `string` parser, the stream slice uses `index - slen` instead of `index + slen`, violating the operator-level invariant for slicing."], "verdict": "REQUEST_CHANGES"}
 ```

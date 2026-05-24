@@ -1,1 +1,5 @@
+// raw_sha256=bad94995f79bd32ad9bc1392217554d58ce1e9e307da11b54d8aec449ba361e3
+// raw_bytes=195
+```json
 {"bugs_found": ["transfer raises TypeError instead of ValueError when amount <= 0, breaking the documented/expected error contract used by the rest of the module"], "verdict": "REQUEST_CHANGES"}
+```

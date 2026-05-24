@@ -1,1 +1,5 @@
+// raw_sha256=73d98b797277d4d491be338161f757244500a28606c188ccc89363dbc92e5825
+// raw_bytes=419
+```json
 {"bugs_found": ["compound_interest: WRONG FORMULA — uses (1 + r/n)**t instead of (1 + r/n)**(n*t); produces incorrect interest whenever compounds_per_year > 1", "transfer: not atomic — failure between debit and credit corrupts state", "transfer: no Decimal quantization on balances", "apply_fee: result may be negative if fee_min > amount", "fx_convert: missing rate > 0 validation"], "verdict": "REQUEST_CHANGES"}
+```

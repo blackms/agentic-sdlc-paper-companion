@@ -1,4 +1,3 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-{"bugs_found": ["Missing all bankcheck classes and functions (Reporter, load_yaml_file, cmd_all, etc.)", "ParseError.__init__ signature is (self, expected, stream, index) instead of (self, msg: str, position: int)", "ParseError inherits from RuntimeError instead of Exception", "ParseError lacks the required .position attribute", "ParseError does not format the exception message as '{msg} at position {position}'", "Missing top-level function parse(text: str)", "Missing top-level function parse_strict(text: str)", "Syntax error due to @p7_parser/contracts/parser_contracts.md decorators"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=1525a3e2141c1b4bb8a5f6e9ff1054c6fd3c2856168c4be4ee2fd4a19a1cbb00
+// raw_bytes=875

@@ -1,1 +1,5 @@
-{"bugs_found":["_guess_delimiter uses '%c ' // delim (integer division on string) instead of '%c ' % delim — TypeError at runtime when a single-delimiter chunk is found"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=312ff06233afdd26d44c67f6006166e60312f5d929c42b282fda5e882bc4047b
+// raw_bytes=202
+```json
+{"bugs_found": ["_guess_delimiter uses '%c ' // delim (integer division on string) instead of '%c ' % delim — TypeError at runtime when a single-delimiter chunk is found"], "verdict": "REQUEST_CHANGES"}
+```

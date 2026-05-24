@@ -1,5 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 1s.. Retrying after 5659ms...
+// raw_sha256=6d478d9fe770f26fdf45e2830e92717eddaac1be1a9359ce33ffd56c562ca0d4
+// raw_bytes=352
 ```json
 {"bugs_found": ["get_confidence uses '==' instead of '!=' when comparing _total_chars and _freq_chars, causing a ZeroDivisionError"], "verdict": "REQUEST_CHANGES"}
 ```

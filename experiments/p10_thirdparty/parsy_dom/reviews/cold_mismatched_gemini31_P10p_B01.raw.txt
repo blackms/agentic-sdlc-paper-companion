@@ -1,4 +1,3 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
-{"bugs_found": ["Code does not implement any of the required bankcheck functions such as Reporter, load_yaml_file, or cmd_profile_validate", "ParseError.__init__ signature violates contract by taking (expected, stream, index) instead of (msg, position)", "ParseError violates contract by not setting a self.position attribute", "ParseError violates contract by not formatting its message as '{msg} at position {position}'", "Code violates Minimal JSON Parser contract by missing the parse(text: str) function", "Code violates Minimal JSON Parser contract by missing the parse_strict(text: str) function"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=0a72f9857dc9b688a1f696b410865e778d9dba28330e68d8a789e074521b1c91
+// raw_bytes=887

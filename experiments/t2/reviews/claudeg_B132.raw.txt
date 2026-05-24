@@ -1,1 +1,5 @@
+// raw_sha256=0bfd89555aeec1c3a01522c196a225a75a99a9f777f350b0d2c6f81a8cee2177
+// raw_bytes=254
+```json
 {"bugs_found": ["transfer compares account_from.currency.upper() to account_to.currency.lower(), which is always unequal for any alphabetic currency code, making every same-currency transfer fail with 'currency mismatch'"], "verdict": "REQUEST_CHANGES"}
+```

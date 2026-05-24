@@ -1,1 +1,5 @@
+// raw_sha256=4b1140bd03167d15d67f30cd09d3d94ccd3cdc05d02f7c007a0d7d939190298d
+// raw_bytes=270
+```json
 {"bugs_found": ["SJISDistributionAnalysis.get_order: upper first-byte range uses `first_char < 239` (strict) instead of `<= 0xEF` inclusive — first_char == 0xEF wrongly returns -1, violating the contract's inclusive `0xE0..0xEF` bound"], "verdict": "REQUEST_CHANGES"}
+```

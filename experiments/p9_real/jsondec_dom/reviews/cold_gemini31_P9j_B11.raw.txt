@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=3e5e3ae4b4231a1e0bf68f506d709784feea1119993d6289f525f3fca1c3738a
+// raw_bytes=511
 ```json
 {"bugs_found": ["_decode_uXXXX uses incorrect string slicing 's[pos + 1:pos - 5]' instead of 's[pos + 1:pos + 5]', which causes it to always extract an empty string and fail to decode valid \\uXXXX unicode escapes."], "verdict": "REQUEST_CHANGES"}
 ```

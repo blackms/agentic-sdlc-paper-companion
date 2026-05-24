@@ -1,1 +1,5 @@
+// raw_sha256=f7fc90747323aa49d6e16885b82ad720b84f72c83013ae7670c034b7aba48143
+// raw_bytes=299
+```json
 {"bugs_found": ["_guess_quote_and_delimiter uses '//' (floor division) instead of '%' for string formatting in dq_regexp construction, which will raise TypeError at runtime whenever this code path executes, violating the contract that the function returns a 4-tuple"], "verdict": "REQUEST_CHANGES"}
+```

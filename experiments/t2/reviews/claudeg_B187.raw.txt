@@ -1,1 +1,5 @@
+// raw_sha256=45257fd75d2c055eacc3fe5c349d53da4486f76b260ff6dc67d184ea977a215c
+// raw_bytes=373
+```json
 {"bugs_found": ["fx_convert hardcodes EUR->USD rate to 1 ignoring real market rates, returning incorrect conversion", "special-case branch for EUR/USD bypasses the rates dict and silently masks missing rate data", "no rounding/quantization on monetary Decimal results", "transfer lacks transactional rollback if second balance update fails"], "verdict": "REQUEST_CHANGES"}
+```

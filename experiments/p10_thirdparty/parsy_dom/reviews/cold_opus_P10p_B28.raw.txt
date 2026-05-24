@@ -1,1 +1,5 @@
-{"bugs_found":["string(): slice is stream[index:index - slen] instead of stream[index:index + slen], so equality only holds when expected_string is empty; violates 'Consumes exactly len(expected_string) items on success' and the operator-level invariant 'Slice is stream[index:index + len(expected_string)]'"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=075de3995a0050d0d7e52b586511e77959132d62b10f2f1d618dfaa4a834aa1c
+// raw_bytes=339
+```json
+{"bugs_found": ["string(): slice is stream[index:index - slen] instead of stream[index:index + slen], so equality only holds when expected_string is empty; violates 'Consumes exactly len(expected_string) items on success' and the operator-level invariant 'Slice is stream[index:index + len(expected_string)]'"], "verdict": "REQUEST_CHANGES"}
+```

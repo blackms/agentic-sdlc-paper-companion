@@ -1,1 +1,5 @@
-{"bugs_found":["_fix uses abs(self.hours) >= 23 instead of > 23, causing hours=23 (or -23) to be incorrectly carried into days, violating the contract invariant that boundary values equal to the limit are not carried"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=a14f6b7f81f472b608deae824e6eb4f637ff38553a919029c1fbc646b7b7ac56
+// raw_bytes=248
+```json
+{"bugs_found": ["_fix uses abs(self.hours) >= 23 instead of > 23, causing hours=23 (or -23) to be incorrectly carried into days, violating the contract invariant that boundary values equal to the limit are not carried"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,6 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=99ba6903d59285502df4f74d5f8f31a5f44fe73ee386f2dfb4242b6111bc48ff
+// raw_bytes=508
 ```json
 {"bugs_found": ["The provided code implements the 'relativedelta' module and is missing all classes and functions defined in the 'bankcheck' contract (e.g., Reporter, load_yaml_file, cmd_profile_validate, etc.)."], "verdict": "REQUEST_CHANGES"}
 ```

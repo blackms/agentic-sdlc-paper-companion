@@ -1,1 +1,5 @@
+// raw_sha256=979ef0ea3c9ce8807723853434821a52af4d784acb00befe9822acc09c779fa4
+// raw_bytes=574
+```json
 {"bugs_found": ["compound_interest: int(float(years)) is redundant and may silently truncate non-integer years instead of raising", "transfer: not atomic — concurrent calls or an exception between the two balance assignments could leave an inconsistent state", "transfer: no rounding/quantize on Decimal balances, can drift sub-cent precision over many operations", "fx_convert: missing reverse-rate fallback and no validation that rate is positive", "apply_fee: result can be negative if fee_min > amount, no guard that amount - fee >= 0"], "verdict": "REQUEST_CHANGES"}
+```

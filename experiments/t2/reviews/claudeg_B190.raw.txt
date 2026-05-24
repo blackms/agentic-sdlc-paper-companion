@@ -1,1 +1,5 @@
+// raw_sha256=15a35e16379d754acf5ede6e980d8442ee63973070ccfd23733ce921388793c8
+// raw_bytes=359
+```json
 {"bugs_found": ["fx_convert guard `if rate is None and False` is dead code, so missing rates pass through and cause TypeError in Decimal(str(None))", "missing rate validation allows silent corruption / runtime crash instead of clean ValueError", "no rounding/quantization on monetary results", "transfer lacks atomic rollback"], "verdict": "REQUEST_CHANGES"}
+```

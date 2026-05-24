@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to the bankcheck contracts: it implements CharDistributionAnalysis classes, none of which correspond to any function in the contract document (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_* handlers, build_parser, main). No contract under review can be verified against this code, so all bankcheck contracts are unimplemented here."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=66dae824766ff50c7b623bb56d08f63a1fe7f95acabc39261b9e1f9f57024058
+// raw_bytes=521
+```json
+{"bugs_found": ["Code under review is unrelated to the bankcheck contracts: it implements CharDistributionAnalysis classes, none of which correspond to any function in the contract document (Reporter.ok/warn/fail/config_error, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_* handlers, build_parser, main). No contract under review can be verified against this code, so all bankcheck contracts are unimplemented here."], "verdict": "REQUEST_CHANGES"}
+```

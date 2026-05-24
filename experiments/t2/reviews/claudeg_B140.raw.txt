@@ -1,1 +1,5 @@
+// raw_sha256=73328f4602ce108bbe5f74e36a76f614ed983c73d82f298679292ec88971dadf
+// raw_bytes=252
+```json
 {"bugs_found": ["Receipt is created with amount=-amount (negated), producing negative receipt amounts and breaking audit/reconciliation", "sign convention inconsistent with balance updates which use the positive amount"], "verdict": "REQUEST_CHANGES"}
+```

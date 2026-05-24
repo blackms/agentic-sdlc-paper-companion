@@ -1,1 +1,5 @@
+// raw_sha256=a695286f35e0b05dcd55bf34ddca1195b89c35220be1ac603d2670dcbdd3ff78
+// raw_bytes=571
+```json
 {"bugs_found": ["compound_interest: silently coerces 'NaN' principal to Decimal(0) instead of raising — hides invalid input and produces misleading 0 results; comparison str(principal)!='NaN' is brittle (case-sensitive, no other non-finite values handled)", "compound_interest: does not validate that principal is non-negative or finite", "transfer: not atomic — no rollback if interrupted between the two balance updates", "apply_fee: amount - fee can go negative when fee_min > amount", "fx_convert: no rate validity check (rate>0)"], "verdict": "REQUEST_CHANGES"}
+```

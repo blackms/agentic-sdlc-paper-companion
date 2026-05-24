@@ -1,1 +1,5 @@
+// raw_sha256=a2ac4e0c44e45c80b9b365e3f8e5bce3a0eed254766de88eb38832cfae6b0d11
+// raw_bytes=333
+```json
 {"bugs_found": ["apply_fee raises ImportError instead of ValueError for negative amount, breaking exception contract and surprising callers", "inconsistent exception type makes error handling fragile and misleading", "no rounding/quantization on monetary results", "transfer is not atomic on failure"], "verdict": "REQUEST_CHANGES"}
+```

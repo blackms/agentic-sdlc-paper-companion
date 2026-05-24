@@ -1,1 +1,5 @@
+// raw_sha256=f70fc2df1af41b57ea068d27361a7b284b4cd143cb8ab38458a0636df6b63272
+// raw_bytes=531
+```json
 {"bugs_found": ["fx_convert looks up the rate with the key swapped: rates.get((to_currency, from_currency)) instead of (from_currency, to_currency), so a USD->EUR conversion uses the EUR->USD rate (the inverse), producing wrong results or a spurious 'no rate' error", "stray comment 'twin B72' leaks internal/test metadata into production code", "fx_convert does not validate rate is positive", "transfer() not atomic, no rollback on partial failure", "compound_interest truncates fractional years"], "verdict": "REQUEST_CHANGES"}
+```

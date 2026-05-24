@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=3ae4741e16c5f263762540f6d50478663027b123b968070471bdc6b259dd335a
+// raw_bytes=256
 ```json
 {"bugs_found": ["JSONDecodeError.__init__ uses // instead of % for string formatting, which will raise a TypeError instead of formatting the message correctly"], "verdict": "REQUEST_CHANGES"}
 ```

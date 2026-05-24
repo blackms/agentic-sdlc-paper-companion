@@ -1,1 +1,5 @@
-{"bugs_found":["Code under review is unrelated to the bankcheck contracts provided (chardet CharDistributionAnalysis vs bankcheck CLI/Reporter functions); no contract correspondence can be verified"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=0fd431d5c34973e5c3792f99ea99e685e27447dfc9a43afa79208c53a07d9c8a
+// raw_bytes=229
+```json
+{"bugs_found": ["Code under review is unrelated to the bankcheck contracts provided (chardet CharDistributionAnalysis vs bankcheck CLI/Reporter functions); no contract correspondence can be verified"], "verdict": "REQUEST_CHANGES"}
+```

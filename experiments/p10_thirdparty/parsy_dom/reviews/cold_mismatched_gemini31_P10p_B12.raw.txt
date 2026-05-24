@@ -1,2 +1,3 @@
-Ripgrep is not available. Falling back to GrepTool.
-{"bugs_found": ["Code is missing all functions mandated by the bankcheck contract (Reporter methods, load_yaml_file, cmd_*, etc.)", "Code is missing the top-level 'parse' and 'parse_strict' functions required by the JSON parser contract", "ParseError __init__ signature takes (expected, stream, index) instead of the contracted (msg, position)", "ParseError instances lack the mandatory '.position' attribute", "ParseError string representation violates the required '{msg} at position {position}' format"], "verdict": "REQUEST_CHANGES"}
+// REDACTED — no JSON response with bugs_found could be extracted.
+// raw_sha256=f55661119785053c2ff8a93bdc92e48025022298aba572657ce3595ee5017d5a
+// raw_bytes=590

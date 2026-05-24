@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=973f7db21ae466e85eba5a4f05b6882035cb4c74e66a1387b4111582a2c0e767
+// raw_bytes=265
 ```json
 {"bugs_found": ["The provided code does not implement any of the contracted bankcheck functions and instead contains unrelated character distribution analysis classes."], "verdict": "REQUEST_CHANGES"}
 ```

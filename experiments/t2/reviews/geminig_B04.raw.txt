@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 2s.. Retrying after 5196ms...
+// raw_sha256=6f7dd6d00c4350b6169e7f736342cbe8b0979560c8d1f3c814db901e951ff5a0
+// raw_bytes=361
+```json
 {"bugs_found": ["The 'compound_interest' function uses an incorrect formula for compound interest. It uses (1 - r/n) instead of the standard (1 + r/n)."], "verdict": "REQUEST_CHANGES"}
+```

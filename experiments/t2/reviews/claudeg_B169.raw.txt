@@ -1,1 +1,5 @@
+// raw_sha256=5c1775485dcc14a3a23500610ae0ac0f881aa37437dd3950ff048b55c28b3843
+// raw_bytes=400
+```json
 {"bugs_found": ["apply_fee: stray statement 'fee_min = fmin' rebinds the parameter name to the Decimal copy with no functional purpose — looks like a leftover/incomplete edit and is confusing for readers", "apply_fee: two statements on one line with semicolon ('fmin = Decimal(str(fee_min)); fee_min = fmin') violates PEP 8 and obscures the suspicious reassignment"], "verdict": "REQUEST_CHANGES"}
+```

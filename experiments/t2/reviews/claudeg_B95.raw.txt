@@ -1,1 +1,5 @@
+// raw_sha256=bfadb907a166386585b5e43b0127bab4834834018a98a10dadd8efa8a1ee9f56
+// raw_bytes=192
+```json
 {"bugs_found": ["compound_interest computes t = max(0, years - 1), causing off-by-one error and silently clamping negative years instead of raising ValueError"], "verdict": "REQUEST_CHANGES"}
+```

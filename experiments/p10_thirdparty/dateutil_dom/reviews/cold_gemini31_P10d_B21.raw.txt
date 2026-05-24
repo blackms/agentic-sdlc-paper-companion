@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
-[STARTUP] Cannot measure phase 'cleanup_ops': start mark 'startup:cleanup_ops:start' not found (likely cleared by reset).
+// raw_sha256=73c8c917a8608e48fd1e482d71ca2d5d317b3b1012e77772fe60db199e97830f
+// raw_bytes=391
+```json
 {"bugs_found": ["relativedelta.__eq__ incorrectly checks self.minutes != other.minutes instead of equality"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=6f0b052898e316686961026021618ac9198937a6b8020d93a51ceb5eb8a31df2
+// raw_bytes=514
+```json
 {"bugs_found": ["fx_convert raises BaseException instead of ValueError/LookupError, which is bad practice and hard to catch", "transfer is not atomic/thread-safe; concurrent calls can corrupt balances or double-spend", "compound_interest does not validate that principal is non-negative", "Decimal division r/n in compound_interest may lose precision; n should be wrapped as Decimal(n)", "loan_payment with r==0 returns p/m as Decimal/int division without ensuring Decimal context"], "verdict": "REQUEST_CHANGES"}
+```

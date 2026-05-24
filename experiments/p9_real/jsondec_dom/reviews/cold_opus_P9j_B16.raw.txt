@@ -1,1 +1,5 @@
-{"bugs_found":["py_scanstring: the branch logic is inverted — `elif terminator == '\\\\'` should be `elif terminator != '\\\\'`. As written, encountering a backslash escape raises 'Invalid control character' under strict mode (violating the postcondition that valid JSON escapes are decoded), while literal control characters fall through into escape processing instead of raising under strict mode (violating the postcondition that control characters are rejected when strict is True)."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=69af0a7cf4563bb9af9bd6a8c6a0de7ed417ff1f817667559c462192f9aab9d2
+// raw_bytes=520
+```json
+{"bugs_found": ["py_scanstring: the branch logic is inverted — `elif terminator == '\\\\'` should be `elif terminator != '\\\\'`. As written, encountering a backslash escape raises 'Invalid control character' under strict mode (violating the postcondition that valid JSON escapes are decoded), while literal control characters fall through into escape processing instead of raising under strict mode (violating the postcondition that control characters are rejected when strict is True)."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
-{"bugs_found":["__add__ con date/datetime: la condizione di promozione a datetime è 'self._has_time or not isinstance(other, datetime.datetime)' invece di 'and'; questo promuove sempre un datetime.date a datetime anche quando non ci sono componenti orarie, violando l'invariante che una date senza time components debba restare date (e introducendo conversione spuria a datetime per qualunque date input)"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=3f619f44fd836b62a7bf452b84b6141a0a95d7df2e2bf4972252c40b219d47f1
+// raw_bytes=437
+```json
+{"bugs_found": ["__add__ con date/datetime: la condizione di promozione a datetime è 'self._has_time or not isinstance(other, datetime.datetime)' invece di 'and'; questo promuove sempre un datetime.date a datetime anche quando non ci sono componenti orarie, violando l'invariante che una date senza time components debba restare date (e introducendo conversione spuria a datetime per qualunque date input)"], "verdict": "REQUEST_CHANGES"}
+```

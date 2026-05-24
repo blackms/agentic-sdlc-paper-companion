@@ -1,1 +1,5 @@
+// raw_sha256=420e559ba6a3349841367a2e70baa0ae0ee70fdcc047b1ca2d043c521738c73d
+// raw_bytes=521
+```json
 {"bugs_found": ["_guess_quote_and_delimiter: condition `if key and (delimiters is None and key in delimiters)` is broken — when delimiters is None it raises TypeError on `key in None`; when delimiters is a collection it short-circuits to False so delims is never populated. Should be `delimiters is None or key in delimiters`. Violates contract: 'Selects the most frequent delimiter among allowed matched delimiters' and 'Delimiter candidates are filtered by delimiters when provided'."], "verdict": "REQUEST_CHANGES"}
+```

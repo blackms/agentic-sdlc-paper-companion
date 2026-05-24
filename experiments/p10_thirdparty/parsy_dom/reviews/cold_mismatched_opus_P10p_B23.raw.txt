@@ -1,1 +1,5 @@
-{"bugs_found":["Il codice fornito non corrisponde ai contratti: i contratti descrivono bankcheck (Reporter, load_yaml_file, cmd_*, ecc.) ma il codice è una libreria di parser combinator (parsy-like) — nessuna delle funzioni contrattualizzate è presente, quindi tutti i contratti sono violati per assenza totale di implementazione"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=2387d564d151fece2893943244bc91d95e8700542e37a233de013d99eb8d60b8
+// raw_bytes=365
+```json
+{"bugs_found": ["Il codice fornito non corrisponde ai contratti: i contratti descrivono bankcheck (Reporter, load_yaml_file, cmd_*, ecc.) ma il codice è una libreria di parser combinator (parsy-like) — nessuna delle funzioni contrattualizzate è presente, quindi tutti i contratti sono violati per assenza totale di implementazione"], "verdict": "REQUEST_CHANGES"}
+```

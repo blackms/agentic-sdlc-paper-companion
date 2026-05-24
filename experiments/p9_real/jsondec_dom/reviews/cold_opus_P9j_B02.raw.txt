@@ -1,3 +1,5 @@
+// raw_sha256=59b28e9f3e0fafff1ab4f8689f6b837924d465d386bfbe7c3dc09f2fbe7fd08d
+// raw_bytes=838
+```json
 {"bugs_found": [], "verdict": "ACCEPT"}
- s[end:end - 1]` produces an always-empty slice (should be `s[end:end + 1]`); the intended peek of the next character is broken — it only happens to behave correctly because `'' in _ws` is True in Python, which is a fragile coincidence and not what the contract's whitespace/`}`/`\"` dispatch describes", "_decode_uXXXX accepts signed escapes like `\\u+123` / `\\u-123` because `int(esc, 16)` accepts `+`/`-`; for `\\u-123` the resulting negative code point makes `chr(uni)` raise ValueError rather than JSONDecodeError, violating py_scanstring's contract that invalid `\\uXXXX` escapes raise JSONDecodeError"], "verdict": "REQUEST_CHANGES"}
-espace second char as if it were whitespace via _w(s, end+1), violating the 'whitespace skipped where permitted' invariant"],"verdict":"REQUEST_CHANGES"}
+```

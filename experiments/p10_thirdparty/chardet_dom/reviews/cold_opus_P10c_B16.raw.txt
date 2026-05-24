@@ -1,1 +1,5 @@
+// raw_sha256=ae3d0f16e9c602eafc272ff5e78c26675830f6db05e1c1ce4e2cb85f6ada1986
+// raw_bytes=284
+```json
 {"bugs_found": ["GB2312DistributionAnalysis.get_order uses strict `first_char > 176` instead of `>= 0xB0` (176), incorrectly rejecting valid first byte 0xB0 and returning -1 for the entire first row of GB2312 (contract requires inclusive lower-bound)"], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
-{"bugs_found":["Codice fornito non corrisponde ai contratti di bankcheck: è una libreria di parser combinators (Parser, Result, alt, seq, ecc.) priva di Reporter, load_yaml_file, load_json_file, load_profile, cmd_* e main. Tutti i contratti specificati sono violati per assenza totale di implementazione."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=42d7fa4863b2ff7654ccbcef81a024e3f923ffbffa45d5d506db595b82d67968
+// raw_bytes=337
+```json
+{"bugs_found": ["Codice fornito non corrisponde ai contratti di bankcheck: è una libreria di parser combinators (Parser, Result, alt, seq, ecc.) priva di Reporter, load_yaml_file, load_json_file, load_profile, cmd_* e main. Tutti i contratti specificati sono violati per assenza totale di implementazione."], "verdict": "REQUEST_CHANGES"}
+```

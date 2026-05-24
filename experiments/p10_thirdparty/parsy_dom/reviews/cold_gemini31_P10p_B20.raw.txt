@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=846d9fc5fd773944812965b26c4d544ec6a447a288166b62a5743572bf816966
+// raw_bytes=261
 ```json
 {"bugs_found": ["In `combine_dict`, the filtering condition uses `or` instead of `and`, which removes all string keys and raises AttributeError for non-string keys"], "verdict": "REQUEST_CHANGES"}
 ```

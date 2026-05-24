@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-[STARTUP] Phase 'cleanup_ops' was started but never ended. Skipping metrics.
+// raw_sha256=a8748c838555eb768828422e5849df1444f8335e2aec936d0084b95a04cc5516
+// raw_bytes=395
+```json
 {"bugs_found": ["The provided code implements character distribution analysis classes and lacks all functions and classes defined in the bankcheck contract (e.g., Reporter, load_yaml_file, load_json_file, load_profile, cmd_*, etc.)."], "verdict": "REQUEST_CHANGES"}
+```

@@ -1,1 +1,5 @@
+// raw_sha256=8339c87c576c5c0bd7e3ff5d5ddc1fe3c7d2b07847eeb2dceaad9e3a4d63630f
+// raw_bytes=289
+```json
 {"bugs_found": ["currency mismatch check is bypassed whenever the destination account is in EUR, allowing cross-currency transfers without FX conversion", "amounts are added to destination balance in source currency without conversion, corrupting balances"], "verdict": "REQUEST_CHANGES"}
+```

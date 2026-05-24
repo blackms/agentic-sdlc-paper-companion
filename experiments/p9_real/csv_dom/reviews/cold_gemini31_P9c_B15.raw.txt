@@ -1,4 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=3cefb26ba73b699878ec68c62cff36ea9e3df8d0ccd3235227c94baca6c65335
+// raw_bytes=418
 ```json
 {"bugs_found": ["DictReader.__next__ updates self.line_num before skipping empty rows, leaving it with the incorrect line number if empty rows are encountered.", "Sniffer.has_header checks if 'thisType == columnTypes[col]' instead of '!=', breaking the characteristic tracking logic and leaving all column types as None."], "verdict": "REQUEST_CHANGES"}
 ```

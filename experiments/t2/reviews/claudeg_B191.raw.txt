@@ -1,1 +1,5 @@
+// raw_sha256=2109ab4bcf5d994adc2b15615124ea39eede58a4ddcdcfdd7da4eafd20dc36ff
+// raw_bytes=348
+```json
 {"bugs_found": ["fx_convert looks up rates with key (from_currency, from_currency) instead of (from_currency, to_currency), producing wrong rate or always missing", "to_currency parameter is effectively ignored in the lookup", "no rounding/quantization on monetary results", "transfer lacks transactional atomicity"], "verdict": "REQUEST_CHANGES"}
+```

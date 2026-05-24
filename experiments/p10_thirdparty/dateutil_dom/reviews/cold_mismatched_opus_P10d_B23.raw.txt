@@ -1,1 +1,5 @@
-{"bugs_found":["Codice fornito (relativedelta) non corrisponde ai contratti di bankcheck: nessuna delle funzioni contrattualizzate (Reporter.*, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) è implementata nel modulo sottoposto a review, quindi ogni postcondition e invariante dichiarata è violata per assenza di implementazione"],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=050f13027534c15b4e07c7936bbb8b3d384d86e047c31695f04bbfbb09f10fc0
+// raw_bytes=458
+```json
+{"bugs_found": ["Codice fornito (relativedelta) non corrisponde ai contratti di bankcheck: nessuna delle funzioni contrattualizzate (Reporter.*, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main) è implementata nel modulo sottoposto a review, quindi ogni postcondition e invariante dichiarata è violata per assenza di implementazione"], "verdict": "REQUEST_CHANGES"}
+```

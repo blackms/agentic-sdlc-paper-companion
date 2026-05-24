@@ -1,1 +1,5 @@
+// raw_sha256=883523e9c94355ad811141f72781de6c6d3836d8210a577117ae8fdfbd25bd84
+// raw_bytes=380
+```json
 {"bugs_found": ["apply_fee: dead/unreachable code in fmin>fmax branch — assignment 'fmin = fmax = Decimal(0)' executes before raise, but is pointless and misleading (suggests silent fallback that never happens)", "apply_fee: misleading inline comment '# silent' contradicts the immediately following raise, indicating likely incomplete refactor"], "verdict": "REQUEST_CHANGES"}
+```

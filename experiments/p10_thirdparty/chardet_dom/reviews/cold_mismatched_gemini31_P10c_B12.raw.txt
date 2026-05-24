@@ -1,2 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
+// raw_sha256=dd4f2f7bdc69340cc222371b4ff0c4f30cc27fb39ce77aa734f42121b385b1ad
+// raw_bytes=302
+```json
 {"bugs_found": ["Code completely mismatches the contract: expected bankcheck module functions and classes (e.g., Reporter, load_yaml_file, cmd_all) but found unrelated chardet character distribution analysis classes."], "verdict": "REQUEST_CHANGES"}
+```

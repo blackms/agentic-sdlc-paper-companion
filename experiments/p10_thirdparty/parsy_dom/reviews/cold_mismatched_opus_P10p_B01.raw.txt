@@ -1,1 +1,5 @@
-{"bugs_found":["Code provided is not the bankcheck implementation described in the contracts — it is a parser combinator library (parsy-like). None of the contracted symbols (Reporter, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main, EXIT_OK/EXIT_FAIL/EXIT_CONFIG_ERROR) are present, so every contract is unsatisfied."],"verdict":"REQUEST_CHANGES"}
+// raw_sha256=0570434c7ae9827456d8ff1f5aa20837a3fb69047c512c0f9d945471963f547c
+// raw_bytes=445
+```json
+{"bugs_found": ["Code provided is not the bankcheck implementation described in the contracts — it is a parser combinator library (parsy-like). None of the contracted symbols (Reporter, load_yaml_file, load_json_file, load_profile, file_matches_globs, function_is_exempted, iter_files_under_sensitive, cmd_*, build_parser, main, EXIT_OK/EXIT_FAIL/EXIT_CONFIG_ERROR) are present, so every contract is unsatisfied."], "verdict": "REQUEST_CHANGES"}
+```

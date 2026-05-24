@@ -1,1 +1,5 @@
+// raw_sha256=a640c6ccf86aec805be0273f54ccec08f475505e17745333945da17273da74a1
+// raw_bytes=337
+```json
 {"bugs_found": ["JSONDecoder.__init__ uses `self.parse_float = parse_float and float` which discards any user-supplied parse_float callable and always assigns the builtin `float` when truthy; contract requires parse_float to default to float only when not supplied and otherwise be the callable provided"], "verdict": "REQUEST_CHANGES"}
+```

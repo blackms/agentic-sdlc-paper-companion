@@ -1,3 +1,5 @@
-Ripgrep is not available. Falling back to GrepTool.
-Attempt 1 failed: You have exhausted your capacity on this model. Your quota will reset after 0s.. Retrying after 5280ms...
+// raw_sha256=efc0b0b7e085203b4ab7aa5cb0ffd5702bb4258e3a02072f7d8a0892c1fea0e6
+// raw_bytes=304
+```json
 {"bugs_found": ["SJISDistributionAnalysis.get_order subtracts second_char instead of adding it"], "verdict": "REQUEST_CHANGES"}
+```

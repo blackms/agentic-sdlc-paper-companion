@@ -1,1 +1,5 @@
+// raw_sha256=df8d03c751c1067fa690bb98648c81fb325844c7d440695fdc43439d9ffa6ca7
+// raw_bytes=568
+```json
 {"bugs_found": ["apply_fee mixes float and Decimal: fee computed as float(a)*float(pct) then compared/assigned with Decimal fmin/fmax and subtracted from Decimal a, causing TypeError or precision loss", "compound_interest does not validate principal can be negative", "loan_payment r==0 branch returns p/m as Decimal/int division which is fine but inconsistent with other branch types", "transfer is not atomic: no rollback if second assignment fails", "fx_convert accepts arbitrary float rate via str() but does not validate rate > 0"], "verdict": "REQUEST_CHANGES"}
+```

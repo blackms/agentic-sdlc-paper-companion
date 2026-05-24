@@ -1,1 +1,5 @@
+// raw_sha256=d2180195e21afcfd6d1a65724808c9fcf00371970dcf5ea69df99397e4182287
+// raw_bytes=361
+```json
 {"bugs_found": ["Big5DistributionAnalysis.get_order: high second-byte branch uses `157 * (first_char + 164)` instead of `157 * (first_char - 164)`, producing wildly wrong (and far too large) orders for all Big5 chars with second byte >= 0xA1, violating the contract formula `157 * (first_char - 0xA4) + second_char - 0xA1 + 63`"], "verdict": "REQUEST_CHANGES"}
+```

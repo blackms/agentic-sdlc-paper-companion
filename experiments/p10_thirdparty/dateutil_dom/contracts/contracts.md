@@ -1,19 +1,3 @@
-Reading additional input from stdin...
-OpenAI Codex v0.128.0 (research preview)
---------
-workdir: /Users/alessiorocchi/Projects/agentic-sdlc/experiments
-model: gpt-5.5
-provider: openai
-approval: never
-sandbox: workspace-write [workdir, /tmp, $TMPDIR, /Users/alessiorocchi/.codex/memories]
-reasoning effort: xhigh
-reasoning summaries: none
-session id: 019e138a-1c89-7e93-977e-715ad41b1ef3
---------
-user
-You are a senior Python engineer. Read the following module carefully and produce a self-contained CONTRACT specification document in Markdown.
-
-Format:
 # Contracts: dateutil_dom
 
 ## Module overview
